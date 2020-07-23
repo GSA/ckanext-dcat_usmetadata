@@ -28,3 +28,6 @@ up-with-data:
 
 app-up:
 	cd metadata-app && yarn start
+
+app-cosmos:
+	cd metadata-app && yarn cosmos

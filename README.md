@@ -24,3 +24,9 @@ Run `make test` to run the tests locally inside a docker container
 The Metadata APP is a [Create React App](https://create-react-app.dev/)-bootstrapped project.
 
 To run the app use `make app-up`
+
+### Development
+
+We recommend using [cosmos](https://reactcosmos.org/) for development.
+
+Run `make app-cosmos` to start the cosmos server, which will watch the `metadata-app/src` directory for changes.
