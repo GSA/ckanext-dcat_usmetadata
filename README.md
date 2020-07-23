@@ -18,3 +18,9 @@ In your CKAN .ini file add `dcat_usmetadata` to your enabled plugins:
 Run `make test` to run the tests locally inside a docker container
 
 **NOTE** That you need to have docker and docker-compose installed locally for the tests to run.
+
+## Metadata App
+
+The Metadata APP is a [Create React App](https://create-react-app.dev/)-bootstrapped project.
+
+To run the app use `make app-up`

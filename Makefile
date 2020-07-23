@@ -1,5 +1,9 @@
 .PHONY: all build clean test up
 
+########
+# CKAN APP:
+########
+
 all: up
 
 build:
@@ -17,3 +21,10 @@ up:
 up-with-data:
 	docker-compose -f docker-compose.yml -f docker-compose.seed.yml build
 	docker-compose -f docker-compose.yml -f docker-compose.seed.yml up
+
+########
+# REACT APP:
+########
+
+app-up:
+	cd metadata-app && yarn start
