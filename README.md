@@ -1,4 +1,4 @@
-# ckanext-react_usmetadata
+# ckanext-dcat_usmetadata
 
 This extension provides a react Admin UI for managing custom fields related to [DCAT-US Schema](https://https://resources.data.gov/resources/dcat-us/).
 
@@ -6,12 +6,12 @@ This extension provides a react Admin UI for managing custom fields related to [
 
 To install this package, activate CKAN virtualenv (e.g. "source /path/to/virtenv/bin/activate"), then run
 
-`(virtualenv) pip install -e git+https://github.com/GSA/ckanext-react_usmetadata@master#egg=ckanext-react_usmetadata`
+`(virtualenv) pip install -e git+https://github.com/GSA/ckanext-dcat_usmetadata@master#egg=ckanext-dcat_usmetadata`
 `(virtualenv) python setup.py develop`
 
-In your CKAN .ini file add `react_usmetadata` to your enabled plugins:
+In your CKAN .ini file add `dcat_usmetadata` to your enabled plugins:
 
-`ckan.plugins = [YOUR PLUGINS HERE...] react_usmetadata`
+`ckan.plugins = [YOUR PLUGINS HERE...] dcat_usmetadata`
 
 ## Testing
 
