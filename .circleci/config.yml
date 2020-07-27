@@ -36,9 +36,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: where am I
-          command: pwd && ls -la
-      - run:
           name: install
           command: /bin/bash bin/ci-build.bash
       - run:
