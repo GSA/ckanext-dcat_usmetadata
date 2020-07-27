@@ -30,3 +30,31 @@ To run the app use `make app-up`
 We recommend using [cosmos](https://reactcosmos.org/) for development.
 
 Run `make app-cosmos` to start the cosmos server, which will watch the `metadata-app/src` directory for changes.
+
+### Ways to Contribute
+
+The Data.gov team manages all Data.gov updates, bugs, and feature additions via GitHub's public issue tracker in this repository.
+
+If you do not already have a GitHub account, you can sign up for GitHub here. In the spirit of open source software, everyone is encouraged to help improve this project. Here are some ways you can contribute:
+
+* by reporting bugs
+* by suggesting new features
+* by translating content to a new language
+* by writing or editing documentation
+* by writing specifications
+* by writing code and documentation (no pull request is too small: fix typos, add code comments, clean up inconsistent whitespace)
+* by reviewing pull requests.
+* by closing issues
+
+#### Submit Great Issues
+
+* Before submitting a new issue, check to make sure a similar issue isn't already open. If one is, contribute to that issue thread with your feedback.
+* When submitting a bug report, please try to provide as much detail as possible, i.e. a screenshot or gist that demonstrates the problem, the technology you are using, and any relevant links.
+
+#### Ready for your Help
+Issues labeled sparkleshelp wantedsparkles make it easy for you to find ways you can contribute today.
+
+### Public Domain
+This project constitutes a work of the United States Government and is not subject to domestic copyright protection under 17 USC § 105. Additionally, we waive copyright and related rights in the work worldwide through the CC0 1.0 Universal public domain dedication.
+
+All contributions to this project will be released under the CC0 dedication. By submitting a pull request, you are agreeing to comply with this waiver of copyright interest.
