@@ -22,6 +22,13 @@ up-with-data:
 	docker-compose -f docker-compose.yml -f docker-compose.seed.yml build
 	docker-compose -f docker-compose.yml -f docker-compose.seed.yml up
 
+lint-all:
+	docker-compose up -d
+	docker-compose exec ckan \
+        bash -c "cd $(CKAN_HOME) && \
+                 pip install --upgrade pip  && \
+                         pip install flake8 && \
+                                 flake8 . --count --select=E9 --show-source --statistics"
 ########
 # REACT APP:
 ########

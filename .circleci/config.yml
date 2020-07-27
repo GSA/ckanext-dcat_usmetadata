@@ -5,6 +5,7 @@ jobs:
     machine: true
     steps:
       - checkout
+      - run: make lint-all
       - run:
           name: Start CKAN
           command: |
@@ -35,6 +36,7 @@ jobs:
       CKANVERSION=inventory
     steps:
       - checkout
+      - run: make lint-all
       - run:
           name: install
           command: /bin/bash bin/ci-build.bash
