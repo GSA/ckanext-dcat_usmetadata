@@ -27,6 +27,9 @@ jobs:
           name: Install and run cypress
           command: |
             npm install cypress && $(npm bin)/cypress run
+      - run:
+          name: Eslint
+          command: cd metadata-app && npx eslint src/*.js
 
   build_gsa_ckan_inventory:
     working_directory: ~/ckanext-dcat_usmetadata

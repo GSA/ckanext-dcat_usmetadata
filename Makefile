@@ -38,3 +38,7 @@ app-up:
 
 app-cosmos:
 	cd metadata-app && yarn cosmos
+
+app-lint:
+	cd metadata-app && npx eslint src/*.js
+
