@@ -43,3 +43,7 @@ docs/_build/
 
 # Vim swap files
 .*.sw*
+
+# Cypress
+
+cypress/videos/*
