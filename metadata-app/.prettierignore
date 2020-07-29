@@ -1,0 +1,28 @@
+node_modules/
+
+# testing
+/coverage
+
+# next.js
+.next/
+/out/
+
+# yarn
+yarn-error.log
+yarn.lock
+
+# sass
+.sass-cache
+
+# css
+*.css
+
+# misc
+sandbox/*
+.env
+.staging.env
+.nyc_output/*
+.DS_Store
+
+public/
+dist/

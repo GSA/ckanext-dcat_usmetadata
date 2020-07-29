@@ -1,13 +1,19 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import './App.css'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" className="App-logo" alt="logo" />
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png"
+          className="App-logo"
+          alt="logo"
+        />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit
+          <code>src/App.js</code>
+          and save to reload.
         </p>
         <a
           className="App-link"
@@ -19,7 +25,7 @@ function App() {
         </a>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
