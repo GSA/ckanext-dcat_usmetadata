@@ -3389,6 +3389,11 @@ cosmiconfig@^6.0.0:
     path-type "^4.0.0"
     yaml "^1.7.2"
 
+cosmos@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/cosmos/-/cosmos-0.1.2.tgz#073b870b4bf44b6ec525bf039de99c8b455b963d"
+  integrity sha1-BzuHC0v0S27FJb8Dnemci0Vblj0=
+
 create-ecdh@^4.0.0:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/create-ecdh/-/create-ecdh-4.0.3.tgz#c9111b6f33045c4697f144787f9254cdc77c45ff"

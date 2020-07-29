@@ -43,6 +43,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
+    "cosmos": "^0.1.2",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-cypress": "^2.11.1",
