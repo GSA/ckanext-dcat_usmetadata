@@ -1,5 +1,5 @@
 import axios from 'axios';
-import EXTRAS from './extras';
+import EXTRAS from '../conf/extras';
 
 /**
  * HELPERS

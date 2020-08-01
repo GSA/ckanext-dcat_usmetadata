@@ -1,7 +1,8 @@
 import moxios from 'moxios';
-import Api from './Api';
-import mocks from './apiMocks';
+import Api from '.';
+import mocks from '../mocks/apiMocks';
 
+console.log('------------ Run API Tests ------------');
 const {
   encodeExtras,
   decodeExtras,

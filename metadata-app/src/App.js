@@ -1,31 +1,21 @@
 import React from 'react';
 import './App.css';
+import MetadataForm from './components/MetadataForm';
 
-function App() {
+const App = (props) => {
+  const opts = {
+    apiUrl: 'http://localhost:5000/api/3/action/',
+    apiKey: '6556b77b-b96b-4352-999c-bde4a0d86cce',
+    ownerOrg: '123',
+  };
+
+  const ourOpts = Object.assign({}, { ...props }, { ...opts });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png"
-          className="App-logo"
-          alt="logo"
-        />
-        <p>
-          Edit
-          <code>src/App.js</code>
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MetadataForm {...ourOpts} />
     </div>
   );
-}
+};
 
 export default App;
