@@ -5,6 +5,7 @@ jobs:
     machine: true
     steps:
       - checkout
+      - run: curl -o- -L https://yarnpkg.com/install.sh | bash
       - run: make lint-all
       - run:
           name: Start CKAN
