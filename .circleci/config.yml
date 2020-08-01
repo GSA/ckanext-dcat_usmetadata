@@ -5,7 +5,6 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: curl -o- -L https://yarnpkg.com/install.sh | bash
       - run: make lint-all
       - run:
           name: Start CKAN
@@ -29,14 +28,13 @@ jobs:
           command: npm install cypress && $(npm bin)/cypress run
       - run:
           name: Run metadata-app unit tests
-          command: make app-test
+          command: curl -o- -L https://yarnpkg.com/install.sh | bash && make app-test
 
   build_gsa_ckan_inventory:
     working_directory: ~/ckanext-dcat_usmetadata
     machine:
       image: circleci/classic:201708-01
-    environment:
-      CKANVERSION=inventory
+    environment: CKANVERSION=inventory
     steps:
       - checkout
       - run:
