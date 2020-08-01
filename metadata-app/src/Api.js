@@ -33,10 +33,11 @@ const encodeExtras = (opts) => {
  * Decode extras from CKAN 2.8.2 Groups format
  */
 const decodeExtras = (opts) => {
-  return opts.extras.reduce((acc, cur) => {
-    acc[cur.key] = cur.value;
-    return acc;
-  }, {});
+  const newOpts = clone(opts);
+  newOpts.extras.forEach((cur) => {
+    newOpts[cur.key] = cur.value;
+  });
+  return newOpts;
 };
 
 const encodeSupplementalValues = (opts) => {
@@ -130,21 +131,24 @@ const createResource = (packageId, opts, apiUrl, apiKey) => {
   });
 };
 
-const fetchDataset = (id, apiUrl, apiKey) => {
-  return axios(`${apiUrl}package_show?id=${id}`, {
-    headers: {
-      'X-CKAN-API-Key': apiKey,
-    },
-  }).then((res) => {
-    const vals = JSON.parse(JSON.stringify(res.data.result));
-    const ourVals = decodeSupplementalValues(decodeExtras(vals));
-    res.data.result = ourVals;
-    return Promise.resolve(res);
-  });
+const fetchDataset = async (id, apiUrl, apiKey) => {
+  try {
+    const res = await axios.get(`${apiUrl}package_show?id=${id}`, {
+      headers: {
+        'X-CKAN-API-Key': apiKey,
+      },
+    });
+    const decoded = decodeSupplementalValues(decodeExtras(res.data.result));
+    res.data.result = decoded;
+    return res;
+  } catch (e) {
+    return e;
+  }
 };
 
 const updateDataset = (id, opts, apiUrl, apiKey) => {
   const encoded = encodeExtras(encodeSupplementalValues(opts));
+  encoded.id = id;
 
   return axios.post(`${apiUrl}package_update`, encoded, {
     headers: {

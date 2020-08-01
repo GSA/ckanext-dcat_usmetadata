@@ -42,3 +42,6 @@ app-cosmos:
 app-lint:
 	cd metadata-app && npx eslint src/*.js
 
+app-test:
+	cd metadata-app && yarn test 
+
