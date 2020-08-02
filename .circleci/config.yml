@@ -36,6 +36,9 @@ jobs:
        - image: circleci/node:12.9.1-browsers
      steps:
        - checkout
+       - run:
+        name: where am i
+        command: pwd && ls -la
        - run: yarn && yarn test
   build_gsa_ckan_inventory:
     working_directory: ~/ckanext-dcat_usmetadata
