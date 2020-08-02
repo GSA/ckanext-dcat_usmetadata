@@ -28,11 +28,12 @@ jobs:
           name: Install and run cypress integration tests
           command: npm install cypress && $(npm bin)/cypress run
   unit_test_metadata_app:
-    working_directory: ~/ckanext-dcat_usmetadata/metadata-app
+    working_directory: ~/ckanext-dcat_usmetadata
     docker:
       - image: circleci/node:12.9.1-browsers
     steps:
       - checkout
+      - run: cd metadata-app
       - run:
           name: where am i
           command: pwd && ls -la
