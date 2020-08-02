@@ -31,7 +31,7 @@ jobs:
           name: Run metadata-app unit tests
           command: cd metadata-app && npm install && npm run test
   unit_test_metadata_app:
-    working_directory: ~/ckanext-dcat_usmetadata
+    working_directory: ~/ckanext-dcat_usmetadata/metadata-app
     docker:
       - image: circleci/node:12.9.1-browsers
     steps:
