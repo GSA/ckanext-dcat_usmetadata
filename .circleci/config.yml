@@ -28,7 +28,7 @@ jobs:
           command: npm install cypress && $(npm bin)/cypress run
       - run:
           name: Run metadata-app unit tests
-          command: cd metadata-app && npm run test
+          command: cd metadata-app && npm install && npm run test
 
   build_gsa_ckan_inventory:
     working_directory: ~/ckanext-dcat_usmetadata
