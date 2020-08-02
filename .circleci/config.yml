@@ -27,9 +27,6 @@ jobs:
       - run:
           name: Install and run cypress integration tests
           command: npm install cypress && $(npm bin)/cypress run
-      - run:
-          name: Run metadata-app unit tests
-          command: cd metadata-app && npm install && npm run test
   unit_test_metadata_app:
     working_directory: ~/ckanext-dcat_usmetadata/metadata-app
     docker:
