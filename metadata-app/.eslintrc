@@ -4,7 +4,11 @@
   "parser": "babel-eslint",
   "rules": {
     "prettier/prettier": ["error"],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-one-expression-per-line": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/require-default-props": 0,
+    "prefer-object-spread": 0
   },
   "env": {
     "jest/globals": true,

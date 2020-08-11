@@ -3,7 +3,9 @@ import { render } from '@testing-library/react';
 import App from './App';
 
 test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const { getAllByText } = render(
+    <App apiUrl="https://api.com/api/3/action" apiKey="foo" ownerOrg="123" />
+  );
+  const appText = getAllByText(/Required Metadata/i);
+  expect(appText.length).toBe(3);
 });
