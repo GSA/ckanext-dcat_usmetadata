@@ -7,7 +7,7 @@ const apiUrl = 'http://localhost:5000/api/3/action/';
 const apiKey = '6556b77b-b96b-4352-999c-bde4a0d86cce';
 
 const Form = () => (
-  <div className="container">
+  <div className="grid-container">
     <Formik
       initialValues={{}}
       render={(values) => (
