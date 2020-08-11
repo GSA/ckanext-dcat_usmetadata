@@ -7,9 +7,8 @@ import WrappedField from '.';
 console.log('------------ Run WrappedField Tests ------------');
 test('renders learn stubbed MetadataForm', () => {
   const { getByLabelText, getByPlaceholderText } = render(
-    <Formik
-      initialValues={{}}
-      render={({ values }) => (
+    <Formik initialValues={{}}>
+      {({ values }) => (
         <div className="">
           <form>
             <WrappedField
@@ -24,7 +23,7 @@ test('renders learn stubbed MetadataForm', () => {
           </form>
         </div>
       )}
-    />
+    </Formik>
   );
   const placeholderText = getByPlaceholderText('Test placeholder');
   const labelText = getByLabelText('Test wrapped field');

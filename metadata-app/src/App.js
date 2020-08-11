@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import MetadataForm from './components/MetadataForm';
 
 const App = (props) => {
-  const { apiUrl, apiKey } = props;
+  const { apiUrl, apiKey, ownerOrg } = props;
 
   return (
     <div className="App">
-      <MetadataForm apiUrl={apiUrl} apiKey={apiKey} />
+      <MetadataForm apiUrl={apiUrl} apiKey={apiKey} ownerOrg={ownerOrg} />
     </div>
   );
 };
@@ -15,6 +15,7 @@ const App = (props) => {
 App.propTypes = {
   apiUrl: PropTypes.string.isRequired,
   apiKey: PropTypes.string.isRequired,
+  ownerOrg: PropTypes.string.isRequired,
 };
 
 export default App;

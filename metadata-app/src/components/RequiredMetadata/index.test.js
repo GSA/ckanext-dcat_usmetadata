@@ -10,7 +10,7 @@ const Form = () => (
     render={(values) => (
       <form>
         <RequiredMetadata
-          apiUrl="http://api.com"
+          apiUrl="http://localhost:5000/api/3/action"
           currentStep={1}
           fetchDatasetsOpts="false"
           values={values}

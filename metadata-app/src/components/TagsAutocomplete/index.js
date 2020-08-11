@@ -11,7 +11,7 @@ const TagsAutocomplete = (props) => {
     <FieldArray
       name={name}
       render={(arrayHelpers) => (
-        <div className="react-tags-input">
+        <div className="react-tags-input grid-col-6">
           <div id="tags-error" className="error-msg hidden" type="string" placeholder="" value="">
             Tags are required
           </div>

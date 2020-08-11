@@ -86,10 +86,9 @@ const WrappedField = (props) => {
               name={name}
               className={`usa-select ${disabledClass}`}
               component="select"
+              defaultValue=""
             >
-              <option disabled selected>
-                -Select-
-              </option>
+              <option value="">-Select-</option>
               {choices.map((choice) => (
                 <option value={choice} key={choice}>
                   {choice}
