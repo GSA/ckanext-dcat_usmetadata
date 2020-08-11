@@ -1,31 +1,20 @@
 import React from 'react';
-import './App.css';
+import PropTypes from 'prop-types';
+import MetadataForm from './components/MetadataForm';
 
-function App() {
+const App = (props) => {
+  const { apiUrl, apiKey } = props;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png"
-          className="App-logo"
-          alt="logo"
-        />
-        <p>
-          Edit
-          <code>src/App.js</code>
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MetadataForm apiUrl={apiUrl} apiKey={apiKey} />
     </div>
   );
-}
+};
+
+App.propTypes = {
+  apiUrl: PropTypes.string.isRequired,
+  apiKey: PropTypes.string.isRequired,
+};
 
 export default App;
