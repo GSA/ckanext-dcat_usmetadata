@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const HelpText = (props) => {
+// Navigation block for moving between form pages (steps)
+// Step 1 -- Required metadata
+// Step 2 -- Additional metadata
+// Step 3 -- Resource uploads / links
+const Navigation = (props) => {
   const { currentStep, handleSteps } = props;
   return (
     <div className="app_navigation" id="app_navigation">
@@ -45,9 +49,9 @@ const HelpText = (props) => {
   );
 };
 
-HelpText.propTypes = {
+Navigation.propTypes = {
   currentStep: PropTypes.number.isRequired,
   handleSteps: PropTypes.func.isRequired,
 };
 
-export default HelpText;
+export default Navigation;
