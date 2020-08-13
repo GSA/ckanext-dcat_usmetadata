@@ -1,7 +1,5 @@
-{% extends "package/edit.html" %} {% block content %}
-<div id="root" style"{margin-bottom: 2em}" data-apiUrl="/api/3/action" data-apiKey="123" data-ownerOrg=123" ></div>
+<div id="root" data-apiUrl="{{h.full_current_url()}}/../../api/3/action/package_create" data-apiKey="{{c.userobj.apikey}}" data-ownerOrg=123" ></div>
 <link rel="stylesheet" href="/css/main.245a4124.chunk.css" type"text/css">
 <script src="/js/2.d1ac1708.chunk.js"></script>
 <script src="/js/main.6437f873.chunk.js"></script>
 <script src="/js/runtime-main.8c4554b7.js"></script>
-{% endblock %}
