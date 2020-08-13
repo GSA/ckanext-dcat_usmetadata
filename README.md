@@ -29,6 +29,8 @@ To run the app use `make app-up`
 
 We recommend using [cosmos](https://reactcosmos.org/) for development.
 
+Run CKAN locally (`make up`) and get the Admin user's API Key. Add a test org for development purposes and get the id. Add these values to indicated place in `/metadata-app/src/index.js`.
+
 Run `make app-cosmos` to start the cosmos server, which will watch the `metadata-app/src` directory for changes.
 
 ### Ways to Contribute
