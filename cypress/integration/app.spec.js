@@ -4,6 +4,6 @@ describe('DCAT Metadata App: New loads', () => {
   })
 
   it('Has a title', () => {
-    cy.contains('Edit src/App.js and save to reload.')
+    cy.contains('Required Metadata')
   })
 })
