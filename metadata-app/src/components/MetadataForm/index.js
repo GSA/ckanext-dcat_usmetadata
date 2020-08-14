@@ -4,6 +4,7 @@ import { Formik, Form } from 'formik';
 import RequiredMetadata from '../RequiredMetadata';
 import defaultRequiredValues from '../RequiredMetadata/defaultValues';
 import Navigation from '../Navigation';
+import AlertBox from '../AlertBox';
 import Api from '../../api';
 import '../../css/custom.css';
 import '../../css/uswds.css';
@@ -12,11 +13,13 @@ const MetadataForm = (props) => {
   const { apiUrl, apiKey, ownerOrg } = props;
   const [requiredValues, setRequiredValues] = useState(defaultRequiredValues);
   const [currentStep, setCurrentStep] = useState(0);
+  const [alert, setAlert] = useState();
 
   // render metadata form
   return (
     <div className="grid-container">
       <Navigation currentStep={currentStep} handleSteps={setCurrentStep} />
+      {alert}
       <Formik
         initialValues={requiredValues}
         enableReinitialize="true"
@@ -25,6 +28,7 @@ const MetadataForm = (props) => {
         onSubmit={(values) => {
           Api.createDataset(ownerOrg, values, apiUrl, apiKey)
             .then((res) => {
+              setAlert(<AlertBox type="success" heading="Dataset updated successfully" />);
               setRequiredValues(res);
               window.scrollTo(0, 0);
             })
