@@ -10,7 +10,11 @@ const HelpText = (props) => {
         role="button"
         className={`navsec ${currentStep === 0 ? 'active' : ''}`}
         onClick={() => handleSteps(0)}
-        onKeyDown={() => handleSteps(0)}
+        onKeyUp={(e) => {
+          if (e.keyCode === 13) {
+            handleSteps(0);
+          }
+        }}
         id="nav-item-first"
       >
         <span>Required Metadata</span>
@@ -19,8 +23,10 @@ const HelpText = (props) => {
         tabIndex="0"
         role="link"
         className={`navsec ${currentStep === 1 ? 'active' : ''}`}
-        onKeyDown={() => {
-          handleSteps(1);
+        onKeyUp={(e) => {
+          if (e.keyCode === 13) {
+            handleSteps(1);
+          }
         }}
         onClick={() => {
           handleSteps(1);
@@ -32,8 +38,10 @@ const HelpText = (props) => {
         tabIndex="0"
         role="button"
         className={`navsec ${currentStep === 2 ? 'active' : ''}`}
-        onKeyDown={() => {
-          handleSteps(2);
+        onKeyUp={(e) => {
+          if (e.keyCode === 13) {
+            handleSteps(2);
+          }
         }}
         onClick={() => {
           handleSteps(2);
