@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const root = document.getElementById('r');
+const root = document.getElementById('root');
 let apiUrl;
 let apiKey;
 let ownerOrg;
@@ -15,7 +15,7 @@ if (root) {
   ownerOrg = root.getAttribute('data-ownerOrg');
 } else {
   // In development, add your own values here
-  apiUrl = 'localhost:5000/api/3/action/';
+  apiUrl = 'http://localhost:5000/api/3/action/';
   apiKey = '123';
   ownerOrg = '123';
 }
