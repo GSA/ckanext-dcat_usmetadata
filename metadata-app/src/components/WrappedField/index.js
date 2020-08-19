@@ -45,7 +45,13 @@ const WrappedField = (props) => {
               height="20px"
               width="20px"
               style={{ marginLeft: '.5em' }}
+              tabIndex={0}
               onClick={() => toggleToolTip()}
+              onKeyUp={(event) => {
+                if (event.keyCode === 13) {
+                  toggleToolTip();
+                }
+              }}
             />
             <span className="tooltiptext">
               <span
@@ -53,7 +59,11 @@ const WrappedField = (props) => {
                 className="close"
                 onClick={() => setToolTipShown(false)}
                 role="button"
-                onKeyDown={() => setToolTipShown(false)}
+                onKeyUp={(event) => {
+                  if (event.keyCode === 13) {
+                    setToolTipShown(false);
+                  }
+                }}
               >
                 <span className="close-tag">&times;</span>
               </span>
