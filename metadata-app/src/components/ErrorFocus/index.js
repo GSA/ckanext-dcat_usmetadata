@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Helper component to scroll/focus the first error on submit.
 // Note that this is based on https://gist.github.com/dphrag/4db3b453e02567a0bb52592679554a5b
 class ErrorFocus extends React.Component {
   componentDidUpdate(prevProps) {
