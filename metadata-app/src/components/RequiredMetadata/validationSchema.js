@@ -10,19 +10,7 @@ export default yup.object().shape({
   subagency: yup.string(),
   accessLevel: yup.string().required('Access level is required'),
   dataQuality: yup.string().required('Data Quality is required'),
-  rights: yup
-    .boolean()
-    /* eslint-disable-next-line */
-    .test('test-rights', 'Must include description if metadata is not public', function (value) {
-      const { createError } = this;
-      const vals = this.from[0].value;
-      if (vals.rights === 'non-public' && vals.rights_desc === undefined) {
-        return createError({
-          path: 'rights',
-          message: 'Must include description if metadata is not public',
-        });
-      }
-    }),
+  rights: yup.string().required('Rights is required.'),
   rights_desc: yup.string(),
   spatial: yup.string(),
   license_others: yup.string(),

@@ -9,12 +9,6 @@ const RequiredMetadata = (props) => {
   const { values, errors, currentStep, apiUrl, apiKey } = props;
   // console.log('FORM VALUES', values);
 
-  // RADIO / SELECT Values
-  const [rights, setRights] = useState(values.rights);
-  const [license, setLicense] = useState(values.license);
-  const [spatial, setSpatial] = useState(values.spatial);
-  const [temporal, setTemporal] = useState(values.temporal);
-
   const [urlDisabled, setUrlDisabled] = useState(true);
 
   const urlify = (text) => {
@@ -211,9 +205,7 @@ const RequiredMetadata = (props) => {
           type="select"
           choices={['MIT', 'Open Source License', 'Others']}
           className="error-msg"
-          value={license}
           errors={errors}
-          onChange={(e) => setLicense(e.target.value)}
           required
         />
         <WrappedField
@@ -222,7 +214,7 @@ const RequiredMetadata = (props) => {
           helptext={helpTextify(
             `If you selected “Other”, please specify the name of your License*'`
           )}
-          disabled={license !== 'Others'}
+          disabled={values.license !== 'Others'}
           errors={errors}
           required
         />
@@ -234,24 +226,10 @@ const RequiredMetadata = (props) => {
           label="My dataset is public"
           name="rights"
           errors={errors}
-          value="public"
-          selected={rights === 'public'}
-          handleRadio={() => {
-            setRights('public');
-          }}
+          value="true"
           id="rights_option_1"
         />
-        <Radio
-          label="My dataset is not public"
-          name="rights"
-          errors={errors}
-          selected={rights === 'non-public'}
-          value="non-public"
-          handleRadio={() => {
-            setRights('non-public');
-          }}
-          id="rights_option_2"
-        />
+        <Radio label="My dataset is not public" name="rights" value="false" id="rights_option_2" />
         <WrappedField
           name="rights_desc"
           type="string"
@@ -260,7 +238,7 @@ const RequiredMetadata = (props) => {
           helptext={helpTextify(
             'If your dataset is not public, please add an explanation of rights and feel free to include any instructions on restrictions, or how to access a restricted file (max 255 characters)*'
           )}
-          disabled={!!rights}
+          disabled={values.rights === 'true'}
         />
       </div>
 
@@ -269,19 +247,14 @@ const RequiredMetadata = (props) => {
         <Radio
           label="My dataset does not have a spatial component"
           name="spatial"
-          value={spatial}
-          selected={!spatial}
+          value="false"
           errors={errors}
-          handleRadio={() => setSpatial(false)}
           id="spatial_option_1"
         />
         <Radio
           label="My dataset does have a spatial component"
           name="spatial"
-          value={spatial}
-          selected={!!spatial}
-          errors={errors}
-          handleRadio={() => setSpatial(true)}
+          value="true"
           id="spatial_option_2"
         />
         <WrappedField
@@ -292,7 +265,7 @@ const RequiredMetadata = (props) => {
           helptext={helpTextify(
             'If your dataset has a spatial component, please provide location such as place name or latitude/longitude pairs above*'
           )}
-          disabled={!spatial}
+          disabled={values.spatial === 'false'}
         />
       </div>
 
@@ -301,19 +274,13 @@ const RequiredMetadata = (props) => {
         <Radio
           label="My dataset does not have a start and end date for the applicability of data"
           name="temporal"
-          value={temporal}
-          selected={!temporal}
-          handleRadio={() => setTemporal(false)}
+          value="false"
           id="temporal_option_1"
         />
         <Radio
           label="My dataset has a start and end date for the applicability of data"
           name="temporal"
-          value={temporal}
-          selected={!!temporal}
-          handleRadio={() => {
-            setTemporal(true);
-          }}
+          value="true"
           id="temporal_option_2"
         />
         <WrappedField
@@ -322,7 +289,7 @@ const RequiredMetadata = (props) => {
           helptext={helpTextify(
             'If your dataset has a temporal component, please provide start date for applicability of data above*'
           )}
-          disabled={!temporal}
+          disabled={values.temporal === 'false'}
         />
         <WrappedField
           name="temporal_end_date"
@@ -330,7 +297,7 @@ const RequiredMetadata = (props) => {
           helptext={helpTextify(
             'If your dataset has a temporal component, please provide start date for applicability of data above*'
           )}
-          disabled={!temporal}
+          disabled={values.temporal === 'false'}
         />
       </div>
 
