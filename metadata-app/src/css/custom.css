@@ -13,6 +13,7 @@ body {
     font-weight:600;
     font-size: 1.2rem;
     margin-top:20px;
+    padding-bottom: 3px;
 }
 
 .usa-label:after {
@@ -96,7 +97,7 @@ textarea.usa-input {
 }
 
 .app_navigation .navsec.active:after{
-    border-left: 15px solid #005EA2;
+    border-left: 15px solid #DCDEE0;
 }
 
 
@@ -128,8 +129,8 @@ textarea.usa-input {
 
 .dataset_url_edit {
     margin-top:10px;
-    font-size: .8rem;
-    padding: 8px 15px;
+    font-size: 0.8rem !important;
+    padding: 6px 12px !important;
     margin-left:20px;
 }
 
@@ -344,4 +345,16 @@ input[type="file"] {
 
 .react-tags__suggestions {
   z-index: 10000;
+}
+
+.usa-label:empty {
+  display: none;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.usa-radio__label {
+  font-size: 1.1rem;
 }
