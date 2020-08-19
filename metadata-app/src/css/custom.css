@@ -139,13 +139,13 @@ textarea.usa-input {
     position: relative;
     display: inline;
     top:2px;
+    cursor: pointer;
 }
 
 .tooltip .fa{
     color: #0A50D8;
     font-size: 80%;
     margin-left: 10px;
-    cursor: pointer;
 }
 
 .tooltip .tooltiptext {
