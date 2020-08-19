@@ -7,7 +7,8 @@ import HelpText from '../HelpText';
 import Radio from '../Radio';
 
 const RequiredMetadata = (props) => {
-  const { values, currentStep, apiUrl, apiKey } = props;
+  const { values, errors, currentStep, apiUrl, apiKey } = props;
+  // console.log('FORM VALUES', values);
 
   // RADIO / SELECT Values
   const [rights, setRights] = useState(values.rights);
@@ -81,6 +82,7 @@ const RequiredMetadata = (props) => {
             placeholder=""
             helptext={helpTexts.title}
             value={values.title}
+            errors={errors}
             required
           />
 
@@ -90,6 +92,7 @@ const RequiredMetadata = (props) => {
               type="string"
               style={{ display: urlDisabled ? 'none' : 'inline' }}
               value={values.url || `${baseUrl()}${urlify(values.title)}`}
+              errors={errors}
             />
             <span className="dataset_url" style={{ display: urlDisabled ? 'inline' : 'none' }}>
               {`${baseUrl()}${urlify(values.title)}`}
@@ -117,6 +120,7 @@ const RequiredMetadata = (props) => {
           rows="6"
           helptext={helpTexts.description}
           value={values.description}
+          errors={errors}
           required
         />
       </div>
@@ -131,6 +135,7 @@ const RequiredMetadata = (props) => {
           titleField="name"
           required
           placeholderText="Start typing to search"
+          errors={errors}
           helptext={helpTextify(
             'Use both technical and non-technical terms to help users find your dataset.'
           )}
@@ -146,6 +151,7 @@ const RequiredMetadata = (props) => {
           className="error-msg"
           helptext={helpTexts.select}
           infoText="The publishing entity (e.g. your agency) and optionally their parent organization(s)."
+          errors={errors}
         />
       </div>
       <div className="row">
@@ -155,6 +161,7 @@ const RequiredMetadata = (props) => {
           type="select"
           choices={['Sub Agency 1 ', 'Sub Agency 2', 'Sub Agency 3', 'Sub-Agency 4']}
           className="error-msg"
+          errors={errors}
         />
       </div>
       <div className="row">
@@ -164,19 +171,20 @@ const RequiredMetadata = (props) => {
           type="string"
           required
           infoText="This should be the person who can best answer or triage questions about this dataset, either on the metadata or the substance of the data resources."
+          errors={errors}
         />
-      </div>
-      <div className="row">
-        <WrappedField label="Contact Email" name="contactEmail" type="string" required />
       </div>
       <div className="row">
         <WrappedField
-          label="Unique ID"
-          name="identifier"
+          label="Contact Email"
+          name="contactEmail"
           type="string"
           required
-          infoText="This is the ID number or code used within your agency to differentiate this dataset from other datasets."
+          errors={errors}
         />
+      </div>
+      <div className="row">
+        <WrappedField label="Unique ID" name="identifier" type="string" required errors={errors} />
       </div>
       <div className="row">
         <WrappedField
@@ -185,6 +193,7 @@ const RequiredMetadata = (props) => {
           type="select"
           choices={['public', 'restricted public', 'non-public']}
           className="error-msg"
+          errors={errors}
           required
         />
       </div>
@@ -195,6 +204,7 @@ const RequiredMetadata = (props) => {
           type="select"
           choices={['Yes', 'No']}
           className="error-msg"
+          errors={errors}
           required
         />
       </div>
@@ -206,6 +216,7 @@ const RequiredMetadata = (props) => {
           choices={['MIT', 'Open Source License', 'Others']}
           className="error-msg"
           value={license}
+          errors={errors}
           onChange={(e) => setLicense(e.target.value)}
           required
         />
@@ -216,27 +227,32 @@ const RequiredMetadata = (props) => {
             `If you selected “Other”, please specify the name of your License*'`
           )}
           disabled={license !== 'Others'}
+          errors={errors}
           required
         />
       </div>
       <div className="row">
+        <span className="usa-label">Rights</span> <br />
+        {errors.rights && <span className="error-msg">{errors.rights}</span>}
         <Radio
           label="My dataset is public"
           name="rights"
-          value={rights}
-          selected={!!rights}
+          errors={errors}
+          value="public"
+          selected={rights === 'public'}
           handleRadio={() => {
-            setRights(true);
+            setRights('public');
           }}
           id="rights_option_1"
         />
         <Radio
           label="My dataset is not public"
           name="rights"
-          value={rights}
-          selected={!rights}
+          errors={errors}
+          selected={rights === 'non-public'}
+          value="non-public"
           handleRadio={() => {
-            setRights(false);
+            setRights('non-public');
           }}
           id="rights_option_2"
         />
@@ -244,6 +260,7 @@ const RequiredMetadata = (props) => {
           name="rights_desc"
           type="string"
           value={values.rights_desc}
+          errors={errors}
           helptext={helpTextify(
             'If your dataset is not public, please add an explanation of rights and feel free to include any instructions on restrictions, or how to access a restricted file (max 255 characters)*'
           )}
@@ -258,6 +275,7 @@ const RequiredMetadata = (props) => {
           name="spatial"
           value={spatial}
           selected={!spatial}
+          errors={errors}
           handleRadio={() => setSpatial(false)}
           id="spatial_option_1"
         />
@@ -266,6 +284,7 @@ const RequiredMetadata = (props) => {
           name="spatial"
           value={spatial}
           selected={!!spatial}
+          errors={errors}
           handleRadio={() => setSpatial(true)}
           id="spatial_option_2"
         />
@@ -273,6 +292,7 @@ const RequiredMetadata = (props) => {
           name="spatial_location_desc"
           type="string"
           value={values.spatial_location_desc}
+          errors={errors}
           helptext={helpTextify(
             'If your dataset has a spatial component, please provide location such as place name or latitude/longitude pairs above*'
           )}
@@ -367,6 +387,7 @@ RequiredMetadata.propTypes = {
   apiUrl: PropTypes.string.isRequired,
   apiKey: PropTypes.string.isRequired,
   values: PropTypes.any, // eslint-disable-line
+  errors: PropTypes.any, // eslint-disable-line
   currentStep: PropTypes.number,
 };
 

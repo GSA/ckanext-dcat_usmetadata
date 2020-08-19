@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import RequiredMetadata from '../RequiredMetadata';
+import RequiredMetadataSchema from '../RequiredMetadata/validationSchema';
 import defaultRequiredValues from '../RequiredMetadata/defaultValues';
 import Navigation from '../Navigation';
 import AlertBox from '../AlertBox';
@@ -39,26 +40,29 @@ const MetadataForm = (props) => {
               window.scrollTo(0, 0);
             });
         }}
+        validationSchema={RequiredMetadataSchema}
       >
-        {({ values, errors, handleSubmit }) => (
-          <div>
-            <Form onSubmit={handleSubmit}>
-              {currentStep === 0 && (
-                <div>
-                  <RequiredMetadata
-                    apiKey={apiKey}
-                    apiUrl={apiUrl}
-                    ownerOrg={ownerOrg}
-                    currentStep={1}
-                    fetchDatasetsOpts="false"
-                    values={values}
-                    errors={errors}
-                  />
-                </div>
-              )}
-            </Form>
-          </div>
-        )}
+        {({ values, handleSubmit, errors }) => {
+          return (
+            <div>
+              <Form onSubmit={handleSubmit}>
+                {currentStep === 0 && (
+                  <div>
+                    <RequiredMetadata
+                      apiKey={apiKey}
+                      apiUrl={apiUrl}
+                      ownerOrg={ownerOrg}
+                      currentStep={1}
+                      fetchDatasetsOpts="false"
+                      values={values}
+                      errors={errors}
+                    />
+                  </div>
+                )}
+              </Form>
+            </div>
+          );
+        }}
       </Formik>
     </div>
   );

@@ -16,12 +16,14 @@ const WrappedField = (props) => {
     helptext,
     required,
     id,
+    errors,
     disabled,
     infoText,
     onClick,
     ...rest
   } = props;
 
+  const formErrors = errors || {};
   const choices = rest.choices || [];
   const type = rest.type || 'string';
 
@@ -74,6 +76,9 @@ const WrappedField = (props) => {
         )}
       </label>
 
+      {/* Inline Errors */}
+      {formErrors[name] && <span className="error-msg">{formErrors[name]}</span>}
+
       <div className={`usa-helptext ${disabledClass}`}>{helptext}</div>
       {onClick ? (
         <button className="clear-button" onClick={onClick} type="button">
@@ -86,7 +91,7 @@ const WrappedField = (props) => {
         {
           string: (
             <Field
-              className={`usa-input ${disabledClass}`}
+              className={`usa-input ${disabledClass} ${formErrors[name] ? 'field-error' : ''}`}
               disabled={disabled}
               id={id}
               name={name}
@@ -107,7 +112,7 @@ const WrappedField = (props) => {
               {...rest}
               id={id}
               name={name}
-              className={`usa-select ${disabledClass}`}
+              className={`usa-select ${disabledClass} ${formErrors[name] ? 'field-error' : ''}`}
               component="select"
               defaultValue=""
             >
@@ -152,6 +157,7 @@ WrappedField.propTypes = {
   required: PropTypes.bool,
   label: PropTypes.string,
   id: PropTypes.string,
+  errors: PropTypes.any, // eslint-disable-line
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
   children: PropTypes.arrayOf(PropTypes.element), // TODO array of els
