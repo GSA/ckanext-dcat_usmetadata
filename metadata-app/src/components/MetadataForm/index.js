@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import RequiredMetadata from '../RequiredMetadata';
+import RequiredMetadataSchema from '../RequiredMetadata/validationSchema';
 import defaultRequiredValues from '../RequiredMetadata/defaultValues';
 import Navigation from '../Navigation';
 import '../../css/custom.css';
@@ -18,12 +19,13 @@ const MetadataForm = (props) => {
     <div className="grid-container">
       <Navigation currentStep={currentStep} handleSteps={setCurrentStep} />
       <Formik
+        validationSchema={RequiredMetadataSchema}
         initialValues={defaultRequiredValues}
         enableReinitialize="true"
         validateOnChange={false}
         validateOnBlur={false}
       >
-        {({ values, handleSubmit }) => {
+        {({ values, handleSubmit, errors }) => {
           return (
             <div>
               <Form onSubmit={handleSubmit}>
@@ -36,7 +38,7 @@ const MetadataForm = (props) => {
                       currentStep={1}
                       fetchDatasetsOpts="false"
                       values={values}
-                      errors={{}}
+                      errors={errors}
                     />
                   </div>
                 )}

@@ -107,6 +107,10 @@ textarea.usa-input {
     border-color:#cacaca;
 }
 
+.usa-input.field-error, .usa-select.field-error {
+  border: 2px solid #E41D3D;
+}
+
 .error-msg {
     color: #E41D3D;
     font-size: .8em;
