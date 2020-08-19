@@ -158,8 +158,8 @@ textarea.usa-input {
     padding: 10px 15px 40px;
     position: absolute;
     z-index: 1;
-    top: -165px;
-    left: -20px;
+    bottom: 50px;
+    left: -18px;
 }
 
 .tooltip.show .tooltiptext{

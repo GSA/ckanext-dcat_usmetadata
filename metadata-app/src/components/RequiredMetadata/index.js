@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import WrappedField from '../WrappedField';
 import TagsAutocomplete from '../TagsAutocomplete';
+import { ReactComponent as Info } from '../../img/info.svg';
 import HelpText from '../HelpText';
 import Radio from '../Radio';
 
@@ -13,8 +14,10 @@ const RequiredMetadata = (props) => {
   const [license, setLicense] = useState(values.license);
   const [spatial, setSpatial] = useState(values.spatial);
   const [temporal, setTemporal] = useState(values.temporal);
-
   const [urlDisabled, setUrlDisabled] = useState(true);
+  const [toolTipShown, setToolTipShown] = useState(false);
+  // eslint-disable-next-line
+  const toggleToolTip = () => setToolTipShown(toolTipShown ? false : true);
 
   const urlify = (text) => {
     return text ? text.replace(/\s+/g, '-').toLowerCase() : '';
@@ -155,13 +158,25 @@ const RequiredMetadata = (props) => {
         />
       </div>
       <div className="row">
-        <WrappedField label="Contact Name" name="contactPoint" type="string" required />
+        <WrappedField
+          label="Contact Name"
+          name="contactPoint"
+          type="string"
+          required
+          infoText="This should be the person who can best answer or triage questions about this dataset, either on the metadata or the substance of the data resources."
+        />
       </div>
       <div className="row">
         <WrappedField label="Contact Email" name="contactEmail" type="string" required />
       </div>
       <div className="row">
-        <WrappedField label="Unique ID" name="identifier" type="string" required />
+        <WrappedField
+          label="Unique ID"
+          name="identifier"
+          type="string"
+          required
+          infoText="This is the ID number or code used within your agency to differentiate this dataset from other datasets."
+        />
       </div>
       <div className="row">
         <WrappedField
@@ -266,7 +281,34 @@ const RequiredMetadata = (props) => {
       </div>
 
       <div className="row">
-        <span className="usa-label">Temporal*</span> <br />
+        <span className="usa-label">
+          Temporal*
+          <div className={`tooltip ${toolTipShown ? 'show' : ''}`}>
+            <Info
+              height="20px"
+              width="20px"
+              style={{ marginLeft: '.5em' }}
+              onClick={() => toggleToolTip()}
+            />
+            <span className="tooltiptext">
+              <span
+                tabIndex={0}
+                className="close"
+                onClick={() => setToolTipShown(false)}
+                role="button"
+                onKeyDown={() => setToolTipShown(false)}
+              >
+                <span className="close-tag">&times;</span>
+              </span>
+              <h3>Temporal</h3>
+              <p>
+                For example, for a 2010 Census dataset, the temporal extent would cover a period of
+                time beginning 2000-04-02 and ending 2010-04-01.
+              </p>
+            </span>
+          </div>
+        </span>{' '}
+        <br />
         <Radio
           label="My dataset does not have a start and end date for the applicability of data"
           name="temporal"
