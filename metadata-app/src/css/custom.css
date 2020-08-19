@@ -138,7 +138,8 @@ textarea.usa-input {
 .tooltip {
     position: relative;
     display: inline;
-    top:2px;
+    top: 2px;
+    cursor: pointer;
 }
 
 .tooltip .fa{
