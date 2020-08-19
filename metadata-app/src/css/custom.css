@@ -53,7 +53,7 @@ textarea.usa-input {
 .app_navigation .navsec {
     width: 100%;
     /*width:33.3%;*/
-    background-color:#D8E8F6;
+    background-color:#F0F0F0;
     /*display: inline-block;*/
     padding: 5px;
     text-align: center;
@@ -61,8 +61,8 @@ textarea.usa-input {
     position: relative;
 }
 .app_navigation .navsec.active {
-    background-color:#005EA2;
-    color: white;
+    background-color:#DCDEE0;
+    color: #000;
 }
 .app_navigation .navsec span{
     cursor: pointer;
@@ -84,7 +84,7 @@ textarea.usa-input {
 }
 
 .app_navigation .navsec:after{
-    border-left: 15px solid #D8E8F6;
+    border-left: 15px solid #F0F0F0;
     right: -15px;
     top: 0;
 
