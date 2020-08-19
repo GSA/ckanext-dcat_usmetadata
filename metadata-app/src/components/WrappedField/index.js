@@ -42,8 +42,8 @@ const WrappedField = (props) => {
         {infoText && (
           <div className={`tooltip ${toolTipShown ? 'show' : ''}`}>
             <Info
-              height="20px"
-              width="20px"
+              height="15px"
+              width="15px"
               style={{ marginLeft: '.5em' }}
               onClick={() => toggleToolTip()}
             />

@@ -12,7 +12,7 @@ body {
 .usa-label {
     font-weight:600;
     font-size: 1.2rem;
-    margin-top:20px;
+    margin-top:14px;
     padding-bottom: 3px;
 }
 
@@ -27,6 +27,7 @@ body {
 .App .usa-input, .App .usa-select {
     max-width: 100%;
     width: 100%;
+    margin-bottom:15px;
 }
 
 .usa-helptext{
@@ -60,6 +61,7 @@ textarea.usa-input {
     text-align: center;
     margin: 0 8px;
     position: relative;
+    font-size:1.1rem;
 }
 .app_navigation .navsec.active {
     background-color:#DCDEE0;
@@ -357,4 +359,12 @@ input[type="file"] {
 
 .usa-radio__label {
   font-size: 1.1rem;
+}
+
+.pb-sm {
+  padding-bottom: 15px;
+}
+
+.react-tags__selected-tag-name, .react-tags__search-input::placeholder {
+  font-size: 1rem;
 }
