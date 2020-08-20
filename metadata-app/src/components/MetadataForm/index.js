@@ -33,6 +33,8 @@ const MetadataForm = (props) => {
               window.scrollTo(0, 0);
             })
             .catch((error) => {
+              const message = JSON.stringify(error);
+              setAlert(<AlertBox type="error" heading="Error saving metadata" message={message} />);
               console.error('CREATE DATASET ERROR', error); // eslint-disable-line
               window.scrollTo(0, 0);
             });
