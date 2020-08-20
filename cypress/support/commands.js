@@ -9,6 +9,12 @@ Cypress.Commands.add('login', () => {
   cy.wait(2000);
 });
 
+Cypress.Commands.add('createOrg', () => {
+  cy.visit('/organization/new');
+  cy.get('input[name=title]').type('test-123');
+  cy.get('.form-actions .btn-primary').click();
+})
+
 Cypress.Commands.add('requiredMetadata', () => {
   cy.get('input[name=title]').type(chance.word({ length: 5 }));
   cy.get('textarea[name=description]').type(chance.sentence({ words: 4 }));
