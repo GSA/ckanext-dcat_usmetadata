@@ -17,7 +17,7 @@ class Dcat_UsmetadataPlugin(plugins.SingletonPlugin):
 
         map.connect('/dataset/new-metadata',
                     controller=controller,
-                    action='load_react_hello')
+                    action='load_metadata_form')
         return map
 
     def after_map(self, map):
