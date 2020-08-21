@@ -220,6 +220,7 @@ const RequiredMetadata = (props) => {
         />
       </div>
       <div className="row">
+        <span className="usa-label pb-sm">Rights*</span>
         <Radio
           label="My dataset is public"
           name="rights"
@@ -252,7 +253,7 @@ const RequiredMetadata = (props) => {
       </div>
 
       <div className="row">
-        <span className="usa-label">Relevant Location*</span> <br />
+        <span className="usa-label pb-sm">Relevant Location*</span>
         <Radio
           label="My dataset does not have a spatial component"
           name="spatial"
@@ -281,7 +282,7 @@ const RequiredMetadata = (props) => {
       </div>
 
       <div className="row">
-        <span className="usa-label">
+        <span className="usa-label pb-sm">
           Temporal*
           <div className={`tooltip ${toolTipShown ? 'show' : ''}`}>
             <Info
@@ -345,7 +346,7 @@ const RequiredMetadata = (props) => {
         />
       </div>
 
-      <div className="row">
+      <div className="row align-right">
         <button type="button" className="usa-button usa-button--outline">
           Save as draft
         </button>

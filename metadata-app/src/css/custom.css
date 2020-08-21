@@ -12,7 +12,8 @@ body {
 .usa-label {
     font-weight:600;
     font-size: 1.2rem;
-    margin-top:20px;
+    margin-top:14px;
+    padding-bottom: 3px;
 }
 
 .usa-label:after {
@@ -26,6 +27,7 @@ body {
 .App .usa-input, .App .usa-select {
     max-width: 100%;
     width: 100%;
+    margin-bottom:15px;
 }
 
 .usa-helptext{
@@ -59,6 +61,7 @@ textarea.usa-input {
     text-align: center;
     margin: 0 8px;
     position: relative;
+    font-size:1.1rem;
 }
 .app_navigation .navsec.active {
     background-color:#005EA2;
@@ -128,8 +131,8 @@ textarea.usa-input {
 
 .dataset_url_edit {
     margin-top:10px;
-    font-size: .8rem;
-    padding: 8px 15px;
+    font-size: 0.8rem !important;
+    padding: 6px 12px !important;
     margin-left:20px;
 }
 
@@ -344,4 +347,24 @@ input[type="file"] {
 
 .react-tags__suggestions {
   z-index: 10000;
+}
+
+.usa-label:empty {
+  display: none;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.usa-radio__label {
+  font-size: 1.1rem;
+}
+
+.pb-sm {
+  padding-bottom: 15px;
+}
+
+.react-tags__selected-tag-name, .react-tags__search-input::placeholder {
+  font-size: 1rem;
 }
