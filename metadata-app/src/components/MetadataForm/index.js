@@ -45,6 +45,13 @@ const MetadataForm = (props) => {
         {({ values, handleSubmit, errors }) => {
           return (
             <div>
+              {errors && Object.keys(errors).length > 0 && (
+                <AlertBox
+                  type="error"
+                  heading="This form contains invalid entries"
+                  errors={errors}
+                />
+              )}
               <Form onSubmit={handleSubmit}>
                 {currentStep === 0 && (
                   <div>
