@@ -34,10 +34,10 @@ lint-all:
 ########
 
 app-up:
-	cd metadata-app && yarn start
+	cd metadata-app && yarn && yarn start
 
 app-cosmos:
-	cd metadata-app && yarn cosmos
+	cd metadata-app && yarn && yarn cosmos
 
 app-lint:
 	cd metadata-app && npx eslint src/*.js
