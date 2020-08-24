@@ -250,6 +250,7 @@ const RequiredMetadata = (props) => {
 
       <div className="row">
         <span className="usa-label">Relevant Location*</span> <br />
+        {errors.spatial && <span className="error-msg">{errors.spatial}</span>}
         <Radio
           label="My dataset does not have a spatial component"
           name="spatial"
@@ -310,21 +311,27 @@ const RequiredMetadata = (props) => {
           </div>
         </span>{' '}
         <br />
+        {errors.temporal && <span className="error-msg">{errors.temporal}</span>}
         <Radio
           label="My dataset does not have a start and end date for the applicability of data"
           name="temporal"
           value="false"
+          errors={errors}
           id="temporal_option_1"
         />
         <Radio
           label="My dataset has a start and end date for the applicability of data"
           name="temporal"
           value="true"
+          errors={errors}
           id="temporal_option_2"
         />
         <WrappedField
           name="temporal_start_date"
           type="date"
+          id="temporal_start_date"
+          value={values.temporal_start_date}
+          errors={errors}
           helptext={helpTextify(
             'If your dataset has a temporal component, please provide start date for applicability of data above*'
           )}
@@ -333,6 +340,9 @@ const RequiredMetadata = (props) => {
         <WrappedField
           name="temporal_end_date"
           type="date"
+          id="temporal_end_date"
+          value={values.temporal_end_date}
+          errors={errors}
           helptext={helpTextify(
             'If your dataset has a temporal component, please provide start date for applicability of data above*'
           )}
