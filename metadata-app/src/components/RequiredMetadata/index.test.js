@@ -22,7 +22,7 @@ const Form = () => (
 
 test('Renders RequiredMetadata component', () => {
   const { getByText } = render(<Form />);
-  const text1 = getByText('Contact Name');
+  const text1 = getByText('Contact Email');
   const text2 = getByText('Meets Agency Data Quality');
   const text3 = getByText(
     'The publishing entity (e.g. your agency) and optionally their parent organization(s).'

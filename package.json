@@ -4,8 +4,8 @@
   "description": "This extension provides a react Admin UI for managing custom fields related to [DCAT-US Schema](https://https://resources.data.gov/resources/dcat-us/).",
   "main": "index.js",
   "devDependencies": {
-    "chance": "^1.1.6",
-    "cypress": "^4.11.0"
+    "cypress": "^4.11.0",
+    "chance": "^1.1.6"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
