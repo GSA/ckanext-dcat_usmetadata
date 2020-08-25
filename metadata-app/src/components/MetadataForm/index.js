@@ -6,6 +6,7 @@ import RequiredMetadataSchema from '../RequiredMetadata/validationSchema';
 import defaultRequiredValues from '../RequiredMetadata/defaultValues';
 import Navigation from '../Navigation';
 import AlertBox from '../AlertBox';
+import ErrorFocus from '../ErrorFocus';
 import Api from '../../api';
 import '../../css/custom.css';
 import '../../css/uswds.css';
@@ -42,15 +43,22 @@ const MetadataForm = (props) => {
         }}
         validationSchema={RequiredMetadataSchema}
       >
-        {({ values, handleSubmit, errors }) => {
+        {({ values, handleSubmit, errors, isSubmitting, isValidating }) => {
           return (
             <div>
               {errors && Object.keys(errors).length > 0 && (
-                <AlertBox
-                  type="error"
-                  heading="This form contains invalid entries"
-                  errors={errors}
-                />
+                <div>
+                  <AlertBox
+                    type="error"
+                    heading="This form contains invalid entries"
+                    errors={errors}
+                  />
+                  <ErrorFocus
+                    errors={errors}
+                    isSubmitting={isSubmitting}
+                    isValidating={isValidating}
+                  />
+                </div>
               )}
               <Form onSubmit={handleSubmit}>
                 {currentStep === 0 && (
