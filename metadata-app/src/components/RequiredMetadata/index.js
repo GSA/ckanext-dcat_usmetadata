@@ -26,8 +26,8 @@ const RequiredMetadata = (props) => {
   const helpTextify = (text) => {
     return <HelpText>{text}</HelpText>;
   };
-
-  const baseUrl = () => `${apiUrl.replace('api/3/action/', '')}dataset/`;
+  const baseUrl = () => 'http://localhost:5400/dataset/';
+  // `${apiUrl.replace('api/3/action/', '')}dataset/`;
 
   if (currentStep !== 1) {
     // Prop: The current step
@@ -285,10 +285,16 @@ const RequiredMetadata = (props) => {
           Temporal*
           <div className={`tooltip ${toolTipShown ? 'show' : ''}`}>
             <Info
+              tabIndex={0}
               height="20px"
               width="20px"
               style={{ marginLeft: '.5em' }}
               onClick={() => toggleToolTip()}
+              onKeyUp={(e) => {
+                if (e.keyCode === 13) {
+                  toggleToolTip();
+                }
+              }}
             />
             <span className="tooltiptext">
               <span
