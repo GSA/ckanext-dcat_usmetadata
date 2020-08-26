@@ -40,6 +40,12 @@ describe('Required Metadata Page', () => {
     cy.get('input[name=license_others]').should('be.enabled');
   });
 
+  it('Form validation works', () => {
+    cy.get('button[type=submit').click();
+    cy.contains('This form contains invalid entries');
+    cy.contains('Description is required');
+  })
+
   it('Submit Required Metadata works', () => {
     cy.requiredMetadata();
     cy.wait(2400);
