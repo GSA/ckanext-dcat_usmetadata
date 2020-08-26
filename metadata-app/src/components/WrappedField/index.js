@@ -133,7 +133,7 @@ const WrappedField = (props) => {
           ),
           date: (
             <div>
-              <input
+              <Field
                 type="date"
                 id={id}
                 name={name}
