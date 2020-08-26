@@ -227,7 +227,7 @@ const RequiredMetadata = (props) => {
       </div>
       <div className="row">
         <span className="usa-label">Rights</span> <br />
-        {errors.rights && <span className="error-msg">{errors.rights}</span>}
+        {errors && errors.rights && <span className="error-msg">{errors.rights}</span>}
         <Radio
           label="My dataset is public"
           name="rights"
@@ -250,7 +250,7 @@ const RequiredMetadata = (props) => {
 
       <div className="row">
         <span className="usa-label">Relevant Location*</span> <br />
-        {errors.spatial && <span className="error-msg">{errors.spatial}</span>}
+        {errors && errors.spatial && <span className="error-msg">{errors.spatial}</span>}
         <Radio
           label="My dataset does not have a spatial component"
           name="spatial"
@@ -311,7 +311,7 @@ const RequiredMetadata = (props) => {
           </div>
         </span>{' '}
         <br />
-        {errors.temporal && <span className="error-msg">{errors.temporal}</span>}
+        {errors && errors.temporal && <span className="error-msg">{errors.temporal}</span>}
         <Radio
           label="My dataset does not have a start and end date for the applicability of data"
           name="temporal"

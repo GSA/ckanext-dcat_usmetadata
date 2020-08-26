@@ -114,7 +114,6 @@ const WrappedField = (props) => {
               name={name}
               className={`usa-select ${disabledClass} ${formErrors[name] ? 'field-error' : ''}`}
               component="select"
-              defaultValue=""
             >
               <option value="">-Select-</option>
               {choices.map((choice) => (
