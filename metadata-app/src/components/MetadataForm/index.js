@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import RequiredMetadata from '../RequiredMetadata';
 import RequiredMetadataSchema from '../RequiredMetadata/validationSchema';
+import RequiredMetadataLabels from '../RequiredMetadata/validationLabels';
 import defaultRequiredValues from '../RequiredMetadata/defaultValues';
 import Navigation from '../Navigation';
 import AlertBox from '../AlertBox';
@@ -10,6 +11,15 @@ import ErrorFocus from '../ErrorFocus';
 import Api from '../../api';
 import '../../css/custom.css';
 import '../../css/uswds.css';
+
+const formatErrors = (errors) =>
+  Object.keys(errors).map((name) => {
+    return {
+      name,
+      label: RequiredMetadataLabels[name],
+      message: errors[name],
+    };
+  });
 
 const MetadataForm = (props) => {
   const { apiUrl, apiKey, ownerOrg } = props;
@@ -51,7 +61,7 @@ const MetadataForm = (props) => {
                   <AlertBox
                     type="error"
                     heading="This form contains invalid entries"
-                    errors={errors}
+                    errors={formatErrors(errors)}
                   />
                   <ErrorFocus
                     errors={errors}

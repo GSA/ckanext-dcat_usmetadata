@@ -6,9 +6,9 @@ const AlertBox = (props) => {
   const { type, errors, message, heading } = props;
   const formErrors =
     errors &&
-    Object.keys(errors).map((error) => (
+    errors.map((error) => (
       <p key={error}>
-        <b>{error}</b> {errors[error]}
+        <b>{error.label}</b> {error.message}
       </p>
     ));
   return (
