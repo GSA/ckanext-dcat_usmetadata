@@ -24,10 +24,14 @@ const errors = formatErrors({
 });
 
 test('Renders AlertBox component', () => {
-  const { getByText } = render(<AlertBox errors={errors} />);
+  const { getByText } = render(
+    <AlertBox message="Validation errors:" errors={errors} apiKey="123" apiUrl="123" />
+  );
+  const errorMessage = getByText('Validation errors:');
   const errorFirst = getByText('Contact is required');
   const errorLast = getByText('Access level is required');
 
+  expect(errorMessage).toBeInTheDocument();
   expect(errorFirst).toBeInTheDocument();
   expect(errorLast).toBeInTheDocument();
 });

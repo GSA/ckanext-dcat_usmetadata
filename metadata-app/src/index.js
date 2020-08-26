@@ -5,20 +5,9 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 const root = document.getElementById('root');
-let apiUrl;
-let apiKey;
-let ownerOrg;
-
-if (root) {
-  apiUrl = root.getAttribute('data-apiUrl');
-  apiKey = root.getAttribute('data-apiKey');
-  ownerOrg = root.getAttribute('data-ownerOrg');
-} else {
-  // In development, add your own values here
-  apiUrl = 'http://localhost:5000/api/3/action/';
-  apiKey = '123';
-  ownerOrg = '123';
-}
+const apiUrl = root.getAttribute('data-apiUrl') || 'http://localhost:5000/api/3/action/';
+const apiKey = root.getAttribute('data-apiKey') || '123';
+const ownerOrg = root.getAttribute('data-ownerOrg') || '123';
 
 ReactDOM.render(
   <React.StrictMode>

@@ -8,7 +8,6 @@ import Radio from '../Radio';
 
 const RequiredMetadata = (props) => {
   const { values, errors, currentStep, apiUrl, apiKey } = props;
-  // console.log('FORM VALUES', values);
 
   // RADIO / SELECT Values
   const [urlDisabled, setUrlDisabled] = useState(true);
@@ -23,8 +22,7 @@ const RequiredMetadata = (props) => {
   const helpTextify = (text) => {
     return <HelpText>{text}</HelpText>;
   };
-  const baseUrl = () => 'http://localhost:5400/dataset/';
-  // `${apiUrl.replace('api/3/action/', '')}dataset/`;
+  const baseUrl = `${apiUrl.replace('api/3/action/', '')}dataset/`;
 
   if (currentStep !== 1) {
     // Prop: The current step
@@ -87,11 +85,11 @@ const RequiredMetadata = (props) => {
               name="url"
               type="string"
               style={{ display: urlDisabled ? 'none' : 'inline' }}
-              value={values.url || `${baseUrl()}${urlify(values.title)}`}
+              value={values.url || `${baseUrl}${urlify(values.title)}`}
               errors={errors}
             />
             <span className="dataset_url" style={{ display: urlDisabled ? 'inline' : 'none' }}>
-              {`${baseUrl()}${urlify(values.title)}`}
+              {`${baseUrl}${urlify(values.title)}`}
             </span>
 
             <button
