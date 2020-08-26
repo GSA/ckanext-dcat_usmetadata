@@ -56,6 +56,16 @@ const MetadataForm = (props) => {
         {({ values, handleSubmit, errors, isSubmitting, isValidating }) => {
           return (
             <div>
+              {currentStep === 0 && (
+                <h1 className="usite-page-title" id="basic-mega-menu">
+                  Required Metadata
+                </h1>
+              )}
+              {currentStep === 1 && (
+                <h1 className="usite-page-title" id="basic-mega-menu">
+                  Additional Metadata
+                </h1>
+              )}
               {errors && Object.keys(errors).length > 0 && (
                 <div>
                   <AlertBox

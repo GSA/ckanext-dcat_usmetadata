@@ -55,9 +55,6 @@ const RequiredMetadata = (props) => {
   return (
     <div className="usa-form-custom">
       <section id="section-basic-mega-menu" className="site-component-section">
-        <h1 className="usite-page-title" id="basic-mega-menu">
-          Required Metadata
-        </h1>
         <p className="site-text-intro">
           The following fields are required metadata for each dataset in an agency’s inventory (
           <a href="https://www.congress.gov/115/plaws/publ435/PLAW-115publ435.pdf">
