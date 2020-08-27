@@ -22,7 +22,7 @@ const RequiredMetadata = (props) => {
   const helpTextify = (text) => {
     return <HelpText>{text}</HelpText>;
   };
-  const baseUrl = `${apiUrl.replace('api/3/action/', '')}dataset/`;
+  const baseUrl = `${window.location.origin}/dataset/`;
 
   if (currentStep !== 1) {
     // Prop: The current step
