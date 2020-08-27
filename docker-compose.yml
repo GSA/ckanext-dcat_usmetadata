@@ -1,7 +1,8 @@
 version: "3.2"
 services:
   ckan:
-    image: openknowledge/ckan-dev:2.8
+    build:
+      context: ckan-docker
     env_file:
       - .env
     links:
@@ -28,4 +29,4 @@ services:
 volumes:
   ckan_storage:
   pg_data:
-  solr_data: 
+  solr_data:

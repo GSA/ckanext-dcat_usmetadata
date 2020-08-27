@@ -1,0 +1,22 @@
+diff --git a/ckan/config/middleware/__init__.py b/ckan/config/middleware/__init__.py
+index 082372d70..1dffdb38e 100644
+--- a/ckan/config/middleware/__init__.py
++++ b/ckan/config/middleware/__init__.py
+@@ -165,6 +165,7 @@ class AskAppDispatcherMiddleware(object):
+         # the mapper queries
+         self.handle_i18n(environ)
+ 
++        path_info = environ.get('PATH_INFO')
+         app_name = 'pylons_app'  # currently defaulting to pylons app
+         answers = self.ask_around(environ)
+         available_handlers = []
+@@ -187,6 +188,9 @@ class AskAppDispatcherMiddleware(object):
+             elif 'flask_app_core' in available_handlers:
+                 app_name = 'flask_app'
+ 
++        if path_info.startswith('/static'):
++            app_name = 'pylons_app'
++
+         log.debug('Serving request via {0} app'.format(app_name))
+         environ['ckan.app'] = app_name
+         if app_name == 'flask_app':
