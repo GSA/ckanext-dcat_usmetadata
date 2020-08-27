@@ -5,19 +5,19 @@ import RequiredMetadata from '.';
 import '../../css/custom.css';
 
 const Form = () => (
-  <Formik
-    initialValues={{}}
-    render={(values) => (
+  <Formik initialValues={{}}>
+    {(values) => (
       <form>
         <RequiredMetadata
           apiUrl="http://localhost:5000/api/3/action"
+          apiKey="123"
           currentStep={1}
           fetchDatasetsOpts="false"
           values={values}
         />
       </form>
     )}
-  />
+  </Formik>
 );
 
 test('Renders RequiredMetadata component', () => {

@@ -6,9 +6,9 @@ const AlertBox = (props) => {
   const { type, errors, message, heading } = props;
   const formErrors =
     errors &&
-    Object.keys(errors).map((error) => (
-      <p key={error}>
-        <b>{error}</b> {errors[error]}
+    errors.map((error) => (
+      <p key={error.name}>
+        <b>{error.label}</b> {error.message}
       </p>
     ));
   return (
@@ -30,7 +30,7 @@ const AlertBox = (props) => {
 };
 
 AlertBox.propTypes = {
-  errors: PropTypes.object, // eslint-disable-line
+  errors: PropTypes.array, // eslint-disable-line
   heading: PropTypes.string,
   message: PropTypes.string,
   type: PropTypes.string,

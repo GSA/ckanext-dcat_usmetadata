@@ -1,18 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Field } from 'formik';
 
-const Radio = ({ label, selected, value, styleClass, id, name, handleRadio }) => {
+const Radio = ({ label, value, styleClass, id, name }) => {
   return (
     <div className={`form-group ${styleClass}`}>
-      <input
-        type="radio"
-        className="usa-radio__input"
-        value={value}
-        defaultChecked={selected}
-        onChange={handleRadio}
-        name={name}
-        id={id}
-      />
+      <Field type="radio" className="usa-radio__input" value={value} name={name} id={id} />
 
       <label className="usa-radio__label" htmlFor={id}>
         {label}
@@ -24,9 +17,7 @@ const Radio = ({ label, selected, value, styleClass, id, name, handleRadio }) =>
 Radio.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  selected: PropTypes.bool.isRequired,
   label: PropTypes.string.isRequired,
-  handleRadio: PropTypes.func.isRequired,
   styleClass: PropTypes.string,
   value: PropTypes.string,
 };

@@ -4,7 +4,7 @@ const chance = new Chance();
 before(() => {
   cy.login();
   cy.createOrg();
-  cy.visit('/dataset/new-metadata?ownerOrg=test-123');
+  cy.visit('/dataset/new-metadata?group=test-123');
 });
 
 beforeEach(() => {
@@ -13,7 +13,7 @@ beforeEach(() => {
 
 describe('DCAT Metadata App', () => {
   it('Loads', () => {
-    cy.visit('/dataset/new-metadata?ownerOrg=test-123');
+    cy.visit('/dataset/new-metadata?group=test-123');
   });
 
   it('Has a title', () => {
@@ -39,6 +39,12 @@ describe('Required Metadata Page', () => {
     cy.get('select[name=license]').select('Others');
     cy.get('input[name=license_others]').should('be.enabled');
   });
+
+  it('Form validation works', () => {
+    cy.get('button[type=submit').click();
+    cy.contains('This form contains invalid entries');
+    cy.contains('Description is required');
+  })
 
   it('Submit Required Metadata works', () => {
     cy.requiredMetadata();

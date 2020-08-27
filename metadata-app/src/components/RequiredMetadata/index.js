@@ -7,13 +7,9 @@ import HelpText from '../HelpText';
 import Radio from '../Radio';
 
 const RequiredMetadata = (props) => {
-  const { values, currentStep, apiUrl, apiKey } = props;
+  const { values, errors, currentStep, apiUrl, apiKey } = props;
 
   // RADIO / SELECT Values
-  const [rights, setRights] = useState(values.rights);
-  const [license, setLicense] = useState(values.license);
-  const [spatial, setSpatial] = useState(values.spatial);
-  const [temporal, setTemporal] = useState(values.temporal);
   const [urlDisabled, setUrlDisabled] = useState(true);
   const [toolTipShown, setToolTipShown] = useState(false);
   // eslint-disable-next-line
@@ -26,8 +22,7 @@ const RequiredMetadata = (props) => {
   const helpTextify = (text) => {
     return <HelpText>{text}</HelpText>;
   };
-
-  const baseUrl = () => `${apiUrl.replace('api/3/action/', '')}dataset/`;
+  const baseUrl = `${window.location.origin}/dataset/`;
 
   if (currentStep !== 1) {
     // Prop: The current step
@@ -60,9 +55,6 @@ const RequiredMetadata = (props) => {
   return (
     <div className="usa-form-custom">
       <section id="section-basic-mega-menu" className="site-component-section">
-        <h1 className="usite-page-title" id="basic-mega-menu">
-          Required Metadata
-        </h1>
         <p className="site-text-intro">
           The following fields are required metadata for each dataset in an agency’s inventory (
           <a href="https://www.congress.gov/115/plaws/publ435/PLAW-115publ435.pdf">
@@ -81,6 +73,7 @@ const RequiredMetadata = (props) => {
             placeholder=""
             helptext={helpTexts.title}
             value={values.title}
+            errors={errors}
             required
           />
 
@@ -89,10 +82,11 @@ const RequiredMetadata = (props) => {
               name="url"
               type="string"
               style={{ display: urlDisabled ? 'none' : 'inline' }}
-              value={values.url || `${baseUrl()}${urlify(values.title)}`}
+              value={values.url || `${baseUrl}${urlify(values.title)}`}
+              errors={errors}
             />
             <span className="dataset_url" style={{ display: urlDisabled ? 'inline' : 'none' }}>
-              {`${baseUrl()}${urlify(values.title)}`}
+              {`${baseUrl}${urlify(values.title)}`}
             </span>
 
             <button
@@ -117,6 +111,7 @@ const RequiredMetadata = (props) => {
           rows="6"
           helptext={helpTexts.description}
           value={values.description}
+          errors={errors}
           required
         />
       </div>
@@ -131,6 +126,7 @@ const RequiredMetadata = (props) => {
           titleField="name"
           required
           placeholderText="Start typing to search"
+          errors={errors}
           helptext={helpTextify(
             'Use both technical and non-technical terms to help users find your dataset.'
           )}
@@ -146,6 +142,7 @@ const RequiredMetadata = (props) => {
           className="error-msg"
           helptext={helpTexts.select}
           infoText="The publishing entity (e.g. your agency) and optionally their parent organization(s)."
+          errors={errors}
         />
       </div>
       <div className="row">
@@ -155,6 +152,7 @@ const RequiredMetadata = (props) => {
           type="select"
           choices={['Sub Agency 1 ', 'Sub Agency 2', 'Sub Agency 3', 'Sub-Agency 4']}
           className="error-msg"
+          errors={errors}
         />
       </div>
       <div className="row">
@@ -164,19 +162,20 @@ const RequiredMetadata = (props) => {
           type="string"
           required
           infoText="This should be the person who can best answer or triage questions about this dataset, either on the metadata or the substance of the data resources."
+          errors={errors}
         />
-      </div>
-      <div className="row">
-        <WrappedField label="Contact Email" name="contactEmail" type="string" required />
       </div>
       <div className="row">
         <WrappedField
-          label="Unique ID"
-          name="identifier"
+          label="Contact Email"
+          name="contactEmail"
           type="string"
           required
-          infoText="This is the ID number or code used within your agency to differentiate this dataset from other datasets."
+          errors={errors}
         />
+      </div>
+      <div className="row">
+        <WrappedField label="Unique ID" name="identifier" type="string" required errors={errors} />
       </div>
       <div className="row">
         <WrappedField
@@ -185,6 +184,7 @@ const RequiredMetadata = (props) => {
           type="select"
           choices={['public', 'restricted public', 'non-public']}
           className="error-msg"
+          errors={errors}
           required
         />
       </div>
@@ -195,6 +195,7 @@ const RequiredMetadata = (props) => {
           type="select"
           choices={['Yes', 'No']}
           className="error-msg"
+          errors={errors}
           required
         />
       </div>
@@ -205,8 +206,7 @@ const RequiredMetadata = (props) => {
           type="select"
           choices={['MIT', 'Open Source License', 'Others']}
           className="error-msg"
-          value={license}
-          onChange={(e) => setLicense(e.target.value)}
+          errors={errors}
           required
         />
         <WrappedField
@@ -215,68 +215,59 @@ const RequiredMetadata = (props) => {
           helptext={helpTextify(
             `If you selected “Other”, please specify the name of your License*'`
           )}
-          disabled={license !== 'Others'}
+          disabled={values.license !== 'Others'}
+          errors={errors}
           required
         />
       </div>
       <div className="row">
+        <span className="usa-label">Rights</span> <br />
+        {errors && errors.rights && <span className="error-msg">{errors.rights}</span>}
         <Radio
           label="My dataset is public"
           name="rights"
-          value={rights}
-          selected={!!rights}
-          handleRadio={() => {
-            setRights(true);
-          }}
+          errors={errors}
+          value="true"
           id="rights_option_1"
         />
-        <Radio
-          label="My dataset is not public"
-          name="rights"
-          value={rights}
-          selected={!rights}
-          handleRadio={() => {
-            setRights(false);
-          }}
-          id="rights_option_2"
-        />
+        <Radio label="My dataset is not public" name="rights" value="false" id="rights_option_2" />
         <WrappedField
           name="rights_desc"
           type="string"
           value={values.rights_desc}
+          errors={errors}
           helptext={helpTextify(
             'If your dataset is not public, please add an explanation of rights and feel free to include any instructions on restrictions, or how to access a restricted file (max 255 characters)*'
           )}
-          disabled={!!rights}
+          disabled={values.rights === 'true'}
         />
       </div>
 
       <div className="row">
         <span className="usa-label">Relevant Location*</span> <br />
+        {errors && errors.spatial && <span className="error-msg">{errors.spatial}</span>}
         <Radio
           label="My dataset does not have a spatial component"
           name="spatial"
-          value={spatial}
-          selected={!spatial}
-          handleRadio={() => setSpatial(false)}
+          value="false"
+          errors={errors}
           id="spatial_option_1"
         />
         <Radio
           label="My dataset does have a spatial component"
           name="spatial"
-          value={spatial}
-          selected={!!spatial}
-          handleRadio={() => setSpatial(true)}
+          value="true"
           id="spatial_option_2"
         />
         <WrappedField
           name="spatial_location_desc"
           type="string"
           value={values.spatial_location_desc}
+          errors={errors}
           helptext={helpTextify(
             'If your dataset has a spatial component, please provide location such as place name or latitude/longitude pairs above*'
           )}
-          disabled={!spatial}
+          disabled={values.spatial === 'false'}
         />
       </div>
 
@@ -285,10 +276,16 @@ const RequiredMetadata = (props) => {
           Temporal*
           <div className={`tooltip ${toolTipShown ? 'show' : ''}`}>
             <Info
+              tabIndex={0}
               height="20px"
               width="20px"
               style={{ marginLeft: '.5em' }}
               onClick={() => toggleToolTip()}
+              onKeyUp={(e) => {
+                if (e.keyCode === 13) {
+                  toggleToolTip();
+                }
+              }}
             />
             <span className="tooltiptext">
               <span
@@ -309,39 +306,42 @@ const RequiredMetadata = (props) => {
           </div>
         </span>{' '}
         <br />
+        {errors && errors.temporal && <span className="error-msg">{errors.temporal}</span>}
         <Radio
           label="My dataset does not have a start and end date for the applicability of data"
           name="temporal"
-          value={temporal}
-          selected={!temporal}
-          handleRadio={() => setTemporal(false)}
+          value="false"
+          errors={errors}
           id="temporal_option_1"
         />
         <Radio
           label="My dataset has a start and end date for the applicability of data"
           name="temporal"
-          value={temporal}
-          selected={!!temporal}
-          handleRadio={() => {
-            setTemporal(true);
-          }}
+          value="true"
+          errors={errors}
           id="temporal_option_2"
         />
         <WrappedField
           name="temporal_start_date"
           type="date"
+          id="temporal_start_date"
+          value={values.temporal_start_date}
+          errors={errors}
           helptext={helpTextify(
             'If your dataset has a temporal component, please provide start date for applicability of data above*'
           )}
-          disabled={!temporal}
+          disabled={values.temporal === 'false'}
         />
         <WrappedField
           name="temporal_end_date"
           type="date"
+          id="temporal_end_date"
+          value={values.temporal_end_date}
+          errors={errors}
           helptext={helpTextify(
             'If your dataset has a temporal component, please provide start date for applicability of data above*'
           )}
-          disabled={!temporal}
+          disabled={values.temporal === 'false'}
         />
       </div>
 
@@ -361,6 +361,7 @@ RequiredMetadata.propTypes = {
   apiUrl: PropTypes.string.isRequired,
   apiKey: PropTypes.string.isRequired,
   values: PropTypes.any, // eslint-disable-line
+  errors: PropTypes.any, // eslint-disable-line
   currentStep: PropTypes.number,
 };
 
