@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const HelpText = (props) => {
   const { children } = props;
-  return <p className="usa-helptext">{children}</p>;
+  return <span className="usa-helptext">{children}</span>;
 };
 
 HelpText.propTypes = {

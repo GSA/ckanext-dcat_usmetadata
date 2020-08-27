@@ -5,6 +5,7 @@ import RequiredMetadata from '../RequiredMetadata';
 import RequiredMetadataSchema from '../RequiredMetadata/validationSchema';
 import RequiredMetadataLabels from '../RequiredMetadata/validationLabels';
 import defaultRequiredValues from '../RequiredMetadata/defaultValues';
+import AdditionalMetadata from '../AdditionalMetadata';
 import Navigation from '../Navigation';
 import AlertBox from '../AlertBox';
 import ErrorFocus from '../ErrorFocus';
@@ -88,6 +89,19 @@ const MetadataForm = (props) => {
                       apiUrl={apiUrl}
                       ownerOrg={ownerOrg}
                       currentStep={1}
+                      fetchDatasetsOpts="false"
+                      values={values}
+                      errors={errors}
+                    />
+                  </div>
+                )}
+                {currentStep === 1 && (
+                  <div>
+                    <AdditionalMetadata
+                      apiKey={apiKey}
+                      apiUrl={apiUrl}
+                      ownerOrg={ownerOrg}
+                      currentStep={2}
                       fetchDatasetsOpts="false"
                       values={values}
                       errors={errors}
