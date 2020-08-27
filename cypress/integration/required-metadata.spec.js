@@ -4,7 +4,7 @@ const chance = new Chance();
 before(() => {
   cy.login();
   cy.createOrg();
-  cy.visit('/dataset/new-metadata?ownerOrg=test-123');
+  cy.visit('/dataset/new-metadata?group=test-123');
 });
 
 beforeEach(() => {
@@ -13,7 +13,7 @@ beforeEach(() => {
 
 describe('DCAT Metadata App', () => {
   it('Loads', () => {
-    cy.visit('/dataset/new-metadata?ownerOrg=test-123');
+    cy.visit('/dataset/new-metadata?group=test-123');
   });
 
   it('Has a title', () => {
