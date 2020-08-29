@@ -177,19 +177,18 @@ const createResource = (packageId, opts, apiUrl, apiKey) => {
 };
 
 const fetchDataset = async (id, apiUrl, apiKey) => {
-  try {
-    const res = await axios.get(`${apiUrl}package_show?id=${id}`, {
+  return axios
+    .get(`${apiUrl}package_show?id=${id}`, {
       headers: {
         'X-CKAN-API-Key': apiKey,
       },
+    })
+    .then((res) => {
+      // note that we don't return the axios response, we return the result
+      const decoded = decodeSupplementalValues(decodeExtras(res.data.result));
+      decoded.description = decoded.notes;
+      return decoded;
     });
-    // note that we don't return the axios response, we return the result
-    const decoded = decodeSupplementalValues(decodeExtras(res.data.result));
-    decoded.description = decoded.notes;
-    return decoded;
-  } catch (e) {
-    return e;
-  }
 };
 
 const updateDataset = (id, opts, apiUrl, apiKey) => {

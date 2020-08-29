@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import '../../css/uswds.css';
 
 const AlertBox = (props) => {
+  window.scrollTo(0, 0);
   const { type, errors, message, heading } = props;
   const formErrors =
     errors &&

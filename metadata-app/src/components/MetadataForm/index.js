@@ -10,7 +10,6 @@ import AdditionalMetadataSchema from '../AdditionalMetadata/validationSchema';
 import defaultAdditionalValues from '../AdditionalMetadata/defaultValues';
 import Navigation from '../Navigation';
 import AlertBox from '../AlertBox';
-import ErrorFocus from '../ErrorFocus';
 import Api from '../../api';
 import '../../css/custom.css';
 import '../../css/uswds.css';
@@ -61,14 +60,19 @@ const MetadataForm = (props) => {
       .then((result) => {
         const apiRes = Object.assign({}, result);
         apiRes.description = result.notes;
-
-        // raw form values
         setRequiredValues(Object.assign({}, defaultAdditionalValues, apiRes));
         setCurDatasetId(apiRes.id);
       })
       .catch((e) => {
-        // TODO throw Alert
-        console.error('Error fetching metadata', e); // eslint-disable-line
+        setAlert(
+          <AlertBox
+            type="error"
+            heading="Error loading metadata"
+            message="See the console output for more information on this error."
+          />
+        );
+        console.error('CREATE DATASET ERROR', e); // eslint-disable-line
+        window.scrollTo(0, 0);
       });
   }
 
@@ -76,8 +80,8 @@ const MetadataForm = (props) => {
   return (
     <div className="grid-container">
       <Navigation currentStep={currentStep} handleSteps={setCurrentStep} />
-      {alert}
       <Heading currentStep={currentStep} />
+      {alert}
 
       {/* ---------- PAGE 2 -- ADDITIONAL METADA ---------- */}
       {currentStep === 0 && (
@@ -94,18 +98,21 @@ const MetadataForm = (props) => {
                 setCurrentStep(1);
                 window.scrollTo(0, 0);
               })
-              .catch((error) => {
-                const message = JSON.stringify(error);
+              .catch((e) => {
                 setAlert(
-                  <AlertBox type="error" heading="Error saving metadata" message={message} />
+                  <AlertBox
+                    type="error"
+                    heading="Error saving metadata"
+                    message="See the console output for more information on this error."
+                  />
                 );
-                console.error('CREATE DATASET ERROR', error); // eslint-disable-line
+                console.error('CREATE DATASET ERROR', e); // eslint-disable-line
                 window.scrollTo(0, 0);
               });
           }}
           validationSchema={RequiredMetadataSchema}
         >
-          {({ values, handleSubmit, errors, isSubmitting, isValidating }) => {
+          {({ values, handleSubmit, errors }) => {
             return (
               <div>
                 {errors && Object.keys(errors).length > 0 && (
@@ -114,11 +121,6 @@ const MetadataForm = (props) => {
                       type="error"
                       heading="This form contains invalid entries"
                       errors={formatErrors(errors)}
-                    />
-                    <ErrorFocus
-                      errors={errors}
-                      isSubmitting={isSubmitting}
-                      isValidating={isValidating}
                     />
                   </div>
                 )}
@@ -169,13 +171,18 @@ const MetadataForm = (props) => {
                   window.scrollTo(0, 0);
                 });
             } else {
-              // TODO add alert
-              console.error('NO VALID DATASET SAVED IN STEP 1'); // eslint-disable-line
+              setAlert(
+                <AlertBox
+                  type="error"
+                  heading="No valid metadata saved in step 1."
+                  message="Please complete complete step one before submitting step 2."
+                />
+              );
             }
           }}
           validationSchema={AdditionalMetadataSchema}
         >
-          {({ values, handleSubmit, errors, isSubmitting, isValidating }) => {
+          {({ values, handleSubmit, errors }) => {
             return (
               <div>
                 {errors && Object.keys(errors).length > 0 && (
@@ -184,11 +191,6 @@ const MetadataForm = (props) => {
                       type="error"
                       heading="This form contains invalid entries"
                       errors={formatErrors(errors)}
-                    />
-                    <ErrorFocus
-                      errors={errors}
-                      isSubmitting={isSubmitting}
-                      isValidating={isValidating}
                     />
                   </div>
                 )}
