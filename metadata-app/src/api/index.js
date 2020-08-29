@@ -146,12 +146,20 @@ const createDataset = (ownerOrg, opts, apiUrl, apiKey) => {
   const encoded = encodeExtras(encodeSupplementalValues(opts));
   encoded.owner_org = ownerOrg;
   encoded.name = safeName(opts.title);
+  encoded.description = encoded.notes;
   encoded.url = opts.url;
-  return axios.post(`${apiUrl}package_create`, encoded, {
-    headers: {
-      'X-CKAN-API-Key': apiKey,
-    },
-  });
+  return axios
+    .post(`${apiUrl}package_create`, encoded, {
+      headers: {
+        'X-CKAN-API-Key': apiKey,
+      },
+    })
+    .then((res) => {
+      // note that we don't return the axios response, we return the result
+      const resVals = res.data.result;
+      const decoded = decodeExtras(decodeSupplementalValues(resVals));
+      return decoded;
+    });
 };
 
 const createResource = (packageId, opts, apiUrl, apiKey) => {
@@ -175,9 +183,10 @@ const fetchDataset = async (id, apiUrl, apiKey) => {
         'X-CKAN-API-Key': apiKey,
       },
     });
+    // note that we don't return the axios response, we return the result
     const decoded = decodeSupplementalValues(decodeExtras(res.data.result));
-    res.data.result = decoded;
-    return res;
+    decoded.description = decoded.notes;
+    return decoded;
   } catch (e) {
     return e;
   }

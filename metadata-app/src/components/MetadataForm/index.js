@@ -6,6 +6,8 @@ import RequiredMetadataSchema from '../RequiredMetadata/validationSchema';
 import RequiredMetadataLabels from '../RequiredMetadata/validationLabels';
 import defaultRequiredValues from '../RequiredMetadata/defaultValues';
 import AdditionalMetadata from '../AdditionalMetadata';
+import AdditionalMetadataSchema from '../AdditionalMetadata/validationSchema';
+import defaultAdditionalValues from '../AdditionalMetadata/defaultValues';
 import Navigation from '../Navigation';
 import AlertBox from '../AlertBox';
 import ErrorFocus from '../ErrorFocus';
@@ -43,10 +45,32 @@ const Heading = (props) => {
 };
 
 const MetadataForm = (props) => {
-  const { apiUrl, apiKey, ownerOrg } = props;
+  const { apiUrl, apiKey, ownerOrg, datasetId } = props;
+
+  const [shouldFetch, setShouldFetch] = useState(true);
+  const [curDatasetId, setCurDatasetId] = useState(datasetId); // initial or fetched
   const [requiredValues, setRequiredValues] = useState(defaultRequiredValues);
+  // TODO set this on submit:
+  const [additionalValues, setAdditionalValues] = useState(defaultAdditionalValues); // eslint-disable-line
   const [currentStep, setCurrentStep] = useState(0);
   const [alert, setAlert] = useState();
+
+  if (curDatasetId && shouldFetch) {
+    setShouldFetch(false);
+    Api.fetchDataset(curDatasetId, apiUrl, apiKey)
+      .then((result) => {
+        const apiRes = Object.assign({}, result);
+        apiRes.description = result.notes;
+
+        // raw form values
+        setRequiredValues(Object.assign({}, defaultAdditionalValues, apiRes));
+        setCurDatasetId(apiRes.id);
+      })
+      .catch((e) => {
+        // TODO throw Alert
+        console.error('Error fetching metadata', e); // eslint-disable-line
+      });
+  }
 
   // render metadata form
   return (
@@ -55,7 +79,7 @@ const MetadataForm = (props) => {
       {alert}
       <Heading currentStep={currentStep} />
 
-      {/* Page 1 -- Required Metadata */}
+      {/* ---------- PAGE 2 -- ADDITIONAL METADA ---------- */}
       {currentStep === 0 && (
         <Formik
           initialValues={requiredValues}
@@ -65,8 +89,9 @@ const MetadataForm = (props) => {
           onSubmit={(values) => {
             Api.createDataset(ownerOrg, values, apiUrl, apiKey)
               .then((res) => {
-                setAlert(<AlertBox type="success" heading="Dataset updated successfully" />);
                 setRequiredValues(res);
+                setAlert(<AlertBox type="success" heading="Dataset updated successfully" />);
+                setCurrentStep(1);
                 window.scrollTo(0, 0);
               })
               .catch((error) => {
@@ -103,9 +128,9 @@ const MetadataForm = (props) => {
                       apiKey={apiKey}
                       apiUrl={apiUrl}
                       ownerOrg={ownerOrg}
-                      currentStep={1}
+                      currentStep={0}
                       fetchDatasetsOpts="false"
-                      values={values}
+                      values={values || {}}
                       errors={errors}
                     />
                   </div>
@@ -116,29 +141,39 @@ const MetadataForm = (props) => {
         </Formik>
       )}
 
+      {/* ---------- PAGE 2 -- ADDITIONAL METADA ---------- */}
       {currentStep === 1 && (
         <Formik
-          initialValues={requiredValues} // TODO
+          initialValues={additionalValues}
           enableReinitialize="true"
           validateOnChange={false}
           validateOnBlur={false}
           onSubmit={(values) => {
-            Api.createDataset(ownerOrg, values, apiUrl, apiKey)
-              .then((res) => {
-                setAlert(<AlertBox type="success" heading="Dataset updated successfully" />);
-                setRequiredValues(res);
-                window.scrollTo(0, 0);
-              })
-              .catch((error) => {
-                const message = JSON.stringify(error);
-                setAlert(
-                  <AlertBox type="error" heading="Error saving metadata" message={message} />
-                );
-                console.error('CREATE DATASET ERROR', error); // eslint-disable-line
-                window.scrollTo(0, 0);
-              });
+            const id = requiredValues && requiredValues.id;
+            if (id) {
+              Api.updateDataset(id, values, apiUrl, apiKey)
+                .then((res) => {
+                  console.log('Dataset updated successfully', res); // eslint-disable-line
+                  setCurrentStep(2);
+                })
+                .catch((error) => {
+                  const message = JSON.stringify(error);
+                  setAlert(
+                    <AlertBox
+                      type="error"
+                      heading="Error saving additional metadata"
+                      message={message}
+                    />
+                  );
+                  console.error('UPDATE DATASET ERROR', error); // eslint-disable-line
+                  window.scrollTo(0, 0);
+                });
+            } else {
+              // TODO add alert
+              console.error('NO VALID DATASET SAVED IN STEP 1'); // eslint-disable-line
+            }
           }}
-          validationSchema={RequiredMetadataSchema}
+          validationSchema={AdditionalMetadataSchema}
         >
           {({ values, handleSubmit, errors, isSubmitting, isValidating }) => {
             return (
@@ -165,7 +200,7 @@ const MetadataForm = (props) => {
                       ownerOrg={ownerOrg}
                       currentStep={1}
                       fetchDatasetsOpts="false"
-                      values={values}
+                      values={values || {}}
                       errors={errors}
                     />
                   </div>
@@ -182,7 +217,8 @@ const MetadataForm = (props) => {
 MetadataForm.propTypes = {
   apiUrl: PropTypes.string.isRequired,
   apiKey: PropTypes.string.isRequired,
-  ownerOrg: PropTypes.string.isRequired,
+  ownerOrg: PropTypes.string, // required if creating new metadata
+  datasetId: PropTypes.string,
 };
 
 export default MetadataForm;
