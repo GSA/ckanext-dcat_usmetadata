@@ -30,7 +30,7 @@ const EXTRAS = [
   'subagency',
   'systemOfRecordsUSG',
   'temporal',
-  'theme',
+  'themes',
 ];
 /**
  * HELPERS

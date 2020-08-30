@@ -7,7 +7,6 @@ import RequiredMetadataLabels from '../RequiredMetadata/validationLabels';
 import defaultRequiredValues from '../RequiredMetadata/defaultValues';
 import AdditionalMetadata from '../AdditionalMetadata';
 import AdditionalMetadataSchema from '../AdditionalMetadata/validationSchema';
-import defaultAdditionalValues from '../AdditionalMetadata/defaultValues';
 import Navigation from '../Navigation';
 import AlertBox from '../AlertBox';
 import Api from '../../api';
@@ -48,9 +47,7 @@ const MetadataForm = (props) => {
 
   const [shouldFetch, setShouldFetch] = useState(true);
   const [curDatasetId, setCurDatasetId] = useState(datasetId); // initial or fetched
-  const [requiredValues, setRequiredValues] = useState(defaultRequiredValues);
-  // TODO set this on submit:
-  const [additionalValues, setAdditionalValues] = useState(defaultAdditionalValues); // eslint-disable-line
+  const [formValues, setFormValues] = useState(defaultRequiredValues);
   const [currentStep, setCurrentStep] = useState(0);
   const [alert, setAlert] = useState();
 
@@ -60,7 +57,7 @@ const MetadataForm = (props) => {
       .then((result) => {
         const apiRes = Object.assign({}, result);
         apiRes.description = result.notes;
-        setRequiredValues(Object.assign({}, defaultAdditionalValues, apiRes));
+        setFormValues(Object.assign({}, apiRes));
         setCurDatasetId(apiRes.id);
       })
       .catch((e) => {
@@ -86,7 +83,7 @@ const MetadataForm = (props) => {
       {/* ---------- PAGE 2 -- ADDITIONAL METADA ---------- */}
       {currentStep === 0 && (
         <Formik
-          initialValues={requiredValues}
+          initialValues={formValues}
           enableReinitialize="true"
           validateOnChange={false}
           validateOnBlur={false}
@@ -95,7 +92,7 @@ const MetadataForm = (props) => {
             if (curDatasetId) {
               Api.updateDataset(curDatasetId, values, apiUrl, apiKey)
                 .then((res) => {
-                  setRequiredValues(res);
+                  setFormValues(res);
                   setAlert(<AlertBox type="success" heading="Dataset updated successfully" />);
                   setCurrentStep(1);
                 })
@@ -108,12 +105,11 @@ const MetadataForm = (props) => {
                     />
                   );
                   console.error('CREATE DATASET ERROR', e); // eslint-disable-line
-                  window.scrollTo(0, 0);
                 });
             } else {
               Api.createDataset(ownerOrg, values, apiUrl, apiKey)
                 .then((res) => {
-                  setRequiredValues(res);
+                  setFormValues(res);
                   setAlert(<AlertBox type="success" heading="Dataset updated successfully" />);
                   setCurrentStep(1);
                   window.scrollTo(0, 0);
@@ -127,7 +123,6 @@ const MetadataForm = (props) => {
                     />
                   );
                   console.error('CREATE DATASET ERROR', e); // eslint-disable-line
-                  window.scrollTo(0, 0);
                 });
             }
           }}
@@ -167,14 +162,15 @@ const MetadataForm = (props) => {
       {/* ---------- PAGE 2 -- ADDITIONAL METADA ---------- */}
       {currentStep === 1 && (
         <Formik
-          initialValues={additionalValues}
+          initialValues={formValues}
           enableReinitialize="true"
           validateOnChange={false}
           validateOnBlur={false}
           onSubmit={(values) => {
-            const id = requiredValues && requiredValues.id;
+            const id = formValues && formValues.id;
+            setFormValues(Object.assign({}, formValues, values));
             if (id) {
-              Api.updateDataset(id, values, apiUrl, apiKey)
+              Api.updateDataset(id, formValues, apiUrl, apiKey)
                 .then((res) => {
                   console.log('Dataset updated successfully', res); // eslint-disable-line
                   setCurrentStep(2);
@@ -189,7 +185,6 @@ const MetadataForm = (props) => {
                     />
                   );
                   console.error('UPDATE DATASET ERROR', error); // eslint-disable-line
-                  window.scrollTo(0, 0);
                 });
             } else {
               setAlert(
