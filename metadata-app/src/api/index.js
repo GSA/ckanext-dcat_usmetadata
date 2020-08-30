@@ -123,8 +123,23 @@ const decodeSupplementalValues = (opts) => {
   }
 
   if (opts.temporal) {
-    [newOpts.temporal_start_date, newOpts.temporal_end_date] = opts.temporal.split('/');
+    // woof munge dates to locale tz
+    const [_startDate, _endDate] = opts.temporal.split('/');
+    const startDate = new Date(_startDate);
+    const endDate = new Date(_endDate);
+    newOpts.temporal_start_date = new Date(
+      startDate.getTime() - startDate.getTimezoneOffset() * 60000
+    )
+      .toISOString()
+      .substring(0, 10);
+    newOpts.temporal_end_date = new Date(endDate.getTime() - endDate.getTimezoneOffset() * 60000)
+      .toISOString()
+      .substring(0, 10);
     newOpts.temporal = 'true';
+  } else {
+    newOpts.temporal = false;
+    newOpts.temporal_start_date = null;
+    newOpts.temporal_end_date = null;
   }
 
   return newOpts;
@@ -195,11 +210,18 @@ const updateDataset = (id, opts, apiUrl, apiKey) => {
   const encoded = encodeExtras(encodeSupplementalValues(opts));
   encoded.id = id;
 
-  return axios.post(`${apiUrl}package_update`, encoded, {
-    headers: {
-      'X-CKAN-API-Key': apiKey,
-    },
-  });
+  return axios
+    .post(`${apiUrl}package_update`, encoded, {
+      headers: {
+        'X-CKAN-API-Key': apiKey,
+      },
+    })
+    .then((res) => {
+      // note that we don't return the axios response, we return the result
+      const resVals = res.data.result;
+      const decoded = decodeExtras(decodeSupplementalValues(resVals));
+      return decoded;
+    });
 };
 
 const fetchTags = async (str, apiUrl, apiKey) => {

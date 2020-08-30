@@ -91,24 +91,45 @@ const MetadataForm = (props) => {
           validateOnChange={false}
           validateOnBlur={false}
           onSubmit={(values) => {
-            Api.createDataset(ownerOrg, values, apiUrl, apiKey)
-              .then((res) => {
-                setRequiredValues(res);
-                setAlert(<AlertBox type="success" heading="Dataset updated successfully" />);
-                setCurrentStep(1);
-                window.scrollTo(0, 0);
-              })
-              .catch((e) => {
-                setAlert(
-                  <AlertBox
-                    type="error"
-                    heading="Error saving metadata"
-                    message="See the console output for more information on this error."
-                  />
-                );
-                console.error('CREATE DATASET ERROR', e); // eslint-disable-line
-                window.scrollTo(0, 0);
-              });
+            // update or create dataset:
+            if (curDatasetId) {
+              Api.updateDataset(curDatasetId, values, apiUrl, apiKey)
+                .then((res) => {
+                  setRequiredValues(res);
+                  setAlert(<AlertBox type="success" heading="Dataset updated successfully" />);
+                  setCurrentStep(1);
+                })
+                .catch((e) => {
+                  setAlert(
+                    <AlertBox
+                      type="error"
+                      heading="Error saving metadata"
+                      message="See the console output for more information on this error."
+                    />
+                  );
+                  console.error('CREATE DATASET ERROR', e); // eslint-disable-line
+                  window.scrollTo(0, 0);
+                });
+            } else {
+              Api.createDataset(ownerOrg, values, apiUrl, apiKey)
+                .then((res) => {
+                  setRequiredValues(res);
+                  setAlert(<AlertBox type="success" heading="Dataset updated successfully" />);
+                  setCurrentStep(1);
+                  window.scrollTo(0, 0);
+                })
+                .catch((e) => {
+                  setAlert(
+                    <AlertBox
+                      type="error"
+                      heading="Error saving metadata"
+                      message="See the console output for more information on this error."
+                    />
+                  );
+                  console.error('CREATE DATASET ERROR', e); // eslint-disable-line
+                  window.scrollTo(0, 0);
+                });
+            }
           }}
           validationSchema={RequiredMetadataSchema}
         >

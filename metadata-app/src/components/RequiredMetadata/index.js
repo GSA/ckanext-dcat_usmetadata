@@ -312,7 +312,7 @@ const RequiredMetadata = (props) => {
         <Radio
           label="My dataset has a start and end date for the applicability of data"
           name="temporal"
-          value="true"
+          value={values.temporal}
           errors={errors}
           id="temporal_option_2"
         />
