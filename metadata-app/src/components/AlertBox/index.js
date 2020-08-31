@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import '../../css/uswds.css';
 
 const AlertBox = (props) => {
-  window.scrollTo(0, 0);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { type, errors, message, heading } = props;
   const formErrors =
     errors &&

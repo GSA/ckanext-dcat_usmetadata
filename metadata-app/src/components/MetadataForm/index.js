@@ -87,6 +87,7 @@ const MetadataForm = (props) => {
           enableReinitialize="true"
           validateOnChange={false}
           validateOnBlur={false}
+          validateOnMount={false}
           onSubmit={(values) => {
             // update or create dataset:
             if (curDatasetId) {
