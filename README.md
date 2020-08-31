@@ -1,6 +1,6 @@
 # ckanext-dcat_usmetadata
 
-This extension provides a react Admin UI for managing custom fields related to [DCAT-US Schema](https://https://resources.data.gov/resources/dcat-us/)
+This extension provides a react Admin UI for managing custom fields related to [DCAT-US Schema](https://resources.data.gov/resources/dcat-us/)
 
 ## Installation
 
