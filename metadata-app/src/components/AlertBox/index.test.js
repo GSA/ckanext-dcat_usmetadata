@@ -24,6 +24,7 @@ const errors = formatErrors({
 });
 
 test('Renders AlertBox component', () => {
+  window.scrollTo = jest.fn();
   const { getByText } = render(
     <AlertBox message="Validation errors:" errors={errors} apiKey="123" apiUrl="123" />
   );

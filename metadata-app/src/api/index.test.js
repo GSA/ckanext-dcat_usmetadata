@@ -4,12 +4,7 @@ import mocks from '../mocks/apiMocks';
 
 // eslint-disable-next-line
 console.log('------------ Run API Tests ------------');
-const {
-  encodeExtras,
-  decodeExtras,
-  encodeSupplementalValues,
-  decodeSupplementalValues,
-} = Api.helpers;
+const { encodeExtras, decodeExtras } = Api.helpers;
 
 const { fetchDataset, createDataset, updateDataset } = Api;
 const {
@@ -56,47 +51,6 @@ describe('Test helpers', () => {
     });
   });
 
-  describe('Encode supplemental values', () => {
-    const opts = {
-      license_others: 'Zany new license',
-      rights_desc: 'Description of rights',
-      spatial_location_desc: 'Far side of the moon',
-      temperal_start_date: '11/11/2010',
-      temporal_end_date: '11/11/2020',
-      unchanged: 'unchanged',
-    };
-
-    const encoded = encodeSupplementalValues(opts);
-
-    it('should properly encode supplemental values', () => {
-      expect(encoded.license).toBe(opts.license_others);
-      expect(encoded.rights).toBe(opts.rights_desc);
-      expect(encoded.spatial).toBe(opts.spatial_location_desc);
-      expect(encoded.unchanged).toBe(opts.unchanged);
-    });
-  });
-
-  describe('Decode supplemental values', () => {
-    const opts = {
-      temperal_start_date: '11/11/2010',
-      temporal_end_date: '11/11/2020',
-      unchanged: 'unchanged',
-      license: 'Zany new license',
-      rights: 'Description of rights',
-      spatial: 'Far side of the moon',
-    };
-
-    const decoded = decodeSupplementalValues(opts);
-    it('should properly decode supplemental values', () => {
-      expect(decoded.license_others).toBe(opts.license);
-      expect(decoded.rights_desc).toBe(opts.rights);
-      expect(decoded.rights).toBe('false');
-      expect(decoded.spatial_location_desc).toBe(opts.spatial);
-      expect(decoded.temporal_end_date).toBe(opts.temporal_end_date);
-      expect(decoded.temporal_start_date).toBe(opts.temporal_start_date);
-    });
-  });
-
   describe('Test API', () => {
     beforeEach(() => {
       // import and pass your custom axios instance to this method
@@ -118,12 +72,12 @@ describe('Test helpers', () => {
           });
         });
 
-        const res = await fetchDataset('test-id', 'APIURL', 'APIKEY');
+        const result = await fetchDataset('test-id', 'APIURL', 'APIKEY');
 
-        expect(res.data.result.title).toBe('Test Dataset 2');
-        expect(typeof res.data.result).toBe('object');
-        expect(Array.isArray(res.data.result.tags)).toBe(true);
-        expect(Array.isArray(res.data.result.extras)).toBe(true);
+        expect(result.title).toBe('Test Dataset 2');
+        expect(typeof result).toBe('object');
+        expect(Array.isArray(result.tags)).toBe(true);
+        expect(Array.isArray(result.extras)).toBe(true);
       });
     });
 
@@ -137,12 +91,12 @@ describe('Test helpers', () => {
           });
         });
 
-        const res = await createDataset('123', requiredMetadata, 'APIURL', 'APIKEY');
+        const result = await createDataset('123', requiredMetadata, 'APIURL', 'APIKEY');
 
-        expect(res.data.result.title).toBe('Test Dataset 1');
-        expect(typeof res.data.result).toBe('object');
-        expect(Array.isArray(res.data.result.tags)).toBe(true);
-        expect(Array.isArray(res.data.result.extras)).toBe(true);
+        expect(result.title).toBe('Test Dataset 1');
+        expect(typeof result).toBe('object');
+        expect(Array.isArray(result.tags)).toBe(true);
+        expect(Array.isArray(result.extras)).toBe(true);
       });
     });
 
@@ -156,9 +110,8 @@ describe('Test helpers', () => {
       });
 
       it('should successfully update an existing dataset', async () => {
-        const res = await updateDataset('123', additionalMetadata, 'APIURL', 'APIKEY');
-        expect(res.data.success).toBe(true);
-        expect(res.data.result.title).toBe('Test Dataset 2');
+        const result = await updateDataset('123', additionalMetadata, 'APIURL', 'APIKEY');
+        expect(result.title).toBe('Test Dataset 2');
       });
     });
   });
