@@ -92,7 +92,7 @@ const MetadataForm = (props) => {
             if (curDatasetId) {
               Api.updateDataset(curDatasetId, values, apiUrl, apiKey)
                 .then((res) => {
-                  setFormValues(res);
+                  setFormValues(Object.assign({}, res, { description: res.notes }));
                   setAlert(<AlertBox type="success" heading="Dataset updated successfully" />);
                   setCurrentStep(1);
                 })

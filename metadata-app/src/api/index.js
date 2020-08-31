@@ -27,9 +27,12 @@ const EXTRAS = [
   'references',
   'rights',
   'spatial',
+  'spatial_location_desc',
   'subagency',
   'systemOfRecordsUSG',
   'temporal',
+  'temporal_start_date',
+  'temporal_end_date',
   'themes',
 ];
 /**
@@ -71,80 +74,6 @@ const decodeExtras = (opts) => {
   return newOpts;
 };
 
-const encodeSupplementalValues = (opts) => {
-  const newOpts = clone(opts);
-
-  if (opts.description) {
-    newOpts.notes = opts.description;
-  }
-
-  if (opts.license_others) {
-    newOpts.license = opts.license_others;
-    delete newOpts.license_others;
-  }
-
-  if (opts.rights_desc) {
-    newOpts.rights = opts.rights_desc;
-    delete newOpts.rights_desc;
-  }
-
-  if (opts.spatial_location_desc) {
-    newOpts.spatial = opts.spatial_location_desc;
-    delete newOpts.spatial_location_desc;
-  }
-
-  if (opts.temporal_start_date) {
-    const start = new Date(opts.temporal_start_date).toISOString();
-    const end = new Date(opts.temporal_end_date).toISOString();
-    newOpts.temporal = `${start}/${end}`;
-    delete newOpts.temporal_start_date;
-    delete newOpts.temporal_end_date;
-  }
-
-  return newOpts;
-};
-
-const decodeSupplementalValues = (opts) => {
-  const newOpts = clone(opts);
-
-  if (opts.license) {
-    newOpts.license_others = opts.license;
-    newOpts.license = 'Others';
-  }
-
-  if (opts.rights) {
-    newOpts.rights_desc = opts.rights;
-    newOpts.rights = 'false';
-  }
-
-  if (opts.spatial) {
-    newOpts.spatial_location_desc = opts.spatial;
-    newOpts.spatial = true;
-  }
-
-  if (opts.temporal) {
-    // woof munge dates to locale tz
-    const [_startDate, _endDate] = opts.temporal.split('/');
-    const startDate = new Date(_startDate);
-    const endDate = new Date(_endDate);
-    newOpts.temporal_start_date = new Date(
-      startDate.getTime() - startDate.getTimezoneOffset() * 60000
-    )
-      .toISOString()
-      .substring(0, 10);
-    newOpts.temporal_end_date = new Date(endDate.getTime() - endDate.getTimezoneOffset() * 60000)
-      .toISOString()
-      .substring(0, 10);
-    newOpts.temporal = 'true';
-  } else {
-    newOpts.temporal = false;
-    newOpts.temporal_start_date = null;
-    newOpts.temporal_end_date = null;
-  }
-
-  return newOpts;
-};
-
 /**
  * API CALLS
  */
@@ -158,7 +87,7 @@ const createDataset = (ownerOrg, opts, apiUrl, apiKey) => {
   newOpts.bureauCode = '015:11';
   newOpts.programCode = '015:001';
 
-  const encoded = encodeExtras(encodeSupplementalValues(opts));
+  const encoded = encodeExtras(opts);
   encoded.owner_org = ownerOrg;
   encoded.name = safeName(opts.title);
   encoded.description = encoded.notes;
@@ -172,7 +101,7 @@ const createDataset = (ownerOrg, opts, apiUrl, apiKey) => {
     .then((res) => {
       // note that we don't return the axios response, we return the result
       const resVals = res.data.result;
-      const decoded = decodeExtras(decodeSupplementalValues(resVals));
+      const decoded = decodeExtras(resVals);
       return decoded;
     });
 };
@@ -200,15 +129,21 @@ const fetchDataset = async (id, apiUrl, apiKey) => {
     })
     .then((res) => {
       // note that we don't return the axios response, we return the result
-      const decoded = decodeSupplementalValues(decodeExtras(res.data.result));
+      const decoded = decodeExtras(res.data.result);
       decoded.description = decoded.notes;
       return decoded;
     });
 };
 
 const updateDataset = (id, opts, apiUrl, apiKey) => {
-  const encoded = encodeExtras(encodeSupplementalValues(opts));
+  const encoded = encodeExtras(opts);
+  encoded.modified = new Date();
+  encoded.notes = opts.description; // TODO not sure what notes is supposed to be
   encoded.id = id;
+
+  // TODO where do we get these?
+  encoded.bureauCode = '015:11';
+  encoded.programCode = '015:001';
 
   return axios
     .post(`${apiUrl}package_update`, encoded, {
@@ -219,7 +154,7 @@ const updateDataset = (id, opts, apiUrl, apiKey) => {
     .then((res) => {
       // note that we don't return the axios response, we return the result
       const resVals = res.data.result;
-      const decoded = decodeExtras(decodeSupplementalValues(resVals));
+      const decoded = decodeExtras(resVals);
       return decoded;
     });
 };
@@ -247,8 +182,6 @@ export default {
   helpers: {
     encodeExtras,
     decodeExtras,
-    encodeSupplementalValues,
-    decodeSupplementalValues,
     clone,
     safeName,
   },
