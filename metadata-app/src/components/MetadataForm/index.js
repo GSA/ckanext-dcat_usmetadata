@@ -80,7 +80,7 @@ const MetadataForm = (props) => {
       <Heading currentStep={currentStep} />
       {alert}
 
-      {/* ---------- PAGE 2 -- ADDITIONAL METADA ---------- */}
+      {/* ---------- PAGE 1 -- REQUIRED METADATA ---------- */}
       {currentStep === 0 && (
         <Formik
           initialValues={formValues}
@@ -160,7 +160,7 @@ const MetadataForm = (props) => {
         </Formik>
       )}
 
-      {/* ---------- PAGE 2 -- ADDITIONAL METADA ---------- */}
+      {/* ---------- PAGE 2 -- ADDITIONAL METADATA ---------- */}
       {currentStep === 1 && (
         <Formik
           initialValues={formValues}
