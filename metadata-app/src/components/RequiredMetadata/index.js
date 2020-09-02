@@ -170,7 +170,14 @@ const RequiredMetadata = (props) => {
         />
       </div>
       <div className="row">
-        <WrappedField label="Unique ID" name="identifier" type="string" required errors={errors} />
+        <WrappedField
+          label="Unique ID"
+          name="identifier"
+          type="string"
+          required
+          infoText="This is the ID number or code used within your agency to differentiate this dataset from other datasets."
+          errors={errors}
+        />
       </div>
       <div className="row">
         <WrappedField
