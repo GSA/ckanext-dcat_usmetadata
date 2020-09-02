@@ -27,10 +27,13 @@ const EXTRAS = [
   'references',
   'rights',
   'spatial',
+  'spatial_location_desc',
   'subagency',
   'systemOfRecordsUSG',
   'temporal',
-  'theme',
+  'temporal_start_date',
+  'temporal_end_date',
+  'themes',
 ];
 /**
  * HELPERS
@@ -71,65 +74,6 @@ const decodeExtras = (opts) => {
   return newOpts;
 };
 
-const encodeSupplementalValues = (opts) => {
-  const newOpts = clone(opts);
-
-  if (opts.description) {
-    newOpts.notes = opts.description;
-  }
-
-  if (opts.license_others) {
-    newOpts.license = opts.license_others;
-    delete newOpts.license_others;
-  }
-
-  if (opts.rights_desc) {
-    newOpts.rights = opts.rights_desc;
-    delete newOpts.rights_desc;
-  }
-
-  if (opts.spatial_location_desc) {
-    newOpts.spatial = opts.spatial_location_desc;
-    delete newOpts.spatial_location_desc;
-  }
-
-  if (opts.temporal_start_date) {
-    const start = new Date(opts.temporal_start_date).toISOString();
-    const end = new Date(opts.temporal_end_date).toISOString();
-    newOpts.temporal = `${start}/${end}`;
-    delete newOpts.temporal_start_date;
-    delete newOpts.temporal_end_date;
-  }
-
-  return newOpts;
-};
-
-const decodeSupplementalValues = (opts) => {
-  const newOpts = clone(opts);
-
-  if (opts.license) {
-    newOpts.license_others = opts.license;
-    newOpts.license = 'Others';
-  }
-
-  if (opts.rights) {
-    newOpts.rights_desc = opts.rights;
-    newOpts.rights = 'false';
-  }
-
-  if (opts.spatial) {
-    newOpts.spatial_location_desc = opts.spatial;
-    newOpts.spatial = true;
-  }
-
-  if (opts.temporal) {
-    [newOpts.temporal_start_date, newOpts.temporal_end_date] = opts.temporal.split('/');
-    newOpts.temporal = 'true';
-  }
-
-  return newOpts;
-};
-
 /**
  * API CALLS
  */
@@ -143,15 +87,23 @@ const createDataset = (ownerOrg, opts, apiUrl, apiKey) => {
   newOpts.bureauCode = '015:11';
   newOpts.programCode = '015:001';
 
-  const encoded = encodeExtras(encodeSupplementalValues(opts));
+  const encoded = encodeExtras(opts);
   encoded.owner_org = ownerOrg;
   encoded.name = safeName(opts.title);
+  encoded.description = encoded.notes;
   encoded.url = opts.url;
-  return axios.post(`${apiUrl}package_create`, encoded, {
-    headers: {
-      'X-CKAN-API-Key': apiKey,
-    },
-  });
+  return axios
+    .post(`${apiUrl}package_create`, encoded, {
+      headers: {
+        'X-CKAN-API-Key': apiKey,
+      },
+    })
+    .then((res) => {
+      // note that we don't return the axios response, we return the result
+      const resVals = res.data.result;
+      const decoded = decodeExtras(resVals);
+      return decoded;
+    });
 };
 
 const createResource = (packageId, opts, apiUrl, apiKey) => {
@@ -169,29 +121,42 @@ const createResource = (packageId, opts, apiUrl, apiKey) => {
 };
 
 const fetchDataset = async (id, apiUrl, apiKey) => {
-  try {
-    const res = await axios.get(`${apiUrl}package_show?id=${id}`, {
+  return axios
+    .get(`${apiUrl}package_show?id=${id}`, {
       headers: {
         'X-CKAN-API-Key': apiKey,
       },
+    })
+    .then((res) => {
+      // note that we don't return the axios response, we return the result
+      const decoded = decodeExtras(res.data.result);
+      decoded.description = decoded.notes;
+      return decoded;
     });
-    const decoded = decodeSupplementalValues(decodeExtras(res.data.result));
-    res.data.result = decoded;
-    return res;
-  } catch (e) {
-    return e;
-  }
 };
 
 const updateDataset = (id, opts, apiUrl, apiKey) => {
-  const encoded = encodeExtras(encodeSupplementalValues(opts));
+  const encoded = encodeExtras(opts);
+  encoded.modified = new Date();
+  encoded.notes = opts.description; // TODO not sure what notes is supposed to be
   encoded.id = id;
 
-  return axios.post(`${apiUrl}package_update`, encoded, {
-    headers: {
-      'X-CKAN-API-Key': apiKey,
-    },
-  });
+  // TODO where do we get these?
+  encoded.bureauCode = '015:11';
+  encoded.programCode = '015:001';
+
+  return axios
+    .post(`${apiUrl}package_update`, encoded, {
+      headers: {
+        'X-CKAN-API-Key': apiKey,
+      },
+    })
+    .then((res) => {
+      // note that we don't return the axios response, we return the result
+      const resVals = res.data.result;
+      const decoded = decodeExtras(resVals);
+      return decoded;
+    });
 };
 
 const fetchTags = async (str, apiUrl, apiKey) => {
@@ -217,8 +182,6 @@ export default {
   helpers: {
     encodeExtras,
     decodeExtras,
-    encodeSupplementalValues,
-    decodeSupplementalValues,
     clone,
     safeName,
   },

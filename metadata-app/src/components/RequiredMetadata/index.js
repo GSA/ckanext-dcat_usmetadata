@@ -7,7 +7,7 @@ import HelpText from '../HelpText';
 import Radio from '../Radio';
 
 const RequiredMetadata = (props) => {
-  const { values, errors, currentStep, apiUrl, apiKey } = props;
+  const { values, errors, apiUrl, apiKey } = props;
 
   // RADIO / SELECT Values
   const [urlDisabled, setUrlDisabled] = useState(true);
@@ -23,11 +23,6 @@ const RequiredMetadata = (props) => {
     return <HelpText>{text}</HelpText>;
   };
   const baseUrl = `${window.location.origin}/dataset/`;
-
-  if (currentStep !== 1) {
-    // Prop: The current step
-    return null;
-  }
 
   const helpTexts = {
     title: (
@@ -362,7 +357,6 @@ RequiredMetadata.propTypes = {
   apiKey: PropTypes.string.isRequired,
   values: PropTypes.any, // eslint-disable-line
   errors: PropTypes.any, // eslint-disable-line
-  currentStep: PropTypes.number,
 };
 
 export default RequiredMetadata;

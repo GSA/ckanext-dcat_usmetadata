@@ -6,12 +6,13 @@ import * as serviceWorker from './serviceWorker';
 
 const root = document.getElementById('root');
 const apiUrl = root.getAttribute('data-apiUrl') || 'http://localhost:5000/api/3/action/';
-const apiKey = root.getAttribute('data-apiKey') || '123';
+const apiKey = root.getAttribute('data-apiKey') || '2ea2f67c-bf92-4235-8350-5bcc8dc82b64';
 const ownerOrg = root.getAttribute('data-ownerOrg') || '123';
+const datasetId = root.getAttribute('data-datasetId') || '';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App apiUrl={apiUrl} apiKey={apiKey} ownerOrg={ownerOrg} />
+    <App apiUrl={apiUrl} apiKey={apiKey} ownerOrg={ownerOrg} datasetId={datasetId} />
   </React.StrictMode>,
   document.getElementById('root')
 );
