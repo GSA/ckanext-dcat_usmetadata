@@ -4,7 +4,7 @@ import WrappedField from '../WrappedField';
 import HelpText from '../HelpText';
 
 const helpTexts = {
-  themes: <HelpText>Examples include: vegetables, non_starchy, green.</HelpText>,
+  theme: <HelpText>Examples include: vegetables, non_starchy, green.</HelpText>,
   describedBy: (
     <HelpText>
       Provide a link to data dictionary or other reference that helps users understand the dataset.
@@ -46,7 +46,7 @@ const AdditionalMetadata = (props) => {
   const formValues = values || {};
   const {
     dataQualityUSG,
-    themes,
+    theme,
     describedBy,
     describedByType,
     accrualPeriodicity,
@@ -84,11 +84,11 @@ const AdditionalMetadata = (props) => {
         <div className="grid-col-12">
           <WrappedField
             label="Themes"
-            name="themes"
+            name="theme"
             type="string"
             helptext="Main thematic category of the dataset.  If this dataset should be included in geoplatform.gov, please enter “geospatial” as the theme.  Start typing to add themes."
-            infoText={helpTexts.themes}
-            value={themes}
+            infoText={helpTexts.theme}
+            value={theme}
           />
         </div>
       </div>
@@ -215,7 +215,7 @@ const AdditionalMetadata = (props) => {
 AdditionalMetadata.propTypes = {
   values: PropTypes.shape({
     dataQualityUSG: PropTypes.string,
-    themes: PropTypes.string,
+    theme: PropTypes.string,
     describedBy: PropTypes.string,
     describedByType: PropTypes.string,
     accrualPeriodicity: PropTypes.string,
