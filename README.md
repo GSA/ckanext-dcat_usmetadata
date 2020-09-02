@@ -1,13 +1,15 @@
 # ckanext-dcat_usmetadata
 
-This extension provides a react Admin UI for managing custom fields related to [DCAT-US Schema](https://https://resources.data.gov/resources/dcat-us/)
+This extension provides a react Admin UI for managing custom fields related to [DCAT-US Schema](https://resources.data.gov/resources/dcat-us/)
 
 ## Installation
 
 To install this package, activate CKAN virtualenv (e.g. "source /path/to/virtenv/bin/activate"), then run
 
-`(virtualenv) pip install -e git+https://github.com/GSA/ckanext-dcat_usmetadata@master#egg=ckanext-dcat_usmetadata`
-`(virtualenv) python setup.py develop`
+```
+(virtualenv) pip install -e git+https://github.com/GSA/ckanext-dcat_usmetadata@master#egg=ckanext-dcat_usmetadata
+(virtualenv) python setup.py develop
+```
 
 In your CKAN .ini file add `dcat_usmetadata` to your enabled plugins:
 
@@ -33,7 +35,7 @@ Run CKAN locally (`make up`) and get the Admin user's API Key. Add a test org fo
 
 Run `make app-cosmos` to start the cosmos server, which will watch the `metadata-app/src` directory for changes.
 
-### Ways to Contribute
+## Ways to Contribute
 
 The Data.gov team manages all Data.gov updates, bugs, and feature additions via GitHub's public [issue tracker](https://github.com/GSA/ckanext-dcat_usmetadata/issues) in this repository.
 
@@ -48,15 +50,15 @@ If you do not already have a GitHub account, you can [sign up for GitHub here](h
 * by reviewing pull requests.
 * by closing issues
 
-#### Submit Great Issues
+### Submit Great Issues
 
 * Before submitting a new issue, check to make sure a similar issue isn't already open. If one is, contribute to that issue thread with your feedback.
 * When submitting a bug report, please try to provide as much detail as possible, i.e. a screenshot or gist that demonstrates the problem, the technology you are using, and any relevant links.
 
-#### Ready for your Help
+### Ready for your Help
 Issues labeled [help wanted](https://github.com/GSA/data.gov/labels/help%20wanted) make it easy for you to find ways you can contribute today.
 
-### Public Domain
+## Public Domain
 This project constitutes a work of the United States Government and is not subject to domestic copyright protection under 17 USC § 105. Additionally, we waive copyright and related rights in the work worldwide through the CC0 1.0 [Universal public domain dedication](https://creativecommons.org/publicdomain/zero/1.0/).
 
 All contributions to this project will be released under the CC0 dedication. By submitting a pull request, you are agreeing to comply with this waiver of copyright interest.
