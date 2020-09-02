@@ -182,7 +182,7 @@ const AdditionalMetadata = (props) => {
       <div className="row">
         <div className="grid-col-12">
           <WrappedField
-            label="Release Date"
+            label="System of Records Notice URL"
             name="systemOfRecordsUSG"
             type="string"
             value={systemOfRecordsUSG}
