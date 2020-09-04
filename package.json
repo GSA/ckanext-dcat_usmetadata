@@ -8,7 +8,7 @@
     "chance": "^1.1.6"
   },
   "scripts": {
-    "federalist": "cd metadata-app && npm install && npm run build",
+    "federalist": "cd metadata-app && npm install && npm run build && ln -sf metadata-app/build ../_site",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
