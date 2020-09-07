@@ -110,10 +110,10 @@ const createResource = (packageId, opts, apiUrl, apiKey) => {
   const newOpts = clone(opts);
   newOpts.package_id = packageId;
   if (opts.upload) {
-    newOpts.mime_type = opts.upload.type;
+    newOpts.mimetype = opts.upload.type;
     newOpts.size = opts.upload.size;
   }
-  return axios.post(`${apiUrl}resource_create`, opts, {
+  return axios.post(`${apiUrl}resource_create`, newOpts, {
     headers: {
       'X-CKAN-API-Key': apiKey,
     },
