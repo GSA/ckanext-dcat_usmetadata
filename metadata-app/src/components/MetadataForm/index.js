@@ -8,6 +8,7 @@ import defaultRequiredValues from '../RequiredMetadata/defaultValues';
 import AdditionalMetadata from '../AdditionalMetadata';
 import AdditionalMetadataSchema from '../AdditionalMetadata/validationSchema';
 import ResourceUpload from '../ResourceUpload';
+import ResourceUploadSchema from '../ResourceUpload/validationSchema';
 import Navigation from '../Navigation';
 import AlertBox from '../AlertBox';
 import Api from '../../api';
@@ -268,6 +269,7 @@ const MetadataForm = (props) => {
               );
             }
           }}
+          validationSchema={ResourceUploadSchema}
           render={({ values, errors, handleSubmit, setFieldValue }) => (
             <div className="">
               {errors && Object.keys(errors).length > 0 && (
