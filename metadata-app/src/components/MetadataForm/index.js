@@ -111,6 +111,7 @@ const MetadataForm = (props) => {
               Api.createDataset(ownerOrg, values, apiUrl, apiKey)
                 .then((res) => {
                   setFormValues(res);
+                  setCurDatasetId(res.id);
                   setAlert(<AlertBox type="success" heading="Dataset created successfully" />);
                   setCurrentStep(1);
                   window.scrollTo(0, 0);
