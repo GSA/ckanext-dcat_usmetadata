@@ -7,6 +7,8 @@ import RequiredMetadataLabels from '../RequiredMetadata/validationLabels';
 import defaultRequiredValues from '../RequiredMetadata/defaultValues';
 import AdditionalMetadata from '../AdditionalMetadata';
 import AdditionalMetadataSchema from '../AdditionalMetadata/validationSchema';
+import ResourceUpload from '../ResourceUpload';
+import ResourceUploadSchema from '../ResourceUpload/validationSchema';
 import Navigation from '../Navigation';
 import AlertBox from '../AlertBox';
 import Api from '../../api';
@@ -111,6 +113,7 @@ const MetadataForm = (props) => {
               Api.createDataset(ownerOrg, values, apiUrl, apiKey)
                 .then((res) => {
                   setFormValues(res);
+                  setCurDatasetId(res.id);
                   setAlert(<AlertBox type="success" heading="Dataset created successfully" />);
                   setCurrentStep(1);
                   window.scrollTo(0, 0);
@@ -228,6 +231,69 @@ const MetadataForm = (props) => {
             );
           }}
         </Formik>
+      )}
+      {/* ---------- PAGE 3 -- RESOURSE UPLOAD ---------- */}
+      {currentStep === 2 && (
+        <Formik
+          initialValues={{
+            name: '',
+            description: '',
+            url: '',
+            format: '',
+            mimetype: '',
+            upload: null,
+          }}
+          enableReinitialize="true"
+          validateOnChange={false}
+          validateOnBlur={false}
+          onSubmit={(values) => {
+            if (curDatasetId) {
+              Api.createResource(curDatasetId, values, apiUrl, apiKey)
+                .then((res) => {
+                  console.log('Resource created successfully', res); // eslint-disable-line
+                })
+                .catch((error) => {
+                  const message = JSON.stringify(error);
+                  setAlert(
+                    <AlertBox type="error" heading="Error saving resource(s)" message={message} />
+                  );
+                  console.error('CREATE RESOURCE ERROR', error); // eslint-disable-line
+                });
+            } else {
+              setAlert(
+                <AlertBox
+                  type="error"
+                  heading="No valid metadata saved in previous steps."
+                  message="Please complete previous steps before submitting resource(s)."
+                />
+              );
+            }
+          }}
+          validationSchema={ResourceUploadSchema}
+          render={({ values, errors, handleSubmit, setFieldValue }) => (
+            <div className="">
+              {errors && Object.keys(errors).length > 0 && (
+                <div>
+                  <AlertBox
+                    type="error"
+                    heading="This form contains invalid entries"
+                    errors={formatErrors(errors)}
+                  />
+                </div>
+              )}
+              <Form onSubmit={handleSubmit}>
+                <ResourceUpload values={values} setFieldValue={setFieldValue} />
+
+                <div className="row">
+                  <div className="col-sm-12">
+                    <br />
+                    <br />
+                  </div>
+                </div>
+              </Form>
+            </div>
+          )}
+        />
       )}
     </div>
   );

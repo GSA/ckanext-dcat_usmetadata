@@ -35,7 +35,7 @@ const WrappedField = (props) => {
   }
 
   return (
-    <div>
+    <div className="wrapper">
       <label className="usa-label" htmlFor={id}>
         {label}
         {label && required && <span>*</span>}
@@ -81,7 +81,11 @@ const WrappedField = (props) => {
 
       <div className={`usa-helptext ${disabledClass}`}>{helptext}</div>
       {onClick ? (
-        <button className="clear-button" onClick={onClick} type="button">
+        <button
+          className="clear-button usa-button usa-button--secondary"
+          onClick={onClick}
+          type="button"
+        >
           Remove
         </button>
       ) : (
@@ -91,7 +95,11 @@ const WrappedField = (props) => {
         {
           string: (
             <Field
-              className={`usa-input ${disabledClass} ${formErrors[name] ? 'field-error' : ''}`}
+              className={
+                `usa-input ${disabledClass} ` +
+                `${formErrors[name] && 'field-error'} ` +
+                `${onClick && 'has-clear-button'}`
+              }
               disabled={disabled}
               id={id}
               name={name}
@@ -100,7 +108,7 @@ const WrappedField = (props) => {
           ),
           url: (
             <Field
-              className={`usa-input ${disabledClass}`}
+              className={`usa-input ${disabledClass} ${onClick && 'has-clear-button'}`}
               disabled={disabled}
               id={id}
               name={name}
