@@ -15,6 +15,15 @@ const ResourceUpload = (props) => {
     if (!name) {
       setFieldValue('name', event.currentTarget.files[0].name);
     }
+    if (!mimetype) {
+      setFieldValue('mimetype', event.currentTarget.files[0].type);
+    }
+    if (!format) {
+      const detectedFormat =
+        event.currentTarget.files[0].name &&
+        event.currentTarget.files[0].name.split('.').slice(-1)[0];
+      setFieldValue('format', detectedFormat || '');
+    }
     setFieldValue('upload', event.currentTarget.files[0]);
   };
 
