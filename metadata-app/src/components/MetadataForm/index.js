@@ -96,7 +96,7 @@ const MetadataForm = (props) => {
               Api.updateDataset(curDatasetId, values, apiUrl, apiKey)
                 .then((res) => {
                   setFormValues(Object.assign({}, res, { description: res.notes }));
-                  setAlert(<AlertBox type="success" heading="Dataset updated successfully" />);
+                  setAlert(<AlertBox type="success" heading="Dataset saved successfully" />);
                   setCurrentStep(1);
                 })
                 .catch((e) => {
@@ -114,7 +114,7 @@ const MetadataForm = (props) => {
                 .then((res) => {
                   setFormValues(res);
                   setCurDatasetId(res.id);
-                  setAlert(<AlertBox type="success" heading="Dataset created successfully" />);
+                  setAlert(<AlertBox type="success" heading="Dataset saved successfully" />);
                   setCurrentStep(1);
                   window.scrollTo(0, 0);
                 })
