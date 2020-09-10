@@ -96,7 +96,7 @@ const MetadataForm = (props) => {
               Api.updateDataset(curDatasetId, values, apiUrl, apiKey)
                 .then((res) => {
                   setFormValues(Object.assign({}, res, { description: res.notes }));
-                  setAlert(<AlertBox type="success" heading="Dataset updated successfully" />);
+                  setAlert(<AlertBox type="success" heading="Dataset saved successfully" />);
                   setCurrentStep(1);
                 })
                 .catch((e) => {
@@ -114,7 +114,7 @@ const MetadataForm = (props) => {
                 .then((res) => {
                   setFormValues(res);
                   setCurDatasetId(res.id);
-                  setAlert(<AlertBox type="success" heading="Dataset created successfully" />);
+                  setAlert(<AlertBox type="success" heading="Dataset saved successfully" />);
                   setCurrentStep(1);
                   window.scrollTo(0, 0);
                 })
@@ -250,7 +250,12 @@ const MetadataForm = (props) => {
             if (curDatasetId) {
               Api.createResource(curDatasetId, values, apiUrl, apiKey)
                 .then((res) => {
-                  console.log('Resource created successfully', res); // eslint-disable-line
+                  if (res.status === 200) {
+                    // Redirect to datast page
+                    const apiUrlObject = new URL(apiUrl);
+                    const datasetPageUrl = `${apiUrlObject.origin}/dataset/${curDatasetId}`;
+                    window.location.replace(datasetPageUrl);
+                  }
                 })
                 .catch((error) => {
                   const message = JSON.stringify(error);

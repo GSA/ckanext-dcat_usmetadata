@@ -107,13 +107,19 @@ const createDataset = (ownerOrg, opts, apiUrl, apiKey) => {
 };
 
 const createResource = (packageId, opts, apiUrl, apiKey) => {
-  const newOpts = clone(opts);
-  newOpts.package_id = packageId;
+  let body;
   if (opts.upload) {
-    newOpts.mimetype = opts.upload.type;
-    newOpts.size = opts.upload.size;
+    body = new FormData();
+    body.append('package_id', packageId);
+    Object.keys(opts).forEach((item) => {
+      body.append(item, opts[item]);
+    });
+  } else {
+    body = clone(opts);
+    body.package_id = packageId;
   }
-  return axios.post(`${apiUrl}resource_create`, newOpts, {
+
+  return axios.post(`${apiUrl}resource_create`, body, {
     headers: {
       'X-CKAN-API-Key': apiKey,
     },

@@ -10,6 +10,23 @@ const ResourceUpload = (props) => {
   const [linkToDataIsActive, setLinkToDataActive] = useState(false);
   const [uploadDataFileIsActive, setUploadDataFileActive] = useState(false);
 
+  const handleFileChange = (event) => {
+    setUploadDataFileActive(!uploadDataFileIsActive);
+    if (!name) {
+      setFieldValue('name', event.currentTarget.files[0].name);
+    }
+    if (!mimetype) {
+      setFieldValue('mimetype', event.currentTarget.files[0].type);
+    }
+    if (!format) {
+      const detectedFormat =
+        event.currentTarget.files[0].name &&
+        event.currentTarget.files[0].name.split('.').slice(-1)[0];
+      setFieldValue('format', detectedFormat || '');
+    }
+    setFieldValue('upload', event.currentTarget.files[0]);
+  };
+
   return (
     <div className="usa-form-custom">
       <section id="section-basic-mega-menu" className="site-component-section">
@@ -59,18 +76,7 @@ const ResourceUpload = (props) => {
               <label htmlFor="upload" className="usa-button usa-button--base">
                 <i className="fa fa-cloud-upload" aria-hidden="true" /> Upload data
               </label>
-              <input
-                id="upload"
-                name="upload"
-                type="file"
-                onChange={(event) => {
-                  setUploadDataFileActive(!uploadDataFileIsActive);
-                  if (!name) {
-                    setFieldValue('name', event.currentTarget.files[0].name);
-                  }
-                  setFieldValue('upload', event.currentTarget.files[0]);
-                }}
-              />
+              <input id="upload" name="upload" type="file" onChange={handleFileChange} />
               {/* eslint-disable-next-line */}
               <label
                 htmlFor="url"
