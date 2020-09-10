@@ -41,3 +41,19 @@ Cypress.Commands.add('requiredMetadata', () => {
   cy.get('input[name=temporal_end_date]').type('2020-11-11');
   cy.get('button[type=submit').click();
 });
+
+Cypress.Commands.add('additionalMetadata', () => {
+  cy.get('select[name=dataQualityUSG]').select('Yes');
+  cy.get('input[name=theme]').type(chance.name());
+  cy.get('input[name=describedBy]').type(chance.name());
+  cy.get('input[name=describedByType]').type(chance.name());
+  cy.get('input[name=accrualPeriodicity]').type(chance.name());
+  cy.get('input[name=landingPage]').type(chance.url());
+  cy.get('input[name=language]').type(chance.name());
+  cy.get('input[name=primaryITInvestmentUIIUSG]').type(chance.name());
+  cy.get('input[name=references]').type(chance.name());
+  cy.get('input[name=issued]').type('2020-08-08');
+  cy.get('input[name=systemOfRecordsUSG]').type(chance.name());
+  cy.get('input[name=isPartOf]').type(chance.name());
+  cy.get('button[type=submit').click();
+});
