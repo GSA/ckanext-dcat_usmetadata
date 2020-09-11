@@ -49,6 +49,6 @@ describe('Required Metadata Page', () => {
   it('Submit Required Metadata works', () => {
     cy.requiredMetadata();
     cy.wait(2400);
-    cy.contains('Dataset created successfully');
+    cy.contains('Dataset saved successfully');
   });
 });
