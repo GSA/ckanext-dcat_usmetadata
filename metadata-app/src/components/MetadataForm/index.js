@@ -9,7 +9,6 @@ import AdditionalMetadata from '../AdditionalMetadata';
 import AdditionalMetadataSchema from '../AdditionalMetadata/validationSchema';
 import ResourceUpload from '../ResourceUpload';
 import ResourceUploadSchema from '../ResourceUpload/validationSchema';
-import ResourceObject from '../ResourceUpload/ResourceObject';
 import Navigation from '../Navigation';
 import AlertBox from '../AlertBox';
 import Api from '../../api';
@@ -237,29 +236,31 @@ const MetadataForm = (props) => {
       {currentStep === 2 && (
         <Formik
           initialValues={{
-            resource: ResourceObject,
-            publish: true,
-            savedResources: 0,
-            lastSavedResourceName: null,
+            name: '',
+            description: '',
+            url: '',
+            format: '',
+            mimetype: '',
+            upload: null,
           }}
           enableReinitialize="true"
           validateOnChange={false}
           validateOnBlur={false}
-          onSubmit={(values, { setFieldValue }) => {
+          onSubmit={(values) => {
             if (curDatasetId) {
-              Api.createResource(curDatasetId, values.resource, apiUrl, apiKey)
+              Api.createResource(curDatasetId, values, apiUrl, apiKey)
                 .then((res) => {
                   if (res.status === 200) {
-                    if (values.publish) {
-                      // Redirect to datast page
+                    // Redirect to datast page
+                    let domain;
+                    try {
                       const apiUrlObject = new URL(apiUrl);
-                      const datasetPageUrl = `${apiUrlObject.origin}/dataset/${curDatasetId}`;
-                      window.location.replace(datasetPageUrl);
-                    } else {
-                      setFieldValue('savedResources', values.savedResources + 1);
-                      setFieldValue('lastSavedResourceName', values.resource.name);
-                      setFieldValue('resource', ResourceObject);
+                      domain = apiUrlObject.origin;
+                    } catch {
+                      domain = window.location.host;
                     }
+                    const datasetPageUrl = `${domain}/dataset/${curDatasetId}`;
+                    window.location(datasetPageUrl);
                   }
                 })
                 .catch((error) => {
@@ -280,7 +281,7 @@ const MetadataForm = (props) => {
             }
           }}
           validationSchema={ResourceUploadSchema}
-          render={({ values, errors, handleSubmit, setFieldValue, submitForm }) => (
+          render={({ values, errors, handleSubmit, setFieldValue }) => (
             <div className="">
               {errors && Object.keys(errors).length > 0 && (
                 <div>
@@ -292,11 +293,7 @@ const MetadataForm = (props) => {
                 </div>
               )}
               <Form onSubmit={handleSubmit}>
-                <ResourceUpload
-                  values={values}
-                  setFieldValue={setFieldValue}
-                  submitForm={submitForm}
-                />
+                <ResourceUpload values={values} setFieldValue={setFieldValue} />
 
                 <div className="row">
                   <div className="col-sm-12">
