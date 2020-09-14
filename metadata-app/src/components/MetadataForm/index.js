@@ -280,7 +280,7 @@ const MetadataForm = (props) => {
             }
           }}
           validationSchema={ResourceUploadSchema}
-          render={({ values, errors, handleSubmit, setFieldValue }) => (
+          render={({ values, errors, handleSubmit, setFieldValue, submitForm }) => (
             <div className="">
               {errors && Object.keys(errors).length > 0 && (
                 <div>
@@ -292,7 +292,11 @@ const MetadataForm = (props) => {
                 </div>
               )}
               <Form onSubmit={handleSubmit}>
-                <ResourceUpload values={values} setFieldValue={setFieldValue} />
+                <ResourceUpload
+                  values={values}
+                  setFieldValue={setFieldValue}
+                  submitForm={submitForm}
+                />
 
                 <div className="row">
                   <div className="col-sm-12">
