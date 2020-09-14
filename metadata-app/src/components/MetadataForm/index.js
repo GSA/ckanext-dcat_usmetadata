@@ -9,6 +9,7 @@ import AdditionalMetadata from '../AdditionalMetadata';
 import AdditionalMetadataSchema from '../AdditionalMetadata/validationSchema';
 import ResourceUpload from '../ResourceUpload';
 import ResourceUploadSchema from '../ResourceUpload/validationSchema';
+import ResourceObject from '../ResourceUpload/ResourceObject';
 import Navigation from '../Navigation';
 import AlertBox from '../AlertBox';
 import Api from '../../api';
@@ -236,25 +237,29 @@ const MetadataForm = (props) => {
       {currentStep === 2 && (
         <Formik
           initialValues={{
-            name: '',
-            description: '',
-            url: '',
-            format: '',
-            mimetype: '',
-            upload: null,
+            resource: ResourceObject,
+            publish: true,
+            savedResources: 0,
+            lastSavedResourceName: null,
           }}
           enableReinitialize="true"
           validateOnChange={false}
           validateOnBlur={false}
-          onSubmit={(values) => {
+          onSubmit={(values, { setFieldValue }) => {
             if (curDatasetId) {
-              Api.createResource(curDatasetId, values, apiUrl, apiKey)
+              Api.createResource(curDatasetId, values.resource, apiUrl, apiKey)
                 .then((res) => {
                   if (res.status === 200) {
-                    // Redirect to datast page
-                    const apiUrlObject = new URL(apiUrl);
-                    const datasetPageUrl = `${apiUrlObject.origin}/dataset/${curDatasetId}`;
-                    window.location.replace(datasetPageUrl);
+                    if (values.publish) {
+                      // Redirect to datast page
+                      const apiUrlObject = new URL(apiUrl);
+                      const datasetPageUrl = `${apiUrlObject.origin}/dataset/${curDatasetId}`;
+                      window.location.replace(datasetPageUrl);
+                    } else {
+                      setFieldValue('savedResources', values.savedResources + 1);
+                      setFieldValue('lastSavedResourceName', values.resource.name);
+                      setFieldValue('resource', ResourceObject);
+                    }
                   }
                 })
                 .catch((error) => {
