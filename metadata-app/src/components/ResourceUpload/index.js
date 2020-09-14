@@ -142,13 +142,53 @@ const ResourceUpload = (props) => {
           />
         </div>
       </div>
-      <div className="col-sm-12 text-right">
+
+      <div className="row">
+        <div className="col-md-12">
+          <button
+            type="button"
+            className="usa-button usa-button--outline"
+            onClick={() => {
+              setFieldValue('publish', false);
+              setLinkToDataActive(false);
+              setUploadDataFileActive(false);
+              submitForm();
+            }}
+          >
+            Save and add another resource
+          </button>
+        </div>
+      </div>
+
+      {values.savedResources > 0 ? (
+        <div className="row">
+          <div className="col-md-12 text-mint">
+            <i>
+              Resource saved: [{values.lastSavedResourceName}] ({values.savedResources} resources
+              saved in total).
+            </i>
+            <br />
+            <i>You can edit any saved resource after clicking &quot;Finish and publish&quot;.</i>
+          </div>
+        </div>
+      ) : (
+        ''
+      )}
+
+      <div className="col-sm-12">
         <br />
         <br />
         <button type="button" className="usa-button usa-button--outline">
           Save as draft
         </button>
-        <button className="usa-button" type="submit">
+        <button
+          className="usa-button"
+          type="button"
+          onClick={() => {
+            setFieldValue('publish', true);
+            submitForm();
+          }}
+        >
           Finish and publish
         </button>
       </div>
