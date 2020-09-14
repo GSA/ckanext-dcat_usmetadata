@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import WrappedField from '../WrappedField';
 
 const ResourceUpload = (props) => {
-  const { values, setFieldValue } = props;
-  const formValues = values || {};
-  const { url, upload, name, description, mimetype, format } = formValues;
+  const { values, setFieldValue, submitForm } = props; // eslint-disable-line
+  const resource = values.resource || {};
+  const { url, upload, name, description, mimetype, format } = resource;
 
   const [linkToDataIsActive, setLinkToDataActive] = useState(false);
   const [uploadDataFileIsActive, setUploadDataFileActive] = useState(false);
@@ -13,18 +13,18 @@ const ResourceUpload = (props) => {
   const handleFileChange = (event) => {
     setUploadDataFileActive(!uploadDataFileIsActive);
     if (!name) {
-      setFieldValue('name', event.currentTarget.files[0].name);
+      setFieldValue('resource.name', event.currentTarget.files[0].name);
     }
     if (!mimetype) {
-      setFieldValue('mimetype', event.currentTarget.files[0].type);
+      setFieldValue('resource.mimetype', event.currentTarget.files[0].type);
     }
     if (!format) {
       const detectedFormat =
         event.currentTarget.files[0].name &&
         event.currentTarget.files[0].name.split('.').slice(-1)[0];
-      setFieldValue('format', detectedFormat || '');
+      setFieldValue('resource.format', detectedFormat || '');
     }
-    setFieldValue('upload', event.currentTarget.files[0]);
+    setFieldValue('resource.upload', event.currentTarget.files[0]);
   };
 
   return (
@@ -49,23 +49,23 @@ const ResourceUpload = (props) => {
             <WrappedField
               hidden={!linkToDataIsActive}
               id="url"
-              name="url"
+              name="resource.url"
               type="url"
               placeholder='If you are linking to a dataset, please include "http://" at the beginning of your URL.'
               value={url}
               onClick={() => {
-                setFieldValue('url', '');
+                setFieldValue('resource.url', '');
                 setLinkToDataActive(false);
               }}
             />
           ) : uploadDataFileIsActive ? (
             <WrappedField
               disabled
-              name="fileName"
+              name="resource.fileName"
               type="string"
               value={upload.name}
               onClick={() => {
-                setFieldValue('upload', '');
+                setFieldValue('resource.upload', '');
                 setUploadDataFileActive(false);
               }}
             />
@@ -76,7 +76,7 @@ const ResourceUpload = (props) => {
               <label htmlFor="upload" className="usa-button usa-button--base">
                 <i className="fa fa-cloud-upload" aria-hidden="true" /> Upload data
               </label>
-              <input id="upload" name="upload" type="file" onChange={handleFileChange} />
+              <input id="upload" name="resource.upload" type="file" onChange={handleFileChange} />
               {/* eslint-disable-next-line */}
               <label
                 htmlFor="url"
@@ -98,7 +98,7 @@ const ResourceUpload = (props) => {
         <div className="col-md-12">
           <WrappedField
             label="Name"
-            name="name"
+            name="resource.name"
             type="string"
             placeholder=""
             helptext=""
@@ -110,7 +110,7 @@ const ResourceUpload = (props) => {
         <div className="col-md-12">
           <WrappedField
             label="Description"
-            name="description"
+            name="resource.description"
             type="string"
             component="textarea"
             rows="6"
@@ -123,7 +123,7 @@ const ResourceUpload = (props) => {
         <div className="col-md-12">
           <WrappedField
             label="Media Type"
-            name="mimetype"
+            name="resource.mimetype"
             type="select"
             choices={['Type 1 ', 'Type 2', 'Type 3', 'Type 4']}
             helptext="Start typing to select a media type.  Examples include: text/csv, application/xml, or application/json."
@@ -135,7 +135,7 @@ const ResourceUpload = (props) => {
         <div className="col-md-12">
           <WrappedField
             label="Format"
-            name="format"
+            name="resource.format"
             type="string"
             helptext="Examples include: csv, xml, json.  This will be guessed automatically.  Leave blank if you wish."
             value={format}
@@ -158,13 +158,19 @@ const ResourceUpload = (props) => {
 
 ResourceUpload.propTypes = {
   setFieldValue: PropTypes.func,
+  submitForm: PropTypes.func,
   values: PropTypes.shape({
-    url: PropTypes.string,
-    upload: PropTypes.any, // eslint-disable-line
-    name: PropTypes.string,
-    description: PropTypes.string,
-    mimetype: PropTypes.string,
-    format: PropTypes.string,
+    resource: {
+      url: PropTypes.string,
+      upload: PropTypes.any, // eslint-disable-line
+      name: PropTypes.string,
+      description: PropTypes.string,
+      mimetype: PropTypes.string,
+      format: PropTypes.string,
+    },
+    publish: PropTypes.bool,
+    savedResources: PropTypes.number,
+    lastSavedResourceName: PropTypes.string,
   }),
 };
 
