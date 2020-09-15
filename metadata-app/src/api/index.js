@@ -1,4 +1,5 @@
 import axios from 'axios';
+import slugify from 'slugify';
 
 const EXTRAS = [
   'accessLevel',
@@ -38,7 +39,6 @@ const EXTRAS = [
 /**
  * HELPERS
  */
-const safeName = (name) => name.split(' ').join('_').replace(/\W/g, '').toLowerCase();
 const clone = (param) => JSON.parse(JSON.stringify(param));
 
 /**
@@ -89,7 +89,7 @@ const createDataset = (ownerOrg, opts, apiUrl, apiKey) => {
 
   const encoded = encodeExtras(opts);
   encoded.owner_org = ownerOrg;
-  encoded.name = safeName(opts.title);
+  encoded.name = slugify(opts.title, { lower: true, remove: /[*+~.()'"!:@]/g });
   encoded.description = encoded.notes;
   encoded.url = opts.url;
   return axios
@@ -192,6 +192,5 @@ export default {
     encodeExtras,
     decodeExtras,
     clone,
-    safeName,
   },
 };

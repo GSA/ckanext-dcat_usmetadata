@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import slugify from 'slugify';
 import WrappedField from '../WrappedField';
 import TagsAutocomplete from '../TagsAutocomplete';
 import { ReactComponent as Info } from '../../img/info.svg';
@@ -14,10 +15,6 @@ const RequiredMetadata = (props) => {
   const [toolTipShown, setToolTipShown] = useState(false);
   // eslint-disable-next-line
   const toggleToolTip = () => setToolTipShown(toolTipShown ? false : true);
-
-  const urlify = (text) => {
-    return text ? text.replace(/\s+/g, '-').toLowerCase() : '';
-  };
 
   const helpTextify = (text) => {
     return <HelpText>{text}</HelpText>;
@@ -77,11 +74,20 @@ const RequiredMetadata = (props) => {
               name="url"
               type="string"
               style={{ display: urlDisabled ? 'none' : 'inline' }}
-              value={values.url || `${baseUrl}${urlify(values.title)}`}
+              value={
+                values.url ||
+                `${baseUrl}${slugify(values.title || '', {
+                  lower: true,
+                  remove: /[*+~.()'"!:@]/g,
+                })}`
+              }
               errors={errors}
             />
             <span className="dataset_url" style={{ display: urlDisabled ? 'inline' : 'none' }}>
-              {`${baseUrl}${urlify(values.title)}`}
+              {`${baseUrl}${slugify(values.title || '', {
+                lower: true,
+                remove: /[*+~.()'"!:@]/g,
+              })}`}
             </span>
 
             <button
