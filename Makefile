@@ -42,3 +42,8 @@ app-cosmos:
 app-lint:
 	cd metadata-app && npx eslint src/*.js
 
+app-unit-test:
+	cd metadata-app && yarn test
+
+app-int-test:
+	npx cypress run

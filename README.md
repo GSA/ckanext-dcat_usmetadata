@@ -35,6 +35,11 @@ Run CKAN locally (`make up`) and get the Admin user's API Key. Add a test org fo
 
 Run `make app-cosmos` to start the cosmos server, which will watch the `metadata-app/src` directory for changes.
 
+### Tests
+
+`make app-unit-test` runs component-level tests. Each component has a test file at `metadata-app/src/components/NAME/index.test.js`
+`make app-int-test` will run integration tests. *NOTE* you must run `make up-with-data` first to ensure that a server is running at `localhost:5000`.
+
 ## Ways to Contribute
 
 The Data.gov team manages all Data.gov updates, bugs, and feature additions via GitHub's public [issue tracker](https://github.com/GSA/ckanext-dcat_usmetadata/issues) in this repository.
