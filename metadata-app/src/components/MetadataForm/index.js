@@ -105,7 +105,8 @@ const MetadataForm = (props) => {
                     <AlertBox
                       type="error"
                       heading="Error saving metadata"
-                      message="See the console output for more information on this error."
+                      // message="See the console output for more information on this error."
+                      message={JSON.stringify(e)}
                     />
                   );
                   console.error('CREATE DATASET ERROR', e); // eslint-disable-line
@@ -124,7 +125,8 @@ const MetadataForm = (props) => {
                     <AlertBox
                       type="error"
                       heading="Error saving metadata"
-                      message="See the console output for more information on this error."
+                      message={JSON.stringify(e)}
+                      // message="See the console output for more information on this error."
                     />
                   );
                   console.error('CREATE DATASET ERROR', e); // eslint-disable-line
