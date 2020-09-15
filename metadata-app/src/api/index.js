@@ -96,6 +96,7 @@ const createDataset = (ownerOrg, opts, apiUrl, apiKey) => {
     .post(`${apiUrl}package_create`, encoded, {
       headers: {
         'X-CKAN-API-Key': apiKey,
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
     })
     .then((res) => {
@@ -122,6 +123,7 @@ const createResource = (packageId, opts, apiUrl, apiKey) => {
   return axios.post(`${apiUrl}resource_create`, body, {
     headers: {
       'X-CKAN-API-Key': apiKey,
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
   });
 };
@@ -155,6 +157,7 @@ const updateDataset = (id, opts, apiUrl, apiKey) => {
     .post(`${apiUrl}package_update`, encoded, {
       headers: {
         'X-CKAN-API-Key': apiKey,
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
     })
     .then((res) => {
