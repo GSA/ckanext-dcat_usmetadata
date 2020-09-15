@@ -43,8 +43,7 @@ Cypress.Commands.add('requiredMetadata', () => {
 });
 
 Cypress.Commands.add('additionalMetadata', () => {
-// TODO fix this:
-//  cy.get('select[name=dataQualityUSG]').select('Yes');
+  cy.get('select[name=dataQualityUSG]').select('Yes');
   cy.get('input[name=theme]').type(chance.name());
   cy.get('input[name=describedBy]').type(chance.name());
   cy.get('input[name=describedByType]').type(chance.name());
