@@ -25,7 +25,7 @@ describe('Resource Page -- URL', () => {
     cy.get('input[name=format]').type(chance.word());
     cy.get('button[type=submit]').click();
     cy.visit('/dataset');
-    cy.get('.dataset-list .dataset-item:first-child a').click();
+    cy.get('.dataset-list .dataset-item:first-child .dataset-content h3 > a').click();
     cy.get('.resource-list').find('.resource-item').should('have.length', 1);
   });
 });
