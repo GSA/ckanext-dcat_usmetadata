@@ -2,6 +2,11 @@
 
 This extension provides a react Admin UI for managing custom fields related to [DCAT-US Schema](https://resources.data.gov/resources/dcat-us/)
 
+## Dependencies
+
+This module currently depends on the [USMetadata app](https://github.com/GSA/USMetadata) for server-side validation and rendering. 
+Make sure it is enabled in CKAN's plugins.
+
 ## Installation
 
 To install this package, activate CKAN virtualenv (e.g. "source /path/to/virtenv/bin/activate"), then run
