@@ -34,7 +34,7 @@ export default yup.object().shape({
     }),
   spatial_location_desc: yup.string(),
   license_others: yup.string(),
-  license: yup
+  license_new: yup
     .string()
     .required('License is required')
     .test('license-extra', 'Please specify the name of your license', function validate(value) {

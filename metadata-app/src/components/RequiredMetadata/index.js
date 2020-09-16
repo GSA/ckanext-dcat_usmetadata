@@ -210,7 +210,7 @@ const RequiredMetadata = (props) => {
       <div className="row">
         <WrappedField
           label="License"
-          name="license"
+          name="license_new"
           type="select"
           choices={['MIT', 'Open Source License', 'Others']}
           className="error-msg"
@@ -223,7 +223,7 @@ const RequiredMetadata = (props) => {
           helptext={helpTextify(
             `If you selected “Other”, please specify the name of your License*'`
           )}
-          disabled={values.license !== 'Others'}
+          disabled={values.license_new !== 'Others'}
           errors={errors}
           required
         />

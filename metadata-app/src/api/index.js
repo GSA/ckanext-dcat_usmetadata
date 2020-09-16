@@ -19,7 +19,7 @@ const EXTRAS = [
   'issued',
   'landingPage',
   'language',
-  'license',
+  'license_new',
   'master',
   'organization',
   'publisher',
@@ -93,7 +93,7 @@ const encodeSupplementalValues = (opts) => {
   }
 
   if (opts.license_others) {
-    newOpts.license = opts.license_others;
+    newOpts.license_new = opts.license_others;
     delete newOpts.license_others;
   }
 
@@ -127,11 +127,11 @@ const decodeSupplementalValues = (opts) => {
     newOpts.tags = opts.tag_string.split(',').map((n, i) => ({ id: i, name: n }));
   }
 
-  if (opts.license) {
-    if (['MIT', 'Open Source License'].includes(opts.license)) {
+  if (opts.license_new) {
+    if (['MIT', 'Open Source License'].includes(opts.license_new)) {
       newOpts.license = opts.license;
     } else {
-      newOpts.license_others = opts.license;
+      newOpts.license_others = opts.license_new;
       newOpts.license = 'Others';
     }
   }
