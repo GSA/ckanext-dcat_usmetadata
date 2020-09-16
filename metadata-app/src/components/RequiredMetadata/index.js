@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import slugify from 'slugify';
 import WrappedField from '../WrappedField';
 import TagsAutocomplete from '../TagsAutocomplete';
 import { ReactComponent as Info } from '../../img/info.svg';
@@ -14,10 +15,6 @@ const RequiredMetadata = (props) => {
   const [toolTipShown, setToolTipShown] = useState(false);
   // eslint-disable-next-line
   const toggleToolTip = () => setToolTipShown(toolTipShown ? false : true);
-
-  const urlify = (text) => {
-    return text ? text.replace(/\s+/g, '-').toLowerCase() : '';
-  };
 
   const helpTextify = (text) => {
     return <HelpText>{text}</HelpText>;
@@ -77,11 +74,20 @@ const RequiredMetadata = (props) => {
               name="url"
               type="string"
               style={{ display: urlDisabled ? 'none' : 'inline' }}
-              value={values.url || `${baseUrl}${urlify(values.title)}`}
+              value={
+                values.url ||
+                `${baseUrl}${slugify(values.title || '', {
+                  lower: true,
+                  remove: /[*+~.()'"!:@]/g,
+                })}`
+              }
               errors={errors}
             />
             <span className="dataset_url" style={{ display: urlDisabled ? 'inline' : 'none' }}>
-              {`${baseUrl}${urlify(values.title)}`}
+              {`${baseUrl}${slugify(values.title || '', {
+                lower: true,
+                remove: /[*+~.()'"!:@]/g,
+              })}`}
             </span>
 
             <button
@@ -153,7 +159,7 @@ const RequiredMetadata = (props) => {
       <div className="row">
         <WrappedField
           label="Contact Name"
-          name="contactPoint"
+          name="contact_name"
           type="string"
           required
           infoText="This should be the person who can best answer or triage questions about this dataset, either on the metadata or the substance of the data resources."
@@ -163,7 +169,7 @@ const RequiredMetadata = (props) => {
       <div className="row">
         <WrappedField
           label="Contact Email"
-          name="contactEmail"
+          name="contact_email"
           type="string"
           required
           errors={errors}
@@ -172,7 +178,7 @@ const RequiredMetadata = (props) => {
       <div className="row">
         <WrappedField
           label="Unique ID"
-          name="identifier"
+          name="unique_id"
           type="string"
           required
           infoText="This is the ID number or code used within your agency to differentiate this dataset from other datasets."
@@ -182,7 +188,7 @@ const RequiredMetadata = (props) => {
       <div className="row">
         <WrappedField
           label="Public Access level"
-          name="accessLevel"
+          name="public_access_level"
           type="select"
           choices={['public', 'restricted public', 'non-public']}
           className="error-msg"
@@ -193,7 +199,7 @@ const RequiredMetadata = (props) => {
       <div className="row">
         <WrappedField
           label="Meets Agency Data Quality"
-          name="dataQuality"
+          name="data_quality"
           type="select"
           choices={['Yes', 'No']}
           className="error-msg"
@@ -204,7 +210,7 @@ const RequiredMetadata = (props) => {
       <div className="row">
         <WrappedField
           label="License"
-          name="license"
+          name="license_new"
           type="select"
           choices={['MIT', 'Open Source License', 'Others']}
           className="error-msg"
@@ -217,7 +223,7 @@ const RequiredMetadata = (props) => {
           helptext={helpTextify(
             `If you selected “Other”, please specify the name of your License*'`
           )}
-          disabled={values.license !== 'Others'}
+          disabled={values.license_new !== 'Others'}
           errors={errors}
           required
         />
@@ -227,12 +233,17 @@ const RequiredMetadata = (props) => {
         {errors && errors.rights && <span className="error-msg">{errors.rights}</span>}
         <Radio
           label="My dataset is public"
-          name="rights"
+          name="access_level_comment"
           errors={errors}
           value="true"
           id="rights_option_1"
         />
-        <Radio label="My dataset is not public" name="rights" value="false" id="rights_option_2" />
+        <Radio
+          label="My dataset is not public"
+          name="access_level_comment"
+          value="false"
+          id="rights_option_2"
+        />
         <WrappedField
           name="rights_desc"
           type="string"
@@ -241,7 +252,7 @@ const RequiredMetadata = (props) => {
           helptext={helpTextify(
             'If your dataset is not public, please add an explanation of rights and feel free to include any instructions on restrictions, or how to access a restricted file (max 255 characters)*'
           )}
-          disabled={values.rights === 'true'}
+          disabled={values.access_level_comment === 'true'}
         />
       </div>
 

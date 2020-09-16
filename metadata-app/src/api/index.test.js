@@ -4,7 +4,7 @@ import mocks from '../mocks/apiMocks';
 
 // eslint-disable-next-line
 console.log('------------ Run API Tests ------------');
-const { encodeExtras, decodeExtras } = Api.helpers;
+const { decodeExtras } = Api.helpers;
 
 const { fetchDataset, createDataset, updateDataset } = Api;
 const {
@@ -16,24 +16,6 @@ const {
 } = mocks;
 
 describe('Test helpers', () => {
-  describe('Encode extras', () => {
-    it('should encode extras for Api consumption', () => {
-      const opts = {
-        accessLevel: 123,
-        publisher: 'Willie onka',
-        rights: 'Eternal',
-      };
-
-      const encoded = encodeExtras(opts);
-      const accessLevel = encoded.extras.filter((row) => row.key === 'accessLevel');
-      const temporal = encoded.extras.filter((row) => row.key === 'temporal');
-
-      expect(encoded.extras).toBeInstanceOf(Array);
-      expect(accessLevel[0].value).toBe(123);
-      expect(temporal[0].value).toBe('');
-    });
-  });
-
   describe('Decode extras', () => {
     it('should correctly parse extras array', () => {
       const opts = {

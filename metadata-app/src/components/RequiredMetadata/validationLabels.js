@@ -9,6 +9,6 @@ export default {
   dataQuality: 'Access Level',
   rights: 'Rights',
   spatial: 'Spatial',
-  license: 'License',
+  license_new: 'License',
   temporal: 'Temporal',
 };

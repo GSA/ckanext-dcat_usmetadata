@@ -2,15 +2,15 @@ import * as yup from 'yup';
 
 export default yup.object().shape({
   title: yup.string().required('Title is required'),
-  contactPoint: yup.string().required('Contact is required'),
-  identifier: yup.string().required('Unique ID is required'),
-  contactEmail: yup.string().email('Must be valid email').required('Contact email is required'),
+  contact_name: yup.string().required('Contact is required'),
+  unique_id: yup.string().required('Unique ID is required'),
+  contact_email: yup.string().email('Must be valid email').required('Contact email is required'),
   description: yup.string().required('Description is required'),
   publisher: yup.string().required('Publisher is required'),
   subagency: yup.string(),
-  accessLevel: yup.string().required('Access level is required'),
-  dataQuality: yup.string().required('Data Quality is required'),
-  rights: yup
+  public_access_level: yup.string().required('Access level is required'),
+  data_quality: yup.string().required('Data Quality is required'),
+  access_level_comment: yup
     .string()
     .required('Rights is required.')
     .test('rights-desc', 'Please add explanation of rights', function validate(value) {
@@ -34,7 +34,7 @@ export default yup.object().shape({
     }),
   spatial_location_desc: yup.string(),
   license_others: yup.string(),
-  license: yup
+  license_new: yup
     .string()
     .required('License is required')
     .test('license-extra', 'Please specify the name of your license', function validate(value) {

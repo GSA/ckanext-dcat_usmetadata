@@ -6,9 +6,10 @@ import * as serviceWorker from './serviceWorker';
 
 const root = document.getElementById('root');
 const apiUrl = root.getAttribute('data-apiUrl') || 'http://localhost:5000/api/3/action/';
-const apiKey = root.getAttribute('data-apiKey') || '2ea2f67c-bf92-4235-8350-5bcc8dc82b64';
+const apiKey = root.getAttribute('data-apiKey') || '7f7c34c8-6ec5-4568-98a6-1bb2da7c2f11';
+// const apiKey = root.getAttribute('data-apiKey') || '2ea2f67c-bf92-4235-8350-5bcc8dc82b64';
 const ownerOrg = root.getAttribute('data-ownerOrg') || '123';
-const datasetId = root.getAttribute('data-datasetId') || '';
+const datasetId = root.getAttribute('data-datasetId') || 't5';
 
 ReactDOM.render(
   <React.StrictMode>
