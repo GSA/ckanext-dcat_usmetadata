@@ -1,68 +1,10 @@
 import axios from 'axios';
 import slugify from 'slugify';
 
-const EXTRAS = [
-  'accessLevel',
-  'accrualPeriodicity',
-  'bureauCode',
-  'category',
-  'contactEmail',
-  'contactPoint',
-  'dataQuality',
-  'dataLevel',
-  'describedBy',
-  'describedByType',
-  'frequency',
-  'homePage',
-  'identifier',
-  'isPartOf',
-  'issued',
-  'landingPage',
-  'language',
-  'license_new',
-  'master',
-  'organization',
-  'publisher',
-  'primaryITInvestmentUIIUSG',
-  'programCode',
-  'references',
-  'rights',
-  'spatial',
-  'spatial_location_desc',
-  'subagency',
-  'systemOfRecordsUSG',
-  'temporal',
-  'temporal_start_date',
-  'temporal_end_date',
-  'themes',
-];
-
 /**
  * HELPERS
  */
 const clone = (param) => JSON.parse(JSON.stringify(param));
-
-/**
- * Encode extras for CKAN 2.8.2 Groups format
- */
-const encodeExtras = (opts) => {
-  const newOpts = clone(opts);
-
-  let extras;
-  if (opts) {
-    extras = EXTRAS.map((key) => {
-      return {
-        key,
-        value: opts[key] || '',
-      };
-    });
-  } else {
-    extras = [{}];
-  }
-
-  newOpts.extras = extras;
-  return newOpts;
-};
 
 /**
  * Decode extras from CKAN 2.8.2 Groups format
@@ -97,9 +39,12 @@ const encodeSupplementalValues = (opts) => {
     delete newOpts.license_others;
   }
 
-  if (opts.rights_desc) {
-    newOpts.rights = opts.rights_desc;
+  // if access_level_comment is false use provided description
+  if (opts.access_level_comment === 'false' && opts.rights_desc) {
+    newOpts.access_level_comment = opts.rights_desc;
     delete newOpts.rights_desc;
+  } else {
+    newOpts.access_level_comment = 'true';
   }
 
   if (opts.spatial_location_desc) {
@@ -136,9 +81,9 @@ const decodeSupplementalValues = (opts) => {
     }
   }
 
-  if (opts.rights) {
-    newOpts.rights_desc = opts.rights;
-    newOpts.rights = 'false';
+  if (opts.access_level_comment !== 'true') {
+    newOpts.rights_desc = opts.access_level_comment;
+    newOpts.access_level_comment = 'false';
   }
 
   if (opts.spatial) {
@@ -264,7 +209,6 @@ export default {
   fetchTags,
   createResource,
   helpers: {
-    encodeExtras,
     decodeExtras,
     clone,
   },

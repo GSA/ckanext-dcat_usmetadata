@@ -10,7 +10,7 @@ export default yup.object().shape({
   subagency: yup.string(),
   public_access_level: yup.string().required('Access level is required'),
   data_quality: yup.string().required('Data Quality is required'),
-  rights: yup
+  access_level_comment: yup
     .string()
     .required('Rights is required.')
     .test('rights-desc', 'Please add explanation of rights', function validate(value) {

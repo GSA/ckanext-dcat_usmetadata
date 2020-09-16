@@ -233,12 +233,17 @@ const RequiredMetadata = (props) => {
         {errors && errors.rights && <span className="error-msg">{errors.rights}</span>}
         <Radio
           label="My dataset is public"
-          name="rights"
+          name="access_level_comment"
           errors={errors}
           value="true"
           id="rights_option_1"
         />
-        <Radio label="My dataset is not public" name="rights" value="false" id="rights_option_2" />
+        <Radio
+          label="My dataset is not public"
+          name="access_level_comment"
+          value="false"
+          id="rights_option_2"
+        />
         <WrappedField
           name="rights_desc"
           type="string"
@@ -247,7 +252,7 @@ const RequiredMetadata = (props) => {
           helptext={helpTextify(
             'If your dataset is not public, please add an explanation of rights and feel free to include any instructions on restrictions, or how to access a restricted file (max 255 characters)*'
           )}
-          disabled={values.rights === 'true'}
+          disabled={values.access_level_comment === 'true'}
         />
       </div>
 
