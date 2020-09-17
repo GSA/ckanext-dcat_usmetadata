@@ -41,24 +41,7 @@ const helpTexts = {
   ),
 };
 
-const AdditionalMetadata = (props) => {
-  const { values } = props;
-  const formValues = values || {};
-  const {
-    dataQualityUSG,
-    theme,
-    describedBy,
-    describedByType,
-    accrualPeriodicity,
-    landingPage,
-    language,
-    primaryITInvestmentUIIUSG,
-    references,
-    issued,
-    systemOfRecordsUSG,
-    isPartOf,
-  } = formValues;
-
+const AdditionalMetadata = () => {
   return (
     <div className="usa-form-custom">
       <section id="section-basic-mega-menu" className="site-component-section">
@@ -76,7 +59,6 @@ const AdditionalMetadata = (props) => {
             name="dataQualityUSG"
             type="select"
             choices={['Yes', 'No']}
-            value={dataQualityUSG}
           />
         </div>
       </div>
@@ -84,11 +66,10 @@ const AdditionalMetadata = (props) => {
         <div className="grid-col-12">
           <WrappedField
             label="Themes"
-            name="theme"
+            name="category"
             type="string"
             helptext="Main thematic category of the dataset.  If this dataset should be included in geoplatform.gov, please enter “geospatial” as the theme.  Start typing to add themes."
             infoText={helpTexts.theme}
-            value={theme}
           />
         </div>
       </div>
@@ -96,31 +77,48 @@ const AdditionalMetadata = (props) => {
         <div className="grid-col-12">
           <WrappedField
             label="Data Dictionary URL"
-            name="describedBy"
+            name="data_dictionary"
             type="string"
             helptext='Please include "http://" at the beginning of your URL.'
             infoText={helpTexts.describedBy}
-            value={describedBy}
           />
         </div>
       </div>
       <div className="row">
         <div className="grid-col-12">
-          <WrappedField
-            label="Data Dictionary Type"
-            name="describedByType"
-            type="string"
-            value={describedByType}
-          />
+          <WrappedField label="Data Dictionary Type" name="data_dictionary_type" type="string" />
         </div>
       </div>
       <div className="row">
         <div className="grid-col-12">
           <WrappedField
             label="Data Publishing Frequency"
-            name="accrualPeriodicity"
-            type="string"
-            value={accrualPeriodicity}
+            name="accrual_periodicity"
+            type="select"
+            choices={[
+              'Decennial',
+              'Quadrennial',
+              'Annual',
+              'Bimonthly',
+              'Semiweekly',
+              'Daily',
+              'Biweekly',
+              'Semiannual',
+              'Biennial',
+              'Triennial',
+              'Three times a week',
+              'Three times a month',
+              'Every five years',
+              'Every eight years',
+              'Continuously updated',
+              'Monthly',
+              'Quarterly',
+              'Semimonthly',
+              'Three times a year',
+              'Weekly',
+              'Hourly',
+              'Irregular',
+            ]}
           />
         </div>
       </div>
@@ -128,31 +126,24 @@ const AdditionalMetadata = (props) => {
         <div className="grid-col-12">
           <WrappedField
             label="Dataset Landing Page URL"
-            name="landingPage"
+            name="homepage_url"
             type="string"
             helptext='Please include "http://" at the beginning of your URL.'
             infoText={helpTexts.landingPage}
-            value={landingPage}
           />
         </div>
       </div>
       <div className="row">
         <div className="grid-col-12">
-          <WrappedField
-            label="Language - Language Subtag"
-            name="language"
-            type="string"
-            value={language}
-          />
+          <WrappedField label="Language - Language Subtag" name="language" type="string" />
         </div>
       </div>
       <div className="row">
         <div className="grid-col-12">
           <WrappedField
             label="Dataset's IT Unique Investment Identifier"
-            name="primaryITInvestmentUIIUSG"
+            name="primary_it_investment_uii"
             type="string"
-            value={primaryITInvestmentUIIUSG}
             infoText={helpTexts.primaryITInvestmentUIIUSG}
           />
         </div>
@@ -161,9 +152,8 @@ const AdditionalMetadata = (props) => {
         <div className="grid-col-12">
           <WrappedField
             label="Related Documents"
-            name="references"
+            name="related_documents"
             type="string"
-            value={references}
             infoText={helpTexts.references}
           />
         </div>
@@ -172,9 +162,8 @@ const AdditionalMetadata = (props) => {
         <div className="grid-col-12">
           <WrappedField
             label="Release Date"
-            name="issued"
+            name="release_date"
             type="date"
-            value={issued}
             infoText={helpTexts.references}
           />
         </div>
@@ -183,21 +172,15 @@ const AdditionalMetadata = (props) => {
         <div className="grid-col-12">
           <WrappedField
             label="System of Records Notice URL"
-            name="systemOfRecordsUSG"
+            name="system_of_records"
             type="string"
-            value={systemOfRecordsUSG}
             infoText={helpTexts.systemOfRecordsUSG}
           />
         </div>
       </div>
       <div className="row">
         <div className="grid-col-12">
-          <WrappedField
-            label="Select Parent Dataset"
-            name="isPartOf"
-            type="string"
-            value={isPartOf}
-          />
+          <WrappedField label="Select Parent Dataset" name="parent_dataset_id" type="string" />
         </div>
       </div>
       <div className="row">
