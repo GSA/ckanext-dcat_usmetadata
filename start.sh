@@ -30,12 +30,14 @@ if ! (curl --get --fail --silent http://solr:8983/solr/admin/cores \
   --data-urlencode action=status \
   --data-urlencode core=inventory | grep -q segmentsFileSizeInBytes); then
 
+  echo "Creating the SOLR core"
   # Create the solr core
   curl -v --get --fail --silent http://solr:8983/solr/admin/cores \
     --data-urlencode action=create \
     --data-urlencode name=inventory \
     --data-urlencode configSet=ckan2_5
 
+  echo "Reloading the SOLR core"
   # Reload the core
   curl -v --get --fail --silent http://solr:8983/solr/admin/cores \
     --data-urlencode action=reload \

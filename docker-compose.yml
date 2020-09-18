@@ -1,33 +1,33 @@
-version: "3.2"
+version: "3"
 services:
   app:
     build: .
     command: /opt/inventory-app/start.sh
-    env_file:
-      - .env
-    links:
+    environment:
+      DB_CKAN_HOST: db
+      DB_CKAN_USER: ckan
+      DB_CKAN_PASSWORD: pass
+      DB_CKAN_DB: ckan
+    depends_on:
       - db
       - solr
-      - redis
     ports:
-      - "0.0.0.0:${CKAN_PORT}:5000"
+      - "5000:5000"
     volumes:
       - ckan:/usr/lib/ckan
       - ./config:/etc/ckan
       - .:/opt/inventory-app
-      - ckan_storage:/var/lib/ckan
-      - .:/srv/app/src_extensions/dcat_usmetadata
+      
   db:
-    image: ckan/postgresql
-    expose:
-      - "5432"
+    image: datagov/catalog-db:latest
+    environment:
+      POSTGRES_USER: postgres
+      DB_CKAN_USER: ckan
+      DB_CKAN_PASSWORD: pass
+      DB_CKAN_DB: ckan
+
   solr:
     image: datagov/catalog-solr:inventory
-  redis:
-    image: redis:alpine
 
 volumes:
-  ckan_storage:
   ckan:
-  pg_data:
-  solr_data:
