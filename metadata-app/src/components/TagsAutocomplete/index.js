@@ -6,7 +6,7 @@ import Api from '../../api';
 import './index.css';
 
 const TagsAutocomplete = (props) => {
-  const { tags, name, helptext, apiUrl, apiKey } = props;
+  const { tags, name, helptext, apiUrl, apiKey, errors } = props;
   const [suggestions, setSuggestions] = useState([]);
 
   return (
@@ -14,9 +14,12 @@ const TagsAutocomplete = (props) => {
       name={name}
       render={(arrayHelpers) => (
         <div className="react-tags-input grid-col-12">
-          <div id="tags-error" className="error-msg hidden" type="string" placeholder="" value="">
-            Tags are required
-          </div>
+          {errors[name] && (
+            <span className="error-msg">
+              {errors[name]}
+              <br />
+            </span>
+          )}
           {helptext}
           <ReactTags
             tags={tags}
@@ -47,6 +50,7 @@ TagsAutocomplete.propTypes = {
   name: PropTypes.string.isRequired,
   tags: PropTypes.any, // eslint-disable-line
   helptext: PropTypes.any, // eslint-disable-line
+  errors: PropTypes.any, // eslint-disable-line
 };
 
 export default TagsAutocomplete;
