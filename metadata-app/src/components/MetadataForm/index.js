@@ -177,7 +177,7 @@ const MetadataForm = (props) => {
             const id = formValues && formValues.id;
             setFormValues(Object.assign({}, formValues, values));
             if (id) {
-              Api.updateDataset(id, formValues, apiUrl, apiKey)
+              Api.updateDataset(id, values, apiUrl, apiKey)
                 .then((res) => {
                   console.log('Dataset updated successfully', res); // eslint-disable-line
                   setCurrentStep(2);
