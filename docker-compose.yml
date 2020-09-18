@@ -1,8 +1,8 @@
 version: "3.2"
 services:
-  ckan:
-    build:
-      context: ckan-docker
+  app:
+    build: .
+    command: /opt/inventory-app/start.sh
     env_file:
       - .env
     links:
@@ -12,6 +12,9 @@ services:
     ports:
       - "0.0.0.0:${CKAN_PORT}:5000"
     volumes:
+      - ckan:/usr/lib/ckan
+      - ./config:/etc/ckan
+      - .:/opt/inventory-app
       - ckan_storage:/var/lib/ckan
       - .:/srv/app/src_extensions/dcat_usmetadata
   db:
@@ -19,14 +22,12 @@ services:
     expose:
       - "5432"
   solr:
-    image: ckan/solr
-    restart: always
-    expose:
-      - "8983"
+    image: datagov/catalog-solr:inventory
   redis:
     image: redis:alpine
 
 volumes:
   ckan_storage:
+  ckan:
   pg_data:
   solr_data:

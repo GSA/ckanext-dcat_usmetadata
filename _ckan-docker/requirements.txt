@@ -7,7 +7,6 @@
 -e git+https://github.com/GSA/webob.git@ckan-patch#egg=webob
 -e git+https://github.com/GSA/ckanext-dcat_usmetadata.git@f961305#egg=ckanext-dcat_usmetadata
 
-
 Pylons==0.9.7
 
 # ckan dependencies
