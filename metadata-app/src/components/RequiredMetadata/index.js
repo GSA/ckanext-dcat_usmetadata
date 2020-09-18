@@ -198,17 +198,6 @@ const RequiredMetadata = (props) => {
       </div>
       <div className="row">
         <WrappedField
-          label="Meets Agency Data Quality"
-          name="data_quality"
-          type="select"
-          choices={['Yes', 'No']}
-          className="error-msg"
-          errors={errors}
-          required
-        />
-      </div>
-      <div className="row">
-        <WrappedField
           label="License"
           name="license_new"
           type="select"

@@ -24,7 +24,6 @@ export default yup.object().shape({
   publisher: yup.string().required('Publisher is required'),
   subagency: yup.string(),
   public_access_level: yup.string().required('Access level is required'),
-  data_quality: yup.string().required('Data Quality is required'),
   access_level_comment: yup
     .string()
     .required('Rights is required.')
