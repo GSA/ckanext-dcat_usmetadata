@@ -34,9 +34,9 @@ describe('Required Metadata Page', () => {
   });
 
   it('Select with optional fields work', () => {
-    cy.get('select[name=license]').select('MIT');
+    cy.get('select[name=license_new]').select('MIT');
     cy.get('input[name=license_others]').should('be.disabled');
-    cy.get('select[name=license]').select('Others');
+    cy.get('select[name=license_new]').select('Others');
     cy.get('input[name=license_others]').should('be.enabled');
   });
 
@@ -48,7 +48,7 @@ describe('Required Metadata Page', () => {
 
   it('Submit Required Metadata works', () => {
     cy.requiredMetadata();
-    cy.wait(10000);
+    cy.wait(3000);
     cy.contains('Dataset saved successfully');
   });
 });
