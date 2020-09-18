@@ -239,7 +239,7 @@ const MetadataForm = (props) => {
       {currentStep === 2 && (
         <Formik
           initialValues={{
-            resource: ResourceObject,
+            resource: JSON.parse(JSON.stringify(ResourceObject)),
             publish: true,
             savedResources: 0,
             lastSavedResourceName: null,
@@ -248,29 +248,37 @@ const MetadataForm = (props) => {
           validateOnChange={false}
           validateOnBlur={false}
           onSubmit={(values, { setFieldValue }) => {
+            // Check if resource should be created, eg, user added any metadata:
+            const resourceMetadataChanged =
+              JSON.stringify(ResourceObject) !== JSON.stringify(values.resource);
             if (curDatasetId) {
-              Api.createResource(curDatasetId, values.resource, apiUrl, apiKey)
-                .then((res) => {
-                  if (res.status === 200) {
-                    if (values.publish) {
-                      // Redirect to datast page
-                      const apiUrlObject = new URL(apiUrl);
-                      const datasetPageUrl = `${apiUrlObject.origin}/dataset/${curDatasetId}`;
-                      window.location.replace(datasetPageUrl);
-                    } else {
-                      setFieldValue('savedResources', values.savedResources + 1);
-                      setFieldValue('lastSavedResourceName', values.resource.name);
-                      setFieldValue('resource', ResourceObject);
+              const apiUrlObject = new URL(apiUrl);
+              const datasetPageUrl = `${apiUrlObject.origin}/dataset/${curDatasetId}`;
+              if (resourceMetadataChanged) {
+                Api.createResource(curDatasetId, values.resource, apiUrl, apiKey)
+                  .then((res) => {
+                    if (res.status === 200) {
+                      if (values.publish) {
+                        // Redirect to dataset page
+                        window.location.replace(datasetPageUrl);
+                      } else {
+                        setFieldValue('savedResources', values.savedResources + 1);
+                        setFieldValue('lastSavedResourceName', values.resource.name);
+                        setFieldValue('resource', JSON.parse(JSON.stringify(ResourceObject)));
+                      }
                     }
-                  }
-                })
-                .catch((error) => {
-                  const message = JSON.stringify(error);
-                  setAlert(
-                    <AlertBox type="error" heading="Error saving resource(s)" message={message} />
-                  );
-                  console.error('CREATE RESOURCE ERROR', error); // eslint-disable-line
-                });
+                  })
+                  .catch((error) => {
+                    const message = JSON.stringify(error);
+                    setAlert(
+                      <AlertBox type="error" heading="Error saving resource(s)" message={message} />
+                    );
+                    console.error('CREATE RESOURCE ERROR', error); // eslint-disable-line
+                  });
+              } else {
+                // Redirect to dataset page
+                window.location.replace(datasetPageUrl);
+              }
             } else {
               setAlert(
                 <AlertBox
