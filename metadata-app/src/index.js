@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 
 const root = document.getElementById('root');
 const apiUrl = root.getAttribute('data-apiUrl') || 'http://localhost:5000/api/3/action/';
-const apiKey = root.getAttribute('data-apiKey') || '7f7c34c8-6ec5-4568-98a6-1bb2da7c2f11';
+const apiKey = root.getAttribute('data-apiKey') || 'a99bb2cc-c6da-4ea3-acf9-b7eab58c6c42';
 const ownerOrg = root.getAttribute('data-ownerOrg') || '123';
 const datasetId = root.getAttribute('data-datasetId');
 
