@@ -39,7 +39,6 @@ const RequiredMetadata = (props) => {
       <HelpText>
         If you do not see the Publisher for your dataset listed, please contact{' '}
         <a href="mailto:inventory-help@gsa.gov">inventory-help@gsa.gov</a> for further assistance.
-        Start typing to add tags.
       </HelpText>
     ),
   };
