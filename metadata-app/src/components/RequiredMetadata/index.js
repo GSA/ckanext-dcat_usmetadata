@@ -146,14 +146,7 @@ const RequiredMetadata = (props) => {
         />
       </div>
       <div className="row">
-        <WrappedField
-          label="Sub Agency"
-          name="subagency"
-          type="select"
-          choices={['Sub Agency 1 ', 'Sub Agency 2', 'Sub Agency 3', 'Sub-Agency 4']}
-          className="error-msg"
-          errors={errors}
-        />
+        <WrappedField label="Sub Agency" name="subagency" type="string" required errors={errors} />
       </div>
       <div className="row">
         <WrappedField
