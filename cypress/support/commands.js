@@ -24,7 +24,6 @@ Cypress.Commands.add('requiredMetadata', () => {
   cy.get('input[name=contact_email]').type(chance.email());
   cy.get('input[name=unique_id]').type(chance.string({ length: 10 }));
   cy.get('select[name=public_access_level]').select('public');
-  cy.get('select[name=data_quality]').select('Yes');
   cy.get('select[name=license_new]').select('Others');
   cy.get('input[name=license_others]').type(chance.sentence({ words: 3 }));
   cy.get('#rights_option_1')
