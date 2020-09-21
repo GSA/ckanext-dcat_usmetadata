@@ -1,16 +1,11 @@
 version: 2
 jobs:
+  test_local_docker:
     working_directory: ~/ckanext-dcat_usmetadata
     machine: true
     steps:
       - checkout
-      - run:
-          name: Install Docker Compose
-          command: |
-            set -x
-            sudo curl -L "https://github.com/docker/compose/releases/download/1.25.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-            sudo chmod +x /usr/local/bin/docker-compose
-            docker-compose --version
+      - run: make lint-all
       - run:
           name: Start CKAN
           command: |
@@ -28,3 +23,30 @@ jobs:
           name: Run ckanext-dcat_usmetadata Tests
           command: |
             docker-compose exec ckan /bin/bash -c "nosetests --ckan --with-pylons=src_extensions/dcat_usmetadata/docker_test.ini src_extensions/dcat_usmetadata/"
+      - run:
+          name: Install and run cypress
+          command: |
+            npm install && npx cypress run
+
+  build_gsa_ckan_inventory:
+    working_directory: ~/ckanext-dcat_usmetadata
+    machine:
+      image: circleci/classic:201708-01
+    environment:
+      CKANVERSION=inventory
+    steps:
+      - checkout
+      - run:
+          name: install
+          command: /bin/bash bin/ci-build.bash
+      - run:
+          name: test
+          command: /bin/sh bin/ci-run.sh
+      - run: make lint-all
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - test_local_docker
+      - build_gsa_ckan_inventory
