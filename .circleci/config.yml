@@ -5,7 +5,6 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: make lint-all
       - run:
           name: Start CKAN
           command: |
