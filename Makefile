@@ -1,5 +1,7 @@
 .PHONY: all build clean test up
 
+CKAN_HOME := /usr/lib/ckan
+
 ########
 # CKAN APP:
 ########
@@ -13,8 +15,7 @@ clean:
 	docker-compose down -v
 
 test:
-	docker-compose exec ckan /bin/bash -c "nosetests --ckan --with-pylons=/srv/app/src_extensions/dcat_usmetadata/docker_test.ini src_extensions/dcat_usmetadata/"
-
+	docker-compose exec app /bin/bash -c "source $(CKAN_HOME)/bin/activate && nosetests --ckan --with-pylons=test.ini ckanext.dcat_usmetadata.tests"
 up:
 	docker-compose up
 
@@ -22,10 +23,9 @@ up-with-data:
 	docker-compose -f docker-compose.yml -f docker-compose.seed.yml build
 	docker-compose -f docker-compose.yml -f docker-compose.seed.yml up
 
-lint-all:
-	docker-compose up -d
-	docker-compose exec ckan \
-        bash -c "cd $(CKAN_HOME) && \
+lint:
+	docker-compose exec app \
+        bash -c "cd $(CKAN_HOME)/src/ckanext-dcat-usmetadata/ && \
                  pip install --upgrade pip  && \
                          pip install flake8 && \
                                  flake8 . --count --select=E9 --show-source --statistics"
