@@ -23,11 +23,9 @@ const Form = () => (
 test('Renders RequiredMetadata component', () => {
   const { getByText } = render(<Form />);
   const text1 = getByText('Contact Email');
-  const text2 = getByText('Meets Agency Data Quality');
-  const text3 = getByText(
+  const text2 = getByText(
     'The publishing entity (e.g. your agency) and optionally their parent organization(s).'
   );
   expect(text1).toBeInTheDocument();
   expect(text2).toBeInTheDocument();
-  expect(text3).toBeInTheDocument();
 });

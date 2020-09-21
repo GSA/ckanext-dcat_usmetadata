@@ -8,15 +8,16 @@ import './index.css';
 const TagsAutocomplete = (props) => {
   const { tags, name, helptext, apiUrl, apiKey, errors } = props;
   const [suggestions, setSuggestions] = useState([]);
+  const formErrors = errors || {};
 
   return (
     <FieldArray
       name={name}
       render={(arrayHelpers) => (
         <div className="react-tags-input grid-col-12">
-          {errors[name] && (
+          {formErrors[name] && (
             <span className="error-msg">
-              {errors[name]}
+              {formErrors[name]}
               <br />
             </span>
           )}
