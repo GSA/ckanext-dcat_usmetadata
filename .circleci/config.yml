@@ -22,7 +22,7 @@ jobs:
       - run:
           name: Run ckanext-dcat_usmetadata Tests
           command: |
-            $(CKAN_HOME)/bin/activate && docker-compose exec app /bin/bash -c "nosetests --ckan --with-pylons=src_extensions/dcat_usmetadata/docker_test.ini src_extensions/dcat_usmetadata/"
+            source $(CKAN_HOME)/bin/activate && docker-compose exec app /bin/bash -c "nosetests --ckan --with-pylons=src_extensions/dcat_usmetadata/docker_test.ini src_extensions/dcat_usmetadata/"
       - run:
           name: Install and run cypress
           command: |
