@@ -4,7 +4,7 @@ jobs:
     working_directory: ~
     machine: true
     steps:
-      run: echo "Github requires this job for CI"
+      - run: echo "Github requires this job for CI"
   test_local_docker:
     working_directory: ~/ckanext-dcat_usmetadata
     machine: true
