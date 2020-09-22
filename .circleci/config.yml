@@ -3,7 +3,8 @@ jobs:
   build_gsa_ckan_inventory:
     working_directory: ~
     machine: true
-    run: echo "Github requires this job for CI"
+    steps:
+      run: echo "Github requires this job for CI"
   test_local_docker:
     working_directory: ~/ckanext-dcat_usmetadata
     machine: true
