@@ -9,8 +9,8 @@ jobs:
       - run:
           name: Start CKAN
           command: |
-            docker-compose build
-            docker-compose up -d
+            make build
+            make up-with-data
       - run:
           name: install dockerize
           command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
@@ -22,7 +22,7 @@ jobs:
       - run:
           name: Run ckanext-dcat_usmetadata Tests
           command: |
-            docker-compose exec app /bin/bash -c "source $(CKAN_HOME)/bin/activate nosetests --ckan --with-pylons=src_extensions/dcat_usmetadata/docker_test.ini src_extensions/dcat_usmetadata/"
+            docker-compose exec app /bin/bash -c "source $(CKAN_HOME)/bin/activate && nosetests --ckan --with-pylons=src_extensions/dcat_usmetadata/docker_test.ini src_extensions/dcat_usmetadata/"
       - run:
           name: Install and run cypress
           command: |
