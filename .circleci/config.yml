@@ -18,6 +18,7 @@ jobs:
       - run:
           name: Wait for db
           command: dockerize -wait http://localhost:5000/dataset -timeout 120s
+      # TODO fix this:
       # - run:
       #     name: Run ckanext-dcat_usmetadata Tests
       #     command: |
@@ -32,4 +33,3 @@ workflows:
   build_and_test:
     jobs:
       - test_local_docker
-      - build_gsa_ckan_inventory
