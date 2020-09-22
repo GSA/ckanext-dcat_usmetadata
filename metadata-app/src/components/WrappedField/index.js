@@ -122,6 +122,25 @@ const WrappedField = (props) => {
               {...rest}
               id={id}
               name={name}
+              disabled={disabled}
+              className={`usa-select ${disabledClass} ${formErrors[name] ? 'field-error' : ''}`}
+              component="select"
+            >
+              <option value="">-Select-</option>
+              {/* eslint-disable */}
+              {choices.map((choice, index) => (
+                <option value={choice} key={choice + index}>
+                  {choice}
+                </option>
+              ))}
+              {/* eslint-enable */}
+            </Field>
+          ),
+          selectWithState: (
+            <Field
+              {...rest}
+              id={id}
+              name={name}
               value={value}
               onChange={onSelect}
               disabled={disabled}
