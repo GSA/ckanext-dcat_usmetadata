@@ -5,11 +5,10 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: make lint-all
+#      - run: make lint-all
       - run:
           name: Start CKAN
           command: |
-            make build
             make up-with-data
       - run:
           name: install dockerize
