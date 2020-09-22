@@ -152,7 +152,7 @@ const AdditionalMetadata = () => {
             label="Language - Language Subtag"
             name="languageSubTag"
             onSelect={handleLanguageSubTag}
-            type="select"
+            type="selectWithState"
             value={state.languageSubTag}
             choices={Object.keys(languages)}
           />
@@ -166,7 +166,7 @@ const AdditionalMetadata = () => {
             name="languageRegSubTag"
             onSelect={handleLanguageRegionalSubTag}
             value={state.languageRegSubTag}
-            type="select"
+            type="selectWithState"
             choices={languages[state.languageSubTag]}
           />
         </div>
