@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import WrappedField from '../WrappedField';
 import HelpText from '../HelpText';
 
+const languages = require('./languages.json');
+
 const helpTexts = {
   theme: <HelpText>Examples include: vegetables, non_starchy, green.</HelpText>,
   describedBy: (
@@ -42,6 +44,17 @@ const helpTexts = {
 };
 
 const AdditionalMetadata = () => {
+  const [state, setState] = React.useState({
+    languageRegSubTag: '',
+    languageSubTag: '',
+  });
+
+  const handleLanguageSubTag = (event) => {
+    setState({ ...state, languageRegSubTag: '', languageSubTag: event.target.value });
+  };
+  const handleLanguageRegionalSubTag = (event) => {
+    setState({ ...state, languageRegSubTag: event.target.value });
+  };
   return (
     <div className="usa-form-custom">
       <section id="section-basic-mega-menu" className="site-component-section">
@@ -135,7 +148,27 @@ const AdditionalMetadata = () => {
       </div>
       <div className="row">
         <div className="grid-col-12">
-          <WrappedField label="Language - Language Subtag" name="language" type="string" />
+          <WrappedField
+            label="Language - Language Subtag"
+            name="languageSubTag"
+            onSelect={handleLanguageSubTag}
+            type="selectWithState"
+            value={state.languageSubTag}
+            choices={Object.keys(languages)}
+          />
+        </div>
+      </div>
+      <div className="row">
+        <div className="grid-col-12">
+          <WrappedField
+            disabled={!state.languageSubTag}
+            label="Language - Regional Subtag"
+            name="languageRegSubTag"
+            onSelect={handleLanguageRegionalSubTag}
+            value={state.languageRegSubTag}
+            type="selectWithState"
+            choices={languages[state.languageSubTag]}
+          />
         </div>
       </div>
       <div className="row">

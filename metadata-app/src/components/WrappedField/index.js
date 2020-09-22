@@ -10,6 +10,7 @@ const WrappedField = (props) => {
   const toggleToolTip = () => setToolTipShown(toolTipShown ? false : true);
 
   const {
+    value,
     name,
     label,
     children,
@@ -20,6 +21,7 @@ const WrappedField = (props) => {
     disabled,
     infoText,
     onClick,
+    onSelect,
     ...rest
   } = props;
 
@@ -120,6 +122,28 @@ const WrappedField = (props) => {
               {...rest}
               id={id}
               name={name}
+              disabled={disabled}
+              className={`usa-select ${disabledClass} ${formErrors[name] ? 'field-error' : ''}`}
+              component="select"
+            >
+              <option value="">-Select-</option>
+              {/* eslint-disable */}
+              {choices.map((choice, index) => (
+                <option value={choice} key={choice + index}>
+                  {choice}
+                </option>
+              ))}
+              {/* eslint-enable */}
+            </Field>
+          ),
+          selectWithState: (
+            <Field
+              {...rest}
+              id={id}
+              name={name}
+              value={value}
+              onChange={onSelect}
+              disabled={disabled}
               className={`usa-select ${disabledClass} ${formErrors[name] ? 'field-error' : ''}`}
               component="select"
             >
@@ -159,6 +183,7 @@ const WrappedField = (props) => {
 };
 
 WrappedField.propTypes = {
+  value: PropTypes.any, // eslint-disable-line
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired, // TODO should be array of possible types'
   required: PropTypes.bool,
@@ -167,6 +192,7 @@ WrappedField.propTypes = {
   errors: PropTypes.any, // eslint-disable-line
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
+  onSelect: PropTypes.func,
   children: PropTypes.arrayOf(PropTypes.element), // TODO array of els
   helptext: PropTypes.oneOfType([PropTypes.element, PropTypes.string]), // TODO can be string, HelpText, <p>, etc
   infoText: PropTypes.oneOfType([PropTypes.element, PropTypes.string]), // TODO can be string, el, etc

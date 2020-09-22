@@ -7,6 +7,19 @@ import { ReactComponent as Info } from '../../img/info.svg';
 import HelpText from '../HelpText';
 import Radio from '../Radio';
 
+const publishersDictionary = require('./publishers.json');
+
+const leafPublishers = publishersDictionary.map((item) => {
+  return (
+    item.publisher_5 ||
+    item.publisher_4 ||
+    item.publisher_3 ||
+    item.publisher_2 ||
+    item.publisher_1 ||
+    item.publisher
+  );
+});
+
 const RequiredMetadata = (props) => {
   const { values, errors, apiUrl, apiKey } = props;
 
@@ -39,7 +52,6 @@ const RequiredMetadata = (props) => {
       <HelpText>
         If you do not see the Publisher for your dataset listed, please contact{' '}
         <a href="mailto:inventory-help@gsa.gov">inventory-help@gsa.gov</a> for further assistance.
-        Start typing to add tags.
       </HelpText>
     ),
   };
@@ -138,7 +150,7 @@ const RequiredMetadata = (props) => {
           label="Publisher"
           name="publisher"
           type="select"
-          choices={['Publisher 1 ', 'Publisher 2', 'Publisher 3', 'Publisher 4']}
+          choices={leafPublishers}
           required
           className="error-msg"
           helptext={helpTexts.select}
@@ -147,14 +159,7 @@ const RequiredMetadata = (props) => {
         />
       </div>
       <div className="row">
-        <WrappedField
-          label="Sub Agency"
-          name="subagency"
-          type="select"
-          choices={['Sub Agency 1 ', 'Sub Agency 2', 'Sub Agency 3', 'Sub-Agency 4']}
-          className="error-msg"
-          errors={errors}
-        />
+        <WrappedField label="Sub Agency" name="subagency" type="string" required errors={errors} />
       </div>
       <div className="row">
         <WrappedField
