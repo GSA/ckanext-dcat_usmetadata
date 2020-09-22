@@ -28,4 +28,6 @@ test('Renders RequiredMetadata component', () => {
   expect(text1).toBeInTheDocument();
   expect(text2).toBeInTheDocument();
   expect(text3).toBeInTheDocument();
+  expect(getByText('Language - Language Subtag')).toBeInTheDocument();
+  expect(getByText('Language - Regional Subtag')).toBeInTheDocument();
 });
