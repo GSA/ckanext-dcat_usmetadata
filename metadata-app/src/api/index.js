@@ -59,7 +59,7 @@ const encodeSupplementalValues = (opts) => {
     delete newOpts.temporal_start_date;
     delete newOpts.temporal_end_date;
   } else {
-    newOpts.temporal = 'false';
+    delete newOpts.temporal;
   }
 
   return newOpts;
