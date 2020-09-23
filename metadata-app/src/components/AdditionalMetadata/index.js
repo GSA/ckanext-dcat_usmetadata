@@ -43,18 +43,9 @@ const helpTexts = {
   ),
 };
 
-const AdditionalMetadata = () => {
-  const [state, setState] = React.useState({
-    languageRegSubTag: '',
-    languageSubTag: '',
-  });
+const AdditionalMetadata = (props) => {
+  const { values } = props;
 
-  const handleLanguageSubTag = (event) => {
-    setState({ ...state, languageRegSubTag: '', languageSubTag: event.target.value });
-  };
-  const handleLanguageRegionalSubTag = (event) => {
-    setState({ ...state, languageRegSubTag: event.target.value });
-  };
   return (
     <div className="usa-form-custom">
       <section id="section-basic-mega-menu" className="site-component-section">
@@ -151,9 +142,7 @@ const AdditionalMetadata = () => {
           <WrappedField
             label="Language - Language Subtag"
             name="languageSubTag"
-            onSelect={handleLanguageSubTag}
-            type="selectWithState"
-            value={state.languageSubTag}
+            type="select"
             choices={Object.keys(languages)}
           />
         </div>
@@ -161,13 +150,11 @@ const AdditionalMetadata = () => {
       <div className="row">
         <div className="grid-col-12">
           <WrappedField
-            disabled={!state.languageSubTag}
+            disabled={!values.languageSubTag}
             label="Language - Regional Subtag"
             name="languageRegSubTag"
-            onSelect={handleLanguageRegionalSubTag}
-            value={state.languageRegSubTag}
-            type="selectWithState"
-            choices={languages[state.languageSubTag]}
+            type="select"
+            choices={languages[values.languageSubTag]}
           />
         </div>
       </div>
@@ -236,7 +223,8 @@ AdditionalMetadata.propTypes = {
     describedByType: PropTypes.string,
     accrualPeriodicity: PropTypes.string,
     landingPage: PropTypes.string,
-    language: PropTypes.string,
+    languageSubTag: PropTypes.string,
+    languageRegSubTag: PropTypes.string,
     primaryITInvestmentUIIUSG: PropTypes.string,
     references: PropTypes.string,
     issued: PropTypes.string,

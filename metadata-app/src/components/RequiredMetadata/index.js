@@ -9,16 +9,18 @@ import Radio from '../Radio';
 
 const publishersDictionary = require('./publishers.json');
 
-const leafPublishers = publishersDictionary.map((item) => {
-  return (
-    item.publisher_5 ||
-    item.publisher_4 ||
-    item.publisher_3 ||
-    item.publisher_2 ||
-    item.publisher_1 ||
-    item.publisher
-  );
-});
+const leafPublishers = publishersDictionary
+  .map((item) => {
+    return (
+      item.publisher_5 ||
+      item.publisher_4 ||
+      item.publisher_3 ||
+      item.publisher_2 ||
+      item.publisher_1 ||
+      item.publisher
+    );
+  })
+  .concat(['Other']);
 
 const RequiredMetadata = (props) => {
   const { values, errors, apiUrl, apiKey } = props;
@@ -156,6 +158,16 @@ const RequiredMetadata = (props) => {
           helptext={helpTexts.select}
           infoText="The publishing entity (e.g. your agency) and optionally their parent organization(s)."
           errors={errors}
+        />
+        <WrappedField
+          name="publisher_other"
+          type="string"
+          helptext={helpTextify(
+            `If you selected “Other”, please specify the name of your Publisher`
+          )}
+          disabled={values.publisher !== 'Other'}
+          errors={errors}
+          required
         />
       </div>
       <div className="row">

@@ -14,7 +14,7 @@ const TagsAutocomplete = (props) => {
       name={name}
       render={(arrayHelpers) => (
         <div className="react-tags-input grid-col-12">
-          {errors[name] && (
+          {errors && errors[name] && (
             <span className="error-msg">
               {errors[name]}
               <br />

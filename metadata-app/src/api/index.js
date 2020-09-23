@@ -34,6 +34,11 @@ const encodeSupplementalValues = (opts) => {
     }, '');
   }
 
+  if (opts.publisher_other) {
+    newOpts.publisher = opts.publisher_other;
+    delete newOpts.publisher_other;
+  }
+
   if (opts.license_others) {
     newOpts.license_new = opts.license_others;
     delete newOpts.license_others;
@@ -61,6 +66,15 @@ const encodeSupplementalValues = (opts) => {
   } else {
     newOpts.temporal = 'false';
   }
+
+  // Language field should be constructed from language subtag and language
+  // regional subtag:
+  if (opts.languageSubTag) {
+    newOpts.language =
+      opts.languageSubTag + (opts.languageRegSubTag && `-${opts.languageRegSubTag}`);
+  }
+  delete newOpts.languageSubTag;
+  delete newOpts.languageRegSubTag;
 
   return newOpts;
 };
