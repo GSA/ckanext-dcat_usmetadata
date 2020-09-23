@@ -1,83 +1,432 @@
-{
-  "art": ["lojban"],
-  "az": ["Arab", "Cyrl", "Latn"],
-  "be": ["Latn"],
-  "bs": ["Cyrl", "Latn"],
-  "cel": ["gaulish"],
-  "de": ["1901", "1996", "AT-1901", "AT-1996", "CH-1901", "CH-1996", "DE-1901", "DE-1996"],
-  "el": ["Latn"],
-  "en": ["boont", "GB-oed", "scouse"],
-  "es": ["419"],
-  "i": [
-    "ami",
-    "bnn",
-    "default",
-    "enochian",
-    "hak",
-    "klingon",
-    "lux",
-    "mingo",
-    "navajo",
-    "pwn",
-    "tao",
-    "tay",
-    "tsu"
-  ],
-  "iu": ["Cans", "Latn"],
-  "mn": ["Cyrl", "Mong"],
-  "no": ["bok", "nyn"],
-  "sgn": [
-    "BE-fr",
-    "BE-nl",
-    "BR",
-    "CH-de",
-    "CO",
-    "DE",
-    "DK",
-    "ES",
-    "FR",
-    "GB",
-    "GR",
-    "IE",
-    "IT",
-    "JP",
-    "MX",
-    "NI",
-    "NL",
-    "NO",
-    "PT",
-    "SE",
-    "US",
-    "ZA"
-  ],
-  "sl": ["nedis", "rozaj"],
-  "sr": ["Cyrl", "Latn"],
-  "tg": ["Arab", "Cyrl"],
-  "uz": ["Cyrl", "Latn"],
-  "yi": ["latn"],
-  "zh": [
-    "cmn",
-    "cmn-Hans",
-    "cmn-Hant",
-    "Hans",
-    "Hans-CN",
-    "Hans-HK",
-    "Hans-MO",
-    "Hans-SG",
-    "Hans-TW",
-    "Hant",
-    "Hant-CN",
-    "Hant-HK",
-    "Hant-MO",
-    "Hant-SG",
-    "Hant-TW",
-    "gan",
-    "guoyu",
-    "hakka",
-    "min",
-    "min-nan",
-    "wuu",
-    "xiang",
-    "yue"
-  ]
-}
+[
+  {
+    "value": "af",
+    "label": "Afrikaans ",
+    "regions": [{ "value": "ZA", "label": "South Africa" }]
+  },
+  {
+    "value": "sq",
+    "label": "Albanian ",
+    "regions": [{ "value": "AL", "label": "Albania" }]
+  },
+  {
+    "value": "ar",
+    "label": "Arabic ",
+    "regions": [
+      { "value": "DZ", "label": "Algeria" },
+      { "value": "BH", "label": "Bahrain" },
+      { "value": "EG", "label": "Egypt" },
+      { "value": "IQ", "label": "Iraq" },
+      { "value": "JO", "label": "Jordan" },
+      { "value": "KW", "label": "Kuwait" },
+      { "value": "LB", "label": "Lebanon" },
+      { "value": "LY", "label": "Libya" },
+      { "value": "MA", "label": "Morocco" },
+      { "value": "OM", "label": "Oman" },
+      { "value": "QA", "label": "Qatar" },
+      { "value": "SA", "label": "Saudi Arabia" },
+      { "value": "SY", "label": "Syria" },
+      { "value": "TN", "label": "Tunisia" },
+      { "value": "AE", "label": "United Arab Emirates" },
+      { "value": "YE", "label": "Yemen" }
+    ]
+  },
+  {
+    "value": "hy",
+    "label": "Armenian ",
+    "regions": [{ "value": "AM", "label": "Armenia" }]
+  },
+  {
+    "value": "Cy",
+    "label": "Uzbek (Cyrillic) ",
+    "regions": [
+      { "value": "az", "label": "Azerbaijan" },
+      { "value": "sr", "label": "Serbia" },
+      { "value": "uz", "label": "Uzbekistan" }
+    ]
+  },
+  {
+    "value": "Lt",
+    "label": "Uzbek (Latin) ",
+    "regions": [
+      { "value": "az", "label": "Azerbaijan" },
+      { "value": "sr", "label": "Serbia" },
+      { "value": "uz", "label": "Uzbekistan" }
+    ]
+  },
+  {
+    "value": "eu",
+    "label": "Basque ",
+    "regions": [{ "value": "ES", "label": "Basque" }]
+  },
+  {
+    "value": "be",
+    "label": "Belarusian ",
+    "regions": [{ "value": "BY", "label": "Belarus" }]
+  },
+  {
+    "value": "bg",
+    "label": "Bulgarian ",
+    "regions": [{ "value": "BG", "label": "Bulgaria" }]
+  },
+  {
+    "value": "ca",
+    "label": "Catalan ",
+    "regions": [{ "value": "ES", "label": "Catalan" }]
+  },
+  {
+    "value": "zh",
+    "label": "Chinese",
+    "regions": [
+      { "value": "CN", "label": "China" },
+      { "value": "HK", "label": "Hong Kong SAR" },
+      { "value": "MO", "label": "Macau SAR" },
+      { "value": "SG", "label": "Singapore" },
+      { "value": "TW", "label": "Taiwan" },
+      { "value": "CHS", "label": "Chinese (Simplified)" },
+      { "value": "CHT", "label": "Chinese (Traditional)" }
+    ]
+  },
+  {
+    "value": "hr",
+    "label": "Croatian ",
+    "regions": [{ "value": "HR", "label": "Croatia" }]
+  },
+  {
+    "value": "cs",
+    "label": "Czech ",
+    "regions": [{ "value": "CZ", "label": "Czech Republic" }]
+  },
+  {
+    "value": "da",
+    "label": "Danish ",
+    "regions": [{ "value": "DK", "label": "Denmark" }]
+  },
+  {
+    "value": "div",
+    "label": "Dhivehi ",
+    "regions": [{ "value": "MV", "label": "Maldives" }]
+  },
+  {
+    "value": "nl",
+    "label": "Dutch ",
+    "regions": [
+      { "value": "BE", "label": "Belgium" },
+      { "value": "NL", "label": "The Netherlands" }
+    ]
+  },
+  {
+    "value": "en",
+    "label": "English ",
+    "regions": [
+      { "value": "AU", "label": "Australia" },
+      { "value": "BZ", "label": "Belize" },
+      { "value": "CA", "label": "Canada" },
+      { "value": "CB", "label": "Caribbean" },
+      { "value": "IE", "label": "Ireland" },
+      { "value": "JM", "label": "Jamaica" },
+      { "value": "NZ", "label": "New Zealand" },
+      { "value": "PH", "label": "Philippines" },
+      { "value": "ZA", "label": "South Africa" },
+      { "value": "TT", "label": "Trinidad and Tobago" },
+      { "value": "GB", "label": "United Kingdom" },
+      { "value": "US", "label": "United States" },
+      { "value": "ZW", "label": "Zimbabwe" }
+    ]
+  },
+  {
+    "value": "et",
+    "label": "Estonian ",
+    "regions": [{ "value": "EE", "label": "Estonia" }]
+  },
+  {
+    "value": "fo",
+    "label": "Faroese ",
+    "regions": [{ "value": "FO", "label": "Faroe Islands" }]
+  },
+  {
+    "value": "fa",
+    "label": "Farsi ",
+    "regions": [{ "value": "IR", "label": "Iran" }]
+  },
+  {
+    "value": "fi",
+    "label": "Finnish ",
+    "regions": [{ "value": "FI", "label": "Finland" }]
+  },
+  {
+    "value": "fr",
+    "label": "French ",
+    "regions": [
+      { "value": "BE", "label": "Belgium" },
+      { "value": "CA", "label": "Canada" },
+      { "value": "FR", "label": "France" },
+      { "value": "LU", "label": "Luxembourg" },
+      { "value": "MC", "label": "Monaco" },
+      { "value": "CH", "label": "Switzerland" }
+    ]
+  },
+  {
+    "value": "gl",
+    "label": "Galician ",
+    "regions": [{ "value": "ES", "label": "Galician" }]
+  },
+  {
+    "value": "ka",
+    "label": "Georgian ",
+    "regions": [{ "value": "GE", "label": "Georgia" }]
+  },
+  {
+    "value": "de",
+    "label": "German ",
+    "regions": [
+      { "value": "AT", "label": "Austria" },
+      { "value": "DE", "label": "Germany" },
+      { "value": "LI", "label": "Liechtenstein" },
+      { "value": "LU", "label": "Luxembourg" },
+      { "value": "CH", "label": "Switzerland" }
+    ]
+  },
+  {
+    "value": "el",
+    "label": "Greek ",
+    "regions": [{ "value": "GR", "label": "Greece" }]
+  },
+  {
+    "value": "gu",
+    "label": "Gujarati ",
+    "regions": [{ "value": "IN", "label": "India" }]
+  },
+  {
+    "value": "he",
+    "label": "Hebrew ",
+    "regions": [{ "value": "IL", "label": "Israel" }]
+  },
+  {
+    "value": "hi",
+    "label": "Hindi ",
+    "regions": [{ "value": "IN", "label": "India" }]
+  },
+  {
+    "value": "hu",
+    "label": "Hungarian ",
+    "regions": [{ "value": "HU", "label": "Hungary" }]
+  },
+  {
+    "value": "is",
+    "label": "Icelandic ",
+    "regions": [{ "value": "IS", "label": "Iceland" }]
+  },
+  {
+    "value": "id",
+    "label": "Indonesian ",
+    "regions": [{ "value": "ID", "label": "Indonesia" }]
+  },
+  {
+    "value": "it",
+    "label": "Italian ",
+    "regions": [
+      { "value": "IT", "label": "Italy" },
+      { "value": "CH", "label": "Switzerland" }
+    ]
+  },
+  {
+    "value": "ja",
+    "label": "Japanese ",
+    "regions": [{ "value": "JP", "label": "Japan" }]
+  },
+  {
+    "value": "kn",
+    "label": "Kannada ",
+    "regions": [{ "value": "IN", "label": "India" }]
+  },
+  {
+    "value": "kk",
+    "label": "Kazakh ",
+    "regions": [{ "value": "KZ", "label": "Kazakhstan" }]
+  },
+  {
+    "value": "kok",
+    "label": "Konkani ",
+    "regions": [{ "value": "IN", "label": "India" }]
+  },
+  {
+    "value": "ko",
+    "label": "Korean ",
+    "regions": [{ "value": "KR", "label": "Korea" }]
+  },
+  {
+    "value": "ky",
+    "label": "Kyrgyz ",
+    "regions": [{ "value": "KZ", "label": "Kazakhstan" }]
+  },
+  {
+    "value": "lv",
+    "label": "Latvian ",
+    "regions": [{ "value": "LV", "label": "Latvia" }]
+  },
+  {
+    "value": "lt",
+    "label": "Lithuanian ",
+    "regions": [{ "value": "LT", "label": "Lithuania" }]
+  },
+  {
+    "value": "mk",
+    "label": "Macedonian",
+    "regions": [{ "value": "MK", "label": "Macedonian (FYROM)" }]
+  },
+  {
+    "value": "ms",
+    "label": "Malay ",
+    "regions": [
+      { "value": "BN", "label": "Brunei" },
+      { "value": "MY", "label": "Malaysia" }
+    ]
+  },
+  {
+    "value": "mr",
+    "label": "Marathi ",
+    "regions": [{ "value": "IN", "label": "India" }]
+  },
+  {
+    "value": "mn",
+    "label": "Mongolian ",
+    "regions": [{ "value": "MN", "label": "Mongolia" }]
+  },
+  {
+    "value": "nb",
+    "label": "Norwegian (Bokmål) ",
+    "regions": [{ "value": "NO", "label": "Norway" }]
+  },
+  {
+    "value": "nn",
+    "label": "Norwegian (Nynorsk) ",
+    "regions": [{ "value": "NO", "label": "Norway" }]
+  },
+  {
+    "value": "pl",
+    "label": "Polish ",
+    "regions": [{ "value": "PL", "label": "Poland" }]
+  },
+  {
+    "value": "pt",
+    "label": "Portuguese ",
+    "regions": [
+      { "value": "BR", "label": "Brazil" },
+      { "value": "PT", "label": "Portugal" }
+    ]
+  },
+  {
+    "value": "pa",
+    "label": "Punjabi ",
+    "regions": [{ "value": "IN", "label": "India" }]
+  },
+  {
+    "value": "ro",
+    "label": "Romanian ",
+    "regions": [{ "value": "RO", "label": "Romania" }]
+  },
+  {
+    "value": "ru",
+    "label": "Russian ",
+    "regions": [{ "value": "RU", "label": "Russia" }]
+  },
+  {
+    "value": "sa",
+    "label": "Sanskrit ",
+    "regions": [{ "value": "IN", "label": "India" }]
+  },
+  {
+    "value": "sk",
+    "label": "Slovak ",
+    "regions": [{ "value": "SK", "label": "Slovakia" }]
+  },
+  {
+    "value": "sl",
+    "label": "Slovenian ",
+    "regions": [{ "value": "SI", "label": "Slovenia" }]
+  },
+  {
+    "value": "es",
+    "label": "Spanish ",
+    "regions": [
+      { "value": "AR", "label": "Argentina" },
+      { "value": "BO", "label": "Bolivia" },
+      { "value": "CL", "label": "Chile" },
+      { "value": "CO", "label": "Colombia" },
+      { "value": "CR", "label": "Costa Rica" },
+      { "value": "DO", "label": "Dominican Republic" },
+      { "value": "EC", "label": "Ecuador" },
+      { "value": "SV", "label": "El Salvador" },
+      { "value": "GT", "label": "Guatemala" },
+      { "value": "HN", "label": "Honduras" },
+      { "value": "MX", "label": "Mexico" },
+      { "value": "NI", "label": "Nicaragua" },
+      { "value": "PA", "label": "Panama" },
+      { "value": "PY", "label": "Paraguay" },
+      { "value": "PE", "label": "Peru" },
+      { "value": "PR", "label": "Puerto Rico" },
+      { "value": "ES", "label": "Spain" },
+      { "value": "UY", "label": "Uruguay" },
+      { "value": "VE", "label": "Venezuela" }
+    ]
+  },
+  {
+    "value": "sw",
+    "label": "Swahili ",
+    "regions": [{ "value": "KE", "label": "Kenya" }]
+  },
+  {
+    "value": "sv",
+    "label": "Swedish ",
+    "regions": [
+      { "value": "FI", "label": "Finland" },
+      { "value": "SE", "label": "Sweden" }
+    ]
+  },
+  {
+    "value": "syr",
+    "label": "Syriac ",
+    "regions": [{ "value": "SY", "label": "Syria" }]
+  },
+  {
+    "value": "ta",
+    "label": "Tamil ",
+    "regions": [{ "value": "IN", "label": "India" }]
+  },
+  {
+    "value": "tt",
+    "label": "Tatar ",
+    "regions": [{ "value": "RU", "label": "Russia" }]
+  },
+  {
+    "value": "te",
+    "label": "Telugu ",
+    "regions": [{ "value": "IN", "label": "India" }]
+  },
+  {
+    "value": "th",
+    "label": "Thai ",
+    "regions": [{ "value": "TH", "label": "Thailand" }]
+  },
+  {
+    "value": "tr",
+    "label": "Turkish ",
+    "regions": [{ "value": "TR", "label": "Turkey" }]
+  },
+  {
+    "value": "uk",
+    "label": "Ukrainian ",
+    "regions": [{ "value": "UA", "label": "Ukraine" }]
+  },
+  {
+    "value": "ur",
+    "label": "Urdu ",
+    "regions": [{ "value": "PK", "label": "Pakistan" }]
+  },
+  {
+    "value": "vi",
+    "label": "Vietnamese ",
+    "regions": [{ "value": "VN", "label": "Vietnam" }]
+  }
+]
