@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import slugify from 'slugify';
 import WrappedField from '../WrappedField';
+import api from '../../api';
 import TagsAutocomplete from '../TagsAutocomplete';
 import { ReactComponent as Info } from '../../img/info.svg';
 import HelpText from '../HelpText';
@@ -24,6 +25,13 @@ const leafPublishers = publishersDictionary
 
 const RequiredMetadata = (props) => {
   const { values, errors, apiUrl, apiKey } = props;
+
+  const [organizations, setOrganizations] = useState([]);
+  useEffect(() => {
+    api.fetchOrganizationsForUser(apiUrl, apiKey).then((data) => {
+      setOrganizations(data);
+    });
+  }, []);
 
   // RADIO / SELECT Values
   const [urlDisabled, setUrlDisabled] = useState(true);
@@ -145,6 +153,17 @@ const RequiredMetadata = (props) => {
           helptext={helpTextify(
             'Use both technical and non-technical terms to help users find your dataset.'
           )}
+        />
+      </div>
+      <div className="row">
+        <WrappedField
+          label="Organization"
+          name="owner_org"
+          type="select"
+          choices={organizations}
+          required
+          className="error-msg"
+          errors={errors}
         />
       </div>
       <div className="row">
