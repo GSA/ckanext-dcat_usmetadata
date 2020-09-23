@@ -136,25 +136,6 @@ const WrappedField = (props) => {
               {/* eslint-enable */}
             </Field>
           ),
-          selectWithState: (
-            <Field
-              {...rest}
-              id={id}
-              name={name}
-              value={value}
-              onChange={onSelect}
-              disabled={disabled}
-              className={`usa-select ${disabledClass} ${formErrors[name] ? 'field-error' : ''}`}
-              component="select"
-            >
-              <option value="">-Select-</option>
-              {choices.map((choice) => (
-                <option value={choice} key={choice}>
-                  {choice}
-                </option>
-              ))}
-            </Field>
-          ),
           radio: (
             <div>
               <Field {...rest} id={id} name={name} className="usa-radio__input" component="radio" />
@@ -183,7 +164,7 @@ const WrappedField = (props) => {
 };
 
 WrappedField.propTypes = {
-  value: PropTypes.any, // eslint-disable-line
+  value: PropTypes.string,
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired, // TODO should be array of possible types'
   required: PropTypes.bool,
