@@ -5,9 +5,9 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 const root = document.getElementById('root');
-const apiUrl = root.getAttribute('data-apiUrl') || 'http://localhost:5000/api/3/action/';
-const apiKey = root.getAttribute('data-apiKey') || 'a99bb2cc-c6da-4ea3-acf9-b7eab58c6c42';
-const ownerOrg = root.getAttribute('data-ownerOrg') || '123';
+const apiUrl = root.getAttribute('data-apiUrl');
+const apiKey = root.getAttribute('data-apiKey');
+const ownerOrg = root.getAttribute('data-ownerOrg');
 const datasetId = root.getAttribute('data-datasetId');
 
 ReactDOM.render(

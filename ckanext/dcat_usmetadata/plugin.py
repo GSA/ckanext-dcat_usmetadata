@@ -13,7 +13,7 @@ class Dcat_UsmetadataPlugin(plugins.SingletonPlugin):
 
     # IRoutes
     def before_map(self, map):
-        controller = 'ckanext.dcat_usmetadata.controller:CustomPageController'
+        controller = 'ckanext.dcat_usmetadata.controller:MetadataController'
 
         map.connect('/dataset/new-metadata',
                     controller=controller,
