@@ -141,5 +141,9 @@
     "value": null,
     "label": "GeoJSON - Geographic JavaScript Object Notation"
   },
-  { "value": null, "label": "SHP - Shapefile" }
+  { "value": null, "label": "SHP - Shapefile" },
+  {
+    "value": "other",
+    "label": "Other"
+  }
 ]
