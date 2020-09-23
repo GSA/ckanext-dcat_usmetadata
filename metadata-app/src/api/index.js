@@ -215,11 +215,26 @@ const fetchTags = async (str, apiUrl, apiKey) => {
   }
 };
 
+const fetchOrganizationsForUser = async (apiUrl, apiKey) => {
+  try {
+    const url = `${apiUrl}organization_list_for_user`;
+    const res = await axios.get(url, {
+      headers: {
+        'X-CKAN-API-Key': apiKey,
+      },
+    });
+    return res.data.result;
+  } catch (e) {
+    return Promise.reject(e);
+  }
+};
+
 export default {
   createDataset,
   updateDataset,
   fetchDataset,
   fetchTags,
+  fetchOrganizationsForUser,
   createResource,
   helpers: {
     decodeExtras,
