@@ -120,6 +120,7 @@ const WrappedField = (props) => {
           select: (
             <Field
               {...rest}
+              as="select"
               id={id}
               name={name}
               disabled={disabled}
@@ -128,11 +129,15 @@ const WrappedField = (props) => {
             >
               <option value="">-Select-</option>
               {/* eslint-disable */}
-              {choices.map((choice, index) => (
-                <option value={choice} key={choice + index}>
-                  {choice}
-                </option>
-              ))}
+              {choices.map((choice, index) => {
+                const optionValue = choice.value || choice;
+                const optionLabel = choice.label || choice;
+                return (
+                  <option value={optionValue} key={optionValue + index}>
+                    {optionLabel}
+                  </option>
+                );
+              })}
               {/* eslint-enable */}
             </Field>
           ),
