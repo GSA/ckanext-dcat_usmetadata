@@ -76,6 +76,12 @@ const encodeSupplementalValues = (opts) => {
   delete newOpts.languageSubTag;
   delete newOpts.languageRegSubTag;
 
+  // Data Dictionary Type
+  if (opts.describedByType) {
+    newOpts.data_dictionary_type = opts.describedByType;
+    delete newOpts.describedByType;
+  }
+
   return newOpts;
 };
 
@@ -109,6 +115,15 @@ const decodeSupplementalValues = (opts) => {
     [newOpts.temporal_start_date, newOpts.temporal_end_date] = opts.temporal.split('/');
     newOpts.temporal = 'true';
   }
+
+  if (opts.language) {
+    [newOpts.languageSubTag, newOpts.languageRegSubTag] = opts.language.split('-');
+  }
+
+  if (opts.data_dictionary_type) {
+    newOpts.describedByType = opts.data_dictionary_type;
+  }
+
   return newOpts;
 };
 

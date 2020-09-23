@@ -4,6 +4,7 @@ import WrappedField from '../WrappedField';
 import HelpText from '../HelpText';
 
 const languages = require('./languages.json');
+const dataDictTypes = require('./data-dictionary-types');
 
 const helpTexts = {
   theme: <HelpText>Examples include: vegetables, non_starchy, green.</HelpText>,
@@ -95,7 +96,13 @@ const AdditionalMetadata = (props) => {
       </div>
       <div className="row">
         <div className="grid-col-12">
-          <WrappedField label="Data Dictionary Type" name="data_dictionary_type" type="string" />
+          <WrappedField
+            label="Data Dictionary Type"
+            name="describedByType"
+            value={values.describedByType}
+            type="select"
+            choices={dataDictTypes}
+          />
         </div>
       </div>
       <div className="row">
