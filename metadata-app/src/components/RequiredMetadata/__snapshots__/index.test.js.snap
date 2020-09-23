@@ -1,0 +1,2509 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders RequiredMetadata component 1`] = `
+<div>
+  <form>
+    <div
+      class="usa-form-custom"
+    >
+      <section
+        class="site-component-section"
+        id="section-basic-mega-menu"
+      >
+        <p
+          class="site-text-intro"
+        >
+          The following fields are required metadata for each dataset in an agency’s inventory (
+          <a
+            href="https://www.congress.gov/115/plaws/publ435/PLAW-115publ435.pdf"
+          >
+            per Section 202 of the OPEN Government Data Act)
+          </a>
+           
+          For more information about the form fields, consult the
+          <a
+            href="https://resources.data.gov/resources/dcat-us/"
+          >
+            DCAT-US Schema.
+          </a>
+        </p>
+      </section>
+      <div
+        class="row"
+      >
+        <div
+          class="grid-col-12"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              class="usa-label"
+            >
+              Title
+              <span>
+                *
+              </span>
+            </label>
+            <div
+              class="usa-helptext "
+            >
+              <span
+                class="usa-helptext"
+              >
+                Use 
+                <a
+                  href="https://plainlanguage.gov/"
+                >
+                  everyday language
+                </a>
+                 to make the dataset easy to find and understand
+              </span>
+            </div>
+            
+            <input
+              class="usa-input  undefined undefined"
+              name="title"
+              placeholder=""
+              type="string"
+              value=""
+            />
+          </div>
+          <div>
+            <div
+              class="wrapper"
+            >
+              <label
+                class="usa-label"
+              />
+              <div
+                class="usa-helptext "
+              />
+              
+              <input
+                class="usa-input  undefined undefined"
+                name="url"
+                style="display: none;"
+                type="string"
+                value=""
+              />
+            </div>
+            <span
+              class="dataset_url"
+              style="display: inline;"
+            >
+              http://localhost/dataset/
+            </span>
+            <button
+              class="usa-button dataset_url_edit"
+              style="display: inline;"
+              type="button"
+            >
+              Edit
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+          >
+            Description
+            <span>
+              *
+            </span>
+          </label>
+          <div
+            class="usa-helptext "
+          >
+            <span
+              class="usa-helptext"
+            >
+              Write a description (like an abstract) with enough detail to help a user quickly decide if the asset is of interest. You can use
+               
+              <a
+                href="https://www.markdownguide.org/basic-syntax/"
+              >
+                Markdown Formatting
+              </a>
+               here.
+            </span>
+          </div>
+          
+          <textarea
+            class="usa-input  undefined undefined"
+            name="description"
+            rows="6"
+            type="string"
+          />
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <span
+          class="usa-label"
+        >
+          Tags*
+        </span>
+        <div
+          class="react-tags-input grid-col-12"
+        >
+          <span
+            class="usa-helptext"
+          >
+            Use both technical and non-technical terms to help users find your dataset.
+          </span>
+          <div
+            class="react-tags"
+          >
+            <div
+              aria-live="polite"
+              aria-relevant="additions removals"
+              class="react-tags__selected"
+            />
+            <div
+              class="react-tags__search"
+            >
+              <div
+                class="react-tags__search-wrapper"
+              >
+                <input
+                  aria-autocomplete="list"
+                  aria-expanded="false"
+                  aria-label="Add new tag"
+                  aria-owns="ReactTags"
+                  class="react-tags__search-input"
+                  placeholder="Add new tag"
+                  role="combobox"
+                  style="width: 2px;"
+                  value=""
+                />
+                <div
+                  style="position: absolute; width: 0px; height: 0px; visibility: hidden; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+                >
+                  Add new tag
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+          >
+            Publisher
+            <span>
+              *
+            </span>
+            <div
+              class="tooltip "
+            >
+              <svg
+                height="20px"
+                style="margin-left: .5em;"
+                tabindex="0"
+                width="20px"
+              >
+                info.svg
+              </svg>
+              <span
+                class="tooltiptext"
+              >
+                <span
+                  class="close"
+                  role="button"
+                  tabindex="0"
+                >
+                  <span
+                    class="close-tag"
+                  >
+                    ×
+                  </span>
+                </span>
+                <h3>
+                  Publisher
+                </h3>
+                <p>
+                  The publishing entity (e.g. your agency) and optionally their parent organization(s).
+                </p>
+              </span>
+            </div>
+          </label>
+          <div
+            class="usa-helptext "
+          >
+            <span
+              class="usa-helptext"
+            >
+              If you do not see the Publisher for your dataset listed, please contact
+               
+              <a
+                href="mailto:inventory-help@gsa.gov"
+              >
+                inventory-help@gsa.gov
+              </a>
+               for further assistance.
+            </span>
+          </div>
+          
+          <select
+            choices="Agricultural Marketing Service,Agricultural Marketing Service, Department of Agriculture,Agricultural Research Service,Agricultural Research Service, Department of Agriculture,Air Force Art Program,Animal and Plant Health Inspection Service,Animal and Plant Health Inspection Service, Department of Agriculture,Antitrust Division, Department of Justice,Argonne National Laboratory,ARS,asdasd,asdf,ATF - Bureau of Alcohol, Tobacco, Firearms and Explosives,Atmospheric Radiation Measurement (ARM) Climate Research Facility,ATR - Antitrust Division, U.S. Department of Justice,BJS - Bureau of Justice Statistics,BOP - Bureau of Prisons,Bureau of Economic Analysis,Bureau of Engraving and Printing, Department of the Treasury,Bureau of Industry and Security, Department of Commerce,Bureau of Justice Statistics, Department of Justice,Bureau of the Public Debt, Department of the Treasury,CIV - Civil Division,Civil Division, Department of Justice,Civil Rights Division, Department of Justice,CRM - Criminal Division,CRS - Community Relations Service,CRT - Civil Rights Division,DEA - Drug Enforcement Administration,Departmental Management, Department of Agriculture,Departmental Offices, Department of the Treasury,Agricultural Marketing Service,Food and Nutrition Service,Foreign Agricultural Service,Office of Chief Information Officer,Department of Agriculture,Department of Agriculture and Board of Trustees of Michigan State University,Department of Agriculture, OCIO,Department of Commerce,Department of Education,Office of Legacy Management,Office of Small and Disadvantaged Business Utilization (OSDBU),Department of Energy,Department of Energy Office of Legacy Management, Technical Data Manager,Department of Energy Office of Legacy Management, Technical Data Manager,Department of Homeland Security,antitrust division,Department of the Treasury,Department of Treasury,Department of Veteans Affairs,Department of Veteran Affair,Department of Veteran Affairs,Department of Veteran Affairs,Department of Veterans Afairs,Department of Veterans Affair,Department of veterans affairs,OI&T,Department of Veterans Affairs,OI&T,Department of Veterans Affairs,DOC,doe,Idaho Operations Office,MA-90,DOE,DOE,DOE Argonne National Laboratory,DOE ARPA-E,DOE Congressional and Intergovernmental Affairs,Office of Civil Rights,DOE/Energy Information Administration,DOE Energy Policy and Systems Analysis,DOE/Environmental Management Consolidated Business Center,DOE General Counsel,DOE Indian Energy Policy and Programs,DOE Inspector General,DOE Intelligence and Counterintelligence,DOE International Affairs,DOE Loan Programs Office,DOE National Renewable Energy Laboratory,DOE-NREL,DOE Nuclear Energy,DOE Oak Ridge National Laboratory,DOE/Oak Ridge National Laboratory,DOE Offfice of General Council,DOE Office of Chief Financial Officer,DOE Office of Chief Human Capital Officer,DOE Office of Chief Information Officer,DOE Office of Electricity,DOE Office of Energy Efficiency and Renewable Energy,DOE/Office of Environmental Management,DOE/Office of Fossil Energy,DOE/Office of Hearings and Appeals,DOE Office of Legacy Management,Idaho National Laboratory,DOE Office of Nuclear Energy,DOE Office of Science,DOE Office of Scientific and Technical Information,DOE Public Affairs,DOE/Richland Operations and the Office of River Protection,DOE Small and Disadvantaged Business Utilization,Economic Research Service,Economic Research Service, Department of Agriculture,Economic Research Service: Food Economics Division,Economic Research Service:  Market and Trade Economics Division,Economic Research Service: Resource and Rural Economics Division,Economic Research Service, U.S. Department of Agriculture,Election Assistance Commission,Employee Benefits Security Administration,ENRD - Environment and Natural Resources Division,Environmental Protection Agency,EOIR - Executive Office for Immigration Review,EOUSA - Executive Office for United States Attorneys,Farm Service Agency, Department of Agriculture,Farm Service Agency, Department of Agriculture,FBA,FBI,FBI - Federal Bureau of Investigation,Federal Bureau of Investigation, Department of Justice,Federal Deposit Insurance Corporation,Federal Housing Finance Agency,Financial Crimes Enforcement Network, Department of the Treasury,Financial Management Service, Department of the Treasury,Food and Nutrition Service,Food and Nutrition Service,Food and Nutrition Service, Department of Agriculture,Food Safety and Inspection Service,Food Safety and Inspection Service,Foreign Agricultural Service,Foreign Agricultural Service, Department of Agriculture,FPI - Federal Prisons Industries,FSA,General Serices Administration,Office of Government-wide Policy,Office of Governmentwide Policy,Office of the Chief Technology Officer,Data.gov,Technology Transformation Service,General Services Administration,gsa,xxx,GSA,GSA,GSA IT,X,X 2,GSAX,Headquarters,Internal Revenue Service, Department of the Treasury,International Trade Administration,International Trade Administration, Department of Commerce,International Trade Administration, Department of Commerce,Investing in Innovation Fund,IRI,jkhg,Library of Congress,MCC,Merit Systems Protection Board,Millennium Challenge Corporation,N/A,nara,National Agricultural Statistics Service, Department of Agriculture,national-archives-and-records-administration,Office of Innovation,Office of the Federal Register,National Archives and Records Administration,National Archives and Records Administration,National Capital Planning Commission,National Endowment for the Humanities,National Energy Technology Laboratory,National Institute of Food and Agriculture, Department of Agriculture,National Nuclear Security Administration,National Nuclear Security Administration/LANL,National Nuclear Security Administration/SNL,National Oceanic and Atmospheric Administration,National Park Service,National Renewable Energy Laboratory,National Science Foudation,National Science Foundation,National Science Foundation,National Technical Information Service, Department of Commerce,National Telecommunication and Information Administration,National Telecommunication and Information Administration, Department of Commerce,Office of Spectrum Management,National Telecommunications and Information Administration,National Weather Service, Department of Commerce,Nationl Capital Planning Commission,Natural Resources Conservation Service, Colorado State University,NCUA,NIJ - National Institute of Justice,NIST,NRCs,NRCS,NSD - National Security Division,Nuclear Regulatory Commission,Oak Ridge National Laboratory,OEI,Office of Economic Impact and Diversity,Office of Electricity,Office of Energy Efficiency and Renewable Energy,Office of Fossil Energy,Department of Veterans Affairs,Office of Housing, Department of Housing and Urban Development,Office of Information Resources,Office of Inspector General,OFFICE OF  INSPECTOR GENERAL,OFFICE OF INSPECTOR GENERAL,Office of Legal Counsel, Department of Justice,Department of Veterans Affairs,Directives Program,Office of Management and Budget,Office of Navajo and Hopi Indian Relocation,Office of Science,Center for Verification and Evaluation,Office of Special Counsel,Office of the Chief Records Officer, Operations Research and Support Team,Office of the Federal Register, National Archives and Records Administration,Office of the Inspector General,Officer of Inspector General,Officie of Inspector General,OIG - Office of the Inspector General,OIP - Office of Information Policy,OJJDP - Office of Juvenile Justice and Delinquency Prevention,OJP - Office of Justice Programs,OM00,OSCSIT,OSTI,PBGC,Pension Benefit Guaranty Corporation,PPS - Performance Management,PPS - Policy, Planning and Strategy,publisher,Railroad Retirement Board,[[REDACTED*]],REI,Rural Development, Department of Agriculture,sba,set,Social Security Administration,asd,OACT,OCOMM,test,TestingDecheke,sub test 1,sub test org 1,test org 1,test org,test org 2,test org,sub-test org 1,testorga,Test organization,The Department of the Air Force,thisisatest,torgg,TTS,United States Mint, Department of the Treasury,University of Maryland,US Agency for International Development,USASpending.gov,US Attorney's Office, Department of Justice,US Bureau of the Census,US Census Burea, Dept of Commerce,US Census Bureau,,U.S. Census Bureau, Department of Commerce,US Census Bureau, Department of Commerce,US Census Bureau, Dept of Commerce,U.S. Census Bureau, U.S. Department of Commerce,HUD,US Census Bureau, US Department of Commerce,USDA,Federal Grain Inspection Service,Packers and Stockyards Program,Packers and Stockyards Programs,USDA-GIPSA,USDA-Natural Resources Conservation Service,U. S. Department of Agriculture,International Trade Administration,U.S. Department of Commerce,Office for Civil Rights,U.S. Department of Education,US Department of Housing and Urban Development,Bureau of Labor Statisticis,Bureau of Labor Statistics,Bureau of Labor Statistics,Bureau of Labor Statistics,Bureau of Labor Statistics,U.S. Department of Labor Benefits.gov Program,U.S. Department of Labor Bureau of International Labor Affairs,U.S. Department of Labor Bureau of Labor Statistics,U.S. Department of Labor, Bureau of Labor Statistics,U.S. Department of Labor Chief Economist's Office,U.S. Department of Labor Employee Benefits Security Administration,U.S. Department of Labor Employment and Training Administration,U.S. Department of Labor Mine Safety and Health Administration,U.S. Department of Labor Occupational Safety and Health Administration,U.S. Department of Labor Office of Federal Contract Compliance Programs,U.S. Department of Labor Office of Job Corps,U.S. Department of Labor Office of Labor-Management Standards,U.S. Department of Labor Office of Public Affairs,U.S. Department of Labor Office of the Assistant Secretary for Policy,U.S. Department of Labor Office of the Solicitor,U.S. Department of Labor Office of Workers' Compensation Program,U.S. Department of Labor Wage and Hour Division,U.S. Department of State,U.S. Department of the Treasury,US Department of X,U.S. Election Assistance Commission,U.S. Energy Information Administration,U.S. Energy Information Administration,US Forest Service, Department of Agriculture,USMS - United States Marshals Service,U.S Nuclear Regulatory Commission,U.S. Office of Personnel Management,US Patent and Trademark Office, Department of Commerce,USPC - United States Parole Commission,U.S. Securities and Exchange Commission,Workforce Acquisitions Division of the Office of Human Resources Solutions,U.S. Small Business Administration,USTP - U.S. Trustee Program,US Trustee Program, Department of Justice,vasdf34,VHA,Wage and Hour Division,Wisconsin Alumni Research Foundation,Other"
+            class="usa-select  "
+            name="publisher"
+            type="select"
+          >
+            <option
+              value=""
+            >
+              -Select-
+            </option>
+            <option
+              value="Agricultural Marketing Service"
+            >
+              Agricultural Marketing Service
+            </option>
+            <option
+              value="Agricultural Marketing Service, Department of Agriculture"
+            >
+              Agricultural Marketing Service, Department of Agriculture
+            </option>
+            <option
+              value="Agricultural Research Service"
+            >
+              Agricultural Research Service
+            </option>
+            <option
+              value="Agricultural Research Service, Department of Agriculture"
+            >
+              Agricultural Research Service, Department of Agriculture
+            </option>
+            <option
+              value="Air Force Art Program"
+            >
+              Air Force Art Program
+            </option>
+            <option
+              value="Animal and Plant Health Inspection Service"
+            >
+              Animal and Plant Health Inspection Service
+            </option>
+            <option
+              value="Animal and Plant Health Inspection Service, Department of Agriculture"
+            >
+              Animal and Plant Health Inspection Service, Department of Agriculture
+            </option>
+            <option
+              value="Antitrust Division, Department of Justice"
+            >
+              Antitrust Division, Department of Justice
+            </option>
+            <option
+              value="Argonne National Laboratory"
+            >
+              Argonne National Laboratory
+            </option>
+            <option
+              value="ARS"
+            >
+              ARS
+            </option>
+            <option
+              value="asdasd"
+            >
+              asdasd
+            </option>
+            <option
+              value="asdf"
+            >
+              asdf
+            </option>
+            <option
+              value="ATF - Bureau of Alcohol, Tobacco, Firearms and Explosives"
+            >
+              ATF - Bureau of Alcohol, Tobacco, Firearms and Explosives
+            </option>
+            <option
+              value="Atmospheric Radiation Measurement (ARM) Climate Research Facility"
+            >
+              Atmospheric Radiation Measurement (ARM) Climate Research Facility
+            </option>
+            <option
+              value="ATR - Antitrust Division, U.S. Department of Justice"
+            >
+              ATR - Antitrust Division, U.S. Department of Justice
+            </option>
+            <option
+              value="BJS - Bureau of Justice Statistics"
+            >
+              BJS - Bureau of Justice Statistics
+            </option>
+            <option
+              value="BOP - Bureau of Prisons"
+            >
+              BOP - Bureau of Prisons
+            </option>
+            <option
+              value="Bureau of Economic Analysis"
+            >
+              Bureau of Economic Analysis
+            </option>
+            <option
+              value="Bureau of Engraving and Printing, Department of the Treasury"
+            >
+              Bureau of Engraving and Printing, Department of the Treasury
+            </option>
+            <option
+              value="Bureau of Industry and Security, Department of Commerce"
+            >
+              Bureau of Industry and Security, Department of Commerce
+            </option>
+            <option
+              value="Bureau of Justice Statistics, Department of Justice"
+            >
+              Bureau of Justice Statistics, Department of Justice
+            </option>
+            <option
+              value="Bureau of the Public Debt, Department of the Treasury"
+            >
+              Bureau of the Public Debt, Department of the Treasury
+            </option>
+            <option
+              value="CIV - Civil Division"
+            >
+              CIV - Civil Division
+            </option>
+            <option
+              value="Civil Division, Department of Justice"
+            >
+              Civil Division, Department of Justice
+            </option>
+            <option
+              value="Civil Rights Division, Department of Justice"
+            >
+              Civil Rights Division, Department of Justice
+            </option>
+            <option
+              value="CRM - Criminal Division"
+            >
+              CRM - Criminal Division
+            </option>
+            <option
+              value="CRS - Community Relations Service"
+            >
+              CRS - Community Relations Service
+            </option>
+            <option
+              value="CRT - Civil Rights Division"
+            >
+              CRT - Civil Rights Division
+            </option>
+            <option
+              value="DEA - Drug Enforcement Administration"
+            >
+              DEA - Drug Enforcement Administration
+            </option>
+            <option
+              value="Departmental Management, Department of Agriculture"
+            >
+              Departmental Management, Department of Agriculture
+            </option>
+            <option
+              value="Departmental Offices, Department of the Treasury"
+            >
+              Departmental Offices, Department of the Treasury
+            </option>
+            <option
+              value="Agricultural Marketing Service"
+            >
+              Agricultural Marketing Service
+            </option>
+            <option
+              value="Food and Nutrition Service"
+            >
+              Food and Nutrition Service
+            </option>
+            <option
+              value="Foreign Agricultural Service"
+            >
+              Foreign Agricultural Service
+            </option>
+            <option
+              value="Office of Chief Information Officer"
+            >
+              Office of Chief Information Officer
+            </option>
+            <option
+              value="Department of Agriculture"
+            >
+              Department of Agriculture
+            </option>
+            <option
+              value="Department of Agriculture and Board of Trustees of Michigan State University"
+            >
+              Department of Agriculture and Board of Trustees of Michigan State University
+            </option>
+            <option
+              value="Department of Agriculture, OCIO"
+            >
+              Department of Agriculture, OCIO
+            </option>
+            <option
+              value="Department of Commerce"
+            >
+              Department of Commerce
+            </option>
+            <option
+              value="Department of Education"
+            >
+              Department of Education
+            </option>
+            <option
+              value="Office of Legacy Management"
+            >
+              Office of Legacy Management
+            </option>
+            <option
+              value="Office of Small and Disadvantaged Business Utilization (OSDBU)"
+            >
+              Office of Small and Disadvantaged Business Utilization (OSDBU)
+            </option>
+            <option
+              value="Department of Energy"
+            >
+              Department of Energy
+            </option>
+            <option
+              value="Department of Energy Office of Legacy Management, Technical Data Manager"
+            >
+              Department of Energy Office of Legacy Management, Technical Data Manager
+            </option>
+            <option
+              value="Department of Energy Office of Legacy Management, Technical Data Manager"
+            >
+              Department of Energy Office of Legacy Management, Technical Data Manager
+            </option>
+            <option
+              value="Department of Homeland Security"
+            >
+              Department of Homeland Security
+            </option>
+            <option
+              value="antitrust division"
+            >
+              antitrust division
+            </option>
+            <option
+              value="Department of the Treasury"
+            >
+              Department of the Treasury
+            </option>
+            <option
+              value="Department of Treasury"
+            >
+              Department of Treasury
+            </option>
+            <option
+              value="Department of Veteans Affairs"
+            >
+              Department of Veteans Affairs
+            </option>
+            <option
+              value="Department of Veteran Affair"
+            >
+              Department of Veteran Affair
+            </option>
+            <option
+              value="Department of Veteran Affairs"
+            >
+              Department of Veteran Affairs
+            </option>
+            <option
+              value="Department of Veteran Affairs"
+            >
+              Department of Veteran Affairs
+            </option>
+            <option
+              value="Department of Veterans Afairs"
+            >
+              Department of Veterans Afairs
+            </option>
+            <option
+              value="Department of Veterans Affair"
+            >
+              Department of Veterans Affair
+            </option>
+            <option
+              value="Department of veterans affairs"
+            >
+              Department of veterans affairs
+            </option>
+            <option
+              value="OI&T"
+            >
+              OI&T
+            </option>
+            <option
+              value="Department of Veterans Affairs"
+            >
+              Department of Veterans Affairs
+            </option>
+            <option
+              value="OI&T"
+            >
+              OI&T
+            </option>
+            <option
+              value="Department of Veterans Affairs"
+            >
+              Department of Veterans Affairs
+            </option>
+            <option
+              value="DOC"
+            >
+              DOC
+            </option>
+            <option
+              value="doe"
+            >
+              doe
+            </option>
+            <option
+              value="Idaho Operations Office"
+            >
+              Idaho Operations Office
+            </option>
+            <option
+              value="MA-90"
+            >
+              MA-90
+            </option>
+            <option
+              value="DOE"
+            >
+              DOE
+            </option>
+            <option
+              value="DOE"
+            >
+              DOE
+            </option>
+            <option
+              value="DOE Argonne National Laboratory"
+            >
+              DOE Argonne National Laboratory
+            </option>
+            <option
+              value="DOE ARPA-E"
+            >
+              DOE ARPA-E
+            </option>
+            <option
+              value="DOE Congressional and Intergovernmental Affairs"
+            >
+              DOE Congressional and Intergovernmental Affairs
+            </option>
+            <option
+              value="Office of Civil Rights"
+            >
+              Office of Civil Rights
+            </option>
+            <option
+              value="DOE/Energy Information Administration"
+            >
+              DOE/Energy Information Administration
+            </option>
+            <option
+              value="DOE Energy Policy and Systems Analysis"
+            >
+              DOE Energy Policy and Systems Analysis
+            </option>
+            <option
+              value="DOE/Environmental Management Consolidated Business Center"
+            >
+              DOE/Environmental Management Consolidated Business Center
+            </option>
+            <option
+              value="DOE General Counsel"
+            >
+              DOE General Counsel
+            </option>
+            <option
+              value="DOE Indian Energy Policy and Programs"
+            >
+              DOE Indian Energy Policy and Programs
+            </option>
+            <option
+              value="DOE Inspector General"
+            >
+              DOE Inspector General
+            </option>
+            <option
+              value="DOE Intelligence and Counterintelligence"
+            >
+              DOE Intelligence and Counterintelligence
+            </option>
+            <option
+              value="DOE International Affairs"
+            >
+              DOE International Affairs
+            </option>
+            <option
+              value="DOE Loan Programs Office"
+            >
+              DOE Loan Programs Office
+            </option>
+            <option
+              value="DOE National Renewable Energy Laboratory"
+            >
+              DOE National Renewable Energy Laboratory
+            </option>
+            <option
+              value="DOE-NREL"
+            >
+              DOE-NREL
+            </option>
+            <option
+              value="DOE Nuclear Energy"
+            >
+              DOE Nuclear Energy
+            </option>
+            <option
+              value="DOE Oak Ridge National Laboratory"
+            >
+              DOE Oak Ridge National Laboratory
+            </option>
+            <option
+              value="DOE/Oak Ridge National Laboratory"
+            >
+              DOE/Oak Ridge National Laboratory
+            </option>
+            <option
+              value="DOE Offfice of General Council"
+            >
+              DOE Offfice of General Council
+            </option>
+            <option
+              value="DOE Office of Chief Financial Officer"
+            >
+              DOE Office of Chief Financial Officer
+            </option>
+            <option
+              value="DOE Office of Chief Human Capital Officer"
+            >
+              DOE Office of Chief Human Capital Officer
+            </option>
+            <option
+              value="DOE Office of Chief Information Officer"
+            >
+              DOE Office of Chief Information Officer
+            </option>
+            <option
+              value="DOE Office of Electricity"
+            >
+              DOE Office of Electricity
+            </option>
+            <option
+              value="DOE Office of Energy Efficiency and Renewable Energy"
+            >
+              DOE Office of Energy Efficiency and Renewable Energy
+            </option>
+            <option
+              value="DOE/Office of Environmental Management"
+            >
+              DOE/Office of Environmental Management
+            </option>
+            <option
+              value="DOE/Office of Fossil Energy"
+            >
+              DOE/Office of Fossil Energy
+            </option>
+            <option
+              value="DOE/Office of Hearings and Appeals"
+            >
+              DOE/Office of Hearings and Appeals
+            </option>
+            <option
+              value="DOE Office of Legacy Management"
+            >
+              DOE Office of Legacy Management
+            </option>
+            <option
+              value="Idaho National Laboratory"
+            >
+              Idaho National Laboratory
+            </option>
+            <option
+              value="DOE Office of Nuclear Energy"
+            >
+              DOE Office of Nuclear Energy
+            </option>
+            <option
+              value="DOE Office of Science"
+            >
+              DOE Office of Science
+            </option>
+            <option
+              value="DOE Office of Scientific and Technical Information"
+            >
+              DOE Office of Scientific and Technical Information
+            </option>
+            <option
+              value="DOE Public Affairs"
+            >
+              DOE Public Affairs
+            </option>
+            <option
+              value="DOE/Richland Operations and the Office of River Protection"
+            >
+              DOE/Richland Operations and the Office of River Protection
+            </option>
+            <option
+              value="DOE Small and Disadvantaged Business Utilization"
+            >
+              DOE Small and Disadvantaged Business Utilization
+            </option>
+            <option
+              value="Economic Research Service"
+            >
+              Economic Research Service
+            </option>
+            <option
+              value="Economic Research Service, Department of Agriculture"
+            >
+              Economic Research Service, Department of Agriculture
+            </option>
+            <option
+              value="Economic Research Service: Food Economics Division"
+            >
+              Economic Research Service: Food Economics Division
+            </option>
+            <option
+              value="Economic Research Service:  Market and Trade Economics Division"
+            >
+              Economic Research Service:  Market and Trade Economics Division
+            </option>
+            <option
+              value="Economic Research Service: Resource and Rural Economics Division"
+            >
+              Economic Research Service: Resource and Rural Economics Division
+            </option>
+            <option
+              value="Economic Research Service, U.S. Department of Agriculture"
+            >
+              Economic Research Service, U.S. Department of Agriculture
+            </option>
+            <option
+              value="Election Assistance Commission"
+            >
+              Election Assistance Commission
+            </option>
+            <option
+              value="Employee Benefits Security Administration"
+            >
+              Employee Benefits Security Administration
+            </option>
+            <option
+              value="ENRD - Environment and Natural Resources Division"
+            >
+              ENRD - Environment and Natural Resources Division
+            </option>
+            <option
+              value="Environmental Protection Agency"
+            >
+              Environmental Protection Agency
+            </option>
+            <option
+              value="EOIR - Executive Office for Immigration Review"
+            >
+              EOIR - Executive Office for Immigration Review
+            </option>
+            <option
+              value="EOUSA - Executive Office for United States Attorneys"
+            >
+              EOUSA - Executive Office for United States Attorneys
+            </option>
+            <option
+              value="Farm Service Agency, Department of Agriculture"
+            >
+              Farm Service Agency, Department of Agriculture
+            </option>
+            <option
+              value="Farm Service Agency, Department of Agriculture"
+            >
+              Farm Service Agency, Department of Agriculture
+            </option>
+            <option
+              value="FBA"
+            >
+              FBA
+            </option>
+            <option
+              value="FBI"
+            >
+              FBI
+            </option>
+            <option
+              value="FBI - Federal Bureau of Investigation"
+            >
+              FBI - Federal Bureau of Investigation
+            </option>
+            <option
+              value="Federal Bureau of Investigation, Department of Justice"
+            >
+              Federal Bureau of Investigation, Department of Justice
+            </option>
+            <option
+              value="Federal Deposit Insurance Corporation"
+            >
+              Federal Deposit Insurance Corporation
+            </option>
+            <option
+              value="Federal Housing Finance Agency"
+            >
+              Federal Housing Finance Agency
+            </option>
+            <option
+              value="Financial Crimes Enforcement Network, Department of the Treasury"
+            >
+              Financial Crimes Enforcement Network, Department of the Treasury
+            </option>
+            <option
+              value="Financial Management Service, Department of the Treasury"
+            >
+              Financial Management Service, Department of the Treasury
+            </option>
+            <option
+              value="Food and Nutrition Service"
+            >
+              Food and Nutrition Service
+            </option>
+            <option
+              value="Food and Nutrition Service"
+            >
+              Food and Nutrition Service
+            </option>
+            <option
+              value="Food and Nutrition Service, Department of Agriculture"
+            >
+              Food and Nutrition Service, Department of Agriculture
+            </option>
+            <option
+              value="Food Safety and Inspection Service"
+            >
+              Food Safety and Inspection Service
+            </option>
+            <option
+              value="Food Safety and Inspection Service"
+            >
+              Food Safety and Inspection Service
+            </option>
+            <option
+              value="Foreign Agricultural Service"
+            >
+              Foreign Agricultural Service
+            </option>
+            <option
+              value="Foreign Agricultural Service, Department of Agriculture"
+            >
+              Foreign Agricultural Service, Department of Agriculture
+            </option>
+            <option
+              value="FPI - Federal Prisons Industries"
+            >
+              FPI - Federal Prisons Industries
+            </option>
+            <option
+              value="FSA"
+            >
+              FSA
+            </option>
+            <option
+              value="General Serices Administration"
+            >
+              General Serices Administration
+            </option>
+            <option
+              value="Office of Government-wide Policy"
+            >
+              Office of Government-wide Policy
+            </option>
+            <option
+              value="Office of Governmentwide Policy"
+            >
+              Office of Governmentwide Policy
+            </option>
+            <option
+              value="Office of the Chief Technology Officer"
+            >
+              Office of the Chief Technology Officer
+            </option>
+            <option
+              value="Data.gov"
+            >
+              Data.gov
+            </option>
+            <option
+              value="Technology Transformation Service"
+            >
+              Technology Transformation Service
+            </option>
+            <option
+              value="General Services Administration"
+            >
+              General Services Administration
+            </option>
+            <option
+              value="gsa"
+            >
+              gsa
+            </option>
+            <option
+              value="xxx"
+            >
+              xxx
+            </option>
+            <option
+              value="GSA"
+            >
+              GSA
+            </option>
+            <option
+              value="GSA"
+            >
+              GSA
+            </option>
+            <option
+              value="GSA IT"
+            >
+              GSA IT
+            </option>
+            <option
+              value="X"
+            >
+              X
+            </option>
+            <option
+              value="X 2"
+            >
+              X 2
+            </option>
+            <option
+              value="GSAX"
+            >
+              GSAX
+            </option>
+            <option
+              value="Headquarters"
+            >
+              Headquarters
+            </option>
+            <option
+              value="Internal Revenue Service, Department of the Treasury"
+            >
+              Internal Revenue Service, Department of the Treasury
+            </option>
+            <option
+              value="International Trade Administration"
+            >
+              International Trade Administration
+            </option>
+            <option
+              value="International Trade Administration, Department of Commerce"
+            >
+              International Trade Administration, Department of Commerce
+            </option>
+            <option
+              value="International Trade Administration, Department of Commerce"
+            >
+              International Trade Administration, Department of Commerce
+            </option>
+            <option
+              value="Investing in Innovation Fund"
+            >
+              Investing in Innovation Fund
+            </option>
+            <option
+              value="IRI"
+            >
+              IRI
+            </option>
+            <option
+              value="jkhg"
+            >
+              jkhg
+            </option>
+            <option
+              value="Library of Congress"
+            >
+              Library of Congress
+            </option>
+            <option
+              value="MCC"
+            >
+              MCC
+            </option>
+            <option
+              value="Merit Systems Protection Board"
+            >
+              Merit Systems Protection Board
+            </option>
+            <option
+              value="Millennium Challenge Corporation"
+            >
+              Millennium Challenge Corporation
+            </option>
+            <option
+              value="N/A"
+            >
+              N/A
+            </option>
+            <option
+              value="nara"
+            >
+              nara
+            </option>
+            <option
+              value="National Agricultural Statistics Service, Department of Agriculture"
+            >
+              National Agricultural Statistics Service, Department of Agriculture
+            </option>
+            <option
+              value="national-archives-and-records-administration"
+            >
+              national-archives-and-records-administration
+            </option>
+            <option
+              value="Office of Innovation"
+            >
+              Office of Innovation
+            </option>
+            <option
+              value="Office of the Federal Register"
+            >
+              Office of the Federal Register
+            </option>
+            <option
+              value="National Archives and Records Administration"
+            >
+              National Archives and Records Administration
+            </option>
+            <option
+              value="National Archives and Records Administration"
+            >
+              National Archives and Records Administration
+            </option>
+            <option
+              value="National Capital Planning Commission"
+            >
+              National Capital Planning Commission
+            </option>
+            <option
+              value="National Endowment for the Humanities"
+            >
+              National Endowment for the Humanities
+            </option>
+            <option
+              value="National Energy Technology Laboratory"
+            >
+              National Energy Technology Laboratory
+            </option>
+            <option
+              value="National Institute of Food and Agriculture, Department of Agriculture"
+            >
+              National Institute of Food and Agriculture, Department of Agriculture
+            </option>
+            <option
+              value="National Nuclear Security Administration"
+            >
+              National Nuclear Security Administration
+            </option>
+            <option
+              value="National Nuclear Security Administration/LANL"
+            >
+              National Nuclear Security Administration/LANL
+            </option>
+            <option
+              value="National Nuclear Security Administration/SNL"
+            >
+              National Nuclear Security Administration/SNL
+            </option>
+            <option
+              value="National Oceanic and Atmospheric Administration"
+            >
+              National Oceanic and Atmospheric Administration
+            </option>
+            <option
+              value="National Park Service"
+            >
+              National Park Service
+            </option>
+            <option
+              value="National Renewable Energy Laboratory"
+            >
+              National Renewable Energy Laboratory
+            </option>
+            <option
+              value="National Science Foudation"
+            >
+              National Science Foudation
+            </option>
+            <option
+              value="National Science Foundation"
+            >
+              National Science Foundation
+            </option>
+            <option
+              value="National Science Foundation"
+            >
+              National Science Foundation
+            </option>
+            <option
+              value="National Technical Information Service, Department of Commerce"
+            >
+              National Technical Information Service, Department of Commerce
+            </option>
+            <option
+              value="National Telecommunication and Information Administration"
+            >
+              National Telecommunication and Information Administration
+            </option>
+            <option
+              value="National Telecommunication and Information Administration, Department of Commerce"
+            >
+              National Telecommunication and Information Administration, Department of Commerce
+            </option>
+            <option
+              value="Office of Spectrum Management"
+            >
+              Office of Spectrum Management
+            </option>
+            <option
+              value="National Telecommunications and Information Administration"
+            >
+              National Telecommunications and Information Administration
+            </option>
+            <option
+              value="National Weather Service, Department of Commerce"
+            >
+              National Weather Service, Department of Commerce
+            </option>
+            <option
+              value="Nationl Capital Planning Commission"
+            >
+              Nationl Capital Planning Commission
+            </option>
+            <option
+              value="Natural Resources Conservation Service, Colorado State University"
+            >
+              Natural Resources Conservation Service, Colorado State University
+            </option>
+            <option
+              value="NCUA"
+            >
+              NCUA
+            </option>
+            <option
+              value="NIJ - National Institute of Justice"
+            >
+              NIJ - National Institute of Justice
+            </option>
+            <option
+              value="NIST"
+            >
+              NIST
+            </option>
+            <option
+              value="NRCs"
+            >
+              NRCs
+            </option>
+            <option
+              value="NRCS"
+            >
+              NRCS
+            </option>
+            <option
+              value="NSD - National Security Division"
+            >
+              NSD - National Security Division
+            </option>
+            <option
+              value="Nuclear Regulatory Commission"
+            >
+              Nuclear Regulatory Commission
+            </option>
+            <option
+              value="Oak Ridge National Laboratory"
+            >
+              Oak Ridge National Laboratory
+            </option>
+            <option
+              value="OEI"
+            >
+              OEI
+            </option>
+            <option
+              value="Office of Economic Impact and Diversity"
+            >
+              Office of Economic Impact and Diversity
+            </option>
+            <option
+              value="Office of Electricity"
+            >
+              Office of Electricity
+            </option>
+            <option
+              value="Office of Energy Efficiency and Renewable Energy"
+            >
+              Office of Energy Efficiency and Renewable Energy
+            </option>
+            <option
+              value="Office of Fossil Energy"
+            >
+              Office of Fossil Energy
+            </option>
+            <option
+              value="Department of Veterans Affairs"
+            >
+              Department of Veterans Affairs
+            </option>
+            <option
+              value="Office of Housing, Department of Housing and Urban Development"
+            >
+              Office of Housing, Department of Housing and Urban Development
+            </option>
+            <option
+              value="Office of Information Resources"
+            >
+              Office of Information Resources
+            </option>
+            <option
+              value="Office of Inspector General"
+            >
+              Office of Inspector General
+            </option>
+            <option
+              value="OFFICE OF  INSPECTOR GENERAL"
+            >
+              OFFICE OF  INSPECTOR GENERAL
+            </option>
+            <option
+              value="OFFICE OF INSPECTOR GENERAL"
+            >
+              OFFICE OF INSPECTOR GENERAL
+            </option>
+            <option
+              value="Office of Legal Counsel, Department of Justice"
+            >
+              Office of Legal Counsel, Department of Justice
+            </option>
+            <option
+              value="Department of Veterans Affairs"
+            >
+              Department of Veterans Affairs
+            </option>
+            <option
+              value="Directives Program"
+            >
+              Directives Program
+            </option>
+            <option
+              value="Office of Management and Budget"
+            >
+              Office of Management and Budget
+            </option>
+            <option
+              value="Office of Navajo and Hopi Indian Relocation"
+            >
+              Office of Navajo and Hopi Indian Relocation
+            </option>
+            <option
+              value="Office of Science"
+            >
+              Office of Science
+            </option>
+            <option
+              value="Center for Verification and Evaluation"
+            >
+              Center for Verification and Evaluation
+            </option>
+            <option
+              value="Office of Special Counsel"
+            >
+              Office of Special Counsel
+            </option>
+            <option
+              value="Office of the Chief Records Officer, Operations Research and Support Team"
+            >
+              Office of the Chief Records Officer, Operations Research and Support Team
+            </option>
+            <option
+              value="Office of the Federal Register, National Archives and Records Administration"
+            >
+              Office of the Federal Register, National Archives and Records Administration
+            </option>
+            <option
+              value="Office of the Inspector General"
+            >
+              Office of the Inspector General
+            </option>
+            <option
+              value="Officer of Inspector General"
+            >
+              Officer of Inspector General
+            </option>
+            <option
+              value="Officie of Inspector General"
+            >
+              Officie of Inspector General
+            </option>
+            <option
+              value="OIG - Office of the Inspector General"
+            >
+              OIG - Office of the Inspector General
+            </option>
+            <option
+              value="OIP - Office of Information Policy"
+            >
+              OIP - Office of Information Policy
+            </option>
+            <option
+              value="OJJDP - Office of Juvenile Justice and Delinquency Prevention"
+            >
+              OJJDP - Office of Juvenile Justice and Delinquency Prevention
+            </option>
+            <option
+              value="OJP - Office of Justice Programs"
+            >
+              OJP - Office of Justice Programs
+            </option>
+            <option
+              value="OM00"
+            >
+              OM00
+            </option>
+            <option
+              value="OSCSIT"
+            >
+              OSCSIT
+            </option>
+            <option
+              value="OSTI"
+            >
+              OSTI
+            </option>
+            <option
+              value="PBGC"
+            >
+              PBGC
+            </option>
+            <option
+              value="Pension Benefit Guaranty Corporation"
+            >
+              Pension Benefit Guaranty Corporation
+            </option>
+            <option
+              value="PPS - Performance Management"
+            >
+              PPS - Performance Management
+            </option>
+            <option
+              value="PPS - Policy, Planning and Strategy"
+            >
+              PPS - Policy, Planning and Strategy
+            </option>
+            <option
+              value="publisher"
+            >
+              publisher
+            </option>
+            <option
+              value="Railroad Retirement Board"
+            >
+              Railroad Retirement Board
+            </option>
+            <option
+              value="[[REDACTED*]]"
+            >
+              [[REDACTED*]]
+            </option>
+            <option
+              value="REI"
+            >
+              REI
+            </option>
+            <option
+              value="Rural Development, Department of Agriculture"
+            >
+              Rural Development, Department of Agriculture
+            </option>
+            <option
+              value="sba"
+            >
+              sba
+            </option>
+            <option
+              value="set"
+            >
+              set
+            </option>
+            <option
+              value="Social Security Administration"
+            >
+              Social Security Administration
+            </option>
+            <option
+              value="asd"
+            >
+              asd
+            </option>
+            <option
+              value="OACT"
+            >
+              OACT
+            </option>
+            <option
+              value="OCOMM"
+            >
+              OCOMM
+            </option>
+            <option
+              value="test"
+            >
+              test
+            </option>
+            <option
+              value="TestingDecheke"
+            >
+              TestingDecheke
+            </option>
+            <option
+              value="sub test 1"
+            >
+              sub test 1
+            </option>
+            <option
+              value="sub test org 1"
+            >
+              sub test org 1
+            </option>
+            <option
+              value="test org 1"
+            >
+              test org 1
+            </option>
+            <option
+              value="test org"
+            >
+              test org
+            </option>
+            <option
+              value="test org 2"
+            >
+              test org 2
+            </option>
+            <option
+              value="test org"
+            >
+              test org
+            </option>
+            <option
+              value="sub-test org 1"
+            >
+              sub-test org 1
+            </option>
+            <option
+              value="testorga"
+            >
+              testorga
+            </option>
+            <option
+              value="Test organization"
+            >
+              Test organization
+            </option>
+            <option
+              value="The Department of the Air Force"
+            >
+              The Department of the Air Force
+            </option>
+            <option
+              value="thisisatest"
+            >
+              thisisatest
+            </option>
+            <option
+              value="torgg"
+            >
+              torgg
+            </option>
+            <option
+              value="TTS"
+            >
+              TTS
+            </option>
+            <option
+              value="United States Mint, Department of the Treasury"
+            >
+              United States Mint, Department of the Treasury
+            </option>
+            <option
+              value="University of Maryland"
+            >
+              University of Maryland
+            </option>
+            <option
+              value="US Agency for International Development"
+            >
+              US Agency for International Development
+            </option>
+            <option
+              value="USASpending.gov"
+            >
+              USASpending.gov
+            </option>
+            <option
+              value="US Attorney's Office, Department of Justice"
+            >
+              US Attorney's Office, Department of Justice
+            </option>
+            <option
+              value="US Bureau of the Census"
+            >
+              US Bureau of the Census
+            </option>
+            <option
+              value="US Census Burea, Dept of Commerce"
+            >
+              US Census Burea, Dept of Commerce
+            </option>
+            <option
+              value="US Census Bureau,"
+            >
+              US Census Bureau,
+            </option>
+            <option
+              value="U.S. Census Bureau, Department of Commerce"
+            >
+              U.S. Census Bureau, Department of Commerce
+            </option>
+            <option
+              value="US Census Bureau, Department of Commerce"
+            >
+              US Census Bureau, Department of Commerce
+            </option>
+            <option
+              value="US Census Bureau, Dept of Commerce"
+            >
+              US Census Bureau, Dept of Commerce
+            </option>
+            <option
+              value="U.S. Census Bureau, U.S. Department of Commerce"
+            >
+              U.S. Census Bureau, U.S. Department of Commerce
+            </option>
+            <option
+              value="HUD"
+            >
+              HUD
+            </option>
+            <option
+              value="US Census Bureau, US Department of Commerce"
+            >
+              US Census Bureau, US Department of Commerce
+            </option>
+            <option
+              value="USDA"
+            >
+              USDA
+            </option>
+            <option
+              value="Federal Grain Inspection Service"
+            >
+              Federal Grain Inspection Service
+            </option>
+            <option
+              value="Packers and Stockyards Program"
+            >
+              Packers and Stockyards Program
+            </option>
+            <option
+              value="Packers and Stockyards Programs"
+            >
+              Packers and Stockyards Programs
+            </option>
+            <option
+              value="USDA-GIPSA"
+            >
+              USDA-GIPSA
+            </option>
+            <option
+              value="USDA-Natural Resources Conservation Service"
+            >
+              USDA-Natural Resources Conservation Service
+            </option>
+            <option
+              value="U. S. Department of Agriculture"
+            >
+              U. S. Department of Agriculture
+            </option>
+            <option
+              value="International Trade Administration"
+            >
+              International Trade Administration
+            </option>
+            <option
+              value="U.S. Department of Commerce"
+            >
+              U.S. Department of Commerce
+            </option>
+            <option
+              value="Office for Civil Rights"
+            >
+              Office for Civil Rights
+            </option>
+            <option
+              value="U.S. Department of Education"
+            >
+              U.S. Department of Education
+            </option>
+            <option
+              value="US Department of Housing and Urban Development"
+            >
+              US Department of Housing and Urban Development
+            </option>
+            <option
+              value="Bureau of Labor Statisticis"
+            >
+              Bureau of Labor Statisticis
+            </option>
+            <option
+              value="Bureau of Labor Statistics"
+            >
+              Bureau of Labor Statistics
+            </option>
+            <option
+              value="Bureau of Labor Statistics"
+            >
+              Bureau of Labor Statistics
+            </option>
+            <option
+              value="Bureau of Labor Statistics"
+            >
+              Bureau of Labor Statistics
+            </option>
+            <option
+              value="Bureau of Labor Statistics"
+            >
+              Bureau of Labor Statistics
+            </option>
+            <option
+              value="U.S. Department of Labor Benefits.gov Program"
+            >
+              U.S. Department of Labor Benefits.gov Program
+            </option>
+            <option
+              value="U.S. Department of Labor Bureau of International Labor Affairs"
+            >
+              U.S. Department of Labor Bureau of International Labor Affairs
+            </option>
+            <option
+              value="U.S. Department of Labor Bureau of Labor Statistics"
+            >
+              U.S. Department of Labor Bureau of Labor Statistics
+            </option>
+            <option
+              value="U.S. Department of Labor, Bureau of Labor Statistics"
+            >
+              U.S. Department of Labor, Bureau of Labor Statistics
+            </option>
+            <option
+              value="U.S. Department of Labor Chief Economist's Office"
+            >
+              U.S. Department of Labor Chief Economist's Office
+            </option>
+            <option
+              value="U.S. Department of Labor Employee Benefits Security Administration"
+            >
+              U.S. Department of Labor Employee Benefits Security Administration
+            </option>
+            <option
+              value="U.S. Department of Labor Employment and Training Administration"
+            >
+              U.S. Department of Labor Employment and Training Administration
+            </option>
+            <option
+              value="U.S. Department of Labor Mine Safety and Health Administration"
+            >
+              U.S. Department of Labor Mine Safety and Health Administration
+            </option>
+            <option
+              value="U.S. Department of Labor Occupational Safety and Health Administration"
+            >
+              U.S. Department of Labor Occupational Safety and Health Administration
+            </option>
+            <option
+              value="U.S. Department of Labor Office of Federal Contract Compliance Programs"
+            >
+              U.S. Department of Labor Office of Federal Contract Compliance Programs
+            </option>
+            <option
+              value="U.S. Department of Labor Office of Job Corps"
+            >
+              U.S. Department of Labor Office of Job Corps
+            </option>
+            <option
+              value="U.S. Department of Labor Office of Labor-Management Standards"
+            >
+              U.S. Department of Labor Office of Labor-Management Standards
+            </option>
+            <option
+              value="U.S. Department of Labor Office of Public Affairs"
+            >
+              U.S. Department of Labor Office of Public Affairs
+            </option>
+            <option
+              value="U.S. Department of Labor Office of the Assistant Secretary for Policy"
+            >
+              U.S. Department of Labor Office of the Assistant Secretary for Policy
+            </option>
+            <option
+              value="U.S. Department of Labor Office of the Solicitor"
+            >
+              U.S. Department of Labor Office of the Solicitor
+            </option>
+            <option
+              value="U.S. Department of Labor Office of Workers' Compensation Program"
+            >
+              U.S. Department of Labor Office of Workers' Compensation Program
+            </option>
+            <option
+              value="U.S. Department of Labor Wage and Hour Division"
+            >
+              U.S. Department of Labor Wage and Hour Division
+            </option>
+            <option
+              value="U.S. Department of State"
+            >
+              U.S. Department of State
+            </option>
+            <option
+              value="U.S. Department of the Treasury"
+            >
+              U.S. Department of the Treasury
+            </option>
+            <option
+              value="US Department of X"
+            >
+              US Department of X
+            </option>
+            <option
+              value="U.S. Election Assistance Commission"
+            >
+              U.S. Election Assistance Commission
+            </option>
+            <option
+              value="U.S. Energy Information Administration"
+            >
+              U.S. Energy Information Administration
+            </option>
+            <option
+              value="U.S. Energy Information Administration"
+            >
+              U.S. Energy Information Administration
+            </option>
+            <option
+              value="US Forest Service, Department of Agriculture"
+            >
+              US Forest Service, Department of Agriculture
+            </option>
+            <option
+              value="USMS - United States Marshals Service"
+            >
+              USMS - United States Marshals Service
+            </option>
+            <option
+              value="U.S Nuclear Regulatory Commission"
+            >
+              U.S Nuclear Regulatory Commission
+            </option>
+            <option
+              value="U.S. Office of Personnel Management"
+            >
+              U.S. Office of Personnel Management
+            </option>
+            <option
+              value="US Patent and Trademark Office, Department of Commerce"
+            >
+              US Patent and Trademark Office, Department of Commerce
+            </option>
+            <option
+              value="USPC - United States Parole Commission"
+            >
+              USPC - United States Parole Commission
+            </option>
+            <option
+              value="U.S. Securities and Exchange Commission"
+            >
+              U.S. Securities and Exchange Commission
+            </option>
+            <option
+              value="Workforce Acquisitions Division of the Office of Human Resources Solutions"
+            >
+              Workforce Acquisitions Division of the Office of Human Resources Solutions
+            </option>
+            <option
+              value="U.S. Small Business Administration"
+            >
+              U.S. Small Business Administration
+            </option>
+            <option
+              value="USTP - U.S. Trustee Program"
+            >
+              USTP - U.S. Trustee Program
+            </option>
+            <option
+              value="US Trustee Program, Department of Justice"
+            >
+              US Trustee Program, Department of Justice
+            </option>
+            <option
+              value="vasdf34"
+            >
+              vasdf34
+            </option>
+            <option
+              value="VHA"
+            >
+              VHA
+            </option>
+            <option
+              value="Wage and Hour Division"
+            >
+              Wage and Hour Division
+            </option>
+            <option
+              value="Wisconsin Alumni Research Foundation"
+            >
+              Wisconsin Alumni Research Foundation
+            </option>
+            <option
+              value="Other"
+            >
+              Other
+            </option>
+          </select>
+        </div>
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+          />
+          <div
+            class="usa-helptext disabled"
+          >
+            <span
+              class="usa-helptext"
+            >
+              If you selected “Other”, please specify the name of your Publisher
+            </span>
+          </div>
+          
+          <input
+            class="usa-input disabled undefined undefined"
+            disabled=""
+            name="publisher_other"
+            type="string"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+          >
+            Sub Agency
+            <span>
+              *
+            </span>
+          </label>
+          <div
+            class="usa-helptext "
+          />
+          
+          <input
+            class="usa-input  undefined undefined"
+            name="subagency"
+            type="string"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+          >
+            Contact Name
+            <span>
+              *
+            </span>
+            <div
+              class="tooltip "
+            >
+              <svg
+                height="20px"
+                style="margin-left: .5em;"
+                tabindex="0"
+                width="20px"
+              >
+                info.svg
+              </svg>
+              <span
+                class="tooltiptext"
+              >
+                <span
+                  class="close"
+                  role="button"
+                  tabindex="0"
+                >
+                  <span
+                    class="close-tag"
+                  >
+                    ×
+                  </span>
+                </span>
+                <h3>
+                  Contact Name
+                </h3>
+                <p>
+                  This should be the person who can best answer or triage questions about this dataset, either on the metadata or the substance of the data resources.
+                </p>
+              </span>
+            </div>
+          </label>
+          <div
+            class="usa-helptext "
+          />
+          
+          <input
+            class="usa-input  undefined undefined"
+            name="contact_name"
+            type="string"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+          >
+            Contact Email
+            <span>
+              *
+            </span>
+          </label>
+          <div
+            class="usa-helptext "
+          />
+          
+          <input
+            class="usa-input  undefined undefined"
+            name="contact_email"
+            type="string"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+          >
+            Unique ID
+            <span>
+              *
+            </span>
+            <div
+              class="tooltip "
+            >
+              <svg
+                height="20px"
+                style="margin-left: .5em;"
+                tabindex="0"
+                width="20px"
+              >
+                info.svg
+              </svg>
+              <span
+                class="tooltiptext"
+              >
+                <span
+                  class="close"
+                  role="button"
+                  tabindex="0"
+                >
+                  <span
+                    class="close-tag"
+                  >
+                    ×
+                  </span>
+                </span>
+                <h3>
+                  Unique ID
+                </h3>
+                <p>
+                  This is the ID number or code used within your agency to differentiate this dataset from other datasets.
+                </p>
+              </span>
+            </div>
+          </label>
+          <div
+            class="usa-helptext "
+          />
+          
+          <input
+            class="usa-input  undefined undefined"
+            name="unique_id"
+            type="string"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+          >
+            Public Access level
+            <span>
+              *
+            </span>
+          </label>
+          <div
+            class="usa-helptext "
+          />
+          
+          <select
+            choices="public,restricted public,non-public"
+            class="usa-select  "
+            name="public_access_level"
+            type="select"
+          >
+            <option
+              value=""
+            >
+              -Select-
+            </option>
+            <option
+              value="public"
+            >
+              public
+            </option>
+            <option
+              value="restricted public"
+            >
+              restricted public
+            </option>
+            <option
+              value="non-public"
+            >
+              non-public
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+          >
+            License
+            <span>
+              *
+            </span>
+          </label>
+          <div
+            class="usa-helptext "
+          />
+          
+          <select
+            choices="MIT,Open Source License,Others"
+            class="usa-select  "
+            name="license_new"
+            type="select"
+          >
+            <option
+              value=""
+            >
+              -Select-
+            </option>
+            <option
+              value="MIT"
+            >
+              MIT
+            </option>
+            <option
+              value="Open Source License"
+            >
+              Open Source License
+            </option>
+            <option
+              value="Others"
+            >
+              Others
+            </option>
+          </select>
+        </div>
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+          />
+          <div
+            class="usa-helptext disabled"
+          >
+            <span
+              class="usa-helptext"
+            >
+              If you selected “Other”, please specify the name of your License*'
+            </span>
+          </div>
+          
+          <input
+            class="usa-input disabled undefined undefined"
+            disabled=""
+            name="license_others"
+            type="string"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <span
+          class="usa-label"
+        >
+          Rights
+        </span>
+         
+        <br />
+        <div
+          class="form-group "
+        >
+          <input
+            class="usa-radio__input"
+            id="rights_option_1"
+            name="access_level_comment"
+            type="radio"
+            value="true"
+          />
+          <label
+            class="usa-radio__label"
+            for="rights_option_1"
+          >
+            My dataset is public
+          </label>
+        </div>
+        <div
+          class="form-group "
+        >
+          <input
+            class="usa-radio__input"
+            id="rights_option_2"
+            name="access_level_comment"
+            type="radio"
+            value="false"
+          />
+          <label
+            class="usa-radio__label"
+            for="rights_option_2"
+          >
+            My dataset is not public
+          </label>
+        </div>
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+          />
+          <div
+            class="usa-helptext "
+          >
+            <span
+              class="usa-helptext"
+            >
+              If your dataset is not public, please add an explanation of rights and feel free to include any instructions on restrictions, or how to access a restricted file (max 255 characters)*
+            </span>
+          </div>
+          
+          <input
+            class="usa-input  undefined undefined"
+            name="rights_desc"
+            type="string"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <span
+          class="usa-label"
+        >
+          Relevant Location*
+        </span>
+         
+        <br />
+        <div
+          class="form-group "
+        >
+          <input
+            class="usa-radio__input"
+            id="spatial_option_1"
+            name="spatial"
+            type="radio"
+            value="false"
+          />
+          <label
+            class="usa-radio__label"
+            for="spatial_option_1"
+          >
+            My dataset does not have a spatial component
+          </label>
+        </div>
+        <div
+          class="form-group "
+        >
+          <input
+            class="usa-radio__input"
+            id="spatial_option_2"
+            name="spatial"
+            type="radio"
+            value="true"
+          />
+          <label
+            class="usa-radio__label"
+            for="spatial_option_2"
+          >
+            My dataset does have a spatial component
+          </label>
+        </div>
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+          />
+          <div
+            class="usa-helptext "
+          >
+            <span
+              class="usa-helptext"
+            >
+              If your dataset has a spatial component, please provide location such as place name or latitude/longitude pairs above*
+            </span>
+          </div>
+          
+          <input
+            class="usa-input  undefined undefined"
+            name="spatial_location_desc"
+            type="string"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <span
+          class="usa-label"
+        >
+          Temporal*
+          <div
+            class="tooltip "
+          >
+            <svg
+              height="20px"
+              style="margin-left: .5em;"
+              tabindex="0"
+              width="20px"
+            >
+              info.svg
+            </svg>
+            <span
+              class="tooltiptext"
+            >
+              <span
+                class="close"
+                role="button"
+                tabindex="0"
+              >
+                <span
+                  class="close-tag"
+                >
+                  ×
+                </span>
+              </span>
+              <h3>
+                Temporal
+              </h3>
+              <p>
+                For example, for a 2010 Census dataset, the temporal extent would cover a period of time beginning 2000-04-02 and ending 2010-04-01.
+              </p>
+            </span>
+          </div>
+        </span>
+         
+        <br />
+        <div
+          class="form-group "
+        >
+          <input
+            class="usa-radio__input"
+            id="temporal_option_1"
+            name="temporal"
+            type="radio"
+            value="false"
+          />
+          <label
+            class="usa-radio__label"
+            for="temporal_option_1"
+          >
+            My dataset does not have a start and end date for the applicability of data
+          </label>
+        </div>
+        <div
+          class="form-group "
+        >
+          <input
+            class="usa-radio__input"
+            id="temporal_option_2"
+            name="temporal"
+            type="radio"
+            value="true"
+          />
+          <label
+            class="usa-radio__label"
+            for="temporal_option_2"
+          >
+            My dataset has a start and end date for the applicability of data
+          </label>
+        </div>
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+            for="temporal_start_date"
+          />
+          <div
+            class="usa-helptext "
+          >
+            <span
+              class="usa-helptext"
+            >
+              If your dataset has a temporal component, please provide start date for applicability of data above*
+            </span>
+          </div>
+          
+          <div>
+            <input
+              class="usa-input "
+              id="temporal_start_date"
+              name="temporal_start_date"
+              type="date"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+            for="temporal_end_date"
+          />
+          <div
+            class="usa-helptext "
+          >
+            <span
+              class="usa-helptext"
+            >
+              If your dataset has a temporal component, please provide start date for applicability of data above*
+            </span>
+          </div>
+          
+          <div>
+            <input
+              class="usa-input "
+              id="temporal_end_date"
+              name="temporal_end_date"
+              type="date"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <button
+          class="usa-button usa-button--outline"
+          type="button"
+        >
+          Save as draft
+        </button>
+        <button
+          class="usa-button"
+          type="submit"
+        >
+          Save and Continue
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+`;

@@ -34,6 +34,11 @@ const encodeSupplementalValues = (opts) => {
     }, '');
   }
 
+  if (opts.publisher_other) {
+    newOpts.publisher = opts.publisher_other;
+    delete newOpts.publisher_other;
+  }
+
   if (opts.license_others) {
     newOpts.license_new = opts.license_others;
     delete newOpts.license_others;
