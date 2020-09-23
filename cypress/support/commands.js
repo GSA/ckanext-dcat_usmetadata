@@ -18,6 +18,7 @@ Cypress.Commands.add('requiredMetadata', () => {
   cy.get('input[name=title]').type(chance.word({ length: 5 }));
   cy.get('textarea[name=description]').type(chance.sentence({ words: 4 }));
   cy.get('.react-tags input').type('1234{enter}');
+  cy.get('select[name=owner_org]').select('Org 1');
   cy.get('select[name=publisher]').select('Publisher 1');
   cy.get('select[name=subagency]').type('Sub Agency 1');
   cy.get('input[name=contact_name]').type(chance.name());
