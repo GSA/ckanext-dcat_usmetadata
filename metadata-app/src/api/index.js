@@ -64,7 +64,7 @@ const encodeSupplementalValues = (opts) => {
     delete newOpts.temporal_start_date;
     delete newOpts.temporal_end_date;
   } else {
-    newOpts.temporal = 'false';
+    delete newOpts.temporal;
   }
 
   // Language field should be constructed from language subtag and language

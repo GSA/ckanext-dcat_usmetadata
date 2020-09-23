@@ -46,6 +46,11 @@ const helpTexts = {
 const AdditionalMetadata = (props) => {
   const { values } = props;
 
+  const getRegionalChoices = (selectedLangValue) => {
+    const lang = languages.find((item) => item.value === selectedLangValue) || {};
+    return lang.regions;
+  };
+
   return (
     <div className="usa-form-custom">
       <section id="section-basic-mega-menu" className="site-component-section">
@@ -142,8 +147,9 @@ const AdditionalMetadata = (props) => {
           <WrappedField
             label="Language - Language Subtag"
             name="languageSubTag"
+            value={values.languageSubTag}
             type="select"
-            choices={Object.keys(languages)}
+            choices={languages}
           />
         </div>
       </div>
@@ -153,8 +159,9 @@ const AdditionalMetadata = (props) => {
             disabled={!values.languageSubTag}
             label="Language - Regional Subtag"
             name="languageRegSubTag"
+            value={values.languageRegSubTag}
             type="select"
-            choices={languages[values.languageSubTag]}
+            choices={getRegionalChoices(values.languageSubTag)}
           />
         </div>
       </div>

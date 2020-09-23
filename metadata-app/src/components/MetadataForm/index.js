@@ -5,6 +5,7 @@ import RequiredMetadata from '../RequiredMetadata';
 import RequiredMetadataSchema from '../RequiredMetadata/validationSchema';
 import RequiredMetadataLabels from '../RequiredMetadata/validationLabels';
 import defaultRequiredValues from '../RequiredMetadata/defaultValues';
+import defaultAdditionalValues from '../AdditionalMetadata/defaultValues';
 import AdditionalMetadata from '../AdditionalMetadata';
 import AdditionalMetadataSchema from '../AdditionalMetadata/validationSchema';
 import ResourceUpload from '../ResourceUpload';
@@ -50,7 +51,11 @@ const MetadataForm = (props) => {
 
   const [shouldFetch, setShouldFetch] = useState(true);
   const [curDatasetId, setCurDatasetId] = useState(datasetId); // initial or fetched
-  const [formValues, setFormValues] = useState(defaultRequiredValues);
+  const [formValues, setFormValues] = useState({
+    ...defaultRequiredValues,
+    ...defaultAdditionalValues,
+  });
+
   const [currentStep, setCurrentStep] = useState(0);
   const [alert, setAlert] = useState();
 
