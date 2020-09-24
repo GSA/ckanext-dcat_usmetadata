@@ -129,3 +129,6 @@
   opacity: 0.5;
   cursor: auto;
 }
+.field-error .react-tags {
+  border: 2px solid #e41d3d;
+}
