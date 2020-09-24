@@ -48,8 +48,8 @@ const AdditionalMetadata = (props) => {
   const { values } = props;
 
   const getRegionalChoices = (selectedLangValue) => {
-    const lang = languages.find((lang) => lang.value == selectedLangValue) || {};
-    return lang.regions;
+    const targetLang = languages.find((lang) => lang.value === selectedLangValue) || {};
+    return targetLang.regions;
   };
 
   return (
