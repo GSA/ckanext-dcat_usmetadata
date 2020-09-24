@@ -82,6 +82,12 @@ const encodeSupplementalValues = (opts) => {
     delete newOpts.describedByType;
   }
 
+  // Is Parent checkbox
+  if (opts.isParent) {
+    newOpts.is_parent = opts.isParent;
+    delete newOpts.isParent;
+  }
+
   return newOpts;
 };
 
@@ -122,6 +128,10 @@ const decodeSupplementalValues = (opts) => {
 
   if (opts.data_dictionary_type) {
     newOpts.describedByType = opts.data_dictionary_type;
+  }
+
+  if (opts.is_parent) {
+    newOpts.isParent = opts.is_parent;
   }
 
   return newOpts;

@@ -214,6 +214,20 @@ const AdditionalMetadata = (props) => {
       </div>
       <div className="row">
         <div className="grid-col-12">
+          <WrappedField
+            label="Is Parent"
+            name="isParent"
+            value={values.isParent}
+            type="select"
+            choices={[
+              { label: 'Yes', value: 'true' },
+              { label: 'No', value: 'false' },
+            ]}
+          />
+        </div>
+      </div>
+      <div className="row">
+        <div className="grid-col-12">
           <WrappedField label="Select Parent Dataset" name="parent_dataset_id" type="string" />
         </div>
       </div>
@@ -244,6 +258,7 @@ AdditionalMetadata.propTypes = {
     issued: PropTypes.string,
     systemOfRecordsUSG: PropTypes.string,
     isPartOf: PropTypes.string,
+    isParent: PropTypes.string,
   }),
 };
 
