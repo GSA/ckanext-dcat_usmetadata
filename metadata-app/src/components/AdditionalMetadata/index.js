@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import WrappedField from '../WrappedField';
 import HelpText from '../HelpText';
-import TagsAutocomplete from '../TagsAutocomplete';
+import Autocomplete from '../Autocomplete';
 import api from '../../api';
 
 const languages = require('./languages.json');
@@ -239,7 +239,7 @@ const AdditionalMetadata = (props) => {
             name="parent_dataset_id"
             type="string"
           />
-          <TagsAutocomplete
+          <Autocomplete
             id="tags-autocomplete-input"
             tags={values.parent}
             apiUrl={apiUrl}
