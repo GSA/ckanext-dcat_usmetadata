@@ -145,10 +145,11 @@ const RequiredMetadata = (props) => {
           tags={values.tags}
           apiUrl={apiUrl}
           apiKey={apiKey}
+          fetchOpts={api.fetchTags}
           name="tags"
           titleField="name"
           required
-          placeholderText="Start typing to search"
+          placeholder="Start typing to search"
           errors={errors}
           helptext={helpTextify(
             'Use both technical and non-technical terms to help users find your dataset.'
