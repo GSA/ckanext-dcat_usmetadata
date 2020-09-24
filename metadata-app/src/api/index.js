@@ -1,6 +1,8 @@
 import axios from 'axios';
 import slugify from 'slugify';
 
+const dataDictTypes = require('../components/AdditionalMetadata/data-dictionary-types');
+
 /**
  * HELPERS
  */
@@ -78,7 +80,11 @@ const encodeSupplementalValues = (opts) => {
 
   // Data Dictionary Type
   if (opts.describedByType) {
-    newOpts.data_dictionary_type = opts.describedByType;
+    // If it's specified other
+    if (opts.describedByType === 'other') {
+      newOpts.data_dictionary_type = opts.otherDataDictionaryType;
+      delete newOpts.otherDataDictionaryType;
+    } else newOpts.data_dictionary_type = opts.describedByType;
     delete newOpts.describedByType;
   }
 
@@ -121,7 +127,16 @@ const decodeSupplementalValues = (opts) => {
   }
 
   if (opts.data_dictionary_type) {
-    newOpts.describedByType = opts.data_dictionary_type;
+    // Check if the data dictionary type is out of list,
+    // then specify the other input field
+    const selectedDataDictType = dataDictTypes.find((dataDictType) => {
+      return dataDictType.value === opts.data_dictionary_type;
+    });
+    // If it is from the list then the type should be other
+    if (!selectedDataDictType) {
+      newOpts.otherDataDictionaryType = opts.data_dictionary_type;
+      newOpts.describedByType = 'other';
+    } else newOpts.describedByType = opts.data_dictionary_type;
   }
 
   return newOpts;

@@ -103,6 +103,13 @@ const AdditionalMetadata = (props) => {
             type="select"
             choices={dataDictTypes}
           />
+          <WrappedField
+            disabled={values.describedByType !== 'other'}
+            name="otherDataDictionaryType"
+            value={values.otherDataDictionaryType}
+            type="string"
+            helptext="If you selected “Other”, please specify your Data Dictionary Type"
+          />
         </div>
       </div>
       <div className="row">
@@ -235,6 +242,7 @@ AdditionalMetadata.propTypes = {
     theme: PropTypes.string,
     describedBy: PropTypes.string,
     describedByType: PropTypes.string,
+    otherDataDictionaryType: PropTypes.string,
     accrualPeriodicity: PropTypes.string,
     landingPage: PropTypes.string,
     languageSubTag: PropTypes.string,
