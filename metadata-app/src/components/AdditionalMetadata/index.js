@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import WrappedField from '../WrappedField';
 import HelpText from '../HelpText';
+import Autocomplete from '../Autocomplete';
+import api from '../../api';
 
 const languages = require('./languages.json');
 const dataDictTypes = require('./data-dictionary-types');
@@ -45,7 +47,7 @@ const helpTexts = {
 };
 
 const AdditionalMetadata = (props) => {
-  const { values } = props;
+  const { values, errors, apiUrl, apiKey } = props;
 
   const getRegionalChoices = (selectedLangValue) => {
     const lang = languages.find((item) => item.value === selectedLangValue) || {};
@@ -221,7 +223,30 @@ const AdditionalMetadata = (props) => {
       </div>
       <div className="row">
         <div className="grid-col-12">
-          <WrappedField label="Select Parent Dataset" name="parent_dataset_id" type="string" />
+          <WrappedField
+            label="Is parent dataset"
+            name="isParent"
+            type="select"
+            choices={['Yes', 'No']}
+          />
+        </div>
+      </div>
+      <div className="row">
+        <div className="grid-col-12">
+          <span className="usa-label">Select Parent Dataset</span>
+          <Autocomplete
+            disabled={values.isParent === 'Yes'}
+            id="tags-autocomplete-input"
+            tags={values.parent}
+            apiUrl={apiUrl}
+            apiKey={apiKey}
+            fetchOpts={api.fetchParentDatasets}
+            name="parent_dataset_id"
+            titleField="name"
+            placeholder="Start typing to search"
+            errors={errors}
+            helptext={<HelpText>Start typing to see list of matching datasets by title</HelpText>}
+          />
         </div>
       </div>
       <div className="row">
@@ -237,6 +262,9 @@ const AdditionalMetadata = (props) => {
 };
 
 AdditionalMetadata.propTypes = {
+  apiUrl: PropTypes.string,
+  apiKey: PropTypes.string,
+  errors: PropTypes.any, // eslint-disable-line
   values: PropTypes.shape({
     dataQualityUSG: PropTypes.string,
     theme: PropTypes.string,
@@ -252,6 +280,8 @@ AdditionalMetadata.propTypes = {
     issued: PropTypes.string,
     systemOfRecordsUSG: PropTypes.string,
     isPartOf: PropTypes.string,
+    isParent: PropTypes.string,
+    parent: PropTypes.string,
   }),
 };
 

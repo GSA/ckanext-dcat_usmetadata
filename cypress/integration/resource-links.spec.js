@@ -25,8 +25,6 @@ describe('Resource Page -- URL', () => {
     cy.get('input[name=resource\\.format]').type(chance.word());
     cy.get('button[type=button]').contains('Finish and publish').click();
     cy.wait(5000);
-    cy.visit('/dataset');
-    cy.get('.dataset-list .dataset-item:first-child .dataset-content h3 > a').click();
     cy.get('.resource-list').find('.resource-item').should('have.length', 1);
   });
 });

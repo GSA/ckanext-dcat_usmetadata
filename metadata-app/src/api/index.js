@@ -88,6 +88,12 @@ const encodeSupplementalValues = (opts) => {
     delete newOpts.describedByType;
   }
 
+  if (opts.isParent === 'Yes') {
+    newOpts.is_parent = true;
+  } else {
+    newOpts.is_parent = false;
+  }
+
   return newOpts;
 };
 
@@ -137,6 +143,12 @@ const decodeSupplementalValues = (opts) => {
       newOpts.otherDataDictionaryType = opts.data_dictionary_type;
       newOpts.describedByType = 'other';
     } else newOpts.describedByType = opts.data_dictionary_type;
+  }
+
+  if (opts.is_parent) {
+    newOpts.isParent = 'Yes';
+  } else {
+    newOpts.isParent = 'No';
   }
 
   return newOpts;
@@ -259,12 +271,28 @@ const fetchOrganizationsForUser = async (apiUrl, apiKey) => {
   }
 };
 
+const fetchParentDatasets = async (query, apiUrl, apiKey) => {
+  try {
+    // the space belongs here q= solr query string including indexed extras
+    const url = `${apiUrl}package_search?q=${query} extras_is_parent=true`;
+    const res = await axios.get(url, {
+      headers: {
+        'X-CKAN-API-Key': apiKey,
+      },
+    });
+    return res.data.result.results;
+  } catch (e) {
+    return Promise.reject(e);
+  }
+};
+
 export default {
   createDataset,
   updateDataset,
   fetchDataset,
   fetchTags,
   fetchOrganizationsForUser,
+  fetchParentDatasets,
   createResource,
   helpers: {
     decodeExtras,

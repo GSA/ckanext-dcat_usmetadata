@@ -21,13 +21,6 @@ const Form = () => (
 );
 
 test('Renders RequiredMetadata component', () => {
-  const { getByText } = render(<Form />);
-  const text1 = getByText('Meets Agency Data Quality');
-  const text2 = getByText('Data Dictionary Type');
-  const text3 = getByText('Select Parent Dataset');
-  expect(text1).toBeInTheDocument();
-  expect(text2).toBeInTheDocument();
-  expect(text3).toBeInTheDocument();
-  expect(getByText('Language - Language Subtag')).toBeInTheDocument();
-  expect(getByText('Language - Regional Subtag')).toBeInTheDocument();
+  const { container } = render(<Form />);
+  expect(container).toMatchSnapshot();
 });
