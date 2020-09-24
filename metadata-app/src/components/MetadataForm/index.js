@@ -65,7 +65,7 @@ const MetadataForm = (props) => {
       .then((result) => {
         const apiRes = Object.assign({}, result);
         apiRes.description = result.notes;
-        setFormValues(Object.assign({}, apiRes));
+        setFormValues(Object.assign({}, formValues, apiRes));
         setCurDatasetId(apiRes.id);
       })
       .catch((e) => {
