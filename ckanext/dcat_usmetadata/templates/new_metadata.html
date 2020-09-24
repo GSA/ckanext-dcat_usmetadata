@@ -1,0 +1,18 @@
+{% if not h.organizations_available('create_dataset')
+        and not h.check_config_permission('ckan.auth.create_unowned_dataset') %}
+
+    {% include "package/snippets/cannot_create_package.html" %}
+
+{% else %}
+    <div
+      id="root"
+      data-apiUrl="{{g.site_url}}/api/3/action/"
+      data-apiKey="{{c.userobj.apikey}}"
+      data-ownerOrg="{{request.params.get('group')}}"
+      data-datasetId="{{request.params.get('datasetId') or ''}}"
+    ></div>
+    <link rel="stylesheet" href="/css/main.2cca9f24.chunk.css" type"text/css">
+    <script src="/js/2.38fd3263.chunk.js"></script>
+    <script src="/js/main.07c34ada.chunk.js"></script>
+    <script src="/js/runtime-main.bfc1d45b.js"></script>
+{% endif  %}

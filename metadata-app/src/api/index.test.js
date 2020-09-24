@@ -73,7 +73,7 @@ describe('Test helpers', () => {
           });
         });
 
-        const result = await createDataset('123', requiredMetadata, 'APIURL', 'APIKEY');
+        const result = await createDataset(requiredMetadata, 'APIURL', 'APIKEY');
 
         expect(result.title).toBe('Test Dataset 1');
         expect(typeof result).toBe('object');
