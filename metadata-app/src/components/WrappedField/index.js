@@ -130,8 +130,8 @@ const WrappedField = (props) => {
               <option value="">-Select-</option>
               {/* eslint-disable */}
               {choices.map((choice, index) => {
-                const optionValue = choice.value === undefined ? choice : choice.value;
-                const optionLabel = choice.label === undefined ? choice : choice.label;
+                const optionValue = choice.value || choice.id || choice;
+                const optionLabel = choice.label || choice.title || choice.name || choice;
                 return (
                   <option value={optionValue} key={optionValue + index}>
                     {optionLabel}

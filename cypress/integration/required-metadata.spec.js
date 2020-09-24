@@ -4,7 +4,7 @@ const chance = new Chance();
 before(() => {
   cy.login();
   cy.createOrg();
-  cy.visit('/dataset/new-metadata?group=test-123');
+  cy.visit('/dataset/new-metadata');
 });
 
 beforeEach(() => {

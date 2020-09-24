@@ -24,7 +24,11 @@ In your CKAN .ini file add `dcat_usmetadata` to your enabled plugins:
 
 Run `make test` to run the tests locally inside a docker container
 
-**NOTE** That you need to have docker and docker-compose installed locally for the tests to run.
+You need to have docker and docker-compose installed locally for the tests to run.
+
+## CI and Testing Workaround
+
+The circle setup uses docker-compose to run the inventory app in the root of this project. In order to access local changes to the extension they need to be committed and the commit hash should be used to update `requirements.txt` and `requirements-freeze.txt`, to ensure that the changes will be picked up in CI. Please do this as part of the PR process.
 
 ## Metadata App
 

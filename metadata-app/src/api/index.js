@@ -141,10 +141,9 @@ const decodeSupplementalValues = (opts) => {
  * API CALLS
  */
 
-const createDataset = (ownerOrg, opts, apiUrl, apiKey) => {
+const createDataset = (opts, apiUrl, apiKey) => {
   const encoded = encodeSupplementalValues(opts);
   encoded.name = slugify(opts.title, { lower: true, remove: /[*+~.()'"!:@]/g });
-  encoded.owner_org = ownerOrg;
   encoded.modified = new Date();
   encoded.bureau_code = '015:11';
   encoded.program_code = '015:001';
@@ -241,11 +240,26 @@ const fetchTags = async (str, apiUrl, apiKey) => {
   }
 };
 
+const fetchOrganizationsForUser = async (apiUrl, apiKey) => {
+  try {
+    const url = `${apiUrl}organization_list_for_user`;
+    const res = await axios.get(url, {
+      headers: {
+        'X-CKAN-API-Key': apiKey,
+      },
+    });
+    return res.data.result;
+  } catch (e) {
+    return Promise.reject(e);
+  }
+};
+
 export default {
   createDataset,
   updateDataset,
   fetchDataset,
   fetchTags,
+  fetchOrganizationsForUser,
   createResource,
   helpers: {
     decodeExtras,

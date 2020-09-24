@@ -117,7 +117,7 @@ const MetadataForm = (props) => {
                   console.error('CREATE DATASET ERROR', e); // eslint-disable-line
                 });
             } else {
-              Api.createDataset(ownerOrg, values, apiUrl, apiKey)
+              Api.createDataset(values, apiUrl, apiKey)
                 .then((res) => {
                   setFormValues(res);
                   setCurDatasetId(res.id);
