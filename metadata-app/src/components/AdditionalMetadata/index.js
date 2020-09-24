@@ -233,25 +233,19 @@ const AdditionalMetadata = (props) => {
       </div>
       <div className="row">
         <div className="grid-col-12">
-          <WrappedField
-            disabled={values.isParent === 'Yes'}
-            label="Select Parent Dataset"
-            name="parent_dataset_id"
-            type="string"
-          />
+          <span className="usa-label">Select Parent Dataset</span>
           <Autocomplete
+            disabled={values.isParent === 'Yes'}
             id="tags-autocomplete-input"
             tags={values.parent}
             apiUrl={apiUrl}
             apiKey={apiKey}
             fetchOpts={api.fetchParentDatasets}
-            name="parentDataset"
+            name="parent_dataset_id"
             titleField="name"
             placeholder="Start typing to search"
-            required
-            placeholderText="Start typing to search"
             errors={errors}
-            helptext="Start typing to see list of matching datasets by title"
+            helptext={<HelpText>Start typing to see list of matching datasets by title</HelpText>}
           />
         </div>
       </div>
