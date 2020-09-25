@@ -12,7 +12,7 @@ const Autocomplete = (props) => {
     <FieldArray
       name={name}
       render={(arrayHelpers) => (
-        <div className="react-tags-input grid-col-12">
+        <div className={`react-tags-input grid-col-12 ${errors && errors[name] && 'field-error'}`}>
           {errors && errors[name] && (
             <span className="error-msg">
               {errors[name]}

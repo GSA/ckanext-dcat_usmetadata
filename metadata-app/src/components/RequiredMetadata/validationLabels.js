@@ -11,4 +11,6 @@ export default {
   spatial: 'Spatial',
   license_new: 'License',
   temporal: 'Temporal',
+  tags: 'Tags',
+  owner_org: 'Organization',
 };
