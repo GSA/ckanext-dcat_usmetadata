@@ -231,24 +231,25 @@ const AdditionalMetadata = (props) => {
           />
         </div>
       </div>
-      <div className="row">
-        <div className="grid-col-12">
-          <span className="usa-label">Select Parent Dataset</span>
-          <Autocomplete
-            disabled={values.isParent === 'Yes'}
-            id="tags-autocomplete-input"
-            tags={values.parent}
-            apiUrl={apiUrl}
-            apiKey={apiKey}
-            fetchOpts={api.fetchParentDatasets}
-            name="parent_dataset_id"
-            titleField="name"
-            placeholder="Start typing to search"
-            errors={errors}
-            helptext={<HelpText>Start typing to see list of matching datasets by title</HelpText>}
-          />
+      {values.isParent === 'No' && (
+        <div className="row">
+          <div className="grid-col-12">
+            <span className="usa-label">Select Parent Dataset</span>
+            <Autocomplete
+              id="tags-autocomplete-input"
+              tags={values.parent}
+              apiUrl={apiUrl}
+              apiKey={apiKey}
+              fetchOpts={api.fetchParentDatasets}
+              name="parent_dataset_id"
+              titleField="name"
+              placeholder="Start typing to search"
+              errors={errors}
+              helptext={<HelpText>Start typing to see list of matching datasets by title</HelpText>}
+            />
+          </div>
         </div>
-      </div>
+      )}
       <div className="row">
         <button type="button" className="usa-button usa-button--line">
           Save as draft
