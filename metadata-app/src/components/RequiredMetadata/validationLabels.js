@@ -12,4 +12,5 @@ export default {
   license_new: 'License',
   temporal: 'Temporal',
   tags: 'Tags',
+  owner_org: 'Organization',
 };

@@ -21,6 +21,7 @@ export default yup.object().shape({
     .required(
       'Tags are required. Please, provide at least one tag. Note that a tag name must be a string between 2 and 100 characters long containing only alphanumeric characters and -, _ and .'
     ),
+  owner_org: yup.string().required('Organization is required'),
   publisher: yup.string().required('Publisher is required'),
   subagency: yup.string(),
   public_access_level: yup.string().required('Access level is required'),
