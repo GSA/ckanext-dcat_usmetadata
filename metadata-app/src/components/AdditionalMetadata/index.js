@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import WrappedField from '../WrappedField';
 import HelpText from '../HelpText';
+import Autocomplete from '../Autocomplete';
+import api from '../../api';
 
 const languages = require('./languages.json');
+const dataDictTypes = require('./data-dictionary-types');
 
 const helpTexts = {
   theme: <HelpText>Examples include: vegetables, non_starchy, green.</HelpText>,
@@ -44,7 +47,7 @@ const helpTexts = {
 };
 
 const AdditionalMetadata = (props) => {
-  const { values } = props;
+  const { values, errors, apiUrl, apiKey } = props;
 
   const getRegionalChoices = (selectedLangValue) => {
     const lang = languages.find((item) => item.value === selectedLangValue) || {};
@@ -95,7 +98,20 @@ const AdditionalMetadata = (props) => {
       </div>
       <div className="row">
         <div className="grid-col-12">
-          <WrappedField label="Data Dictionary Type" name="data_dictionary_type" type="string" />
+          <WrappedField
+            label="Data Dictionary Type"
+            name="describedByType"
+            value={values.describedByType}
+            type="select"
+            choices={dataDictTypes}
+          />
+          <WrappedField
+            disabled={values.describedByType !== 'other'}
+            name="otherDataDictionaryType"
+            value={values.otherDataDictionaryType}
+            type="string"
+            helptext="If you selected “Other”, please specify your Data Dictionary Type"
+          />
         </div>
       </div>
       <div className="row">
@@ -207,7 +223,30 @@ const AdditionalMetadata = (props) => {
       </div>
       <div className="row">
         <div className="grid-col-12">
-          <WrappedField label="Select Parent Dataset" name="parent_dataset_id" type="string" />
+          <WrappedField
+            label="Is parent dataset"
+            name="isParent"
+            type="select"
+            choices={['Yes', 'No']}
+          />
+        </div>
+      </div>
+      <div className="row">
+        <div className="grid-col-12">
+          <span className="usa-label">Select Parent Dataset</span>
+          <Autocomplete
+            disabled={values.isParent === 'Yes'}
+            id="tags-autocomplete-input"
+            tags={values.parent}
+            apiUrl={apiUrl}
+            apiKey={apiKey}
+            fetchOpts={api.fetchParentDatasets}
+            name="parent_dataset_id"
+            titleField="name"
+            placeholder="Start typing to search"
+            errors={errors}
+            helptext={<HelpText>Start typing to see list of matching datasets by title</HelpText>}
+          />
         </div>
       </div>
       <div className="row">
@@ -223,11 +262,15 @@ const AdditionalMetadata = (props) => {
 };
 
 AdditionalMetadata.propTypes = {
+  apiUrl: PropTypes.string,
+  apiKey: PropTypes.string,
+  errors: PropTypes.any, // eslint-disable-line
   values: PropTypes.shape({
     dataQualityUSG: PropTypes.string,
     theme: PropTypes.string,
     describedBy: PropTypes.string,
     describedByType: PropTypes.string,
+    otherDataDictionaryType: PropTypes.string,
     accrualPeriodicity: PropTypes.string,
     landingPage: PropTypes.string,
     languageSubTag: PropTypes.string,
@@ -237,6 +280,8 @@ AdditionalMetadata.propTypes = {
     issued: PropTypes.string,
     systemOfRecordsUSG: PropTypes.string,
     isPartOf: PropTypes.string,
+    isParent: PropTypes.string,
+    parent: PropTypes.string,
   }),
 };
 

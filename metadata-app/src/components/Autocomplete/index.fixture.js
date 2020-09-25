@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik } from 'formik';
-import TagsAutocomplete from '.';
+import Autocomplete from '.';
 import '../../css/custom.css';
 
 const apiUrl = 'http://localhost:5000/api/3/action/';
@@ -12,7 +12,7 @@ export default (
       initialValues={{ tags: [{ id: 1, name: 'foobar' }] }}
       render={(opts) => (
         <form>
-          <TagsAutocomplete
+          <Autocomplete
             id="tags-autocomplete-input"
             formValues={opts}
             apiUrl={apiUrl}

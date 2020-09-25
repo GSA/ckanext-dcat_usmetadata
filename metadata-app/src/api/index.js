@@ -1,6 +1,8 @@
 import axios from 'axios';
 import slugify from 'slugify';
 
+const dataDictTypes = require('../components/AdditionalMetadata/data-dictionary-types');
+
 /**
  * HELPERS
  */
@@ -76,6 +78,22 @@ const encodeSupplementalValues = (opts) => {
   delete newOpts.languageSubTag;
   delete newOpts.languageRegSubTag;
 
+  // Data Dictionary Type
+  if (opts.describedByType) {
+    // If it's specified other
+    if (opts.describedByType === 'other') {
+      newOpts.data_dictionary_type = opts.otherDataDictionaryType;
+      delete newOpts.otherDataDictionaryType;
+    } else newOpts.data_dictionary_type = opts.describedByType;
+    delete newOpts.describedByType;
+  }
+
+  if (opts.isParent === 'Yes') {
+    newOpts.is_parent = true;
+  } else {
+    newOpts.is_parent = false;
+  }
+
   return newOpts;
 };
 
@@ -109,6 +127,30 @@ const decodeSupplementalValues = (opts) => {
     [newOpts.temporal_start_date, newOpts.temporal_end_date] = opts.temporal.split('/');
     newOpts.temporal = 'true';
   }
+
+  if (opts.language) {
+    [newOpts.languageSubTag, newOpts.languageRegSubTag] = opts.language.split('-');
+  }
+
+  if (opts.data_dictionary_type) {
+    // Check if the data dictionary type is out of list,
+    // then specify the other input field
+    const selectedDataDictType = dataDictTypes.find((dataDictType) => {
+      return dataDictType.value === opts.data_dictionary_type;
+    });
+    // If it is from the list then the type should be other
+    if (!selectedDataDictType) {
+      newOpts.otherDataDictionaryType = opts.data_dictionary_type;
+      newOpts.describedByType = 'other';
+    } else newOpts.describedByType = opts.data_dictionary_type;
+  }
+
+  if (opts.is_parent) {
+    newOpts.isParent = 'Yes';
+  } else {
+    newOpts.isParent = 'No';
+  }
+
   return newOpts;
 };
 
@@ -229,12 +271,28 @@ const fetchOrganizationsForUser = async (apiUrl, apiKey) => {
   }
 };
 
+const fetchParentDatasets = async (query, apiUrl, apiKey) => {
+  try {
+    // the space belongs here q= solr query string including indexed extras
+    const url = `${apiUrl}package_search?q=${query} extras_is_parent=true`;
+    const res = await axios.get(url, {
+      headers: {
+        'X-CKAN-API-Key': apiKey,
+      },
+    });
+    return res.data.result.results;
+  } catch (e) {
+    return Promise.reject(e);
+  }
+};
+
 export default {
   createDataset,
   updateDataset,
   fetchDataset,
   fetchTags,
   fetchOrganizationsForUser,
+  fetchParentDatasets,
   createResource,
   helpers: {
     decodeExtras,
