@@ -145,7 +145,7 @@ const decodeSupplementalValues = (opts) => {
     } else newOpts.describedByType = opts.data_dictionary_type;
   }
 
-  if (opts.is_parent) {
+  if (opts.is_parent === 'true') {
     newOpts.isParent = 'Yes';
   } else {
     newOpts.isParent = 'No';
