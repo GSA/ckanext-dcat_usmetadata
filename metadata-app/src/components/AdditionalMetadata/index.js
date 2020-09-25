@@ -236,12 +236,13 @@ const AdditionalMetadata = (props) => {
           <div className="grid-col-12">
             <span className="usa-label">Select Parent Dataset</span>
             <Autocomplete
-              id="tags-autocomplete-input"
+              id="parent-autocomplete-input"
               tags={values.parent}
               apiUrl={apiUrl}
               apiKey={apiKey}
+              maxTags={1}
               fetchOpts={api.fetchParentDatasets}
-              name="parent_dataset_id"
+              name="parent"
               titleField="name"
               placeholder="Start typing to search"
               errors={errors}
@@ -282,7 +283,7 @@ AdditionalMetadata.propTypes = {
     systemOfRecordsUSG: PropTypes.string,
     isPartOf: PropTypes.string,
     isParent: PropTypes.string,
-    parent: PropTypes.string,
+    parent: PropTypes.any, // eslint-disable-line
   }),
 };
 
