@@ -45,10 +45,10 @@ Cypress.Commands.add('requiredMetadata', () => {
 });
 
 Cypress.Commands.add('additionalMetadata', () => {
-  cy.get('select[name=dataQualityUSG]').select('Yes');
+  // cy.get('select[name=dataQualityUSG]').select('Yes');
   cy.get('input[name=category]').type(chance.name());
   cy.get('input[name=data_dictionary]').type(chance.url());
-  cy.get('input[name=data_dictionary_type]').type(chance.name());
+  // cy.get('input[name=data_dictionary_type]').type(chance.name());
   cy.get('select[name=accrual_periodicity]').select('Weekly');
   cy.get('input[name=homepage_url]').type(chance.url());
   cy.get('input[name=primary_it_investment_uii]').type('123-123456789');
