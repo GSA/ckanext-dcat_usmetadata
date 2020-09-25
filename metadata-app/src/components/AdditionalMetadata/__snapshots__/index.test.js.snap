@@ -1485,61 +1485,6 @@ exports[`Renders RequiredMetadata component 1`] = `
       <div
         class="row"
       >
-        <div
-          class="grid-col-12"
-        >
-          <span
-            class="usa-label"
-          >
-            Select Parent Dataset
-          </span>
-          <div
-            class="react-tags-input grid-col-12 undefined"
-          >
-            <span
-              class="usa-helptext"
-            >
-              Start typing to see list of matching datasets by title
-            </span>
-            <div
-              class="react-tags"
-            >
-              <div
-                aria-live="polite"
-                aria-relevant="additions removals"
-                class="react-tags__selected"
-              />
-              <div
-                class="react-tags__search"
-              >
-                <div
-                  class="react-tags__search-wrapper"
-                >
-                  <input
-                    aria-autocomplete="list"
-                    aria-expanded="false"
-                    aria-label="Start typing to search"
-                    aria-owns="ReactTags"
-                    class="react-tags__search-input"
-                    placeholder="Start typing to search"
-                    role="combobox"
-                    style="width: 2px;"
-                    value=""
-                  />
-                  <div
-                    style="position: absolute; width: 0px; height: 0px; visibility: hidden; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
-                  >
-                    Start typing to search
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="row"
-      >
         <button
           class="usa-button usa-button--line"
           type="button"
