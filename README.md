@@ -30,6 +30,36 @@ You need to have docker and docker-compose installed locally for the tests to ru
 
 The circle setup uses docker-compose to run the inventory app in the root of this project. In order to access local changes to the extension they need to be committed and the commit hash should be used to update `requirements.txt` and `requirements-freeze.txt`, to ensure that the changes will be picked up in CI. Please do this as part of the PR process.
 
+## Building the App
+
+To build the app (from metadata-app/ directory):
+
+* `$ yarn build`
+* `$ rm ../ckanext/dcat_usmetadata/public/js/*`
+* `$ rm ../ckanext/dcat_usmetadata/public/css/*`
+* `$ rm ../ckanext/dcat_usmetadata/public/media/*`
+* `$ cp build/static/js/* ../ckanext/dcat_usmetadata/public/js`
+* `$ cp build/static/css/* ../ckanext/dcat_usmetadata/public/css`
+* `$ cp build/static/media/* ../ckanext/dcat_usmetadata/public/media`
+
+Now update `ckanext/dcat_usmetadata/templates/new-metadata.html` to reference the new bundles.
+
+For example:
+
+```
+<div
+  id="root"
+  data-apiUrl="{{g.site_url}}/api/3/action/"
+  data-apiKey="{{c.userobj.apikey}}"
+  data-ownerOrg="{{request.params.get('group')}}"
+  data-datasetId="{{request.params.get('datasetId') or ''}}"
+></div>
+<link rel="stylesheet" href="/css/main.2cca9f24.chunk.css" type"text/css">
+<script src="/js/2.89b84686.chunk.js"></script>
+<script src="/js/main.84d1d3f2.chunk.js"></script>
+<script src="/js/runtime-main.bfc1d45b.js"></script>
+```
+
 ## Metadata App
 
 The Metadata APP is a [Create React App](https://create-react-app.dev/)-bootstrapped project.
