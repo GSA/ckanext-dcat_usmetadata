@@ -13,5 +13,5 @@ export default {
   systemOfRecordsUSG: '',
   isPartOf: '',
   isParent: 'No',
-  parent: [],
+  parentDataset: '',
 };

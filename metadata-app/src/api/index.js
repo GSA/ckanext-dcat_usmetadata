@@ -94,15 +94,8 @@ const encodeSupplementalValues = (opts) => {
     newOpts.is_parent = 'false';
   }
 
-  if (opts.parent) {
-    // if the selected parent dataset should be deleted
-    if (!opts.parent.length && newOpts.parent_dataset) {
-      delete newOpts.parent_dataset;
-      newOpts.extras = newOpts.extras.filter(({ key }) => {
-        return key !== 'parent_dataset';
-      });
-    } else newOpts.parent_dataset = opts.parent[0].id;
-    delete newOpts.parent;
+  if (opts.parentDataset) {
+    newOpts.parent_dataset = opts.parentDataset;
   }
 
   return newOpts;
@@ -163,13 +156,7 @@ const decodeSupplementalValues = (opts) => {
   }
 
   if (opts.parent_dataset) {
-    // TODO - Name should be retrieved by making another request
-    newOpts.parent = [
-      {
-        id: opts.parent_dataset,
-        name: opts.parent_dataset,
-      },
-    ];
+    newOpts.parentDataset = opts.parent_dataset;
   }
 
   return newOpts;
