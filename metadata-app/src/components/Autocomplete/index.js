@@ -22,24 +22,27 @@ const Autocomplete = (props) => {
     const currentParent = props.value ? [{ name: props.value }] : [];
 
     return (
-      <ReactTags
-        tags={currentParent}
-        suggestions={suggestions}
-        allowNew
-        ref={React.createRef()}
-        onAddition={onAddition}
-        onDelete={onDelete}
-        className="usa-input"
-        placeholderText={placeholder}
-        onInput={async (q) => {
-          try {
-            const res = await fetchOpts(q, apiUrl, apiKey);
-            setSuggestions(res);
-          } catch (e) {
-            console.warn('Unable to fetch autocomplete options', e); // eslint-disable-line no-console
-          }
-        }}
-      />
+      <div className={`react-tags-input grid-col-12 ${errors && errors[name] && 'field-error'}`}>
+        <div className="usa-helptext">{helptext}</div>
+        <ReactTags
+          tags={currentParent}
+          suggestions={suggestions}
+          allowNew
+          ref={React.createRef()}
+          onAddition={onAddition}
+          onDelete={onDelete}
+          className="usa-input"
+          placeholderText={placeholder}
+          onInput={async (q) => {
+            try {
+              const res = await fetchOpts(q, apiUrl, apiKey);
+              setSuggestions(res);
+            } catch (e) {
+              console.warn('Unable to fetch autocomplete options', e); // eslint-disable-line no-console
+            }
+          }}
+        />
+      </div>
     );
   }
 

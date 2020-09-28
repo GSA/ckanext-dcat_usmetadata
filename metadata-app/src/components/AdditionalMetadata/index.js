@@ -234,6 +234,7 @@ const AdditionalMetadata = (props) => {
       {values.isParent === 'No' && (
         <div className="row">
           <div className="grid-col-12">
+            <span className="usa-label">Select Parent Dataset</span>
             <Autocomplete
               label="Select Parent Dataset"
               name="parentDataset"
