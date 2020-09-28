@@ -47,7 +47,7 @@ const helpTexts = {
 };
 
 const AdditionalMetadata = (props) => {
-  const { values, errors, apiUrl, apiKey } = props;
+  const { values } = props;
 
   const getRegionalChoices = (selectedLangValue) => {
     const lang = languages.find((item) => item.value === selectedLangValue) || {};
@@ -231,24 +231,21 @@ const AdditionalMetadata = (props) => {
           />
         </div>
       </div>
-      <div className="row">
-        <div className="grid-col-12">
-          <span className="usa-label">Select Parent Dataset</span>
-          <Autocomplete
-            disabled={values.isParent === 'Yes'}
-            id="tags-autocomplete-input"
-            tags={values.parent}
-            apiUrl={apiUrl}
-            apiKey={apiKey}
-            fetchOpts={api.fetchParentDatasets}
-            name="parent_dataset_id"
-            titleField="name"
-            placeholder="Start typing to search"
-            errors={errors}
-            helptext={<HelpText>Start typing to see list of matching datasets by title</HelpText>}
-          />
+      {values.isParent === 'No' && (
+        <div className="row">
+          <div className="grid-col-12">
+            <Autocomplete
+              label="Select Parent Dataset"
+              name="parentDataset"
+              type="string"
+              value={values.parentDataset}
+              placeholder="Select parent dataset"
+              helptext="Start typing to see list of matching datasets by title"
+              fetchOpts={api.fetchParentDatasets}
+            />
+          </div>
         </div>
-      </div>
+      )}
       <div className="row">
         <button type="button" className="usa-button usa-button--line">
           Save as draft
@@ -262,8 +259,6 @@ const AdditionalMetadata = (props) => {
 };
 
 AdditionalMetadata.propTypes = {
-  apiUrl: PropTypes.string,
-  apiKey: PropTypes.string,
   errors: PropTypes.any, // eslint-disable-line
   values: PropTypes.shape({
     dataQualityUSG: PropTypes.string,
@@ -281,7 +276,7 @@ AdditionalMetadata.propTypes = {
     systemOfRecordsUSG: PropTypes.string,
     isPartOf: PropTypes.string,
     isParent: PropTypes.string,
-    parent: PropTypes.string,
+    parentDataset: PropTypes.string,
   }),
 };
 

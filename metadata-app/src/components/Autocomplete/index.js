@@ -1,12 +1,47 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { FieldArray } from 'formik';
+import { FieldArray, useField } from 'formik';
 import ReactTags from 'react-tag-autocomplete';
 import './index.css';
 
 const Autocomplete = (props) => {
-  const { tags, name, helptext, placeholder, apiUrl, apiKey, errors, fetchOpts } = props;
+  const { tags, name, helptext, placeholder, apiUrl, apiKey, errors, fetchOpts, type } = props;
   const [suggestions, setSuggestions] = useState([]);
+  const [field, meta, helpers] = useField(name); // eslint-disable-line
+  const { setValue } = helpers;
+
+  if (type === 'string') {
+    const onAddition = (tag) => {
+      setValue(tag.name);
+    };
+
+    const onDelete = () => {
+      setValue('');
+    };
+
+    const currentParent = props.value ? [{ name: props.value }] : [];
+
+    return (
+      <ReactTags
+        tags={currentParent}
+        suggestions={suggestions}
+        allowNew
+        ref={React.createRef()}
+        onAddition={onAddition}
+        onDelete={onDelete}
+        className="usa-input"
+        placeholderText={placeholder}
+        onInput={async (q) => {
+          try {
+            const res = await fetchOpts(q, apiUrl, apiKey);
+            setSuggestions(res);
+          } catch (e) {
+            console.warn('Unable to fetch autocomplete options', e); // eslint-disable-line no-console
+          }
+        }}
+      />
+    );
+  }
 
   return (
     <FieldArray
@@ -49,6 +84,8 @@ Autocomplete.propTypes = {
   apiKey: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
+  type: PropTypes.any, // eslint-disable-line
+  value: PropTypes.any, // eslint-disable-line
   tags: PropTypes.any, // eslint-disable-line
   helptext: PropTypes.any, // eslint-disable-line
   errors: PropTypes.any, // eslint-disable-line

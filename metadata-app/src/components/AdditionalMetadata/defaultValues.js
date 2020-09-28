@@ -12,4 +12,6 @@ export default {
   issued: '',
   systemOfRecordsUSG: '',
   isPartOf: '',
+  isParent: 'No',
+  parentDataset: '',
 };

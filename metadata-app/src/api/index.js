@@ -89,9 +89,13 @@ const encodeSupplementalValues = (opts) => {
   }
 
   if (opts.isParent === 'Yes') {
-    newOpts.is_parent = true;
+    newOpts.is_parent = 'true';
   } else {
-    newOpts.is_parent = false;
+    newOpts.is_parent = 'false';
+  }
+
+  if (opts.parentDataset) {
+    newOpts.parent_dataset = opts.parentDataset;
   }
 
   return newOpts;
@@ -145,10 +149,14 @@ const decodeSupplementalValues = (opts) => {
     } else newOpts.describedByType = opts.data_dictionary_type;
   }
 
-  if (opts.is_parent) {
+  if (opts.is_parent === 'true') {
     newOpts.isParent = 'Yes';
   } else {
     newOpts.isParent = 'No';
+  }
+
+  if (opts.parent_dataset) {
+    newOpts.parentDataset = opts.parent_dataset;
   }
 
   return newOpts;
@@ -280,7 +288,9 @@ const fetchParentDatasets = async (query, apiUrl, apiKey) => {
         'X-CKAN-API-Key': apiKey,
       },
     });
-    return res.data.result.results;
+    return (res.data.result.results || []).map(({ id, name }) => {
+      return { id, name };
+    });
   } catch (e) {
     return Promise.reject(e);
   }
