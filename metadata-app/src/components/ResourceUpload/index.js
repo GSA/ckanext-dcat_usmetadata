@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import WrappedField from '../WrappedField';
+import resourceFormats from './resource_formats.json';
 
 const ResourceUpload = (props) => {
   const { values, setFieldValue, submitForm } = props; // eslint-disable-line
@@ -125,7 +126,7 @@ const ResourceUpload = (props) => {
             label="Media Type"
             name="resource.mimetype"
             type="select"
-            choices={['Type 1 ', 'Type 2', 'Type 3', 'Type 4']}
+            choices={resourceFormats}
             helptext="Start typing to select a media type.  Examples include: text/csv, application/xml, or application/json."
             value={mimetype}
           />
