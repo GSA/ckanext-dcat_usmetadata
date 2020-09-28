@@ -90,12 +90,15 @@ const encodeSupplementalValues = (opts) => {
 
   if (opts.isParent === 'Yes') {
     newOpts.is_parent = 'true';
-  } else {
+    delete newOpts.parent_dataset;
+  } else if (opts.isParent === 'No') {
     newOpts.is_parent = 'false';
-  }
-
-  if (opts.parentDataset) {
-    newOpts.parent_dataset = opts.parentDataset;
+    if (opts.parentDataset) {
+      newOpts.parent_dataset = opts.parentDataset;
+    }
+  } else {
+    delete newOpts.is_parent;
+    delete newOpts.parent_dataset;
   }
 
   return newOpts;
@@ -288,8 +291,11 @@ const fetchParentDatasets = async (query, apiUrl, apiKey) => {
         'X-CKAN-API-Key': apiKey,
       },
     });
-    return (res.data.result.results || []).map(({ id, name }) => {
-      return { id, name };
+    return (res.data.result.results || []).map(({ id, name, title }) => {
+      return {
+        id: name || id,
+        name: title,
+      };
     });
   } catch (e) {
     return Promise.reject(e);
