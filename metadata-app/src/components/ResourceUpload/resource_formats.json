@@ -1,0 +1,88 @@
+[
+  {
+    "label": "PPTX -- Powerpoint OOXML Presentation",
+    "value": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+  },
+  { "label": "EXE -- Windows Executable Program", "value": "application/x-msdownload" },
+  { "label": "DOC -- Word Document", "value": "application/msword" },
+  { "label": "KML -- KML File", "value": "application/vnd.google-earth.kml+xml" },
+  { "label": "XLS -- Excel Document", "value": "application/vnd.ms-excel" },
+  { "label": "WCS -- Web Coverage Service", "value": "wcs" },
+  { "label": "JS -- JavaScript", "value": "application/x-javascript" },
+  { "label": "MDB -- Access Database", "value": "application/x-msaccess" },
+  { "label": "NetCDF -- NetCDF File", "value": "application/netcdf" },
+  { "label": "ArcGIS Map Service", "value": "ArcGIS Map Service" },
+  { "label": "TSV -- Tab Separated Values File", "value": "text/tab-separated-values" },
+  { "label": "WFS -- Web Feature Service", "value": null },
+  { "label": "ArcGIS Online Map", "value": "ArcGIS Online Map" },
+  { "label": "Perl Script", "value": "text/x-perl" },
+  { "label": "KMZ -- KMZ File", "value": "application/vnd.google-earth.kmz+xml" },
+  { "label": "OWL --Web Ontology Language", "value": "application/owl+xml" },
+  { "label": "N3 -- N3 Triples", "value": "application/x-n3" },
+  { "label": "ZIP -- Zip File", "value": "application/zip" },
+  { "label": "GZ -- Gzip File", "value": "application/gzip" },
+  { "label": "QGIS -- QGIS File", "value": "application/x-qgis" },
+  {
+    "label": "ODS -- OpenDocument Spreadsheet",
+    "value": "application/vnd.oasis.opendocument.spreadsheet"
+  },
+  { "label": "ODT -- OpenDocument Text", "value": "application/vnd.oasis.opendocument.text" },
+  { "label": "JSON -- JavaScript Object Notation", "value": "application/json" },
+  { "label": "BMP -- Bitmap Image File", "value": "image/x-ms-bmp" },
+  { "label": "HTML -- Web Page", "value": "text/html" },
+  { "label": "RAR -- RAR Compressed File", "value": "application/rar" },
+  { "label": "TIFF -- TIFF Image File", "value": "image/tiff" },
+  {
+    "label": "ODB -- OpenDocument Database",
+    "value": "application/vnd.oasis.opendocument.database"
+  },
+  { "label": "TXT -- Text File", "value": "text/plain" },
+  { "label": "DCR -- Adobe Shockwave format", "value": "application/x-director" },
+  {
+    "label": "ODF -- OpenDocument Math Formula",
+    "value": "application/vnd.oasis.opendocument.formula"
+  },
+  { "label": "ODG -- OpenDocument Image", "value": "application/vnd.oasis.opendocument.graphics" },
+  { "label": "XML -- XML File", "value": "application/xml" },
+  {
+    "label": "XLSX -- Excel OOXML Spreadsheet",
+    "value": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+  },
+  {
+    "label": "DOCX -- Word OOXML Document",
+    "value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+  },
+  { "label": "BIN -- Binary Data", "value": "application/octet-stream" },
+  {
+    "label": "XSLT -- Extensible Stylesheet Language Transformations",
+    "value": "application/xslt+xml"
+  },
+  { "label": "WMS -- Web Mapping Service", "value": "WMS" },
+  { "label": "SVG -- SVG vector image", "value": "image/svg+xml" },
+  { "label": "PPT -- Powerpoint Presentation", "value": "application/vnd.ms-powerpoint" },
+  {
+    "label": "ODP -- OpenDocument Presentation",
+    "value": "application/vnd.oasis.opendocument.presentation"
+  },
+  { "label": "JPEG -- JPG Image File", "value": "image/jpeg" },
+  { "label": "SPARQL -- SPARQL end-point", "value": "application/sparql-results+xml" },
+  { "label": "GIF -- GIF Image File", "value": "image/gif" },
+  { "label": "RDF", "value": "application/rdf+xml" },
+  { "label": "E00 -- ARC/INFO interchange file format", "value": "application/x-e00" },
+  { "label": "PDF -- PDF File", "value": "application/pdf" },
+  { "label": "CSV -- Comma Separated Values File", "value": "text/csv" },
+  { "label": "ODC -- OpenDocument Chart", "value": "application/vnd.oasis.opendocument.chart" },
+  { "label": "Atom Feed -- Atom Feed", "value": "application/atom+xml" },
+  { "label": "MrSID", "value": "image/x-mrsid" },
+  { "label": "ArcGIS Map Preview", "value": "ArcGIS Map Preview" },
+  { "label": "XYZ -- XYZ Chemical File", "value": "chemical/x-xyz" },
+  { "label": "MOP -- MOPAC Input format", "value": "chemical/x-mopac-input" },
+  { "label": "Esri REST -- Esri Rest API Endpoint", "value": "Esri REST" },
+  { "label": "dBase -- dBase Database", "value": "application/x-dbf" },
+  { "label": "MXD -- ESRI ArcGIS project file", "value": "application/x-mxd" },
+  { "label": "TAR -- TAR Compressed File", "value": "application/x-tar" },
+  { "label": "PNG -- PNG Image File", "value": "image/png" },
+  { "label": "RSS -- RSS feed", "value": "application/rss+xml" },
+  { "label": "GeoJSON -- Geographic JavaScript Object Notation", "value": null },
+  { "label": "SHP -- Shapefile", "value": null }
+]
