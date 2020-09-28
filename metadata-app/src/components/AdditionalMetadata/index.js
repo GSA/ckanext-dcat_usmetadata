@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import WrappedField from '../WrappedField';
 import HelpText from '../HelpText';
+import Autocomplete from '../Autocomplete';
+import api from '../../api';
 
 const languages = require('./languages.json');
 const dataDictTypes = require('./data-dictionary-types');
@@ -232,11 +234,14 @@ const AdditionalMetadata = (props) => {
       {values.isParent === 'No' && (
         <div className="row">
           <div className="grid-col-12">
-            <WrappedField
+            <Autocomplete
               label="Select Parent Dataset"
               name="parentDataset"
               type="string"
+              value={values.parentDataset}
+              placeholder="Select parent dataset"
               helptext="Start typing to see list of matching datasets by title"
+              fetchOpts={api.fetchParentDatasets}
             />
           </div>
         </div>
