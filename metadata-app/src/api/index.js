@@ -288,8 +288,11 @@ const fetchParentDatasets = async (query, apiUrl, apiKey) => {
         'X-CKAN-API-Key': apiKey,
       },
     });
-    return (res.data.result.results || []).map(({ id, name }) => {
-      return { id, name };
+    return (res.data.result.results || []).map(({ id, name, title }) => {
+      return {
+        id: name || id,
+        name: title,
+      };
     });
   } catch (e) {
     return Promise.reject(e);

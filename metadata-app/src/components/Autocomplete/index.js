@@ -12,7 +12,7 @@ const Autocomplete = (props) => {
 
   if (type === 'string') {
     const onAddition = (tag) => {
-      setValue(tag.name);
+      setValue(tag.id);
     };
 
     const onDelete = () => {
