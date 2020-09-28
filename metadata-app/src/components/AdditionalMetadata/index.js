@@ -47,7 +47,7 @@ const helpTexts = {
 };
 
 const AdditionalMetadata = (props) => {
-  const { values } = props;
+  const { values, apiUrl, apiKey } = props;
 
   const getRegionalChoices = (selectedLangValue) => {
     const lang = languages.find((item) => item.value === selectedLangValue) || {};
@@ -242,6 +242,8 @@ const AdditionalMetadata = (props) => {
               placeholder="Select parent dataset"
               helptext="Start typing to see list of matching datasets by title"
               fetchOpts={api.fetchParentDatasets}
+              apiUrl={apiUrl}
+              apiKey={apiKey}
             />
           </div>
         </div>
@@ -259,6 +261,8 @@ const AdditionalMetadata = (props) => {
 };
 
 AdditionalMetadata.propTypes = {
+  apiUrl: PropTypes.string,
+  apiKey: PropTypes.string,
   errors: PropTypes.any, // eslint-disable-line
   values: PropTypes.shape({
     dataQualityUSG: PropTypes.string,
