@@ -6,20 +6,15 @@ import '../../css/custom.css';
 
 const Form = () => (
   <Formik initialValues={{}}>
-    {(values, setFieldValue) => (
+    {(values, setFieldValue, submitForm) => (
       <form>
-        <ResourceUpload values={values} setFieldValue={setFieldValue} />
+        <ResourceUpload values={values} setFieldValue={setFieldValue} submitForm={submitForm} />
       </form>
     )}
   </Formik>
 );
 
 test('Renders Resource Upload component', () => {
-  const { getByText } = render(<Form />);
-  expect(getByText('Upload data')).toBeInTheDocument();
-  expect(getByText('Link to data')).toBeInTheDocument();
-  expect(getByText('Name')).toBeInTheDocument();
-  expect(getByText('Description')).toBeInTheDocument();
-  expect(getByText('Media Type')).toBeInTheDocument();
-  expect(getByText('Format')).toBeInTheDocument();
+  const { container } = render(<Form />);
+  expect(container).toMatchSnapshot();
 });

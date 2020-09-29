@@ -4,7 +4,7 @@ import WrappedField from '../WrappedField';
 import resourceFormats from './resource_formats.json';
 
 const ResourceUpload = (props) => {
-  const { values, setFieldValue, submitForm } = props; // eslint-disable-line
+  const { values, setFieldValue, submitForm, draftSaved } = props; // eslint-disable-line
   const resource = values.resource || {};
   const { url, upload, name, description, mimetype, format } = resource;
 
@@ -151,6 +151,7 @@ const ResourceUpload = (props) => {
             className="usa-button usa-button--outline"
             onClick={() => {
               setFieldValue('publish', false);
+              setFieldValue('saveDraft', false);
               setLinkToDataActive(false);
               setUploadDataFileActive(false);
               submitForm();
@@ -179,7 +180,15 @@ const ResourceUpload = (props) => {
       <div className="col-sm-12">
         <br />
         <br />
-        <button type="button" className="usa-button usa-button--outline">
+        <button
+          className="usa-button usa-button--outline"
+          type="button"
+          onClick={() => {
+            setFieldValue('publish', false);
+            setFieldValue('saveDraft', true);
+            submitForm();
+          }}
+        >
           Save draft
         </button>
         <button
@@ -193,6 +202,17 @@ const ResourceUpload = (props) => {
           Finish and publish
         </button>
       </div>
+
+      {draftSaved && (
+        <div style={{ marginTop: '1rem' }}>
+          <div className="col-md-12 text-mint">
+            <i>
+              Draft saved:
+              <br />[{draftSaved}]
+            </i>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -200,6 +220,7 @@ const ResourceUpload = (props) => {
 ResourceUpload.propTypes = {
   setFieldValue: PropTypes.func,
   submitForm: PropTypes.func,
+  draftSaved: PropTypes.string,
   values: PropTypes.shape({
     resource: {
       url: PropTypes.string,

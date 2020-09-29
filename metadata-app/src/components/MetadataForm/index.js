@@ -278,6 +278,7 @@ const MetadataForm = (props) => {
             publish: true,
             savedResources: 0,
             lastSavedResourceName: null,
+            saveDraft: false,
           }}
           enableReinitialize="true"
           validateOnChange={false}
@@ -303,7 +304,10 @@ const MetadataForm = (props) => {
                             }
                           }
                         );
+                      } else if (values.saveDraft) {
+                        setDraftSaved(new Date());
                       } else {
+                        setDraftSaved(new Date());
                         setFieldValue('savedResources', values.savedResources + 1);
                         setFieldValue('lastSavedResourceName', values.resource.name);
                         setFieldValue('resource', JSON.parse(JSON.stringify(ResourceObject)));
@@ -318,7 +322,7 @@ const MetadataForm = (props) => {
                     window.scrollTo(0, 0);
                     console.error('CREATE RESOURCE ERROR', error); // eslint-disable-line
                   });
-              } else {
+              } else if (values.publish) {
                 // Update dataset state: 'draft' => 'active'
                 Api.patchDataset(curDatasetId, { state: 'active' }, apiUrl, apiKey).then((res) => {
                   if (res.status === 200) {
@@ -352,6 +356,7 @@ const MetadataForm = (props) => {
               <Form onSubmit={handleSubmit}>
                 <ResourceUpload
                   values={values}
+                  draftSaved={draftSaved ? formatDate(draftSaved) : undefined}
                   setFieldValue={setFieldValue}
                   submitForm={submitForm}
                 />
