@@ -250,7 +250,7 @@ const AdditionalMetadata = (props) => {
         </div>
       )}
       <div className="row">
-        <button type="button" className="usa-button usa-button--line">
+        <button type="button" className="usa-button usa-button--outline">
           Save as draft
         </button>
         <button className="usa-button" type="submit">

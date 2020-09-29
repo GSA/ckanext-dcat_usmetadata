@@ -1486,7 +1486,7 @@ exports[`Renders RequiredMetadata component 1`] = `
         class="row"
       >
         <button
-          class="usa-button usa-button--line"
+          class="usa-button usa-button--outline"
           type="button"
         >
           Save as draft
