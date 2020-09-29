@@ -41,7 +41,7 @@ Cypress.Commands.add('requiredMetadata', () => {
     .click();
   cy.get('input[name=temporal_start_date]').type('2010-11-11');
   cy.get('input[name=temporal_end_date]').type('2020-11-11');
-  cy.get('button[type=submit').click();
+  cy.get('button[type=button]').contains('Save and Continue').click();
 });
 
 Cypress.Commands.add('additionalMetadata', () => {
@@ -55,5 +55,5 @@ Cypress.Commands.add('additionalMetadata', () => {
   // cy.get('input[name=related_documents]').type(chance.name());
   // cy.get('input[name=release_date]').type('2020-08-08');
   // cy.get('input[name=system_of_records]').type(chance.url());
-  cy.get('button[type=submit').click();
+  cy.get('button[type=button]').contains('Save and Continue').click();
 });
