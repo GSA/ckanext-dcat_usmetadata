@@ -186,6 +186,7 @@ const MetadataForm = (props) => {
                 .then((res) => {
                   console.log('Dataset updated successfully', res); // eslint-disable-line
                   setCurrentStep(2);
+                  window.scrollTo(0, 0);
                 })
                 .catch((error) => {
                   const message = JSON.stringify(error);
@@ -196,6 +197,7 @@ const MetadataForm = (props) => {
                       message={message}
                     />
                   );
+                  window.scrollTo(0, 0);
                   console.error('UPDATE DATASET ERROR', error); // eslint-disable-line
                 });
             } else {
@@ -206,6 +208,7 @@ const MetadataForm = (props) => {
                   message="Please complete complete step one before submitting step 2."
                 />
               );
+              window.scrollTo(0, 0);
             }
           }}
           validationSchema={AdditionalMetadataSchema}
@@ -278,6 +281,7 @@ const MetadataForm = (props) => {
                     setAlert(
                       <AlertBox type="error" heading="Error saving resource(s)" message={message} />
                     );
+                    window.scrollTo(0, 0);
                     console.error('CREATE RESOURCE ERROR', error); // eslint-disable-line
                   });
               } else {
