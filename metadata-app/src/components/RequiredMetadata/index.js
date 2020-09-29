@@ -406,7 +406,16 @@ const RequiredMetadata = (props) => {
           Save and Continue
         </button>
       </div>
-      {draftSaved && <div className="row">{draftSaved}</div>}
+      {draftSaved && (
+        <div style={{ marginTop: '1rem' }}>
+          <div className="col-md-12 text-mint">
+            <i>
+              Draft saved:
+              <br />[{draftSaved}]
+            </i>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
