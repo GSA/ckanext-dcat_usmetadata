@@ -47,7 +47,7 @@ const helpTexts = {
 };
 
 const AdditionalMetadata = (props) => {
-  const { values, apiUrl, apiKey } = props;
+  const { values, apiUrl, apiKey, draftSaved, setFieldValue, submitForm } = props;
 
   const getRegionalChoices = (selectedLangValue) => {
     const lang = languages.find((item) => item.value === selectedLangValue) || {};
@@ -250,18 +250,45 @@ const AdditionalMetadata = (props) => {
         </div>
       )}
       <div className="row">
-        <button type="button" className="usa-button usa-button--outline">
+        <button
+          className="usa-button usa-button--outline"
+          type="button"
+          onClick={async () => {
+            await setFieldValue('saveDraft', true);
+            submitForm();
+          }}
+        >
           Save draft
         </button>
-        <button className="usa-button" type="submit">
-          Save and continue
+        <button
+          className="usa-button"
+          type="button"
+          onClick={async () => {
+            await setFieldValue('saveDraft', false);
+            submitForm();
+          }}
+        >
+          Save and Continue
         </button>
       </div>
+      {draftSaved && (
+        <div style={{ marginTop: '1rem' }}>
+          <div className="col-md-12 text-mint">
+            <i>
+              Draft saved:
+              <br />[{draftSaved}]
+            </i>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 AdditionalMetadata.propTypes = {
+  setFieldValue: PropTypes.func,
+  submitForm: PropTypes.func,
+  draftSaved: PropTypes.string,
   apiUrl: PropTypes.string,
   apiKey: PropTypes.string,
   errors: PropTypes.any, // eslint-disable-line

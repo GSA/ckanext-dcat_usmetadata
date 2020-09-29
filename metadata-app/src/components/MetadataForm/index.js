@@ -130,7 +130,6 @@ const MetadataForm = (props) => {
                       message={JSON.stringify(e)}
                     />
                   );
-                  console.error('CREATE DATASET ERROR', e); // eslint-disable-line
                 });
             } else {
               Api.createDataset(values, apiUrl, apiKey)
@@ -154,7 +153,6 @@ const MetadataForm = (props) => {
                       // message="See the console output for more information on this error."
                     />
                   );
-                  console.error('CREATE DATASET ERROR', e); // eslint-disable-line
                 });
             }
           }}
@@ -206,10 +204,14 @@ const MetadataForm = (props) => {
             setFormValues(Object.assign({}, formValues, values));
             if (id) {
               Api.updateDataset(id, values, apiUrl, apiKey)
-                .then((res) => {
-                  console.log('Dataset updated successfully', res); // eslint-disable-line
-                  setCurrentStep(2);
-                  window.scrollTo(0, 0);
+                .then(() => {
+                  if (values.saveDraft) {
+                    setDraftSaved(new Date());
+                  } else {
+                    setAlert(<AlertBox type="success" heading="Dataset saved successfully" />);
+                    setCurrentStep(2);
+                    window.scrollTo(0, 0);
+                  }
                 })
                 .catch((error) => {
                   const message = JSON.stringify(error);
@@ -221,7 +223,6 @@ const MetadataForm = (props) => {
                     />
                   );
                   window.scrollTo(0, 0);
-                  console.error('UPDATE DATASET ERROR', error); // eslint-disable-line
                 });
             } else {
               setAlert(
@@ -236,7 +237,7 @@ const MetadataForm = (props) => {
           }}
           validationSchema={AdditionalMetadataSchema}
         >
-          {({ values, handleSubmit, errors }) => {
+          {({ values, handleSubmit, errors, setFieldValue, submitForm }) => {
             return (
               <div>
                 {errors && Object.keys(errors).length > 0 && (
@@ -258,6 +259,9 @@ const MetadataForm = (props) => {
                       fetchDatasetsOpts="false"
                       values={values || {}}
                       errors={errors}
+                      draftSaved={draftSaved ? formatDate(draftSaved) : undefined}
+                      setFieldValue={setFieldValue}
+                      submitForm={submitForm}
                     />
                   </div>
                 </Form>

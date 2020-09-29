@@ -1493,9 +1493,9 @@ exports[`Renders RequiredMetadata component 1`] = `
         </button>
         <button
           class="usa-button"
-          type="submit"
+          type="button"
         >
-          Save and continue
+          Save and Continue
         </button>
       </div>
     </div>
