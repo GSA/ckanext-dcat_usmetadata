@@ -26,6 +26,14 @@ const formatErrors = (errors) =>
     };
   });
 
+const formatDate = (date) => {
+  return `${[date.getHours(), date.getMinutes()].join(':')}, ${[
+    `0${date.getMonth() + 1}`.slice(-2),
+    `0${date.getDate()}`.slice(-2),
+    date.getFullYear().toString().slice(-2),
+  ].join('-')}`;
+};
+
 const Heading = (props) => {
   const { currentStep } = props;
 
@@ -174,7 +182,7 @@ const MetadataForm = (props) => {
                       fetchDatasetsOpts="false"
                       values={values || {}}
                       errors={errors}
-                      draftSaved={draftSaved}
+                      draftSaved={draftSaved ? formatDate(draftSaved) : undefined}
                       setFieldValue={setFieldValue}
                       submitForm={submitForm}
                     />
