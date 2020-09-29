@@ -6,7 +6,13 @@ import Autocomplete from '../Autocomplete';
 import api from '../../api';
 
 const languages = require('./languages.json');
-const dataDictTypes = require('./data-dictionary-types');
+const dataDictTypes = require('./data-dictionary-types').sort((a, b) => {
+  const label1 = (a.label || '').toLowerCase();
+  const label2 = (b.label || '').toLowerCase();
+  if (label1 < label2) return -1;
+  if (label1 > label2) return 1;
+  return 0;
+});
 
 const helpTexts = {
   theme: <HelpText>Examples include: vegetables, non_starchy, green.</HelpText>,
