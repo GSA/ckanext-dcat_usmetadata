@@ -41,7 +41,7 @@ describe('Required Metadata Page', () => {
   });
 
   it('Form validation works', () => {
-    cy.get('button[type=submit').click();
+    cy.get('button[type=button]').contains('Save and Continue').click();
     cy.contains('This form contains invalid entries');
     cy.contains('Description is required');
   })

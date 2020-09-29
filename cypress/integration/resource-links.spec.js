@@ -12,7 +12,7 @@ beforeEach(() => {
 });
 
 describe('Resource Page -- URL', () => {
-  it('Submit Additional Metadata works', () => {
+  it('Creates resource and redirects to dataset page', () => {
     cy.requiredMetadata();
     cy.wait(5000);
     cy.additionalMetadata();

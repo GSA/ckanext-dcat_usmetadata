@@ -26,6 +26,14 @@ const formatErrors = (errors) =>
     };
   });
 
+const formatDate = (date) => {
+  return `${[`0${date.getHours()}`.slice(-2), `0${date.getMinutes()}`.slice(-2)].join(':')}, ${[
+    `0${date.getMonth() + 1}`.slice(-2),
+    `0${date.getDate()}`.slice(-2),
+    date.getFullYear().toString().slice(-2),
+  ].join('-')}`;
+};
+
 const Heading = (props) => {
   const { currentStep } = props;
 
@@ -54,10 +62,13 @@ const MetadataForm = (props) => {
   const [formValues, setFormValues] = useState({
     ...defaultRequiredValues,
     ...defaultAdditionalValues,
+    state: 'draft',
+    saveDraft: false,
   });
 
   const [currentStep, setCurrentStep] = useState(0);
   const [alert, setAlert] = useState();
+  const [draftSaved, setDraftSaved] = useState();
 
   if (curDatasetId && shouldFetch) {
     setShouldFetch(false);
@@ -102,8 +113,13 @@ const MetadataForm = (props) => {
               Api.updateDataset(curDatasetId, values, apiUrl, apiKey)
                 .then((res) => {
                   setFormValues(Object.assign({}, res, { description: res.notes }));
-                  setAlert(<AlertBox type="success" heading="Dataset saved successfully" />);
-                  setCurrentStep(1);
+                  if (values.saveDraft) {
+                    setDraftSaved(new Date());
+                  } else {
+                    setAlert(<AlertBox type="success" heading="Dataset saved successfully" />);
+                    setCurrentStep(1);
+                    window.scrollTo(0, 0);
+                  }
                 })
                 .catch((e) => {
                   setAlert(
@@ -114,16 +130,19 @@ const MetadataForm = (props) => {
                       message={JSON.stringify(e)}
                     />
                   );
-                  console.error('CREATE DATASET ERROR', e); // eslint-disable-line
                 });
             } else {
               Api.createDataset(values, apiUrl, apiKey)
                 .then((res) => {
                   setFormValues(res);
                   setCurDatasetId(res.id);
-                  setAlert(<AlertBox type="success" heading="Dataset saved successfully" />);
-                  setCurrentStep(1);
-                  window.scrollTo(0, 0);
+                  if (values.saveDraft) {
+                    setDraftSaved(new Date());
+                  } else {
+                    setAlert(<AlertBox type="success" heading="Dataset saved successfully" />);
+                    setCurrentStep(1);
+                    window.scrollTo(0, 0);
+                  }
                 })
                 .catch((e) => {
                   setAlert(
@@ -134,13 +153,12 @@ const MetadataForm = (props) => {
                       // message="See the console output for more information on this error."
                     />
                   );
-                  console.error('CREATE DATASET ERROR', e); // eslint-disable-line
                 });
             }
           }}
           validationSchema={RequiredMetadataSchema}
         >
-          {({ values, handleSubmit, errors }) => {
+          {({ values, handleSubmit, errors, setFieldValue, submitForm }) => {
             return (
               <div>
                 {errors && Object.keys(errors).length > 0 && (
@@ -162,6 +180,9 @@ const MetadataForm = (props) => {
                       fetchDatasetsOpts="false"
                       values={values || {}}
                       errors={errors}
+                      draftSaved={draftSaved ? formatDate(draftSaved) : undefined}
+                      setFieldValue={setFieldValue}
+                      submitForm={submitForm}
                     />
                   </div>
                 </Form>
@@ -183,9 +204,14 @@ const MetadataForm = (props) => {
             setFormValues(Object.assign({}, formValues, values));
             if (id) {
               Api.updateDataset(id, values, apiUrl, apiKey)
-                .then((res) => {
-                  console.log('Dataset updated successfully', res); // eslint-disable-line
-                  setCurrentStep(2);
+                .then(() => {
+                  if (values.saveDraft) {
+                    setDraftSaved(new Date());
+                  } else {
+                    setAlert(<AlertBox type="success" heading="Dataset saved successfully" />);
+                    setCurrentStep(2);
+                    window.scrollTo(0, 0);
+                  }
                 })
                 .catch((error) => {
                   const message = JSON.stringify(error);
@@ -196,7 +222,7 @@ const MetadataForm = (props) => {
                       message={message}
                     />
                   );
-                  console.error('UPDATE DATASET ERROR', error); // eslint-disable-line
+                  window.scrollTo(0, 0);
                 });
             } else {
               setAlert(
@@ -206,11 +232,12 @@ const MetadataForm = (props) => {
                   message="Please complete complete step one before submitting step 2."
                 />
               );
+              window.scrollTo(0, 0);
             }
           }}
           validationSchema={AdditionalMetadataSchema}
         >
-          {({ values, handleSubmit, errors }) => {
+          {({ values, handleSubmit, errors, setFieldValue, submitForm }) => {
             return (
               <div>
                 {errors && Object.keys(errors).length > 0 && (
@@ -232,6 +259,9 @@ const MetadataForm = (props) => {
                       fetchDatasetsOpts="false"
                       values={values || {}}
                       errors={errors}
+                      draftSaved={draftSaved ? formatDate(draftSaved) : undefined}
+                      setFieldValue={setFieldValue}
+                      submitForm={submitForm}
                     />
                   </div>
                 </Form>
@@ -248,6 +278,7 @@ const MetadataForm = (props) => {
             publish: true,
             savedResources: 0,
             lastSavedResourceName: null,
+            saveDraft: false,
           }}
           enableReinitialize="true"
           validateOnChange={false}
@@ -264,9 +295,19 @@ const MetadataForm = (props) => {
                   .then((res) => {
                     if (res.status === 200) {
                       if (values.publish) {
-                        // Redirect to dataset page
-                        window.location.replace(datasetPageUrl);
+                        // Update dataset state: 'draft' => 'active'
+                        Api.patchDataset(curDatasetId, { state: 'active' }, apiUrl, apiKey).then(
+                          (response) => {
+                            if (response.status === 200) {
+                              // Redirect to dataset page
+                              window.location.replace(datasetPageUrl);
+                            }
+                          }
+                        );
+                      } else if (values.saveDraft) {
+                        setDraftSaved(new Date());
                       } else {
+                        setDraftSaved(new Date());
                         setFieldValue('savedResources', values.savedResources + 1);
                         setFieldValue('lastSavedResourceName', values.resource.name);
                         setFieldValue('resource', JSON.parse(JSON.stringify(ResourceObject)));
@@ -278,11 +319,17 @@ const MetadataForm = (props) => {
                     setAlert(
                       <AlertBox type="error" heading="Error saving resource(s)" message={message} />
                     );
+                    window.scrollTo(0, 0);
                     console.error('CREATE RESOURCE ERROR', error); // eslint-disable-line
                   });
-              } else {
-                // Redirect to dataset page
-                window.location.replace(datasetPageUrl);
+              } else if (values.publish) {
+                // Update dataset state: 'draft' => 'active'
+                Api.patchDataset(curDatasetId, { state: 'active' }, apiUrl, apiKey).then((res) => {
+                  if (res.status === 200) {
+                    // Redirect to dataset page
+                    window.location.replace(datasetPageUrl);
+                  }
+                });
               }
             } else {
               setAlert(
@@ -309,6 +356,7 @@ const MetadataForm = (props) => {
               <Form onSubmit={handleSubmit}>
                 <ResourceUpload
                   values={values}
+                  draftSaved={draftSaved ? formatDate(draftSaved) : undefined}
                   setFieldValue={setFieldValue}
                   submitForm={submitForm}
                 />

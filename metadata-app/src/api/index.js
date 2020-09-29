@@ -254,6 +254,16 @@ const updateDataset = (id, opts, apiUrl, apiKey) => {
     });
 };
 
+const patchDataset = (id, opts, apiUrl, apiKey) => {
+  const body = Object.assign(opts, { id });
+  return axios.post(`${apiUrl}package_patch`, body, {
+    headers: {
+      'X-CKAN-API-Key': apiKey,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+  });
+};
+
 const fetchTags = async (str, apiUrl, apiKey) => {
   try {
     const url = `${apiUrl}tag_list?query=${str}`;
@@ -305,6 +315,7 @@ const fetchParentDatasets = async (query, apiUrl, apiKey) => {
 export default {
   createDataset,
   updateDataset,
+  patchDataset,
   fetchDataset,
   fetchTags,
   fetchOrganizationsForUser,
