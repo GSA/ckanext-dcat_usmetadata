@@ -27,7 +27,7 @@ const formatErrors = (errors) =>
   });
 
 const formatDate = (date) => {
-  return `${[date.getHours(), date.getMinutes()].join(':')}, ${[
+  return `${[`0${date.getHours()}`.slice(-2), `0${date.getMinutes()}`.slice(-2)].join(':')}, ${[
     `0${date.getMonth() + 1}`.slice(-2),
     `0${date.getDate()}`.slice(-2),
     date.getFullYear().toString().slice(-2),
