@@ -54,6 +54,7 @@ const MetadataForm = (props) => {
   const [formValues, setFormValues] = useState({
     ...defaultRequiredValues,
     ...defaultAdditionalValues,
+    state: 'draft',
   });
 
   const [currentStep, setCurrentStep] = useState(0);
@@ -267,8 +268,15 @@ const MetadataForm = (props) => {
                   .then((res) => {
                     if (res.status === 200) {
                       if (values.publish) {
-                        // Redirect to dataset page
-                        window.location.replace(datasetPageUrl);
+                        // Update dataset state: 'draft' => 'active'
+                        Api.patchDataset(curDatasetId, { state: 'active' }, apiUrl, apiKey).then(
+                          (response) => {
+                            if (response.status === 200) {
+                              // Redirect to dataset page
+                              window.location.replace(datasetPageUrl);
+                            }
+                          }
+                        );
                       } else {
                         setFieldValue('savedResources', values.savedResources + 1);
                         setFieldValue('lastSavedResourceName', values.resource.name);
@@ -285,8 +293,13 @@ const MetadataForm = (props) => {
                     console.error('CREATE RESOURCE ERROR', error); // eslint-disable-line
                   });
               } else {
-                // Redirect to dataset page
-                window.location.replace(datasetPageUrl);
+                // Update dataset state: 'draft' => 'active'
+                Api.patchDataset(curDatasetId, { state: 'active' }, apiUrl, apiKey).then((res) => {
+                  if (res.status === 200) {
+                    // Redirect to dataset page
+                    window.location.replace(datasetPageUrl);
+                  }
+                });
               }
             } else {
               setAlert(
