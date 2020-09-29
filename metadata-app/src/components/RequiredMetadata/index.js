@@ -24,7 +24,7 @@ const leafPublishers = publishersDictionary
   .concat(['Other']);
 
 const RequiredMetadata = (props) => {
-  const { values, errors, apiUrl, apiKey } = props;
+  const { values, errors, apiUrl, apiKey, draftSaved, setFieldValue, submitForm } = props;
 
   const [organizations, setOrganizations] = useState([]);
   useEffect(() => {
@@ -385,18 +385,36 @@ const RequiredMetadata = (props) => {
       </div>
 
       <div className="row">
-        <button type="button" className="usa-button usa-button--outline">
+        <button
+          className="usa-button usa-button--outline"
+          type="button"
+          onClick={async () => {
+            await setFieldValue('saveDraft', true);
+            submitForm();
+          }}
+        >
           Save draft
         </button>
-        <button className="usa-button" type="submit">
+        <button
+          className="usa-button"
+          type="button"
+          onClick={async () => {
+            await setFieldValue('saveDraft', false);
+            submitForm();
+          }}
+        >
           Save and Continue
         </button>
       </div>
+      {draftSaved && <div className="row">{draftSaved}</div>}
     </div>
   );
 };
 
 RequiredMetadata.propTypes = {
+  setFieldValue: PropTypes.func,
+  submitForm: PropTypes.func,
+  draftSaved: PropTypes.string,
   apiUrl: PropTypes.string.isRequired,
   apiKey: PropTypes.string.isRequired,
   values: PropTypes.any, // eslint-disable-line

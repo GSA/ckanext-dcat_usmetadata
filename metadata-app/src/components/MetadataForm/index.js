@@ -55,10 +55,12 @@ const MetadataForm = (props) => {
     ...defaultRequiredValues,
     ...defaultAdditionalValues,
     state: 'draft',
+    saveDraft: false,
   });
 
   const [currentStep, setCurrentStep] = useState(0);
   const [alert, setAlert] = useState();
+  const [draftSaved, setDraftSaved] = useState();
 
   if (curDatasetId && shouldFetch) {
     setShouldFetch(false);
@@ -103,8 +105,13 @@ const MetadataForm = (props) => {
               Api.updateDataset(curDatasetId, values, apiUrl, apiKey)
                 .then((res) => {
                   setFormValues(Object.assign({}, res, { description: res.notes }));
-                  setAlert(<AlertBox type="success" heading="Dataset saved successfully" />);
-                  setCurrentStep(1);
+                  if (values.saveDraft) {
+                    setDraftSaved(new Date());
+                  } else {
+                    setAlert(<AlertBox type="success" heading="Dataset saved successfully" />);
+                    setCurrentStep(1);
+                    window.scrollTo(0, 0);
+                  }
                 })
                 .catch((e) => {
                   setAlert(
@@ -122,9 +129,13 @@ const MetadataForm = (props) => {
                 .then((res) => {
                   setFormValues(res);
                   setCurDatasetId(res.id);
-                  setAlert(<AlertBox type="success" heading="Dataset saved successfully" />);
-                  setCurrentStep(1);
-                  window.scrollTo(0, 0);
+                  if (values.saveDraft) {
+                    setDraftSaved(new Date());
+                  } else {
+                    setAlert(<AlertBox type="success" heading="Dataset saved successfully" />);
+                    setCurrentStep(1);
+                    window.scrollTo(0, 0);
+                  }
                 })
                 .catch((e) => {
                   setAlert(
@@ -141,7 +152,7 @@ const MetadataForm = (props) => {
           }}
           validationSchema={RequiredMetadataSchema}
         >
-          {({ values, handleSubmit, errors }) => {
+          {({ values, handleSubmit, errors, setFieldValue, submitForm }) => {
             return (
               <div>
                 {errors && Object.keys(errors).length > 0 && (
@@ -163,6 +174,9 @@ const MetadataForm = (props) => {
                       fetchDatasetsOpts="false"
                       values={values || {}}
                       errors={errors}
+                      draftSaved={draftSaved}
+                      setFieldValue={setFieldValue}
+                      submitForm={submitForm}
                     />
                   </div>
                 </Form>
