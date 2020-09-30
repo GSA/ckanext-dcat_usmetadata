@@ -387,6 +387,7 @@ const RequiredMetadata = (props) => {
 
       <div className="row">
         <button
+          style={{ display: 'none' }}
           className="usa-button usa-button--outline"
           type="button"
           onClick={async () => {
