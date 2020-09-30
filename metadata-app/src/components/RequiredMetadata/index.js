@@ -21,6 +21,7 @@ const leafPublishers = publishersDictionary
       item.publisher
     );
   })
+  .sort()
   .concat(['Other']);
 
 const RequiredMetadata = (props) => {
