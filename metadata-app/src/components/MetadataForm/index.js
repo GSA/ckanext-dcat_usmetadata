@@ -70,28 +70,6 @@ const MetadataForm = (props) => {
   const [alert, setAlert] = useState();
   const [draftSaved, setDraftSaved] = useState();
 
-  if (curDatasetId && shouldFetch) {
-    setShouldFetch(false);
-    Api.fetchDataset(curDatasetId, apiUrl, apiKey)
-      .then((result) => {
-        const apiRes = Object.assign({}, result);
-        apiRes.description = result.notes;
-        setFormValues(Object.assign({}, formValues, apiRes));
-        setCurDatasetId(apiRes.id);
-      })
-      .catch((e) => {
-        setAlert(
-          <AlertBox
-            type="error"
-            heading="Error loading metadata"
-            message="See the console output for more information on this error."
-          />
-        );
-        console.error('CREATE DATASET ERROR', e); // eslint-disable-line
-        window.scrollTo(0, 0);
-      });
-  }
-
   const handleError = (err) => {
     let message = [];
     if (err.response) {
@@ -113,7 +91,20 @@ const MetadataForm = (props) => {
     }
 
     setAlert(<AlertBox type="error" heading="Error saving metadata" message={message} />);
+    window.scrollTo(0, 0);
   };
+
+  if (curDatasetId && shouldFetch) {
+    setShouldFetch(false);
+    Api.fetchDataset(curDatasetId, apiUrl, apiKey)
+      .then((result) => {
+        const apiRes = Object.assign({}, result);
+        apiRes.description = result.notes;
+        setFormValues(Object.assign({}, formValues, apiRes));
+        setCurDatasetId(apiRes.id);
+      })
+      .catch(handleError);
+  }
 
   // render metadata form
   return (
@@ -218,17 +209,7 @@ const MetadataForm = (props) => {
                     window.scrollTo(0, 0);
                   }
                 })
-                .catch((error) => {
-                  const message = JSON.stringify(error);
-                  setAlert(
-                    <AlertBox
-                      type="error"
-                      heading="Error saving additional metadata"
-                      message={message}
-                    />
-                  );
-                  window.scrollTo(0, 0);
-                });
+                .catch(handleError);
             } else {
               setAlert(
                 <AlertBox
@@ -319,22 +300,17 @@ const MetadataForm = (props) => {
                       }
                     }
                   })
-                  .catch((error) => {
-                    const message = JSON.stringify(error);
-                    setAlert(
-                      <AlertBox type="error" heading="Error saving resource(s)" message={message} />
-                    );
-                    window.scrollTo(0, 0);
-                    console.error('CREATE RESOURCE ERROR', error); // eslint-disable-line
-                  });
+                  .catch(handleError);
               } else if (values.publish) {
                 // Update dataset state: 'draft' => 'active'
-                Api.patchDataset(curDatasetId, { state: 'active' }, apiUrl, apiKey).then((res) => {
-                  if (res.status === 200) {
-                    // Redirect to dataset page
-                    window.location.replace(datasetPageUrl);
-                  }
-                });
+                Api.patchDataset(curDatasetId, { state: 'active' }, apiUrl, apiKey)
+                  .then((res) => {
+                    if (res.status === 200) {
+                      // Redirect to dataset page
+                      window.location.replace(datasetPageUrl);
+                    }
+                  })
+                  .catch(handleError);
               }
             } else {
               setAlert(
