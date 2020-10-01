@@ -23,7 +23,9 @@ const AlertBox = (props) => {
           <div className="usa-alert__body">
             <h3 className="usa-alert__heading">{heading}</h3>
             <div className="usa-alert__text">
-              {message}
+              {typeof message === 'string'
+                ? message
+                : message.map((item) => <p key={item}>{item}</p>)}
               {formErrors}
             </div>
           </div>
@@ -36,7 +38,7 @@ const AlertBox = (props) => {
 AlertBox.propTypes = {
   errors: PropTypes.array, // eslint-disable-line
   heading: PropTypes.string,
-  message: PropTypes.string,
+  message: PropTypes.string || PropTypes.array,
   type: PropTypes.string,
 };
 
