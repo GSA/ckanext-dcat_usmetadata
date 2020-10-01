@@ -23,9 +23,8 @@ const AlertBox = (props) => {
           <div className="usa-alert__body">
             <h3 className="usa-alert__heading">{heading}</h3>
             <div className="usa-alert__text">
-              {typeof message === 'string'
-                ? message
-                : message.map((item) => <p key={item}>{item}</p>)}
+              {typeof message === 'string' && message}
+              {typeof message === 'object' && message.map((item) => <p key={item}>{item}</p>)}
               {formErrors}
             </div>
           </div>
