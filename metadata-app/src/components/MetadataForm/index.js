@@ -81,13 +81,16 @@ const MetadataForm = (props) => {
           }
           return err.response.data.error[item];
         });
+      } else {
+        message = 'Something has failed. Please, try again later or contact site administrator.';
       }
     } else if (err.request) {
-      console.log('here in request block');
-      // client never received a response, or request never left
+      // client never received a response, or request never left. Likely it's a network issue.
+      message =
+        'Please, check your connection or try again later. If the issue persists, contact site administrator.';
     } else {
-      console.log('here in else block');
-      // anything else
+      // anything else - not a axios/network issue.
+      message = 'Something has failed. Please, try again later or contact site administrator.';
     }
 
     setAlert(<AlertBox type="error" heading="Error saving metadata" message={message} />);
