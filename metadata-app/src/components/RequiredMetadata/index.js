@@ -9,6 +9,7 @@ import HelpText from '../HelpText';
 import Radio from '../Radio';
 
 const publishersDictionary = require('./publishers.json');
+const licenses = require('./licenses.json');
 
 const leafPublishers = publishersDictionary
   .map((item) => {
@@ -254,20 +255,20 @@ const RequiredMetadata = (props) => {
       <div className="row">
         <WrappedField
           label="License"
-          name="license_new"
+          name="license"
           type="select"
-          choices={['MIT', 'Open Source License', 'Others']}
+          choices={licenses}
           className="error-msg"
           errors={errors}
           required
         />
         <WrappedField
-          name="license_others"
+          name="licenseOther"
           type="string"
           helptext={helpTextify(
             `If you selected “Other”, please specify the name of your License*'`
           )}
-          disabled={values.license_new !== 'Others'}
+          disabled={values.license !== 'other'}
           errors={errors}
           required
         />
