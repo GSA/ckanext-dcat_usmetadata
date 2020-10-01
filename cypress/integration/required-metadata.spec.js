@@ -51,4 +51,14 @@ describe('Required Metadata Page', () => {
     cy.wait(3000);
     cy.contains('Dataset saved successfully');
   });
+
+  it('Displays clear error message when fails to create dataset due to validation error', () => {
+    const title = 'this dataset should already exist';
+    cy.requiredMetadata(title);
+    cy.wait(3000);
+    cy.contains('Dataset saved successfully');
+    cy.requiredMetadata(title);
+    cy.wait(3000);
+    cy.contains('That URL is already in use.');
+  })
 });
