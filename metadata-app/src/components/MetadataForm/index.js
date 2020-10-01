@@ -92,6 +92,29 @@ const MetadataForm = (props) => {
       });
   }
 
+  const handleError = (err) => {
+    let message = [];
+    if (err.response) {
+      // client received an error response (5xx, 4xx)
+      if (err.response.data && err.response.data.error) {
+        message = Object.keys(err.response.data.error).map((item) => {
+          if (typeof err.response.data.error[item] === 'object') {
+            return err.response.data.error[item].join('; ');
+          }
+          return err.response.data.error[item];
+        });
+      }
+    } else if (err.request) {
+      console.log('here in request block');
+      // client never received a response, or request never left
+    } else {
+      console.log('here in else block');
+      // anything else
+    }
+
+    setAlert(<AlertBox type="error" heading="Error saving metadata" message={message} />);
+  };
+
   // render metadata form
   return (
     <div className="grid-container">
@@ -121,16 +144,7 @@ const MetadataForm = (props) => {
                     window.scrollTo(0, 0);
                   }
                 })
-                .catch((e) => {
-                  setAlert(
-                    <AlertBox
-                      type="error"
-                      heading="Error saving metadata"
-                      // message="See the console output for more information on this error."
-                      message={JSON.stringify(e)}
-                    />
-                  );
-                });
+                .catch(handleError);
             } else {
               Api.createDataset(values, apiUrl, apiKey)
                 .then((res) => {
@@ -144,16 +158,7 @@ const MetadataForm = (props) => {
                     window.scrollTo(0, 0);
                   }
                 })
-                .catch((e) => {
-                  setAlert(
-                    <AlertBox
-                      type="error"
-                      heading="Error saving metadata"
-                      message={JSON.stringify(e)}
-                      // message="See the console output for more information on this error."
-                    />
-                  );
-                });
+                .catch(handleError);
             }
           }}
           validationSchema={RequiredMetadataSchema}
