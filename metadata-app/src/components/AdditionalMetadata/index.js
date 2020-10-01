@@ -44,7 +44,11 @@ const helpTexts = {
     <HelpText>
       This can often be found in Exhibit 53 documents, and takes the form ###-#########. Learn more
       about Exhibit 53 documents at{' '}
-      <a href="https://www.whitehouse.gov/wp-content/uploads/2018/06/fy-2020-it-budget-guidance.pdf">
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://www.whitehouse.gov/wp-content/uploads/2018/06/fy-2020-it-budget-guidance.pdf"
+      >
         this pdf
       </a>
       <OutboundLink height="15px" />
@@ -80,7 +84,13 @@ const AdditionalMetadata = (props) => {
           Please note that the additional metadata that you upload will help public users better
           find and use this dataset. Not all of these criteria will apply to each dataset, so feel
           free to only answer what applies. For more information about the form fields, consult the{' '}
-          <a href="https://resources.data.gov/schemas/dcat-us/v1.1/">DCAT-US Schema</a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://resources.data.gov/schemas/dcat-us/v1.1/"
+          >
+            DCAT-US Schema
+          </a>
           <OutboundLink />
         </p>
       </section>

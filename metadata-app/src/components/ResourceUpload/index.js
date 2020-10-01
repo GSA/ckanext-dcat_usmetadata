@@ -49,7 +49,7 @@ const ResourceUpload = (props) => {
         <p className="site-text-intro">
           You can add the URL of the dataset where it is available on the agency website. If you are
           uploading the dataset itself, please notify the Data.gov team at{' '}
-          <a target="_blank" rel="noreferrer" href="mailto:inventory-help@gsa.gov">
+          <a target="_blank" rel="noopener noreferrer" href="mailto:inventory-help@gsa.gov">
             inventory-help@gsa.gov
           </a>
           <OutboundLink />. You can also add a URL or file of information related to the dataset

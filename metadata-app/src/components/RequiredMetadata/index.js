@@ -61,7 +61,7 @@ const RequiredMetadata = (props) => {
     title: (
       <HelpText>
         Use{' '}
-        <a target="_blank" rel="noreferrer" href="https://plainlanguage.gov/">
+        <a target="_blank" rel="noopener noreferrer" href="https://plainlanguage.gov/">
           everyday language
         </a>
         <OutboundLink height="15px" /> to make the dataset easy to find and understand
@@ -71,7 +71,11 @@ const RequiredMetadata = (props) => {
       <HelpText>
         Write a description (like an abstract) with enough detail to help a user quickly decide if
         the asset is of interest. You can use{' '}
-        <a target="_blank" rel="noreferrer" href="https://www.markdownguide.org/basic-syntax/">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.markdownguide.org/basic-syntax/"
+        >
           Markdown Formatting
         </a>
         <OutboundLink height="15px" /> here.
@@ -80,7 +84,7 @@ const RequiredMetadata = (props) => {
     select: (
       <HelpText>
         If you do not see the Publisher for your dataset listed, please contact{' '}
-        <a target="_blank" rel="noreferrer" href="mailto:inventory-help@gsa.gov">
+        <a target="_blank" rel="noopener noreferrer" href="mailto:inventory-help@gsa.gov">
           inventory-help@gsa.gov
         </a>
         <OutboundLink height="15px" /> for further assistance.
@@ -95,13 +99,17 @@ const RequiredMetadata = (props) => {
           The following fields are required metadata for each dataset in an agency’s inventory (
           <a
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             href="https://www.congress.gov/115/plaws/publ435/PLAW-115publ435.pdf"
           >
             per Section 202 of the OPEN Government Data Act)
           </a>
           <OutboundLink /> For more information about the form fields, consult the
-          <a target="_blank" rel="noreferrer" href="https://resources.data.gov/resources/dcat-us/">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://resources.data.gov/resources/dcat-us/"
+          >
             DCAT-US Schema.
           </a>
           <OutboundLink />
