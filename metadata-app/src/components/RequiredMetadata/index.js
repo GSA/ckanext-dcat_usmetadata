@@ -5,8 +5,20 @@ import WrappedField from '../WrappedField';
 import api from '../../api';
 import Autocomplete from '../Autocomplete';
 import { ReactComponent as Info } from '../../img/info.svg';
+import Outbound from '../../img/outbound.svg';
 import HelpText from '../HelpText';
 import Radio from '../Radio';
+
+const OutboundLink = (props) => (
+  <img
+    src={Outbound}
+    height="20px"
+    position="relative"
+    display="inline-block"
+    alt="Link opens in new tab"
+    {...props}
+  />
+);
 
 const publishersDictionary = require('./publishers.json');
 
@@ -48,21 +60,30 @@ const RequiredMetadata = (props) => {
   const helpTexts = {
     title: (
       <HelpText>
-        Use <a href="https://plainlanguage.gov/">everyday language</a> to make the dataset easy to
-        find and understand
+        Use{' '}
+        <a target="_blank" rel="noreferrer" href="https://plainlanguage.gov/">
+          everyday language
+        </a>
+        <OutboundLink height="15px" /> to make the dataset easy to find and understand
       </HelpText>
     ),
     description: (
       <HelpText>
         Write a description (like an abstract) with enough detail to help a user quickly decide if
         the asset is of interest. You can use{' '}
-        <a href="https://www.markdownguide.org/basic-syntax/">Markdown Formatting</a> here.
+        <a target="_blank" rel="noreferrer" href="https://www.markdownguide.org/basic-syntax/">
+          Markdown Formatting
+        </a>
+        <OutboundLink height="15px" /> here.
       </HelpText>
     ),
     select: (
       <HelpText>
         If you do not see the Publisher for your dataset listed, please contact{' '}
-        <a href="mailto:inventory-help@gsa.gov">inventory-help@gsa.gov</a> for further assistance.
+        <a target="_blank" rel="noreferrer" href="mailto:inventory-help@gsa.gov">
+          inventory-help@gsa.gov
+        </a>
+        <OutboundLink height="15px" /> for further assistance.
       </HelpText>
     ),
   };
@@ -72,11 +93,18 @@ const RequiredMetadata = (props) => {
       <section id="section-basic-mega-menu" className="site-component-section">
         <p className="site-text-intro">
           The following fields are required metadata for each dataset in an agency’s inventory (
-          <a href="https://www.congress.gov/115/plaws/publ435/PLAW-115publ435.pdf">
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.congress.gov/115/plaws/publ435/PLAW-115publ435.pdf"
+          >
             per Section 202 of the OPEN Government Data Act)
-          </a>{' '}
-          For more information about the form fields, consult the
-          <a href="https://resources.data.gov/resources/dcat-us/">DCAT-US Schema.</a>
+          </a>
+          <OutboundLink /> For more information about the form fields, consult the
+          <a target="_blank" rel="noreferrer" href="https://resources.data.gov/resources/dcat-us/">
+            DCAT-US Schema.
+          </a>
+          <OutboundLink />
         </p>
       </section>
       <div className="row">

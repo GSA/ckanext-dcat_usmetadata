@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import WrappedField from '../WrappedField';
 import HelpText from '../HelpText';
+import Outbound from '../../img/outbound.svg';
 import Autocomplete from '../Autocomplete';
 import api from '../../api';
 
@@ -13,6 +14,17 @@ const dataDictTypes = require('./data-dictionary-types').sort((a, b) => {
   if (label1 > label2) return 1;
   return 0;
 });
+
+const OutboundLink = (props) => (
+  <img
+    src={Outbound}
+    height="20px"
+    position="relative"
+    display="inline-block"
+    alt="Link opens in new tab"
+    {...props}
+  />
+);
 
 const helpTexts = {
   theme: <HelpText>Examples include: vegetables, non_starchy, green.</HelpText>,
@@ -35,6 +47,7 @@ const helpTexts = {
       <a href="https://www.whitehouse.gov/wp-content/uploads/2018/06/fy-2020-it-budget-guidance.pdf">
         this pdf
       </a>
+      <OutboundLink height="15px" />
     </HelpText>
   ),
   references: (
@@ -68,6 +81,7 @@ const AdditionalMetadata = (props) => {
           find and use this dataset. Not all of these criteria will apply to each dataset, so feel
           free to only answer what applies. For more information about the form fields, consult the{' '}
           <a href="https://resources.data.gov/schemas/dcat-us/v1.1/">DCAT-US Schema</a>
+          <OutboundLink />
         </p>
       </section>
       <div className="row">
