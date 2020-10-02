@@ -15,8 +15,9 @@ Cypress.Commands.add('createOrg', () => {
   cy.get('.form-actions .btn-primary').click();
 })
 
-Cypress.Commands.add('requiredMetadata', () => {
-  cy.get('input[name=title]').type(chance.word({ length: 5 }));
+Cypress.Commands.add('requiredMetadata', (title) => {
+  const datasetTitle = title || chance.word({ length: 5 })
+  cy.get('input[name=title]').type(datasetTitle);
   cy.get('textarea[name=description]').type(chance.sentence({ words: 4 }));
   cy.get('.react-tags input').type('1234{enter}');
   cy.get('select[name=owner_org]').select('test-123');
