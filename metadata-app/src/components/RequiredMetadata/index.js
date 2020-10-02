@@ -7,6 +7,7 @@ import Autocomplete from '../Autocomplete';
 import { ReactComponent as Info } from '../../img/info.svg';
 import HelpText from '../HelpText';
 import Radio from '../Radio';
+import LinkIcon from '../LinkIcon';
 
 const publishersDictionary = require('./publishers.json');
 const licenses = require('./licenses.json');
@@ -49,21 +50,34 @@ const RequiredMetadata = (props) => {
   const helpTexts = {
     title: (
       <HelpText>
-        Use <a href="https://plainlanguage.gov/">everyday language</a> to make the dataset easy to
-        find and understand
+        Use{' '}
+        <a target="_blank" rel="noopener noreferrer" href="https://plainlanguage.gov/">
+          everyday language <LinkIcon height="15px" />
+        </a>
+        to make the dataset easy to find and understand
       </HelpText>
     ),
     description: (
       <HelpText>
         Write a description (like an abstract) with enough detail to help a user quickly decide if
         the asset is of interest. You can use{' '}
-        <a href="https://www.markdownguide.org/basic-syntax/">Markdown Formatting</a> here.
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.markdownguide.org/basic-syntax/"
+        >
+          Markdown Formatting <LinkIcon height="15px" />
+        </a>
+        here.
       </HelpText>
     ),
     select: (
       <HelpText>
         If you do not see the Publisher for your dataset listed, please contact{' '}
-        <a href="mailto:inventory-help@gsa.gov">inventory-help@gsa.gov</a> for further assistance.
+        <a target="_blank" rel="noopener noreferrer" href="mailto:inventory-help@gsa.gov">
+          inventory-help@gsa.gov <LinkIcon height="15px" />
+        </a>
+        for further assistance.
       </HelpText>
     ),
   };
@@ -73,11 +87,21 @@ const RequiredMetadata = (props) => {
       <section id="section-basic-mega-menu" className="site-component-section">
         <p className="site-text-intro">
           The following fields are required metadata for each dataset in an agency’s inventory (
-          <a href="https://www.congress.gov/115/plaws/publ435/PLAW-115publ435.pdf">
-            per Section 202 of the OPEN Government Data Act)
-          </a>{' '}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.congress.gov/115/plaws/publ435/PLAW-115publ435.pdf"
+          >
+            per Section 202 of the OPEN Government Data Act) <LinkIcon />{' '}
+          </a>
           For more information about the form fields, consult the
-          <a href="https://resources.data.gov/resources/dcat-us/">DCAT-US Schema.</a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://resources.data.gov/resources/dcat-us/"
+          >
+            DCAT-US Schema. <LinkIcon />
+          </a>
         </p>
       </section>
       <div className="row">
