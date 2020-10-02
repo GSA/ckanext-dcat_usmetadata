@@ -136,6 +136,8 @@ const RequiredMetadata = (props) => {
             </span>
 
             <button
+              // TODO - remove display: 'none' when url feature is ready
+              style={{ display: 'none' }}
               type="button"
               className="usa-button dataset_url_edit"
               onClick={editUpdateHandler}

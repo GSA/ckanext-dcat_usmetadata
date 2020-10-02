@@ -69,7 +69,9 @@ exports[`Renders RequiredMetadata component 1`] = `
               value=""
             />
           </div>
-          <div>
+          <div
+            class=""
+          >
             <div
               class="wrapper"
             >
@@ -81,10 +83,10 @@ exports[`Renders RequiredMetadata component 1`] = `
               />
               
               <input
-                class="usa-input  undefined undefined"
+                class="usa-input  undefined"
                 name="url"
                 style="display: none;"
-                type="string"
+                type="url"
                 value=""
               />
             </div>
@@ -96,7 +98,7 @@ exports[`Renders RequiredMetadata component 1`] = `
             </span>
             <button
               class="usa-button dataset_url_edit"
-              style="display: inline;"
+              style="display: none;"
               type="button"
             >
               Edit
@@ -2152,7 +2154,7 @@ exports[`Renders RequiredMetadata component 1`] = `
           />
           
           <select
-            choices="public,restricted public,non-public"
+            choices="[object Object],[object Object],[object Object]"
             class="usa-select  "
             name="public_access_level"
             type="select"
@@ -2165,17 +2167,17 @@ exports[`Renders RequiredMetadata component 1`] = `
             <option
               value="public"
             >
-              public
+              Public - this dataset can be made publicly available to all without restrictions
             </option>
             <option
               value="restricted public"
             >
-              restricted public
+              Restricted Public - this dataset is available under certain use restrictions
             </option>
             <option
               value="non-public"
             >
-              non-public
+              Non-Public - this dataset is not available to members of the public
             </option>
           </select>
         </div>
@@ -2504,7 +2506,7 @@ exports[`Renders RequiredMetadata component 1`] = `
             <span
               class="usa-helptext"
             >
-              If your dataset has a temporal component, please provide start date for applicability of data above*
+              If your dataset has a temporal component, please provide end date for applicability of data above*
             </span>
           </div>
           
