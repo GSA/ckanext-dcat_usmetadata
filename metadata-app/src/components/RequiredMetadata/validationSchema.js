@@ -69,21 +69,15 @@ export default yup.object().shape({
       return true;
     }),
   spatial_location_desc: yup.string(),
-  license_others: yup.string(),
-  license_new: yup.string().when('saveDraft', (saveDraft, schema) => {
-    return saveDraft
-      ? schema
-      : schema
-          .required('License is required')
-          .test('license-extra', 'Please specify the name of your license', function validate(
-            value
-          ) {
-            const formVals = this.from[0].value;
-            if (value === 'Others') {
-              if (!formVals.license_others) return false;
-            }
-            return true;
-          });
+  licenseOther: yup
+    .string()
+    .required('License is required')
+    .url('License should be a valid url')
+    .when('license', (license, schema) => {
+      return license === 'other' ? schema : yup.string();
+    }),
+  license: yup.string().when('saveDraft', (saveDraft, schema) => {
+    return saveDraft ? schema : schema.required('License is required');
   }),
   temporal: yup
     .string()

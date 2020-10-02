@@ -34,10 +34,10 @@ describe('Required Metadata Page', () => {
   });
 
   it('Select with optional fields work', () => {
-    cy.get('select[name=license_new]').select('MIT');
-    cy.get('input[name=license_others]').should('be.disabled');
-    cy.get('select[name=license_new]').select('Others');
-    cy.get('input[name=license_others]').should('be.enabled');
+    cy.get('select[name=license]').select('MIT');
+    cy.get('input[name=licenseOther]').should('be.disabled');
+    cy.get('select[name=license]').select('Other');
+    cy.get('input[name=licenseOther]').should('be.enabled');
   });
 
   it('Form validation works', () => {
