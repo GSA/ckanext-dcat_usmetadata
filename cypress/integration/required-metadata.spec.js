@@ -57,6 +57,7 @@ describe('Required Metadata Page', () => {
     cy.requiredMetadata(title);
     cy.wait(3000);
     cy.contains('Dataset saved successfully');
+    cy.visit('/dataset/new-metadata');
     cy.requiredMetadata(title);
     cy.wait(3000);
     cy.contains('That URL is already in use.');
