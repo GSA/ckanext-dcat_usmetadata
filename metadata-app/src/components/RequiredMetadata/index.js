@@ -228,7 +228,24 @@ const RequiredMetadata = (props) => {
           label="Public Access level"
           name="public_access_level"
           type="select"
-          choices={['public', 'restricted public', 'non-public']}
+          choices={[
+            {
+              value: 'public',
+              id: 'choice-public',
+              label:
+                'Public - this dataset can be made publicly available to all without restrictions',
+            },
+            {
+              value: 'restricted public',
+              id: 'choice-restricted-public',
+              label: 'Restricted Public - this dataset is available under certain use restrictions',
+            },
+            {
+              value: 'non-public',
+              id: 'choice-non-public',
+              label: 'Non-Public - this dataset is not available to members of the public',
+            },
+          ]}
           className="error-msg"
           errors={errors}
           required
@@ -379,7 +396,7 @@ const RequiredMetadata = (props) => {
           value={values.temporal_end_date}
           errors={errors}
           helptext={helpTextify(
-            'If your dataset has a temporal component, please provide start date for applicability of data above*'
+            'If your dataset has a temporal component, please provide end date for applicability of data above*'
           )}
           disabled={values.temporal === 'false'}
         />

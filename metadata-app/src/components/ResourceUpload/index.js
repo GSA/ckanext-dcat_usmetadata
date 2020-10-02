@@ -47,18 +47,23 @@ const ResourceUpload = (props) => {
           <label className="usa-label">Data</label>
           {/* eslint-disable-next-line */}
           {linkToDataIsActive ? (
-            <WrappedField
-              hidden={!linkToDataIsActive}
-              id="url"
-              name="resource.url"
-              type="url"
-              placeholder='If you are linking to a dataset, please include "http://" at the beginning of your URL.'
-              value={url}
-              onClick={() => {
-                setFieldValue('resource.url', '');
-                setLinkToDataActive(false);
-              }}
-            />
+            <div>
+              <p className="usa-helptext">
+                {`If you are linking to a dataset, please include "http://" at the beginning
+                of your URL.`}
+              </p>
+              <WrappedField
+                hidden={!linkToDataIsActive}
+                id="url"
+                name="resource.url"
+                type="url"
+                value={url}
+                onClick={() => {
+                  setFieldValue('resource.url', '');
+                  setLinkToDataActive(false);
+                }}
+              />
+            </div>
           ) : uploadDataFileIsActive ? (
             <WrappedField
               disabled
@@ -127,7 +132,6 @@ const ResourceUpload = (props) => {
             name="resource.mimetype"
             type="select"
             choices={resourceFormats}
-            helptext="Start typing to select a media type.  Examples include: text/csv, application/xml, or application/json."
             value={mimetype}
           />
         </div>
