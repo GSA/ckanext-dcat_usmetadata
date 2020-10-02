@@ -23,9 +23,18 @@ exports[`Renders Resource Upload component 1`] = `
            
           <a
             href="mailto:inventory-help@gsa.gov"
+            rel="noopener noreferrer"
+            target="_blank"
           >
             inventory-help@gsa.gov
           </a>
+          <img
+            alt="Link opens in new tab"
+            display="inline-block"
+            height="20px"
+            position="relative"
+            src="outbound.svg"
+          />
           . You can also add a URL or file of information related to the dataset such as a data dictionary.
         </p>
       </section>

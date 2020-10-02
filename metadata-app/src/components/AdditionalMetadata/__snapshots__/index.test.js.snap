@@ -17,8 +17,17 @@ exports[`Renders RequiredMetadata component 1`] = `
            
           <a
             href="https://resources.data.gov/schemas/dcat-us/v1.1/"
+            rel="noopener noreferrer"
+            target="_blank"
           >
-            DCAT-US Schema
+            DCAT-US Schema 
+            <img
+              alt="Link opens in new tab"
+              display="inline-block"
+              height="20px"
+              position="relative"
+              src="outbound.svg"
+            />
           </a>
         </p>
       </section>
@@ -1224,8 +1233,17 @@ exports[`Renders RequiredMetadata component 1`] = `
                        
                       <a
                         href="https://www.whitehouse.gov/wp-content/uploads/2018/06/fy-2020-it-budget-guidance.pdf"
+                        rel="noopener noreferrer"
+                        target="_blank"
                       >
-                        this pdf
+                        this pdf 
+                        <img
+                          alt="Link opens in new tab"
+                          display="inline-block"
+                          height="15px"
+                          position="relative"
+                          src="outbound.svg"
+                        />
                       </a>
                     </span>
                   </p>

@@ -62,15 +62,33 @@ exports[`renders MetadataForm component 1`] = `
                 The following fields are required metadata for each dataset in an agency’s inventory (
                 <a
                   href="https://www.congress.gov/115/plaws/publ435/PLAW-115publ435.pdf"
+                  rel="noopener noreferrer"
+                  target="_blank"
                 >
-                  per Section 202 of the OPEN Government Data Act)
+                  per Section 202 of the OPEN Government Data Act) 
+                  <img
+                    alt="Link opens in new tab"
+                    display="inline-block"
+                    height="20px"
+                    position="relative"
+                    src="outbound.svg"
+                  />
+                   
                 </a>
-                 
                 For more information about the form fields, consult the
                 <a
                   href="https://resources.data.gov/resources/dcat-us/"
+                  rel="noopener noreferrer"
+                  target="_blank"
                 >
-                  DCAT-US Schema.
+                  DCAT-US Schema. 
+                  <img
+                    alt="Link opens in new tab"
+                    display="inline-block"
+                    height="20px"
+                    position="relative"
+                    src="outbound.svg"
+                  />
                 </a>
               </p>
             </section>
@@ -97,13 +115,23 @@ exports[`renders MetadataForm component 1`] = `
                     <span
                       class="usa-helptext"
                     >
-                      Use 
+                      Use
+                       
                       <a
                         href="https://plainlanguage.gov/"
+                        rel="noopener noreferrer"
+                        target="_blank"
                       >
-                        everyday language
+                        everyday language 
+                        <img
+                          alt="Link opens in new tab"
+                          display="inline-block"
+                          height="15px"
+                          position="relative"
+                          src="outbound.svg"
+                        />
                       </a>
-                       to make the dataset easy to find and understand
+                      to make the dataset easy to find and understand
                     </span>
                   </div>
                   
@@ -176,10 +204,19 @@ exports[`renders MetadataForm component 1`] = `
                      
                     <a
                       href="https://www.markdownguide.org/basic-syntax/"
+                      rel="noopener noreferrer"
+                      target="_blank"
                     >
-                      Markdown Formatting
+                      Markdown Formatting 
+                      <img
+                        alt="Link opens in new tab"
+                        display="inline-block"
+                        height="15px"
+                        position="relative"
+                        src="outbound.svg"
+                      />
                     </a>
-                     here.
+                    here.
                   </span>
                 </div>
                 
@@ -331,10 +368,19 @@ exports[`renders MetadataForm component 1`] = `
                      
                     <a
                       href="mailto:inventory-help@gsa.gov"
+                      rel="noopener noreferrer"
+                      target="_blank"
                     >
-                      inventory-help@gsa.gov
+                      inventory-help@gsa.gov 
+                      <img
+                        alt="Link opens in new tab"
+                        display="inline-block"
+                        height="15px"
+                        position="relative"
+                        src="outbound.svg"
+                      />
                     </a>
-                     for further assistance.
+                    for further assistance.
                   </span>
                 </div>
                 
