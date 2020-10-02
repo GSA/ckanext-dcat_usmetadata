@@ -1,263 +1,260 @@
 /* Custom stylesheet */
 body {
-    padding-bottom:50px;
+  padding-bottom: 50px;
 }
 
 .App .grid-container {
-    max-width:60rem;
-    font-size: 1.2rem;
-    line-height:1.8rem;
+  max-width: 60rem;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
 }
 
 .usa-label {
-    font-weight:600;
-    font-size: 1.2rem;
-    margin-top:20px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-top: 20px;
 }
 
 .usa-label:after {
-    content:""
+  content: '';
 }
 
-.usa-form-custom .row{
-    margin-top:3rem;
+.usa-form-custom .row {
+  margin-top: 3rem;
 }
 
-.App .usa-input, .App .usa-select {
-    max-width: 100%;
-    width: 100%;
+.App .usa-input,
+.App .usa-select {
+  max-width: 100%;
+  width: 100%;
 }
 
-.usa-helptext{
-    font-size: 0.8rem;
-    line-height: 1rem;
-    padding-top: 0;
-    margin-top: 5px;
-    margin-bottom: 3px;
+.usa-helptext {
+  font-size: 0.8rem;
+  line-height: 1rem;
+  padding-top: 0;
+  margin-top: 5px;
+  margin-bottom: 3px;
 }
 
 textarea.usa-input {
-    min-height:100px;
+  min-height: 100px;
 }
 
 /* navigation */
 .app_navigation {
-    margin-top:50px;
-    margin-bottom:60px;
-    width:100%;
-    cursor: pointer;
-    -moz-box-pack: justify;
-    display: flex;
-    justify-content: space-between;
+  margin-top: 50px;
+  margin-bottom: 60px;
+  width: 100%;
+  cursor: pointer;
+  -moz-box-pack: justify;
+  display: flex;
+  justify-content: space-between;
 }
 .app_navigation .navsec {
-    width: 100%;
-    /*width:33.3%;*/
-    background-color:#D8E8F6;
-    /*display: inline-block;*/
-    padding: 5px;
-    text-align: center;
-    margin: 0 8px;
-    position: relative;
+  width: 100%;
+  /*width:33.3%;*/
+  background-color: #d8e8f6;
+  /*display: inline-block;*/
+  padding: 5px;
+  text-align: center;
+  margin: 0 8px;
+  position: relative;
 }
 .app_navigation .navsec.active {
-    background-color:#005EA2;
-    color: white;
+  background-color: #005ea2;
+  color: white;
 }
-.app_navigation .navsec span{
-    cursor: pointer;
-    font-weight:600;
+.app_navigation .navsec span {
+  cursor: pointer;
+  font-weight: 600;
 }
 
 .app_navigation .navsec:before,
-.app_navigation .navsec:after{
-    position: absolute;
-    content: "";
-    border-top: 19px solid transparent;
-    border-bottom: 19px solid transparent;
+.app_navigation .navsec:after {
+  position: absolute;
+  content: '';
+  border-top: 19px solid transparent;
+  border-bottom: 19px solid transparent;
 }
 
-.app_navigation .navsec:before{
-    border-left: 15px solid #ffffff;
-    left: 0;
-    top: 0;
+.app_navigation .navsec:before {
+  border-left: 15px solid #ffffff;
+  left: 0;
+  top: 0;
 }
 
-.app_navigation .navsec:after{
-    border-left: 15px solid #D8E8F6;
-    right: -15px;
-    top: 0;
-
+.app_navigation .navsec:after {
+  border-left: 15px solid #d8e8f6;
+  right: -15px;
+  top: 0;
 }
 
 .app_navigation .navsec:first-child:before,
-.app_navigation .navsec:last-child:after{
-    display: none;
+.app_navigation .navsec:last-child:after {
+  display: none;
 }
 
-.app_navigation .navsec.active:after{
-    border-left: 15px solid #005EA2;
+.app_navigation .navsec.active:after {
+  border-left: 15px solid #005ea2;
 }
-
 
 .usa-helptext.disabled {
-    color:#a0a0a0;
+  color: #a0a0a0;
 }
 .usa-input.disabled {
-    border-color:#cacaca;
+  border-color: #cacaca;
 }
 
-.usa-input.field-error, .usa-select.field-error {
-  border: 2px solid #E41D3D;
+.usa-input.field-error,
+.usa-select.field-error {
+  border: 2px solid #e41d3d;
 }
 
 .error-msg {
-    color: #E41D3D;
-    font-size: .8em;
-    padding: 8px 0 0px 0;
-    font-weight: 600;
+  color: #e41d3d;
+  font-size: 0.8em;
+  padding: 8px 0 0px 0;
+  font-weight: 600;
 }
 
 .pad-left-0 {
-    padding-left:0
+  padding-left: 0;
 }
 
-
 .dataset_url {
-    color: #71767A;
-    display: inline;
-    font-size:.9rem;
-    margin-top:-2rem;
+  color: #71767a;
+  display: inline;
+  font-size: 0.9rem;
+  margin-top: -2rem;
 }
 
 .dataset_url_edit {
-    margin-top:10px;
-    font-size: .8rem;
-    padding: 8px 15px;
-    margin-left:20px;
+  margin-top: 10px;
+  font-size: 0.8rem;
+  padding: 8px 15px;
+  margin-left: 20px;
 }
-
 
 /* Tool tip */
 .tooltip {
-    position: relative;
-    display: inline;
-    top:2px;
-    cursor: pointer;
-}
-
-.tooltip .fa{
-    color: #0A50D8;
-    font-size: 80%;
-    margin-left: 10px;
-}
-
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 361px;
-    background-color: #F0F0F0;
-    color: #202020;
-    text-align: left;
-    border-radius: 0;
-    padding: 10px 15px 40px;
-    position: absolute;
-    z-index: 1;
-    bottom: 50px;
-    left: -18px;
-}
-
-.tooltip.show .tooltiptext{
-    visibility: visible;
-}
-
-.tooltip .tooltiptext h3{
-    margin: 0 0 10px;
-    font-size: 1.25rem;
-    font-weight: 600;
-    line-height: 1.5;
-}
-
-.tooltip .tooltiptext p{
-    font-size: 16px;
-    font-weight: 400;
-    margin: 0;
-}
-
-.tooltip .tooltiptext .close{
-    text-align: right;
-    font-size: 20px;
-    display: block;
-}
-
-.tooltip .tooltiptext .close a{
-    display: inline-block;
-    color: #000000;
-    text-decoration: none;
-}
-
-
-.tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 20px;
-    border-width: 15px;
-    border-style: solid;
-    border-color: #F0F0F0 transparent transparent transparent;
+  position: relative;
+  display: inline;
+  top: 2px;
+  cursor: pointer;
 }
 
 .tooltip .fa {
-    width:14px;
-    color:#0050D8 !important;
+  color: #0a50d8;
+  font-size: 80%;
+  margin-left: 10px;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 361px;
+  background-color: #f0f0f0;
+  color: #202020;
+  text-align: left;
+  border-radius: 0;
+  padding: 10px 15px 40px;
+  position: absolute;
+  z-index: 1;
+  bottom: 50px;
+  left: -18px;
+}
+
+.tooltip.show .tooltiptext {
+  visibility: visible;
+}
+
+.tooltip .tooltiptext h3 {
+  margin: 0 0 10px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.tooltip .tooltiptext p {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.tooltip .tooltiptext .close {
+  text-align: right;
+  font-size: 20px;
+  display: block;
+}
+
+.tooltip .tooltiptext .close a {
+  display: inline-block;
+  color: #000000;
+  text-decoration: none;
+}
+
+.tooltip .tooltiptext::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 20px;
+  border-width: 15px;
+  border-style: solid;
+  border-color: #f0f0f0 transparent transparent transparent;
+}
+
+.tooltip .fa {
+  width: 14px;
+  color: #0050d8 !important;
 }
 
 .tooltip a {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .dataset_url_input {
-    margin-left:5px;
-    border-radius: 0;
-    border:1px solid #565c65;
-
+  margin-left: 5px;
+  border-radius: 0;
+  border: 1px solid #565c65;
 }
 
 .hidden {
-    display:none;
+  display: none;
 }
 
 .dataset_url_edit {
-    margin-top:0;
+  margin-top: 0;
 }
 
 .tags_container {
-    padding-top:30px;
+  padding-top: 30px;
 }
 
 .tags_container:empty {
-    padding-top:0;
+  padding-top: 0;
 }
 
 .custom_tag {
-    background-color:#F0F0F0;
-    margin-right: 20px;
-    margin-bottom: 10px;
-    float: left;
-    padding:10px;
+  background-color: #f0f0f0;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  float: left;
+  padding: 10px;
 }
 
-.custom_tag input, .custom_tag button{
-    background-color:transparent;
-    border:0;
+.custom_tag input,
+.custom_tag button {
+  background-color: transparent;
+  border: 0;
 }
 
 .custom_tag .close {
-    width:11px;
-    cursor: pointer;
+  width: 11px;
+  cursor: pointer;
 }
 
-input[type="file"] {
-    display: none;
+input[type='file'] {
+  display: none;
 }
 
 .wrapper {
@@ -336,7 +333,7 @@ input[type="file"] {
 }
 
 .App .react-tags {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   padding: 0 6px;
   border: 1px solid;
 }
@@ -347,7 +344,7 @@ input[type="file"] {
 }
 
 .App .react-tags__selected button {
-  padding: 0 .2em;
+  padding: 0 0.2em;
 }
 
 .App .react-tags input {
@@ -356,4 +353,14 @@ input[type="file"] {
 
 .react-tags__suggestions {
   z-index: 10000;
+}
+.dynamic-url {
+  display: flex;
+}
+.dynamic-url .dataset_url_edit {
+  margin-top: 31px;
+  height: 42px;
+}
+.dynamic-url .wrapper {
+  width: 100%;
 }

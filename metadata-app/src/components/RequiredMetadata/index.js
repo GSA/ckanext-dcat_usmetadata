@@ -45,6 +45,37 @@ const RequiredMetadata = (props) => {
   };
   const baseUrl = `${window.location.origin}/dataset/`;
 
+  const genUrlFromTitle = (title) => {
+    return `${baseUrl}${slugify(title || '', {
+      lower: true,
+      remove: /[*+~.()'"!:@]/g,
+    })}`;
+  };
+
+  // Do not allow url to be null
+  values.url = values.url || genUrlFromTitle(values.title);
+
+  useEffect(() => {
+    values.url = genUrlFromTitle(values.title);
+  }, [values.title]);
+
+  useEffect(() => {
+    // Do not allow url to be empty
+    if (!values.url) values.url = genUrlFromTitle(values.title);
+  }, [values.url]);
+
+  // Handles the event when the user clicks on edit/update button for url
+  const editUpdateHandler = () => {
+    const { url } = values;
+    //  Means in update mode
+    if (!urlDisabled) {
+      if (url) {
+        values.url = `${baseUrl}${slugify(url.substring(baseUrl.length, url.length))}`;
+      }
+    }
+    setUrlDisabled(!urlDisabled);
+  };
+
   const helpTexts = {
     title: (
       <HelpText>
@@ -92,36 +123,24 @@ const RequiredMetadata = (props) => {
             required
           />
 
-          <div>
+          <div className={urlDisabled ? '' : 'dynamic-url'}>
             <WrappedField
               name="url"
-              type="string"
+              type="url"
               style={{ display: urlDisabled ? 'none' : 'inline' }}
-              value={
-                values.url ||
-                `${baseUrl}${slugify(values.title || '', {
-                  lower: true,
-                  remove: /[*+~.()'"!:@]/g,
-                })}`
-              }
+              value={values.url || ''}
               errors={errors}
             />
             <span className="dataset_url" style={{ display: urlDisabled ? 'inline' : 'none' }}>
-              {`${baseUrl}${slugify(values.title || '', {
-                lower: true,
-                remove: /[*+~.()'"!:@]/g,
-              })}`}
+              {values.url}
             </span>
 
             <button
               type="button"
               className="usa-button dataset_url_edit"
-              style={{ display: urlDisabled ? 'inline' : 'none' }}
-              onClick={() => {
-                setUrlDisabled(false);
-              }}
+              onClick={editUpdateHandler}
             >
-              Edit
+              {urlDisabled ? 'Edit' : 'Update'}
             </button>
           </div>
         </div>
