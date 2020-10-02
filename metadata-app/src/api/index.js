@@ -2,6 +2,7 @@ import axios from 'axios';
 import slugify from 'slugify';
 
 const dataDictTypes = require('../components/AdditionalMetadata/data-dictionary-types');
+const licenses = require('../components/RequiredMetadata/licenses.json');
 
 /**
  * HELPERS
@@ -41,8 +42,13 @@ const encodeSupplementalValues = (opts) => {
     delete newOpts.publisher_other;
   }
 
-  if (opts.license_others) {
-    newOpts.license_new = opts.license_others;
+  if (opts.license === 'n/a') {
+    // if the license is selected "no license"
+    delete newOpts.license_new;
+    delete newOpts.license_others;
+  } else if (opts.license) {
+    if (opts.license === 'other') newOpts.license_new = opts.licenseOther;
+    else newOpts.license_new = opts.license;
     delete newOpts.license_others;
   }
 
@@ -112,11 +118,11 @@ const decodeSupplementalValues = (opts) => {
   }
 
   if (opts.license_new) {
-    if (['MIT', 'Open Source License'].includes(opts.license_new)) {
-      newOpts.license = opts.license;
+    if (licenses.map((license) => license.value).includes(opts.license_new)) {
+      newOpts.license = opts.license_new;
     } else {
-      newOpts.license_others = opts.license_new;
-      newOpts.license = 'Others';
+      newOpts.licenseOther = opts.license_new;
+      newOpts.license = 'other';
     }
   }
 
