@@ -13,7 +13,7 @@ beforeEach(() => {
 
 describe('DCAT Metadata App', () => {
   it('Loads', () => {
-    cy.visit('/dataset/new-metadata?group=test-123');
+    cy.visit('/dataset/new-metadata');
   });
 
   it('Has a title', () => {
@@ -51,9 +51,12 @@ describe('Required Metadata Page', () => {
     cy.wait(3000);
     cy.contains('Dataset saved successfully');
   });
+});
 
+describe('Required Metadata Page errors', () => {
   it('Displays clear error message when fails to create dataset due to validation error', () => {
     const title = 'this dataset should already exist';
+    cy.login();
     cy.visit('/dataset/new-metadata');
     cy.requiredMetadata(title);
     cy.wait(3000);
