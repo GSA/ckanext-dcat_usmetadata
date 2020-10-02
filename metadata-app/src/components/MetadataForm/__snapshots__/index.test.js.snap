@@ -143,7 +143,9 @@ exports[`renders MetadataForm component 1`] = `
                     value=""
                   />
                 </div>
-                <div>
+                <div
+                  class=""
+                >
                   <div
                     class="wrapper"
                   >
@@ -155,10 +157,10 @@ exports[`renders MetadataForm component 1`] = `
                     />
                     
                     <input
-                      class="usa-input  undefined undefined"
+                      class="usa-input  undefined"
                       name="url"
                       style="display: none;"
-                      type="string"
+                      type="url"
                       value=""
                     />
                   </div>
@@ -170,7 +172,7 @@ exports[`renders MetadataForm component 1`] = `
                   </span>
                   <button
                     class="usa-button dataset_url_edit"
-                    style="display: inline;"
+                    style="display: none;"
                     type="button"
                   >
                     Edit
