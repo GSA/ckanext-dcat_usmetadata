@@ -79,12 +79,13 @@ const ResourceUpload = (props) => {
             <>
               <br />
               {/* eslint-disable-next-line */}
-              <label htmlFor="upload" className="usa-button usa-button--base">
+              <label tabIndex="0" htmlFor="upload" className="usa-button usa-button--base">
                 <i className="fa fa-cloud-upload" aria-hidden="true" /> Upload data
               </label>
               <input id="upload" name="resource.upload" type="file" onChange={handleFileChange} />
-              {/* eslint-disable-next-line */}
+              {/* eslint-disable */}
               <label
+                tabIndex="0"
                 htmlFor="url"
                 className="usa-button usa-button--base"
                 onClick={() => {
@@ -93,6 +94,7 @@ const ResourceUpload = (props) => {
               >
                 <i className="fa fa-link" aria-hidden="true" /> Link to data
               </label>
+              {/* eslint-enable */}
             </>
           )}
           <p className="usa-helptext">

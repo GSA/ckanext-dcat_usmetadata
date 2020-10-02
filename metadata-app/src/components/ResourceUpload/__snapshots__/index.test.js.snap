@@ -44,6 +44,7 @@ exports[`Renders Resource Upload component 1`] = `
           <label
             class="usa-button usa-button--base"
             for="upload"
+            tabindex="0"
           >
             <i
               aria-hidden="true"
@@ -59,6 +60,7 @@ exports[`Renders Resource Upload component 1`] = `
           <label
             class="usa-button usa-button--base"
             for="url"
+            tabindex="0"
           >
             <i
               aria-hidden="true"
