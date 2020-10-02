@@ -36,7 +36,7 @@ describe('Required Metadata Page', () => {
   it('Select with optional fields work', () => {
     cy.get('select[name=license]').select('MIT');
     cy.get('input[name=licenseOther]').should('be.disabled');
-    cy.get('select[name=license]').select('Others');
+    cy.get('select[name=license]').select('Other');
     cy.get('input[name=licenseOther]').should('be.enabled');
   });
 
