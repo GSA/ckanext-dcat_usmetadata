@@ -29,7 +29,7 @@ Cypress.Commands.add('requiredMetadata', (title) => {
   cy.get('input[name=unique_id]').type(chance.string({ length: 10 }));
   cy.get('select[name=public_access_level]').select('public');
   cy.get('select[name=license]').select('Other');
-  cy.get('input[name=licenseOther]').type(chance.url()({ words: 3 }));
+  cy.get('input[name=licenseOther]').type(chance.url());
   cy.get('#rights_option_1').parent('.form-group').click();
   cy.get('#spatial_option_2').parent('.form-group').click();
   cy.get('input[name=spatial_location_desc]').type(chance.sentence({ words: 2 }));
