@@ -46,7 +46,7 @@ RUN mkdir -p $CKAN_HOME && \
 COPY $REQUIREMENTS_FILE /tmp/requirements.txt
 
 # Install ckan dependencies
-RUN $CKAN_HOME/bin/pip install -r /tmp/requirements.txt
+RUN $CKAN_HOME/bin/pip install -r /tmp/requirements.txt -U
 
 COPY entrypoint-docker.sh /
 ENTRYPOINT ["/entrypoint-docker.sh"]
