@@ -52,18 +52,6 @@ const RequiredMetadata = (props) => {
     })}`;
   };
 
-  // Do not allow url to be null
-  values.url = values.url || genUrlFromTitle(values.title);
-
-  useEffect(() => {
-    values.url = genUrlFromTitle(values.title);
-  }, [values.title]);
-
-  useEffect(() => {
-    // Do not allow url to be empty
-    if (!values.url) values.url = genUrlFromTitle(values.title);
-  }, [values.url]);
-
   // Handles the event when the user clicks on edit/update button for url
   const editUpdateHandler = () => {
     const { url } = values;
@@ -72,7 +60,7 @@ const RequiredMetadata = (props) => {
       if (url) {
         values.url = `${baseUrl}${slugify(url.substring(baseUrl.length, url.length))}`;
       }
-    }
+    } else if (!values.url) values.url = genUrlFromTitle(values.title);
     setUrlDisabled(!urlDisabled);
   };
 
@@ -128,11 +116,11 @@ const RequiredMetadata = (props) => {
               name="url"
               type="url"
               style={{ display: urlDisabled ? 'none' : 'inline' }}
-              value={values.url || ''}
+              value={values.url}
               errors={errors}
             />
             <span className="dataset_url" style={{ display: urlDisabled ? 'inline' : 'none' }}>
-              {values.url}
+              {values.url || genUrlFromTitle(values.title)}
             </span>
 
             <button

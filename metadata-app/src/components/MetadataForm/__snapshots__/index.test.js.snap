@@ -133,7 +133,7 @@ exports[`renders MetadataForm component 1`] = `
                       name="url"
                       style="display: none;"
                       type="url"
-                      value="http://localhost/dataset/"
+                      value=""
                     />
                   </div>
                   <span
