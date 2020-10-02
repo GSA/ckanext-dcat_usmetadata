@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import WrappedField from '../WrappedField';
 import HelpText from '../HelpText';
-import Outbound from '../../img/outbound.svg';
 import Autocomplete from '../Autocomplete';
+import LinkIcon from '../LinkIcon';
 import api from '../../api';
 
 const languages = require('./languages.json');
@@ -14,17 +14,6 @@ const dataDictTypes = require('./data-dictionary-types').sort((a, b) => {
   if (label1 > label2) return 1;
   return 0;
 });
-
-const OutboundLink = (props) => (
-  <img
-    src={Outbound}
-    height="20px"
-    position="relative"
-    display="inline-block"
-    alt="Link opens in new tab"
-    {...props}
-  />
-);
 
 const helpTexts = {
   theme: <HelpText>Examples include: vegetables, non_starchy, green.</HelpText>,
@@ -49,9 +38,8 @@ const helpTexts = {
         rel="noopener noreferrer"
         href="https://www.whitehouse.gov/wp-content/uploads/2018/06/fy-2020-it-budget-guidance.pdf"
       >
-        this pdf
+        this pdf <LinkIcon height="15px" />
       </a>
-      <OutboundLink height="15px" />
     </HelpText>
   ),
   references: (
@@ -89,9 +77,8 @@ const AdditionalMetadata = (props) => {
             rel="noopener noreferrer"
             href="https://resources.data.gov/schemas/dcat-us/v1.1/"
           >
-            DCAT-US Schema
+            DCAT-US Schema <LinkIcon />
           </a>
-          <OutboundLink />
         </p>
       </section>
       <div className="row">

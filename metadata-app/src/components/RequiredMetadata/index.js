@@ -5,20 +5,9 @@ import WrappedField from '../WrappedField';
 import api from '../../api';
 import Autocomplete from '../Autocomplete';
 import { ReactComponent as Info } from '../../img/info.svg';
-import Outbound from '../../img/outbound.svg';
 import HelpText from '../HelpText';
 import Radio from '../Radio';
-
-const OutboundLink = (props) => (
-  <img
-    src={Outbound}
-    height="20px"
-    position="relative"
-    display="inline-block"
-    alt="Link opens in new tab"
-    {...props}
-  />
-);
+import LinkIcon from '../LinkIcon';
 
 const publishersDictionary = require('./publishers.json');
 
@@ -62,9 +51,9 @@ const RequiredMetadata = (props) => {
       <HelpText>
         Use{' '}
         <a target="_blank" rel="noopener noreferrer" href="https://plainlanguage.gov/">
-          everyday language
+          everyday language <LinkIcon height="15px" />
         </a>
-        <OutboundLink height="15px" /> to make the dataset easy to find and understand
+        to make the dataset easy to find and understand
       </HelpText>
     ),
     description: (
@@ -76,18 +65,18 @@ const RequiredMetadata = (props) => {
           rel="noopener noreferrer"
           href="https://www.markdownguide.org/basic-syntax/"
         >
-          Markdown Formatting
+          Markdown Formatting <LinkIcon height="15px" />
         </a>
-        <OutboundLink height="15px" /> here.
+        here.
       </HelpText>
     ),
     select: (
       <HelpText>
         If you do not see the Publisher for your dataset listed, please contact{' '}
         <a target="_blank" rel="noopener noreferrer" href="mailto:inventory-help@gsa.gov">
-          inventory-help@gsa.gov
+          inventory-help@gsa.gov <LinkIcon height="15px" />
         </a>
-        <OutboundLink height="15px" /> for further assistance.
+        for further assistance.
       </HelpText>
     ),
   };
@@ -102,17 +91,16 @@ const RequiredMetadata = (props) => {
             rel="noopener noreferrer"
             href="https://www.congress.gov/115/plaws/publ435/PLAW-115publ435.pdf"
           >
-            per Section 202 of the OPEN Government Data Act)
+            per Section 202 of the OPEN Government Data Act) <LinkIcon />{' '}
           </a>
-          <OutboundLink /> For more information about the form fields, consult the
+          For more information about the form fields, consult the
           <a
             target="_blank"
             rel="noopener noreferrer"
             href="https://resources.data.gov/resources/dcat-us/"
           >
-            DCAT-US Schema.
+            DCAT-US Schema. <LinkIcon />
           </a>
-          <OutboundLink />
         </p>
       </section>
       <div className="row">
