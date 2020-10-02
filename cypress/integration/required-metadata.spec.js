@@ -54,6 +54,7 @@ describe('Required Metadata Page', () => {
 
   it('Displays clear error message when fails to create dataset due to validation error', () => {
     const title = 'this dataset should already exist';
+    cy.visit('/dataset/new-metadata');
     cy.requiredMetadata(title);
     cy.wait(3000);
     cy.contains('Dataset saved successfully');
