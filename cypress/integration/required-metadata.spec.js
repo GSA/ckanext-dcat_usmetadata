@@ -23,13 +23,9 @@ describe('DCAT Metadata App', () => {
 
 describe('Required Metadata Page', () => {
   it('Radios with optional fields work as expected', () => {
-    cy.get('#rights_option_1')
-      .parent('.form-group')
-      .click();
+    cy.get('#rights_option_1').parent('.form-group').click();
     cy.get('input[name=rights_desc]').should('be.disabled');
-    cy.get('#rights_option_2')
-      .parent('.form-group')
-      .click();
+    cy.get('#rights_option_2').parent('.form-group').click();
     cy.get('input[name=rights_desc]').should('be.enabled');
   });
 
@@ -44,11 +40,11 @@ describe('Required Metadata Page', () => {
     cy.get('button[type=button]').contains('Save and Continue').click();
     cy.contains('This form contains invalid entries');
     cy.contains('Description is required');
-  })
+  });
 
   it('Submit Required Metadata works', () => {
     cy.requiredMetadata();
-    cy.wait(3000);
+    cy.wait(5000);
     cy.contains('Dataset saved successfully');
   });
 });
@@ -59,11 +55,11 @@ describe('Required Metadata Page errors', () => {
     cy.login();
     cy.visit('/dataset/new-metadata');
     cy.requiredMetadata(title);
-    cy.wait(3000);
+    cy.wait(5000);
     cy.contains('Dataset saved successfully');
     cy.visit('/dataset/new-metadata');
     cy.requiredMetadata(title);
     cy.wait(3000);
     cy.contains('That URL is already in use.');
-  })
+  });
 });
