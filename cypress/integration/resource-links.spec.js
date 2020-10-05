@@ -16,7 +16,7 @@ describe('Resource Page -- URL', () => {
     cy.requiredMetadata();
     cy.wait(5000);
     cy.additionalMetadata();
-    cy.wait(7000);
+    cy.wait(15000);
     cy.get('label[for=url]').click();
     cy.get('input[name=resource\\.url]').type(chance.url());
     cy.get('input[name=resource\\.name]').type(chance.word());
