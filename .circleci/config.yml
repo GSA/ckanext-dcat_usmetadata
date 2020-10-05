@@ -49,5 +49,4 @@ workflows:
   build_and_test:
     jobs:
       - build_gsa_ckan_inventory
-      - setup_inventory_app
       - end_to_end_tests
