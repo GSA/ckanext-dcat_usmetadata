@@ -7,6 +7,8 @@ ENV CKAN_HOME /usr/lib/ckan
 ENV CKAN_CONFIG /etc/ckan/
 ENV CKAN_ENV docker
 
+COPY . .
+
 WORKDIR /opt/inventory-app
 
 # Install required packages
@@ -47,6 +49,7 @@ COPY $REQUIREMENTS_FILE /tmp/requirements.txt
 
 # Install ckan dependencies
 RUN $CKAN_HOME/bin/pip install -r /tmp/requirements.txt -U
+RUN $CKAN_HOME/bin/pip install -e ./
 
 COPY entrypoint-docker.sh /
 ENTRYPOINT ["/entrypoint-docker.sh"]
