@@ -9,6 +9,10 @@ Cypress.Commands.add('login', () => {
   cy.wait(2000);
 });
 
+Cypress.Commands.add('logout', () => {
+  cy.clearCookies();
+});
+
 Cypress.Commands.add('createOrg', () => {
   cy.visit('/organization/new');
   cy.get('input[name=title]').type('test-123');
