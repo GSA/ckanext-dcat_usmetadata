@@ -13,7 +13,7 @@ jobs:
     steps:
       - run:
           name: Prepare latest build files
-          command: npm i -g yarn && yarn build
+          command: yarn build
   test_local_docker:
     working_directory: ~/ckanext-dcat_usmetadata
     machine: true
@@ -40,7 +40,7 @@ jobs:
       - run:
           name: Install and run e2e tests using cypress
           command: |
-            npm i -g yarn && yarn && npx cypress run
+            npm i && npx cypress run
 
 
 workflows:
