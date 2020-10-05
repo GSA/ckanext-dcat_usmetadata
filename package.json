@@ -8,7 +8,7 @@
     "chance": "^1.1.6"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cd metadata-app && yarn && yarn build && cd .. && rm -r ckanext/dcat_usmetadata/public/**/* && cp -r metadata-app/build/static/* ckanext/dcat_usmetadata/public/ && cd ckanext/dcat_usmetadata/public/ && mv css/main.*.chunk.css css/main.chunk.css && mv js/2.*.chunk.js js/2.chunk.js && mv js/main.*.chunk.js js/main.chunk.js && mv js/runtime-main.*.js js/runtime-main.js"
   },
   "repository": {
     "type": "git",
