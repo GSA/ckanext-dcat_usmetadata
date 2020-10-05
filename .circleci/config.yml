@@ -50,5 +50,5 @@ workflows:
       - build_gsa_ckan_inventory
       - build_metadata_app
       - test_local_docker:
-          requires::
+          requires:
             - build_metadata_app
