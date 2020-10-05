@@ -24,9 +24,9 @@ describe('DCAT Metadata App', () => {
 describe('Additional Metadata Page', () => {
   it('Submit Additional Metadata works', () => {
     cy.requiredMetadata();
-    cy.wait(3000);
+    cy.wait(5000);
     cy.additionalMetadata();
-    cy.wait(3000);
+    cy.wait(5000);
     cy.contains('Resource Upload');
   });
 });
