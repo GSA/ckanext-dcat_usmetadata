@@ -14,7 +14,7 @@ jobs:
       - checkout
       - run:
           name: Prepare latest build files
-          command: yarn build
+          command: CI=false yarn build
   test_local_docker:
     working_directory: ~/ckanext-dcat_usmetadata
     machine: true
