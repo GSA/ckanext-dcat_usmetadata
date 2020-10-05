@@ -1,4 +1,5 @@
-version: 2
+version: 2.1
+
 jobs:
   build_gsa_ckan_inventory:
     working_directory: ~
@@ -7,6 +8,8 @@ jobs:
       - run: echo "Github requires this job for CI"
   test_local_docker:
     working_directory: ~/ckanext-dcat_usmetadata
+    docker:
+      - image: circleci/node:12.16.0
     machine: true
     steps:
       - checkout
@@ -37,7 +40,7 @@ jobs:
             yarn && npx cypress run
 
 workflows:
-  version: 2
+  version: 2.1
   build_and_test:
     jobs:
       - build_gsa_ckan_inventory
