@@ -6,7 +6,7 @@ jobs:
     machine: true
     steps:
       - run: echo "Github requires this job for CI"
-  end_to_end_tests:
+  test_local_docker:
     working_directory: ~/ckanext-dcat_usmetadata
     machine: true
     steps:
@@ -30,11 +30,15 @@ jobs:
       #     command: |
       #       docker-compose exec app /bin/bash -c "source /usr/lib/ckan/bin/activate && nosetests --ckan --with-pylons=src_extensions/dcat_usmetadata/docker_test.ini src_extensions/dcat_usmetadata/"
       - run:
-          name: Upgrade Node version to 12
+          name: Upgrade Node to 12
           command: |
-            ./.circleci/load-nvm.sh
+            echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
+            echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
             nvm install v12.14.1
             nvm alias default v12.14.1
+            nvm install v12
+            node -v
+            nvm alias default v12
       - run:
           name: Prepare latest build files
           command: npm i -g yarn && yarn build
@@ -49,4 +53,4 @@ workflows:
   build_and_test:
     jobs:
       - build_gsa_ckan_inventory
-      - end_to_end_tests
+      - test_local_docker
