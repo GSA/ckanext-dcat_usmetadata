@@ -11,6 +11,7 @@ jobs:
       - image: circleci/node:12.13.0
     working_directory: ~/ckanext-dcat_usmetadata
     steps:
+      - checkout
       - run:
           name: Prepare latest build files
           command: yarn build
