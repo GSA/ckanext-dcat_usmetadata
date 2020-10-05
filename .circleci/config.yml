@@ -10,7 +10,6 @@ jobs:
     working_directory: ~/ckanext-dcat_usmetadata
     docker:
       - image: circleci/node:12.16.0
-    machine: true
     steps:
       - checkout
 #      - run: make lint-all
