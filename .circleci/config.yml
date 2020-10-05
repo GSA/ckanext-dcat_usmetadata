@@ -30,11 +30,11 @@ jobs:
       #       docker-compose exec app /bin/bash -c "source /usr/lib/ckan/bin/activate && nosetests --ckan --with-pylons=src_extensions/dcat_usmetadata/docker_test.ini src_extensions/dcat_usmetadata/"
       - run:
           name: Prepare latest build files
-          command: npm run build
+          command: npm i -g yarn && yarn build
       - run:
           name: Install and run cypress
           command: |
-            npm install && npx cypress run
+            yarn && npx cypress run
 
 workflows:
   version: 2
