@@ -1,10 +1,20 @@
 version: 2
+
 jobs:
   build_gsa_ckan_inventory:
     working_directory: ~
     machine: true
     steps:
       - run: echo "Github requires this job for CI"
+  build_metadata_app:
+    docker:
+      - image: circleci/node:12.13.0
+    working_directory: ~/ckanext-dcat_usmetadata
+    steps:
+      - checkout
+      - run:
+          name: Prepare latest build files
+          command: CI=false yarn build
   test_local_docker:
     working_directory: ~/ckanext-dcat_usmetadata
     machine: true
@@ -29,13 +39,17 @@ jobs:
       #     command: |
       #       docker-compose exec app /bin/bash -c "source /usr/lib/ckan/bin/activate && nosetests --ckan --with-pylons=src_extensions/dcat_usmetadata/docker_test.ini src_extensions/dcat_usmetadata/"
       - run:
-          name: Install and run cypress
+          name: Install and run e2e tests using cypress
           command: |
-            npm install && npx cypress run
+            npm i && npx cypress run
+
 
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build_gsa_ckan_inventory
-      - test_local_docker
+      - build_metadata_app
+      - test_local_docker:
+          requires:
+            - build_metadata_app

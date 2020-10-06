@@ -48,6 +48,10 @@ COPY $REQUIREMENTS_FILE /tmp/requirements.txt
 # Install ckan dependencies
 RUN $CKAN_HOME/bin/pip install -r /tmp/requirements.txt -U
 
+RUN mkdir -p $CKAN_HOME/ckanext/dcat-usmetadata
+COPY . $CKAN_HOME/ckanext/dcat-usmetadata/
+RUN $CKAN_HOME/bin/pip install -e $CKAN_HOME/ckanext/dcat-usmetadata
+
 COPY entrypoint-docker.sh /
 ENTRYPOINT ["/entrypoint-docker.sh"]
 
