@@ -51,28 +51,33 @@ Run `make app-cosmos` to start the cosmos server, which will watch the `metadata
 
 ## Local development and end-to-end testing
 
-Use the [inventory app](https://github.com/GSA/inventory-app) locally for end-to-end testing.
+We use the [inventory app](https://github.com/GSA/inventory-app) locally for development and end-to-end (e2e) testing.
 
-It may be neccessarry to remove cached images when rebuilding the inventory app docker container, in order to ensure that the new usmetadata-app template is included in the build. (From the inventory-app directory) use:
+To build the latest JS code and update assets in the CKAN extension, you can run the following command from the root directory of this project:
+
+```
+$ yarn build
+```
+
+For convenience, we have prepared a single script that you can run to perform end-to-end tests locally. Don't forget to `yarn build` prior to running e2e tests:
+
+```
+$ yarn e2e
+```
+
+Note, it may be necessary to remove cached images when rebuilding the inventory app docker container, in order to ensure that the new usmetadata-app template is included in the build. If you want to make sure that you aren't using cached builds, you can try:
 
 ```
 $ docker-compose build --no-cache --pull ckanext-dcat_usmetadata_app
 ```
 
-Build and move latest builds of JS code:
-
-```
-# make sure to run it from root directory of the project
-$ npm run build
-```
-
-With the dcat_usmetadata extension running in the inventory app, use the following command to run end-to-end tests:
+With the dcat_usmetadata extension running in the inventory app, use the following command to run e2e tests:
 
 ```
 $ npx cypress run
 ```
 
-To run tests interactively use:
+To run e2e tests interactively use:
 
 ```
 $ npx cypress open
