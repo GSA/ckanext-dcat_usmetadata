@@ -298,9 +298,7 @@ const RequiredMetadata = (props) => {
         <WrappedField
           name="licenseOther"
           type="string"
-          helptext={helpTextify(
-            `If you selected “Other”, please specify the name of your License*'`
-          )}
+          helptext={helpTextify(`If you selected “Other”, please specify the URL of your License*`)}
           disabled={values.license !== 'other'}
           errors={errors}
           required
