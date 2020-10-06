@@ -2293,7 +2293,7 @@ exports[`renders MetadataForm component 1`] = `
                 />
                 
                 <select
-                  choices="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+                  choices="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                   class="usa-select  "
                   name="license"
                   type="select"
@@ -2312,6 +2312,11 @@ exports[`renders MetadataForm component 1`] = `
                     value="https://opensource.org/licenses/MIT-0"
                   >
                     MIT
+                  </option>
+                  <option
+                    value="http://www.usa.gov/publicdomain/label/1.0/"
+                  >
+                    U.S. Government Works
                   </option>
                   <option
                     value="https://creativecommons.org/publicdomain/zero/1.0/"
@@ -2367,7 +2372,7 @@ exports[`renders MetadataForm component 1`] = `
                   <span
                     class="usa-helptext"
                   >
-                    If you selected “Other”, please specify the name of your License*'
+                    If you selected “Other”, please specify the URL of your License*
                   </span>
                 </div>
                 

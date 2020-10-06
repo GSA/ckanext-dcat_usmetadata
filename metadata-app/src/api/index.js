@@ -97,10 +97,14 @@ const encodeSupplementalValues = (opts) => {
   if (opts.isParent === 'Yes') {
     newOpts.is_parent = 'true';
     delete newOpts.parent_dataset;
+    newOpts.extras = newOpts.extras.filter((extra) => extra.key !== 'parent_dataset');
   } else if (opts.isParent === 'No') {
     newOpts.is_parent = 'false';
     if (opts.parentDataset) {
       newOpts.parent_dataset = opts.parentDataset;
+    } else {
+      delete newOpts.parent_dataset;
+      newOpts.extras = newOpts.extras.filter((extra) => extra.key !== 'parent_dataset');
     }
   } else {
     delete newOpts.is_parent;
