@@ -87,7 +87,12 @@ const ResourceUpload = (props) => {
               type="string"
               value={resource.fileName}
               onClick={() => {
-                setFieldValue('resource.upload', '');
+                setFieldValue('resource.upload', null);
+                setFieldValue('resource.fileName', '');
+                setFieldValue('resource.name', '');
+                setFieldValue('resource.description', '');
+                setFieldValue('resource.format', '');
+                setFieldValue('resource.mimetype', '');
                 setUploadDataFileActive(false);
               }}
             />
