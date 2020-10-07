@@ -60,6 +60,9 @@ const encodeSupplementalValues = (opts) => {
     newOpts.access_level_comment = 'true';
   }
 
+  if (opts.spatial === 'false') {
+    delete newOpts.spatial;
+  }
   if (opts.spatial_location_desc) {
     newOpts.spatial = opts.spatial_location_desc;
     delete newOpts.spatial_location_desc;
@@ -137,7 +140,7 @@ const decodeSupplementalValues = (opts) => {
 
   if (opts.spatial) {
     newOpts.spatial_location_desc = opts.spatial;
-    newOpts.spatial = true;
+    newOpts.spatial = 'true';
   }
 
   if (opts.temporal) {
