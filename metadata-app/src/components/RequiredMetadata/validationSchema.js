@@ -43,20 +43,12 @@ export default yup.object().shape({
   public_access_level: yup.string().when('saveDraft', (saveDraft, schema) => {
     return saveDraft ? schema : schema.required('Access level is required');
   }),
-  access_level_comment: yup.string().when('saveDraft', (saveDraft, schema) => {
-    return saveDraft
-      ? schema
-      : schema
-          .required('Rights is required.')
-          .test('rights-desc', 'Please add explanation of rights', function validate(value) {
-            const formVals = this.from[0].value;
-            if (value === 'false') {
-              if (!formVals.rights_desc) return false;
-            }
-            return true;
-          });
-  }),
-  rights_desc: yup.string(),
+  rights_desc: yup
+    .string()
+    .required('Please add explanation of rights')
+    .when('access_level_comment', (accessLevelComment, schema) => {
+      return accessLevelComment === 'false' ? schema : yup.string();
+    }),
   spatial: yup
     .string()
     .test('spatial-location-extra', 'Please provide location description.', function validate(
