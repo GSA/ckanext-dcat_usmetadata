@@ -80,22 +80,6 @@
     "publisher_5": ""
   },
   {
-    "publisher": "asdasd",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "asdf",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
     "publisher": "ATF - Bureau of Alcohol, Tobacco, Firearms and Explosives",
     "publisher_1": "",
     "publisher_2": "",
@@ -1121,14 +1105,6 @@
   },
   {
     "publisher": "GSA",
-    "publisher_1": "xxx",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "GSA",
     "publisher_1": "",
     "publisher_2": "",
     "publisher_3": "",
@@ -1147,22 +1123,6 @@
     "publisher": "GSA IT",
     "publisher_1": "",
     "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "GSAX",
-    "publisher_1": "X",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "GSAX",
-    "publisher_1": "X 1",
-    "publisher_2": "X 2",
     "publisher_3": "",
     "publisher_4": "",
     "publisher_5": ""
@@ -1232,14 +1192,6 @@
     "publisher_5": ""
   },
   {
-    "publisher": "jkhg",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
     "publisher": "Library of Congress",
     "publisher_1": "",
     "publisher_2": "",
@@ -1273,14 +1225,6 @@
   },
   {
     "publisher": "N/A",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "nara",
     "publisher_1": "",
     "publisher_2": "",
     "publisher_3": "",
@@ -1848,14 +1792,6 @@
     "publisher_5": ""
   },
   {
-    "publisher": "publisher",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
     "publisher": "Railroad Retirement Board",
     "publisher_1": "",
     "publisher_2": "",
@@ -1912,14 +1848,6 @@
     "publisher_5": ""
   },
   {
-    "publisher": "ssa",
-    "publisher_1": "asd",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
     "publisher": "SSA",
     "publisher_1": "OACT",
     "publisher_2": "",
@@ -1936,94 +1864,6 @@
     "publisher_5": ""
   },
   {
-    "publisher": "test",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "TestingDecheke",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "test org",
-    "publisher_1": "sub test 1",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "test org",
-    "publisher_1": "sub test org 1",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "test org",
-    "publisher_1": "test org 1",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "test org",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "test org",
-    "publisher_1": "test org 1",
-    "publisher_2": "test org 2",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "test org",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Test org",
-    "publisher_1": "sub-test org 1",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "testorga",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Test organization",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
     "publisher": "The Department of the Air Force",
     "publisher_1": "",
     "publisher_2": "",
@@ -2031,22 +1871,7 @@
     "publisher_4": "",
     "publisher_5": ""
   },
-  {
-    "publisher": "thisisatest",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "torgg",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
+
   {
     "publisher": "TTS",
     "publisher_1": "",
@@ -2569,14 +2394,6 @@
   },
   {
     "publisher": "US Trustee Program, Department of Justice",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "vasdf34",
     "publisher_1": "",
     "publisher_2": "",
     "publisher_3": "",
