@@ -65,7 +65,7 @@ const ResourceUpload = (props) => {
           {linkToDataIsActive ? (
             <div>
               <p className="usa-helptext">
-                {`If you are linking to a dataset, please include "http://" at the beginning
+                {`If you are linking to a dataset, please include "https://" at the beginning
                 of your URL.`}
               </p>
               <WrappedField

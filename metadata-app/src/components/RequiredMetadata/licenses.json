@@ -9,7 +9,7 @@
   },
   {
     "label": "U.S. Government Works",
-    "value": "http://www.usa.gov/publicdomain/label/1.0/"
+    "value": "https://www.usa.gov/publicdomain/label/1.0/"
   },
   {
     "label": "Creative Commons Zero Public Domain Dedication (CC0)",
@@ -17,15 +17,15 @@
   },
   {
     "label": "Open Data Commons Public Domain Dedication and Licence (PDDL)",
-    "value": "http://opendatacommons.org/licenses/pddl/1.0/"
+    "value": "https://opendatacommons.org/licenses/pddl/1.0/"
   },
   {
     "label": "Open Data Commons Attribution License (ODC-By)",
-    "value": "http://opendatacommons.org/licenses/by/1.0/"
+    "value": "https://opendatacommons.org/licenses/by/1.0/"
   },
   {
     "label": "Open Data Commons Open Database License (ODbL)",
-    "value": "http://opendatacommons.org/licenses/odbl/1.0/"
+    "value": "https://opendatacommons.org/licenses/odbl/1.0/"
   },
   {
     "label": "Creative Commons Attribution (CC BY)",
@@ -37,7 +37,7 @@
   },
   {
     "label": "GNU Free Documentation License",
-    "value": "http://www.gnu.org/licenses/fdl-1.3.en.html"
+    "value": "https://www.gnu.org/licenses/fdl-1.3.en.html"
   },
 
   {
