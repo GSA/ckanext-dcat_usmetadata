@@ -18,13 +18,14 @@ const OutboundLink = (props) => (
 const ResourceUpload = (props) => {
   const { values, setFieldValue, submitForm, draftSaved } = props; // eslint-disable-line
   const resource = values.resource || {};
-  const { url, upload, name, description, mimetype, format } = resource;
+  const { url, name, description, mimetype, format } = resource;
 
   const [linkToDataIsActive, setLinkToDataActive] = useState(false);
   const [uploadDataFileIsActive, setUploadDataFileActive] = useState(false);
 
   const handleFileChange = (event) => {
     setUploadDataFileActive(!uploadDataFileIsActive);
+    setFieldValue('resource.fileName', event.currentTarget.files[0].name);
     if (!name) {
       setFieldValue('resource.name', event.currentTarget.files[0].name);
     }
@@ -84,7 +85,7 @@ const ResourceUpload = (props) => {
               disabled
               name="resource.fileName"
               type="string"
-              value={upload.name}
+              value={resource.fileName}
               onClick={() => {
                 setFieldValue('resource.upload', '');
                 setUploadDataFileActive(false);
