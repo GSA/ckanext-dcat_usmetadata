@@ -7,7 +7,7 @@ export default {
   publisher: 'Publisher',
   public_access_level: 'Public Access Level',
   data_quality: 'Access Level',
-  access_level_comment: 'Rights',
+  rights_desc: 'Rights',
   spatial: 'Spatial',
   license: 'License',
   licenseOther: 'License',
