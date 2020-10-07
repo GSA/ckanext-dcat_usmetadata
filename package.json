@@ -8,6 +8,8 @@
     "chance": "^1.1.6"
   },
   "scripts": {
+    "e2e": "yarn dockerize && yarn && npx cypress run",
+    "dockerize": "docker-compose -f docker-compose.yml -f docker-compose.seed.yml up -d",
     "build": "yarn build:metadata-app && yarn move:builds && yarn rename:builds",
     "build:metadata-app": "cd metadata-app && yarn && yarn build && cd ..",
     "move:builds": "rm -r ckanext/dcat_usmetadata/public/**/* && cp -r metadata-app/build/static/* ckanext/dcat_usmetadata/public/",
