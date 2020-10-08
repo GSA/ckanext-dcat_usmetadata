@@ -266,7 +266,7 @@ const MetadataForm = (props) => {
             resource: JSON.parse(JSON.stringify(ResourceObject)),
             publish: true,
             savedResources: 0,
-            lastSavedResourceName: null,
+            lastSavedResource: null,
             saveDraft: false,
           }}
           enableReinitialize="true"
@@ -298,7 +298,10 @@ const MetadataForm = (props) => {
                       } else {
                         setDraftSaved(new Date());
                         setFieldValue('savedResources', values.savedResources + 1);
-                        setFieldValue('lastSavedResourceName', values.resource.name);
+                        setFieldValue(
+                          'lastSavedResource',
+                          values.resource.url || values.resource.name
+                        );
                         setFieldValue('resource', JSON.parse(JSON.stringify(ResourceObject)));
                       }
                     }

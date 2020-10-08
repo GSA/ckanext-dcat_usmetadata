@@ -193,8 +193,8 @@ const ResourceUpload = (props) => {
         <div className="row">
           <div className="col-md-12 text-mint">
             <i>
-              Resource saved: [{values.lastSavedResourceName}] ({values.savedResources} resources
-              saved in total).
+              Resource saved: [{values.lastSavedResource}] ({values.savedResources} resources saved
+              in total).
             </i>
             <br />
             <i>You can edit any saved resource after clicking &quot;Finish and publish&quot;.</i>
@@ -260,7 +260,7 @@ ResourceUpload.propTypes = {
     },
     publish: PropTypes.bool,
     savedResources: PropTypes.number,
-    lastSavedResourceName: PropTypes.string,
+    lastSavedResource: PropTypes.string,
   }),
 };
 
