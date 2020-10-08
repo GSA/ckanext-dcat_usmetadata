@@ -106,6 +106,21 @@ Run CKAN locally (`make up`) and get the Admin user's API Key. Add a test org fo
 
 Run `make app-cosmos` to start the cosmos server, which will watch the `metadata-app/src` directory for changes.
 
+Run the unit tests.
+
+    $ make app-test
+
+
+### Update Jest snapshots
+
+Some tests render a fixture component with [Jest](https://jestjs.io/) and then
+match against a known good snapshot (HTML rendering) of the component. When you
+edit a component, you'll usually have to update the snapshot and inspect the
+diff to make sure all changes are as intended.
+
+    $ cd metadata-app && yarn test --updateSnapshot
+
+
 ## Local development and end-to-end testing
 
 We use the [inventory app](https://github.com/GSA/inventory-app) locally for development and end-to-end (e2e) testing.

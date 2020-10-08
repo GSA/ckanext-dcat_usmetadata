@@ -17,11 +17,12 @@ jobs:
           command: CI=false yarn build
       - run:
           name: Run unit tests
-          command: cd ~/ckanext-dcat_usmetadata/metadata-app/ && yarn test
+          command: make app-test
       - persist_to_workspace:
           root: ~/
           paths:
             - "ckanext-dcat_usmetadata"
+
   test_local_docker:
     working_directory: ~/ckanext-dcat_usmetadata
     machine: true
