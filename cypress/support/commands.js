@@ -57,12 +57,24 @@ Cypress.Commands.add('additionalMetadata', () => {
   cy.get('button[type=button]').contains('Save and Continue').click();
 });
 
-Cypress.Commands.add('resourceUploadWithUrlAndPublish', () => {
+Cypress.Commands.add('resourceUploadWithUrlAndPublish', (url) => {
+  const resourceUrl = url || chance.url();
   cy.get('label[for=url]').click();
-  cy.get('input[name=resource\\.url]').type(chance.url());
+  cy.get('input[name=resource\\.url]').type(resourceUrl);
   cy.get('input[name=resource\\.name]').type(chance.word());
   cy.get('textarea[name=resource\\.description]').type(chance.sentence({ words: 10 }));
   cy.get('select[name=resource\\.mimetype]').select('DOC -- Word Document');
   cy.get('input[name=resource\\.format]').type(chance.word());
   cy.get('button[type=button]').contains('Finish and publish').click();
 });
+
+Cypress.Commands.add('resourceUploadWithUrlAndSave', (url) => {
+  const resourceUrl = url || chance.url();
+  cy.get('label[for=url]').click();
+  cy.get('input[name=resource\\.url]').type(resourceUrl);
+  cy.get('input[name=resource\\.name]').type(chance.word());
+  cy.get('textarea[name=resource\\.description]').type(chance.sentence({ words: 10 }));
+  cy.get('select[name=resource\\.mimetype]').select('DOC -- Word Document');
+  cy.get('input[name=resource\\.format]').type(chance.word());
+  cy.get('button[type=button]').contains('Save and add another resource').click();
+})
