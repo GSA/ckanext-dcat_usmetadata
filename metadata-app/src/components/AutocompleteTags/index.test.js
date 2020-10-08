@@ -1,14 +1,14 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { Formik, Form } from 'formik';
-import Autocomplete from '.';
+import AutocompleteTags from '.';
 
 // eslint-disable-next-line
-test('Renders Autocomplete component', () => {
+test('Renders AutocompleteTags component', () => {
   const { getByPlaceholderText } = render(
     <Formik>
       <Form>
-        <Autocomplete
+        <AutocompleteTags
           id="foo-field"
           name="foo"
           apiUrl="http://127.0.0.1:5000/api/3/action/"

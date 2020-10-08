@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import WrappedField from '../WrappedField';
 import HelpText from '../HelpText';
-import Autocomplete from '../Autocomplete';
+import AutocompleteTags from '../AutocompleteTags';
 import LinkIcon from '../LinkIcon';
 import api from '../../api';
 
@@ -252,7 +252,7 @@ const AdditionalMetadata = (props) => {
         <div className="row">
           <div className="grid-col-12">
             <span className="usa-label">Select Parent Dataset</span>
-            <Autocomplete
+            <AutocompleteTags
               label="Select Parent Dataset"
               name="parentDataset"
               type="string"

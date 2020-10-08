@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import slugify from 'slugify';
 import WrappedField from '../WrappedField';
 import api from '../../api';
-import Autocomplete from '../Autocomplete';
+import AutocompleteTags from '../AutocompleteTags';
 import { ReactComponent as Info } from '../../img/info.svg';
 import HelpText from '../HelpText';
 import Radio from '../Radio';
@@ -175,7 +175,7 @@ const RequiredMetadata = (props) => {
       </div>
       <div className="row">
         <span className="usa-label">Tags*</span>
-        <Autocomplete
+        <AutocompleteTags
           id="tags-autocomplete-input"
           tags={values.tags}
           apiUrl={apiUrl}
