@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import WrappedField from '../WrappedField';
 import HelpText from '../HelpText';
 import Autocomplete from '../Autocomplete';
-
-import LinkIcon from '../LinkIcon';
+import Link from '../Link';
 import api from '../../api';
 
 const languages = require('./languages.json');
@@ -33,14 +33,11 @@ const helpTexts = {
   primaryITInvestmentUIIUSG: (
     <HelpText>
       This can often be found in Exhibit 53 documents, and takes the form ###-#########. Learn more
-      about Exhibit 53 documents at{' '}
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.whitehouse.gov/wp-content/uploads/2018/06/fy-2020-it-budget-guidance.pdf"
-      >
-        this pdf <LinkIcon height="15px" />
-      </a>
+      about Exhibit 53 documents at
+      {' '}
+      <Link target="_blank" href="https://www.whitehouse.gov/wp-content/uploads/2018/06/fy-2020-it-budget-guidance.pdf">
+        this PDF
+      </Link>.
     </HelpText>
   ),
   references: (
@@ -72,14 +69,11 @@ const AdditionalMetadata = (props) => {
         <p className="site-text-intro">
           Please note that the additional metadata that you upload will help public users better
           find and use this dataset. Not all of these criteria will apply to each dataset, so feel
-          free to only answer what applies. For more information about the form fields, consult the{' '}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://resources.data.gov/schemas/dcat-us/v1.1/"
-          >
-            DCAT-US Schema <LinkIcon />
-          </a>
+          free to only answer what applies. For more information about the form fields, consult the
+          {' '}
+          <Link target="_blank" href="https://resources.data.gov/schemas/dcat-us/v1.1/">
+            DCAT-US Schema
+          </Link>.
         </p>
       </section>
       <div className="row">

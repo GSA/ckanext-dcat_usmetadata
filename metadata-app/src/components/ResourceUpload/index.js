@@ -1,19 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+
+import Link from '../Link';
 import WrappedField from '../WrappedField';
 import resourceFormats from './resource_formats.json';
-import Outbound from '../../img/outbound.svg';
 
-const OutboundLink = (props) => (
-  <img
-    src={Outbound}
-    height="20px"
-    position="relative"
-    display="inline-block"
-    alt="Link opens in new tab"
-    {...props}
-  />
-);
 
 const ResourceUpload = (props) => {
   const { values, errors, setFieldValue, submitForm, draftSaved } = props; // eslint-disable-line
@@ -49,11 +40,13 @@ const ResourceUpload = (props) => {
         </h1>
         <p className="site-text-intro">
           You can add the URL of the dataset where it is available on the agency website. If you are
-          uploading the dataset itself, please notify the Data.gov team at{' '}
-          <a target="_blank" rel="noopener noreferrer" href="mailto:inventory-help@gsa.gov">
+          uploading the dataset itself, please notify the Data.gov team at
+          {' '}
+          <Link target="_blank" href="mailto:inventory-help@gsa.gov">
             inventory-help@gsa.gov
-          </a>
-          <OutboundLink />. You can also add a URL or file of information related to the dataset
+          </Link>.
+          {' '}
+          You can also add a URL or file of information related to the dataset
           such as a data dictionary.
         </p>
       </section>
