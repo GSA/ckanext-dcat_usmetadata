@@ -63,28 +63,44 @@ Run the tests.
 
 ## Testing
 
-Run `make test` to run the tests locally inside a docker container
+There are several levels of testing:
 
-You need to have docker and docker-compose installed locally for the tests to run.
+_TODO complete this, make sure it's accurate._
 
-## Building the App
+Suite | Description | Command
+----- | ----------- | -------
+unit tests for the JS app | |
+browser tests for the JS app powered by cypress | |
+python integration tests for ckan | | `make test`
+e2e | | `yarn e2e`
 
-Build and move latest builds of JS code:
 
-```
-# make sure to run it from root directory of the project
-$ npm run build
-```
+## Linting
 
-## Metadata App
+_TODO_
 
-The Metadata APP is a [Create React App](https://create-react-app.dev/)-bootstrapped project.
+Lint the python code.
+
+    $ make lint-all
+
+Lint the JavaScript code.
+
+    $ make app-lint
+
+
+## Metadata app
+
+The Metadata app is a [Create React App](https://create-react-app.dev/)-bootstrapped project.
 
 To run the app use `make app-up`
 
+_TODO briefly describe how the metdata application relates to the CKAN
+extension._
+
+
 ### Development
 
-We recommend using [cosmos](https://reactcosmos.org/) for development.
+This project uses [cosmos](https://reactcosmos.org/) for development.
 
 Run CKAN locally (`make up`) and get the Admin user's API Key. Add a test org for development purposes and get the id. Add these values to indicated place in `/metadata-app/src/index.js`.
 
