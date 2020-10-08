@@ -8,7 +8,7 @@ jobs:
       - run: echo "Github requires this job for CI"
   build_metadata_app:
     docker:
-      - image: circleci/node:12.13.0
+      - image: circleci/node:12
     working_directory: ~/ckanext-dcat_usmetadata
     steps:
       - checkout

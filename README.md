@@ -1,13 +1,20 @@
+[![CircleCI](https://circleci.com/gh/GSA/ckanext-dcat_usmetadata.svg?style=svg)](https://circleci.com/gh/GSA/ckanext-dcat_usmetadata)
+
 # ckanext-dcat_usmetadata
 
-This extension provides a react Admin UI for managing custom fields related to [DCAT-US Schema](https://resources.data.gov/resources/dcat-us/)
+This extension provides a new dataset form for [inventory.data.gov](https://inventory.data.gov/). The form is tailored to managing metadata  meeting the [DCAT-US Schema](https://resources.data.gov/resources/dcat-us/).
 
-## Dependencies
 
-This module currently depends on the [USMetadata app](https://github.com/GSA/USMetadata) for server-side validation and rendering. 
+## Usage
+
+
+### Dependencies
+
+This module currently depends on the [USMetadata app](https://github.com/GSA/USMetadata) for server-side validation and rendering.
 Make sure it is enabled in CKAN's plugins.
 
-## Installation
+
+### Installation
 
 To install this package, activate CKAN virtualenv (e.g. "source /path/to/virtenv/bin/activate"), then run
 
@@ -19,6 +26,40 @@ To install this package, activate CKAN virtualenv (e.g. "source /path/to/virtenv
 In your CKAN .ini file add `dcat_usmetadata` to your enabled plugins:
 
 `ckan.plugins = [YOUR PLUGINS HERE...] dcat_usmetadata`
+
+
+## Development
+
+### Prerequisites
+
+These tools are required for development.
+
+- [Node.js](https://nodejs.org/) 12.x
+- [GNU Make](https://www.gnu.org/software/make/)
+
+Install global dependencies.
+
+    $ make setup
+
+
+### Setup
+
+Install Node.js dependencies.
+
+    $ yarn install
+
+Build the JS application.
+
+    $ yarn run build
+
+Build the docker containers.
+
+    $ make build
+
+Run the tests.
+
+    $ make test
+
 
 ## Testing
 

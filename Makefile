@@ -1,4 +1,4 @@
-.PHONY: all build clean test up
+.PHONY: all build clean setup test up
 
 ########
 # CKAN APP:
@@ -11,6 +11,9 @@ build:
 
 clean:
 	docker-compose down -v
+
+setup:
+	npm install -g yarn
 
 test:
 	docker-compose exec ckan /bin/bash -c "nosetests --ckan --with-pylons=/srv/app/src_extensions/dcat_usmetadata/docker_test.ini src_extensions/dcat_usmetadata/"
