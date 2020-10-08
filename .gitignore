@@ -46,5 +46,6 @@ docs/_build/
 
 # Cypress
 
-cypress/videos/*
-cypress/fixtures/*
+cypress/fixtures/
+cypress/screenshots/
+cypress/videos/
