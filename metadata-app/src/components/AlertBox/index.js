@@ -8,9 +8,25 @@ const AlertBox = (props) => {
   }, []);
 
   const { type, errors, message, heading } = props;
-  const formErrors =
+  const parsedErrors =
     errors &&
-    errors.map((error) => (
+    errors.map((error) => {
+      if (typeof error.message === 'string') {
+        return error;
+      }
+      if (typeof error.message === 'object') {
+        const messageParts = Object.values(error.message)[0].split(' ');
+        return {
+          label: Object.keys(error.message)[0],
+          name: messageParts[0],
+          message: messageParts.slice(1).join(' '),
+        };
+      }
+      return null;
+    });
+  const formErrors =
+    parsedErrors &&
+    parsedErrors.map((error) => (
       <p key={error.name}>
         <b>{error.label}</b> {error.message}
       </p>
