@@ -17,6 +17,7 @@ describe('Resource Upload page', () => {
     cy.requiredMetadata();
     cy.wait(5000);
     cy.additionalMetadata();
+    cy.get('button[type=button]').contains('Save and Continue').click();
     cy.wait(15000);
     cy.resourceUploadWithUrlAndPublish();
     cy.wait(10000);
@@ -30,6 +31,7 @@ describe('Resource Upload page', () => {
     cy.requiredMetadata();
     cy.wait(5000);
     cy.additionalMetadata();
+    cy.get('button[type=button]').contains('Save and Continue').click();
     cy.wait(15000);
     cy.resourceUploadWithUrlAndSave(exampleUrl);
     cy.wait(5000);
@@ -42,6 +44,7 @@ describe('Resource Upload page', () => {
     cy.requiredMetadata();
     cy.wait(5000);
     cy.additionalMetadata();
+    cy.get('button[type=button]').contains('Save and Continue').click();
     cy.wait(5000);
     cy.resourceUploadWithUrlAndSave(invalidUrl);
     cy.wait(5000);
