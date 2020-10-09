@@ -29,4 +29,23 @@ describe('Additional Metadata Page', () => {
     cy.wait(5000);
     cy.contains('Resource Upload');
   });
+
+  it('Test parent dataset', () => {
+    const parentTitle = chance.word({ length: 5 });
+    cy.requiredMetadata(parentTitle);
+    cy.wait(5000);
+    cy.get('select[name=isParent]').select('Yes');
+    cy.additionalMetadata();
+    cy.resourceUploadWithUrlAndPublish();
+    cy.wait(10000);
+
+    cy.requiredMetadata();
+    cy.wait(5000);
+    cy.get('.react-autosuggest__container input').type(parentTitle);
+    cy.wait(5000);
+    cy.get('.react-autosuggest__suggestion--first').click();
+    cy.additionalMetadata();
+    cy.wait(10000);
+    cy.contains('Resource Upload');
+  });
 });
