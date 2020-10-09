@@ -4,7 +4,7 @@ import { FieldArray, useField } from 'formik';
 import ReactTags from 'react-tag-autocomplete';
 import './index.css';
 
-const Autocomplete = (props) => {
+const AutocompleteTags = (props) => {
   const { tags, name, helptext, placeholder, apiUrl, apiKey, errors, fetchOpts, type } = props;
   const [suggestions, setSuggestions] = useState([]);
   const [field, meta, helpers] = useField(name); // eslint-disable-line
@@ -82,7 +82,7 @@ const Autocomplete = (props) => {
   );
 };
 
-Autocomplete.propTypes = {
+AutocompleteTags.propTypes = {
   apiUrl: PropTypes.string.isRequired,
   apiKey: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -95,4 +95,4 @@ Autocomplete.propTypes = {
   fetchOpts: PropTypes.any, // eslint-disable-line
 };
 
-export default Autocomplete;
+export default AutocompleteTags;
