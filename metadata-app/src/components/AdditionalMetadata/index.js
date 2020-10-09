@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import WrappedField from '../WrappedField';
 import HelpText from '../HelpText';
-import AutocompleteTags from '../AutocompleteTags';
+import Autocomplete from '../Autocomplete';
+
 import LinkIcon from '../LinkIcon';
 import api from '../../api';
 
@@ -252,11 +253,13 @@ const AdditionalMetadata = (props) => {
         <div className="row">
           <div className="grid-col-12">
             <span className="usa-label">Select Parent Dataset</span>
-            <AutocompleteTags
+            <Autocomplete
               label="Select Parent Dataset"
               name="parentDataset"
               type="string"
               value={values.parentDataset}
+              // TODO - inputValue should be replaced with parent dataset name
+              inputValue={values.parentDataset}
               placeholder="Select parent dataset"
               helptext="Start typing to see list of matching datasets by title"
               fetchOpts={api.fetchParentDatasets}
