@@ -6,12 +6,16 @@ jobs:
     machine: true
     steps:
       - run: echo "Github requires this job for CI"
+
   build_metadata_app:
     docker:
       - image: circleci/node:12.13.0
     working_directory: ~/ckanext-dcat_usmetadata
     steps:
       - checkout
+      - run:
+          name: Lint JavaScript
+          command: make app-lint
       - run:
           name: Prepare latest build files
           command: CI=false yarn build
@@ -22,6 +26,7 @@ jobs:
           root: ~/
           paths:
             - "ckanext-dcat_usmetadata"
+
   test_local_docker:
     working_directory: ~/ckanext-dcat_usmetadata
     machine: true
@@ -40,6 +45,9 @@ jobs:
       - run:
           name: Wait for db
           command: dockerize -wait http://localhost:5000/dataset -timeout 120s
+      - run:
+          name: Lint python
+          command: make lint-all
       # TODO fix this:
       # - run:
       #     name: Run ckanext-dcat_usmetadata Tests
