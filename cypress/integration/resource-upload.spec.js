@@ -15,7 +15,7 @@ beforeEach(() => {
 describe('Resource Upload page', () => {
   it('Creates resource and redirects to dataset page', () => {
     cy.requiredMetadata();
-    cy.wait(5000);
+    cy.wait(10000);
     cy.additionalMetadata();
     cy.get('button[type=button]').contains('Save and Continue').click();
     cy.wait(15000);
@@ -29,7 +29,7 @@ describe('Resource Upload page', () => {
     const expectedMessage1 = `Resource saved: [${exampleUrl}] (1 resources saved in total).`;
     const expectedMessage2 = 'You can edit any saved resource after clicking "Finish and publish"';
     cy.requiredMetadata();
-    cy.wait(5000);
+    cy.wait(10000);
     cy.additionalMetadata();
     cy.get('button[type=button]').contains('Save and Continue').click();
     cy.wait(15000);
@@ -42,7 +42,7 @@ describe('Resource Upload page', () => {
   it('Fails to save resource if URL is invalid', () => {
     const invalidUrl = 'example.com/data.csv';
     cy.requiredMetadata();
-    cy.wait(5000);
+    cy.wait(10000);
     cy.additionalMetadata();
     cy.get('button[type=button]').contains('Save and Continue').click();
     cy.wait(5000);

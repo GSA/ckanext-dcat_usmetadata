@@ -36,23 +36,26 @@ describe('Additional Metadata Page', () => {
     cy.wait(5000);
     cy.contains('You can add the URL of the dataset where it is available on the agency website.');
   });
-
-  it('Test parent dataset', () => {
-    const parentTitle = chance.word({ length: 5 });
-    cy.requiredMetadata(parentTitle);
-    cy.wait(5000);
-    cy.get('select[name=isParent]').select('Yes');
-    cy.additionalMetadata();
-    cy.resourceUploadWithUrlAndPublish();
-    cy.wait(10000);
-
-    cy.requiredMetadata();
-    cy.wait(5000);
-    cy.get('.react-autosuggest__container input').type(parentTitle);
-    cy.wait(5000);
-    cy.get('.react-autosuggest__suggestion--first').click();
-    cy.additionalMetadata();
-    cy.wait(10000);
-    cy.contains('Resource Upload');
-  });
 });
+
+// describe('Parent Dataset', () => {
+//   it('Able to select', () => {
+//     const title = chance.word({ length: 5 });
+//     cy.login();
+//     cy.visit('/dataset/new-metadata');
+//     cy.requiredMetadata(title);
+//     cy.wait(3000);
+//     cy.additionalMetadata();
+//     cy.get('button[type=button]').contains('Save and Continue').click();
+//     cy.wait(3000);
+//     cy.resourceUploadWithUrlAndPublish();
+
+//     cy.visit('/dataset/new-metadata');
+//     cy.requiredMetadata();
+//     cy.wait(3000);
+//     cy.get('.react-autosuggest__container input').type(title);
+//     cy.wait(3000);
+//     cy.get('.react-autosuggest__suggestion--first').click();
+//     cy.additionalMetadata();
+//   });
+// });
