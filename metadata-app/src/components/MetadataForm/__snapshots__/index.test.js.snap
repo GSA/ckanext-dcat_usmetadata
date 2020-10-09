@@ -2199,7 +2199,7 @@ exports[`renders MetadataForm component 1`] = `
                     MIT
                   </option>
                   <option
-                    value="http://www.usa.gov/publicdomain/label/1.0/"
+                    value="https://www.usa.gov/publicdomain/label/1.0/"
                   >
                     U.S. Government Works
                   </option>
@@ -2209,17 +2209,17 @@ exports[`renders MetadataForm component 1`] = `
                     Creative Commons Zero Public Domain Dedication (CC0)
                   </option>
                   <option
-                    value="http://opendatacommons.org/licenses/pddl/1.0/"
+                    value="https://opendatacommons.org/licenses/pddl/1.0/"
                   >
                     Open Data Commons Public Domain Dedication and Licence (PDDL)
                   </option>
                   <option
-                    value="http://opendatacommons.org/licenses/by/1.0/"
+                    value="https://opendatacommons.org/licenses/by/1.0/"
                   >
                     Open Data Commons Attribution License (ODC-By)
                   </option>
                   <option
-                    value="http://opendatacommons.org/licenses/odbl/1.0/"
+                    value="https://opendatacommons.org/licenses/odbl/1.0/"
                   >
                     Open Data Commons Open Database License (ODbL)
                   </option>
@@ -2234,7 +2234,7 @@ exports[`renders MetadataForm component 1`] = `
                     Creative Commons Attribution-ShareAlike (CC BY-SA)
                   </option>
                   <option
-                    value="http://www.gnu.org/licenses/fdl-1.3.en.html"
+                    value="https://www.gnu.org/licenses/fdl-1.3.en.html"
                   >
                     GNU Free Documentation License
                   </option>

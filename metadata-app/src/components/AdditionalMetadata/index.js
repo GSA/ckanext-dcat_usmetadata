@@ -20,13 +20,13 @@ const helpTexts = {
   describedBy: (
     <HelpText>
       Provide a link to data dictionary or other reference that helps users understand the dataset.
-      Example: &quot;http://www.agency.gov/vegetables/vegetables-all.zip&quot;
+      Example: &quot;https://www.agency.gov/vegetables/vegetables-all.zip&quot;
     </HelpText>
   ),
   landingPage: (
     <HelpText>
       This landing page should contain or be linked to all resources tied to the dataset. Example:
-      &quot;http://www.agency.gov/vegetables&quot;
+      &quot;https://www.agency.gov/vegetables&quot;
     </HelpText>
   ),
   primaryITInvestmentUIIUSG: (
@@ -45,8 +45,8 @@ const helpTexts = {
   references: (
     <HelpText>
       Related documents such as technical information about a dataset, developer documentation, etc.
-      Format for entry is: http://www.agency.gov/fruits/fruits.csv,
-      http://www.agency.gov/legumes/legumes
+      Format for entry is: https://www.agency.gov/fruits/fruits.csv,
+      https://www.agency.gov/legumes/legumes
     </HelpText>
   ),
   systemOfRecordsUSG: (
@@ -108,7 +108,7 @@ const AdditionalMetadata = (props) => {
             label="Data Dictionary URL"
             name="data_dictionary"
             type="string"
-            helptext='Please include "http://" at the beginning of your URL.'
+            helptext='Please include "https://" at the beginning of your URL.'
             infoText={helpTexts.describedBy}
           />
         </div>
@@ -170,7 +170,7 @@ const AdditionalMetadata = (props) => {
             label="Dataset Landing Page URL"
             name="homepage_url"
             type="string"
-            helptext='Please include "http://" at the beginning of your URL.'
+            helptext='Please include "https://" at the beginning of your URL.'
             infoText={helpTexts.landingPage}
           />
         </div>

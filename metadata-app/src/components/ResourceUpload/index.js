@@ -18,13 +18,14 @@ const OutboundLink = (props) => (
 const ResourceUpload = (props) => {
   const { values, setFieldValue, submitForm, draftSaved } = props; // eslint-disable-line
   const resource = values.resource || {};
-  const { url, upload, name, description, mimetype, format } = resource;
+  const { url, name, description, mimetype, format } = resource;
 
   const [linkToDataIsActive, setLinkToDataActive] = useState(false);
   const [uploadDataFileIsActive, setUploadDataFileActive] = useState(false);
 
   const handleFileChange = (event) => {
     setUploadDataFileActive(!uploadDataFileIsActive);
+    setFieldValue('resource.fileName', event.currentTarget.files[0].name);
     if (!name) {
       setFieldValue('resource.name', event.currentTarget.files[0].name);
     }
@@ -64,7 +65,7 @@ const ResourceUpload = (props) => {
           {linkToDataIsActive ? (
             <div>
               <p className="usa-helptext">
-                {`If you are linking to a dataset, please include "http://" at the beginning
+                {`If you are linking to a dataset, please include "https://" at the beginning
                 of your URL.`}
               </p>
               <WrappedField
@@ -84,9 +85,14 @@ const ResourceUpload = (props) => {
               disabled
               name="resource.fileName"
               type="string"
-              value={upload.name}
+              value={resource.fileName}
               onClick={() => {
-                setFieldValue('resource.upload', '');
+                setFieldValue('resource.upload', null);
+                setFieldValue('resource.fileName', '');
+                setFieldValue('resource.name', '');
+                setFieldValue('resource.description', '');
+                setFieldValue('resource.format', '');
+                setFieldValue('resource.mimetype', '');
                 setUploadDataFileActive(false);
               }}
             />
@@ -187,8 +193,8 @@ const ResourceUpload = (props) => {
         <div className="row">
           <div className="col-md-12 text-mint">
             <i>
-              Resource saved: [{values.lastSavedResourceName}] ({values.savedResources} resources
-              saved in total).
+              Resource saved: [{values.lastSavedResource}] ({values.savedResources} resources saved
+              in total).
             </i>
             <br />
             <i>You can edit any saved resource after clicking &quot;Finish and publish&quot;.</i>
@@ -254,7 +260,7 @@ ResourceUpload.propTypes = {
     },
     publish: PropTypes.bool,
     savedResources: PropTypes.number,
-    lastSavedResourceName: PropTypes.string,
+    lastSavedResource: PropTypes.string,
   }),
 };
 
