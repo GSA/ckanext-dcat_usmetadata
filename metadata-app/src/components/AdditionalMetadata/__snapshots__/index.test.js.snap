@@ -185,7 +185,7 @@ exports[`Renders RequiredMetadata component 1`] = `
                     <span
                       class="usa-helptext"
                     >
-                      Provide a link to data dictionary or other reference that helps users understand the dataset. Example: "http://www.agency.gov/vegetables/vegetables-all.zip"
+                      Provide a link to data dictionary or other reference that helps users understand the dataset. Example: "https://www.agency.gov/vegetables/vegetables-all.zip"
                     </span>
                   </p>
                 </span>
@@ -194,7 +194,7 @@ exports[`Renders RequiredMetadata component 1`] = `
             <div
               class="usa-helptext "
             >
-              Please include "http://" at the beginning of your URL.
+              Please include "https://" at the beginning of your URL.
             </div>
             
             <input
@@ -762,7 +762,7 @@ exports[`Renders RequiredMetadata component 1`] = `
                     <span
                       class="usa-helptext"
                     >
-                      This landing page should contain or be linked to all resources tied to the dataset. Example: "http://www.agency.gov/vegetables"
+                      This landing page should contain or be linked to all resources tied to the dataset. Example: "https://www.agency.gov/vegetables"
                     </span>
                   </p>
                 </span>
@@ -771,7 +771,7 @@ exports[`Renders RequiredMetadata component 1`] = `
             <div
               class="usa-helptext "
             >
-              Please include "http://" at the beginning of your URL.
+              Please include "https://" at the beginning of your URL.
             </div>
             
             <input
@@ -1308,7 +1308,7 @@ exports[`Renders RequiredMetadata component 1`] = `
                     <span
                       class="usa-helptext"
                     >
-                      Related documents such as technical information about a dataset, developer documentation, etc. Format for entry is: http://www.agency.gov/fruits/fruits.csv, http://www.agency.gov/legumes/legumes
+                      Related documents such as technical information about a dataset, developer documentation, etc. Format for entry is: https://www.agency.gov/fruits/fruits.csv, https://www.agency.gov/legumes/legumes
                     </span>
                   </p>
                 </span>
@@ -1372,7 +1372,7 @@ exports[`Renders RequiredMetadata component 1`] = `
                     <span
                       class="usa-helptext"
                     >
-                      Related documents such as technical information about a dataset, developer documentation, etc. Format for entry is: http://www.agency.gov/fruits/fruits.csv, http://www.agency.gov/legumes/legumes
+                      Related documents such as technical information about a dataset, developer documentation, etc. Format for entry is: https://www.agency.gov/fruits/fruits.csv, https://www.agency.gov/legumes/legumes
                     </span>
                   </p>
                 </span>

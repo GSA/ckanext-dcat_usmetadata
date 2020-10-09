@@ -13,7 +13,8 @@
     "build": "yarn build:metadata-app && yarn move:builds && yarn rename:builds",
     "build:metadata-app": "cd metadata-app && yarn && yarn build && cd ..",
     "move:builds": "rm -r ckanext/dcat_usmetadata/public/**/* && cp -r metadata-app/build/static/* ckanext/dcat_usmetadata/public/",
-    "rename:builds": "cd ckanext/dcat_usmetadata/public/ && mv media static/ && mv css/main.*.chunk.css css/main.chunk.css && mv js/2.*.chunk.js js/2.chunk.js && mv js/main.*.chunk.js js/main.chunk.js && mv js/runtime-main.*.js js/runtime-main.js"
+    "rename:builds": "cd ckanext/dcat_usmetadata/public/ && mv media static/ && mv css/main.*.chunk.css css/main.chunk.css && mv js/2.*.chunk.js js/2.chunk.js && mv js/main.*.chunk.js js/main.chunk.js && mv js/runtime-main.*.js js/runtime-main.js",
+    "start:dev": "yarn dockerize && cd metadata-app && yarn && yarn start"
   },
   "repository": {
     "type": "git",
