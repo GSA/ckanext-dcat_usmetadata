@@ -26,6 +26,7 @@ describe('Additional Metadata Page', () => {
     cy.requiredMetadata();
     cy.wait(5000);
     cy.additionalMetadata();
+    cy.get('button[type=button]').contains('Save and Continue').click();
     cy.wait(5000);
     cy.contains('Resource Upload');
   });
