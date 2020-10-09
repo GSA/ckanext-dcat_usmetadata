@@ -155,6 +155,11 @@ To run e2e tests interactively use:
 $ npx cypress open
 ```
 
+## Publishing a new build
+
+_TODO_
+
+
 ## Ways to Contribute
 
 The Data.gov team manages all Data.gov updates, bugs, and feature additions via GitHub's public [issue tracker](https://github.com/GSA/ckanext-dcat_usmetadata/issues) in this repository.
