@@ -49,6 +49,6 @@ describe('Resource Upload page', () => {
     cy.resourceUploadWithUrlAndSave(invalidUrl);
     cy.wait(5000);
     cy.get('h3.usa-alert__heading').contains('This form contains invalid entries');
-    cy.get('.usa-alert__text').contains('must be a valid URL');
+    cy.get('.usa-alert__text').contains('If you are linking to a dataset, please include "https://" at the beginning of your URL.');
   });
 });
