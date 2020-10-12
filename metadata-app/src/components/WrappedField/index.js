@@ -111,7 +111,9 @@ const WrappedField = (props) => {
           ),
           url: (
             <Field
-              className={`usa-input ${disabledClass} ${onClick && 'has-clear-button'}`}
+              className={`usa-input ${disabledClass} ${
+                (formErrors[name] || formErrors.resource) && 'field-error'
+              } ${onClick && 'has-clear-button'}`}
               disabled={disabled}
               id={id}
               name={name}

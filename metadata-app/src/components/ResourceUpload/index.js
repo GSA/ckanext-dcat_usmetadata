@@ -16,7 +16,7 @@ const OutboundLink = (props) => (
 );
 
 const ResourceUpload = (props) => {
-  const { values, setFieldValue, submitForm, draftSaved } = props; // eslint-disable-line
+  const { values, errors, setFieldValue, submitForm, draftSaved } = props; // eslint-disable-line
   const resource = values.resource || {};
   const { url, name, description, mimetype, format } = resource;
 
@@ -62,7 +62,7 @@ const ResourceUpload = (props) => {
           {/* eslint-disable-next-line */}
           <label className="usa-label">Data</label>
           {/* eslint-disable-next-line */}
-          {linkToDataIsActive ? (
+          {linkToDataIsActive || url ? (
             <div>
               <p className="usa-helptext">
                 {`If you are linking to a dataset, please include "https://" at the beginning
@@ -78,6 +78,7 @@ const ResourceUpload = (props) => {
                   setFieldValue('resource.url', '');
                   setLinkToDataActive(false);
                 }}
+                errors={errors}
               />
             </div>
           ) : uploadDataFileIsActive ? (
