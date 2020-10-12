@@ -44,12 +44,12 @@ const Autocomplete = (props) => {
       setValue('');
       setSelected(null);
     }
-    setTypedText(typed);
+    setTypedText(typed || '');
   };
 
   useEffect(() => {
     setTypedText(inputValue || '');
-    setSelected({ id: value, name: inputValue });
+    if (value) setSelected({ id: value, name: inputValue });
   }, []);
 
   const getSuggestions = async (typed) => {
