@@ -20,6 +20,33 @@ const decodeExtras = (opts) => {
   return newOpts;
 };
 
+/**
+ * Iterates over each field and if it's string encodes special
+ * characters
+ * @param {Object} obj
+ */
+const encodeValuesURIComponent = (obj) => {
+  const newObj = {};
+  Object.entries(obj).map(([key, value]) => {
+    newObj[key] = value;
+    if (typeof value === 'string' || value instanceof String) {
+      newObj[key] = encodeURIComponent(value);
+    }
+    // eslint-disable-next-line
+    return;
+  });
+
+  if (obj.extras)
+    newObj.extras = obj.extras.map(({ key, value }) => {
+      if (typeof value === 'string' || value instanceof String) {
+        return { key, value: encodeURIComponent(value) };
+      }
+      return { key, value };
+    });
+
+  return newObj;
+};
+
 // encode values from USMetadata format to match form values
 const encodeSupplementalValues = (opts) => {
   const newOpts = clone(opts);
@@ -114,7 +141,7 @@ const encodeSupplementalValues = (opts) => {
     delete newOpts.parent_dataset;
   }
 
-  return newOpts;
+  return encodeValuesURIComponent(newOpts);
 };
 
 // decode values from USMetadata format to match form values
