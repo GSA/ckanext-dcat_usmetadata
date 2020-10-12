@@ -84,7 +84,7 @@ const ResourceUpload = (props) => {
             <WrappedField
               disabled
               name="resource.fileName"
-              type="string"
+              type="label"
               value={resource.fileName}
               onClick={() => {
                 setFieldValue('resource.upload', null);
@@ -116,11 +116,11 @@ const ResourceUpload = (props) => {
                 <i className="fa fa-link" aria-hidden="true" /> Link to data
               </label>
               {/* eslint-enable */}
+              <p className="usa-helptext">
+                Formats accepted include the following: TXT, HTML, TSV, CSV, ODT, XML, Perl.
+              </p>
             </>
           )}
-          <p className="usa-helptext">
-            Formats accepted include the following: TXT, HTML, TSV, CSV, ODT, XML, Perl.
-          </p>
         </div>
       </div>
       <div className="row">

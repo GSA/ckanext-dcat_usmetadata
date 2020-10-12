@@ -95,6 +95,7 @@ const WrappedField = (props) => {
       )}
       {
         {
+          label: <div>{value}</div>,
           string: (
             <Field
               className={
