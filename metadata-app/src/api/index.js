@@ -36,12 +36,13 @@ const encodeValuesURIComponent = (obj) => {
     return;
   });
 
-  newObj.extras = obj.extras.map(({ key, value }) => {
-    if (typeof value === 'string' || value instanceof String) {
-      return { key, value: encodeURIComponent(value) };
-    }
-    return { key, value };
-  });
+  if (obj.extras)
+    newObj.extras = obj.extras.map(({ key, value }) => {
+      if (typeof value === 'string' || value instanceof String) {
+        return { key, value: encodeURIComponent(value) };
+      }
+      return { key, value };
+    });
 
   return newObj;
 };
