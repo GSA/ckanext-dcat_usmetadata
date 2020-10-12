@@ -343,6 +343,7 @@ const MetadataForm = (props) => {
               <Form onSubmit={handleSubmit}>
                 <ResourceUpload
                   values={values}
+                  errors={errors}
                   draftSaved={draftSaved ? formatDate(draftSaved) : undefined}
                   setFieldValue={setFieldValue}
                   submitForm={submitForm}

@@ -157,7 +157,7 @@ exports[`renders MetadataForm component 1`] = `
                     />
                     
                     <input
-                      class="usa-input  undefined"
+                      class="usa-input  undefined undefined"
                       name="url"
                       style="display: none;"
                       type="url"

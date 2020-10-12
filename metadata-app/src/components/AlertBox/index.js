@@ -15,11 +15,13 @@ const AlertBox = (props) => {
         return error;
       }
       if (typeof error.message === 'object') {
-        const messageParts = Object.values(error.message)[0].split(' ');
+        let label = Object.keys(error.message)[0];
+        const errorMessage = error.message[label];
+        label = label === 'url' ? 'Data:' : label;
         return {
-          label: Object.keys(error.message)[0],
-          name: messageParts[0],
-          message: messageParts.slice(1).join(' '),
+          label,
+          name: error.name,
+          message: errorMessage,
         };
       }
       return null;
