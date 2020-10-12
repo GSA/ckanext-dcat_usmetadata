@@ -6,7 +6,11 @@ export default yup.object().shape({
     description: yup.string(),
     mimetype: yup.string(),
     format: yup.string(),
-    url: yup.string().url(),
+    url: yup
+      .string()
+      .url(
+        'If you are linking to a dataset, please include "https://" at the beginning of your URL.'
+      ),
     upload: yup.mixed(),
   }),
 });
