@@ -1,13 +1,20 @@
+[![CircleCI](https://circleci.com/gh/GSA/ckanext-dcat_usmetadata.svg?style=svg)](https://circleci.com/gh/GSA/ckanext-dcat_usmetadata)
+
 # ckanext-dcat_usmetadata
 
-This extension provides a react Admin UI for managing custom fields related to [DCAT-US Schema](https://resources.data.gov/resources/dcat-us/)
+This extension provides a new dataset form for [inventory.data.gov](https://inventory.data.gov/). The form is tailored to managing metadata  meeting the [DCAT-US Schema](https://resources.data.gov/resources/dcat-us/).
 
-## Dependencies
 
-This module currently depends on the [USMetadata app](https://github.com/GSA/USMetadata) for server-side validation and rendering. 
+## Usage
+
+
+### Dependencies
+
+This module currently depends on the [USMetadata app](https://github.com/GSA/USMetadata) for server-side validation and rendering.
 Make sure it is enabled in CKAN's plugins.
 
-## Installation
+
+### Installation
 
 To install this package, activate CKAN virtualenv (e.g. "source /path/to/virtenv/bin/activate"), then run
 
@@ -20,30 +27,80 @@ In your CKAN .ini file add `dcat_usmetadata` to your enabled plugins:
 
 `ckan.plugins = [YOUR PLUGINS HERE...] dcat_usmetadata`
 
+
+## Development
+
+### Prerequisites
+
+These tools are required for development.
+
+- [Node.js](https://nodejs.org/) 12.x
+- [GNU Make](https://www.gnu.org/software/make/)
+
+Install global dependencies.
+
+    $ make setup
+
+
+### Setup
+
+Install Node.js dependencies.
+
+    $ yarn install
+
+Build the JS application.
+
+    $ yarn run build
+
+Build the docker containers.
+
+    $ make build
+
+Run the tests.
+
+    $ make test
+
+
 ## Testing
 
-Run `make test` to run the tests locally inside a docker container
+There are several levels of testing:
 
-You need to have docker and docker-compose installed locally for the tests to run.
+_TODO complete this, make sure it's accurate._
 
-## Building the App
+Suite | Description | Command
+----- | ----------- | -------
+unit tests for the JS app | |
+browser tests for the JS app powered by cypress | |
+python integration tests for ckan | | `make test`
+e2e | | `yarn e2e`
 
-Build and move latest builds of JS code:
 
-```
-# make sure to run it from root directory of the project
-$ npm run build
-```
+## Linting
 
-## Metadata App
+_TODO_
 
-The Metadata APP is a [Create React App](https://create-react-app.dev/)-bootstrapped project.
+Lint the python code.
+
+    $ make lint-all
+
+Lint the JavaScript code.
+
+    $ make app-lint
+
+
+## Metadata app
+
+The Metadata app is a [Create React App](https://create-react-app.dev/)-bootstrapped project.
 
 To run the app use `make app-up`
 
+_TODO briefly describe how the metdata application relates to the CKAN
+extension._
+
+
 ### Development
 
-We recommend using [cosmos](https://reactcosmos.org/) for development.
+This project uses [cosmos](https://reactcosmos.org/) for development.
 
 Run CKAN locally (`make up`) and get the Admin user's API Key. Add a test org for development purposes and get the id. Add these values to indicated place in `/metadata-app/src/index.js`.
 
