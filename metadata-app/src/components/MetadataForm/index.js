@@ -160,15 +160,15 @@ const MetadataForm = (props) => {
           {({ values, handleSubmit, errors, setFieldValue, submitForm }) => {
             return (
               <div>
-                {errors && Object.keys(errors).length > 0 && (
-                  <div>
+                {errors &&
+                  Object.keys(errors).length > 0 &&
+                  setAlert(
                     <AlertBox
                       type="error"
                       heading="This form contains invalid entries"
                       errors={formatErrors(errors)}
                     />
-                  </div>
-                )}
+                  )}
                 <Form onSubmit={handleSubmit}>
                   <div>
                     <RequiredMetadata
@@ -229,15 +229,15 @@ const MetadataForm = (props) => {
           {({ values, handleSubmit, errors, setFieldValue, submitForm }) => {
             return (
               <div>
-                {errors && Object.keys(errors).length > 0 && (
-                  <div>
+                {errors &&
+                  Object.keys(errors).length > 0 &&
+                  setAlert(
                     <AlertBox
                       type="error"
                       heading="This form contains invalid entries"
                       errors={formatErrors(errors)}
                     />
-                  </div>
-                )}
+                  )}
                 <Form onSubmit={handleSubmit}>
                   <div>
                     <AdditionalMetadata
@@ -331,15 +331,15 @@ const MetadataForm = (props) => {
           validationSchema={ResourceUploadSchema}
           render={({ values, errors, handleSubmit, setFieldValue, submitForm }) => (
             <div className="">
-              {errors && Object.keys(errors).length > 0 && (
-                <div>
+              {errors &&
+                Object.keys(errors).length > 0 &&
+                setAlert(
                   <AlertBox
                     type="error"
                     heading="This form contains invalid entries"
                     errors={formatErrors(errors)}
                   />
-                </div>
-              )}
+                )}
               <Form onSubmit={handleSubmit}>
                 <ResourceUpload
                   values={values}
