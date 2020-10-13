@@ -172,7 +172,6 @@ exports[`renders MetadataForm component 1`] = `
                   </span>
                   <button
                     class="usa-button dataset_url_edit"
-                    style="display: none;"
                     type="button"
                   >
                     Edit
