@@ -28,9 +28,10 @@ const decodeExtras = (opts) => {
 const encodeValuesURIComponent = (obj) => {
   const newObj = {};
   Object.entries(obj).map(([key, value]) => {
-    newObj[key] = value;
+    const encodedKey = encodeURIComponent(key);
+    newObj[encodedKey] = value;
     if (typeof value === 'string' || value instanceof String) {
-      newObj[key] = encodeURIComponent(value);
+      newObj[encodedKey] = encodeURIComponent(value);
     }
     // eslint-disable-next-line
     return;
@@ -38,10 +39,12 @@ const encodeValuesURIComponent = (obj) => {
 
   if (obj.extras)
     newObj.extras = obj.extras.map(({ key, value }) => {
+      const encodedKey = encodeURIComponent(key);
+
       if (typeof value === 'string' || value instanceof String) {
-        return { key, value: encodeURIComponent(value) };
+        return { key: encodedKey, value: encodeURIComponent(value) };
       }
-      return { key, value };
+      return { key: encodedKey, value };
     });
 
   return newObj;

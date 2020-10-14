@@ -56,7 +56,7 @@ describe('Test helpers', () => {
 
         const result = await fetchDataset('test-id', 'APIURL', 'APIKEY');
 
-        expect(result.title).toBe('Test Dataset 2');
+        expect(result.title).toBe('Test Dataset 1');
         expect(typeof result).toBe('object');
         expect(Array.isArray(result.tags)).toBe(true);
         expect(Array.isArray(result.extras)).toBe(true);
@@ -74,26 +74,81 @@ describe('Test helpers', () => {
         });
 
         const result = await createDataset(requiredMetadata, 'APIURL', 'APIKEY');
-
-        expect(result.title).toBe('Test Dataset 1');
+        expect(result.title).toBe('Test Dataset 2');
         expect(typeof result).toBe('object');
         expect(Array.isArray(result.tags)).toBe(true);
         expect(Array.isArray(result.extras)).toBe(true);
       });
+
+      it('should encode the field names and values when creating dataset', async () => {
+        const title = 'Some title with special chars: $&@';
+        const description = 'Some description with special chars: $&@';
+        const fieldNameWithSpecialChars = 'a&l#@!ls1';
+        const fieldNameEncoded = 'a%26l%23%40!ls1';
+
+        moxios.wait(() => {
+          const request = moxios.requests.mostRecent();
+          const payload = JSON.parse(request.config.data);
+
+          expect(request.config.method).toBe('post');
+          expect(payload.title).toBe('Some%20title%20with%20special%20chars%3A%20%24%26%40');
+          expect(payload.description).toBe(
+            'Some%20description%20with%20special%20chars%3A%20%24%26%40'
+          );
+          expect(payload[fieldNameEncoded]).toBe('Foo');
+          request.respondWith({
+            status: 200,
+            response: createDatasetResponse,
+          });
+        });
+
+        await createDataset(
+          { ...requiredMetadata, title, description, [fieldNameWithSpecialChars]: 'Foo' },
+          'APIURL',
+          'APIKEY'
+        );
+      });
     });
 
     describe('Update dataset', () => {
-      moxios.wait(() => {
-        const request = moxios.requests.mostRecent();
-        request.respondWith({
-          status: 200,
-          response: updateDatasetResponse,
-        });
-      });
-
       it('should successfully update an existing dataset', async () => {
+        moxios.wait(() => {
+          const request = moxios.requests.mostRecent();
+          request.respondWith({
+            status: 200,
+            response: updateDatasetResponse,
+          });
+        });
+
         const result = await updateDataset('123', additionalMetadata, 'APIURL', 'APIKEY');
         expect(result.title).toBe('Test Dataset 2');
+      });
+
+      it('should encode the field names and values when updating dataset', async () => {
+        const themes = 'Some theme with special chars: $&@';
+        const fieldNameWithSpecialChars = 'a&l#@!ls1';
+        const fieldNameEncoded = 'a%26l%23%40!ls1';
+        moxios.wait(() => {
+          const request = moxios.requests.mostRecent();
+          const payload = JSON.parse(request.config.data);
+          console.log(payload);
+
+          expect(request.config.method).toBe('post');
+          expect(payload.themes).toBe('Some%20theme%20with%20special%20chars%3A%20%24%26%40');
+          expect(payload[fieldNameEncoded]).toBe('Foo');
+
+          request.respondWith({
+            status: 200,
+            response: updateDatasetResponse,
+          });
+        });
+
+        await updateDataset(
+          '123',
+          { ...additionalMetadata, themes, [fieldNameWithSpecialChars]: 'Foo' },
+          'APIURL',
+          'APIKEY'
+        );
       });
     });
   });
