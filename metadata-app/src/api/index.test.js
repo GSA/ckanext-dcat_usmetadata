@@ -56,7 +56,7 @@ describe('Test helpers', () => {
 
         const result = await fetchDataset('test-id', 'APIURL', 'APIKEY');
 
-        expect(result.title).toBe('Test Dataset 2');
+        expect(result.title).toBe('Test Dataset 1');
         expect(typeof result).toBe('object');
         expect(Array.isArray(result.tags)).toBe(true);
         expect(Array.isArray(result.extras)).toBe(true);
@@ -74,8 +74,7 @@ describe('Test helpers', () => {
         });
 
         const result = await createDataset(requiredMetadata, 'APIURL', 'APIKEY');
-
-        expect(result.title).toBe('Test Dataset 1');
+        expect(result.title).toBe('Test Dataset 2');
         expect(typeof result).toBe('object');
         expect(Array.isArray(result.tags)).toBe(true);
         expect(Array.isArray(result.extras)).toBe(true);
@@ -83,15 +82,15 @@ describe('Test helpers', () => {
     });
 
     describe('Update dataset', () => {
-      moxios.wait(() => {
-        const request = moxios.requests.mostRecent();
-        request.respondWith({
-          status: 200,
-          response: updateDatasetResponse,
-        });
-      });
-
       it('should successfully update an existing dataset', async () => {
+        moxios.wait(() => {
+          const request = moxios.requests.mostRecent();
+          request.respondWith({
+            status: 200,
+            response: updateDatasetResponse,
+          });
+        });
+
         const result = await updateDataset('123', additionalMetadata, 'APIURL', 'APIKEY');
         expect(result.title).toBe('Test Dataset 2');
       });
