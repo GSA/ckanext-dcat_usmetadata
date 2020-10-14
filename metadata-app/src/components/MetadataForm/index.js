@@ -125,6 +125,8 @@ const MetadataForm = (props) => {
           validateOnBlur={false}
           validateOnMount={false}
           onSubmit={(values) => {
+            // Clear alert box:
+            setAlert();
             // update or create dataset:
             if (curDatasetId) {
               Api.updateDataset(curDatasetId, values, apiUrl, apiKey)
@@ -154,6 +156,13 @@ const MetadataForm = (props) => {
                 })
                 .catch(handleError);
             }
+          }}
+          validate={() => {
+            // Note this isn't validating anything. We use "validationSchema"
+            // property to validate form values against "yup" schema. This
+            // method is needed to make sure that alert box is cleared on
+            // validation so we don't confuse users with multiple alert boxes.
+            setAlert();
           }}
           validationSchema={RequiredMetadataSchema}
         >
@@ -199,6 +208,8 @@ const MetadataForm = (props) => {
           validateOnChange={false}
           validateOnBlur={false}
           onSubmit={(values) => {
+            // Clear alert box:
+            setAlert();
             const id = formValues && formValues.id;
             setFormValues(Object.assign({}, formValues, values));
             if (id) {
@@ -223,6 +234,13 @@ const MetadataForm = (props) => {
               );
               window.scrollTo(0, 0);
             }
+          }}
+          validate={() => {
+            // Note this isn't validating anything. We use "validationSchema"
+            // property to validate form values against "yup" schema. This
+            // method is needed to make sure that alert box is cleared on
+            // validation so we don't confuse users with multiple alert boxes.
+            setAlert();
           }}
           validationSchema={AdditionalMetadataSchema}
         >
@@ -273,6 +291,8 @@ const MetadataForm = (props) => {
           validateOnChange={false}
           validateOnBlur={false}
           onSubmit={(values, { setFieldValue }) => {
+            // Clear alert box:
+            setAlert();
             // Check if resource should be created, eg, user added any metadata:
             const resourceMetadataChanged =
               JSON.stringify(ResourceObject) !== JSON.stringify(values.resource);
@@ -327,6 +347,13 @@ const MetadataForm = (props) => {
                 />
               );
             }
+          }}
+          validate={() => {
+            // Note this isn't validating anything. We use "validationSchema"
+            // property to validate form values against "yup" schema. This
+            // method is needed to make sure that alert box is cleared on
+            // validation so we don't confuse users with multiple alert boxes.
+            setAlert();
           }}
           validationSchema={ResourceUploadSchema}
           render={({ values, errors, handleSubmit, setFieldValue, submitForm }) => (
