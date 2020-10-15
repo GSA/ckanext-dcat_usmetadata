@@ -131,7 +131,6 @@ describe('Test helpers', () => {
         moxios.wait(() => {
           const request = moxios.requests.mostRecent();
           const payload = JSON.parse(request.config.data);
-          console.log(payload);
 
           expect(request.config.method).toBe('post');
           expect(payload.themes).toBe('Some%20theme%20with%20special%20chars%3A%20%24%26%40');

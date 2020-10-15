@@ -415,7 +415,7 @@ const RequiredMetadata = (props) => {
           value={values.temporal_start_date}
           errors={errors}
           helptext={helpTextify(
-            'If your dataset has a temporal component, please provide start date for applicability of data above*'
+            'If your dataset has a temporal component, please provide start date for applicability of data above (MM/DD/YYYY)*'
           )}
           disabled={values.temporal === 'false'}
         />
@@ -426,7 +426,7 @@ const RequiredMetadata = (props) => {
           value={values.temporal_end_date}
           errors={errors}
           helptext={helpTextify(
-            'If your dataset has a temporal component, please provide end date for applicability of data above*'
+            'If your dataset has a temporal component, please provide end date for applicability of data above (MM/DD/YYYY)*'
           )}
           disabled={values.temporal === 'false'}
         />

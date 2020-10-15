@@ -11,4 +11,5 @@ export default {
   spatial: 'Spatial',
   license: 'License',
   temporal: 'Temporal',
+  release_date: 'Release Date',
 };

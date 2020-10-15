@@ -225,6 +225,7 @@ const AdditionalMetadata = (props) => {
             label="Release Date"
             name="release_date"
             type="date"
+            helptext="Date Format: MM/DD/YYYY"
             infoText={helpTexts.references}
           />
         </div>

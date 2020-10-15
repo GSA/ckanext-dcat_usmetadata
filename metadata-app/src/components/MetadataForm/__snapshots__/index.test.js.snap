@@ -2500,7 +2500,7 @@ exports[`renders MetadataForm component 1`] = `
                   <span
                     class="usa-helptext"
                   >
-                    If your dataset has a temporal component, please provide start date for applicability of data above*
+                    If your dataset has a temporal component, please provide start date for applicability of data above (MM/DD/YYYY)*
                   </span>
                 </div>
                 
@@ -2528,7 +2528,7 @@ exports[`renders MetadataForm component 1`] = `
                   <span
                     class="usa-helptext"
                   >
-                    If your dataset has a temporal component, please provide end date for applicability of data above*
+                    If your dataset has a temporal component, please provide end date for applicability of data above (MM/DD/YYYY)*
                   </span>
                 </div>
                 

@@ -14,4 +14,5 @@ export default yup.object().shape({
   deribed_by: yup.string().url(),
   described_by_type: yup.string(),
   system_of_records: yup.string(),
+  release_date: yup.date().typeError('Please specify a valid release date'),
 });

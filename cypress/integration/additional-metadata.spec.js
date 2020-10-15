@@ -38,24 +38,22 @@ describe('Additional Metadata Page', () => {
   });
 });
 
-// describe('Parent Dataset', () => {
-//   it('Able to select', () => {
-//     const title = chance.word({ length: 5 });
-//     cy.login();
-//     cy.visit('/dataset/new-metadata');
-//     cy.requiredMetadata(title);
-//     cy.wait(3000);
-//     cy.additionalMetadata();
-//     cy.get('button[type=button]').contains('Save and Continue').click();
-//     cy.wait(3000);
-//     cy.resourceUploadWithUrlAndPublish();
+describe('Parent Dataset', () => {
+  it('Able to select', () => {
+    const title = chance.word({ length: 5 });
+    cy.login();
+    cy.visit('/dataset/new-metadata');
 
-//     cy.visit('/dataset/new-metadata');
-//     cy.requiredMetadata();
-//     cy.wait(3000);
-//     cy.get('.react-autosuggest__container input').type(title);
-//     cy.wait(3000);
-//     cy.get('.react-autosuggest__suggestion--first').click();
-//     cy.additionalMetadata();
-//   });
-// });
+    cy.requiredMetadata(title);
+    cy.additionalMetadata();
+    cy.get('button[type=button]').contains('Save and Continue').click();
+    cy.resourceUploadWithUrlAndPublish();
+
+    cy.visit('/dataset/new-metadata');
+    cy.requiredMetadata();
+    cy.get('.react-autosuggest__container input').type(title);
+    cy.get('.react-autosuggest__suggestion--first').click();
+    cy.additionalMetadata();
+    cy.get('.react-autosuggest__container input').should('have.value', title);
+  });
+});
