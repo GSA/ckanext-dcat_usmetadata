@@ -41,6 +41,8 @@ describe('Additional Metadata Page', () => {
 describe('Parent Dataset', () => {
   it('Able to select', () => {
     const title = chance.word({ length: 5 });
+    cy.login();
+    cy.visit('/dataset/new-metadata');
 
     cy.requiredMetadata(title);
     cy.additionalMetadata();
