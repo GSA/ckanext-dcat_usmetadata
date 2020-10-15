@@ -80,6 +80,6 @@ export default yup.object().shape({
       }
       return true;
     }),
-  temporal_start_date: yup.date(),
-  temporal_end_date: yup.date(),
+  temporal_start_date: yup.date().typeError('Please specify a valid start date'),
+  temporal_end_date: yup.date().typeError('Please specify a valid end date'),
 });
