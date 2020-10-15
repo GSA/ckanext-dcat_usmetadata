@@ -48,3 +48,6 @@
 .field-error {
   border: 2px solid #e41d3d;
 }
+.react-tags-input {
+  border: none;
+}
