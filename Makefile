@@ -43,7 +43,6 @@ app-cosmos:
 	cd metadata-app && yarn && yarn cosmos
 
 app-lint:
-	cd metadata-app && npx eslint src/*.js
-
+	cd metadata-app && npx eslint src && npx prettier --check src
 app-test:
 	cd metadata-app && yarn test
