@@ -33,11 +33,14 @@ const helpTexts = {
   primaryITInvestmentUIIUSG: (
     <HelpText>
       This can often be found in Exhibit 53 documents, and takes the form ###-#########. Learn more
-      about Exhibit 53 documents at
-      {' '}
-      <Link target="_blank" href="https://www.whitehouse.gov/wp-content/uploads/2018/06/fy-2020-it-budget-guidance.pdf">
+      about Exhibit 53 documents at{' '}
+      <Link
+        target="_blank"
+        href="https://www.whitehouse.gov/wp-content/uploads/2018/06/fy-2020-it-budget-guidance.pdf"
+      >
         this PDF
-      </Link>.
+      </Link>
+      .
     </HelpText>
   ),
   references: (
@@ -69,11 +72,11 @@ const AdditionalMetadata = (props) => {
         <p className="site-text-intro">
           Please note that the additional metadata that you upload will help public users better
           find and use this dataset. Not all of these criteria will apply to each dataset, so feel
-          free to only answer what applies. For more information about the form fields, consult the
-          {' '}
+          free to only answer what applies. For more information about the form fields, consult the{' '}
           <Link target="_blank" href="https://resources.data.gov/schemas/dcat-us/v1.1/">
             DCAT-US Schema
-          </Link>.
+          </Link>
+          .
         </p>
       </section>
       <div className="row">

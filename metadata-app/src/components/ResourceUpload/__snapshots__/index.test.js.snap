@@ -29,9 +29,7 @@ exports[`Renders Resource Upload component 1`] = `
           >
             inventory-help@gsa.gov
           </a>
-          .
-           
-          You can also add a URL or file of information related to the dataset such as a data dictionary.
+          . You can also add a URL or file of information related to the dataset such as a data dictionary.
         </p>
       </section>
       <div

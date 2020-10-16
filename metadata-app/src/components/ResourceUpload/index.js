@@ -5,7 +5,6 @@ import Link from '../Link';
 import WrappedField from '../WrappedField';
 import resourceFormats from './resource_formats.json';
 
-
 const ResourceUpload = (props) => {
   const { values, errors, setFieldValue, submitForm, draftSaved } = props; // eslint-disable-line
   const resource = values.resource || {};
@@ -40,14 +39,12 @@ const ResourceUpload = (props) => {
         </h1>
         <p className="site-text-intro">
           You can add the URL of the dataset where it is available on the agency website. If you are
-          uploading the dataset itself, please notify the Data.gov team at
-          {' '}
+          uploading the dataset itself, please notify the Data.gov team at{' '}
           <Link target="_blank" href="mailto:inventory-help@gsa.gov">
             inventory-help@gsa.gov
-          </Link>.
-          {' '}
-          You can also add a URL or file of information related to the dataset
-          such as a data dictionary.
+          </Link>
+          . You can also add a URL or file of information related to the dataset such as a data
+          dictionary.
         </p>
       </section>
       <div className="row">

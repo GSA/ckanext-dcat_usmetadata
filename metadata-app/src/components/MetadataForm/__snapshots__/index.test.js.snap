@@ -68,9 +68,7 @@ exports[`renders MetadataForm component 1`] = `
                 >
                   per Section 202 of the OPEN Government Data Act
                 </a>
-                ).
-                 
-                For more information about the form fields, consult the
+                ). For more information about the form fields, consult the
                  
                 <a
                   class="usa-link usa-link--external"

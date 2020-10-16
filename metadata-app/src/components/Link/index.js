@@ -5,35 +5,38 @@ const Link = (props) => {
   // TODO this should test against the app's base url instead of just a
   // protocol, or possibly non-.gov URLs depending on the requirement.
   // Assume any non-relative URL is an external URL.
-  const isExternal = /^https?:\/\//.test(props.href) || props.target === '_blank';
+  const { children, href, rel, target } = props;
+
+  const isExternal = /^https?:\/\//.test(href) || target === '_blank';
   let classes = ['usa-link'];
-  let rel = props.rel ? [props.rel] : [];
+  let newRel = rel ? [rel] : [];
 
   if (isExternal) {
     classes = classes.concat(['usa-link--external']);
-    rel = rel.concat(['noopener', 'noreferrer']);
+    newRel = newRel.concat(['noopener', 'noreferrer']);
   }
 
   return (
     <a
-      href={props.href}
+      href={href}
       className={classes.join(' ')}
-      rel={rel.length ? rel.join(' ') : undefined}
+      rel={newRel.length ? newRel.join(' ') : undefined}
       {...props}
     >
-      {props.children}
+      {children}
     </a>
   );
 };
 
 Link.propTypes = {
-  href: PropTypes.string,
-  target: PropTypes.string,
   children: PropTypes.any, // eslint-disable-line
+  href: PropTypes.string,
+  rel: PropTypes.string,
+  target: PropTypes.string,
 };
 
 Link.defaultValues = {
   rel: null,
-}
+};
 
 export default Link;

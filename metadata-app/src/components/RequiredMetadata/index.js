@@ -26,7 +26,6 @@ const leafPublishers = publishersDictionary
   .sort()
   .concat(['Other']);
 
-
 // Links within the form use target="_blank" to avoid navigating away from the
 // from while the user is filling it out. It can be very frustrating to lose
 // work when clicking on a link for help.
@@ -73,35 +72,29 @@ const RequiredMetadata = (props) => {
   const helpTexts = {
     title: (
       <HelpText>
-        Use
-        {' '}
+        Use{' '}
         <Link target="_blank" href="https://plainlanguage.gov/">
           everyday language
-        </Link>
-        {' '}
+        </Link>{' '}
         to make the dataset easy to find and understand.
       </HelpText>
     ),
     description: (
       <HelpText>
         Write a description (like an abstract) with enough detail to help a user quickly decide if
-        the asset is of interest. You can use
-        {' '}
+        the asset is of interest. You can use{' '}
         <Link target="_blank" href="https://www.markdownguide.org/basic-syntax/">
           Markdown Formatting
-        </Link>
-        {' '}
+        </Link>{' '}
         here.
       </HelpText>
     ),
     select: (
       <HelpText>
-        If you do not see the Publisher for your dataset listed, please contact
-        {' '}
+        If you do not see the Publisher for your dataset listed, please contact{' '}
         <Link target="_blank" href="mailto:inventory-help@gsa.gov">
           inventory-help@gsa.gov
-        </Link>
-        {' '}
+        </Link>{' '}
         for further assistance.
       </HelpText>
     ),
@@ -112,15 +105,17 @@ const RequiredMetadata = (props) => {
       <section id="section-basic-mega-menu" className="site-component-section">
         <p className="site-text-intro">
           The following fields are required metadata for each dataset in an agency’s inventory (
-          <Link target="_blank" href="https://www.congress.gov/115/plaws/publ435/PLAW-115publ435.pdf">
+          <Link
+            target="_blank"
+            href="https://www.congress.gov/115/plaws/publ435/PLAW-115publ435.pdf"
+          >
             per Section 202 of the OPEN Government Data Act
-          </Link>).
-          {' '}
-          For more information about the form fields, consult the
-          {' '}
+          </Link>
+          ). For more information about the form fields, consult the{' '}
           <Link target="_blank" href="https://resources.data.gov/resources/dcat-us/">
             DCAT-US Schema
-          </Link>.
+          </Link>
+          .
         </p>
       </section>
       <div className="row">

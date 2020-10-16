@@ -3,9 +3,7 @@ import { render } from '@testing-library/react';
 import Link from '.';
 
 test('Renders Link component', () => {
-  const { getByText } = render(
-    <Link href="https://example.com">Example</Link>
-  );
+  const { getByText } = render(<Link href="https://example.com">Example</Link>);
 
   const link = getByText('Example');
   expect(link).toBeInTheDocument();
@@ -15,9 +13,7 @@ test('Renders Link component', () => {
 });
 
 test('Given external href, Link is rendered with the external class', () => {
-  const { getByText } = render(
-    <Link href="https://example.com">Example</Link>
-  );
+  const { getByText } = render(<Link href="https://example.com">Example</Link>);
 
   const link = getByText('Example');
   expect(link).toHaveClass('usa-link usa-link--external');
@@ -25,19 +21,19 @@ test('Given external href, Link is rendered with the external class', () => {
 });
 
 test('Given relative href, Link is rendered without the external class', () => {
-  const { getByText } = render(
-    <Link href="/about">Example</Link>
-  );
+  const { getByText } = render(<Link href="/about">Example</Link>);
 
   const link = getByText('Example');
-  expect(link).toHaveClass('usa-link')
+  expect(link).toHaveClass('usa-link');
   expect(link).not.toHaveClass('usa-link--external');
   expect(link).not.toHaveAttribute('rel');
 });
 
 test('Given target attribute, Link is rendered with the target attribute', () => {
   const { getByText } = render(
-    <Link target="_blank" href="https://example.com">Example</Link>
+    <Link target="_blank" href="https://example.com">
+      Example
+    </Link>
   );
 
   const link = getByText('Example');
