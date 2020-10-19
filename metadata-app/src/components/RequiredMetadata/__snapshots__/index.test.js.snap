@@ -15,35 +15,24 @@ exports[`Renders RequiredMetadata component 1`] = `
         >
           The following fields are required metadata for each dataset in an agency’s inventory (
           <a
+            class="usa-link usa-link--external"
             href="https://www.congress.gov/115/plaws/publ435/PLAW-115publ435.pdf"
             rel="noopener noreferrer"
             target="_blank"
           >
-            per Section 202 of the OPEN Government Data Act) 
-            <img
-              alt="Link opens in new tab"
-              display="inline-block"
-              height="20px"
-              position="relative"
-              src="outbound.svg"
-            />
-             
+            per Section 202 of the OPEN Government Data Act
           </a>
-          For more information about the form fields, consult the
+          ). For more information about the form fields, consult the
+           
           <a
+            class="usa-link usa-link--external"
             href="https://resources.data.gov/resources/dcat-us/"
             rel="noopener noreferrer"
             target="_blank"
           >
-            DCAT-US Schema. 
-            <img
-              alt="Link opens in new tab"
-              display="inline-block"
-              height="20px"
-              position="relative"
-              src="outbound.svg"
-            />
+            DCAT-US Schema
           </a>
+          .
         </p>
       </section>
       <div
@@ -72,20 +61,15 @@ exports[`Renders RequiredMetadata component 1`] = `
                 Use
                  
                 <a
+                  class="usa-link usa-link--external"
                   href="https://plainlanguage.gov/"
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  everyday language 
-                  <img
-                    alt="Link opens in new tab"
-                    display="inline-block"
-                    height="15px"
-                    position="relative"
-                    src="outbound.svg"
-                  />
+                  everyday language
                 </a>
-                to make the dataset easy to find and understand
+                 
+                to make the dataset easy to find and understand.
               </span>
             </div>
             
@@ -156,19 +140,14 @@ exports[`Renders RequiredMetadata component 1`] = `
               Write a description (like an abstract) with enough detail to help a user quickly decide if the asset is of interest. You can use
                
               <a
+                class="usa-link usa-link--external"
                 href="https://www.markdownguide.org/basic-syntax/"
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                Markdown Formatting 
-                <img
-                  alt="Link opens in new tab"
-                  display="inline-block"
-                  height="15px"
-                  position="relative"
-                  src="outbound.svg"
-                />
+                Markdown Formatting
               </a>
+               
               here.
             </span>
           </div>
@@ -320,19 +299,14 @@ exports[`Renders RequiredMetadata component 1`] = `
               If you do not see the Publisher for your dataset listed, please contact
                
               <a
+                class="usa-link usa-link--external"
                 href="mailto:inventory-help@gsa.gov"
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                inventory-help@gsa.gov 
-                <img
-                  alt="Link opens in new tab"
-                  display="inline-block"
-                  height="15px"
-                  position="relative"
-                  src="outbound.svg"
-                />
+                inventory-help@gsa.gov
               </a>
+               
               for further assistance.
             </span>
           </div>

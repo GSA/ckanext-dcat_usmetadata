@@ -1,4 +1,4 @@
-.PHONY: all build clean setup test up
+.PHONY: all app-up app-cosmos app-lint app-test build clean setup test up
 
 ########
 # CKAN APP:
@@ -43,5 +43,6 @@ app-cosmos:
 	cd metadata-app && yarn && yarn cosmos
 
 app-lint:
-	cd metadata-app && npx eslint src/*.js
-
+	cd metadata-app && npx eslint src && npx prettier --check src
+app-test:
+	cd metadata-app && yarn test

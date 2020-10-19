@@ -22,19 +22,13 @@ exports[`Renders Resource Upload component 1`] = `
           You can add the URL of the dataset where it is available on the agency website. If you are uploading the dataset itself, please notify the Data.gov team at
            
           <a
+            class="usa-link usa-link--external"
             href="mailto:inventory-help@gsa.gov"
             rel="noopener noreferrer"
             target="_blank"
           >
             inventory-help@gsa.gov
           </a>
-          <img
-            alt="Link opens in new tab"
-            display="inline-block"
-            height="20px"
-            position="relative"
-            src="outbound.svg"
-          />
           . You can also add a URL or file of information related to the dataset such as a data dictionary.
         </p>
       </section>

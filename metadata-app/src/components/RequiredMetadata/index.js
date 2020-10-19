@@ -7,7 +7,7 @@ import AutocompleteTags from '../AutocompleteTags';
 import { ReactComponent as Info } from '../../img/info.svg';
 import HelpText from '../HelpText';
 import Radio from '../Radio';
-import LinkIcon from '../LinkIcon';
+import Link from '../Link';
 
 const publishersDictionary = require('./publishers.json');
 const licenses = require('./licenses.json');
@@ -26,6 +26,9 @@ const leafPublishers = publishersDictionary
   .sort()
   .concat(['Other']);
 
+// Links within the form use target="_blank" to avoid navigating away from the
+// from while the user is filling it out. It can be very frustrating to lose
+// work when clicking on a link for help.
 const RequiredMetadata = (props) => {
   const { values, errors, apiUrl, apiKey, draftSaved, setFieldValue, submitForm } = props;
 
@@ -70,32 +73,28 @@ const RequiredMetadata = (props) => {
     title: (
       <HelpText>
         Use{' '}
-        <a target="_blank" rel="noopener noreferrer" href="https://plainlanguage.gov/">
-          everyday language <LinkIcon height="15px" />
-        </a>
-        to make the dataset easy to find and understand
+        <Link target="_blank" href="https://plainlanguage.gov/">
+          everyday language
+        </Link>{' '}
+        to make the dataset easy to find and understand.
       </HelpText>
     ),
     description: (
       <HelpText>
         Write a description (like an abstract) with enough detail to help a user quickly decide if
         the asset is of interest. You can use{' '}
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.markdownguide.org/basic-syntax/"
-        >
-          Markdown Formatting <LinkIcon height="15px" />
-        </a>
+        <Link target="_blank" href="https://www.markdownguide.org/basic-syntax/">
+          Markdown Formatting
+        </Link>{' '}
         here.
       </HelpText>
     ),
     select: (
       <HelpText>
         If you do not see the Publisher for your dataset listed, please contact{' '}
-        <a target="_blank" rel="noopener noreferrer" href="mailto:inventory-help@gsa.gov">
-          inventory-help@gsa.gov <LinkIcon height="15px" />
-        </a>
+        <Link target="_blank" href="mailto:inventory-help@gsa.gov">
+          inventory-help@gsa.gov
+        </Link>{' '}
         for further assistance.
       </HelpText>
     ),
@@ -106,21 +105,17 @@ const RequiredMetadata = (props) => {
       <section id="section-basic-mega-menu" className="site-component-section">
         <p className="site-text-intro">
           The following fields are required metadata for each dataset in an agency’s inventory (
-          <a
+          <Link
             target="_blank"
-            rel="noopener noreferrer"
             href="https://www.congress.gov/115/plaws/publ435/PLAW-115publ435.pdf"
           >
-            per Section 202 of the OPEN Government Data Act) <LinkIcon />{' '}
-          </a>
-          For more information about the form fields, consult the
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://resources.data.gov/resources/dcat-us/"
-          >
-            DCAT-US Schema. <LinkIcon />
-          </a>
+            per Section 202 of the OPEN Government Data Act
+          </Link>
+          ). For more information about the form fields, consult the{' '}
+          <Link target="_blank" href="https://resources.data.gov/resources/dcat-us/">
+            DCAT-US Schema
+          </Link>
+          .
         </p>
       </section>
       <div className="row">
