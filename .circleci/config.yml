@@ -58,9 +58,8 @@ jobs:
     docker:
       - image: circleci/python:2.7
     steps:
-      - checkout
-      # - attach_workspace:
-      #     at: ~/
+      - attach_workspace:
+          at: ~/
       - run:
           name: install wheel
           command: |
@@ -89,9 +88,11 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - deploy
       - build_gsa_ckan_inventory
       - build_metadata_app
       - test_local_docker:
           requires:
             - build_metadata_app
+      - deploy:
+          requires:
+            - test_local_docker
