@@ -96,3 +96,8 @@ workflows:
       - deploy:
           requires:
             - test_local_docker
+          filters:
+            tags:
+              only: /[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/
