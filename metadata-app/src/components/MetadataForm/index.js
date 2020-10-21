@@ -375,13 +375,6 @@ const MetadataForm = (props) => {
                   setFieldValue={setFieldValue}
                   submitForm={submitForm}
                 />
-
-                <div className="row">
-                  <div className="col-sm-12">
-                    <br />
-                    <br />
-                  </div>
-                </div>
               </Form>
             </div>
           )}
