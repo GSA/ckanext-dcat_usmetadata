@@ -100,6 +100,7 @@ textarea.usa-input {
 }
 .usa-input.disabled {
   border-color: #cacaca;
+  color: #a7a7a7;
 }
 
 .usa-input.field-error,
