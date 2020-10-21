@@ -19,6 +19,7 @@ setup(
 
     description='''DCAT USMetadata Form App for CKAN''',
     long_description=long_description,
+    long_description_content_type='text/markdown',
 
     # The project's main homepage.
     url='https://github.com/GSA/ckanext-dcat_usmetadata',
