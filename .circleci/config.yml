@@ -58,15 +58,15 @@ jobs:
     docker:
       - image: circleci/python:2.7
     steps:
-      - attach_workspace:
-          at: ~/
+      - checkout
+      # - attach_workspace:
+      #     at: ~/
       - run:
           name: install wheel
           command: |
             virtualenv venv
             . venv/bin/activate
-            ls
-            pip install -r ~/dev-requirements.txt
+            pip install -r dev-requirements.txt
       - run:
           name: init .pypirc
           command: |
