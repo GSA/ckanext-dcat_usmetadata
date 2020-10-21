@@ -167,7 +167,7 @@ const RequiredMetadata = (props) => {
         />
       </div>
       <div className="grid-row margin-top-3">
-        <span className="usa-label">Tags*</span>
+        <span className="usa-label">Tags</span>
         <AutocompleteTags
           id="tags-autocomplete-input"
           tags={values.tags}
@@ -180,7 +180,7 @@ const RequiredMetadata = (props) => {
           placeholder="Start typing to search"
           errors={errors}
           helptext={helpTextify(
-            'Use both technical and non-technical terms to help users find your dataset.'
+            'Use both technical and non-technical terms to help users find your dataset. Press tab or enter to add each new tag.'
           )}
         />
       </div>
@@ -329,7 +329,7 @@ const RequiredMetadata = (props) => {
 
       <div className="grid-row margin-top-3">
         <div className="grid-col-12">
-          <span className="usa-label">Relevant Location*</span> <br />
+          <span className="usa-label">Relevant Location</span> <br />
           {errors && errors.spatial && <span className="error-msg">{errors.spatial}</span>}
           <Radio
             label="My dataset does not have a spatial component"
@@ -360,7 +360,7 @@ const RequiredMetadata = (props) => {
       <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <span className="usa-label">
-            Temporal*
+            Temporal
             <div className={`tooltip ${toolTipShown ? 'show' : ''}`}>
               <Info
                 tabIndex={0}
