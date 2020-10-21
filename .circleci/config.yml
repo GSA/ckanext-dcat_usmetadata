@@ -65,7 +65,8 @@ jobs:
           command: |
             virtualenv venv
             . venv/bin/activate
-            pip install -r ~/ckanext-dcat_usmetadata/dev-requirements.txt
+            ls
+            pip install -r ~/dev-requirements.txt
       - run:
           name: init .pypirc
           command: |
