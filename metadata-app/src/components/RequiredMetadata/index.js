@@ -219,7 +219,12 @@ const RequiredMetadata = (props) => {
         />
       </div>
       <div className="grid-row margin-top-3">
-        <WrappedField label="Sub Agency" name="subagency" type="string" errors={errors} />
+        <WrappedField
+          label="Sub Agency (optional)"
+          name="subagency"
+          type="string"
+          errors={errors}
+        />
       </div>
       <div className="grid-row margin-top-3">
         <WrappedField

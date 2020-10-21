@@ -1912,7 +1912,7 @@ exports[`renders MetadataForm component 1`] = `
                 <label
                   class="usa-label"
                 >
-                  Sub Agency
+                  Sub Agency (optional)
                 </label>
                 <div
                   class="usa-helptext "
