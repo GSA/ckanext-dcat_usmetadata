@@ -35,8 +35,8 @@ describe('Resource Upload page', () => {
     cy.wait(15000);
     cy.resourceUploadWithUrlAndSave(exampleUrl);
     cy.wait(5000);
-    cy.get(':nth-child(8) > .col-md-12 > :nth-child(1)').contains(expectedMessage1);
-    cy.get(':nth-child(8) > .col-md-12 > :nth-child(3)').contains(expectedMessage2);
+    cy.get(':nth-child(8) > .grid-col-12 > :nth-child(1)').contains(expectedMessage1);
+    cy.get(':nth-child(8) > .grid-col-12 > :nth-child(3)').contains(expectedMessage2);
   });
 
   it('Fails to save resource if URL is invalid', () => {
@@ -49,6 +49,8 @@ describe('Resource Upload page', () => {
     cy.resourceUploadWithUrlAndSave(invalidUrl);
     cy.wait(5000);
     cy.get('h3.usa-alert__heading').contains('This form contains invalid entries');
-    cy.get('.usa-alert__text').contains('If you are linking to a dataset, please include "https://" at the beginning of your URL.');
+    cy.get('.usa-alert__text').contains(
+      'If you are linking to a dataset, please include "https://" at the beginning of your URL.'
+    );
   });
 });

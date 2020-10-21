@@ -82,7 +82,7 @@ exports[`renders MetadataForm component 1`] = `
               </p>
             </section>
             <div
-              class="row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="grid-col-12"
@@ -164,7 +164,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="wrapper"
@@ -207,7 +207,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="row"
+              class="grid-row margin-top-3"
             >
               <span
                 class="usa-label"
@@ -258,7 +258,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="wrapper"
@@ -290,7 +290,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="wrapper"
@@ -1916,7 +1916,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="wrapper"
@@ -1942,7 +1942,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="wrapper"
@@ -2001,7 +2001,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="wrapper"
@@ -2027,7 +2027,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="wrapper"
@@ -2086,7 +2086,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="wrapper"
@@ -2133,7 +2133,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="wrapper"
@@ -2244,282 +2244,294 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="row"
+              class="grid-row margin-top-3"
             >
-              <span
-                class="usa-label"
-              >
-                Rights
-              </span>
-               
-              <br />
               <div
-                class="form-group "
+                class="grid-col-12"
               >
-                <input
-                  checked=""
-                  class="usa-radio__input"
-                  id="rights_option_1"
-                  name="access_level_comment"
-                  type="radio"
-                  value="true"
-                />
-                <label
-                  class="usa-radio__label"
-                  for="rights_option_1"
-                >
-                  My dataset is public
-                </label>
-              </div>
-              <div
-                class="form-group "
-              >
-                <input
-                  class="usa-radio__input"
-                  id="rights_option_2"
-                  name="access_level_comment"
-                  type="radio"
-                  value="false"
-                />
-                <label
-                  class="usa-radio__label"
-                  for="rights_option_2"
-                >
-                  My dataset is not public
-                </label>
-              </div>
-              <div
-                class="wrapper"
-              >
-                <label
+                <span
                   class="usa-label"
-                />
-                <div
-                  class="usa-helptext disabled"
                 >
-                  <span
-                    class="usa-helptext"
+                  Rights
+                </span>
+                 
+                <br />
+                <div
+                  class="form-group "
+                >
+                  <input
+                    checked=""
+                    class="usa-radio__input"
+                    id="rights_option_1"
+                    name="access_level_comment"
+                    type="radio"
+                    value="true"
+                  />
+                  <label
+                    class="usa-radio__label"
+                    for="rights_option_1"
                   >
-                    If your dataset is not public, please add an explanation of rights and feel free to include any instructions on restrictions, or how to access a restricted file (max 255 characters)*
-                  </span>
+                    My dataset is public
+                  </label>
                 </div>
-                
-                <input
-                  class="usa-input disabled undefined undefined"
-                  disabled=""
-                  name="rights_desc"
-                  type="string"
-                  value=""
-                />
-              </div>
-            </div>
-            <div
-              class="row"
-            >
-              <span
-                class="usa-label"
-              >
-                Relevant Location*
-              </span>
-               
-              <br />
-              <div
-                class="form-group "
-              >
-                <input
-                  checked=""
-                  class="usa-radio__input"
-                  id="spatial_option_1"
-                  name="spatial"
-                  type="radio"
-                  value="false"
-                />
-                <label
-                  class="usa-radio__label"
-                  for="spatial_option_1"
-                >
-                  My dataset does not have a spatial component
-                </label>
-              </div>
-              <div
-                class="form-group "
-              >
-                <input
-                  class="usa-radio__input"
-                  id="spatial_option_2"
-                  name="spatial"
-                  type="radio"
-                  value="true"
-                />
-                <label
-                  class="usa-radio__label"
-                  for="spatial_option_2"
-                >
-                  My dataset does have a spatial component
-                </label>
-              </div>
-              <div
-                class="wrapper"
-              >
-                <label
-                  class="usa-label"
-                />
                 <div
-                  class="usa-helptext disabled"
+                  class="form-group "
                 >
-                  <span
-                    class="usa-helptext"
+                  <input
+                    class="usa-radio__input"
+                    id="rights_option_2"
+                    name="access_level_comment"
+                    type="radio"
+                    value="false"
+                  />
+                  <label
+                    class="usa-radio__label"
+                    for="rights_option_2"
                   >
-                    If your dataset has a spatial component, please provide location such as place name or latitude/longitude pairs above*
-                  </span>
+                    My dataset is not public
+                  </label>
                 </div>
-                
-                <input
-                  class="usa-input disabled undefined undefined"
-                  disabled=""
-                  name="spatial_location_desc"
-                  type="string"
-                  value=""
-                />
-              </div>
-            </div>
-            <div
-              class="row"
-            >
-              <span
-                class="usa-label"
-              >
-                Temporal*
                 <div
-                  class="tooltip "
+                  class="wrapper"
                 >
-                  <svg
-                    height="20px"
-                    style="margin-left: .5em;"
-                    tabindex="0"
-                    width="20px"
-                  >
-                    info.svg
-                  </svg>
-                  <span
-                    class="tooltiptext"
+                  <label
+                    class="usa-label"
+                  />
+                  <div
+                    class="usa-helptext disabled"
                   >
                     <span
-                      class="close"
-                      role="button"
-                      tabindex="0"
+                      class="usa-helptext"
                     >
-                      <span
-                        class="close-tag"
-                      >
-                        ×
-                      </span>
+                      If your dataset is not public, please add an explanation of rights and feel free to include any instructions on restrictions, or how to access a restricted file (max 255 characters)*
                     </span>
-                    <h3>
-                      Temporal
-                    </h3>
-                    <p>
-                      For example, for a 2010 Census dataset, the temporal extent would cover a period of time beginning 2000-04-02 and ending 2010-04-01.
-                    </p>
-                  </span>
-                </div>
-              </span>
-               
-              <br />
-              <div
-                class="form-group "
-              >
-                <input
-                  checked=""
-                  class="usa-radio__input"
-                  id="temporal_option_1"
-                  name="temporal"
-                  type="radio"
-                  value="false"
-                />
-                <label
-                  class="usa-radio__label"
-                  for="temporal_option_1"
-                >
-                  My dataset does not have a start and end date for the applicability of data
-                </label>
-              </div>
-              <div
-                class="form-group "
-              >
-                <input
-                  class="usa-radio__input"
-                  id="temporal_option_2"
-                  name="temporal"
-                  type="radio"
-                  value="true"
-                />
-                <label
-                  class="usa-radio__label"
-                  for="temporal_option_2"
-                >
-                  My dataset has a start and end date for the applicability of data
-                </label>
-              </div>
-              <div
-                class="wrapper"
-              >
-                <label
-                  class="usa-label"
-                  for="temporal_start_date"
-                />
-                <div
-                  class="usa-helptext disabled"
-                >
-                  <span
-                    class="usa-helptext"
-                  >
-                    If your dataset has a temporal component, please provide start date for applicability of data above (MM/DD/YYYY)*
-                  </span>
-                </div>
-                
-                <div>
+                  </div>
+                  
                   <input
-                    class="usa-input disabled"
+                    class="usa-input disabled undefined undefined"
                     disabled=""
-                    id="temporal_start_date"
-                    name="temporal_start_date"
-                    type="date"
-                    value=""
-                  />
-                </div>
-              </div>
-              <div
-                class="wrapper"
-              >
-                <label
-                  class="usa-label"
-                  for="temporal_end_date"
-                />
-                <div
-                  class="usa-helptext disabled"
-                >
-                  <span
-                    class="usa-helptext"
-                  >
-                    If your dataset has a temporal component, please provide end date for applicability of data above (MM/DD/YYYY)*
-                  </span>
-                </div>
-                
-                <div>
-                  <input
-                    class="usa-input disabled"
-                    disabled=""
-                    id="temporal_end_date"
-                    name="temporal_end_date"
-                    type="date"
+                    name="rights_desc"
+                    type="string"
                     value=""
                   />
                 </div>
               </div>
             </div>
             <div
-              class="row"
+              class="grid-row margin-top-3"
+            >
+              <div
+                class="grid-col-12"
+              >
+                <span
+                  class="usa-label"
+                >
+                  Relevant Location*
+                </span>
+                 
+                <br />
+                <div
+                  class="form-group "
+                >
+                  <input
+                    checked=""
+                    class="usa-radio__input"
+                    id="spatial_option_1"
+                    name="spatial"
+                    type="radio"
+                    value="false"
+                  />
+                  <label
+                    class="usa-radio__label"
+                    for="spatial_option_1"
+                  >
+                    My dataset does not have a spatial component
+                  </label>
+                </div>
+                <div
+                  class="form-group "
+                >
+                  <input
+                    class="usa-radio__input"
+                    id="spatial_option_2"
+                    name="spatial"
+                    type="radio"
+                    value="true"
+                  />
+                  <label
+                    class="usa-radio__label"
+                    for="spatial_option_2"
+                  >
+                    My dataset does have a spatial component
+                  </label>
+                </div>
+                <div
+                  class="wrapper"
+                >
+                  <label
+                    class="usa-label"
+                  />
+                  <div
+                    class="usa-helptext disabled"
+                  >
+                    <span
+                      class="usa-helptext"
+                    >
+                      If your dataset has a spatial component, please provide location such as place name or latitude/longitude pairs above*
+                    </span>
+                  </div>
+                  
+                  <input
+                    class="usa-input disabled undefined undefined"
+                    disabled=""
+                    name="spatial_location_desc"
+                    type="string"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="grid-row margin-top-3"
+            >
+              <div
+                class="grid-col-12"
+              >
+                <span
+                  class="usa-label"
+                >
+                  Temporal*
+                  <div
+                    class="tooltip "
+                  >
+                    <svg
+                      height="20px"
+                      style="margin-left: .5em;"
+                      tabindex="0"
+                      width="20px"
+                    >
+                      info.svg
+                    </svg>
+                    <span
+                      class="tooltiptext"
+                    >
+                      <span
+                        class="close"
+                        role="button"
+                        tabindex="0"
+                      >
+                        <span
+                          class="close-tag"
+                        >
+                          ×
+                        </span>
+                      </span>
+                      <h3>
+                        Temporal
+                      </h3>
+                      <p>
+                        For example, for a 2010 Census dataset, the temporal extent would cover a period of time beginning 2000-04-02 and ending 2010-04-01.
+                      </p>
+                    </span>
+                  </div>
+                </span>
+                 
+                <br />
+                <div
+                  class="form-group "
+                >
+                  <input
+                    checked=""
+                    class="usa-radio__input"
+                    id="temporal_option_1"
+                    name="temporal"
+                    type="radio"
+                    value="false"
+                  />
+                  <label
+                    class="usa-radio__label"
+                    for="temporal_option_1"
+                  >
+                    My dataset does not have a start and end date for the applicability of data
+                  </label>
+                </div>
+                <div
+                  class="form-group "
+                >
+                  <input
+                    class="usa-radio__input"
+                    id="temporal_option_2"
+                    name="temporal"
+                    type="radio"
+                    value="true"
+                  />
+                  <label
+                    class="usa-radio__label"
+                    for="temporal_option_2"
+                  >
+                    My dataset has a start and end date for the applicability of data
+                  </label>
+                </div>
+                <div
+                  class="wrapper"
+                >
+                  <label
+                    class="usa-label"
+                    for="temporal_start_date"
+                  />
+                  <div
+                    class="usa-helptext disabled"
+                  >
+                    <span
+                      class="usa-helptext"
+                    >
+                      If your dataset has a temporal component, please provide start date for applicability of data above (MM/DD/YYYY)*
+                    </span>
+                  </div>
+                  
+                  <div>
+                    <input
+                      class="usa-input disabled"
+                      disabled=""
+                      id="temporal_start_date"
+                      name="temporal_start_date"
+                      type="date"
+                      value=""
+                    />
+                  </div>
+                </div>
+                <div
+                  class="wrapper"
+                >
+                  <label
+                    class="usa-label"
+                    for="temporal_end_date"
+                  />
+                  <div
+                    class="usa-helptext disabled"
+                  >
+                    <span
+                      class="usa-helptext"
+                    >
+                      If your dataset has a temporal component, please provide end date for applicability of data above (MM/DD/YYYY)*
+                    </span>
+                  </div>
+                  
+                  <div>
+                    <input
+                      class="usa-input disabled"
+                      disabled=""
+                      id="temporal_end_date"
+                      name="temporal_end_date"
+                      type="date"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="grid-row margin-top-6"
             >
               <button
                 class="usa-button usa-button--outline"
