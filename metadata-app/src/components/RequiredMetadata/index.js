@@ -219,7 +219,7 @@ const RequiredMetadata = (props) => {
         />
       </div>
       <div className="grid-row margin-top-3">
-        <WrappedField label="Sub Agency" name="subagency" type="string" required errors={errors} />
+        <WrappedField label="Sub Agency" name="subagency" type="string" errors={errors} />
       </div>
       <div className="grid-row margin-top-3">
         <WrappedField
@@ -291,7 +291,9 @@ const RequiredMetadata = (props) => {
         <WrappedField
           name="licenseOther"
           type="string"
-          helptext={helpTextify(`If you selected “Other”, please specify the URL of your License*`)}
+          helptext={helpTextify(
+            `If you selected “Other”, please specify the name of your License in URL format. Please include "https://" at the beginning of your URL.*`
+          )}
           disabled={values.license !== 'other'}
           errors={errors}
           required
@@ -386,8 +388,9 @@ const RequiredMetadata = (props) => {
                 </span>
                 <h3>Temporal</h3>
                 <p>
-                  For example, for a 2010 Census dataset, the temporal extent would cover a period
-                  of time beginning 2000-04-02 and ending 2010-04-01.
+                  For example, for a 2010 Census dataset (which runs for 10 years until April 1st of
+                  the year of the Census), the temporal extent would cover a period of time
+                  beginning 2000-04-02 and ending 2010-04-01.
                 </p>
               </span>
             </div>
