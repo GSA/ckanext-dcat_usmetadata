@@ -19,10 +19,6 @@ body {
   content: '';
 }
 
-.usa-form-custom .grid-row {
-  margin-top: 1.5rem;
-}
-
 .App .usa-input,
 .App .usa-select {
   max-width: 100%;

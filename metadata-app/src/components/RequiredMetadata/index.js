@@ -118,7 +118,7 @@ const RequiredMetadata = (props) => {
           .
         </p>
       </section>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <WrappedField
             label="Title"
@@ -153,7 +153,7 @@ const RequiredMetadata = (props) => {
           </div>
         </div>
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <WrappedField
           label="Description"
           name="description"
@@ -166,7 +166,7 @@ const RequiredMetadata = (props) => {
           required
         />
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <span className="usa-label">Tags*</span>
         <AutocompleteTags
           id="tags-autocomplete-input"
@@ -184,7 +184,7 @@ const RequiredMetadata = (props) => {
           )}
         />
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <WrappedField
           label="Organization"
           name="owner_org"
@@ -195,7 +195,7 @@ const RequiredMetadata = (props) => {
           errors={errors}
         />
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <WrappedField
           label="Publisher"
           name="publisher"
@@ -218,10 +218,10 @@ const RequiredMetadata = (props) => {
           required
         />
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <WrappedField label="Sub Agency" name="subagency" type="string" required errors={errors} />
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <WrappedField
           label="Contact Name"
           name="contact_name"
@@ -231,7 +231,7 @@ const RequiredMetadata = (props) => {
           errors={errors}
         />
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <WrappedField
           label="Contact Email"
           name="contact_email"
@@ -240,7 +240,7 @@ const RequiredMetadata = (props) => {
           errors={errors}
         />
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <WrappedField
           label="Unique ID"
           name="unique_id"
@@ -250,7 +250,7 @@ const RequiredMetadata = (props) => {
           errors={errors}
         />
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <WrappedField
           label="Public Access level"
           name="public_access_level"
@@ -278,7 +278,7 @@ const RequiredMetadata = (props) => {
           required
         />
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <WrappedField
           label="License"
           name="license"
@@ -297,7 +297,7 @@ const RequiredMetadata = (props) => {
           required
         />
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <span className="usa-label">Rights</span> <br />
           {errors && errors.rights && <span className="error-msg">{errors.rights}</span>}
@@ -327,7 +327,7 @@ const RequiredMetadata = (props) => {
         </div>
       </div>
 
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <span className="usa-label">Relevant Location*</span> <br />
           {errors && errors.spatial && <span className="error-msg">{errors.spatial}</span>}
@@ -357,7 +357,7 @@ const RequiredMetadata = (props) => {
         </div>
       </div>
 
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <span className="usa-label">
             Temporal*
@@ -433,7 +433,7 @@ const RequiredMetadata = (props) => {
         </div>
       </div>
 
-      <div className="grid-row">
+      <div className="grid-row margin-top-6">
         <button
           style={{ display: 'none' }}
           className="usa-button usa-button--outline"

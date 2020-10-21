@@ -47,7 +47,7 @@ const ResourceUpload = (props) => {
           dictionary.
         </p>
       </section>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           {/* eslint-disable-next-line */}
           <label className="usa-label">Data</label>
@@ -114,7 +114,7 @@ const ResourceUpload = (props) => {
           )}
         </div>
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <WrappedField
             label="Name"
@@ -126,7 +126,7 @@ const ResourceUpload = (props) => {
           />
         </div>
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <WrappedField
             label="Description"
@@ -139,7 +139,7 @@ const ResourceUpload = (props) => {
           />
         </div>
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <WrappedField
             label="Media Type"
@@ -150,7 +150,7 @@ const ResourceUpload = (props) => {
           />
         </div>
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <WrappedField
             label="Format"
@@ -162,7 +162,7 @@ const ResourceUpload = (props) => {
         </div>
       </div>
 
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <button
             type="button"
@@ -181,7 +181,7 @@ const ResourceUpload = (props) => {
       </div>
 
       {values.savedResources > 0 ? (
-        <div className="grid-row">
+        <div className="grid-row margin-top-3">
           <div className="grid-col-12 text-mint">
             <i>
               Resource saved: [{values.lastSavedResource}] ({values.savedResources} resources saved
@@ -195,9 +195,7 @@ const ResourceUpload = (props) => {
         ''
       )}
 
-      <div className="col-sm-12">
-        <br />
-        <br />
+      <div className="grid-row margin-top-6">
         <button
           style={{ display: 'none' }}
           className="usa-button usa-button--outline"

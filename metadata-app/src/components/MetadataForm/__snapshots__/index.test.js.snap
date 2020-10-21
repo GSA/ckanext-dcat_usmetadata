@@ -82,7 +82,7 @@ exports[`renders MetadataForm component 1`] = `
               </p>
             </section>
             <div
-              class="grid-row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="grid-col-12"
@@ -164,7 +164,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="grid-row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="wrapper"
@@ -207,7 +207,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="grid-row"
+              class="grid-row margin-top-3"
             >
               <span
                 class="usa-label"
@@ -258,7 +258,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="grid-row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="wrapper"
@@ -290,7 +290,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="grid-row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="wrapper"
@@ -1916,7 +1916,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="grid-row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="wrapper"
@@ -1942,7 +1942,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="grid-row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="wrapper"
@@ -2001,7 +2001,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="grid-row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="wrapper"
@@ -2027,7 +2027,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="grid-row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="wrapper"
@@ -2086,7 +2086,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="grid-row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="wrapper"
@@ -2133,7 +2133,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="grid-row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="wrapper"
@@ -2244,7 +2244,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="grid-row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="grid-col-12"
@@ -2318,7 +2318,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="grid-row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="grid-col-12"
@@ -2392,7 +2392,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="grid-row"
+              class="grid-row margin-top-3"
             >
               <div
                 class="grid-col-12"
@@ -2531,7 +2531,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="grid-row"
+              class="grid-row margin-top-6"
             >
               <button
                 class="usa-button usa-button--outline"

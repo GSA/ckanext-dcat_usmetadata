@@ -33,7 +33,7 @@ exports[`Renders Resource Upload component 1`] = `
         </p>
       </section>
       <div
-        class="grid-row"
+        class="grid-row margin-top-3"
       >
         <div
           class="grid-col-12"
@@ -79,7 +79,7 @@ exports[`Renders Resource Upload component 1`] = `
         </div>
       </div>
       <div
-        class="grid-row"
+        class="grid-row margin-top-3"
       >
         <div
           class="grid-col-12"
@@ -107,7 +107,7 @@ exports[`Renders Resource Upload component 1`] = `
         </div>
       </div>
       <div
-        class="grid-row"
+        class="grid-row margin-top-3"
       >
         <div
           class="grid-col-12"
@@ -136,7 +136,7 @@ exports[`Renders Resource Upload component 1`] = `
         </div>
       </div>
       <div
-        class="grid-row"
+        class="grid-row margin-top-3"
       >
         <div
           class="grid-col-12"
@@ -479,7 +479,7 @@ exports[`Renders Resource Upload component 1`] = `
         </div>
       </div>
       <div
-        class="grid-row"
+        class="grid-row margin-top-3"
       >
         <div
           class="grid-col-12"
@@ -508,7 +508,7 @@ exports[`Renders Resource Upload component 1`] = `
         </div>
       </div>
       <div
-        class="grid-row"
+        class="grid-row margin-top-3"
       >
         <div
           class="grid-col-12"
@@ -523,10 +523,8 @@ exports[`Renders Resource Upload component 1`] = `
       </div>
       
       <div
-        class="col-sm-12"
+        class="grid-row margin-top-6"
       >
-        <br />
-        <br />
         <button
           class="usa-button usa-button--outline"
           style="display: none;"

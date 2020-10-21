@@ -79,7 +79,7 @@ const AdditionalMetadata = (props) => {
           .
         </p>
       </section>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <WrappedField
             label="Meets Agency Data Quality"
@@ -89,7 +89,7 @@ const AdditionalMetadata = (props) => {
           />
         </div>
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <WrappedField
             label="Themes"
@@ -100,7 +100,7 @@ const AdditionalMetadata = (props) => {
           />
         </div>
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <WrappedField
             label="Data Dictionary URL"
@@ -111,7 +111,7 @@ const AdditionalMetadata = (props) => {
           />
         </div>
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <WrappedField
             label="Data Dictionary Type"
@@ -129,7 +129,7 @@ const AdditionalMetadata = (props) => {
           />
         </div>
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <WrappedField
             label="Data Publishing Frequency"
@@ -162,7 +162,7 @@ const AdditionalMetadata = (props) => {
           />
         </div>
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <WrappedField
             label="Dataset Landing Page URL"
@@ -173,7 +173,7 @@ const AdditionalMetadata = (props) => {
           />
         </div>
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <WrappedField
             label="Language - Language Subtag"
@@ -184,7 +184,7 @@ const AdditionalMetadata = (props) => {
           />
         </div>
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <WrappedField
             disabled={!values.languageSubTag}
@@ -196,7 +196,7 @@ const AdditionalMetadata = (props) => {
           />
         </div>
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <WrappedField
             label="Dataset's IT Unique Investment Identifier"
@@ -206,7 +206,7 @@ const AdditionalMetadata = (props) => {
           />
         </div>
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <WrappedField
             label="Related Documents"
@@ -216,7 +216,7 @@ const AdditionalMetadata = (props) => {
           />
         </div>
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <WrappedField
             label="Release Date"
@@ -227,7 +227,7 @@ const AdditionalMetadata = (props) => {
           />
         </div>
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <WrappedField
             label="System of Records Notice URL"
@@ -237,7 +237,7 @@ const AdditionalMetadata = (props) => {
           />
         </div>
       </div>
-      <div className="grid-row">
+      <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <WrappedField
             label="Is parent dataset"
@@ -248,7 +248,7 @@ const AdditionalMetadata = (props) => {
         </div>
       </div>
       {values.isParent === 'No' && (
-        <div className="grid-row">
+        <div className="grid-row margin-top-3">
           <div className="grid-col-12">
             <span className="usa-label">Select Parent Dataset</span>
             <Autocomplete
@@ -267,7 +267,7 @@ const AdditionalMetadata = (props) => {
           </div>
         </div>
       )}
-      <div className="grid-row">
+      <div className="grid-row margin-top-6">
         <button
           style={{ display: 'none' }}
           className="usa-button usa-button--outline"

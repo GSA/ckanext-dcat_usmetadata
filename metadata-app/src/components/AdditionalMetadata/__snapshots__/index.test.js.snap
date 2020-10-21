@@ -27,7 +27,7 @@ exports[`Renders RequiredMetadata component 1`] = `
         </p>
       </section>
       <div
-        class="grid-row"
+        class="grid-row margin-top-3"
       >
         <div
           class="grid-col-12"
@@ -70,7 +70,7 @@ exports[`Renders RequiredMetadata component 1`] = `
         </div>
       </div>
       <div
-        class="grid-row"
+        class="grid-row margin-top-3"
       >
         <div
           class="grid-col-12"
@@ -136,7 +136,7 @@ exports[`Renders RequiredMetadata component 1`] = `
         </div>
       </div>
       <div
-        class="grid-row"
+        class="grid-row margin-top-3"
       >
         <div
           class="grid-col-12"
@@ -202,7 +202,7 @@ exports[`Renders RequiredMetadata component 1`] = `
         </div>
       </div>
       <div
-        class="grid-row"
+        class="grid-row margin-top-3"
       >
         <div
           class="grid-col-12"
@@ -570,7 +570,7 @@ exports[`Renders RequiredMetadata component 1`] = `
         </div>
       </div>
       <div
-        class="grid-row"
+        class="grid-row margin-top-3"
       >
         <div
           class="grid-col-12"
@@ -713,7 +713,7 @@ exports[`Renders RequiredMetadata component 1`] = `
         </div>
       </div>
       <div
-        class="grid-row"
+        class="grid-row margin-top-3"
       >
         <div
           class="grid-col-12"
@@ -779,7 +779,7 @@ exports[`Renders RequiredMetadata component 1`] = `
         </div>
       </div>
       <div
-        class="grid-row"
+        class="grid-row margin-top-3"
       >
         <div
           class="grid-col-12"
@@ -1147,7 +1147,7 @@ exports[`Renders RequiredMetadata component 1`] = `
         </div>
       </div>
       <div
-        class="grid-row"
+        class="grid-row margin-top-3"
       >
         <div
           class="grid-col-12"
@@ -1180,7 +1180,7 @@ exports[`Renders RequiredMetadata component 1`] = `
         </div>
       </div>
       <div
-        class="grid-row"
+        class="grid-row margin-top-3"
       >
         <div
           class="grid-col-12"
@@ -1254,7 +1254,7 @@ exports[`Renders RequiredMetadata component 1`] = `
         </div>
       </div>
       <div
-        class="grid-row"
+        class="grid-row margin-top-3"
       >
         <div
           class="grid-col-12"
@@ -1318,7 +1318,7 @@ exports[`Renders RequiredMetadata component 1`] = `
         </div>
       </div>
       <div
-        class="grid-row"
+        class="grid-row margin-top-3"
       >
         <div
           class="grid-col-12"
@@ -1386,7 +1386,7 @@ exports[`Renders RequiredMetadata component 1`] = `
         </div>
       </div>
       <div
-        class="grid-row"
+        class="grid-row margin-top-3"
       >
         <div
           class="grid-col-12"
@@ -1450,7 +1450,7 @@ exports[`Renders RequiredMetadata component 1`] = `
         </div>
       </div>
       <div
-        class="grid-row"
+        class="grid-row margin-top-3"
       >
         <div
           class="grid-col-12"
@@ -1493,7 +1493,7 @@ exports[`Renders RequiredMetadata component 1`] = `
         </div>
       </div>
       <div
-        class="grid-row"
+        class="grid-row margin-top-6"
       >
         <button
           class="usa-button usa-button--outline"
