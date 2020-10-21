@@ -19,8 +19,8 @@ body {
   content: '';
 }
 
-.usa-form-custom .row {
-  margin-top: 3rem;
+.usa-form-custom .grid-row {
+  margin-top: 1.5rem;
 }
 
 .App .usa-input,
@@ -259,6 +259,7 @@ input[type='file'] {
 
 .wrapper {
   position: relative;
+  width: 100%;
 }
 
 .clear-button {
@@ -361,7 +362,4 @@ input[type='file'] {
 .dynamic-url .dataset_url_edit {
   margin-top: 31px;
   height: 42px;
-}
-.dynamic-url .wrapper {
-  width: 100%;
 }

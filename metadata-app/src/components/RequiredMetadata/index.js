@@ -118,7 +118,7 @@ const RequiredMetadata = (props) => {
           .
         </p>
       </section>
-      <div className="row">
+      <div className="grid-row">
         <div className="grid-col-12">
           <WrappedField
             label="Title"
@@ -153,7 +153,7 @@ const RequiredMetadata = (props) => {
           </div>
         </div>
       </div>
-      <div className="row">
+      <div className="grid-row">
         <WrappedField
           label="Description"
           name="description"
@@ -166,7 +166,7 @@ const RequiredMetadata = (props) => {
           required
         />
       </div>
-      <div className="row">
+      <div className="grid-row">
         <span className="usa-label">Tags*</span>
         <AutocompleteTags
           id="tags-autocomplete-input"
@@ -184,7 +184,7 @@ const RequiredMetadata = (props) => {
           )}
         />
       </div>
-      <div className="row">
+      <div className="grid-row">
         <WrappedField
           label="Organization"
           name="owner_org"
@@ -195,7 +195,7 @@ const RequiredMetadata = (props) => {
           errors={errors}
         />
       </div>
-      <div className="row">
+      <div className="grid-row">
         <WrappedField
           label="Publisher"
           name="publisher"
@@ -218,10 +218,10 @@ const RequiredMetadata = (props) => {
           required
         />
       </div>
-      <div className="row">
+      <div className="grid-row">
         <WrappedField label="Sub Agency" name="subagency" type="string" required errors={errors} />
       </div>
-      <div className="row">
+      <div className="grid-row">
         <WrappedField
           label="Contact Name"
           name="contact_name"
@@ -231,7 +231,7 @@ const RequiredMetadata = (props) => {
           errors={errors}
         />
       </div>
-      <div className="row">
+      <div className="grid-row">
         <WrappedField
           label="Contact Email"
           name="contact_email"
@@ -240,7 +240,7 @@ const RequiredMetadata = (props) => {
           errors={errors}
         />
       </div>
-      <div className="row">
+      <div className="grid-row">
         <WrappedField
           label="Unique ID"
           name="unique_id"
@@ -250,7 +250,7 @@ const RequiredMetadata = (props) => {
           errors={errors}
         />
       </div>
-      <div className="row">
+      <div className="grid-row">
         <WrappedField
           label="Public Access level"
           name="public_access_level"
@@ -278,7 +278,7 @@ const RequiredMetadata = (props) => {
           required
         />
       </div>
-      <div className="row">
+      <div className="grid-row">
         <WrappedField
           label="License"
           name="license"
@@ -297,137 +297,143 @@ const RequiredMetadata = (props) => {
           required
         />
       </div>
-      <div className="row">
-        <span className="usa-label">Rights</span> <br />
-        {errors && errors.rights && <span className="error-msg">{errors.rights}</span>}
-        <Radio
-          label="My dataset is public"
-          name="access_level_comment"
-          errors={errors}
-          value="true"
-          id="rights_option_1"
-        />
-        <Radio
-          label="My dataset is not public"
-          name="access_level_comment"
-          value="false"
-          id="rights_option_2"
-        />
-        <WrappedField
-          name="rights_desc"
-          type="string"
-          value={values.rights_desc}
-          errors={errors}
-          helptext={helpTextify(
-            'If your dataset is not public, please add an explanation of rights and feel free to include any instructions on restrictions, or how to access a restricted file (max 255 characters)*'
-          )}
-          disabled={values.access_level_comment === 'true'}
-        />
+      <div className="grid-row">
+        <div className="grid-col-12">
+          <span className="usa-label">Rights</span> <br />
+          {errors && errors.rights && <span className="error-msg">{errors.rights}</span>}
+          <Radio
+            label="My dataset is public"
+            name="access_level_comment"
+            errors={errors}
+            value="true"
+            id="rights_option_1"
+          />
+          <Radio
+            label="My dataset is not public"
+            name="access_level_comment"
+            value="false"
+            id="rights_option_2"
+          />
+          <WrappedField
+            name="rights_desc"
+            type="string"
+            value={values.rights_desc}
+            errors={errors}
+            helptext={helpTextify(
+              'If your dataset is not public, please add an explanation of rights and feel free to include any instructions on restrictions, or how to access a restricted file (max 255 characters)*'
+            )}
+            disabled={values.access_level_comment === 'true'}
+          />
+        </div>
       </div>
 
-      <div className="row">
-        <span className="usa-label">Relevant Location*</span> <br />
-        {errors && errors.spatial && <span className="error-msg">{errors.spatial}</span>}
-        <Radio
-          label="My dataset does not have a spatial component"
-          name="spatial"
-          value="false"
-          errors={errors}
-          id="spatial_option_1"
-        />
-        <Radio
-          label="My dataset does have a spatial component"
-          name="spatial"
-          value="true"
-          id="spatial_option_2"
-        />
-        <WrappedField
-          name="spatial_location_desc"
-          type="string"
-          value={values.spatial_location_desc}
-          errors={errors}
-          helptext={helpTextify(
-            'If your dataset has a spatial component, please provide location such as place name or latitude/longitude pairs above*'
-          )}
-          disabled={values.spatial === 'false'}
-        />
+      <div className="grid-row">
+        <div className="grid-col-12">
+          <span className="usa-label">Relevant Location*</span> <br />
+          {errors && errors.spatial && <span className="error-msg">{errors.spatial}</span>}
+          <Radio
+            label="My dataset does not have a spatial component"
+            name="spatial"
+            value="false"
+            errors={errors}
+            id="spatial_option_1"
+          />
+          <Radio
+            label="My dataset does have a spatial component"
+            name="spatial"
+            value="true"
+            id="spatial_option_2"
+          />
+          <WrappedField
+            name="spatial_location_desc"
+            type="string"
+            value={values.spatial_location_desc}
+            errors={errors}
+            helptext={helpTextify(
+              'If your dataset has a spatial component, please provide location such as place name or latitude/longitude pairs above*'
+            )}
+            disabled={values.spatial === 'false'}
+          />
+        </div>
       </div>
 
-      <div className="row">
-        <span className="usa-label">
-          Temporal*
-          <div className={`tooltip ${toolTipShown ? 'show' : ''}`}>
-            <Info
-              tabIndex={0}
-              height="20px"
-              width="20px"
-              style={{ marginLeft: '.5em' }}
-              onClick={() => toggleToolTip()}
-              onKeyUp={(e) => {
-                if (e.keyCode === 13) {
-                  toggleToolTip();
-                }
-              }}
-            />
-            <span className="tooltiptext">
-              <span
+      <div className="grid-row">
+        <div className="grid-col-12">
+          <span className="usa-label">
+            Temporal*
+            <div className={`tooltip ${toolTipShown ? 'show' : ''}`}>
+              <Info
                 tabIndex={0}
-                className="close"
-                onClick={() => setToolTipShown(false)}
-                role="button"
-                onKeyDown={() => setToolTipShown(false)}
-              >
-                <span className="close-tag">&times;</span>
+                height="20px"
+                width="20px"
+                style={{ marginLeft: '.5em' }}
+                onClick={() => toggleToolTip()}
+                onKeyUp={(e) => {
+                  if (e.keyCode === 13) {
+                    toggleToolTip();
+                  }
+                }}
+              />
+              <span className="tooltiptext">
+                <span
+                  tabIndex={0}
+                  className="close"
+                  onClick={() => setToolTipShown(false)}
+                  role="button"
+                  onKeyDown={() => setToolTipShown(false)}
+                >
+                  <span className="close-tag">&times;</span>
+                </span>
+                <h3>Temporal</h3>
+                <p>
+                  For example, for a 2010 Census dataset, the temporal extent would cover a period
+                  of time beginning 2000-04-02 and ending 2010-04-01.
+                </p>
               </span>
-              <h3>Temporal</h3>
-              <p>
-                For example, for a 2010 Census dataset, the temporal extent would cover a period of
-                time beginning 2000-04-02 and ending 2010-04-01.
-              </p>
-            </span>
-          </div>
-        </span>{' '}
-        <br />
-        {errors && errors.temporal && <span className="error-msg">{errors.temporal}</span>}
-        <Radio
-          label="My dataset does not have a start and end date for the applicability of data"
-          name="temporal"
-          value="false"
-          errors={errors}
-          id="temporal_option_1"
-        />
-        <Radio
-          label="My dataset has a start and end date for the applicability of data"
-          name="temporal"
-          value="true"
-          errors={errors}
-          id="temporal_option_2"
-        />
-        <WrappedField
-          name="temporal_start_date"
-          type="date"
-          id="temporal_start_date"
-          value={values.temporal_start_date}
-          errors={errors}
-          helptext={helpTextify(
-            'If your dataset has a temporal component, please provide start date for applicability of data above (MM/DD/YYYY)*'
-          )}
-          disabled={values.temporal === 'false'}
-        />
-        <WrappedField
-          name="temporal_end_date"
-          type="date"
-          id="temporal_end_date"
-          value={values.temporal_end_date}
-          errors={errors}
-          helptext={helpTextify(
-            'If your dataset has a temporal component, please provide end date for applicability of data above (MM/DD/YYYY)*'
-          )}
-          disabled={values.temporal === 'false'}
-        />
+            </div>
+          </span>{' '}
+          <br />
+          {errors && errors.temporal && <span className="error-msg">{errors.temporal}</span>}
+          <Radio
+            label="My dataset does not have a start and end date for the applicability of data"
+            name="temporal"
+            value="false"
+            errors={errors}
+            id="temporal_option_1"
+          />
+          <Radio
+            label="My dataset has a start and end date for the applicability of data"
+            name="temporal"
+            value="true"
+            errors={errors}
+            id="temporal_option_2"
+          />
+          <WrappedField
+            name="temporal_start_date"
+            type="date"
+            id="temporal_start_date"
+            value={values.temporal_start_date}
+            errors={errors}
+            helptext={helpTextify(
+              'If your dataset has a temporal component, please provide start date for applicability of data above (MM/DD/YYYY)*'
+            )}
+            disabled={values.temporal === 'false'}
+          />
+          <WrappedField
+            name="temporal_end_date"
+            type="date"
+            id="temporal_end_date"
+            value={values.temporal_end_date}
+            errors={errors}
+            helptext={helpTextify(
+              'If your dataset has a temporal component, please provide end date for applicability of data above (MM/DD/YYYY)*'
+            )}
+            disabled={values.temporal === 'false'}
+          />
+        </div>
       </div>
 
-      <div className="row">
+      <div className="grid-row">
         <button
           style={{ display: 'none' }}
           className="usa-button usa-button--outline"
@@ -452,7 +458,7 @@ const RequiredMetadata = (props) => {
       </div>
       {draftSaved && (
         <div style={{ marginTop: '1rem' }}>
-          <div className="col-md-12 text-mint">
+          <div className="grid-col-12 text-mint">
             <i>
               Draft saved:
               <br />[{draftSaved}]
