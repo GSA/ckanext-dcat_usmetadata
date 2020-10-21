@@ -21,7 +21,7 @@ setup(
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/starsinmypockets/ckanext-dcat_usmetadata',
+    url='https://github.com/GSA/ckanext-dcat_usmetadata',
 
     # Author details
     author='''Paul Walker''',
