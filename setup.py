@@ -25,8 +25,8 @@ setup(
     url='https://github.com/GSA/ckanext-dcat_usmetadata',
 
     # Author details
-    author='''Paul Walker''',
-    author_email='''paul.walker@datopian.com''',
+    author='''Data.gov''',
+    author_email='''datagovhelp@gsa.gov''',
 
     # Choose your license
     license='AGPL',
