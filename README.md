@@ -19,8 +19,7 @@ Make sure it is enabled in CKAN's plugins.
 To install this package, activate CKAN virtualenv (e.g. "source /path/to/virtenv/bin/activate"), then run
 
 ```
-(virtualenv) pip install -e git+https://github.com/GSA/ckanext-dcat_usmetadata@master#egg=ckanext-dcat_usmetadata
-(virtualenv) python setup.py develop
+(virtualenv) pip install ckanext-dcat-usmetadata
 ```
 
 In your CKAN .ini file add `dcat_usmetadata` to your enabled plugins:
@@ -155,10 +154,32 @@ To run e2e tests interactively use:
 $ npx cypress open
 ```
 
-## Publishing a new build
+## Publishing a new version of the extension
 
-_TODO_
+We publish this extension to PyPI - https://pypi.org/project/ckanext-dcat-usmetadata/. This is done by CI job that is triggered on tagged commit on master branch. When you need to release a new version of the extension, you need to:
 
+1. Update version in `setup.py`;
+2. Tag the commit with the version from point 1;
+3. Push your tag to the repository so CI can be triggered.
+
+In the CI job, the following is done:
+
+- It builds the JS bundles and puts them into the relevant directory so the extension can use them;
+- It runs integration tests to make sure everything is working as expected;
+- It packages the extension and publishes it to PyPI.
+
+Below is a sequence diagram demonstrating the flow (you need to have `github + mermaid` chrome extension to view it):
+
+```mermaid
+sequenceDiagram
+    Developer->>Git: Push tagged commit to master branch
+    Git-->>CI/CD: Trigger deployment
+    CI/CD-->>CI/CD: Build assets (JS bundles)
+    CI/CD-->>CI/CD: Build python package
+    CI/CD-->>CI/CD: Run tests
+    CI/CD-->>PyPI: Publish the package
+    Inventory-->>PyPI: Install
+```
 
 ## Ways to Contribute
 

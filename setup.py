@@ -15,17 +15,18 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # http://packaging.python.org/en/latest/tutorial.html#version
-    version='0.0.1',
+    version='0.1.0',
 
     description='''DCAT USMetadata Form App for CKAN''',
     long_description=long_description,
+    long_description_content_type='text/markdown',
 
     # The project's main homepage.
-    url='https://github.com/starsinmypockets/ckanext-dcat_usmetadata',
+    url='https://github.com/GSA/ckanext-dcat_usmetadata',
 
     # Author details
-    author='''Paul Walker''',
-    author_email='''paul.walker@datopian.com''',
+    author='''Data.gov''',
+    author_email='''datagovhelp@gsa.gov''',
 
     # Choose your license
     license='AGPL',
@@ -61,6 +62,8 @@ setup(
       #
       # http://docs.ckan.org/en/latest/extensions/best-practices.html#add-third-party-libraries-to-requirements-txt
     ],
+    
+    setup_requires=['wheel'],
 
     # If there are data files included in your packages that need to be
     # installed, specify them here.  If using Python 2.6 or less, then these
