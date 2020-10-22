@@ -167,7 +167,7 @@ const RequiredMetadata = (props) => {
         />
       </div>
       <div className="grid-row margin-top-3">
-        <span className="usa-label">Tags*</span>
+        <span className="usa-label">Tags</span>
         <AutocompleteTags
           id="tags-autocomplete-input"
           tags={values.tags}
@@ -180,7 +180,7 @@ const RequiredMetadata = (props) => {
           placeholder="Start typing to search"
           errors={errors}
           helptext={helpTextify(
-            'Use both technical and non-technical terms to help users find your dataset.'
+            'Use both technical and non-technical terms to help users find your dataset. Press tab or enter to add each new tag.'
           )}
         />
       </div>
@@ -219,7 +219,12 @@ const RequiredMetadata = (props) => {
         />
       </div>
       <div className="grid-row margin-top-3">
-        <WrappedField label="Sub Agency" name="subagency" type="string" required errors={errors} />
+        <WrappedField
+          label="Sub Agency (optional)"
+          name="subagency"
+          type="string"
+          errors={errors}
+        />
       </div>
       <div className="grid-row margin-top-3">
         <WrappedField
@@ -291,7 +296,9 @@ const RequiredMetadata = (props) => {
         <WrappedField
           name="licenseOther"
           type="string"
-          helptext={helpTextify(`If you selected “Other”, please specify the URL of your License*`)}
+          helptext={helpTextify(
+            `If you selected “Other”, please specify the name of your License in URL format. Please include "https://" at the beginning of your URL.*`
+          )}
           disabled={values.license !== 'other'}
           errors={errors}
           required
@@ -329,7 +336,7 @@ const RequiredMetadata = (props) => {
 
       <div className="grid-row margin-top-3">
         <div className="grid-col-12">
-          <span className="usa-label">Relevant Location*</span> <br />
+          <span className="usa-label">Relevant Location</span> <br />
           {errors && errors.spatial && <span className="error-msg">{errors.spatial}</span>}
           <Radio
             label="My dataset does not have a spatial component"
@@ -360,7 +367,7 @@ const RequiredMetadata = (props) => {
       <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <span className="usa-label">
-            Temporal*
+            Temporal
             <div className={`tooltip ${toolTipShown ? 'show' : ''}`}>
               <Info
                 tabIndex={0}
@@ -386,8 +393,9 @@ const RequiredMetadata = (props) => {
                 </span>
                 <h3>Temporal</h3>
                 <p>
-                  For example, for a 2010 Census dataset, the temporal extent would cover a period
-                  of time beginning 2000-04-02 and ending 2010-04-01.
+                  For example, for a 2010 Census dataset (which runs for 10 years until April 1st of
+                  the year of the Census), the temporal extent would cover a period of time
+                  beginning 2000-04-02 and ending 2010-04-01.
                 </p>
               </span>
             </div>

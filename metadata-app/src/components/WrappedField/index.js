@@ -40,7 +40,6 @@ const WrappedField = (props) => {
     <div className="wrapper">
       <label className="usa-label" htmlFor={id}>
         {label}
-        {label && required && <span>*</span>}
 
         {/* Tooltip */}
         {infoText && (

@@ -94,9 +94,6 @@ exports[`renders MetadataForm component 1`] = `
                     class="usa-label"
                   >
                     Title
-                    <span>
-                      *
-                    </span>
                   </label>
                   <div
                     class="usa-helptext "
@@ -173,9 +170,6 @@ exports[`renders MetadataForm component 1`] = `
                   class="usa-label"
                 >
                   Description
-                  <span>
-                    *
-                  </span>
                 </label>
                 <div
                   class="usa-helptext "
@@ -212,7 +206,7 @@ exports[`renders MetadataForm component 1`] = `
               <span
                 class="usa-label"
               >
-                Tags*
+                Tags
               </span>
               <div
                 class="react-tags-input grid-col-12 undefined"
@@ -220,7 +214,7 @@ exports[`renders MetadataForm component 1`] = `
                 <span
                   class="usa-helptext"
                 >
-                  Use both technical and non-technical terms to help users find your dataset.
+                  Use both technical and non-technical terms to help users find your dataset. Press tab or enter to add each new tag.
                 </span>
                 <div
                   class="react-tags"
@@ -267,9 +261,6 @@ exports[`renders MetadataForm component 1`] = `
                   class="usa-label"
                 >
                   Organization
-                  <span>
-                    *
-                  </span>
                 </label>
                 <div
                   class="usa-helptext "
@@ -299,9 +290,6 @@ exports[`renders MetadataForm component 1`] = `
                   class="usa-label"
                 >
                   Publisher
-                  <span>
-                    *
-                  </span>
                   <div
                     class="tooltip "
                   >
@@ -1924,10 +1912,7 @@ exports[`renders MetadataForm component 1`] = `
                 <label
                   class="usa-label"
                 >
-                  Sub Agency
-                  <span>
-                    *
-                  </span>
+                  Sub Agency (optional)
                 </label>
                 <div
                   class="usa-helptext "
@@ -1951,9 +1936,6 @@ exports[`renders MetadataForm component 1`] = `
                   class="usa-label"
                 >
                   Contact Name
-                  <span>
-                    *
-                  </span>
                   <div
                     class="tooltip "
                   >
@@ -2010,9 +1992,6 @@ exports[`renders MetadataForm component 1`] = `
                   class="usa-label"
                 >
                   Contact Email
-                  <span>
-                    *
-                  </span>
                 </label>
                 <div
                   class="usa-helptext "
@@ -2036,9 +2015,6 @@ exports[`renders MetadataForm component 1`] = `
                   class="usa-label"
                 >
                   Unique ID
-                  <span>
-                    *
-                  </span>
                   <div
                     class="tooltip "
                   >
@@ -2095,9 +2071,6 @@ exports[`renders MetadataForm component 1`] = `
                   class="usa-label"
                 >
                   Public Access level
-                  <span>
-                    *
-                  </span>
                 </label>
                 <div
                   class="usa-helptext "
@@ -2142,9 +2115,6 @@ exports[`renders MetadataForm component 1`] = `
                   class="usa-label"
                 >
                   License
-                  <span>
-                    *
-                  </span>
                 </label>
                 <div
                   class="usa-helptext "
@@ -2230,7 +2200,7 @@ exports[`renders MetadataForm component 1`] = `
                   <span
                     class="usa-helptext"
                   >
-                    If you selected “Other”, please specify the URL of your License*
+                    If you selected “Other”, please specify the name of your License in URL format. Please include "https://" at the beginning of your URL.*
                   </span>
                 </div>
                 
@@ -2326,7 +2296,7 @@ exports[`renders MetadataForm component 1`] = `
                 <span
                   class="usa-label"
                 >
-                  Relevant Location*
+                  Relevant Location
                 </span>
                  
                 <br />
@@ -2400,7 +2370,7 @@ exports[`renders MetadataForm component 1`] = `
                 <span
                   class="usa-label"
                 >
-                  Temporal*
+                  Temporal
                   <div
                     class="tooltip "
                   >
@@ -2430,7 +2400,7 @@ exports[`renders MetadataForm component 1`] = `
                         Temporal
                       </h3>
                       <p>
-                        For example, for a 2010 Census dataset, the temporal extent would cover a period of time beginning 2000-04-02 and ending 2010-04-01.
+                        For example, for a 2010 Census dataset (which runs for 10 years until April 1st of the year of the Census), the temporal extent would cover a period of time beginning 2000-04-02 and ending 2010-04-01.
                       </p>
                     </span>
                   </div>
