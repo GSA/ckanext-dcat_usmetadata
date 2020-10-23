@@ -243,11 +243,11 @@ const createResource = (packageId, opts, apiUrl, apiKey) => {
       body.append(item, opts[item]);
     });
   } else {
-    body = clone(opts);
+    body = clone(encodeValues(opts));
     body.package_id = packageId;
   }
 
-  return axios.post(`${apiUrl}resource_create`, encodeValues(body), {
+  return axios.post(`${apiUrl}resource_create`, body, {
     headers: {
       'X-CKAN-API-Key': apiKey,
       'Content-Type': 'application/x-www-form-urlencoded',
