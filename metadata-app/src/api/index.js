@@ -321,10 +321,16 @@ const fetchTags = async (str, apiUrl, apiKey) => {
   }
 };
 
+/**
+ * Get list of organizations where a given user has "create_dataset" permission
+ */
 const fetchOrganizationsForUser = async (apiUrl, apiKey) => {
   try {
     const url = `${apiUrl}organization_list_for_user`;
-    const res = await axios.get(url, {
+    const body = {
+      permission: 'create_dataset',
+    };
+    const res = await axios.post(url, body, {
       headers: {
         'X-CKAN-API-Key': apiKey,
       },
