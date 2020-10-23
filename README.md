@@ -161,9 +161,9 @@ We publish this extension to PyPI - https://pypi.org/project/ckanext-dcat-usmeta
 0. Create a new branch for releasing a new version of the extension. You can name your branch with the following convention: `release/x.y.z`;
 1. Update version in `setup.py`;
 2. Get your PR merged to master branch;
-3. Using GitHub UI, create a new release which will trigger a build and deploy jobs.
+3. Tag the merged commit with the new version (`git tag $version`).
 
-In the CI job, the following is done:
+In the CI job, the following is done for tagged commits:
 
 - It builds the JS bundles and puts them into the relevant directory so the extension can use them;
 - It runs integration tests to make sure everything is working as expected;
