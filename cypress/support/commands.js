@@ -19,6 +19,20 @@ Cypress.Commands.add('createOrg', () => {
   cy.get('.form-actions .btn-primary').click();
 });
 
+Cypress.Commands.add('createUser', (username) => {
+  cy.clearCookies();
+  cy.visit('/user/register');
+  const name = username || chance.name({ length: 5 });
+  cy.get('input[name=name]').type(name);
+  cy.get('input[name=fullname]').type(name);
+  cy.get('input[name=email]').type(chance.email());
+  const password = 'test1234';
+  cy.get('input[name=password1]').type(password);
+  cy.get('input[name=password2]').type(password);
+  cy.get('button[name=save]').click({ force: true });
+  cy.wait(2000);
+})
+
 Cypress.Commands.add('requiredMetadata', (title) => {
   const datasetTitle = title || chance.word({ length: 5 });
   cy.get('input[name=title]').type(datasetTitle);
