@@ -1,6 +1,8 @@
 .ropeproject
 node_modules
 bower_components
+ckanext/dcat_usmetadata/public/
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
