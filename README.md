@@ -158,9 +158,10 @@ $ npx cypress open
 
 We publish this extension to PyPI - https://pypi.org/project/ckanext-dcat-usmetadata/. This is done by CI job that is triggered on tagged commit on master branch. When you need to release a new version of the extension, you need to:
 
+0. Create a new branch for releasing a new version of the extension. You can name your branch with the following convention: `release/x.y.z`;
 1. Update version in `setup.py`;
-2. Tag the commit with the version from point 1;
-3. Push your tag to the repository so CI can be triggered.
+2. Get your PR merged to master branch;
+3. Using GitHub UI, create a new release which will trigger a build and deploy jobs.
 
 In the CI job, the following is done:
 
