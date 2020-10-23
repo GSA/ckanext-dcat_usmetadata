@@ -10,9 +10,9 @@ const licenses = require('../components/RequiredMetadata/licenses.json');
 const clone = (param) => JSON.parse(JSON.stringify(param));
 
 /**
- * Decode extras from CKAN 2.8.2 Groups format
+ * Deserialize extras from CKAN 2.8.2 Groups format
  */
-const decodeExtras = (opts) => {
+const deserializeExtras = (opts) => {
   const newOpts = clone(opts);
   newOpts.extras.forEach((cur) => {
     newOpts[cur.key] = cur.value;
@@ -21,11 +21,11 @@ const decodeExtras = (opts) => {
 };
 
 /**
- * Iterates over each field and if it's string encodes special
+ * Iterates over each field and if it's string encodes URIComponent
  * characters
  * @param {Object} obj
  */
-const encodeValuesURIComponent = (obj) => {
+const encodeValues = (obj) => {
   const newObj = {};
   Object.entries(obj).map(([key, value]) => {
     const encodedKey = encodeURIComponent(key);
@@ -50,8 +50,8 @@ const encodeValuesURIComponent = (obj) => {
   return newObj;
 };
 
-// encode values from USMetadata format to match form values
-const encodeSupplementalValues = (opts) => {
+// serialize values from USMetadata format to match form values
+const serializeSupplementalValues = (opts) => {
   const newOpts = clone(opts);
 
   if (opts.description) {
@@ -144,11 +144,11 @@ const encodeSupplementalValues = (opts) => {
     delete newOpts.parent_dataset;
   }
 
-  return encodeValuesURIComponent(newOpts);
+  return newOpts;
 };
 
-// decode values from USMetadata format to match form values
-const decodeSupplementalValues = (opts) => {
+// deserialize values from form values to match USMetadata format
+const deserializeSupplementalValues = (opts) => {
   const newOpts = clone(opts);
   if (opts.tag_string) {
     newOpts.tags = opts.tag_string.split(',').map((n, i) => ({ id: i, name: n }));
@@ -213,16 +213,14 @@ const decodeSupplementalValues = (opts) => {
  */
 
 const createDataset = (opts, apiUrl, apiKey) => {
-  const encoded = encodeSupplementalValues(opts);
-  encoded.name = slugify(opts.title, { lower: true, remove: /[*+~.()'"!:@]/g });
-  encoded.modified = new Date();
-  encoded.bureau_code = '015:11';
-  encoded.program_code = '015:001';
-  // encoded.temporal = '2020-12-22/2020-12-22'; // todo encode this
-  // encoded.tag_string = 'tag1, tag2, tag3, tag4'; // TODO make tag string
-  encoded.url = opts.url;
+  const body = serializeSupplementalValues(opts);
+  body.name = slugify(opts.title, { lower: true, remove: /[*+~.()'"!:@]/g });
+  body.modified = new Date();
+  body.bureau_code = '015:11';
+  body.program_code = '015:001';
+  body.url = opts.url;
   return axios
-    .post(`${apiUrl}package_create`, encoded, {
+    .post(`${apiUrl}package_create`, encodeValues(body), {
       headers: {
         'X-CKAN-API-Key': apiKey,
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -231,8 +229,8 @@ const createDataset = (opts, apiUrl, apiKey) => {
     .then((res) => {
       // note that we don't return the axios response, we return the result
       const resVals = res.data.result;
-      const decoded = decodeSupplementalValues(decodeExtras(resVals));
-      return decoded;
+      const result = deserializeSupplementalValues(deserializeExtras(resVals));
+      return result;
     });
 };
 
@@ -249,7 +247,7 @@ const createResource = (packageId, opts, apiUrl, apiKey) => {
     body.package_id = packageId;
   }
 
-  return axios.post(`${apiUrl}resource_create`, body, {
+  return axios.post(`${apiUrl}resource_create`, encodeValues(body), {
     headers: {
       'X-CKAN-API-Key': apiKey,
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -266,24 +264,23 @@ const fetchDataset = async (id, apiUrl, apiKey) => {
     })
     .then((res) => {
       // note that we don't return the axios response, we return the result
-      const decoded = decodeSupplementalValues(decodeExtras(res.data.result));
-      decoded.description = decoded.notes;
-      return decoded;
+      const result = deserializeSupplementalValues(deserializeExtras(res.data.result));
+      result.description = result.notes;
+      return result;
     });
 };
 
 const updateDataset = (id, opts, apiUrl, apiKey) => {
-  const encoded = encodeSupplementalValues(opts);
-  encoded.modified = new Date();
-  encoded.notes = opts.description; // TODO not sure what notes is supposed to be
-  encoded.id = id;
+  const body = serializeSupplementalValues(opts);
+  body.modified = new Date();
+  body.id = id;
 
   // TODO where do we get these?
-  encoded.bureauCode = '015:11';
-  encoded.programCode = '015:001';
+  body.bureauCode = '015:11';
+  body.programCode = '015:001';
 
   return axios
-    .post(`${apiUrl}package_update`, encoded, {
+    .post(`${apiUrl}package_update`, encodeValues(body), {
       headers: {
         'X-CKAN-API-Key': apiKey,
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -292,14 +289,14 @@ const updateDataset = (id, opts, apiUrl, apiKey) => {
     .then((res) => {
       // note that we don't return the axios response, we return the result
       const resVals = res.data.result;
-      const decoded = decodeSupplementalValues(decodeExtras(resVals));
-      return decoded;
+      const result = deserializeSupplementalValues(deserializeExtras(resVals));
+      return result;
     });
 };
 
 const patchDataset = (id, opts, apiUrl, apiKey) => {
   const body = Object.assign(opts, { id });
-  return axios.post(`${apiUrl}package_patch`, body, {
+  return axios.post(`${apiUrl}package_patch`, encodeValues(body), {
     headers: {
       'X-CKAN-API-Key': apiKey,
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -371,7 +368,7 @@ export default {
   fetchParentDatasets,
   createResource,
   helpers: {
-    decodeExtras,
+    deserializeExtras,
     clone,
   },
 };

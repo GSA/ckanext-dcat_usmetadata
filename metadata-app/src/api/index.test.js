@@ -4,9 +4,9 @@ import mocks from '../mocks/apiMocks';
 
 // eslint-disable-next-line
 console.log('------------ Run API Tests ------------');
-const { decodeExtras } = Api.helpers;
+const { deserializeExtras } = Api.helpers;
 
-const { fetchDataset, createDataset, updateDataset } = Api;
+const { fetchDataset, createDataset, updateDataset, createResource } = Api;
 const {
   datasetOne,
   requiredMetadata,
@@ -16,7 +16,7 @@ const {
 } = mocks;
 
 describe('Test helpers', () => {
-  describe('Decode extras', () => {
+  describe('Deserialize extras', () => {
     it('should correctly parse extras array', () => {
       const opts = {
         extras: [
@@ -26,7 +26,7 @@ describe('Test helpers', () => {
         ],
       };
 
-      const decoded = decodeExtras(opts);
+      const decoded = deserializeExtras(opts);
       expect(true).toBe(true);
       expect(decoded.publisher).toBe('Willie Wonka');
       expect(decoded.accessLevel).toBe(100);
@@ -128,6 +128,7 @@ describe('Test helpers', () => {
         const themes = 'Some theme with special chars: $&@';
         const fieldNameWithSpecialChars = 'a&l#@!ls1';
         const fieldNameEncoded = 'a%26l%23%40!ls1';
+        const description = 'Some description with special chars: $&@';
         moxios.wait(() => {
           const request = moxios.requests.mostRecent();
           const payload = JSON.parse(request.config.data);
@@ -135,7 +136,7 @@ describe('Test helpers', () => {
           expect(request.config.method).toBe('post');
           expect(payload.themes).toBe('Some%20theme%20with%20special%20chars%3A%20%24%26%40');
           expect(payload[fieldNameEncoded]).toBe('Foo');
-
+          expect(payload.notes).toBe('Some%20description%20with%20special%20chars%3A%20%24%26%40');
           request.respondWith({
             status: 200,
             response: updateDatasetResponse,
@@ -144,10 +145,32 @@ describe('Test helpers', () => {
 
         await updateDataset(
           '123',
-          { ...additionalMetadata, themes, [fieldNameWithSpecialChars]: 'Foo' },
+          { ...additionalMetadata, themes, description, [fieldNameWithSpecialChars]: 'Foo' },
           'APIURL',
           'APIKEY'
         );
+      });
+    });
+
+    describe('Create resource', () => {
+      it('should encode the field names and values when creating resource', async () => {
+        const fieldNameWithSpecialChars = 'a&l#@!ls1';
+        const fieldNameEncoded = 'a%26l%23%40!ls1';
+
+        moxios.wait(() => {
+          const request = moxios.requests.mostRecent();
+          const payload = JSON.parse(request.config.data);
+
+          expect(request.config.method).toBe('post');
+          console.log(payload[fieldNameEncoded]);
+          expect(payload[fieldNameEncoded]).toBe('Foo');
+          request.respondWith({
+            status: 200,
+            response: updateDatasetResponse,
+          });
+        });
+
+        await createResource('123', { [fieldNameWithSpecialChars]: 'Foo' }, 'APIURL', 'APIKEY');
       });
     });
   });
