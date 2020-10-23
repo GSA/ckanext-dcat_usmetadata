@@ -229,8 +229,8 @@ const createDataset = (opts, apiUrl, apiKey) => {
     .then((res) => {
       // note that we don't return the axios response, we return the result
       const resVals = res.data.result;
-      const decoded = deserializeSupplementalValues(deserializeExtras(resVals));
-      return decoded;
+      const result = deserializeSupplementalValues(deserializeExtras(resVals));
+      return result;
     });
 };
 
@@ -264,9 +264,9 @@ const fetchDataset = async (id, apiUrl, apiKey) => {
     })
     .then((res) => {
       // note that we don't return the axios response, we return the result
-      const decoded = deserializeSupplementalValues(deserializeExtras(res.data.result));
-      decoded.description = decoded.notes;
-      return decoded;
+      const result = deserializeSupplementalValues(deserializeExtras(res.data.result));
+      result.description = result.notes;
+      return result;
     });
 };
 
@@ -289,8 +289,8 @@ const updateDataset = (id, opts, apiUrl, apiKey) => {
     .then((res) => {
       // note that we don't return the axios response, we return the result
       const resVals = res.data.result;
-      const decoded = deserializeSupplementalValues(deserializeExtras(resVals));
-      return decoded;
+      const result = deserializeSupplementalValues(deserializeExtras(resVals));
+      return result;
     });
 };
 
