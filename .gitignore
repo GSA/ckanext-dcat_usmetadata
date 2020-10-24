@@ -49,6 +49,8 @@ docs/_build/
 
 # Cypress
 
-cypress/fixtures/
 cypress/screenshots/
 cypress/videos/
+
+# MacOS specific
+.DS_Store
