@@ -214,11 +214,13 @@ const deserializeSupplementalValues = (opts) => {
 
 const createDataset = (opts, apiUrl, apiKey) => {
   const body = serializeSupplementalValues(opts);
-  body.name = slugify(opts.title, { lower: true, remove: /[*+~.()'"!:@]/g });
+  body.name = opts.url
+    ? opts.url.split('/').pop()
+    : slugify(opts.title, { lower: true, remove: /[*+~.()'"!:@]/g });
+  delete body.url;
   body.modified = new Date();
   body.bureau_code = '015:11';
   body.program_code = '015:001';
-  body.url = opts.url;
   return axios
     .post(`${apiUrl}package_create`, encodeValues(body), {
       headers: {

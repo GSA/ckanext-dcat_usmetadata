@@ -47,6 +47,29 @@ describe('Required Metadata Page', () => {
     cy.wait(5000);
     cy.contains('Dataset saved successfully');
   });
+
+  it('Edit dataset URL works', () => {
+    cy.login();
+    cy.visit('/dataset/new-metadata');
+    cy.get('input[name=title]').type('my default title');
+    cy.get('button.dataset_url_edit').click();
+    cy.get('input[name=url]').type('-edited');
+    cy.get('textarea[name=description]').type('description');
+    cy.get('.react-tags input').type('1234{enter}');
+    cy.get('select[name=owner_org]').select('test-123');
+    cy.get('select[name=publisher]').select('Other');
+    cy.get('input[name=publisher_other]').type('Other publisher');
+    cy.get('input[name=subagency]').type('Sub Agency 1');
+    cy.get('input[name=contact_name]').type('Person');
+    cy.get('input[name=contact_email]').type('person@mail.com');
+    cy.get('input[name=unique_id]').type('unique id');
+    cy.get('select[name=public_access_level]').select('public');
+    cy.get('select[name=license]').select('MIT');
+    cy.get('button[type=button]').contains('Save and Continue').click().then(() => {
+      cy.visit('/dataset/my-default-title-edited');
+      cy.contains('my default title');
+    });
+  })
 });
 
 describe('Required Metadata Page errors', () => {
