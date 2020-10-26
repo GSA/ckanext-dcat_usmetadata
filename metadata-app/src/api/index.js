@@ -1,4 +1,5 @@
 import axios from 'axios';
+import slugify from 'slugify';
 
 const dataDictTypes = require('../components/AdditionalMetadata/data-dictionary-types');
 const licenses = require('../components/RequiredMetadata/licenses.json');
@@ -213,7 +214,9 @@ const deserializeSupplementalValues = (opts) => {
 
 const createDataset = (opts, apiUrl, apiKey) => {
   const body = serializeSupplementalValues(opts);
-  body.name = opts.url.split('/').pop();
+  body.name = opts.url
+    ? opts.url.split('/').pop()
+    : slugify(opts.title, { lower: true, remove: /[*+~.()'"!:@]/g });
   delete body.url;
   body.modified = new Date();
   body.bureau_code = '015:11';
