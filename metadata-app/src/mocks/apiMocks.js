@@ -93,6 +93,7 @@ const datasetOne = {
 
 const requiredMetadata = {
   title: 'Test 123',
+  url: 'http://localhost:5000/dataset/test-123',
   description: 'Description 123',
   publisher: 'Publisher 1 ',
   subagency: 'Sub Agency 2',

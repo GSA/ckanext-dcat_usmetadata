@@ -1,5 +1,4 @@
 import axios from 'axios';
-import slugify from 'slugify';
 
 const dataDictTypes = require('../components/AdditionalMetadata/data-dictionary-types');
 const licenses = require('../components/RequiredMetadata/licenses.json');
@@ -214,11 +213,11 @@ const deserializeSupplementalValues = (opts) => {
 
 const createDataset = (opts, apiUrl, apiKey) => {
   const body = serializeSupplementalValues(opts);
-  body.name = slugify(opts.title, { lower: true, remove: /[*+~.()'"!:@]/g });
+  body.name = opts.url.split('/').pop();
+  delete body.url;
   body.modified = new Date();
   body.bureau_code = '015:11';
   body.program_code = '015:001';
-  body.url = opts.url;
   return axios
     .post(`${apiUrl}package_create`, encodeValues(body), {
       headers: {

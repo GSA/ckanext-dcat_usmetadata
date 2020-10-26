@@ -162,7 +162,6 @@ describe('Test helpers', () => {
           const payload = JSON.parse(request.config.data);
 
           expect(request.config.method).toBe('post');
-          console.log(payload[fieldNameEncoded]);
           expect(payload[fieldNameEncoded]).toBe('Foo');
           request.respondWith({
             status: 200,
