@@ -1330,43 +1330,6 @@ exports[`Renders RequiredMetadata component 1`] = `
               class="usa-label"
             >
               Release Date
-              <div
-                class="tooltip "
-              >
-                <svg
-                  height="20px"
-                  style="margin-left: .5em;"
-                  tabindex="0"
-                  width="20px"
-                >
-                  info.svg
-                </svg>
-                <span
-                  class="tooltiptext"
-                >
-                  <span
-                    class="close"
-                    role="button"
-                    tabindex="0"
-                  >
-                    <span
-                      class="close-tag"
-                    >
-                      ×
-                    </span>
-                  </span>
-                  <h3>
-                    Release Date
-                  </h3>
-                  <p>
-                    <span
-                      class="usa-helptext"
-                    >
-                      Related documents such as technical information about a dataset, developer documentation, etc. Format for entry is: https://www.agency.gov/fruits/fruits.csv, https://www.agency.gov/legumes/legumes
-                    </span>
-                  </p>
-                </span>
-              </div>
             </label>
             <div
               class="usa-helptext "
