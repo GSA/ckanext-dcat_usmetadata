@@ -12,7 +12,7 @@ const clone = (param) => JSON.parse(JSON.stringify(param));
 /**
  * Converts mm/dd/yyyy -> yyyy-mm-dd
  */
-const convertFwdSlashIntoDashDateFormat = (dateStr) => {
+const toISODate = (dateStr) => {
   let converted = dateStr;
   const dateParts = dateStr.split('/');
   // this means that date is in dd/mm/yyyy format
@@ -92,8 +92,8 @@ const serializeSupplementalValues = (opts) => {
   }
 
   if (opts.temporal_start_date) {
-    const start = convertFwdSlashIntoDashDateFormat(opts.temporal_start_date);
-    const end = convertFwdSlashIntoDashDateFormat(opts.temporal_end_date);
+    const start = toISODate(opts.temporal_start_date);
+    const end = toISODate(opts.temporal_end_date);
     newOpts.temporal = `${start}/${end}`;
     delete newOpts.temporal_start_date;
     delete newOpts.temporal_end_date;
@@ -102,7 +102,7 @@ const serializeSupplementalValues = (opts) => {
   }
 
   if (opts.release_date) {
-    newOpts.release_date = convertFwdSlashIntoDashDateFormat(newOpts.release_date);
+    newOpts.release_date = toISODate(newOpts.release_date);
   } else {
     delete newOpts.release_date;
     // remove release date from extras if any
