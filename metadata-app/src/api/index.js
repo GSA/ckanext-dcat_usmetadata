@@ -10,6 +10,21 @@ const licenses = require('../components/RequiredMetadata/licenses.json');
 const clone = (param) => JSON.parse(JSON.stringify(param));
 
 /**
+ * Converts mm/dd/yyyy -> yyyy-mm-dd
+ */
+const toISODate = (dateStr) => {
+  let converted = dateStr;
+  const dateParts = dateStr.split('/');
+  // this means that date is in dd/mm/yyyy format
+  if (dateParts.length === 3) {
+    const [month, day, year] = dateParts;
+    converted = `${year}-${month}-${day}`;
+  }
+
+  return converted;
+};
+
+/**
  * Deserialize extras from CKAN 2.8.2 Groups format
  */
 const deserializeExtras = (opts) => {
@@ -21,33 +36,11 @@ const deserializeExtras = (opts) => {
 };
 
 /**
- * Iterates over each field and if it's string encodes URIComponent
- * characters
+ * Converts to JSON string and encodes to URI encoded
  * @param {Object} obj
  */
 const encodeValues = (obj) => {
-  const newObj = {};
-  Object.entries(obj).map(([key, value]) => {
-    const encodedKey = encodeURIComponent(key);
-    newObj[encodedKey] = value;
-    if (typeof value === 'string' || value instanceof String) {
-      newObj[encodedKey] = encodeURIComponent(value);
-    }
-    // eslint-disable-next-line
-    return;
-  });
-
-  if (obj.extras)
-    newObj.extras = obj.extras.map(({ key, value }) => {
-      const encodedKey = encodeURIComponent(key);
-
-      if (typeof value === 'string' || value instanceof String) {
-        return { key: encodedKey, value: encodeURIComponent(value) };
-      }
-      return { key: encodedKey, value };
-    });
-
-  return newObj;
+  return encodeURIComponent(JSON.stringify(obj));
 };
 
 // serialize values from USMetadata format to match form values
@@ -99,8 +92,8 @@ const serializeSupplementalValues = (opts) => {
   }
 
   if (opts.temporal_start_date) {
-    const start = new Date(opts.temporal_start_date).toISOString().split('T')[0]; // get yyyy-mm-dd from ISO string
-    const end = new Date(opts.temporal_end_date).toISOString().split('T')[0]; // ditto
+    const start = toISODate(opts.temporal_start_date);
+    const end = toISODate(opts.temporal_end_date);
     newOpts.temporal = `${start}/${end}`;
     delete newOpts.temporal_start_date;
     delete newOpts.temporal_end_date;
@@ -108,6 +101,16 @@ const serializeSupplementalValues = (opts) => {
     delete newOpts.temporal;
   }
 
+  if (opts.release_date) {
+    newOpts.release_date = toISODate(newOpts.release_date);
+  } else {
+    delete newOpts.release_date;
+    // remove release date from extras if any
+    if (newOpts.extras)
+      newOpts.extras = newOpts.extras.filter(({ key }) => {
+        return key !== 'release_date';
+      });
+  }
   // Language field should be constructed from language subtag and language
   // regional subtag:
   if (opts.languageSubTag) {
@@ -245,8 +248,9 @@ const createResource = (packageId, opts, apiUrl, apiKey) => {
       body.append(item, opts[item]);
     });
   } else {
-    body = clone(encodeValues(opts));
+    body = clone(opts);
     body.package_id = packageId;
+    body = encodeValues(body);
   }
 
   return axios.post(`${apiUrl}resource_create`, body, {

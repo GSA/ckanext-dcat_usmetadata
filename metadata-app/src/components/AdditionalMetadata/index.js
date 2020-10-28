@@ -223,7 +223,6 @@ const AdditionalMetadata = (props) => {
             name="release_date"
             type="date"
             helptext="Date Format: MM/DD/YYYY"
-            infoText={helpTexts.references}
           />
         </div>
       </div>

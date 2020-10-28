@@ -80,6 +80,55 @@ describe('Test helpers', () => {
         expect(Array.isArray(result.extras)).toBe(true);
       });
 
+      it('should send the temporal dates in correct ISO format', async () => {
+        moxios.wait(() => {
+          const request = moxios.requests.mostRecent();
+          const payloadStr = request.config.data;
+          const payload = JSON.parse(decodeURIComponent(payloadStr));
+
+          expect(payload.temporal).toBe('2020-01-13/2021-05-23');
+
+          request.respondWith({
+            status: 200,
+            response: createDatasetResponse,
+          });
+        });
+
+        await createDataset(
+          {
+            ...requiredMetadata,
+            temporal_start_date: '01/13/2020',
+            temporal_end_date: '05/23/2021',
+          },
+          'APIURL',
+          'APIKEY'
+        );
+      });
+
+      it('should send the release date in correct ISO format', async () => {
+        moxios.wait(() => {
+          const request = moxios.requests.mostRecent();
+          const payloadStr = request.config.data;
+          const payload = JSON.parse(decodeURIComponent(payloadStr));
+
+          expect(payload.release_date).toBe('2020-01-14');
+
+          request.respondWith({
+            status: 200,
+            response: createDatasetResponse,
+          });
+        });
+
+        await createDataset(
+          {
+            ...requiredMetadata,
+            release_date: '01/14/2020',
+          },
+          'APIURL',
+          'APIKEY'
+        );
+      });
+
       it('should encode the field names and values when creating dataset', async () => {
         const title = 'Some title with special chars: $&@';
         const description = 'Some description with special chars: $&@';
@@ -88,14 +137,21 @@ describe('Test helpers', () => {
 
         moxios.wait(() => {
           const request = moxios.requests.mostRecent();
-          const payload = JSON.parse(request.config.data);
+          const payloadStr = request.config.data;
+          const payload = JSON.parse(decodeURIComponent(payloadStr));
 
           expect(request.config.method).toBe('post');
-          expect(payload.title).toBe('Some%20title%20with%20special%20chars%3A%20%24%26%40');
-          expect(payload.description).toBe(
-            'Some%20description%20with%20special%20chars%3A%20%24%26%40'
+          expect(payload.title).toBe(title);
+          expect(payload.description).toBe(description);
+          expect(payload[fieldNameWithSpecialChars]).toBe('Foo');
+          expect(payloadStr).toEqual(expect.stringContaining(fieldNameEncoded));
+          expect(payloadStr).toEqual(
+            expect.stringContaining('Some%20description%20with%20special%20chars%3A%20%24%26%40')
           );
-          expect(payload[fieldNameEncoded]).toBe('Foo');
+          expect(payloadStr).toEqual(
+            expect.stringContaining('Some%20title%20with%20special%20chars%3A%20%24%26%40')
+          );
+
           request.respondWith({
             status: 200,
             response: createDatasetResponse,
@@ -131,12 +187,20 @@ describe('Test helpers', () => {
         const description = 'Some description with special chars: $&@';
         moxios.wait(() => {
           const request = moxios.requests.mostRecent();
-          const payload = JSON.parse(request.config.data);
+          const payloadStr = request.config.data;
+          const payload = JSON.parse(decodeURIComponent(payloadStr));
 
           expect(request.config.method).toBe('post');
-          expect(payload.themes).toBe('Some%20theme%20with%20special%20chars%3A%20%24%26%40');
-          expect(payload[fieldNameEncoded]).toBe('Foo');
-          expect(payload.notes).toBe('Some%20description%20with%20special%20chars%3A%20%24%26%40');
+          expect(payload.themes).toBe(themes);
+          expect(payload[fieldNameWithSpecialChars]).toBe('Foo');
+          expect(payload.notes).toBe(description);
+          expect(payloadStr).toEqual(
+            expect.stringContaining('Some%20theme%20with%20special%20chars%3A%20%24%26%40')
+          );
+          expect(payloadStr).toEqual(
+            expect.stringContaining('Some%20description%20with%20special%20chars%3A%20%24%26%40')
+          );
+          expect(payloadStr).toEqual(expect.stringContaining(fieldNameEncoded));
           request.respondWith({
             status: 200,
             response: updateDatasetResponse,
@@ -159,10 +223,12 @@ describe('Test helpers', () => {
 
         moxios.wait(() => {
           const request = moxios.requests.mostRecent();
-          const payload = JSON.parse(request.config.data);
+          const payloadStr = request.config.data;
+          const payload = JSON.parse(decodeURIComponent(payloadStr));
 
           expect(request.config.method).toBe('post');
-          expect(payload[fieldNameEncoded]).toBe('Foo');
+          expect(payload[fieldNameWithSpecialChars]).toBe('Foo');
+          expect(payloadStr).toEqual(expect.stringContaining(fieldNameEncoded));
           request.respondWith({
             status: 200,
             response: updateDatasetResponse,
