@@ -80,6 +80,55 @@ describe('Test helpers', () => {
         expect(Array.isArray(result.extras)).toBe(true);
       });
 
+      it('should send the temporal dates in correct ISO format', async () => {
+        moxios.wait(() => {
+          const request = moxios.requests.mostRecent();
+          const payloadStr = request.config.data;
+          const payload = JSON.parse(decodeURIComponent(payloadStr));
+
+          expect(payload.temporal).toBe('2020-01-13/2021-05-23');
+
+          request.respondWith({
+            status: 200,
+            response: createDatasetResponse,
+          });
+        });
+
+        await createDataset(
+          {
+            ...requiredMetadata,
+            temporal_start_date: '01/13/2020',
+            temporal_end_date: '05/23/2021',
+          },
+          'APIURL',
+          'APIKEY'
+        );
+      });
+
+      it('should send the release date in correct ISO format', async () => {
+        moxios.wait(() => {
+          const request = moxios.requests.mostRecent();
+          const payloadStr = request.config.data;
+          const payload = JSON.parse(decodeURIComponent(payloadStr));
+
+          expect(payload.release_date).toBe('2020-01-14');
+
+          request.respondWith({
+            status: 200,
+            response: createDatasetResponse,
+          });
+        });
+
+        await createDataset(
+          {
+            ...requiredMetadata,
+            release_date: '01/14/2020',
+          },
+          'APIURL',
+          'APIKEY'
+        );
+      });
+
       it('should encode the field names and values when creating dataset', async () => {
         const title = 'Some title with special chars: $&@';
         const description = 'Some description with special chars: $&@';
