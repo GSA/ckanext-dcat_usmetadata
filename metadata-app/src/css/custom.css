@@ -9,10 +9,11 @@ body {
   line-height: 1.8rem;
 }
 
-.usa-label {
+.App .usa-label {
   font-weight: 600;
   font-size: 1.2rem;
   margin-top: 20px;
+  font-family: inherit;
 }
 
 .usa-label:after {
