@@ -68,7 +68,7 @@ _TODO complete this, make sure it's accurate._
 
 Suite | Description | Command
 ----- | ----------- | -------
-unit tests for the JS app | Make sure you run this command inside _./metadata-app_ folder. To run without watching use `--watchAll=false` flag | `yarn test --watchAll`
+unit tests for the JS app | Make sure you run this command inside _./metadata-app_ folder.  | `yarn test --watchAll=false`
 browser tests for the JS app powered by cypress | |
 python integration tests for ckan | | `make test`
 e2e | | `yarn e2e`
