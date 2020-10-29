@@ -290,7 +290,7 @@ const MetadataForm = (props) => {
           enableReinitialize="true"
           validateOnChange={false}
           validateOnBlur={false}
-          onSubmit={(values, { setFieldValue }) => {
+          onSubmit={(values, { setFieldValue, setSubmitting }) => {
             // Clear alert box:
             setAlert();
             // Check if resource should be created, eg, user added any metadata:
@@ -315,6 +315,7 @@ const MetadataForm = (props) => {
                         );
                       } else if (values.saveDraft) {
                         setDraftSaved(new Date());
+                        setSubmitting(false);
                       } else {
                         setDraftSaved(new Date());
                         setFieldValue('savedResources', values.savedResources + 1);
@@ -323,10 +324,14 @@ const MetadataForm = (props) => {
                           values.resource.url || values.resource.name
                         );
                         setFieldValue('resource', JSON.parse(JSON.stringify(ResourceObject)));
+                        setSubmitting(false);
                       }
                     }
                   })
-                  .catch(handleError);
+                  .catch((error) => {
+                    handleError(error);
+                    setSubmitting(false);
+                  });
               } else if (values.publish) {
                 // Update dataset state: 'draft' => 'active'
                 Api.patchDataset(curDatasetId, { state: 'active' }, apiUrl, apiKey)
@@ -336,7 +341,10 @@ const MetadataForm = (props) => {
                       window.location.replace(datasetPageUrl);
                     }
                   })
-                  .catch(handleError);
+                  .catch((error) => {
+                    handleError(error);
+                    setSubmitting(false);
+                  });
               }
             } else {
               setAlert(
@@ -356,7 +364,7 @@ const MetadataForm = (props) => {
             setAlert();
           }}
           validationSchema={ResourceUploadSchema}
-          render={({ values, errors, handleSubmit, setFieldValue, submitForm }) => (
+          render={({ values, errors, handleSubmit, setFieldValue, submitForm, isSubmitting }) => (
             <div className="">
               {errors && Object.keys(errors).length > 0 && (
                 <div>
@@ -374,6 +382,7 @@ const MetadataForm = (props) => {
                   draftSaved={draftSaved ? formatDate(draftSaved) : undefined}
                   setFieldValue={setFieldValue}
                   submitForm={submitForm}
+                  isSubmitting={isSubmitting}
                 />
               </Form>
             </div>

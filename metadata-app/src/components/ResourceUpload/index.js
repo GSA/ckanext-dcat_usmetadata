@@ -6,7 +6,7 @@ import WrappedField from '../WrappedField';
 import resourceFormats from './resource_formats.json';
 
 const ResourceUpload = (props) => {
-  const { values, errors, setFieldValue, submitForm, draftSaved } = props; // eslint-disable-line
+  const { values, errors, setFieldValue, submitForm, draftSaved, isSubmitting } = props; // eslint-disable-line
   const resource = values.resource || {};
   const { url, name, description, mimetype, format } = resource;
 
@@ -174,6 +174,7 @@ const ResourceUpload = (props) => {
               setUploadDataFileActive(false);
               submitForm();
             }}
+            disabled={isSubmitting}
           >
             Save and add another resource
           </button>
@@ -195,6 +196,18 @@ const ResourceUpload = (props) => {
         ''
       )}
 
+      {isSubmitting ? (
+        <div className="usa-alert usa-alert--info usa-alert--slim usa-alert--no-icon">
+          <div className="usa-alert__body">
+            <p className="usa-alert__text">
+              Your submission is in progress, this may take a few minutes for large dataset files.
+            </p>
+          </div>
+        </div>
+      ) : (
+        ''
+      )}
+
       <div className="grid-row margin-top-6">
         <button
           style={{ display: 'none' }}
@@ -205,6 +218,7 @@ const ResourceUpload = (props) => {
             setFieldValue('saveDraft', true);
             submitForm();
           }}
+          disabled={isSubmitting}
         >
           Save draft
         </button>
@@ -215,6 +229,7 @@ const ResourceUpload = (props) => {
             setFieldValue('publish', true);
             submitForm();
           }}
+          disabled={isSubmitting}
         >
           Finish and publish
         </button>
