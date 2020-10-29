@@ -522,6 +522,7 @@ exports[`Renders Resource Upload component 1`] = `
         </div>
       </div>
       
+      
       <div
         class="grid-row margin-top-6"
       >

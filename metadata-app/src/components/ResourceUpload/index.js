@@ -196,6 +196,18 @@ const ResourceUpload = (props) => {
         ''
       )}
 
+      {isSubmitting ? (
+        <div className="usa-alert usa-alert--info usa-alert--slim usa-alert--no-icon">
+          <div className="usa-alert__body">
+            <p className="usa-alert__text">
+              Your submission is in progress, this may take a few minutes for large dataset files.
+            </p>
+          </div>
+        </div>
+      ) : (
+        ''
+      )}
+
       <div className="grid-row margin-top-6">
         <button
           style={{ display: 'none' }}
