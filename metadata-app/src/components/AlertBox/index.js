@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import '../../css/uswds.css';
 
 const AlertBox = (props) => {
   useEffect(() => {

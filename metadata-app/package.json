@@ -18,6 +18,7 @@
     "react-scripts": "3.4.1",
     "react-tag-autocomplete": "^6.1.0",
     "slugify": "^1.4.5",
+    "uswds": "^2.9.0",
     "yup": "^0.29.3"
   },
   "resolutions": {

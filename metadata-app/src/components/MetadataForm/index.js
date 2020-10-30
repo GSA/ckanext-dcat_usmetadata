@@ -14,8 +14,9 @@ import ResourceObject from '../ResourceUpload/ResourceObject';
 import Navigation from '../Navigation';
 import AlertBox from '../AlertBox';
 import Api from '../../api';
+
 import '../../css/custom.css';
-import '../../css/uswds.css';
+import 'uswds/dist/css/uswds.css';
 
 const formatErrors = (errors) =>
   Object.keys(errors).map((name) => {
