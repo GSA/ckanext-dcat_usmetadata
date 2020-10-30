@@ -254,14 +254,14 @@ ResourceUpload.propTypes = {
   submitForm: PropTypes.func,
   draftSaved: PropTypes.string,
   values: PropTypes.shape({
-    resource: {
+    resource: PropTypes.shape({
       url: PropTypes.string,
       upload: PropTypes.any, // eslint-disable-line
       name: PropTypes.string,
       description: PropTypes.string,
       mimetype: PropTypes.string,
       format: PropTypes.string,
-    },
+    }),
     publish: PropTypes.bool,
     savedResources: PropTypes.number,
     lastSavedResource: PropTypes.string,
