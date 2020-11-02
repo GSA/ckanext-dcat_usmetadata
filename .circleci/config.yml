@@ -16,8 +16,10 @@ jobs:
           name: Prepare latest build files
           command: CI=false yarn build
       - run:
-          name: Lint
-          command: make app-lint
+          name: Lint (JS + Python)
+          command: |
+            make app-lint
+            make lint-all
       - run:
           name: Run unit tests
           command: make app-test
