@@ -18,8 +18,8 @@ jobs:
       - run:
           name: Lint (JS + Python)
           command: |
-            make app-lint
             make lint-all
+            make app-lint
       - run:
           name: Run unit tests
           command: make app-test
