@@ -16,10 +16,8 @@ jobs:
           name: Prepare latest build files
           command: CI=false yarn build
       - run:
-          name: Lint (JS + Python)
-          command: |
-            make lint-all
-            make app-lint
+          name: Lint
+          command: make app-lint
       - run:
           name: Run unit tests
           command: make app-test
@@ -38,6 +36,9 @@ jobs:
           name: Start CKAN
           command: |
             docker-compose -f docker-compose.yml -f docker-compose.seed.yml up -d
+      - run:
+          name: Lint
+          command: make lint-all
       - run:
           name: install dockerize
           command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
