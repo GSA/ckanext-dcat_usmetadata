@@ -108,12 +108,13 @@ workflows:
             tags:
               only: /[0-9]+(\.[0-9]+)*/
       - lint_python_code:
+          requires:
+            - build_metadata_app
           filters:
             tags:
               only: /[0-9]+(\.[0-9]+)*/
       - test_local_docker:
           requires:
-            - build_metadata_app
             - lint_python_code
           filters:
             tags:
