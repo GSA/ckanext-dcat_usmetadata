@@ -13,6 +13,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install dependencies for e2e tests
+          command: yarn
+      - run:
           name: Prepare latest build files
           command: CI=false yarn build
       - run:
@@ -25,6 +28,17 @@ jobs:
           root: ~/
           paths:
             - "ckanext-dcat_usmetadata"
+            - ".cache"
+
+  lint_python_code:
+    working_directory: ~/ckanext-dcat_usmetadata
+    machine: true
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Lint
+          command: make lint-all
 
   test_local_docker:
     working_directory: ~/ckanext-dcat_usmetadata
@@ -50,9 +64,9 @@ jobs:
       #     command: |
       #       docker-compose exec app /bin/bash -c "source /usr/lib/ckan/bin/activate && nosetests --ckan --with-pylons=src_extensions/dcat_usmetadata/docker_test.ini src_extensions/dcat_usmetadata/"
       - run:
-          name: Install and run e2e tests using cypress
+          name: Run e2e tests using cypress
           command: |
-            npm i && npx cypress run
+            npx cypress run
   deploy:
     working_directory: ~/ckanext-dcat_usmetadata
     docker:
@@ -93,9 +107,15 @@ workflows:
           filters:
             tags:
               only: /[0-9]+(\.[0-9]+)*/
-      - test_local_docker:
+      - lint_python_code:
           requires:
             - build_metadata_app
+          filters:
+            tags:
+              only: /[0-9]+(\.[0-9]+)*/
+      - test_local_docker:
+          requires:
+            - lint_python_code
           filters:
             tags:
               only: /[0-9]+(\.[0-9]+)*/
