@@ -28,6 +28,7 @@ jobs:
           root: ~/
           paths:
             - "ckanext-dcat_usmetadata"
+            - "/home/circleci/.cache/"
 
   test_local_docker:
     working_directory: ~/ckanext-dcat_usmetadata
