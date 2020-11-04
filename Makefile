@@ -51,4 +51,4 @@ app-cosmos:
 app-lint:
 	npx eslint metadata-app/src && npx prettier --check metadata-app/src
 app-test:
-	yarn && yarn test
+	yarn && yarn test:metadata-app
