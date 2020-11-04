@@ -1,5 +1,14 @@
 'use strict';
 
+/**
+ * TODO - Every *.js and *.css chunk files are being generated without hashes.
+ * For example instead of main.28a9ks.chunk.js we have main.chunk.js. Later if we get
+ * more chunks this might be a problem. Not sure if the chunks will override each other.
+ * From original configuration "[contenthash:8]" pattern is removed from file names
+ * in order to get build files names without hashes.
+ * See default React Webpack config after eject
+ */
+
 const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
