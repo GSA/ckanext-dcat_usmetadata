@@ -19,10 +19,10 @@ yarn.lock
 
 # misc
 sandbox/*
-.env
-.staging.env
+metadata-app/.env
+metadata-app/.staging.env
 .nyc_output/*
 .DS_Store
 
-public/
-dist/
+metadata-app/public/
+metadata-app/dist/
