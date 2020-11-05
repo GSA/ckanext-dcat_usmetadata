@@ -2,17 +2,14 @@
 
 # ckanext-dcat_usmetadata
 
-This extension provides a new dataset form for [inventory.data.gov](https://inventory.data.gov/). The form is tailored to managing metadata  meeting the [DCAT-US Schema](https://resources.data.gov/resources/dcat-us/).
-
+This extension provides a new dataset form for [inventory.data.gov](https://inventory.data.gov/). The form is tailored to managing metadata meeting the [DCAT-US Schema](https://resources.data.gov/resources/dcat-us/).
 
 ## Usage
-
 
 ### Dependencies
 
 This module currently depends on the [USMetadata app](https://github.com/GSA/USMetadata) for server-side validation and rendering.
 Make sure it is enabled in CKAN's plugins.
-
 
 ### Installation
 
@@ -25,7 +22,6 @@ To install this package, activate CKAN virtualenv (e.g. "source /path/to/virtenv
 In your CKAN .ini file add `dcat_usmetadata` to your enabled plugins:
 
 `ckan.plugins = [YOUR PLUGINS HERE...] dcat_usmetadata`
-
 
 ## Development
 
@@ -40,14 +36,13 @@ Install global dependencies.
 
     $ make setup
 
-
 ### Setup
 
 Install Node.js dependencies.
 
     $ yarn install
 
-Build the JS application.
+Build the JS application. The new build files can be found in `ckanext/dcat_usmetadata/public` folder.
 
     $ yarn run build
 
@@ -59,20 +54,18 @@ Run the tests.
 
     $ make test
 
-
 ## Testing
 
 There are several levels of testing:
 
 _TODO complete this, make sure it's accurate._
 
-Suite | Description | Command
------ | ----------- | -------
-unit tests for the JS app | Make sure you run this command inside _./metadata-app_ folder.  | `yarn test --watchAll=false`
-browser tests for the JS app powered by cypress | |
-python integration tests for ckan | | `make test`
-e2e | | `yarn e2e`
-
+| Suite                                           | Description | Command                                   |
+| ----------------------------------------------- | ----------- | ----------------------------------------- |
+| unit tests for the JS app                       |             | `yarn test:metadata-app --watchAll=false` |
+| browser tests for the JS app powered by cypress |             |
+| python integration tests for ckan               |             | `make test`                               |
+| e2e                                             |             | `yarn e2e`                                |
 
 ## Linting
 
@@ -86,7 +79,6 @@ Lint the JavaScript code.
 
     $ make app-lint
 
-
 ## Metadata app
 
 The Metadata app is a [Create React App](https://create-react-app.dev/)-bootstrapped project.
@@ -95,7 +87,6 @@ To run the app use `make app-up`
 
 _TODO briefly describe how the metdata application relates to the CKAN
 extension._
-
 
 ### Development
 
@@ -109,7 +100,6 @@ Run the unit tests.
 
     $ make app-test
 
-
 ### Update Jest snapshots
 
 Some tests render a fixture component with [Jest](https://jestjs.io/) and then
@@ -117,8 +107,7 @@ match against a known good snapshot (HTML rendering) of the component. When you
 edit a component, you'll usually have to update the snapshot and inspect the
 diff to make sure all changes are as intended.
 
-    $ cd metadata-app && yarn test --updateSnapshot
-
+    $ yarn test --updateSnapshot
 
 ## Local development and end-to-end testing
 
@@ -188,24 +177,26 @@ The Data.gov team manages all Data.gov updates, bugs, and feature additions via 
 
 If you do not already have a GitHub account, you can [sign up for GitHub here](https://github.com/). In the spirit of open source software, everyone is encouraged to help improve this project. Here are some ways you can contribute:
 
-* by reporting bugs
-* by suggesting new features
-* by translating content to a new language
-* by writing or editing documentation
-* by writing specifications
-* by writing code and documentation (no pull request is too small: fix typos, add code comments, clean up inconsistent whitespace)
-* by reviewing pull requests.
-* by closing issues
+- by reporting bugs
+- by suggesting new features
+- by translating content to a new language
+- by writing or editing documentation
+- by writing specifications
+- by writing code and documentation (no pull request is too small: fix typos, add code comments, clean up inconsistent whitespace)
+- by reviewing pull requests.
+- by closing issues
 
 ### Submit Great Issues
 
-* Before submitting a new issue, check to make sure a similar issue isn't already open. If one is, contribute to that issue thread with your feedback.
-* When submitting a bug report, please try to provide as much detail as possible, i.e. a screenshot or gist that demonstrates the problem, the technology you are using, and any relevant links.
+- Before submitting a new issue, check to make sure a similar issue isn't already open. If one is, contribute to that issue thread with your feedback.
+- When submitting a bug report, please try to provide as much detail as possible, i.e. a screenshot or gist that demonstrates the problem, the technology you are using, and any relevant links.
 
 ### Ready for your Help
+
 Issues labeled [help wanted](https://github.com/GSA/data.gov/labels/help%20wanted) make it easy for you to find ways you can contribute today.
 
 ## Public Domain
+
 This project constitutes a work of the United States Government and is not subject to domestic copyright protection under 17 USC § 105. Additionally, we waive copyright and related rights in the work worldwide through the CC0 1.0 [Universal public domain dedication](https://creativecommons.org/publicdomain/zero/1.0/).
 
 All contributions to this project will be released under the CC0 dedication. By submitting a pull request, you are agreeing to comply with this waiver of copyright interest.

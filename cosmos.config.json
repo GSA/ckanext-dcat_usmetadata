@@ -2,6 +2,6 @@
   "port": 8989,
   "watchDirs": ["src"],
   "webpack": {
-    "configPath": "react-scripts/config/webpack.config"
+    "configPath": "./react-scripts-config/webpack.config"
   }
 }

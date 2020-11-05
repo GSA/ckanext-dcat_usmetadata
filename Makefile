@@ -43,12 +43,12 @@ lint-all:
 ########
 
 app-up:
-	cd metadata-app && yarn && yarn start
+	yarn && yarn start:metadata-app
 
 app-cosmos:
-	cd metadata-app && yarn && yarn cosmos
+	yarn && yarn cosmos
 
 app-lint:
-	cd metadata-app && npx eslint src && npx prettier --check src
+	npx eslint metadata-app/src && npx prettier --check metadata-app/src
 app-test:
-	cd metadata-app && yarn test
+	yarn && yarn test:metadata-app
