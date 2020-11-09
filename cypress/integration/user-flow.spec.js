@@ -16,8 +16,10 @@ describe('Access to the new metadata app', () => {
 
   it('Returns 403 if not authorized', () => {
     cy.logout();
-    cy.visit('/dataset/new-metadata', {failOnStatusCode: false});
+    cy.visit('/dataset/new-metadata', { failOnStatusCode: false });
     cy.get('.navsec').should('not.exist');
+    cy.url().should('include', '/user/login');
+    cy.url().should('include', 'came_from=%2Fdataset%2Fnew-metadata');
   });
 });
 
@@ -42,7 +44,6 @@ describe('List of organizations on new metadata form', () => {
     cy.visit('/dataset');
     cy.get('.page_primary_action > .btn').click();
     cy.get('.navsec').contains('Required Metadata');
-    cy.get('select[name=owner_org]').select('test-123')
-      .should('contain.text', 'test-123');
-  })
-})
+    cy.get('select[name=owner_org]').select('test-123').should('contain.text', 'test-123');
+  });
+});
