@@ -22,6 +22,7 @@ setup:
 	npm install -g yarn
 
 test:
+	docker-compose -f docker-compose.yml -f docker-compose.seed.yml up -d
 	docker-compose run --rm app nosetests --ckan --with-pylons=docker_test.ini ./ckanext/dcat_usmetadata/tests/*
 
 up:
