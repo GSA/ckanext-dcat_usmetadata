@@ -1801,6 +1801,89 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
+              class="grid-row margin-top-3"
+            >
+              <div
+                class="wrapper"
+              >
+                <label
+                  class="usa-label"
+                >
+                  Modified
+                </label>
+                <div
+                  class="usa-helptext "
+                />
+                
+                <select
+                  choices="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+                  class="usa-select  "
+                  name="modified"
+                  type="select"
+                >
+                  <option
+                    value=""
+                  >
+                    -Select-
+                  </option>
+                  <option
+                    value="R/P1D"
+                  >
+                    Daily
+                  </option>
+                  <option
+                    value="R/P1W"
+                  >
+                    Weekly
+                  </option>
+                  <option
+                    value="R/P1M"
+                  >
+                    Monthly
+                  </option>
+                  <option
+                    value="adhoc"
+                  >
+                    Adhoc
+                  </option>
+                  <option
+                    value="R/P1Y"
+                  >
+                    Yearly
+                  </option>
+                  <option
+                    value="other"
+                  >
+                    Custom
+                  </option>
+                </select>
+              </div>
+              <div
+                class="wrapper"
+              >
+                <label
+                  class="usa-label"
+                />
+                <div
+                  class="usa-helptext disabled"
+                >
+                  <span
+                    class="usa-helptext"
+                  >
+                    If you selected “Custom”, please specify a valid ISO 8601 timestamp
+                  </span>
+                </div>
+                
+                <input
+                  class="usa-input disabled undefined undefined"
+                  disabled=""
+                  name="modifiedOther"
+                  type="string"
+                  value=""
+                />
+              </div>
+            </div>
+            <div
               class="grid-row margin-top-6"
             >
               <button
