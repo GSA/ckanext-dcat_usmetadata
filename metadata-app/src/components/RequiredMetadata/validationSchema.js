@@ -1,4 +1,5 @@
 import * as yup from 'yup';
+import * as parse from '@tehshrike/duration-iso-8601';
 
 export default yup.object().shape({
   saveDraft: yup.boolean(),
@@ -82,4 +83,16 @@ export default yup.object().shape({
     }),
   temporal_start_date: yup.date().typeError('Please specify a valid start date'),
   temporal_end_date: yup.date().typeError('Please specify a valid end date'),
+  modified: yup.string().when('saveDraft', (saveDraft, schema) => {
+    return saveDraft ? schema : schema.required('Modified date value is required');
+  }),
+  modifiedOther: yup
+    .string()
+    .required('Modified date value is required')
+    .test('temporal-start-end', 'Modified date should be a valid date', function validate(value) {
+      return value && parse(value.replace('R/', ''));
+    })
+    .when('modified', (modified, schema) => {
+      return modified === 'other' ? schema : yup.string();
+    }),
 });

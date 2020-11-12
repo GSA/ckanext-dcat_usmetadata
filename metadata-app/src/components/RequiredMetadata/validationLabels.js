@@ -16,4 +16,6 @@ export default {
   owner_org: 'Organization',
   temporal_start_date: 'Temporal Start Date',
   temporal_end_date: 'Temporal End Date',
+  modified: 'Modified',
+  modifiedOther: 'Modified',
 };
