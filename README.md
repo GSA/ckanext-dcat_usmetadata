@@ -30,75 +30,75 @@ In your CKAN .ini file add `dcat_usmetadata` to your enabled plugins:
 These tools are required for development.
 
 - [Node.js](https://nodejs.org/) 12.x
-- [GNU Make](https://www.gnu.org/software/make/)
-
-Install global dependencies.
-
-    $ make setup
+  - [Yarn](https://yarnpkg.com/) 1.22.x
 
 ### Setup
 
 Install Node.js dependencies.
 
-    $ yarn install
+```bash
+yarn install
+```
 
 Build the JS application. The new build files can be found in `ckanext/dcat_usmetadata/public` folder.
 
-    $ yarn run build
+```bash
+yarn build
+```
 
-Build the docker containers.
+Build and start the docker containers.
 
-    $ make build
-
-Run the tests.
-
-    $ make test
+```bash
+yarn build:docker
+yarn up-with-data
+```
 
 ## Testing
 
 There are several levels of testing:
 
-_TODO complete this, make sure it's accurate._
-
-| Suite                                           | Description | Command                                   |
-| ----------------------------------------------- | ----------- | ----------------------------------------- |
-| unit tests for the JS app                       |             | `yarn test:metadata-app --watchAll=false` |
-| browser tests for the JS app powered by cypress |             |
-| python integration tests for ckan               |             | `make test`                               |
-| e2e                                             |             | `yarn e2e`                                |
+| Suite                     | Description                         | Command                  |
+| ------------------------- | ----------------------------------- | ------------------------ |
+| Unit tests for the JS app | Tests for the React app.            | `yarn test:metadata-app` |
+| CKAN extension tests      | Python tests using Nosetests        | `yarn test`              |
+| End to end tests          | Cypress tests against inventory app | `yarn e2e`               |
 
 ## Linting
 
-_TODO_
-
 Lint the python code.
 
-    $ make lint-all
+```bash
+yarn lint:python
+```
 
 Lint the JavaScript code.
 
-    $ make app-lint
+```bash
+yarn lint:js
+```
 
 ## Metadata app
 
 The Metadata app is a [Create React App](https://create-react-app.dev/)-bootstrapped project.
 
-To run the app use `make app-up`
+To run the app use `yarn && yarn start:metadata-app` command.
 
-_TODO briefly describe how the metdata application relates to the CKAN
+_TODO briefly describe how the metadata application relates to the CKAN
 extension._
 
 ### Development
 
 This project uses [cosmos](https://reactcosmos.org/) for development.
 
-Run CKAN locally (`make up`) and get the Admin user's API Key. Add a test org for development purposes and get the id. Add these values to indicated place in `/metadata-app/src/index.js`.
+Run CKAN locally (`yarn up`) and get the Admin user's API Key. Add a test org for development purposes and get the id. Add these values to indicated place in `/metadata-app/src/index.js`.
 
-Run `make app-cosmos` to start the cosmos server, which will watch the `metadata-app/src` directory for changes.
+Run `yarn && yarn cosmos` to start the cosmos server, which will watch the `metadata-app/src` directory for changes.
 
 Run the unit tests.
 
-    $ make app-test
+```bash
+yarn test:metadata-app
+```
 
 ### Update Jest snapshots
 
@@ -107,7 +107,9 @@ match against a known good snapshot (HTML rendering) of the component. When you
 edit a component, you'll usually have to update the snapshot and inspect the
 diff to make sure all changes are as intended.
 
-    $ yarn test --updateSnapshot
+```bash
+yarn test --updateSnapshot
+```
 
 ## Local development and end-to-end testing
 
@@ -116,31 +118,25 @@ We use the [inventory app](https://github.com/GSA/inventory-app) locally for dev
 To build the latest JS code and update assets in the CKAN extension, you can run the following command from the root directory of this project:
 
 ```
-$ yarn build
+yarn build
 ```
 
-For convenience, we have prepared a single script that you can run to perform end-to-end tests locally. Don't forget to `yarn build` prior to running e2e tests:
+For convenience, we have prepared a single script that you can run to perform end-to-end tests locally. Don't forget to `yarn build` prior to running e2e tests, otherwise, the tests could run against older builds:
 
-```
-$ yarn e2e
+```bash
+yarn e2e
 ```
 
 Note, it may be necessary to remove cached images when rebuilding the inventory app docker container, in order to ensure that the new usmetadata-app template is included in the build. If you want to make sure that you aren't using cached builds, you can try:
 
-```
-$ docker-compose build --no-cache --pull ckanext-dcat_usmetadata_app
-```
-
-With the dcat_usmetadata extension running in the inventory app, use the following command to run e2e tests:
-
-```
-$ npx cypress run
+```bash
+docker-compose build --no-cache --pull ckanext-dcat_usmetadata_app
 ```
 
 To run e2e tests interactively use:
 
-```
-$ npx cypress open
+```bash
+yarn e2e:interactive
 ```
 
 ## Publishing a new version of the extension
