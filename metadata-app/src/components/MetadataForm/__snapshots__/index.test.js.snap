@@ -1832,7 +1832,7 @@ exports[`renders MetadataForm component 1`] = `
                     Daily
                   </option>
                   <option
-                    value="R/P1W"
+                    value="R/P7D"
                   >
                     Weekly
                   </option>

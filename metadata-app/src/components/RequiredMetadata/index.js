@@ -453,7 +453,7 @@ const RequiredMetadata = (props) => {
               label: 'Daily',
             },
             {
-              value: 'R/P1W',
+              value: 'R/P7D',
               id: 'choice-weekly',
               label: 'Weekly',
             },
