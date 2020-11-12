@@ -94,10 +94,12 @@ Run CKAN locally (`yarn up`) and get the Admin user's API Key. Add a test org fo
 
 Run `yarn && yarn cosmos` to start the cosmos server, which will watch the `metadata-app/src` directory for changes.
 
-Run the unit tests.
+Run the unit tests:
 
 ```bash
 yarn test:metadata-app
+# To run it in watch mode:
+yarn test:metadata-app:watch
 ```
 
 ### Update Jest snapshots
