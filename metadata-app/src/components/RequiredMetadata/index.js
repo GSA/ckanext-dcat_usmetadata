@@ -463,14 +463,14 @@ const RequiredMetadata = (props) => {
               label: 'Monthly',
             },
             {
-              value: 'adhoc',
-              id: 'choice-adhoc',
-              label: 'Adhoc',
-            },
-            {
               value: 'R/P1Y',
               id: 'choice-yearly',
               label: 'Yearly',
+            },
+            {
+              value: 'adhoc',
+              id: 'choice-adhoc',
+              label: 'Adhoc',
             },
             {
               value: 'other',

@@ -54,9 +54,9 @@ Cypress.Commands.add('requiredMetadata', (title) => {
   cy.get('#temporal_option_2').parent('.form-group').click();
   cy.get('input[name=temporal_start_date]').type('2010-11-11');
   cy.get('input[name=temporal_end_date]').type('2020-11-11');
-  cy.get('button[type=button]').contains('Save and Continue').click();
   cy.get('select[name=modified]').select('Custom');
   cy.get('input[name=modifiedOther]').type('P1Y2M3DT4H5M6S');
+  cy.get('button[type=button]').contains('Save and Continue').click();
 });
 
 Cypress.Commands.add('additionalMetadata', () => {
