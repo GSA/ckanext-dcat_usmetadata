@@ -441,6 +441,59 @@ const RequiredMetadata = (props) => {
         </div>
       </div>
 
+      <div className="grid-row margin-top-3">
+        <WrappedField
+          label="Modified"
+          name="modified"
+          type="select"
+          choices={[
+            {
+              value: 'R/P1D',
+              id: 'choice-daily',
+              label: 'Daily',
+            },
+            {
+              value: 'R/P7D',
+              id: 'choice-weekly',
+              label: 'Weekly',
+            },
+            {
+              value: 'R/P1M',
+              id: 'choice-monthly',
+              label: 'Monthly',
+            },
+            {
+              value: 'R/P1Y',
+              id: 'choice-yearly',
+              label: 'Yearly',
+            },
+            {
+              value: 'adhoc',
+              id: 'choice-adhoc',
+              label: 'Adhoc',
+            },
+            {
+              value: 'other',
+              id: 'choice-custom',
+              label: 'Custom',
+            },
+          ]}
+          className="error-msg"
+          errors={errors}
+          required
+        />
+        <WrappedField
+          name="modifiedOther"
+          type="string"
+          helptext={helpTextify(
+            `If you selected “Custom”, please specify a valid ISO 8601 timestamp`
+          )}
+          disabled={values.modified !== 'other'}
+          errors={errors}
+          required
+        />
+      </div>
+
       <div className="grid-row margin-top-6">
         <button
           style={{ display: 'none' }}

@@ -3,4 +3,5 @@ export default {
   spatial: 'false',
   spatial_location: 'false',
   temporal: 'false',
+  modifiedOther: '',
 };

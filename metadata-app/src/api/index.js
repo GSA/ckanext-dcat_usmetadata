@@ -147,6 +147,18 @@ const serializeSupplementalValues = (opts) => {
     delete newOpts.parent_dataset;
   }
 
+  if (opts.modified) {
+    newOpts.modified = opts.modified;
+    if (opts.modified === 'other') {
+      newOpts.modified = opts.modifiedOther;
+      // make sure that R/ is added at the beginning
+      if (newOpts.modified.substring(0, 2) !== 'R/') newOpts.modified = `R/${newOpts.modified}`;
+    } else if (opts.modified === 'adhoc') {
+      newOpts.modified = new Date();
+    }
+    delete newOpts.modifiedOther;
+  }
+
   return newOpts;
 };
 
@@ -221,7 +233,6 @@ const createDataset = (opts, apiUrl, apiKey) => {
     ? opts.url.split('/').pop()
     : slugify(opts.title, { lower: true, remove: /[*+~.()'"!:@]/g });
   delete body.url;
-  body.modified = new Date();
   body.bureau_code = '015:11';
   body.program_code = '015:001';
   return axios
@@ -278,7 +289,6 @@ const fetchDataset = async (id, apiUrl, apiKey) => {
 
 const updateDataset = (id, opts, apiUrl, apiKey) => {
   const body = serializeSupplementalValues(opts);
-  body.modified = new Date();
   body.id = id;
 
   // TODO where do we get these?

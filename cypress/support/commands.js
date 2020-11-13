@@ -31,7 +31,7 @@ Cypress.Commands.add('createUser', (username) => {
   cy.get('input[name=password2]').type(password);
   cy.get('button[name=save]').click({ force: true });
   cy.wait(2000);
-})
+});
 
 Cypress.Commands.add('requiredMetadata', (title) => {
   const datasetTitle = title || chance.word({ length: 5 });
@@ -54,6 +54,8 @@ Cypress.Commands.add('requiredMetadata', (title) => {
   cy.get('#temporal_option_2').parent('.form-group').click();
   cy.get('input[name=temporal_start_date]').type('2010-11-11');
   cy.get('input[name=temporal_end_date]').type('2020-11-11');
+  cy.get('select[name=modified]').select('Custom');
+  cy.get('input[name=modifiedOther]').type('P1Y2M3DT4H5M6S');
   cy.get('button[type=button]').contains('Save and Continue').click();
 });
 
@@ -93,4 +95,4 @@ Cypress.Commands.add('resourceUploadWithUrlAndSave', (url) => {
   cy.get('select[name=resource\\.mimetype]').select('DOC -- Word Document');
   cy.get('input[name=resource\\.format]').type(chance.word());
   cy.get('button[type=button]').contains('Save and add another resource').click();
-})
+});
