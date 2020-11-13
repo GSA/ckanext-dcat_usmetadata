@@ -69,6 +69,7 @@ describe('Required Metadata Page', () => {
     cy.get('input[name=unique_id]').type('unique id');
     cy.get('select[name=public_access_level]').select('public');
     cy.get('select[name=license]').select('MIT');
+    cy.get('select[name=modified]').select('Yearly');
     cy.get('button[type=button]')
       .contains('Save and Continue')
       .click()
