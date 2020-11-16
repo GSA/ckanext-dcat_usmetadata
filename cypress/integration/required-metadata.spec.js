@@ -52,6 +52,32 @@ describe('Required Metadata Page', () => {
     cy.contains('Dataset saved successfully');
   });
 
+  it('Able to add new tag without hiting Enter or Tab', () => {
+    const tagName = 'tag0123';
+    cy.login();
+    cy.visit('/dataset/new-metadata');
+    cy.get('input[name=title]').type('A title for tag tab test1');
+    cy.get('textarea[name=description]').type('description');
+    cy.get('.react-tags input').type(tagName);
+    cy.get('select[name=owner_org]').select('test-123');
+    cy.get('select[name=publisher]').select('Other');
+    cy.get('input[name=publisher_other]').type('Other publisher');
+    cy.get('input[name=subagency]').type('Sub Agency 1');
+    cy.get('input[name=contact_name]').type('Person');
+    cy.get('input[name=contact_email]').type('person@mail.com');
+    cy.get('input[name=unique_id]').type('unique id');
+    cy.get('select[name=public_access_level]').select('public');
+    cy.get('select[name=license]').select('MIT');
+    cy.get('select[name=modified]').select('Yearly');
+    cy.get('button[type=button]')
+      .contains('Save and Continue')
+      .click()
+      .then(() => {
+        cy.visit('/dataset/a-title-for-tag-tab-test1');
+        cy.contains(tagName);
+      });
+  });
+
   it('Edit dataset URL works', () => {
     cy.login();
     cy.visit('/dataset/new-metadata');
