@@ -1756,7 +1756,7 @@ exports[`Renders RequiredMetadata component 1`] = `
           <label
             class="usa-label"
           >
-            Modified
+            Update Frequency
           </label>
           <div
             class="usa-helptext "
@@ -1794,9 +1794,9 @@ exports[`Renders RequiredMetadata component 1`] = `
               Yearly
             </option>
             <option
-              value="adhoc"
+              value="as-needed"
             >
-              Adhoc
+              As needed
             </option>
             <option
               value="other"
@@ -1817,7 +1817,18 @@ exports[`Renders RequiredMetadata component 1`] = `
             <span
               class="usa-helptext"
             >
-              If you selected “Custom”, please specify a valid ISO 8601 timestamp
+              If you selected “Custom”, please specify a valid
+               
+              <a
+                class="usa-link usa-link--external"
+                href="https://en.wikipedia.org/wiki/ISO_8601"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                ISO 8601
+              </a>
+               
+              timestamp
             </span>
           </div>
           

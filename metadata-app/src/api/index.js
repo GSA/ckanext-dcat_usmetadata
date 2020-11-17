@@ -153,7 +153,7 @@ const serializeSupplementalValues = (opts) => {
       newOpts.modified = opts.modifiedOther;
       // make sure that R/ is added at the beginning
       if (newOpts.modified.substring(0, 2) !== 'R/') newOpts.modified = `R/${newOpts.modified}`;
-    } else if (opts.modified === 'adhoc') {
+    } else if (opts.modified === 'as-needed') {
       newOpts.modified = new Date();
     }
     delete newOpts.modifiedOther;
