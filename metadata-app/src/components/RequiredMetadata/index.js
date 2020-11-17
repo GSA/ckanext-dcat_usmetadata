@@ -98,6 +98,15 @@ const RequiredMetadata = (props) => {
         for further assistance.
       </HelpText>
     ),
+    modified: (
+      <HelpText>
+        If you selected “Custom”, please specify a valid{' '}
+        <Link target="_blank" href="https://en.wikipedia.org/wiki/ISO_8601">
+          ISO 8601
+        </Link>{' '}
+        timestamp
+      </HelpText>
+    ),
   };
 
   return (
@@ -443,7 +452,7 @@ const RequiredMetadata = (props) => {
 
       <div className="grid-row margin-top-3">
         <WrappedField
-          label="Modified"
+          label="Update Frequency"
           name="modified"
           type="select"
           choices={[
@@ -468,9 +477,9 @@ const RequiredMetadata = (props) => {
               label: 'Yearly',
             },
             {
-              value: 'adhoc',
-              id: 'choice-adhoc',
-              label: 'Adhoc',
+              value: 'as-needed',
+              id: 'as-needed',
+              label: 'As needed',
             },
             {
               value: 'other',
@@ -485,9 +494,7 @@ const RequiredMetadata = (props) => {
         <WrappedField
           name="modifiedOther"
           type="string"
-          helptext={helpTextify(
-            `If you selected “Custom”, please specify a valid ISO 8601 timestamp`
-          )}
+          helptext={helpTexts.modified}
           disabled={values.modified !== 'other'}
           errors={errors}
           required

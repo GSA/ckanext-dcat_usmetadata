@@ -84,14 +84,18 @@ export default yup.object().shape({
   temporal_start_date: yup.date().typeError('Please specify a valid start date'),
   temporal_end_date: yup.date().typeError('Please specify a valid end date'),
   modified: yup.string().when('saveDraft', (saveDraft, schema) => {
-    return saveDraft ? schema : schema.required('Modified date value is required');
+    return saveDraft ? schema : schema.required('Update Frequency is required');
   }),
   modifiedOther: yup
     .string()
-    .required('Modified date value is required')
-    .test('temporal-start-end', 'Modified date should be a valid date', function validate(value) {
-      return value && parse(value.replace('R/', ''));
-    })
+    .required('Update Frequency is required')
+    .test(
+      'modified-other',
+      'Update Frequency should be formatted as a proper ISO 8601 timestamp',
+      function validate(value) {
+        return value && parse(value.replace('R/', ''));
+      }
+    )
     .when('modified', (modified, schema) => {
       return modified === 'other' ? schema : yup.string();
     }),
