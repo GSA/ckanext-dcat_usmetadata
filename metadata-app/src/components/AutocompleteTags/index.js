@@ -28,6 +28,7 @@ const AutocompleteTags = (props) => {
           tags={currentParent}
           suggestions={suggestions}
           allowNew
+          addOnBlur
           ref={React.createRef()}
           onAddition={onAddition}
           onDelete={onDelete}
@@ -62,6 +63,7 @@ const AutocompleteTags = (props) => {
             tags={tags}
             suggestions={suggestions}
             allowNew
+            addOnBlur
             ref={React.createRef()}
             onAddition={arrayHelpers.push}
             onDelete={arrayHelpers.remove}
