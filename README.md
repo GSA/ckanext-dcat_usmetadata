@@ -90,7 +90,7 @@ extension._
 
 This project uses [cosmos](https://reactcosmos.org/) for development.
 
-Run CKAN locally (`yarn up`) and get the Admin user's API Key. Add a test org for development purposes and get the id. Add these values to indicated place in `/metadata-app/src/index.js`.
+Run CKAN locally (`yarn up`), get the Admin user's API Key and add it in `/metadata-app/public/index.html` as `data-apiKey` attribute of the `div` element. Add a test org for development purposes.
 
 Run `yarn && yarn cosmos` to start the cosmos server, which will watch the `metadata-app/src` directory for changes.
 
