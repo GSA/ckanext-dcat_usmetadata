@@ -1,10 +1,10 @@
+import { ReactComponent as Info } from 'uswds/dist/img/alerts/info.svg';
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import slugify from 'slugify';
 import WrappedField from '../WrappedField';
 import api from '../../api';
 import AutocompleteTags from '../AutocompleteTags';
-import { ReactComponent as Info } from '../../img/info.svg';
 import HelpText from '../HelpText';
 import Radio from '../Radio';
 import Link from '../Link';
@@ -35,6 +35,9 @@ const RequiredMetadata = (props) => {
   const [organizations, setOrganizations] = useState([]);
   useEffect(() => {
     api.fetchOrganizationsForUser(apiUrl, apiKey).then((data) => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const orgId = urlParams.get('group');
+      values.owner_org = orgId;
       setOrganizations(data);
     });
   }, []);
@@ -198,6 +201,7 @@ const RequiredMetadata = (props) => {
           label="Organization"
           name="owner_org"
           type="select"
+          value={values.owner_org}
           choices={organizations}
           required
           className="error-msg"

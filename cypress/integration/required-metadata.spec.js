@@ -108,6 +108,15 @@ describe('Required Metadata Page', () => {
         cy.request('POST', '/api/3/action/dataset_purge', { id: name });
       });
   });
+
+  it('Organization is pre-selected in the dropdown if the form is loaded from organization page', () => {
+    cy.login();
+    cy.visit('/organization/test-123');
+    cy.get('.page_primary_action > .btn.btn-primary').first().click();
+    // wait until the organization list will be loaded
+    cy.wait(3000);
+    cy.get('select[name=owner_org]').find(':selected').contains('test-123');
+  });
 });
 
 describe('Required Metadata Page errors', () => {
