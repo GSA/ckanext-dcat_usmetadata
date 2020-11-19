@@ -110,7 +110,6 @@ describe('Required Metadata Page', () => {
   });
 
   it('Organization is pre-selected in the dropdown if the form is loaded from organization page', () => {
-    cy.login();
     cy.visit('/organization/test-123');
     cy.get('.page_primary_action > .btn.btn-primary').first().click();
     // wait until the organization list will be loaded
