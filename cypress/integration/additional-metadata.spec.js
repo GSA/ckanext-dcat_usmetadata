@@ -4,25 +4,16 @@ const chance = new Chance();
 before(() => {
   cy.login();
   cy.createOrg();
-  cy.visit('/dataset/new-metadata');
 });
 
 beforeEach(() => {
-  Cypress.Cookies.preserveOnce('ckan');
-});
-
-describe('DCAT Metadata App', () => {
-  it('Loads', () => {
-    cy.visit('/dataset/new-metadata?group=test-123');
-  });
-
-  it('Has a title', () => {
-    cy.contains('Required Metadata');
-  });
+  cy.logout();
+  cy.login();
 });
 
 describe('Additional Metadata Page', () => {
   it('Validates and submits Additional Metadata succesfully', () => {
+    cy.visit('/dataset/new-metadata');
     cy.requiredMetadata();
     cy.wait(5000);
     cy.get('input[name=data_dictionary]').type('www.invalid.url');
@@ -41,7 +32,6 @@ describe('Additional Metadata Page', () => {
 describe('Parent Dataset', () => {
   it('Able to select', () => {
     const title = chance.word({ length: 5 });
-    cy.login();
     cy.visit('/dataset/new-metadata');
 
     cy.requiredMetadata(title);

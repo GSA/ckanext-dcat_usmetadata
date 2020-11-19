@@ -8,6 +8,10 @@ import * as serviceWorker from './serviceWorker';
 
 const root = document.getElementById('root');
 const apiUrl = root.getAttribute('data-apiUrl');
+// API key is only needed when running the React app outside of CKAN and only
+// for development purposes. In production, we shouldn't expose API key in
+// HTML template so that variable 'apiKey' below has value of undefined. This
+// would work because CKAN authenticates the caller using the session information.
 const apiKey = root.getAttribute('data-apiKey');
 const ownerOrg = root.getAttribute('data-ownerOrg');
 const datasetId = root.getAttribute('data-datasetId');

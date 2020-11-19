@@ -14,6 +14,13 @@ describe('Access to the new metadata app', () => {
     cy.get('.navsec').contains('Required Metadata');
   });
 
+  it('Does not expose API key in the HTML', () => {
+    cy.login();
+    cy.visit('/dataset/new-metadata');
+    cy.get('#root').should('have.attr', 'data-apiUrl');
+    cy.get('#root').should('not.have.attr', 'data-apiKey');
+  });
+
   it('Returns 403 if not authorized', () => {
     cy.logout();
     cy.visit('/dataset/new-metadata', { failOnStatusCode: false });
