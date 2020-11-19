@@ -210,6 +210,9 @@ textarea.usa-input {
   cursor: pointer;
 }
 
+.tooltip svg path{
+  fill: #0151d8
+}
 .dataset_url_input {
   margin-left: 5px;
   border-radius: 0;
@@ -279,40 +282,6 @@ input[type='file'] {
 
 .has-clear-button {
   max-width: 80% !important;
-}
-
-.error_message {
-  border-left: 6px solid #d63e04;
-  background-color: #f4e3db;
-  margin: 10px 0 0;
-  display: block;
-  padding: 15px 20px;
-}
-
-.error_message .icon {
-  background-image: url(../img/warning.svg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  display: inline-block;
-  height: 45px;
-  vertical-align: top;
-  width: 45px;
-}
-
-.error_message .content {
-  width: calc(100% - 55px);
-  display: inline-block;
-  vertical-align: top;
-  padding-left: 15px;
-}
-
-.error_message .content h3 {
-  margin: 0 0 10px;
-}
-
-.error_message .content p {
-  margin: 10px 0;
 }
 
 .addmore {

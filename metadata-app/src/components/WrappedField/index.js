@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'formik';
-import { ReactComponent as Info } from '../../img/info.svg';
+import { ReactComponent as Info } from 'uswds/dist/img/alerts/info.svg';
 import '../../css/custom.css';
 
 const WrappedField = (props) => {

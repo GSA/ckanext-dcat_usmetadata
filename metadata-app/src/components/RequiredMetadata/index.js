@@ -1,10 +1,10 @@
+import { ReactComponent as Info } from 'uswds/dist/img/alerts/info.svg';
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import slugify from 'slugify';
 import WrappedField from '../WrappedField';
 import api from '../../api';
 import AutocompleteTags from '../AutocompleteTags';
-import { ReactComponent as Info } from '../../img/info.svg';
 import HelpText from '../HelpText';
 import Radio from '../Radio';
 import Link from '../Link';
