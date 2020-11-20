@@ -35,9 +35,10 @@ const RequiredMetadata = (props) => {
   const [organizations, setOrganizations] = useState([]);
   useEffect(() => {
     api.fetchOrganizationsForUser(apiUrl, apiKey).then((data) => {
+      // if it comes from organization page then pre-select that specific organization
       const urlParams = new URLSearchParams(window.location.search);
       const orgId = urlParams.get('group');
-      values.owner_org = orgId;
+      if (orgId) values.owner_org = orgId;
       setOrganizations(data);
     });
   }, []);
