@@ -116,6 +116,25 @@ describe('Required Metadata Page', () => {
     cy.wait(3000);
     cy.get('select[name=owner_org]').find(':selected').contains('test-123');
   });
+
+  it('Organization is pre-selected in the dropdown if it that organization is the only one', () => {
+    const username = 'editor-only-in-one-organization';
+    cy.createUser(username);
+    cy.login();
+    cy.visit('/organization/member_new/test-123');
+    cy.get('input[name=username]').type(username, { force: true });
+    cy.get('select[name=role]').select('Editor', { force: true });
+    cy.get('button[name=submit]').click({ force: true });
+    cy.wait(2000);
+
+    cy.logout();
+    cy.login(username, 'test1234');
+
+    cy.visit('/dataset');
+    cy.get('.page_primary_action > .btn').click();
+    cy.wait(3000);
+    cy.get('select[name=owner_org]').find(':selected').contains('test-123');
+  });
 });
 
 describe('Required Metadata Page errors', () => {
