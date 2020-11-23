@@ -1,10 +1,10 @@
 import 'chance';
 
-Cypress.Commands.add('login', () => {
+Cypress.Commands.add('login', (username = 'admin', password = 'admin') => {
   cy.clearCookies();
   cy.visit('/user/login');
-  cy.get('input[name=login]').type('admin');
-  cy.get('input[name=password]').type('admin');
+  cy.get('input[name=login]').type(username);
+  cy.get('input[name=password]').type(password);
   cy.get('.form-actions > .btn').click({ force: true });
   cy.wait(2000);
 });
