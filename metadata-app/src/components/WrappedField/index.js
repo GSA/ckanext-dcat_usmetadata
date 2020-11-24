@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'formik';
-import { ReactComponent as Info } from 'uswds/dist/img/alerts/info.svg';
+import ToolTip from '../ToolTip';
 import '../../css/custom.css';
 
 const WrappedField = (props) => {
-  const [toolTipShown, setToolTipShown] = useState(false);
-  // eslint-disable-next-line
-  const toggleToolTip = () => setToolTipShown(toolTipShown ? false : true);
-
   const {
     value,
     name,
@@ -43,37 +39,10 @@ const WrappedField = (props) => {
 
         {/* Tooltip */}
         {infoText && (
-          <div className={`tooltip ${toolTipShown ? 'show' : ''}`}>
-            <Info
-              height="20px"
-              width="20px"
-              style={{ marginLeft: '.5em' }}
-              tabIndex={0}
-              onClick={() => toggleToolTip()}
-              onKeyUp={(event) => {
-                if (event.keyCode === 13) {
-                  toggleToolTip();
-                }
-              }}
-            />
-            <span className="tooltiptext">
-              <span
-                tabIndex={0}
-                className="close"
-                onClick={() => setToolTipShown(false)}
-                role="button"
-                onKeyUp={(event) => {
-                  if (event.keyCode === 13) {
-                    setToolTipShown(false);
-                  }
-                }}
-              >
-                <span className="close-tag">&times;</span>
-              </span>
-              <h3>{label}</h3>
-              <p>{infoText}</p>
-            </span>
-          </div>
+          <ToolTip>
+            <h3>{label}</h3>
+            <p>{infoText}</p>
+          </ToolTip>
         )}
       </label>
 
