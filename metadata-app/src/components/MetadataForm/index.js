@@ -270,6 +270,7 @@ const MetadataForm = (props) => {
                       draftSaved={draftSaved ? formatDate(draftSaved) : undefined}
                       setFieldValue={setFieldValue}
                       submitForm={submitForm}
+                      handleSteps={setCurrentStep}
                     />
                   </div>
                 </Form>

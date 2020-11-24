@@ -59,7 +59,7 @@ const helpTexts = {
 };
 
 const AdditionalMetadata = (props) => {
-  const { values, apiUrl, apiKey, draftSaved, setFieldValue, submitForm } = props;
+  const { values, apiUrl, apiKey, draftSaved, setFieldValue, submitForm, handleSteps } = props;
 
   const getRegionalChoices = (selectedLangValue) => {
     const lang = languages.find((item) => item.value === selectedLangValue) || {};
@@ -279,6 +279,18 @@ const AdditionalMetadata = (props) => {
           Save draft
         </button>
         <button
+          className="usa-button usa-button--outline"
+          type="button"
+          onClick={() => handleSteps(0)}
+          onKeyUp={(e) => {
+            if (e.keyCode === 13) {
+              handleSteps(0);
+            }
+          }}
+        >
+          Back to previous page
+        </button>
+        <button
           className="usa-button"
           type="button"
           onClick={async () => {
@@ -304,6 +316,7 @@ const AdditionalMetadata = (props) => {
 };
 
 AdditionalMetadata.propTypes = {
+  handleSteps: PropTypes.func,
   setFieldValue: PropTypes.func,
   submitForm: PropTypes.func,
   draftSaved: PropTypes.string,
