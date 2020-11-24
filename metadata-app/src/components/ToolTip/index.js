@@ -34,7 +34,7 @@ const ToolTip = (props) => {
   }, [tooltipRef]);
 
   return (
-    <div className={`tooltip ${toolTipShown ? 'show' : ''}`}>
+    <div className="tooltip">
       <Info
         height="20px"
         width="20px"
@@ -48,26 +48,28 @@ const ToolTip = (props) => {
           }
         }}
       />
-      <div ref={tooltipRef}>
-        <span className="tooltiptext">
-          <span className="close">
-            <span
-              tabIndex={0}
-              className="close-tag"
-              onClick={() => setToolTipShown(false)}
-              role="button"
-              onKeyUp={(event) => {
-                if (event.keyCode === 13) {
-                  setToolTipShown(false);
-                }
-              }}
-            >
-              &times;
+      {toolTipShown && (
+        <div ref={tooltipRef}>
+          <span className="tooltiptext">
+            <span className="close">
+              <span
+                tabIndex={0}
+                className="close-tag"
+                onClick={() => setToolTipShown(false)}
+                role="button"
+                onKeyUp={(event) => {
+                  if (event.keyCode === 13) {
+                    setToolTipShown(false);
+                  }
+                }}
+              >
+                &times;
+              </span>
             </span>
+            {children}
           </span>
-          {children}
-        </span>
-      </div>
+        </div>
+      )}
     </div>
   );
 };
