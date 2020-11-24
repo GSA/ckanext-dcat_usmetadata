@@ -9,30 +9,45 @@ before(() => {
 beforeEach(() => {
   cy.logout();
   cy.login();
+  cy.visit('/dataset/new-metadata');
 });
 
 describe('Additional Metadata Page', () => {
   it('Validates and submits Additional Metadata succesfully', () => {
-    cy.visit('/dataset/new-metadata');
-    cy.requiredMetadata();
-    cy.wait(5000);
-    cy.get('input[name=data_dictionary]').type('www.invalid.url');
-    cy.get('input[name=homepage_url]').type('www.invalid.url');
-    cy.get('button[type=button]').contains('Save and Continue').click();
-    cy.get('h3.usa-alert__heading').contains('This form contains invalid entries');
-    cy.get('.usa-alert__text').contains('data_dictionary must be a valid URL');
-    cy.get('.usa-alert__text').contains('homepage_url must be a valid URL');
-    cy.additionalMetadata();
-    cy.get('button[type=button]').contains('Save and Continue').click();
-    cy.wait(5000);
-    cy.contains('You can add the URL of the dataset where it is available on the agency website.');
+    cy.requiredMetadata().then(() => {
+      cy.get('input[name=data_dictionary]').type('www.invalid.url');
+      cy.get('input[name=homepage_url]').type('www.invalid.url');
+      cy.get('button[type=button]').contains('Save and Continue').click();
+      cy.get('h3.usa-alert__heading').contains('This form contains invalid entries');
+      cy.get('.usa-alert__text').contains('data_dictionary must be a valid URL');
+      cy.get('.usa-alert__text').contains('homepage_url must be a valid URL');
+      cy.additionalMetadata();
+      cy.get('button[type=button]')
+        .contains('Save and Continue')
+        .click()
+        .then(() => {
+          cy.contains(
+            'You can add the URL of the dataset where it is available on the agency website.'
+          );
+        });
+    });
+  });
+
+  it('Goes back to previous page', () => {
+    cy.requiredMetadata().then(() => {
+      cy.get('button[type=button]')
+        .contains('Back to previous page')
+        .click()
+        .then(() => {
+          cy.contains('The following fields are required metadata');
+        });
+    });
   });
 });
 
 describe('Parent Dataset', () => {
   it('Able to select', () => {
     const title = chance.word({ length: 5 });
-    cy.visit('/dataset/new-metadata');
 
     cy.requiredMetadata(title);
     cy.additionalMetadata();
