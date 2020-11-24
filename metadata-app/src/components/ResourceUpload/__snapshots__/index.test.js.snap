@@ -534,6 +534,12 @@ exports[`Renders Resource Upload component 1`] = `
           Save draft
         </button>
         <button
+          class="usa-button usa-button--outline"
+          type="button"
+        >
+          Back to previous page
+        </button>
+        <button
           class="usa-button"
           type="button"
         >
