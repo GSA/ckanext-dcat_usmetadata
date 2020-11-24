@@ -245,7 +245,7 @@ exports[`Renders RequiredMetadata component 1`] = `
           >
             Publisher
             <div
-              class="tooltip "
+              class="tooltip"
             >
               <svg
                 height="20px"
@@ -255,29 +255,6 @@ exports[`Renders RequiredMetadata component 1`] = `
               >
                 info.svg
               </svg>
-              <div>
-                <span
-                  class="tooltiptext"
-                >
-                  <span
-                    class="close"
-                  >
-                    <span
-                      class="close-tag"
-                      role="button"
-                      tabindex="0"
-                    >
-                      ×
-                    </span>
-                  </span>
-                  <h3>
-                    Publisher
-                  </h3>
-                  <p>
-                    The publishing entity (e.g. your agency) and optionally their parent organization(s).
-                  </p>
-                </span>
-              </div>
             </div>
           </label>
           <div
@@ -1193,7 +1170,7 @@ exports[`Renders RequiredMetadata component 1`] = `
           >
             Contact Name
             <div
-              class="tooltip "
+              class="tooltip"
             >
               <svg
                 height="20px"
@@ -1203,29 +1180,6 @@ exports[`Renders RequiredMetadata component 1`] = `
               >
                 info.svg
               </svg>
-              <div>
-                <span
-                  class="tooltiptext"
-                >
-                  <span
-                    class="close"
-                  >
-                    <span
-                      class="close-tag"
-                      role="button"
-                      tabindex="0"
-                    >
-                      ×
-                    </span>
-                  </span>
-                  <h3>
-                    Contact Name
-                  </h3>
-                  <p>
-                    This should be the person who can best answer or triage questions about this dataset, either on the metadata or the substance of the data resources.
-                  </p>
-                </span>
-              </div>
             </div>
           </label>
           <div
@@ -1274,7 +1228,7 @@ exports[`Renders RequiredMetadata component 1`] = `
           >
             Unique ID
             <div
-              class="tooltip "
+              class="tooltip"
             >
               <svg
                 height="20px"
@@ -1284,29 +1238,6 @@ exports[`Renders RequiredMetadata component 1`] = `
               >
                 info.svg
               </svg>
-              <div>
-                <span
-                  class="tooltiptext"
-                >
-                  <span
-                    class="close"
-                  >
-                    <span
-                      class="close-tag"
-                      role="button"
-                      tabindex="0"
-                    >
-                      ×
-                    </span>
-                  </span>
-                  <h3>
-                    Unique ID
-                  </h3>
-                  <p>
-                    This is the ID number or code used within your agency to differentiate this dataset from other datasets.
-                  </p>
-                </span>
-              </div>
             </div>
           </label>
           <div
@@ -1628,7 +1559,7 @@ exports[`Renders RequiredMetadata component 1`] = `
           >
             Temporal
             <div
-              class="tooltip "
+              class="tooltip"
             >
               <svg
                 height="20px"
@@ -1638,29 +1569,6 @@ exports[`Renders RequiredMetadata component 1`] = `
               >
                 info.svg
               </svg>
-              <div>
-                <span
-                  class="tooltiptext"
-                >
-                  <span
-                    class="close"
-                  >
-                    <span
-                      class="close-tag"
-                      role="button"
-                      tabindex="0"
-                    >
-                      ×
-                    </span>
-                  </span>
-                  <h3>
-                    Temporal
-                  </h3>
-                  <p>
-                    For example, for a 2010 Census dataset (which runs for 10 years until April 1st of the year of the Census), the temporal extent would cover a period of time beginning 2000-04-02 and ending 2010-04-01.
-                  </p>
-                </span>
-              </div>
             </div>
           </span>
            
