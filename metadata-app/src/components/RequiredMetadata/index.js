@@ -1,4 +1,3 @@
-import { ReactComponent as Info } from 'uswds/dist/img/alerts/info.svg';
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import slugify from 'slugify';
@@ -8,6 +7,7 @@ import AutocompleteTags from '../AutocompleteTags';
 import HelpText from '../HelpText';
 import Radio from '../Radio';
 import Link from '../Link';
+import ToolTip from '../ToolTip';
 
 const publishersDictionary = require('./publishers.json');
 const licenses = require('./licenses.json');
@@ -50,9 +50,6 @@ const RequiredMetadata = (props) => {
 
   // RADIO / SELECT Values
   const [urlDisabled, setUrlDisabled] = useState(true);
-  const [toolTipShown, setToolTipShown] = useState(false);
-  // eslint-disable-next-line
-  const toggleToolTip = () => setToolTipShown(toolTipShown ? false : true);
 
   const helpTextify = (text) => {
     return <HelpText>{text}</HelpText>;
@@ -387,37 +384,14 @@ const RequiredMetadata = (props) => {
         <div className="grid-col-12">
           <span className="usa-label">
             Temporal
-            <div className={`tooltip ${toolTipShown ? 'show' : ''}`}>
-              <Info
-                tabIndex={0}
-                height="20px"
-                width="20px"
-                style={{ marginLeft: '.5em' }}
-                onClick={() => toggleToolTip()}
-                onKeyUp={(e) => {
-                  if (e.keyCode === 13) {
-                    toggleToolTip();
-                  }
-                }}
-              />
-              <span className="tooltiptext">
-                <span
-                  tabIndex={0}
-                  className="close"
-                  onClick={() => setToolTipShown(false)}
-                  role="button"
-                  onKeyDown={() => setToolTipShown(false)}
-                >
-                  <span className="close-tag">&times;</span>
-                </span>
-                <h3>Temporal</h3>
-                <p>
-                  For example, for a 2010 Census dataset (which runs for 10 years until April 1st of
-                  the year of the Census), the temporal extent would cover a period of time
-                  beginning 2000-04-02 and ending 2010-04-01.
-                </p>
-              </span>
-            </div>
+            <ToolTip>
+              <h3>Temporal</h3>
+              <p>
+                For example, for a 2010 Census dataset (which runs for 10 years until April 1st of
+                the year of the Census), the temporal extent would cover a period of time beginning
+                2000-04-02 and ending 2010-04-01.
+              </p>
+            </ToolTip>
           </span>{' '}
           <br />
           {errors && errors.temporal && <span className="error-msg">{errors.temporal}</span>}

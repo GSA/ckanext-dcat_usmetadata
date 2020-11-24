@@ -93,31 +93,33 @@ exports[`Renders RequiredMetadata component 1`] = `
                 >
                   info.svg
                 </svg>
-                <span
-                  class="tooltiptext"
-                >
+                <div>
                   <span
-                    class="close"
-                    role="button"
-                    tabindex="0"
+                    class="tooltiptext"
                   >
                     <span
-                      class="close-tag"
+                      class="close"
                     >
-                      ×
+                      <span
+                        class="close-tag"
+                        role="button"
+                        tabindex="0"
+                      >
+                        ×
+                      </span>
                     </span>
+                    <h3>
+                      Themes
+                    </h3>
+                    <p>
+                      <span
+                        class="usa-helptext"
+                      >
+                        Examples include: vegetables, non_starchy, green.
+                      </span>
+                    </p>
                   </span>
-                  <h3>
-                    Themes
-                  </h3>
-                  <p>
-                    <span
-                      class="usa-helptext"
-                    >
-                      Examples include: vegetables, non_starchy, green.
-                    </span>
-                  </p>
-                </span>
+                </div>
               </div>
             </label>
             <div
@@ -159,31 +161,33 @@ exports[`Renders RequiredMetadata component 1`] = `
                 >
                   info.svg
                 </svg>
-                <span
-                  class="tooltiptext"
-                >
+                <div>
                   <span
-                    class="close"
-                    role="button"
-                    tabindex="0"
+                    class="tooltiptext"
                   >
                     <span
-                      class="close-tag"
+                      class="close"
                     >
-                      ×
+                      <span
+                        class="close-tag"
+                        role="button"
+                        tabindex="0"
+                      >
+                        ×
+                      </span>
                     </span>
+                    <h3>
+                      Data Dictionary URL
+                    </h3>
+                    <p>
+                      <span
+                        class="usa-helptext"
+                      >
+                        Provide a link to data dictionary or other reference that helps users understand the dataset. Example: "https://www.agency.gov/vegetables/vegetables-all.zip"
+                      </span>
+                    </p>
                   </span>
-                  <h3>
-                    Data Dictionary URL
-                  </h3>
-                  <p>
-                    <span
-                      class="usa-helptext"
-                    >
-                      Provide a link to data dictionary or other reference that helps users understand the dataset. Example: "https://www.agency.gov/vegetables/vegetables-all.zip"
-                    </span>
-                  </p>
-                </span>
+                </div>
               </div>
             </label>
             <div
@@ -736,31 +740,33 @@ exports[`Renders RequiredMetadata component 1`] = `
                 >
                   info.svg
                 </svg>
-                <span
-                  class="tooltiptext"
-                >
+                <div>
                   <span
-                    class="close"
-                    role="button"
-                    tabindex="0"
+                    class="tooltiptext"
                   >
                     <span
-                      class="close-tag"
+                      class="close"
                     >
-                      ×
+                      <span
+                        class="close-tag"
+                        role="button"
+                        tabindex="0"
+                      >
+                        ×
+                      </span>
                     </span>
+                    <h3>
+                      Dataset Landing Page URL
+                    </h3>
+                    <p>
+                      <span
+                        class="usa-helptext"
+                      >
+                        This landing page should contain or be linked to all resources tied to the dataset. Example: "https://www.agency.gov/vegetables"
+                      </span>
+                    </p>
                   </span>
-                  <h3>
-                    Dataset Landing Page URL
-                  </h3>
-                  <p>
-                    <span
-                      class="usa-helptext"
-                    >
-                      This landing page should contain or be linked to all resources tied to the dataset. Example: "https://www.agency.gov/vegetables"
-                    </span>
-                  </p>
-                </span>
+                </div>
               </div>
             </label>
             <div
@@ -1203,41 +1209,43 @@ exports[`Renders RequiredMetadata component 1`] = `
                 >
                   info.svg
                 </svg>
-                <span
-                  class="tooltiptext"
-                >
+                <div>
                   <span
-                    class="close"
-                    role="button"
-                    tabindex="0"
+                    class="tooltiptext"
                   >
                     <span
-                      class="close-tag"
+                      class="close"
                     >
-                      ×
-                    </span>
-                  </span>
-                  <h3>
-                    Dataset's IT Unique Investment Identifier
-                  </h3>
-                  <p>
-                    <span
-                      class="usa-helptext"
-                    >
-                      This can often be found in Exhibit 53 documents, and takes the form ###-#########. Learn more about Exhibit 53 documents at
-                       
-                      <a
-                        class="usa-link usa-link--external"
-                        href="https://www.whitehouse.gov/wp-content/uploads/2018/06/fy-2020-it-budget-guidance.pdf"
-                        rel="noopener noreferrer"
-                        target="_blank"
+                      <span
+                        class="close-tag"
+                        role="button"
+                        tabindex="0"
                       >
-                        this PDF
-                      </a>
-                      .
+                        ×
+                      </span>
                     </span>
-                  </p>
-                </span>
+                    <h3>
+                      Dataset's IT Unique Investment Identifier
+                    </h3>
+                    <p>
+                      <span
+                        class="usa-helptext"
+                      >
+                        This can often be found in Exhibit 53 documents, and takes the form ###-#########. Learn more about Exhibit 53 documents at
+                         
+                        <a
+                          class="usa-link usa-link--external"
+                          href="https://www.whitehouse.gov/wp-content/uploads/2018/06/fy-2020-it-budget-guidance.pdf"
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        >
+                          this PDF
+                        </a>
+                        .
+                      </span>
+                    </p>
+                  </span>
+                </div>
               </div>
             </label>
             <div
@@ -1277,31 +1285,33 @@ exports[`Renders RequiredMetadata component 1`] = `
                 >
                   info.svg
                 </svg>
-                <span
-                  class="tooltiptext"
-                >
+                <div>
                   <span
-                    class="close"
-                    role="button"
-                    tabindex="0"
+                    class="tooltiptext"
                   >
                     <span
-                      class="close-tag"
+                      class="close"
                     >
-                      ×
+                      <span
+                        class="close-tag"
+                        role="button"
+                        tabindex="0"
+                      >
+                        ×
+                      </span>
                     </span>
+                    <h3>
+                      Related Documents
+                    </h3>
+                    <p>
+                      <span
+                        class="usa-helptext"
+                      >
+                        Related documents such as technical information about a dataset, developer documentation, etc. Format for entry is: https://www.agency.gov/fruits/fruits.csv, https://www.agency.gov/legumes/legumes
+                      </span>
+                    </p>
                   </span>
-                  <h3>
-                    Related Documents
-                  </h3>
-                  <p>
-                    <span
-                      class="usa-helptext"
-                    >
-                      Related documents such as technical information about a dataset, developer documentation, etc. Format for entry is: https://www.agency.gov/fruits/fruits.csv, https://www.agency.gov/legumes/legumes
-                    </span>
-                  </p>
-                </span>
+                </div>
               </div>
             </label>
             <div
@@ -1372,31 +1382,33 @@ exports[`Renders RequiredMetadata component 1`] = `
                 >
                   info.svg
                 </svg>
-                <span
-                  class="tooltiptext"
-                >
+                <div>
                   <span
-                    class="close"
-                    role="button"
-                    tabindex="0"
+                    class="tooltiptext"
                   >
                     <span
-                      class="close-tag"
+                      class="close"
                     >
-                      ×
+                      <span
+                        class="close-tag"
+                        role="button"
+                        tabindex="0"
+                      >
+                        ×
+                      </span>
                     </span>
+                    <h3>
+                      System of Records Notice URL
+                    </h3>
+                    <p>
+                      <span
+                        class="usa-helptext"
+                      >
+                        If the dataset is a designated System of Records under the Privacy Act of 1974, provide the URL for the System of Recors Notice
+                      </span>
+                    </p>
                   </span>
-                  <h3>
-                    System of Records Notice URL
-                  </h3>
-                  <p>
-                    <span
-                      class="usa-helptext"
-                    >
-                      If the dataset is a designated System of Records under the Privacy Act of 1974, provide the URL for the System of Recors Notice
-                    </span>
-                  </p>
-                </span>
+                </div>
               </div>
             </label>
             <div
