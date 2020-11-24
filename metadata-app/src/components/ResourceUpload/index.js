@@ -273,7 +273,9 @@ ResourceUpload.propTypes = {
   handleSteps: PropTypes.func,
   setFieldValue: PropTypes.func,
   submitForm: PropTypes.func,
+  isSubmitting: PropTypes.bool,
   draftSaved: PropTypes.string,
+  errors: PropTypes.any, // eslint-disable-line
   values: PropTypes.shape({
     resource: PropTypes.shape({
       url: PropTypes.string,
