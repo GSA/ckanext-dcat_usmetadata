@@ -385,6 +385,7 @@ const MetadataForm = (props) => {
                   setFieldValue={setFieldValue}
                   submitForm={submitForm}
                   isSubmitting={isSubmitting}
+                  handleSteps={setCurrentStep}
                 />
               </Form>
             </div>

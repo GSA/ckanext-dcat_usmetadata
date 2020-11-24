@@ -6,7 +6,15 @@ import WrappedField from '../WrappedField';
 import resourceFormats from './resource_formats.json';
 
 const ResourceUpload = (props) => {
-  const { values, errors, setFieldValue, submitForm, draftSaved, isSubmitting } = props; // eslint-disable-line
+  const {
+    values,
+    errors,
+    setFieldValue,
+    submitForm,
+    draftSaved,
+    isSubmitting,
+    handleSteps,
+  } = props; // eslint-disable-line
   const resource = values.resource || {};
   const { url, name, description, mimetype, format } = resource;
 
@@ -223,6 +231,18 @@ const ResourceUpload = (props) => {
           Save draft
         </button>
         <button
+          className="usa-button usa-button--outline"
+          type="button"
+          onClick={() => handleSteps(1)}
+          onKeyUp={(e) => {
+            if (e.keyCode === 13) {
+              handleSteps(1);
+            }
+          }}
+        >
+          Back to previous page
+        </button>
+        <button
           className="usa-button"
           type="button"
           onClick={() => {
@@ -250,6 +270,7 @@ const ResourceUpload = (props) => {
 };
 
 ResourceUpload.propTypes = {
+  handleSteps: PropTypes.func,
   setFieldValue: PropTypes.func,
   submitForm: PropTypes.func,
   draftSaved: PropTypes.string,
