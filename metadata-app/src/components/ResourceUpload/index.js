@@ -5,6 +5,19 @@ import Link from '../Link';
 import WrappedField from '../WrappedField';
 import resourceFormats from './resource_formats.json';
 
+const sortedResourceFormats = resourceFormats.sort((a, b) => {
+  const labelA = a.label.toUpperCase();
+  const labelB = b.label.toUpperCase();
+  if (labelA < labelB) {
+    return -1;
+  }
+  if (labelA > labelB) {
+    return 1;
+  }
+
+  return 0;
+});
+
 const ResourceUpload = (props) => {
   const { values, errors, setFieldValue, submitForm, draftSaved, isSubmitting } = props; // eslint-disable-line
   const resource = values.resource || {};
@@ -145,7 +158,7 @@ const ResourceUpload = (props) => {
             label="Media Type"
             name="resource.mimetype"
             type="select"
-            choices={resourceFormats}
+            choices={sortedResourceFormats}
             value={mimetype}
           />
         </div>
