@@ -511,32 +511,28 @@ const RequiredMetadata = (props) => {
         />
       </div>
 
-      <div className="grid-row margin-top-6">
-        <div className="tablet:grid-col">
-          <button
-            style={{ display: 'none' }}
-            className="usa-button usa-button--outline"
-            type="button"
-            onClick={async () => {
-              await setFieldValue('saveDraft', true);
-              submitForm();
-            }}
-          >
-            Save draft
-          </button>
-        </div>
-        <div className="tablet:grid-col">
-          <button
-            className="usa-button pin-right margin-right-0"
-            type="button"
-            onClick={async () => {
-              await setFieldValue('saveDraft', false);
-              submitForm();
-            }}
-          >
-            Save and Continue
-          </button>
-        </div>
+      <div className="margin-top-6 clearfix">
+        <button
+          style={{ display: 'none' }}
+          className="usa-button usa-button--outline"
+          type="button"
+          onClick={async () => {
+            await setFieldValue('saveDraft', true);
+            submitForm();
+          }}
+        >
+          Save draft
+        </button>
+        <button
+          className="usa-button float-right margin-right-0"
+          type="button"
+          onClick={async () => {
+            await setFieldValue('saveDraft', false);
+            submitForm();
+          }}
+        >
+          Save and Continue
+        </button>
       </div>
       {draftSaved && (
         <div style={{ marginTop: '1rem' }}>

@@ -266,10 +266,10 @@ const AdditionalMetadata = (props) => {
           </div>
         </div>
       )}
-      <div className="grid-row margin-top-6">
+      <div className="margin-top-6 clearfix">
         <button
           style={{ display: 'none' }}
-          className="usa-button usa-button--outline"
+          className="usa-button usa-button--outline float-left"
           type="button"
           onClick={async () => {
             await setFieldValue('saveDraft', true);
@@ -278,28 +278,30 @@ const AdditionalMetadata = (props) => {
         >
           Save draft
         </button>
-        <button
-          className="usa-button usa-button--outline"
-          type="button"
-          onClick={() => handleSteps(0)}
-          onKeyUp={(e) => {
-            if (e.keyCode === 13) {
-              handleSteps(0);
-            }
-          }}
-        >
-          Back to previous page
-        </button>
-        <button
-          className="usa-button"
-          type="button"
-          onClick={async () => {
-            await setFieldValue('saveDraft', false);
-            submitForm();
-          }}
-        >
-          Save and Continue
-        </button>
+        <div className="float-right">
+          <button
+            className="usa-button usa-button--outline"
+            type="button"
+            onClick={() => handleSteps(0)}
+            onKeyUp={(e) => {
+              if (e.keyCode === 13) {
+                handleSteps(0);
+              }
+            }}
+          >
+            Back to previous page
+          </button>
+          <button
+            className="usa-button margin-right-0"
+            type="button"
+            onClick={async () => {
+              await setFieldValue('saveDraft', false);
+              submitForm();
+            }}
+          >
+            Save and Continue
+          </button>
+        </div>
       </div>
       {draftSaved && (
         <div style={{ marginTop: '1rem' }}>
