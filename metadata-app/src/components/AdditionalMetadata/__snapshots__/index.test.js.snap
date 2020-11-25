@@ -538,7 +538,7 @@ exports[`Renders RequiredMetadata component 1`] = `
             />
             
             <select
-              choices="Decennial,Quadrennial,Annual,Bimonthly,Semiweekly,Daily,Biweekly,Semiannual,Biennial,Triennial,Three times a week,Three times a month,Every five years,Every eight years,Continuously updated,Monthly,Quarterly,Semimonthly,Three times a year,Weekly,Hourly,Irregular"
+              choices="Continuously updated,Hourly,Daily,Three times a week,Semiweekly,Weekly,Three times a month,Biweekly,Semimonthly,Monthly,Bimonthly,Quarterly,Three times a year,Semiannual,Annual,Biennial,Triennial,Quadrennial,Every five years,Every eight years,Decennial,Irregular"
               class="usa-select  "
               name="accrual_periodicity"
               type="select"
@@ -549,29 +549,14 @@ exports[`Renders RequiredMetadata component 1`] = `
                 -Select-
               </option>
               <option
-                value="Decennial"
+                value="Continuously updated"
               >
-                Decennial
+                Continuously updated
               </option>
               <option
-                value="Quadrennial"
+                value="Hourly"
               >
-                Quadrennial
-              </option>
-              <option
-                value="Annual"
-              >
-                Annual
-              </option>
-              <option
-                value="Bimonthly"
-              >
-                Bimonthly
-              </option>
-              <option
-                value="Semiweekly"
-              >
-                Semiweekly
+                Hourly
               </option>
               <option
                 value="Daily"
@@ -579,14 +564,64 @@ exports[`Renders RequiredMetadata component 1`] = `
                 Daily
               </option>
               <option
+                value="Three times a week"
+              >
+                Three times a week
+              </option>
+              <option
+                value="Semiweekly"
+              >
+                Semiweekly
+              </option>
+              <option
+                value="Weekly"
+              >
+                Weekly
+              </option>
+              <option
+                value="Three times a month"
+              >
+                Three times a month
+              </option>
+              <option
                 value="Biweekly"
               >
                 Biweekly
               </option>
               <option
+                value="Semimonthly"
+              >
+                Semimonthly
+              </option>
+              <option
+                value="Monthly"
+              >
+                Monthly
+              </option>
+              <option
+                value="Bimonthly"
+              >
+                Bimonthly
+              </option>
+              <option
+                value="Quarterly"
+              >
+                Quarterly
+              </option>
+              <option
+                value="Three times a year"
+              >
+                Three times a year
+              </option>
+              <option
                 value="Semiannual"
               >
                 Semiannual
+              </option>
+              <option
+                value="Annual"
+              >
+                Annual
               </option>
               <option
                 value="Biennial"
@@ -599,14 +634,9 @@ exports[`Renders RequiredMetadata component 1`] = `
                 Triennial
               </option>
               <option
-                value="Three times a week"
+                value="Quadrennial"
               >
-                Three times a week
-              </option>
-              <option
-                value="Three times a month"
-              >
-                Three times a month
+                Quadrennial
               </option>
               <option
                 value="Every five years"
@@ -619,39 +649,9 @@ exports[`Renders RequiredMetadata component 1`] = `
                 Every eight years
               </option>
               <option
-                value="Continuously updated"
+                value="Decennial"
               >
-                Continuously updated
-              </option>
-              <option
-                value="Monthly"
-              >
-                Monthly
-              </option>
-              <option
-                value="Quarterly"
-              >
-                Quarterly
-              </option>
-              <option
-                value="Semimonthly"
-              >
-                Semimonthly
-              </option>
-              <option
-                value="Three times a year"
-              >
-                Three times a year
-              </option>
-              <option
-                value="Weekly"
-              >
-                Weekly
-              </option>
-              <option
-                value="Hourly"
-              >
-                Hourly
+                Decennial
               </option>
               <option
                 value="Irregular"
