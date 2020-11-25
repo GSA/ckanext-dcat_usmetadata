@@ -1456,27 +1456,31 @@ exports[`Renders RequiredMetadata component 1`] = `
         </div>
       </div>
       <div
-        class="grid-row margin-top-6"
+        class="margin-top-6 clearfix"
       >
         <button
-          class="usa-button usa-button--outline"
+          class="usa-button usa-button--outline float-left"
           style="display: none;"
           type="button"
         >
           Save draft
         </button>
-        <button
-          class="usa-button usa-button--outline"
-          type="button"
+        <div
+          class="float-right"
         >
-          Back to previous page
-        </button>
-        <button
-          class="usa-button"
-          type="button"
-        >
-          Save and Continue
-        </button>
+          <button
+            class="usa-button usa-button--outline"
+            type="button"
+          >
+            Back to previous page
+          </button>
+          <button
+            class="usa-button margin-right-0"
+            type="button"
+          >
+            Save and Continue
+          </button>
+        </div>
       </div>
     </div>
   </form>

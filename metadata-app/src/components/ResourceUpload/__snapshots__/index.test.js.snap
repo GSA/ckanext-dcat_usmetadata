@@ -524,7 +524,7 @@ exports[`Renders Resource Upload component 1`] = `
       
       
       <div
-        class="grid-row margin-top-6"
+        class="margin-top-6 clearfix"
       >
         <button
           class="usa-button usa-button--outline"
@@ -533,18 +533,22 @@ exports[`Renders Resource Upload component 1`] = `
         >
           Save draft
         </button>
-        <button
-          class="usa-button usa-button--outline"
-          type="button"
+        <div
+          class="float-right"
         >
-          Back to previous page
-        </button>
-        <button
-          class="usa-button"
-          type="button"
-        >
-          Finish and publish
-        </button>
+          <button
+            class="usa-button usa-button--outline"
+            type="button"
+          >
+            Back to previous page
+          </button>
+          <button
+            class="usa-button margin-right-0"
+            type="button"
+          >
+            Finish and publish
+          </button>
+        </div>
       </div>
     </div>
   </form>

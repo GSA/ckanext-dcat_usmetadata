@@ -1895,7 +1895,7 @@ exports[`renders MetadataForm component 1`] = `
               </div>
             </div>
             <div
-              class="grid-row margin-top-6"
+              class="margin-top-6 clearfix"
             >
               <button
                 class="usa-button usa-button--outline"
@@ -1905,7 +1905,7 @@ exports[`renders MetadataForm component 1`] = `
                 Save draft
               </button>
               <button
-                class="usa-button"
+                class="usa-button float-right margin-right-0"
                 type="button"
               >
                 Save and Continue
