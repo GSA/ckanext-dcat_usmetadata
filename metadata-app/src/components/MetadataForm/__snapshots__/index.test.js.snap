@@ -1288,7 +1288,13 @@ exports[`renders MetadataForm component 1`] = `
                 </label>
                 <div
                   class="usa-helptext "
-                />
+                >
+                  <span
+                    class="usa-helptext"
+                  >
+                    Every dataset must have a ID number that is unique within the agency.
+                  </span>
+                </div>
                 
                 <input
                   class="usa-input  undefined undefined"

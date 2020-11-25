@@ -267,6 +267,9 @@ const RequiredMetadata = (props) => {
           name="unique_id"
           type="string"
           required
+          helptext={helpTextify(
+            'Every dataset must have a ID number that is unique within the agency.'
+          )}
           infoText="This is the ID number or code used within your agency to differentiate this dataset from other datasets."
           errors={errors}
         />
