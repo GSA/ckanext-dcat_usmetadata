@@ -268,9 +268,23 @@ const RequiredMetadata = (props) => {
           type="string"
           required
           helptext={helpTextify(
-            'Every dataset must have a ID number that is unique within the agency.'
+            <span>
+              Every dataset must have an identifier that is unique within the agency. It is highly
+              recommended that a{' '}
+              <Link href="http://tools.ietf.org/html/rfc3986#section-1.1.3">
+                URI (preferably an HTTP URL)
+              </Link>{' '}
+              be used to provide a globally unique identifier.
+            </span>
           )}
-          infoText="This is the ID number or code used within your agency to differentiate this dataset from other datasets."
+          infoText={`This field allows third parties to maintain a consistent record
+            for datasets even if title or URLs are updated. Agencies may integrate an
+            existing system for maintaining unique identifiers. Each identifier must
+            be unique across the agency’s catalog and remain fixed. It is highly
+            recommended that a URI (preferably an HTTP URL) be used to provide a
+            globally unique identifier. Identifier URLs should be designed and
+            maintained to persist indefinitely regardless of whether the URL of the
+            resource itself changes.`}
           errors={errors}
         />
       </div>
