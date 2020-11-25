@@ -53,7 +53,7 @@ const helpTexts = {
   systemOfRecordsUSG: (
     <HelpText>
       If the dataset is a designated System of Records under the Privacy Act of 1974, provide the
-      URL for the System of Recors Notice
+      URL for the System of Records Notice
     </HelpText>
   ),
 };
