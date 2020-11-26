@@ -29,7 +29,10 @@ const AlertBox = (props) => {
     parsedErrors &&
     parsedErrors.map((error) => (
       <p key={error.name}>
-        <b>{error.label}</b> {error.message}
+        <b>{error.label}</b>{' '}
+        {error.message.constructor.name === 'String'
+          ? error.message
+          : JSON.stringify(error.message)}
       </p>
     ));
   return (

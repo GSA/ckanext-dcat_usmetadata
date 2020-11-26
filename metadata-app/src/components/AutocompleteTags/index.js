@@ -54,7 +54,9 @@ const AutocompleteTags = (props) => {
         <div className={`react-tags-input grid-col-12 ${errors && errors[name] && 'field-error'}`}>
           {errors && errors[name] && (
             <span className="error-msg">
-              {errors[name]}
+              {errors[name].constructor.name === 'String'
+                ? errors[name]
+                : JSON.stringify(errors[name])}
               <br />
             </span>
           )}
