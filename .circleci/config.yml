@@ -65,7 +65,8 @@ jobs:
       - run:
           name: Run e2e tests using cypress
           command: |
-            npx cypress run
+            npm i -g yarn
+            yarn e2e
   deploy:
     working_directory: ~/ckanext-dcat_usmetadata
     docker:
