@@ -131,8 +131,7 @@ const MetadataForm = (props) => {
             // update or create dataset:
             if (curDatasetId) {
               Api.updateDataset(curDatasetId, values, apiUrl, apiKey)
-                .then((res) => {
-                  setFormValues(Object.assign({}, res, { description: res.notes }));
+                .then(() => {
                   if (values.saveDraft) {
                     setDraftSaved(new Date());
                   } else {
@@ -145,7 +144,6 @@ const MetadataForm = (props) => {
             } else {
               Api.createDataset(values, apiUrl, apiKey)
                 .then((res) => {
-                  setFormValues(res);
                   setCurDatasetId(res.id);
                   if (values.saveDraft) {
                     setDraftSaved(new Date());
