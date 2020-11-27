@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import RequiredMetadata from '../RequiredMetadata';
@@ -70,6 +70,7 @@ const MetadataForm = (props) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [alert, setAlert] = useState();
   const [draftSaved, setDraftSaved] = useState();
+  const [dashboardUrl, setDashboardUrl] = useState('/dataset');
 
   const handleError = (err) => {
     let message = [];
@@ -110,10 +111,17 @@ const MetadataForm = (props) => {
       .catch(handleError);
   }
 
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const orgId = urlParams.get('group');
+    if (orgId) setDashboardUrl(`/organization/${orgId}`);
+  }, []);
+
   // render metadata form
   return (
     <div className="grid-container">
       <Navigation currentStep={currentStep} handleSteps={setCurrentStep} />
+      <a href={dashboardUrl}>{'< Back to dashboard'}</a>
       <Heading currentStep={currentStep} />
       {alert}
 
