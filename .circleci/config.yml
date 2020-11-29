@@ -61,6 +61,11 @@ jobs:
       - attach_workspace:
           at: ~/
       - run:
+          name: Workaround for Cypress dependencies
+          command: |
+            apt-get update
+            apt-get install -y libgbm-dev
+      - run:
           name: Setup nvm
           command: |
             echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
