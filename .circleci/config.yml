@@ -47,15 +47,6 @@ jobs:
       - attach_workspace:
           at: ~/
       - run:
-          name: Setup node version 12 and yarn
-          command: |
-            echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
-            echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
-            nvm install 12
-            nvm alias default 12
-            nvm use 12
-            npm i -g yarn
-      - run:
           name: Start CKAN
           command: |
             docker-compose -f docker-compose.yml -f docker-compose.seed.yml up -d
@@ -74,7 +65,7 @@ jobs:
       - run:
           name: Run e2e tests using cypress
           command: |
-            yarn e2e
+            npx cypress run
   deploy:
     working_directory: ~/ckanext-dcat_usmetadata
     docker:
