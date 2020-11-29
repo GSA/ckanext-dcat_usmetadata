@@ -63,8 +63,8 @@ jobs:
       - run:
           name: Workaround for Cypress dependencies
           command: |
-            apt-get update
-            apt-get install -y libgbm-dev
+            sudo apt-get update
+            sudo apt-get install -y libgbm-dev
       - run:
           name: Setup nvm
           command: |
