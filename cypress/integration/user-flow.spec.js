@@ -54,3 +54,46 @@ describe('List of organizations on new metadata form', () => {
     cy.get('select[name=owner_org]').select('test-123').should('contain.text', 'test-123');
   });
 });
+
+describe('Go back to dashboard page', () => {
+  before(() => {
+    cy.login();
+    cy.createOrg();
+  });
+
+  beforeEach(() => {
+    cy.logout();
+    cy.login();
+  });
+
+  it('Goes to /dataset page on "Back to dashboard" clicked', () => {
+    cy.visit('/dataset/new-metadata');
+    cy.contains('Back to dashboard').click();
+    cy.url().should('include', '/dataset'); // Ensure the URL is correct
+    cy.contains('Add Dataset'); // Ensure the Add Dataset button exists
+  });
+
+  it('Goes to /organization/<organization-name> page on "Back to dashboard" clicked', () => {
+    cy.visit('/organization/test-123');
+    cy.get('.page_primary_action > .btn.btn-primary').first().click();
+
+    cy.contains('Back to dashboard').click();
+    cy.url().should('include', '/organization'); // Ensure the URL is correct
+    cy.contains('Add Dataset'); // Ensure the Add Dataset button exists
+  });
+
+  it('Back button is above each headline', () => {
+    cy.visit('/dataset/new-metadata');
+    cy.contains('Back to dashboard');
+
+    cy.requiredMetadata();
+    cy.contains('Back to dashboard');
+
+    cy.additionalMetadata();
+    cy.contains('Back to dashboard');
+  });
+
+  after(() => {
+    cy.logout();
+  });
+});

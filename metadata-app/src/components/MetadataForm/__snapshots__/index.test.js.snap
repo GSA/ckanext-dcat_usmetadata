@@ -38,6 +38,11 @@ exports[`renders MetadataForm component 1`] = `
         </span>
       </div>
     </div>
+    <a
+      href="/dataset"
+    >
+      &lt; Back to dashboard
+    </a>
     <h1
       class="usite-page-title"
       id="basic-mega-menu"
