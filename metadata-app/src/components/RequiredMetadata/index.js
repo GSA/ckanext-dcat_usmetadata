@@ -488,7 +488,7 @@ const RequiredMetadata = (props) => {
         />
       </div>
 
-      <div className="grid-row margin-top-6">
+      <div className="margin-top-6 clearfix">
         <button
           style={{ display: 'none' }}
           className="usa-button usa-button--outline"
@@ -501,7 +501,7 @@ const RequiredMetadata = (props) => {
           Save draft
         </button>
         <button
-          className="usa-button"
+          className="usa-button float-right margin-right-0"
           type="button"
           onClick={async () => {
             await setFieldValue('saveDraft', false);

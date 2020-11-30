@@ -32,20 +32,51 @@ jobs:
 
   lint_python_code:
     working_directory: ~/ckanext-dcat_usmetadata
-    machine: true
+    machine:
+          image: circleci/classic:latest
     steps:
       - attach_workspace:
           at: ~/
+      - run:
+          name: Setup nvm
+          command: |
+            echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
+            echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
+      - run:
+          name: Setup node version 12 and yarn
+          command: |
+            nvm install 12
+            nvm alias default 12
+            nvm use 12
+            npm i -g yarn
       - run:
           name: Lint
           command: docker-compose up -d && docker-compose run --rm app bash -c "cd $(CKAN_HOME) && pip install --upgrade pip  && pip install flake8 && flake8 . --count --select=E9 --show-source --statistics"
 
   test_local_docker:
     working_directory: ~/ckanext-dcat_usmetadata
-    machine: true
+    machine:
+          image: circleci/classic:latest
     steps:
       - attach_workspace:
           at: ~/
+      - run:
+          name: Workaround for Cypress dependencies
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y libgbm-dev
+      - run:
+          name: Setup nvm
+          command: |
+            echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
+            echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
+      - run:
+          name: Setup node version 12 and yarn
+          command: |
+            nvm install 12
+            nvm alias default 12
+            nvm use 12
+            npm i -g yarn
       - run:
           name: Start CKAN
           command: |
@@ -65,7 +96,7 @@ jobs:
       - run:
           name: Run e2e tests using cypress
           command: |
-            npx cypress run
+            yarn e2e
   deploy:
     working_directory: ~/ckanext-dcat_usmetadata
     docker:

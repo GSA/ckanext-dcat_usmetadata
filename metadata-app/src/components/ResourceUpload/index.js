@@ -19,7 +19,15 @@ const sortedResourceFormats = resourceFormats.sort((a, b) => {
 });
 
 const ResourceUpload = (props) => {
-  const { values, errors, setFieldValue, submitForm, draftSaved, isSubmitting } = props; // eslint-disable-line
+  const {
+    values,
+    errors,
+    setFieldValue,
+    submitForm,
+    draftSaved,
+    isSubmitting,
+    handleSteps,
+  } = props; // eslint-disable-line
   const resource = values.resource || {};
   const { url, name, description, mimetype, format } = resource;
 
@@ -221,7 +229,7 @@ const ResourceUpload = (props) => {
         ''
       )}
 
-      <div className="grid-row margin-top-6">
+      <div className="margin-top-6 clearfix">
         <button
           style={{ display: 'none' }}
           className="usa-button usa-button--outline"
@@ -235,17 +243,31 @@ const ResourceUpload = (props) => {
         >
           Save draft
         </button>
-        <button
-          className="usa-button"
-          type="button"
-          onClick={() => {
-            setFieldValue('publish', true);
-            submitForm();
-          }}
-          disabled={isSubmitting}
-        >
-          Finish and publish
-        </button>
+        <div className="float-right">
+          <button
+            className="usa-button usa-button--outline"
+            type="button"
+            onClick={() => handleSteps(1)}
+            onKeyUp={(e) => {
+              if (e.keyCode === 13) {
+                handleSteps(1);
+              }
+            }}
+          >
+            Back to previous page
+          </button>
+          <button
+            className="usa-button margin-right-0"
+            type="button"
+            onClick={() => {
+              setFieldValue('publish', true);
+              submitForm();
+            }}
+            disabled={isSubmitting}
+          >
+            Finish and publish
+          </button>
+        </div>
       </div>
 
       {draftSaved && (
@@ -263,9 +285,12 @@ const ResourceUpload = (props) => {
 };
 
 ResourceUpload.propTypes = {
+  handleSteps: PropTypes.func,
   setFieldValue: PropTypes.func,
   submitForm: PropTypes.func,
+  isSubmitting: PropTypes.bool,
   draftSaved: PropTypes.string,
+  errors: PropTypes.any, // eslint-disable-line
   values: PropTypes.shape({
     resource: PropTypes.shape({
       url: PropTypes.string,

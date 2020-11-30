@@ -34,6 +34,7 @@ Cypress.Commands.add('createUser', (username) => {
 });
 
 Cypress.Commands.add('requiredMetadata', (title) => {
+  cy.intercept('/api/3/action/package_create').as('packageCreate');
   const datasetTitle = title || chance.word({ length: 5 });
   cy.get('input[name=title]').type(datasetTitle);
   cy.get('textarea[name=description]').type(chance.sentence({ words: 4 }));
@@ -57,6 +58,7 @@ Cypress.Commands.add('requiredMetadata', (title) => {
   cy.get('select[name=modified]').select('Custom');
   cy.get('input[name=modifiedOther]').type('P1Y2M3DT4H5M6S');
   cy.get('button[type=button]').contains('Save and Continue').click();
+  cy.wait('@packageCreate');
 });
 
 Cypress.Commands.add('additionalMetadata', () => {

@@ -167,6 +167,8 @@ const deserializeSupplementalValues = (opts) => {
   const newOpts = clone(opts);
   if (opts.tag_string) {
     newOpts.tags = opts.tag_string.split(',').map((n, i) => ({ id: i, name: n }));
+  } else if (opts.tags) {
+    newOpts.tags = opts.tags.map((row) => ({ id: row.id, name: row.name }));
   }
 
   if (opts.license_new) {
