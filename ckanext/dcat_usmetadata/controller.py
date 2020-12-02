@@ -8,15 +8,15 @@ from ckan.controllers.package import PackageController as CorePackageController
 check_access = logic.check_access
 NotAuthorized = logic.NotAuthorized
 
+
 class MetadataController(CorePackageController):
     def load_metadata_form(self):
         if not c.user:
             err = _('Unauthorized to create a package')
             h.flash_error(err)
             came_from = h.url_for(
-                controller = 'ckanext.dcat_usmetadata.controller:MetadataController',
-                action='load_metadata_form'
-            )
+                controller='ckanext.dcat_usmetadata.controller:MetadataController',
+                action='load_metadata_form')
             h.redirect_to(controller='user',
                           action='login', came_from=came_from)
 
