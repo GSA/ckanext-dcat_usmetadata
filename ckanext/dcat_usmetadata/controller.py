@@ -15,7 +15,9 @@ class MetadataController(CorePackageController):
             err = _('Unauthorized to create a package')
             h.flash_error(err)
             came_from = h.url_for(
-                controller='ckanext.dcat_usmetadata.controller:MetadataController',
+                controller='''
+                    ckanext.dcat_usmetadata.controller:MetadataController
+                ''',
                 action='load_metadata_form')
             h.redirect_to(controller='user',
                           action='login', came_from=came_from)
