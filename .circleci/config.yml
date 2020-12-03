@@ -51,7 +51,7 @@ jobs:
             npm i -g yarn
       - run:
           name: Lint
-          command: docker-compose up -d && docker-compose run --rm app bash -c "cd $(CKAN_HOME) && pip install --upgrade pip  && pip install flake8 && flake8 . --count --select=E9 --show-source --statistics"
+          command: yarn lint:python
 
   test_local_docker:
     working_directory: ~/ckanext-dcat_usmetadata
