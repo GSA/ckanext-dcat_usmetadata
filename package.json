@@ -21,7 +21,7 @@
     "e2e:interactive": "yarn dockerize && yarn && NODE_ENV=test npx cypress open",
     "build": "yarn build:metadata-app && yarn rename:builds",
     "lint:js": "npx eslint metadata-app/src && npx prettier --check metadata-app/src",
-    "rename:builds": "cd ckanext/dcat_usmetadata/public/ && mv static/css . && mv static/js .",
+    "rename:builds": "cd ckanext/dcat_usmetadata/public/ && mv assets/css . && mv assets/js .",
     "start:dev": "yarn dockerize && yarn && cd metadata-app && yarn start"
   },
   "dependencies": {
