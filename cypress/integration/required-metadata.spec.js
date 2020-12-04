@@ -50,7 +50,6 @@ describe('Required Metadata Page', () => {
   it('Submit Required Metadata works', () => {
     cy.visit('/dataset/new-metadata');
     cy.requiredMetadata();
-    cy.wait(5000);
     cy.contains('Dataset saved successfully');
   });
 
@@ -142,11 +141,9 @@ describe('Required Metadata Page errors', () => {
     const title = 'this dataset should already exist';
     cy.visit('/dataset/new-metadata');
     cy.requiredMetadata(title);
-    cy.wait(5000);
     cy.contains('Dataset saved successfully');
     cy.visit('/dataset/new-metadata');
     cy.requiredMetadata(title);
-    cy.wait(3000);
     cy.contains('That URL is already in use.');
     cy.request('POST', '/api/3/action/dataset_purge', { id: 'this-dataset-should-already-exist' });
   });
