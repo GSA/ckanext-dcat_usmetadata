@@ -15,6 +15,7 @@ const dataDictTypes = require('./data-dictionary-types').sort((a, b) => {
   if (label1 > label2) return 1;
   return 0;
 });
+const publishingFrequencyOptions = require('./publishingFrequencyList');
 
 const helpTexts = {
   theme: <HelpText>Examples include: vegetables, non_starchy, green.</HelpText>,
@@ -56,10 +57,28 @@ const helpTexts = {
       URL for the System of Records Notice
     </HelpText>
   ),
+  accrualPeriodicity: (
+    <HelpText>
+      If you selected “Other, please specify a valid{' '}
+      <Link target="_blank" href="https://en.wikipedia.org/wiki/ISO_8601">
+        ISO 8601
+      </Link>{' '}
+      timestamp
+    </HelpText>
+  ),
 };
 
 const AdditionalMetadata = (props) => {
-  const { values, apiUrl, apiKey, draftSaved, setFieldValue, submitForm, handleSteps } = props;
+  const {
+    values,
+    apiUrl,
+    errors,
+    apiKey,
+    draftSaved,
+    setFieldValue,
+    submitForm,
+    handleSteps,
+  } = props;
 
   const getRegionalChoices = (selectedLangValue) => {
     const lang = languages.find((item) => item.value === selectedLangValue) || {};
@@ -133,32 +152,18 @@ const AdditionalMetadata = (props) => {
         <div className="grid-col-12">
           <WrappedField
             label="Data Publishing Frequency"
-            name="accrual_periodicity"
+            name="accrualPeriodicity"
             type="select"
-            choices={[
-              'Continuously updated',
-              'Hourly',
-              'Daily',
-              'Three times a week',
-              'Semiweekly',
-              'Weekly',
-              'Three times a month',
-              'Biweekly',
-              'Semimonthly',
-              'Monthly',
-              'Bimonthly',
-              'Quarterly',
-              'Three times a year',
-              'Semiannual',
-              'Annual',
-              'Biennial',
-              'Triennial',
-              'Quadrennial',
-              'Every five years',
-              'Every eight years',
-              'Decennial',
-              'Irregular',
-            ]}
+            choices={publishingFrequencyOptions}
+            className="error-msg"
+            errors={errors}
+          />
+          <WrappedField
+            name="accrualPeriodicityOther"
+            type="string"
+            helptext={helpTexts.accrualPeriodicity}
+            disabled={values.accrualPeriodicity !== 'other'}
+            errors={errors}
           />
         </div>
       </div>

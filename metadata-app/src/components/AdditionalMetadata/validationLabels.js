@@ -12,4 +12,5 @@ export default {
   license: 'License',
   temporal: 'Temporal',
   release_date: 'Release Date',
+  accrualPeriodicityOther: 'Data Publishing Frequency',
 };
