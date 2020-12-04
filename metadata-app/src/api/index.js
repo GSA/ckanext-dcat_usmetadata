@@ -156,8 +156,6 @@ const serializeSupplementalValues = (opts) => {
       // make sure that R/ is added at the beginning
       if (newOpts.accrual_periodicity.substring(0, 2) !== 'R/')
         newOpts.accrual_periodicity = `R/${newOpts.accrual_periodicity}`;
-    } else if (opts.accrualPeriodicity === 'as-needed') {
-      newOpts.accrual_periodicity = new Date();
     }
     delete newOpts.accrualPeriodicityOther;
     delete newOpts.accrualPeriodicity;
@@ -235,7 +233,7 @@ const deserializeSupplementalValues = (opts) => {
     else if (opts.accrual_periodicity.indexOf('R/P') !== -1) {
       newOpts.accrualPeriodicity = 'other';
       newOpts.accrualPeriodicityOther = opts.accrual_periodicity;
-    } else newOpts.accrualPeriodicity = 'as-needed';
+    }
   }
 
   return newOpts;

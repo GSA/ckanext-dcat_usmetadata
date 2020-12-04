@@ -1,5 +1,13 @@
 [
   {
+    "value": "irregular",
+    "label": "Irregular/As needed"
+  },
+  {
+    "value": "Continuously updated",
+    "label": "Continuously"
+  },
+  {
     "value": "R/P1D",
     "label": "Daily"
   },
@@ -14,10 +22,6 @@
   {
     "value": "R/P1Y",
     "label": "Yearly"
-  },
-  {
-    "value": "as-needed",
-    "label": "As needed"
   },
   {
     "value": "other",
