@@ -279,7 +279,7 @@ exports[`Renders RequiredMetadata component 1`] = `
           </div>
           
           <select
-            choices="ATF - Bureau of Alcohol, Tobacco, Firearms and Explosives,ATR - Antitrust Division, U.S. Department of Justice,Agricultural Marketing Service, Department of Agriculture,Agricultural Research Service, Department of Agriculture,Animal and Plant Health Inspection Service, Department of Agriculture,Antitrust Division, Department of Justice,Atmospheric Radiation Measurement (ARM) Climate Research Facility,BJS - Bureau of Justice Statistics, U.S. Department of Justice,BOP - Bureau of Prisons, U.S. Department of Justice,Bureau of Economic Analysis, Department of Commerce,Bureau of Engraving and Printing, Department of the Treasury,Bureau of Industry and Security, Department of Commerce,Bureau of Justice Statistics, Department of Justice,Bureau of the Public Debt, Department of the Treasury,Civil Division, Department of Justice,Civil Rights Division, Department of Justice,Community Relations Service, Department of Justice,Criminal Division, Department of Justice,DEA - Drug Enforcement Administration,DOE ARPA-E,DOE Argonne National Laboratory,DOE Congressional and Intergovernmental Affairs,DOE Energy Information Administration,DOE Energy Policy and Systems Analysis,DOE Environmental Management Consolidated Business Center,DOE General Counsel,DOE Indian Energy Policy and Programs,DOE Inspector General,DOE Intelligence and Counterintelligence,DOE International Affairs,DOE Loan Programs Office,DOE National Energy Technology Laboratory,DOE National Nuclear Security Administration,DOE National Renewable Energy Laboratory,DOE Nuclear Energy,DOE Oak Ridge National Laboratory,DOE Office of Chief Financial Officer,DOE Office of Chief Human Capital Officer,DOE Office of Chief Information Officer,DOE Office of Electricity,DOE Office of Energy Efficiency and Renewable Energy,DOE Office of Environmental Management,DOE Office of Fossil Energy,DOE Office of Hearings and Appeals,DOE Office of Legacy Management,DOE Office of Nuclear Energy,DOE Office of Science,DOE Office of Scientific and Technical Information,DOE Public Affairs,DOE Richland Operations and the Office of River Protection,DOE Small and Disadvantaged Business Utilization,Data.gov,Department of Agriculture,Department of Commerce,Department of Education,Department of Energy,Department of Homeland Security,Department of Veterans Affairs,Department of Veterans Affairs,Department of the Treasury,Departmental Management, Department of Agriculture,Departmental Offices, Department of the Treasury,ENRD - Environment and Natural Resources Division,EOIR - Executive Office for Immigration Review, Department of Justice,EOUSA - Executive Office for United States Attorneys, Department of Justice,Economic Research Service, Department of Agriculture,Employee Benefits Security Administration,Environmental Protection Agency,Farm Service Agency, Department of Agriculture,Federal Bureau of Investigation, Department of Justice,Federal Deposit Insurance Corporation,Federal Grain Inspection Service,Federal Housing Finance Agency,Financial Crimes Enforcement Network, Department of the Treasury,Financial Management Service, Department of the Treasury,Food Safety and Inspection Service,Food and Nutrition Service, Department of Agriculture,Foreign Agricultural Service, Department of Agriculture,General Services Administration,Idaho National Laboratory,Internal Revenue Service, Department of the Treasury,International Trade Administration, Department of Commerce,Library of Congress,Merit Systems Protection Board,Millennium Challenge Corporation,NIJ - National Institute of Justice, Department of Justice,National Agricultural Statistics Service, Department of Agriculture,National Archives and Records Administration,National Capital Planning Commission,National Credit Union Administration,National Endowment for the Humanities,National Institute of Food and Agriculture, Department of Agriculture,National Institute of Standards and Technology, Department of Commerce,National Oceanic and Atmospheric Administration,National Park Service, Department of Interior,National Science Foundation,National Technical Information Service, Department of Commerce,National Telecommunication and Information Administration, Department of Commerce,National Weather Service, Department of Commerce,Natural Resources Conservation Service, Colorado State University,OIG - Office of the Inspector General, Department of Justice,OIP - Office of Information Policy, Department of Justice,OJJDP - Office of Juvenile Justice and Delinquency Prevention, Department of Justice,OJP - Office of Justice Programs, Department of Justice,Office for Civil Rights,Office of Chief Information Officer,Office of Civil Rights,Office of Governmentwide Policy,Office of Housing, Department of Housing and Urban Development,Office of Innovation,Office of Legal Counsel, Department of Justice,Office of Management and Budget,Office of Navajo and Hopi Indian Relocation,Office of Special Counsel,Office of the Chief Records Officer, Operations Research and Support Team, National Archives and Records Administration,Office of the Chief Technology Officer,Office of the Federal Register,Office of the Federal Register, National Archives and Records Administration,Pension Benefit Guaranty Corporation,Railroad Retirement Board,Rural Development, Department of Agriculture,Social Security Administration,The Department of the Air Force,U. S. Department of Agriculture,U.S Nuclear Regulatory Commission,U.S. Census Bureau, Department of Commerce,U.S. Department of Education,U.S. Department of Labor Benefits.gov Program,U.S. Department of Labor Bureau of International Labor Affairs,U.S. Department of Labor Bureau of Labor Statistics,U.S. Department of Labor Chief Economist's Office,U.S. Department of Labor Employee Benefits Security Administration,U.S. Department of Labor Employment and Training Administration,U.S. Department of Labor Mine Safety and Health Administration,U.S. Department of Labor Occupational Safety and Health Administration,U.S. Department of Labor Office of Federal Contract Compliance Programs,U.S. Department of Labor Office of Job Corps,U.S. Department of Labor Office of Labor-Management Standards,U.S. Department of Labor Office of Public Affairs,U.S. Department of Labor Office of Workers' Compensation Program,U.S. Department of Labor Office of the Assistant Secretary for Policy,U.S. Department of Labor Office of the Solicitor,U.S. Department of Labor Wage and Hour Division,U.S. Department of Labor, Bureau of Labor Statistics,U.S. Department of State,U.S. Department of the Treasury,U.S. Election Assistance Commission,U.S. Office of Personnel Management,U.S. Securities and Exchange Commission,US Agency for International Development,US Attorney's Office, Department of Justice,US Department of Housing and Urban Development,US Forest Service, Department of Agriculture,US Patent and Trademark Office, Department of Commerce,US Trustee Program, Department of Justice,USDA-Natural Resources Conservation Service,USMS - United States Marshals Service,USPC - United States Parole Commission,United States Mint, Department of the Treasury,University of Maryland,VHA, Department of Veterans Affairs,Wisconsin Alumni Research Foundation,Workforce Acquisitions Division of the Office of Human Resources Solutions,Other"
+            choices="ARPA-E,Agricultural Marketing Service,Agricultural Research Service,Animal and Plant Health Inspection Service,Antitrust Division,Antitrust Division,Argonne National Laboratory,Atmospheric Radiation Measurement (ARM) Climate Research Facility,Benefits.gov Program,Bureau of Alcohol, Tobacco, Firearms and Explosives,Bureau of Economic Analysis,Bureau of Engraving and Printing,Bureau of Industry and Security,Bureau of International Labor Affairs,Bureau of Justice Statistics,Bureau of Justice Statistics,Bureau of Labor Statistics,Bureau of Prisons,Bureau of the Public Debt,Chief Economist's Office,Civil Division,Civil Rights Division,Colorado State University,Community Relations Service,Congressional and Intergovernmental Affairs,Criminal Division,Data.gov,Department of Agriculture,Department of Commerce,Department of Defense,Department of Education,Department of Energy,Department of Housing and Urban Development,Department of Housing and Urban Development,Department of Justice,Department of Labor,Department of State,Department of State,Department of Veterans Affairs,Department of Veterans Affairs,Department of the Interior,Department of the Treasury,Departmental Management,Departmental Offices,Drug Enforcement Administration,Economic Research Service,Election Assistance Commission,Election Assistance Commission,Employee Benefits Security Administration,Employee Benefits Security Administration,Employment and Training Administration,Energy Information Administration,Energy Policy and Systems Analysis,Environment and Natural Resources Division,Environmental Management Consolidated Business Center,Environmental Protection Agency,Environmental Protection Agency,Executive Office for Immigration Review,Executive Office for United States Attorneys,Farm Service Agency,Federal Bureau of Investigation,Federal Deposit Insurance Corporation,Federal Deposit Insurance Corporation,Federal Grain Inspection Service,Federal Housing Finance Agency,Federal Housing Finance Agency,Financial Crimes Enforcement Network,Financial Management Service,Food Safety and Inspection Service,Food and Nutrition Service,Foreign Agricultural Service,General Counsel,General Services Administration,Idaho National Laboratory,Indian Energy Policy and Programs,Inspector General,Intelligence and Counterintelligence,Internal Revenue Service,International Affairs,International Trade Administration,Library of Congress,Library of Congress,Loan Programs Office,Merit Systems Protection Board,Merit Systems Protection Board,Millennium Challenge Corporation,Millennium Challenge Corporation,Mine Safety and Health Administration,National Agricultural Statistics Service,National Archives and Records Administration,National Capital Planning Commission,National Capital Planning Commission,National Credit Union Administration,National Credit Union Administration,National Endowment of the Humanities,National Endowment of the Humanities,National Energy Technology Laboratory,National Institute of Food and Agriculture,National Institute of Justice,National Institute of Standards and Technology,National Nuclear Security Administration,National Oceanic and Atmospheric Administration,National Park Service,National Renewable Energy Laboratory,National Science Foundation,National Science Foundation,National Technical Information Service,National Telecommunication and Information Administration,National Weather Service,Natural Resources Conservation Service,Nuclear Energy,Nuclear Regulatory Commission,Nuclear Regulatory Commission,Oak Ridge National Laboratory,Occupational Safety and Health Administration,Office for Civil Rights,Office of Chief Financial Officer,Office of Chief Human Capital Officer,Office of Chief Information Officer,Office of Chief Information Officer,Office of Chief Technology Officer,Office of Civil Rights,Office of Electricity,Office of Energy Efficiency and Renewable Energy,Office of Environmental Management,Office of Federal Contract Compliance Programs,Office of Fossil Energy,Office of Governmentwide Policy,Office of Hearings and Appeals,Office of Housing,Office of Information Policy,Office of Innovation,Office of Job Corps,Office of Justice Programs,Office of Juvenile Justice and Delinquency Prevention,Office of Labor-Management Standards,Office of Legacy Management,Office of Legal Counsel,Office of Management,Office of Management and Budget,Office of Management and Budget,Office of Navajo and Hopi Indian Relocation,Office of Navajo and Hopi Indian Relocation,Office of Personnel Management,Office of Personnel Management,Office of Public Affairs,Office of Science,Office of Scientific and Technical Information,Office of Special Counsel,Office of Special Counsel,Office of Workers' Compensation Program,Office of the Assistant Secretary for Policy,Office of the Federal Register,Office of the Federal Register,Office of the Inspector General,Office of the Solicitor,Operations Research and Support Team,Pension Benefit Guaranty Corporation,Pension Benefit Guaranty Corporation,Public Affairs,Railroad Retirement Board,Railroad Retirement Board,Richland Operations and the Office of River Protection,Rural Development,Securities and Exchange Commission,Securities and Exchange Commission,Small Business Administration,Small and Disadvantaged Business Utilization,Social Security Administration,Social Security Administration,The Department of the Air Force,U.S. Agency for International Development,U.S. Agency for International Development,U.S. Census Bureau,US Attorney's Office,US Forest Service,US Patent and Trademark Office,US Trustee Program,United States Marshals Service,United States Mint,United States Parole Commission,Wage and Hour Division,Workforce Acquisitions Division of the Office of Human Resources Solutions,Other"
             class="usa-select  "
             name="publisher"
             type="select"
@@ -290,34 +290,39 @@ exports[`Renders RequiredMetadata component 1`] = `
               -Select-
             </option>
             <option
-              value="ATF - Bureau of Alcohol, Tobacco, Firearms and Explosives"
+              value="ARPA-E"
             >
-              ATF - Bureau of Alcohol, Tobacco, Firearms and Explosives
+              ARPA-E
             </option>
             <option
-              value="ATR - Antitrust Division, U.S. Department of Justice"
+              value="Agricultural Marketing Service"
             >
-              ATR - Antitrust Division, U.S. Department of Justice
+              Agricultural Marketing Service
             </option>
             <option
-              value="Agricultural Marketing Service, Department of Agriculture"
+              value="Agricultural Research Service"
             >
-              Agricultural Marketing Service, Department of Agriculture
+              Agricultural Research Service
             </option>
             <option
-              value="Agricultural Research Service, Department of Agriculture"
+              value="Animal and Plant Health Inspection Service"
             >
-              Agricultural Research Service, Department of Agriculture
+              Animal and Plant Health Inspection Service
             </option>
             <option
-              value="Animal and Plant Health Inspection Service, Department of Agriculture"
+              value="Antitrust Division"
             >
-              Animal and Plant Health Inspection Service, Department of Agriculture
+              Antitrust Division
             </option>
             <option
-              value="Antitrust Division, Department of Justice"
+              value="Antitrust Division"
             >
-              Antitrust Division, Department of Justice
+              Antitrust Division
+            </option>
+            <option
+              value="Argonne National Laboratory"
+            >
+              Argonne National Laboratory
             </option>
             <option
               value="Atmospheric Radiation Measurement (ARM) Climate Research Facility"
@@ -325,224 +330,94 @@ exports[`Renders RequiredMetadata component 1`] = `
               Atmospheric Radiation Measurement (ARM) Climate Research Facility
             </option>
             <option
-              value="BJS - Bureau of Justice Statistics, U.S. Department of Justice"
+              value="Benefits.gov Program"
             >
-              BJS - Bureau of Justice Statistics, U.S. Department of Justice
+              Benefits.gov Program
             </option>
             <option
-              value="BOP - Bureau of Prisons, U.S. Department of Justice"
+              value="Bureau of Alcohol, Tobacco, Firearms and Explosives"
             >
-              BOP - Bureau of Prisons, U.S. Department of Justice
+              Bureau of Alcohol, Tobacco, Firearms and Explosives
             </option>
             <option
-              value="Bureau of Economic Analysis, Department of Commerce"
+              value="Bureau of Economic Analysis"
             >
-              Bureau of Economic Analysis, Department of Commerce
+              Bureau of Economic Analysis
             </option>
             <option
-              value="Bureau of Engraving and Printing, Department of the Treasury"
+              value="Bureau of Engraving and Printing"
             >
-              Bureau of Engraving and Printing, Department of the Treasury
+              Bureau of Engraving and Printing
             </option>
             <option
-              value="Bureau of Industry and Security, Department of Commerce"
+              value="Bureau of Industry and Security"
             >
-              Bureau of Industry and Security, Department of Commerce
+              Bureau of Industry and Security
             </option>
             <option
-              value="Bureau of Justice Statistics, Department of Justice"
+              value="Bureau of International Labor Affairs"
             >
-              Bureau of Justice Statistics, Department of Justice
+              Bureau of International Labor Affairs
             </option>
             <option
-              value="Bureau of the Public Debt, Department of the Treasury"
+              value="Bureau of Justice Statistics"
             >
-              Bureau of the Public Debt, Department of the Treasury
+              Bureau of Justice Statistics
             </option>
             <option
-              value="Civil Division, Department of Justice"
+              value="Bureau of Justice Statistics"
             >
-              Civil Division, Department of Justice
+              Bureau of Justice Statistics
             </option>
             <option
-              value="Civil Rights Division, Department of Justice"
+              value="Bureau of Labor Statistics"
             >
-              Civil Rights Division, Department of Justice
+              Bureau of Labor Statistics
             </option>
             <option
-              value="Community Relations Service, Department of Justice"
+              value="Bureau of Prisons"
             >
-              Community Relations Service, Department of Justice
+              Bureau of Prisons
             </option>
             <option
-              value="Criminal Division, Department of Justice"
+              value="Bureau of the Public Debt"
             >
-              Criminal Division, Department of Justice
+              Bureau of the Public Debt
             </option>
             <option
-              value="DEA - Drug Enforcement Administration"
+              value="Chief Economist's Office"
             >
-              DEA - Drug Enforcement Administration
+              Chief Economist's Office
             </option>
             <option
-              value="DOE ARPA-E"
+              value="Civil Division"
             >
-              DOE ARPA-E
+              Civil Division
             </option>
             <option
-              value="DOE Argonne National Laboratory"
+              value="Civil Rights Division"
             >
-              DOE Argonne National Laboratory
+              Civil Rights Division
             </option>
             <option
-              value="DOE Congressional and Intergovernmental Affairs"
+              value="Colorado State University"
             >
-              DOE Congressional and Intergovernmental Affairs
+              Colorado State University
             </option>
             <option
-              value="DOE Energy Information Administration"
+              value="Community Relations Service"
             >
-              DOE Energy Information Administration
+              Community Relations Service
             </option>
             <option
-              value="DOE Energy Policy and Systems Analysis"
+              value="Congressional and Intergovernmental Affairs"
             >
-              DOE Energy Policy and Systems Analysis
+              Congressional and Intergovernmental Affairs
             </option>
             <option
-              value="DOE Environmental Management Consolidated Business Center"
+              value="Criminal Division"
             >
-              DOE Environmental Management Consolidated Business Center
-            </option>
-            <option
-              value="DOE General Counsel"
-            >
-              DOE General Counsel
-            </option>
-            <option
-              value="DOE Indian Energy Policy and Programs"
-            >
-              DOE Indian Energy Policy and Programs
-            </option>
-            <option
-              value="DOE Inspector General"
-            >
-              DOE Inspector General
-            </option>
-            <option
-              value="DOE Intelligence and Counterintelligence"
-            >
-              DOE Intelligence and Counterintelligence
-            </option>
-            <option
-              value="DOE International Affairs"
-            >
-              DOE International Affairs
-            </option>
-            <option
-              value="DOE Loan Programs Office"
-            >
-              DOE Loan Programs Office
-            </option>
-            <option
-              value="DOE National Energy Technology Laboratory"
-            >
-              DOE National Energy Technology Laboratory
-            </option>
-            <option
-              value="DOE National Nuclear Security Administration"
-            >
-              DOE National Nuclear Security Administration
-            </option>
-            <option
-              value="DOE National Renewable Energy Laboratory"
-            >
-              DOE National Renewable Energy Laboratory
-            </option>
-            <option
-              value="DOE Nuclear Energy"
-            >
-              DOE Nuclear Energy
-            </option>
-            <option
-              value="DOE Oak Ridge National Laboratory"
-            >
-              DOE Oak Ridge National Laboratory
-            </option>
-            <option
-              value="DOE Office of Chief Financial Officer"
-            >
-              DOE Office of Chief Financial Officer
-            </option>
-            <option
-              value="DOE Office of Chief Human Capital Officer"
-            >
-              DOE Office of Chief Human Capital Officer
-            </option>
-            <option
-              value="DOE Office of Chief Information Officer"
-            >
-              DOE Office of Chief Information Officer
-            </option>
-            <option
-              value="DOE Office of Electricity"
-            >
-              DOE Office of Electricity
-            </option>
-            <option
-              value="DOE Office of Energy Efficiency and Renewable Energy"
-            >
-              DOE Office of Energy Efficiency and Renewable Energy
-            </option>
-            <option
-              value="DOE Office of Environmental Management"
-            >
-              DOE Office of Environmental Management
-            </option>
-            <option
-              value="DOE Office of Fossil Energy"
-            >
-              DOE Office of Fossil Energy
-            </option>
-            <option
-              value="DOE Office of Hearings and Appeals"
-            >
-              DOE Office of Hearings and Appeals
-            </option>
-            <option
-              value="DOE Office of Legacy Management"
-            >
-              DOE Office of Legacy Management
-            </option>
-            <option
-              value="DOE Office of Nuclear Energy"
-            >
-              DOE Office of Nuclear Energy
-            </option>
-            <option
-              value="DOE Office of Science"
-            >
-              DOE Office of Science
-            </option>
-            <option
-              value="DOE Office of Scientific and Technical Information"
-            >
-              DOE Office of Scientific and Technical Information
-            </option>
-            <option
-              value="DOE Public Affairs"
-            >
-              DOE Public Affairs
-            </option>
-            <option
-              value="DOE Richland Operations and the Office of River Protection"
-            >
-              DOE Richland Operations and the Office of River Protection
-            </option>
-            <option
-              value="DOE Small and Disadvantaged Business Utilization"
-            >
-              DOE Small and Disadvantaged Business Utilization
+              Criminal Division
             </option>
             <option
               value="Data.gov"
@@ -560,6 +435,11 @@ exports[`Renders RequiredMetadata component 1`] = `
               Department of Commerce
             </option>
             <option
+              value="Department of Defense"
+            >
+              Department of Defense
+            </option>
+            <option
               value="Department of Education"
             >
               Department of Education
@@ -570,9 +450,34 @@ exports[`Renders RequiredMetadata component 1`] = `
               Department of Energy
             </option>
             <option
-              value="Department of Homeland Security"
+              value="Department of Housing and Urban Development"
             >
-              Department of Homeland Security
+              Department of Housing and Urban Development
+            </option>
+            <option
+              value="Department of Housing and Urban Development"
+            >
+              Department of Housing and Urban Development
+            </option>
+            <option
+              value="Department of Justice"
+            >
+              Department of Justice
+            </option>
+            <option
+              value="Department of Labor"
+            >
+              Department of Labor
+            </option>
+            <option
+              value="Department of State"
+            >
+              Department of State
+            </option>
+            <option
+              value="Department of State"
+            >
+              Department of State
             </option>
             <option
               value="Department of Veterans Affairs"
@@ -583,6 +488,11 @@ exports[`Renders RequiredMetadata component 1`] = `
               value="Department of Veterans Affairs"
             >
               Department of Veterans Affairs
+            </option>
+            <option
+              value="Department of the Interior"
+            >
+              Department of the Interior
             </option>
             <option
               value="Department of the Treasury"
@@ -590,34 +500,34 @@ exports[`Renders RequiredMetadata component 1`] = `
               Department of the Treasury
             </option>
             <option
-              value="Departmental Management, Department of Agriculture"
+              value="Departmental Management"
             >
-              Departmental Management, Department of Agriculture
+              Departmental Management
             </option>
             <option
-              value="Departmental Offices, Department of the Treasury"
+              value="Departmental Offices"
             >
-              Departmental Offices, Department of the Treasury
+              Departmental Offices
             </option>
             <option
-              value="ENRD - Environment and Natural Resources Division"
+              value="Drug Enforcement Administration"
             >
-              ENRD - Environment and Natural Resources Division
+              Drug Enforcement Administration
             </option>
             <option
-              value="EOIR - Executive Office for Immigration Review, Department of Justice"
+              value="Economic Research Service"
             >
-              EOIR - Executive Office for Immigration Review, Department of Justice
+              Economic Research Service
             </option>
             <option
-              value="EOUSA - Executive Office for United States Attorneys, Department of Justice"
+              value="Election Assistance Commission"
             >
-              EOUSA - Executive Office for United States Attorneys, Department of Justice
+              Election Assistance Commission
             </option>
             <option
-              value="Economic Research Service, Department of Agriculture"
+              value="Election Assistance Commission"
             >
-              Economic Research Service, Department of Agriculture
+              Election Assistance Commission
             </option>
             <option
               value="Employee Benefits Security Administration"
@@ -625,19 +535,69 @@ exports[`Renders RequiredMetadata component 1`] = `
               Employee Benefits Security Administration
             </option>
             <option
+              value="Employee Benefits Security Administration"
+            >
+              Employee Benefits Security Administration
+            </option>
+            <option
+              value="Employment and Training Administration"
+            >
+              Employment and Training Administration
+            </option>
+            <option
+              value="Energy Information Administration"
+            >
+              Energy Information Administration
+            </option>
+            <option
+              value="Energy Policy and Systems Analysis"
+            >
+              Energy Policy and Systems Analysis
+            </option>
+            <option
+              value="Environment and Natural Resources Division"
+            >
+              Environment and Natural Resources Division
+            </option>
+            <option
+              value="Environmental Management Consolidated Business Center"
+            >
+              Environmental Management Consolidated Business Center
+            </option>
+            <option
               value="Environmental Protection Agency"
             >
               Environmental Protection Agency
             </option>
             <option
-              value="Farm Service Agency, Department of Agriculture"
+              value="Environmental Protection Agency"
             >
-              Farm Service Agency, Department of Agriculture
+              Environmental Protection Agency
             </option>
             <option
-              value="Federal Bureau of Investigation, Department of Justice"
+              value="Executive Office for Immigration Review"
             >
-              Federal Bureau of Investigation, Department of Justice
+              Executive Office for Immigration Review
+            </option>
+            <option
+              value="Executive Office for United States Attorneys"
+            >
+              Executive Office for United States Attorneys
+            </option>
+            <option
+              value="Farm Service Agency"
+            >
+              Farm Service Agency
+            </option>
+            <option
+              value="Federal Bureau of Investigation"
+            >
+              Federal Bureau of Investigation
+            </option>
+            <option
+              value="Federal Deposit Insurance Corporation"
+            >
+              Federal Deposit Insurance Corporation
             </option>
             <option
               value="Federal Deposit Insurance Corporation"
@@ -655,14 +615,19 @@ exports[`Renders RequiredMetadata component 1`] = `
               Federal Housing Finance Agency
             </option>
             <option
-              value="Financial Crimes Enforcement Network, Department of the Treasury"
+              value="Federal Housing Finance Agency"
             >
-              Financial Crimes Enforcement Network, Department of the Treasury
+              Federal Housing Finance Agency
             </option>
             <option
-              value="Financial Management Service, Department of the Treasury"
+              value="Financial Crimes Enforcement Network"
             >
-              Financial Management Service, Department of the Treasury
+              Financial Crimes Enforcement Network
+            </option>
+            <option
+              value="Financial Management Service"
+            >
+              Financial Management Service
             </option>
             <option
               value="Food Safety and Inspection Service"
@@ -670,14 +635,19 @@ exports[`Renders RequiredMetadata component 1`] = `
               Food Safety and Inspection Service
             </option>
             <option
-              value="Food and Nutrition Service, Department of Agriculture"
+              value="Food and Nutrition Service"
             >
-              Food and Nutrition Service, Department of Agriculture
+              Food and Nutrition Service
             </option>
             <option
-              value="Foreign Agricultural Service, Department of Agriculture"
+              value="Foreign Agricultural Service"
             >
-              Foreign Agricultural Service, Department of Agriculture
+              Foreign Agricultural Service
+            </option>
+            <option
+              value="General Counsel"
+            >
+              General Counsel
             </option>
             <option
               value="General Services Administration"
@@ -690,19 +660,54 @@ exports[`Renders RequiredMetadata component 1`] = `
               Idaho National Laboratory
             </option>
             <option
-              value="Internal Revenue Service, Department of the Treasury"
+              value="Indian Energy Policy and Programs"
             >
-              Internal Revenue Service, Department of the Treasury
+              Indian Energy Policy and Programs
             </option>
             <option
-              value="International Trade Administration, Department of Commerce"
+              value="Inspector General"
             >
-              International Trade Administration, Department of Commerce
+              Inspector General
+            </option>
+            <option
+              value="Intelligence and Counterintelligence"
+            >
+              Intelligence and Counterintelligence
+            </option>
+            <option
+              value="Internal Revenue Service"
+            >
+              Internal Revenue Service
+            </option>
+            <option
+              value="International Affairs"
+            >
+              International Affairs
+            </option>
+            <option
+              value="International Trade Administration"
+            >
+              International Trade Administration
             </option>
             <option
               value="Library of Congress"
             >
               Library of Congress
+            </option>
+            <option
+              value="Library of Congress"
+            >
+              Library of Congress
+            </option>
+            <option
+              value="Loan Programs Office"
+            >
+              Loan Programs Office
+            </option>
+            <option
+              value="Merit Systems Protection Board"
+            >
+              Merit Systems Protection Board
             </option>
             <option
               value="Merit Systems Protection Board"
@@ -715,14 +720,19 @@ exports[`Renders RequiredMetadata component 1`] = `
               Millennium Challenge Corporation
             </option>
             <option
-              value="NIJ - National Institute of Justice, Department of Justice"
+              value="Millennium Challenge Corporation"
             >
-              NIJ - National Institute of Justice, Department of Justice
+              Millennium Challenge Corporation
             </option>
             <option
-              value="National Agricultural Statistics Service, Department of Agriculture"
+              value="Mine Safety and Health Administration"
             >
-              National Agricultural Statistics Service, Department of Agriculture
+              Mine Safety and Health Administration
+            </option>
+            <option
+              value="National Agricultural Statistics Service"
+            >
+              National Agricultural Statistics Service
             </option>
             <option
               value="National Archives and Records Administration"
@@ -735,24 +745,54 @@ exports[`Renders RequiredMetadata component 1`] = `
               National Capital Planning Commission
             </option>
             <option
+              value="National Capital Planning Commission"
+            >
+              National Capital Planning Commission
+            </option>
+            <option
               value="National Credit Union Administration"
             >
               National Credit Union Administration
             </option>
             <option
-              value="National Endowment for the Humanities"
+              value="National Credit Union Administration"
             >
-              National Endowment for the Humanities
+              National Credit Union Administration
             </option>
             <option
-              value="National Institute of Food and Agriculture, Department of Agriculture"
+              value="National Endowment of the Humanities"
             >
-              National Institute of Food and Agriculture, Department of Agriculture
+              National Endowment of the Humanities
             </option>
             <option
-              value="National Institute of Standards and Technology, Department of Commerce"
+              value="National Endowment of the Humanities"
             >
-              National Institute of Standards and Technology, Department of Commerce
+              National Endowment of the Humanities
+            </option>
+            <option
+              value="National Energy Technology Laboratory"
+            >
+              National Energy Technology Laboratory
+            </option>
+            <option
+              value="National Institute of Food and Agriculture"
+            >
+              National Institute of Food and Agriculture
+            </option>
+            <option
+              value="National Institute of Justice"
+            >
+              National Institute of Justice
+            </option>
+            <option
+              value="National Institute of Standards and Technology"
+            >
+              National Institute of Standards and Technology
+            </option>
+            <option
+              value="National Nuclear Security Administration"
+            >
+              National Nuclear Security Administration
             </option>
             <option
               value="National Oceanic and Atmospheric Administration"
@@ -760,9 +800,14 @@ exports[`Renders RequiredMetadata component 1`] = `
               National Oceanic and Atmospheric Administration
             </option>
             <option
-              value="National Park Service, Department of Interior"
+              value="National Park Service"
             >
-              National Park Service, Department of Interior
+              National Park Service
+            </option>
+            <option
+              value="National Renewable Energy Laboratory"
+            >
+              National Renewable Energy Laboratory
             </option>
             <option
               value="National Science Foundation"
@@ -770,44 +815,54 @@ exports[`Renders RequiredMetadata component 1`] = `
               National Science Foundation
             </option>
             <option
-              value="National Technical Information Service, Department of Commerce"
+              value="National Science Foundation"
             >
-              National Technical Information Service, Department of Commerce
+              National Science Foundation
             </option>
             <option
-              value="National Telecommunication and Information Administration, Department of Commerce"
+              value="National Technical Information Service"
             >
-              National Telecommunication and Information Administration, Department of Commerce
+              National Technical Information Service
             </option>
             <option
-              value="National Weather Service, Department of Commerce"
+              value="National Telecommunication and Information Administration"
             >
-              National Weather Service, Department of Commerce
+              National Telecommunication and Information Administration
             </option>
             <option
-              value="Natural Resources Conservation Service, Colorado State University"
+              value="National Weather Service"
             >
-              Natural Resources Conservation Service, Colorado State University
+              National Weather Service
             </option>
             <option
-              value="OIG - Office of the Inspector General, Department of Justice"
+              value="Natural Resources Conservation Service"
             >
-              OIG - Office of the Inspector General, Department of Justice
+              Natural Resources Conservation Service
             </option>
             <option
-              value="OIP - Office of Information Policy, Department of Justice"
+              value="Nuclear Energy"
             >
-              OIP - Office of Information Policy, Department of Justice
+              Nuclear Energy
             </option>
             <option
-              value="OJJDP - Office of Juvenile Justice and Delinquency Prevention, Department of Justice"
+              value="Nuclear Regulatory Commission"
             >
-              OJJDP - Office of Juvenile Justice and Delinquency Prevention, Department of Justice
+              Nuclear Regulatory Commission
             </option>
             <option
-              value="OJP - Office of Justice Programs, Department of Justice"
+              value="Nuclear Regulatory Commission"
             >
-              OJP - Office of Justice Programs, Department of Justice
+              Nuclear Regulatory Commission
+            </option>
+            <option
+              value="Oak Ridge National Laboratory"
+            >
+              Oak Ridge National Laboratory
+            </option>
+            <option
+              value="Occupational Safety and Health Administration"
+            >
+              Occupational Safety and Health Administration
             </option>
             <option
               value="Office for Civil Rights"
@@ -815,9 +870,29 @@ exports[`Renders RequiredMetadata component 1`] = `
               Office for Civil Rights
             </option>
             <option
+              value="Office of Chief Financial Officer"
+            >
+              Office of Chief Financial Officer
+            </option>
+            <option
+              value="Office of Chief Human Capital Officer"
+            >
+              Office of Chief Human Capital Officer
+            </option>
+            <option
               value="Office of Chief Information Officer"
             >
               Office of Chief Information Officer
+            </option>
+            <option
+              value="Office of Chief Information Officer"
+            >
+              Office of Chief Information Officer
+            </option>
+            <option
+              value="Office of Chief Technology Officer"
+            >
+              Office of Chief Technology Officer
             </option>
             <option
               value="Office of Civil Rights"
@@ -825,14 +900,49 @@ exports[`Renders RequiredMetadata component 1`] = `
               Office of Civil Rights
             </option>
             <option
+              value="Office of Electricity"
+            >
+              Office of Electricity
+            </option>
+            <option
+              value="Office of Energy Efficiency and Renewable Energy"
+            >
+              Office of Energy Efficiency and Renewable Energy
+            </option>
+            <option
+              value="Office of Environmental Management"
+            >
+              Office of Environmental Management
+            </option>
+            <option
+              value="Office of Federal Contract Compliance Programs"
+            >
+              Office of Federal Contract Compliance Programs
+            </option>
+            <option
+              value="Office of Fossil Energy"
+            >
+              Office of Fossil Energy
+            </option>
+            <option
               value="Office of Governmentwide Policy"
             >
               Office of Governmentwide Policy
             </option>
             <option
-              value="Office of Housing, Department of Housing and Urban Development"
+              value="Office of Hearings and Appeals"
             >
-              Office of Housing, Department of Housing and Urban Development
+              Office of Hearings and Appeals
+            </option>
+            <option
+              value="Office of Housing"
+            >
+              Office of Housing
+            </option>
+            <option
+              value="Office of Information Policy"
+            >
+              Office of Information Policy
             </option>
             <option
               value="Office of Innovation"
@@ -840,9 +950,44 @@ exports[`Renders RequiredMetadata component 1`] = `
               Office of Innovation
             </option>
             <option
-              value="Office of Legal Counsel, Department of Justice"
+              value="Office of Job Corps"
             >
-              Office of Legal Counsel, Department of Justice
+              Office of Job Corps
+            </option>
+            <option
+              value="Office of Justice Programs"
+            >
+              Office of Justice Programs
+            </option>
+            <option
+              value="Office of Juvenile Justice and Delinquency Prevention"
+            >
+              Office of Juvenile Justice and Delinquency Prevention
+            </option>
+            <option
+              value="Office of Labor-Management Standards"
+            >
+              Office of Labor-Management Standards
+            </option>
+            <option
+              value="Office of Legacy Management"
+            >
+              Office of Legacy Management
+            </option>
+            <option
+              value="Office of Legal Counsel"
+            >
+              Office of Legal Counsel
+            </option>
+            <option
+              value="Office of Management"
+            >
+              Office of Management
+            </option>
+            <option
+              value="Office of Management and Budget"
+            >
+              Office of Management and Budget
             </option>
             <option
               value="Office of Management and Budget"
@@ -855,19 +1000,54 @@ exports[`Renders RequiredMetadata component 1`] = `
               Office of Navajo and Hopi Indian Relocation
             </option>
             <option
+              value="Office of Navajo and Hopi Indian Relocation"
+            >
+              Office of Navajo and Hopi Indian Relocation
+            </option>
+            <option
+              value="Office of Personnel Management"
+            >
+              Office of Personnel Management
+            </option>
+            <option
+              value="Office of Personnel Management"
+            >
+              Office of Personnel Management
+            </option>
+            <option
+              value="Office of Public Affairs"
+            >
+              Office of Public Affairs
+            </option>
+            <option
+              value="Office of Science"
+            >
+              Office of Science
+            </option>
+            <option
+              value="Office of Scientific and Technical Information"
+            >
+              Office of Scientific and Technical Information
+            </option>
+            <option
               value="Office of Special Counsel"
             >
               Office of Special Counsel
             </option>
             <option
-              value="Office of the Chief Records Officer, Operations Research and Support Team, National Archives and Records Administration"
+              value="Office of Special Counsel"
             >
-              Office of the Chief Records Officer, Operations Research and Support Team, National Archives and Records Administration
+              Office of Special Counsel
             </option>
             <option
-              value="Office of the Chief Technology Officer"
+              value="Office of Workers' Compensation Program"
             >
-              Office of the Chief Technology Officer
+              Office of Workers' Compensation Program
+            </option>
+            <option
+              value="Office of the Assistant Secretary for Policy"
+            >
+              Office of the Assistant Secretary for Policy
             </option>
             <option
               value="Office of the Federal Register"
@@ -875,9 +1055,24 @@ exports[`Renders RequiredMetadata component 1`] = `
               Office of the Federal Register
             </option>
             <option
-              value="Office of the Federal Register, National Archives and Records Administration"
+              value="Office of the Federal Register"
             >
-              Office of the Federal Register, National Archives and Records Administration
+              Office of the Federal Register
+            </option>
+            <option
+              value="Office of the Inspector General"
+            >
+              Office of the Inspector General
+            </option>
+            <option
+              value="Office of the Solicitor"
+            >
+              Office of the Solicitor
+            </option>
+            <option
+              value="Operations Research and Support Team"
+            >
+              Operations Research and Support Team
             </option>
             <option
               value="Pension Benefit Guaranty Corporation"
@@ -885,14 +1080,59 @@ exports[`Renders RequiredMetadata component 1`] = `
               Pension Benefit Guaranty Corporation
             </option>
             <option
+              value="Pension Benefit Guaranty Corporation"
+            >
+              Pension Benefit Guaranty Corporation
+            </option>
+            <option
+              value="Public Affairs"
+            >
+              Public Affairs
+            </option>
+            <option
               value="Railroad Retirement Board"
             >
               Railroad Retirement Board
             </option>
             <option
-              value="Rural Development, Department of Agriculture"
+              value="Railroad Retirement Board"
             >
-              Rural Development, Department of Agriculture
+              Railroad Retirement Board
+            </option>
+            <option
+              value="Richland Operations and the Office of River Protection"
+            >
+              Richland Operations and the Office of River Protection
+            </option>
+            <option
+              value="Rural Development"
+            >
+              Rural Development
+            </option>
+            <option
+              value="Securities and Exchange Commission"
+            >
+              Securities and Exchange Commission
+            </option>
+            <option
+              value="Securities and Exchange Commission"
+            >
+              Securities and Exchange Commission
+            </option>
+            <option
+              value="Small Business Administration"
+            >
+              Small Business Administration
+            </option>
+            <option
+              value="Small and Disadvantaged Business Utilization"
+            >
+              Small and Disadvantaged Business Utilization
+            </option>
+            <option
+              value="Social Security Administration"
+            >
+              Social Security Administration
             </option>
             <option
               value="Social Security Administration"
@@ -905,199 +1145,59 @@ exports[`Renders RequiredMetadata component 1`] = `
               The Department of the Air Force
             </option>
             <option
-              value="U. S. Department of Agriculture"
+              value="U.S. Agency for International Development"
             >
-              U. S. Department of Agriculture
+              U.S. Agency for International Development
             </option>
             <option
-              value="U.S Nuclear Regulatory Commission"
+              value="U.S. Agency for International Development"
             >
-              U.S Nuclear Regulatory Commission
+              U.S. Agency for International Development
             </option>
             <option
-              value="U.S. Census Bureau, Department of Commerce"
+              value="U.S. Census Bureau"
             >
-              U.S. Census Bureau, Department of Commerce
+              U.S. Census Bureau
             </option>
             <option
-              value="U.S. Department of Education"
+              value="US Attorney's Office"
             >
-              U.S. Department of Education
+              US Attorney's Office
             </option>
             <option
-              value="U.S. Department of Labor Benefits.gov Program"
+              value="US Forest Service"
             >
-              U.S. Department of Labor Benefits.gov Program
+              US Forest Service
             </option>
             <option
-              value="U.S. Department of Labor Bureau of International Labor Affairs"
+              value="US Patent and Trademark Office"
             >
-              U.S. Department of Labor Bureau of International Labor Affairs
+              US Patent and Trademark Office
             </option>
             <option
-              value="U.S. Department of Labor Bureau of Labor Statistics"
+              value="US Trustee Program"
             >
-              U.S. Department of Labor Bureau of Labor Statistics
+              US Trustee Program
             </option>
             <option
-              value="U.S. Department of Labor Chief Economist's Office"
+              value="United States Marshals Service"
             >
-              U.S. Department of Labor Chief Economist's Office
+              United States Marshals Service
             </option>
             <option
-              value="U.S. Department of Labor Employee Benefits Security Administration"
+              value="United States Mint"
             >
-              U.S. Department of Labor Employee Benefits Security Administration
+              United States Mint
             </option>
             <option
-              value="U.S. Department of Labor Employment and Training Administration"
+              value="United States Parole Commission"
             >
-              U.S. Department of Labor Employment and Training Administration
+              United States Parole Commission
             </option>
             <option
-              value="U.S. Department of Labor Mine Safety and Health Administration"
+              value="Wage and Hour Division"
             >
-              U.S. Department of Labor Mine Safety and Health Administration
-            </option>
-            <option
-              value="U.S. Department of Labor Occupational Safety and Health Administration"
-            >
-              U.S. Department of Labor Occupational Safety and Health Administration
-            </option>
-            <option
-              value="U.S. Department of Labor Office of Federal Contract Compliance Programs"
-            >
-              U.S. Department of Labor Office of Federal Contract Compliance Programs
-            </option>
-            <option
-              value="U.S. Department of Labor Office of Job Corps"
-            >
-              U.S. Department of Labor Office of Job Corps
-            </option>
-            <option
-              value="U.S. Department of Labor Office of Labor-Management Standards"
-            >
-              U.S. Department of Labor Office of Labor-Management Standards
-            </option>
-            <option
-              value="U.S. Department of Labor Office of Public Affairs"
-            >
-              U.S. Department of Labor Office of Public Affairs
-            </option>
-            <option
-              value="U.S. Department of Labor Office of Workers' Compensation Program"
-            >
-              U.S. Department of Labor Office of Workers' Compensation Program
-            </option>
-            <option
-              value="U.S. Department of Labor Office of the Assistant Secretary for Policy"
-            >
-              U.S. Department of Labor Office of the Assistant Secretary for Policy
-            </option>
-            <option
-              value="U.S. Department of Labor Office of the Solicitor"
-            >
-              U.S. Department of Labor Office of the Solicitor
-            </option>
-            <option
-              value="U.S. Department of Labor Wage and Hour Division"
-            >
-              U.S. Department of Labor Wage and Hour Division
-            </option>
-            <option
-              value="U.S. Department of Labor, Bureau of Labor Statistics"
-            >
-              U.S. Department of Labor, Bureau of Labor Statistics
-            </option>
-            <option
-              value="U.S. Department of State"
-            >
-              U.S. Department of State
-            </option>
-            <option
-              value="U.S. Department of the Treasury"
-            >
-              U.S. Department of the Treasury
-            </option>
-            <option
-              value="U.S. Election Assistance Commission"
-            >
-              U.S. Election Assistance Commission
-            </option>
-            <option
-              value="U.S. Office of Personnel Management"
-            >
-              U.S. Office of Personnel Management
-            </option>
-            <option
-              value="U.S. Securities and Exchange Commission"
-            >
-              U.S. Securities and Exchange Commission
-            </option>
-            <option
-              value="US Agency for International Development"
-            >
-              US Agency for International Development
-            </option>
-            <option
-              value="US Attorney's Office, Department of Justice"
-            >
-              US Attorney's Office, Department of Justice
-            </option>
-            <option
-              value="US Department of Housing and Urban Development"
-            >
-              US Department of Housing and Urban Development
-            </option>
-            <option
-              value="US Forest Service, Department of Agriculture"
-            >
-              US Forest Service, Department of Agriculture
-            </option>
-            <option
-              value="US Patent and Trademark Office, Department of Commerce"
-            >
-              US Patent and Trademark Office, Department of Commerce
-            </option>
-            <option
-              value="US Trustee Program, Department of Justice"
-            >
-              US Trustee Program, Department of Justice
-            </option>
-            <option
-              value="USDA-Natural Resources Conservation Service"
-            >
-              USDA-Natural Resources Conservation Service
-            </option>
-            <option
-              value="USMS - United States Marshals Service"
-            >
-              USMS - United States Marshals Service
-            </option>
-            <option
-              value="USPC - United States Parole Commission"
-            >
-              USPC - United States Parole Commission
-            </option>
-            <option
-              value="United States Mint, Department of the Treasury"
-            >
-              United States Mint, Department of the Treasury
-            </option>
-            <option
-              value="University of Maryland"
-            >
-              University of Maryland
-            </option>
-            <option
-              value="VHA, Department of Veterans Affairs"
-            >
-              VHA, Department of Veterans Affairs
-            </option>
-            <option
-              value="Wisconsin Alumni Research Foundation"
-            >
-              Wisconsin Alumni Research Foundation
+              Wage and Hour Division
             </option>
             <option
               value="Workforce Acquisitions Division of the Office of Human Resources Solutions"
@@ -1110,30 +1210,6 @@ exports[`Renders RequiredMetadata component 1`] = `
               Other
             </option>
           </select>
-        </div>
-        <div
-          class="wrapper"
-        >
-          <label
-            class="usa-label"
-          />
-          <div
-            class="usa-helptext disabled"
-          >
-            <span
-              class="usa-helptext"
-            >
-              If you selected “Other”, please specify the name of your Publisher
-            </span>
-          </div>
-          
-          <input
-            class="usa-input disabled undefined undefined"
-            disabled=""
-            name="publisher_other"
-            type="string"
-            value=""
-          />
         </div>
       </div>
       <div

@@ -223,16 +223,6 @@ const RequiredMetadata = (props) => {
           infoText="The publishing entity (e.g. your agency) and optionally their parent organization(s)."
           errors={errors}
         />
-        <WrappedField
-          name="publisher_other"
-          type="string"
-          helptext={helpTextify(
-            `If you selected “Other”, please specify the name of your Publisher`
-          )}
-          disabled={values.publisher !== 'Other'}
-          errors={errors}
-          required
-        />
       </div>
       <div className="grid-row margin-top-3">
         <WrappedField

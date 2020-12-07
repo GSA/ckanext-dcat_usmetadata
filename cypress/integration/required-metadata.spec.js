@@ -60,9 +60,7 @@ describe('Required Metadata Page', () => {
     cy.get('textarea[name=description]').type('description');
     cy.get('.react-tags input').type(tagName);
     cy.get('select[name=owner_org]').select('test-123');
-    cy.get('select[name=publisher]').select('Other');
-    cy.get('input[name=publisher_other]').type('Other publisher');
-    cy.get('input[name=subagency]').type('Sub Agency 1');
+    cy.get('select[name=publisher]').select('Data.gov');
     cy.get('input[name=contact_name]').type('Person');
     cy.get('input[name=contact_email]').type('person@mail.com');
     cy.get('input[name=unique_id]').type('unique id');
@@ -88,9 +86,7 @@ describe('Required Metadata Page', () => {
     cy.get('textarea[name=description]').type('description');
     cy.get('.react-tags input').type('1234{enter}');
     cy.get('select[name=owner_org]').select('test-123');
-    cy.get('select[name=publisher]').select('Other');
-    cy.get('input[name=publisher_other]').type('Other publisher');
-    cy.get('input[name=subagency]').type('Sub Agency 1');
+    cy.get('select[name=publisher]').select('Data.gov');
     cy.get('input[name=contact_name]').type('Person');
     cy.get('input[name=contact_email]').type('person@mail.com');
     cy.get('input[name=unique_id]').type('unique id');

@@ -60,11 +60,6 @@ const serializeSupplementalValues = (opts) => {
     }, '');
   }
 
-  if (opts.publisher_other) {
-    newOpts.publisher = opts.publisher_other;
-    delete newOpts.publisher_other;
-  }
-
   if (opts.license === 'n/a') {
     // if the license is selected "no license"
     delete newOpts.license_new;
