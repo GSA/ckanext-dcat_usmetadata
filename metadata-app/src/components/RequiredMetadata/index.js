@@ -15,11 +15,11 @@ const licenses = require('./licenses.json');
 const leafPublishers = publishersDictionary
   .map((item) => {
     return (
-      item.publisher_5 ||
-      item.publisher_4 ||
-      item.publisher_3 ||
-      item.publisher_2 ||
-      item.publisher_1 ||
+      item.publisher5 ||
+      item.publisher4 ||
+      item.publisher3 ||
+      item.publisher2 ||
+      item.publisher1 ||
       item.publisher
     );
   })
