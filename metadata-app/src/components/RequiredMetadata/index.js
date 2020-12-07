@@ -23,8 +23,7 @@ const leafPublishers = publishersDictionary
       item.publisher
     );
   })
-  .sort()
-  .concat(['Other']);
+  .sort();
 
 // Links within the form use target="_blank" to avoid navigating away from the
 // from while the user is filling it out. It can be very frustrating to lose
@@ -221,14 +220,6 @@ const RequiredMetadata = (props) => {
           className="error-msg"
           helptext={helpTexts.select}
           infoText="The publishing entity (e.g. your agency) and optionally their parent organization(s)."
-          errors={errors}
-        />
-      </div>
-      <div className="grid-row margin-top-3">
-        <WrappedField
-          label="Sub Agency (optional)"
-          name="subagency"
-          type="string"
           errors={errors}
         />
       </div>
