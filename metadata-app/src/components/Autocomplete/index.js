@@ -48,9 +48,10 @@ const Autocomplete = (props) => {
   };
 
   useEffect(() => {
+    if (!inputValue) return;
     setTypedText(inputValue || '');
-    if (value) setSelected({ id: value, name: inputValue });
-  }, []);
+    setSelected({ id: value, name: inputValue });
+  }, [inputValue]);
 
   const getSuggestions = async (typed) => {
     const currentInputValue = (typed || '').trim().toLowerCase();
