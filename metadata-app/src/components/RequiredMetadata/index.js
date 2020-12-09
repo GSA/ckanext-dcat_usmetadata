@@ -79,8 +79,6 @@ const RequiredMetadata = (props) => {
     // Find which publisher has been selected and attach it to the
     const selectedPublisher = publishers.find((publisher) => publisher.id === publisherId);
     setFieldValue('selectedPublisher', selectedPublisher);
-    console.log(values.publisher);
-    console.log(publishers);
   }, [values.publisher]);
 
   const getSelectedPublisherName = () => {

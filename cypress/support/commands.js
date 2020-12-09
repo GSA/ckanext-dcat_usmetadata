@@ -40,7 +40,8 @@ Cypress.Commands.add('requiredMetadata', (title) => {
   cy.get('textarea[name=description]').type(chance.sentence({ words: 4 }));
   cy.get('.react-tags input').type('1234{enter}');
   cy.get('select[name=owner_org]').select('test-123');
-  cy.get('select[name=publisher]').select('Data.gov');
+  cy.get('input[placeholder="Select publisher"]').type('Data.gov');
+  cy.get('input[placeholder="Select publisher"]').type('{downarrow}{enter}');
   cy.get('input[name=contact_name]').type(chance.name());
   cy.get('input[name=contact_email]').type(chance.email());
   cy.get('input[name=unique_id]').type(chance.string({ length: 10 }));

@@ -48,7 +48,9 @@ const Autocomplete = (props) => {
   };
 
   useEffect(() => {
-    if (!inputValue) return;
+    // TODO - Second condition is kinda a hack, due to
+    // the incompleteness of the backend forParent Dataset autcomplete
+    if (!inputValue || (value === inputValue && typedText)) return;
     setTypedText(inputValue || '');
     setSelected({ id: value, name: inputValue });
   }, [inputValue]);
