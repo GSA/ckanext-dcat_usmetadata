@@ -55,7 +55,7 @@ describe('Required Metadata Page', () => {
 
   it('Populate publisher hierarchy from single publisher', () => {
     cy.visit('/dataset/new-metadata');
-    cy.get('input[name=title]').type('A title for publisher hierarchy test00');
+    cy.get('input[name=title]').type('A title for publisher hierarchy test');
     cy.get('textarea[name=description]').type('description');
     cy.get('.react-tags input').type('tag');
     cy.get('select[name=owner_org]').select('test-123');
