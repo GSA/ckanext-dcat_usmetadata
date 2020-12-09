@@ -231,9 +231,14 @@ const RequiredMetadata = (props) => {
       </div>
       <div className="grid-row margin-top-3">
         <div className="grid-col-12">
-          <span className="usa-label">Select Publisher</span>
+          <span className="usa-label">
+            Select Publisher
+            <ToolTip>
+              <h3>Publisher</h3>
+              <p>The publishing entity (e.g. your agency, department, bureau, or office).</p>
+            </ToolTip>
+          </span>
           <Autocomplete
-            label="Select Publisher"
             name="publisher"
             type="string"
             value={values.publisher}

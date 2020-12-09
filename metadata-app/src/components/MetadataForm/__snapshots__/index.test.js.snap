@@ -295,6 +295,18 @@ exports[`renders MetadataForm component 1`] = `
                   class="usa-label"
                 >
                   Select Publisher
+                  <div
+                    class="tooltip"
+                  >
+                    <svg
+                      height="20px"
+                      style="margin-left: .5em;"
+                      tabindex="0"
+                      width="20px"
+                    >
+                      info.svg
+                    </svg>
+                  </div>
                 </span>
                 <div
                   class="react-tags-input grid-col-12 undefined"
