@@ -3,6 +3,32 @@ import slugify from 'slugify';
 
 const dataDictTypes = require('../components/AdditionalMetadata/data-dictionary-types');
 const licenses = require('../components/RequiredMetadata/licenses.json');
+const publishersDictionary = require('../components/RequiredMetadata/publishers.json');
+
+// There are 5 possible publishers/subpublishers
+const publisherProps = [
+  'publisher',
+  'publisher_1',
+  'publisher_2',
+  'publisher_3',
+  'publisher_4',
+  'publisher_5',
+];
+
+/**
+ *  Gets the last existing child/leaf from the publishers
+ * @param {*} publisher
+ */
+const getLeafPublisher = (publisher) => {
+  return (
+    publisher.publisher_5 ||
+    publisher.publisher_4 ||
+    publisher.publisher_3 ||
+    publisher.publisher_2 ||
+    publisher.publisher_1 ||
+    publisher.publisher
+  );
+};
 
 /**
  * HELPERS
@@ -58,11 +84,6 @@ const serializeSupplementalValues = (opts) => {
       }
       return `${acc}, ${cur.name}`;
     }, '');
-  }
-
-  if (opts.publisher_other) {
-    newOpts.publisher = opts.publisher_other;
-    delete newOpts.publisher_other;
   }
 
   if (opts.license === 'n/a') {
@@ -159,6 +180,24 @@ const serializeSupplementalValues = (opts) => {
     delete newOpts.modifiedOther;
   }
 
+  const { selectedPublisher } = newOpts;
+  if (selectedPublisher) {
+    // First delete all publishers initially came from backend
+    if (newOpts.extras)
+      newOpts.extras = newOpts.extras.filter(({ key }) => {
+        delete newOpts[key];
+        return !publisherProps.includes(key);
+      });
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const publisherPropName of publisherProps) {
+      const publisher = selectedPublisher[publisherPropName];
+      if (publisher) {
+        newOpts[publisherPropName] = publisher;
+      }
+    }
+  }
+
   return newOpts;
 };
 
@@ -221,6 +260,15 @@ const deserializeSupplementalValues = (opts) => {
   if (opts.parent_dataset) {
     newOpts.parentDataset = opts.parent_dataset;
   }
+
+  const publisher = {};
+  // eslint-disable-next-line array-callback-return
+  (opts.extras || []).map(({ key, value }) => {
+    if (publisherProps.includes(key)) {
+      publisher[key] = value;
+    }
+  });
+  newOpts.publisher = getLeafPublisher(publisher);
 
   return newOpts;
 };
@@ -376,6 +424,19 @@ const fetchParentDatasets = async (query, apiUrl, apiKey) => {
   }
 };
 
+// TODO depending on the changes in the backend this might be moved to API
+const fetchPublishers = async () => {
+  // TODO Currently the list is static, but later this is going to be provided dynamically
+  return publishersDictionary
+    .map((publisher, index) => {
+      // TODO here we choose index as an id, but we later we suppose it will be given by the backend
+      const id = index;
+      const leafPublisher = getLeafPublisher(publisher);
+      return { id, name: leafPublisher, ...publisher };
+    })
+    .sort();
+};
+
 export default {
   createDataset,
   updateDataset,
@@ -389,4 +450,5 @@ export default {
     deserializeExtras,
     clone,
   },
+  fetchPublishers,
 };

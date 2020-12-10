@@ -1,1306 +1,1466 @@
 [
   {
-    "publisher": "Agricultural Marketing Service, Department of Agriculture",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Agricultural Research Service, Department of Agriculture",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Animal and Plant Health Inspection Service, Department of Agriculture",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Antitrust Division, Department of Justice",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "ATF - Bureau of Alcohol, Tobacco, Firearms and Explosives",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Atmospheric Radiation Measurement (ARM) Climate Research Facility",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "ATR - Antitrust Division, U.S. Department of Justice",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "BJS - Bureau of Justice Statistics, U.S. Department of Justice",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "BOP - Bureau of Prisons, U.S. Department of Justice",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Bureau of Economic Analysis, Department of Commerce",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Bureau of Engraving and Printing, Department of the Treasury",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Bureau of Industry and Security, Department of Commerce",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Bureau of Justice Statistics, Department of Justice",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Bureau of the Public Debt, Department of the Treasury",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Civil Division, Department of Justice",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Civil Rights Division, Department of Justice",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Criminal Division, Department of Justice",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Community Relations Service, Department of Justice",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "DEA - Drug Enforcement Administration",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Departmental Management, Department of Agriculture",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Departmental Offices, Department of the Treasury",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Office of Chief Information Officer, Department of Agriculture",
-    "publisher_1": "Office of Chief Information Officer",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Department of Agriculture",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
     "publisher": "Department of Agriculture",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher_1": "Agricultural Marketing Service",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Agriculture",
+    "publisher_1": "Agricultural Research Service",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Agriculture",
+    "publisher_1": "Animal and Plant Health Inspection Service",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Agriculture",
+    "publisher_1": "Departmental Management",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Agriculture",
+    "publisher_1": "Office of Chief Information Officer",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Agriculture",
+    "publisher_1": "Economic Research Service",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Agriculture",
+    "publisher_1": "Farm Service Agency",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Agriculture",
+    "publisher_1": "Food and Nutrition Service",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Agriculture",
+    "publisher_1": "Food Safety and Inspection Service",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Agriculture",
+    "publisher_1": "Foreign Agricultural Service",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Agriculture",
+    "publisher_1": "National Agricultural Statistics Service",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Agriculture",
+    "publisher_1": "National Institute of Food and Agriculture",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Agriculture",
+    "publisher_1": "Natural Resources Conservation Service",
+    "publisher_2": "Colorado State University",
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Agriculture",
+    "publisher_1": "Rural Development",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Agriculture",
+    "publisher_1": "GIPSA",
+    "publisher_2": "Federal Grain Inspection Service",
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Agriculture",
+    "publisher_1": "Natural Resources Conservation Service",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Agriculture",
+    "publisher_1": "US Forest Service",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
     "publisher": "Department of Commerce",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Commerce",
+    "publisher_1": "Bureau of Economic Analysis",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Commerce",
+    "publisher_1": "Bureau of Industry and Security",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Commerce",
+    "publisher_1": "International Trade Administration",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Commerce",
+    "publisher_1": "National Oceanic and Atmospheric Administration",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Commerce",
+    "publisher_1": "National Technical Information Service",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Commerce",
+    "publisher_1": "National Telecommunication and Information Administration",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Commerce",
+    "publisher_1": "National Weather Service",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Commerce",
+    "publisher_1": "National Institute of Standards and Technology",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Commerce",
+    "publisher_1": "U.S. Census Bureau",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Commerce",
+    "publisher_1": "US Patent and Trademark Office",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Defense",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Defense",
+    "publisher_1": "The Department of the Air Force",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
     "publisher": "Department of Education",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Education",
+    "publisher_1": "Office for Civil Rights",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
     "publisher": "Department of Energy",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "Department of Homeland Security",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Department of Energy",
+    "publisher_1": "Atmospheric Radiation Measurement (ARM) Climate Research Facility",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "Department of the Treasury",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Department of Energy",
+    "publisher_1": "Argonne National Laboratory",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "ARPA-E",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Congressional and Intergovernmental Affairs",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Economic Impact and Diversity",
+    "publisher_2": "Office of Civil Rights",
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Energy Information Administration",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Energy Policy and Systems Analysis",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Environmental Management Consolidated Business Center",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "General Counsel",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Indian Energy Policy and Programs",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Inspector General",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Intelligence and Counterintelligence",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "International Affairs",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Loan Programs Office",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "National Renewable Energy Laboratory",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Nuclear Energy",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Oak Ridge National Laboratory",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Office of Chief Financial Officer",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Office of Chief Human Capital Officer",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Office of Chief Information Officer",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Office of Electricity",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Office of Energy Efficiency and Renewable Energy",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Office of Environmental Management",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Office of Fossil Energy",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Office of Hearings and Appeals",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Office of Legacy Management",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Office of Nuclear Energy",
+    "publisher_2": "Idaho National Laboratory",
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Office of Science",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Office of Scientific and Technical Information",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Public Affairs",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Richland Operations and the Office of River Protection",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "Small and Disadvantaged Business Utilization",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "National Energy Technology Laboratory",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Energy",
+    "publisher_1": "National Nuclear Security Administration",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Housing and Urban Development",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Housing and Urban Development",
+    "publisher_1": "Office of Housing",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Housing and Urban Development",
+    "publisher_1": "Department of Housing and Urban Development",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "Antitrust Division",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "Bureau of Alcohol, Tobacco, Firearms and Explosives",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "Antitrust Division",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "Bureau of Justice Statistics",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "Bureau of Prisons",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "Bureau of Justice Statistics",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "Civil Division",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "Civil Rights Division",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "Criminal Division",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "Community Relations Service",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "Drug Enforcement Administration",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "Environment and Natural Resources Division",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "Executive Office for Immigration Review",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "Executive Office for United States Attorneys",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "Federal Bureau of Investigation",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "National Institute of Justice",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "Office of Legal Counsel",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "Office of the Inspector General",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "Office of Information Policy",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "Office of Juvenile Justice and Delinquency Prevention",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "Office of Justice Programs",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "US Attorney's Office",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "United States Marshals Service",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "United States Parole Commission",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Justice",
+    "publisher_1": "US Trustee Program",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Labor",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Labor",
+    "publisher_1": "Employee Benefits Security Administration",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Labor",
+    "publisher_1": "Benefits.gov Program",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Labor",
+    "publisher_1": "Bureau of International Labor Affairs",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Labor",
+    "publisher_1": "Bureau of Labor Statistics",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Labor",
+    "publisher_1": "Chief Economist's Office",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Labor",
+    "publisher_1": "Employee Benefits Security Administration",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Labor",
+    "publisher_1": "Employment and Training Administration",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Labor",
+    "publisher_1": "Mine Safety and Health Administration",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Labor",
+    "publisher_1": "Occupational Safety and Health Administration",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Labor",
+    "publisher_1": "Office of Federal Contract Compliance Programs",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Labor",
+    "publisher_1": "Office of Job Corps",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Labor",
+    "publisher_1": "Office of Labor-Management Standards",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Labor",
+    "publisher_1": "Office of Public Affairs",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Labor",
+    "publisher_1": "Office of the Assistant Secretary for Policy",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Labor",
+    "publisher_1": "Office of the Solicitor",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Labor",
+    "publisher_1": "Office of Workers' Compensation Program",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of Labor",
+    "publisher_1": "Wage and Hour Division",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of State",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Department of State",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
     "publisher": "Department of Veterans Affairs",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "DOE Argonne National Laboratory",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Department of Veterans Affairs",
+    "publisher_1": "Office of Management",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "DOE ARPA-E",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Department of Veterans Affairs",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "DOE Congressional and Intergovernmental Affairs",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Department of the Interior",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "DOE Economic Impact and Diversity",
-    "publisher_1": "Office of Civil Rights",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Department of the Interior",
+    "publisher_1": "National Park Service",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "DOE Energy Information Administration",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Department of the Treasury",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "DOE Energy Policy and Systems Analysis",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Department of the Treasury",
+    "publisher_1": "Bureau of Engraving and Printing",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "DOE Environmental Management Consolidated Business Center",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Department of the Treasury",
+    "publisher_1": "Bureau of the Public Debt",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "DOE General Counsel",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Department of the Treasury",
+    "publisher_1": "Departmental Offices",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "DOE Indian Energy Policy and Programs",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Department of the Treasury",
+    "publisher_1": "Financial Crimes Enforcement Network",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "DOE Inspector General",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Department of the Treasury",
+    "publisher_1": "Financial Management Service",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "DOE Intelligence and Counterintelligence",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Department of the Treasury",
+    "publisher_1": "Internal Revenue Service",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "DOE International Affairs",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Department of the Treasury",
+    "publisher_1": "United States Mint",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "DOE Loan Programs Office",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Election Assistance Commission",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "DOE National Renewable Energy Laboratory",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "DOE Nuclear Energy",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "DOE Oak Ridge National Laboratory",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "DOE Office of Chief Financial Officer",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "DOE Office of Chief Human Capital Officer",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "DOE Office of Chief Information Officer",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "DOE Office of Electricity",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "DOE Office of Energy Efficiency and Renewable Energy",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "DOE Office of Environmental Management",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "DOE Office of Fossil Energy",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "DOE Office of Hearings and Appeals",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "DOE Office of Legacy Management",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "DOE Office of Nuclear Energy",
-    "publisher_1": "Idaho National Laboratory",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "DOE Office of Nuclear Energy",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "DOE Office of Science",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "DOE Office of Scientific and Technical Information",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "DOE Public Affairs",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "DOE Richland Operations and the Office of River Protection",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "DOE Small and Disadvantaged Business Utilization",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Economic Research Service, Department of Agriculture",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Employee Benefits Security Administration",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "ENRD - Environment and Natural Resources Division",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Election Assistance Commission",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
     "publisher": "Environmental Protection Agency",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "EOIR - Executive Office for Immigration Review, Department of Justice",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "EOUSA - Executive Office for United States Attorneys, Department of Justice",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Farm Service Agency, Department of Agriculture",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Federal Bureau of Investigation, Department of Justice",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Environmental Protection Agency",
+    "publisher_1": "Environmental Protection Agency",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
     "publisher": "Federal Deposit Insurance Corporation",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Federal Deposit Insurance Corporation",
+    "publisher_1": "Federal Deposit Insurance Corporation",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
     "publisher": "Federal Housing Finance Agency",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "Financial Crimes Enforcement Network, Department of the Treasury",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Financial Management Service, Department of the Treasury",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Food and Nutrition Service, Department of Agriculture",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Food Safety and Inspection Service, Department of Agriculture",
-    "publisher_1": "Food Safety and Inspection Service",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Foreign Agricultural Service, Department of Agriculture",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Office of Governmentwide Policy, General Services Administration",
-    "publisher_1": "Office of Governmentwide Policy",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Office of Chief Technology Officer, General Services Administration",
-    "publisher_1": "Office of the Chief Technology Officer",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Technology Transformation Services, General Services Administration",
-    "publisher_1": "Technology Transformation Service",
-    "publisher_2": "Data.gov",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Federal Housing Finance Agency",
+    "publisher_1": "Federal Housing Finance Agency",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
     "publisher": "General Services Administration",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "Internal Revenue Service, Department of the Treasury",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "General Services Administration",
+    "publisher_1": "Office of Governmentwide Policy",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "International Trade Administration, Department of Commerce",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "General Services Administration",
+    "publisher_1": "Office of Chief Technology Officer",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "General Services Administration",
+    "publisher_1": "Technology Transformation Service",
+    "publisher_2": "Data.gov",
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
     "publisher": "Library of Congress",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Library of Congress",
+    "publisher_1": "Library of Congress",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
     "publisher": "Merit Systems Protection Board",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Merit Systems Protection Board",
+    "publisher_1": "Merit Systems Protection Board",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
     "publisher": "Millennium Challenge Corporation",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "National Agricultural Statistics Service, Department of Agriculture",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Office of Innovation, National Archives and Records Administration",
-    "publisher_1": "Office of Innovation",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Office of the Federal Register, National Archives and Records Administration",
-    "publisher_1": "Office of the Federal Register",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Millennium Challenge Corporation",
+    "publisher_1": "Millennium Challenge Corporation",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
     "publisher": "National Archives and Records Administration",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "National Archives and Records Administration",
+    "publisher_1": "Office of Innovation",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "National Archives and Records Administration",
+    "publisher_1": "Office of the Federal Register",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "National Archives and Records Administration",
+    "publisher_1": "Office of the Chief Records Officer",
+    "publisher_2": "Operations Research and Support Team",
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "National Archives and Records Administration",
+    "publisher_1": "Office of the Federal Register",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
     "publisher": "National Capital Planning Commission",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "National Endowment for the Humanities",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "DOE National Energy Technology Laboratory",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "National Institute of Food and Agriculture, Department of Agriculture",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "DOE National Nuclear Security Administration",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "National Oceanic and Atmospheric Administration",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "National Park Service, Department of Interior",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "National Science Foundation",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "National Technical Information Service, Department of Commerce",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "National Telecommunication and Information Administration, Department of Commerce",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "National Weather Service, Department of Commerce",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Natural Resources Conservation Service, Colorado State University",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "National Capital Planning Commission",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
     "publisher": "National Credit Union Administration",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "NIJ - National Institute of Justice, Department of Justice",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "National Credit Union Administration",
+    "publisher_1": "National Credit Union Administration",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "National Institute of Standards and Technology, Department of Commerce",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "National Endowment of the Humanities",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "Office of Housing, Department of Housing and Urban Development",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "National Endowment of the Humanities",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "Office of Legal Counsel, Department of Justice",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "National Science Foundation",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "Office of Management, Department of Veterans Affairs",
-    "publisher_1": "Department of Veterans Affairs",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "National Science Foundation",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Nuclear Regulatory Commission",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Nuclear Regulatory Commission",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
     "publisher": "Office of Management and Budget",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Office of Management and Budget",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
     "publisher": "Office of Navajo and Hopi Indian Relocation",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Office of Navajo and Hopi Indian Relocation",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Office of Personnel Management",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Office of Personnel Management",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
     "publisher": "Office of Special Counsel",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "Office of the Chief Records Officer, Operations Research and Support Team, National Archives and Records Administration",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Office of the Federal Register, National Archives and Records Administration",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "OIG - Office of the Inspector General, Department of Justice",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "OIP - Office of Information Policy, Department of Justice",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "OJJDP - Office of Juvenile Justice and Delinquency Prevention, Department of Justice",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "OJP - Office of Justice Programs, Department of Justice",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Office of Special Counsel",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
     "publisher": "Pension Benefit Guaranty Corporation",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Pension Benefit Guaranty Corporation",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
     "publisher": "Railroad Retirement Board",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "Rural Development, Department of Agriculture",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Railroad Retirement Board",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Securities and Exchange Commission",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Securities and Exchange Commission",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Small Business Administration",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
+  },
+  {
+    "publisher": "Small Business Administration",
+    "publisher_1": "Workforce Acquisitions Division of the Office of Human Resources Solutions",
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
     "publisher": "Social Security Administration",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "The Department of the Air Force",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "Social Security Administration",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "United States Mint, Department of the Treasury",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "U.S. Agency for International Development",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   },
   {
-    "publisher": "University of Maryland",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "US Agency for International Development",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "US Attorney's Office, Department of Justice",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Census Bureau, Department of Commerce",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "USDA-GIPSA",
-    "publisher_1": "Federal Grain Inspection Service",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "USDA-Natural Resources Conservation Service",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U. S. Department of Agriculture",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Office for Civil Rights, U.S. Department of Education",
-    "publisher_1": "Office for Civil Rights",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Department of Education",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "US Department of Housing and Urban Development",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Department of Labor Benefits.gov Program",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Department of Labor Bureau of International Labor Affairs",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Department of Labor Bureau of Labor Statistics",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Department of Labor, Bureau of Labor Statistics",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Department of Labor Chief Economist's Office",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Department of Labor Employee Benefits Security Administration",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Department of Labor Employment and Training Administration",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Department of Labor Mine Safety and Health Administration",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Department of Labor Occupational Safety and Health Administration",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Department of Labor Office of Federal Contract Compliance Programs",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Department of Labor Office of Job Corps",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Department of Labor Office of Labor-Management Standards",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Department of Labor Office of Public Affairs",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Department of Labor Office of the Assistant Secretary for Policy",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Department of Labor Office of the Solicitor",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Department of Labor Office of Workers' Compensation Program",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Department of Labor Wage and Hour Division",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Department of State",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Department of the Treasury",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Election Assistance Commission",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "US Forest Service, Department of Agriculture",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "USMS - United States Marshals Service",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S Nuclear Regulatory Commission",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Office of Personnel Management",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "US Patent and Trademark Office, Department of Commerce",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "USPC - United States Parole Commission",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Securities and Exchange Commission",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "U.S. Small Business Administration",
-    "publisher_1": "Workforce Acquisitions Division of the Office of Human Resources Solutions",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "US Trustee Program, Department of Justice",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "VHA, Department of Veterans Affairs",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
-  },
-  {
-    "publisher": "Wisconsin Alumni Research Foundation",
-    "publisher_1": "",
-    "publisher_2": "",
-    "publisher_3": "",
-    "publisher_4": "",
-    "publisher_5": ""
+    "publisher": "U.S. Agency for International Development",
+    "publisher_1": null,
+    "publisher_2": null,
+    "publisher_3": null,
+    "publisher_4": null,
+    "publisher_5": null
   }
 ]

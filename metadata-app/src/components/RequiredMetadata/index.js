@@ -4,27 +4,13 @@ import slugify from 'slugify';
 import WrappedField from '../WrappedField';
 import api from '../../api';
 import AutocompleteTags from '../AutocompleteTags';
+import Autocomplete from '../Autocomplete';
 import HelpText from '../HelpText';
 import Radio from '../Radio';
 import Link from '../Link';
 import ToolTip from '../ToolTip';
 
-const publishersDictionary = require('./publishers.json');
 const licenses = require('./licenses.json');
-
-const leafPublishers = publishersDictionary
-  .map((item) => {
-    return (
-      item.publisher_5 ||
-      item.publisher_4 ||
-      item.publisher_3 ||
-      item.publisher_2 ||
-      item.publisher_1 ||
-      item.publisher
-    );
-  })
-  .sort()
-  .concat(['Other']);
 
 // Links within the form use target="_blank" to avoid navigating away from the
 // from while the user is filling it out. It can be very frustrating to lose
@@ -33,6 +19,9 @@ const RequiredMetadata = (props) => {
   const { values, errors, apiUrl, apiKey, draftSaved, setFieldValue, submitForm } = props;
 
   const [organizations, setOrganizations] = useState([]);
+  // Depending on the given organization the publishers list might be different
+  const [publishers, setPublishers] = useState([]);
+
   useEffect(() => {
     api.fetchOrganizationsForUser(apiUrl, apiKey).then((data) => {
       // if it comes from organization page then pre-select that specific organization
@@ -73,6 +62,35 @@ const RequiredMetadata = (props) => {
       }
     } else if (!values.url) values.url = genUrlFromTitle(values.title);
     setUrlDisabled(!urlDisabled);
+  };
+
+  const getPublishers = async () => {
+    // eslint-disable-next-line no-undef
+    const fetchedPublishers = await api.fetchPublishers(...arguments);
+
+    setPublishers(fetchedPublishers);
+
+    return fetchedPublishers;
+  };
+
+  useEffect(() => {
+    const publisherId = values.publisher;
+    if (!publisherId) return;
+    // Find which publisher has been selected and attach it to the
+    const selectedPublisher = publishers.find((publisher) => publisher.id === publisherId);
+    setFieldValue('selectedPublisher', selectedPublisher);
+  }, [values.publisher]);
+
+  const getSelectedPublisherName = () => {
+    const { selectedPublisher } = values;
+    // If it's not selected from the autocomplete yet
+    if (!selectedPublisher) {
+      // If the publisher value is not the id, just the name
+      if (typeof values.publisher === 'string') return values.publisher;
+      return '';
+    }
+    // If it's already selected from autocomplete then return the name
+    return selectedPublisher.name;
   };
 
   const helpTexts = {
@@ -212,35 +230,27 @@ const RequiredMetadata = (props) => {
         />
       </div>
       <div className="grid-row margin-top-3">
-        <WrappedField
-          label="Publisher"
-          name="publisher"
-          type="select"
-          choices={leafPublishers}
-          required
-          className="error-msg"
-          helptext={helpTexts.select}
-          infoText="The publishing entity (e.g. your agency) and optionally their parent organization(s)."
-          errors={errors}
-        />
-        <WrappedField
-          name="publisher_other"
-          type="string"
-          helptext={helpTextify(
-            `If you selected “Other”, please specify the name of your Publisher`
-          )}
-          disabled={values.publisher !== 'Other'}
-          errors={errors}
-          required
-        />
-      </div>
-      <div className="grid-row margin-top-3">
-        <WrappedField
-          label="Sub Agency (optional)"
-          name="subagency"
-          type="string"
-          errors={errors}
-        />
+        <div className="grid-col-12">
+          <span className="usa-label">
+            Select Publisher
+            <ToolTip>
+              <h3>Publisher</h3>
+              <p>The publishing entity (e.g. your agency, department, bureau, or office).</p>
+            </ToolTip>
+          </span>
+          <Autocomplete
+            name="publisher"
+            type="string"
+            value={values.publisher}
+            // TODO - inputValue should be replaced with parent dataset name
+            inputValue={getSelectedPublisherName()}
+            placeholder="Select publisher"
+            helptext={helpTexts.select}
+            fetchOpts={getPublishers}
+            apiUrl={apiUrl}
+            apiKey={apiKey}
+          />
+        </div>
       </div>
       <div className="grid-row margin-top-3">
         <WrappedField

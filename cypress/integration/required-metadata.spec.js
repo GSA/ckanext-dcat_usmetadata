@@ -53,6 +53,30 @@ describe('Required Metadata Page', () => {
     cy.contains('Dataset saved successfully');
   });
 
+  it('Populate publisher hierarchy from single publisher', () => {
+    cy.visit('/dataset/new-metadata');
+    cy.get('input[name=title]').type('A title for publisher hierarchy test');
+    cy.get('textarea[name=description]').type('description');
+    cy.get('.react-tags input').type('tag');
+    cy.get('select[name=owner_org]').select('test-123');
+    cy.get('input[placeholder="Select publisher"]').type('Data.gov');
+    cy.get('input[placeholder="Select publisher"]').type('{downarrow}{enter}');
+    cy.get('input[name=contact_name]').type('Person');
+    cy.get('input[name=contact_email]').type('person@mail.com');
+    cy.get('input[name=unique_id]').type('unique-id-for-publisher-hierarchy-test');
+    cy.get('select[name=public_access_level]').select('public');
+    cy.get('select[name=license]').select('MIT');
+    cy.get('select[name=modified]').select('Yearly');
+
+    cy.get('button[type=button]').contains('Save and Continue').click();
+    cy.additionalMetadata();
+    cy.get('button[type=button]').contains('Save and Continue').click();
+    cy.resourceUploadWithUrlAndPublish();
+    cy.contains('General Services Administration');
+    cy.contains('Technology Transformation Service');
+    cy.contains('Data.gov');
+  });
+
   it('Able to add new tag without hiting Enter or Tab', () => {
     const tagName = 'tag0123';
     cy.visit('/dataset/new-metadata');
@@ -60,9 +84,8 @@ describe('Required Metadata Page', () => {
     cy.get('textarea[name=description]').type('description');
     cy.get('.react-tags input').type(tagName);
     cy.get('select[name=owner_org]').select('test-123');
-    cy.get('select[name=publisher]').select('Other');
-    cy.get('input[name=publisher_other]').type('Other publisher');
-    cy.get('input[name=subagency]').type('Sub Agency 1');
+    cy.get('input[placeholder="Select publisher"]').type('Data.gov');
+    cy.get('input[placeholder="Select publisher"]').type('{downarrow}{enter}');
     cy.get('input[name=contact_name]').type('Person');
     cy.get('input[name=contact_email]').type('person@mail.com');
     cy.get('input[name=unique_id]').type('unique id');
@@ -88,9 +111,8 @@ describe('Required Metadata Page', () => {
     cy.get('textarea[name=description]').type('description');
     cy.get('.react-tags input').type('1234{enter}');
     cy.get('select[name=owner_org]').select('test-123');
-    cy.get('select[name=publisher]').select('Other');
-    cy.get('input[name=publisher_other]').type('Other publisher');
-    cy.get('input[name=subagency]').type('Sub Agency 1');
+    cy.get('input[placeholder="Select publisher"]').type('Data.gov');
+    cy.get('input[placeholder="Select publisher"]').type('{downarrow}{enter}');
     cy.get('input[name=contact_name]').type('Person');
     cy.get('input[name=contact_email]').type('person@mail.com');
     cy.get('input[name=unique_id]').type('unique id');
