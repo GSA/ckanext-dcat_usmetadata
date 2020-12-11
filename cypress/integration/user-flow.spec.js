@@ -27,6 +27,18 @@ describe('Access to the new metadata app', () => {
     cy.get('.navsec').should('not.exist');
     cy.url().should('include', '/user/login');
     cy.url().should('include', 'came_from=%2Fdataset%2Fnew-metadata');
+    // Same for edit dataset page
+    cy.visit('/dataset/edit-new/dataset-id', { failOnStatusCode: false });
+    cy.get('.navsec').should('not.exist');
+    cy.url().should('include', '/user/login');
+    cy.url().should('include', 'came_from=%2Fdataset%2Fedit-new%2Fdataset-id');
+  });
+
+  it('Returns 404 when trying to edit non-existing dataset', () => {
+    cy.login();
+    cy.visit('/dataset/edit-new/dataset-id', { failOnStatusCode: false });
+    cy.url().should('include', '/dataset/edit-new/dataset-id');
+    cy.contains('404 Not Found');
   });
 });
 
