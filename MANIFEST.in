@@ -2,4 +2,4 @@ include README.md
 include LICENSE
 include requirements.txt
 recursive-include ckanext/dcat_usmetadata *.html *.json *.js *.less *.css *.mo
-recursive-include ckanext/dcat_usmetadata/public/static *
+recursive-include ckanext/dcat_usmetadata/public/assets *

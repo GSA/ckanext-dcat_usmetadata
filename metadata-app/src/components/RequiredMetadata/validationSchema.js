@@ -39,7 +39,6 @@ export default yup.object().shape({
   publisher: yup.string().when('saveDraft', (saveDraft, schema) => {
     return saveDraft ? schema : schema.required('Publisher is required');
   }),
-  subagency: yup.string(),
   public_access_level: yup.string().when('saveDraft', (saveDraft, schema) => {
     return saveDraft ? schema : schema.required('Access level is required');
   }),

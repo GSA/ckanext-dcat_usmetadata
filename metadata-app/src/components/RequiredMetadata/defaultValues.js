@@ -4,4 +4,5 @@ export default {
   spatial_location: 'false',
   temporal: 'false',
   modifiedOther: '',
+  publisher: '',
 };

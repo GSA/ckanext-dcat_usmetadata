@@ -48,9 +48,12 @@ const Autocomplete = (props) => {
   };
 
   useEffect(() => {
+    // TODO - Second condition is kinda a hack, due to
+    // the incompleteness of the backend forParent Dataset autcomplete
+    if (!inputValue || (value === inputValue && typedText)) return;
     setTypedText(inputValue || '');
-    if (value) setSelected({ id: value, name: inputValue });
-  }, []);
+    setSelected({ id: value, name: inputValue });
+  }, [inputValue]);
 
   const getSuggestions = async (typed) => {
     const currentInputValue = (typed || '').trim().toLowerCase();
