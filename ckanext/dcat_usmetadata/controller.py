@@ -13,6 +13,7 @@ render = base.render
 
 controller = 'ckanext.dcat_usmetadata.controller:MetadataController'
 
+
 class MetadataController(CorePackageController):
     def new_metadata(self):
         if not c.user:
