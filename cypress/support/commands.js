@@ -54,8 +54,6 @@ Cypress.Commands.add('requiredMetadata', (title) => {
   cy.get('#temporal_option_2').parent('.form-group').click();
   cy.get('input[name=temporal_start_date]').type('2010-11-11');
   cy.get('input[name=temporal_end_date]').type('2020-11-11');
-  cy.get('select[name=modified]').select('Custom');
-  cy.get('input[name=modifiedOther]').type('P1Y2M3DT4H5M6S');
   cy.get('button[type=button]').contains('Save and Continue').click();
   cy.wait('@packageCreate');
 });
@@ -65,7 +63,7 @@ Cypress.Commands.add('additionalMetadata', () => {
   cy.get('input[name=category]').type(chance.name());
   cy.get('input[name=data_dictionary]').clear().type(chance.url());
   cy.get('select[name=describedByType]').type(chance.name());
-  cy.get('select[name=accrual_periodicity]').select('Weekly');
+  cy.get('select[name=accrualPeriodicity]').select('Weekly');
   cy.get('input[name=homepage_url]').clear().type(chance.url());
   cy.get('select[name=languageSubTag]').type('English');
   cy.get('select[name=languageRegSubTag]').type('United States');

@@ -1,0 +1,30 @@
+[
+  {
+    "value": "irregular",
+    "label": "Irregular/As needed"
+  },
+  {
+    "value": "Continuously updated",
+    "label": "Continuously"
+  },
+  {
+    "value": "R/P1D",
+    "label": "Daily"
+  },
+  {
+    "value": "R/P7D",
+    "label": "Weekly"
+  },
+  {
+    "value": "R/P1M",
+    "label": "Monthly"
+  },
+  {
+    "value": "R/P1Y",
+    "label": "Yearly"
+  },
+  {
+    "value": "other",
+    "label": "Other"
+  }
+]

@@ -32,6 +32,19 @@ describe('Additional Metadata Page', () => {
       });
   });
 
+  it('Accrual Periodicity validation works ISO 8601 value', () => {
+    cy.requiredMetadata();
+    cy.get('select[name=accrualPeriodicity]').select('Other');
+    cy.get('input[name=accrualPeriodicityOther]').should('be.enabled');
+    cy.get('select[name=accrualPeriodicity]').select('Daily');
+    cy.get('input[name=accrualPeriodicityOther]').should('be.disabled');
+    cy.get('select[name=accrualPeriodicity]').select('Other');
+    cy.get('input[name=accrualPeriodicityOther]').type('monthly');
+    cy.get('button[type=button]').contains('Save and Continue').click();
+    cy.contains('This form contains invalid entries');
+    cy.contains('Data Publishing Frequency should be formatted as a proper ISO 8601 timestamp');
+  });
+
   it('Goes back to previous page', () => {
     cy.requiredMetadata();
     cy.get('button[type=button]')

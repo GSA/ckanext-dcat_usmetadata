@@ -34,10 +34,6 @@ describe('Required Metadata Page', () => {
     cy.get('input[name=licenseOther]').should('be.disabled');
     cy.get('select[name=license]').select('Other');
     cy.get('input[name=licenseOther]').should('be.enabled');
-    cy.get('select[name=modified]').select('Custom');
-    cy.get('input[name=modifiedOther]').should('be.enabled');
-    cy.get('select[name=modified]').select('Yearly');
-    cy.get('input[name=modifiedOther]').should('be.disabled');
   });
 
   it('Form validation works', () => {
@@ -66,7 +62,6 @@ describe('Required Metadata Page', () => {
     cy.get('input[name=unique_id]').type('unique-id-for-publisher-hierarchy-test');
     cy.get('select[name=public_access_level]').select('public');
     cy.get('select[name=license]').select('MIT');
-    cy.get('select[name=modified]').select('Yearly');
 
     cy.get('button[type=button]').contains('Save and Continue').click();
     cy.additionalMetadata();
@@ -91,7 +86,6 @@ describe('Required Metadata Page', () => {
     cy.get('input[name=unique_id]').type('unique id');
     cy.get('select[name=public_access_level]').select('public');
     cy.get('select[name=license]').select('MIT');
-    cy.get('select[name=modified]').select('Yearly');
     cy.get('button[type=button]')
       .contains('Save and Continue')
       .click()
@@ -118,7 +112,6 @@ describe('Required Metadata Page', () => {
     cy.get('input[name=unique_id]').type('unique id');
     cy.get('select[name=public_access_level]').select('public');
     cy.get('select[name=license]').select('MIT');
-    cy.get('select[name=modified]').select('Yearly');
     cy.get('button[type=button]')
       .contains('Save and Continue')
       .click()

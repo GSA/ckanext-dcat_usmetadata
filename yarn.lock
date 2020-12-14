@@ -1577,11 +1577,6 @@
     "@svgr/plugin-svgo" "^4.3.1"
     loader-utils "^1.2.3"
 
-"@tehshrike/duration-iso-8601@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@tehshrike/duration-iso-8601/-/duration-iso-8601-2.0.2.tgz#08ffdbeb635aabefda241ee36cda4d148520f149"
-  integrity sha512-REPYF0F+B9vsYHCrdBylDn2hXnEqjLbo6g5mFNcOb/23jU1Gk2QjXZ1mKQhbQd09iGJsNQnND20xw6DptCyT5w==
-
 "@testing-library/dom@*":
   version "7.26.5"
   resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-7.26.5.tgz#804a74fc893bf6da1a7970dbca7b94c2bbfe983d"
