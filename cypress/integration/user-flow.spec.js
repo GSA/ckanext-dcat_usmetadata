@@ -11,6 +11,7 @@ describe('Access to the new metadata app', () => {
     cy.createOrg();
     cy.visit('/organization/test-123');
     cy.get('.page_primary_action > .btn-primary').first().click();
+    cy.location('pathname', { timeout: 10000 }).should('include', '/dataset/new-metadata');
     cy.get('.navsec').contains('Required Metadata');
   });
 
@@ -18,6 +19,7 @@ describe('Access to the new metadata app', () => {
     cy.login();
     cy.visit('/dataset/test-dataset-1');
     cy.get('.content_action > .btn-primary').contains('Edit').click();
+    cy.location('pathname', { timeout: 10000 }).should('include', '/dataset/edit-new/');
     cy.get('.navsec').contains('Required Metadata');
   });
 
