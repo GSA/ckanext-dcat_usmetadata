@@ -3,6 +3,7 @@ import slugify from 'slugify';
 
 const dataDictTypes = require('../components/AdditionalMetadata/data-dictionary-types');
 const licenses = require('../components/RequiredMetadata/licenses.json');
+const publishingFrequencyList = require('../components/AdditionalMetadata/publishingFrequencyList');
 const publishersDictionary = require('../components/RequiredMetadata/publishers.json');
 
 // There are 5 possible publishers/subpublishers
@@ -72,6 +73,7 @@ const encodeValues = (obj) => {
 // serialize values from USMetadata format to match form values
 const serializeSupplementalValues = (opts) => {
   const newOpts = clone(opts);
+  newOpts.modified = new Date();
 
   if (opts.description) {
     newOpts.notes = opts.description;
@@ -168,16 +170,16 @@ const serializeSupplementalValues = (opts) => {
     delete newOpts.parent_dataset;
   }
 
-  if (opts.modified) {
-    newOpts.modified = opts.modified;
-    if (opts.modified === 'other') {
-      newOpts.modified = opts.modifiedOther;
+  if (opts.accrualPeriodicity) {
+    newOpts.accrual_periodicity = opts.accrualPeriodicity;
+    if (opts.accrualPeriodicity === 'other') {
+      newOpts.accrual_periodicity = opts.accrualPeriodicityOther;
       // make sure that R/ is added at the beginning
-      if (newOpts.modified.substring(0, 2) !== 'R/') newOpts.modified = `R/${newOpts.modified}`;
-    } else if (opts.modified === 'as-needed') {
-      newOpts.modified = new Date();
+      if (newOpts.accrual_periodicity.substring(0, 2) !== 'R/')
+        newOpts.accrual_periodicity = `R/${newOpts.accrual_periodicity}`;
     }
-    delete newOpts.modifiedOther;
+    delete newOpts.accrualPeriodicityOther;
+    delete newOpts.accrualPeriodicity;
   }
 
   const { selectedPublisher } = newOpts;
@@ -261,6 +263,17 @@ const deserializeSupplementalValues = (opts) => {
     newOpts.parentDataset = opts.parent_dataset;
   }
 
+  if (opts.accrual_periodicity) {
+    // Check if it defined in the list
+    if (publishingFrequencyList.find((item) => item.value === opts.accrual_periodicity)) {
+      newOpts.accrualPeriodicity = opts.accrual_periodicity;
+    }
+    // Check if it is custom if not fallback to ad needed
+    else if (opts.accrual_periodicity.indexOf('R/P') !== -1) {
+      newOpts.accrualPeriodicity = 'other';
+      newOpts.accrualPeriodicityOther = opts.accrual_periodicity;
+    }
+  }
   const publisher = {};
   // eslint-disable-next-line array-callback-return
   (opts.extras || []).map(({ key, value }) => {

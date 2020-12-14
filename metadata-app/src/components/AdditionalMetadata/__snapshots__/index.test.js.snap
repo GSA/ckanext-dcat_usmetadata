@@ -538,9 +538,9 @@ exports[`Renders RequiredMetadata component 1`] = `
             />
             
             <select
-              choices="Continuously updated,Hourly,Daily,Three times a week,Semiweekly,Weekly,Three times a month,Biweekly,Semimonthly,Monthly,Bimonthly,Quarterly,Three times a year,Semiannual,Annual,Biennial,Triennial,Quadrennial,Every five years,Every eight years,Decennial,Irregular"
+              choices="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
               class="usa-select  "
-              name="accrual_periodicity"
+              name="accrualPeriodicity"
               type="select"
             >
               <option
@@ -549,116 +549,76 @@ exports[`Renders RequiredMetadata component 1`] = `
                 -Select-
               </option>
               <option
+                value="irregular"
+              >
+                Irregular/As needed
+              </option>
+              <option
                 value="Continuously updated"
               >
-                Continuously updated
+                Continuously
               </option>
               <option
-                value="Hourly"
-              >
-                Hourly
-              </option>
-              <option
-                value="Daily"
+                value="R/P1D"
               >
                 Daily
               </option>
               <option
-                value="Three times a week"
-              >
-                Three times a week
-              </option>
-              <option
-                value="Semiweekly"
-              >
-                Semiweekly
-              </option>
-              <option
-                value="Weekly"
+                value="R/P7D"
               >
                 Weekly
               </option>
               <option
-                value="Three times a month"
-              >
-                Three times a month
-              </option>
-              <option
-                value="Biweekly"
-              >
-                Biweekly
-              </option>
-              <option
-                value="Semimonthly"
-              >
-                Semimonthly
-              </option>
-              <option
-                value="Monthly"
+                value="R/P1M"
               >
                 Monthly
               </option>
               <option
-                value="Bimonthly"
+                value="R/P1Y"
               >
-                Bimonthly
+                Yearly
               </option>
               <option
-                value="Quarterly"
+                value="other"
               >
-                Quarterly
-              </option>
-              <option
-                value="Three times a year"
-              >
-                Three times a year
-              </option>
-              <option
-                value="Semiannual"
-              >
-                Semiannual
-              </option>
-              <option
-                value="Annual"
-              >
-                Annual
-              </option>
-              <option
-                value="Biennial"
-              >
-                Biennial
-              </option>
-              <option
-                value="Triennial"
-              >
-                Triennial
-              </option>
-              <option
-                value="Quadrennial"
-              >
-                Quadrennial
-              </option>
-              <option
-                value="Every five years"
-              >
-                Every five years
-              </option>
-              <option
-                value="Every eight years"
-              >
-                Every eight years
-              </option>
-              <option
-                value="Decennial"
-              >
-                Decennial
-              </option>
-              <option
-                value="Irregular"
-              >
-                Irregular
+                Other
               </option>
             </select>
+          </div>
+          <div
+            class="wrapper"
+          >
+            <label
+              class="usa-label"
+            />
+            <div
+              class="usa-helptext disabled"
+            >
+              <span
+                class="usa-helptext"
+              >
+                If you selected “Other, please specify a valid
+                 
+                <a
+                  class="usa-link usa-link--external"
+                  href="https://en.wikipedia.org/wiki/ISO_8601"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  ISO 8601
+                </a>
+                 
+                timestamp
+              </span>
+            </div>
+            
+            <input
+              class="usa-input disabled undefined undefined"
+              disabled=""
+              name="accrualPeriodicityOther"
+              type="string"
+              value=""
+            />
           </div>
         </div>
       </div>

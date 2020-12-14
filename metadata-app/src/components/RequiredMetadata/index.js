@@ -122,15 +122,6 @@ const RequiredMetadata = (props) => {
         for further assistance.
       </HelpText>
     ),
-    modified: (
-      <HelpText>
-        If you selected “Custom”, please specify a valid{' '}
-        <Link target="_blank" href="https://en.wikipedia.org/wiki/ISO_8601">
-          ISO 8601
-        </Link>{' '}
-        timestamp
-      </HelpText>
-    ),
   };
 
   return (
@@ -445,57 +436,6 @@ const RequiredMetadata = (props) => {
             disabled={values.temporal === 'false'}
           />
         </div>
-      </div>
-
-      <div className="grid-row margin-top-3">
-        <WrappedField
-          label="Update Frequency"
-          name="modified"
-          type="select"
-          choices={[
-            {
-              value: 'R/P1D',
-              id: 'choice-daily',
-              label: 'Daily',
-            },
-            {
-              value: 'R/P7D',
-              id: 'choice-weekly',
-              label: 'Weekly',
-            },
-            {
-              value: 'R/P1M',
-              id: 'choice-monthly',
-              label: 'Monthly',
-            },
-            {
-              value: 'R/P1Y',
-              id: 'choice-yearly',
-              label: 'Yearly',
-            },
-            {
-              value: 'as-needed',
-              id: 'as-needed',
-              label: 'As needed',
-            },
-            {
-              value: 'other',
-              id: 'choice-custom',
-              label: 'Custom',
-            },
-          ]}
-          className="error-msg"
-          errors={errors}
-          required
-        />
-        <WrappedField
-          name="modifiedOther"
-          type="string"
-          helptext={helpTexts.modified}
-          disabled={values.modified !== 'other'}
-          errors={errors}
-          required
-        />
       </div>
 
       <div className="margin-top-6 clearfix">

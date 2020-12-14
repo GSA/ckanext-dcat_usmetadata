@@ -129,13 +129,13 @@ describe('Test helpers', () => {
         );
       });
 
-      it('should send the modified date in correct ISO-8601 format added with R/ prefix', async () => {
+      it('should send the Data Publishing Frequency in correct ISO-8601 format added with R/ prefix', async () => {
         moxios.wait(() => {
           const request = moxios.requests.mostRecent();
           const payloadStr = request.config.data;
           const payload = JSON.parse(decodeURIComponent(payloadStr));
 
-          expect(payload.modified).toBe('R/P1Y30DT15M39S');
+          expect(payload.accrual_periodicity).toBe('R/P1Y30DT15M39S');
 
           request.respondWith({
             status: 200,
@@ -146,8 +146,8 @@ describe('Test helpers', () => {
         await createDataset(
           {
             ...requiredMetadata,
-            modified: 'other',
-            modifiedOther: 'P1Y30DT15M39S',
+            accrualPeriodicity: 'other',
+            accrualPeriodicityOther: 'P1Y30DT15M39S',
           },
           'APIURL',
           'APIKEY'
