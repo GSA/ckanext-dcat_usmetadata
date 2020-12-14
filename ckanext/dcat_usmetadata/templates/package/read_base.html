@@ -1,6 +1,6 @@
-{% ckan_extends %} {% block content_action %} {% if h.check_access('package_update', {'id':pkg.id })
-%}
-<a class="btn btn-primary" href="/dataset/edit-new/{{ pkg.id }}">{{ _('Edit') }}</a>
-{% endif %} {% if h.check_access('package_delete', {'id':pkg.id}) %}
-<a class="btn btn-danger" href="/dataset/delete/{{ pkg.id }}">{{ _('Delete') }}</a>
+{% ckan_extends %} {% block content_action %} {% if h.check_access('package_update', {'id':pkg.name
+}) %}
+<a class="btn btn-primary" href="/dataset/edit-new/{{ pkg.name }}">{{ _('Edit') }}</a>
+{% endif %} {% if h.check_access('package_delete', {'id':pkg.name}) %}
+<a class="btn btn-danger" href="/dataset/delete/{{ pkg.name }}">{{ _('Delete') }}</a>
 {% endif %} {% endblock %}
