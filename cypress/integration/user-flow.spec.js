@@ -14,6 +14,13 @@ describe('Access to the new metadata app', () => {
     cy.get('.navsec').contains('Required Metadata');
   });
 
+  it('Has "Edit" button and it goes to new metadata app when clicked', () => {
+    cy.login();
+    cy.visit('/dataset/test-dataset-1');
+    cy.get('.content_action > .btn-primary').contains('Edit').click();
+    cy.get('.navsec').contains('Required Metadata');
+  });
+
   it('Does not expose API key in the HTML', () => {
     cy.login();
     cy.visit('/dataset/new-metadata');
@@ -39,6 +46,22 @@ describe('Access to the new metadata app', () => {
     cy.visit('/dataset/edit-new/dataset-id', { failOnStatusCode: false });
     cy.url().should('include', '/dataset/edit-new/dataset-id');
     cy.contains('404 Not Found');
+  });
+});
+
+describe('Deleting a dataset', () => {
+  it('Has "Delete" button', () => {
+    cy.login();
+    cy.visit('/dataset/test-dataset-1');
+    cy.get('.btn-danger').should('exist').contains('Delete');
+  });
+
+  it('Displays confirmation page when clicked', () => {
+    cy.login();
+    cy.visit('/dataset/test-dataset-1');
+    cy.get('.btn-danger').click();
+    cy.contains('Are you sure you want to delete dataset - test-dataset-1?');
+    cy.get('.btn-primary').contains('Confirm Delete');
   });
 });
 
