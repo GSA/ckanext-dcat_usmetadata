@@ -103,6 +103,32 @@ describe('Resource Upload page', () => {
     cy.get(':nth-child(8) > .grid-col-12 > :nth-child(3)').contains(expectedMessage2);
   });
 
+  it('List saved resources and truncates long names', () => {
+    const title = 'resource-list-edit-test';
+    const exampleUrl = 'https://example.com/data.csv';
+    const shortResourceName = 'First resource';
+    const longResourceName =
+      'Very oooooooooooooooooooooooooooooooooooooooooooooooooooooooo naaaame';
+    cy.requiredMetadata(title);
+    cy.additionalMetadata();
+    cy.get('button[type=button]').contains('Save and Continue').click();
+    cy.resourceUploadWithUrlAndSave(exampleUrl, shortResourceName);
+    cy.wait(3000);
+    cy.resourceUploadWithUrlAndSave(exampleUrl, longResourceName);
+
+    cy.visit(`/dataset/new-metadata?datasetId=${title}`);
+    cy.contains('Resource Upload').click();
+
+    cy.contains(shortResourceName);
+    cy.get(longResourceName).should('not.exist');
+    // Action buttons
+    cy.contains('Delete');
+    cy.contains('Edit');
+    // Truncated the text, three dots
+    cy.contains(/.../);
+    cy.request('POST', '/api/3/action/dataset_purge', { id: title });
+  });
+
   it('Fails to save resource if URL is invalid', () => {
     const invalidUrl = 'example.com/data.csv';
     cy.requiredMetadata();
