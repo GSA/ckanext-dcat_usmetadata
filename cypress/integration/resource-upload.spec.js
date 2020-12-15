@@ -99,8 +99,8 @@ describe('Resource Upload page', () => {
     cy.wait(15000);
     cy.resourceUploadWithUrlAndSave(exampleUrl);
     cy.wait(5000);
-    cy.get(':nth-child(8) > .grid-col-12 > :nth-child(1)').contains(expectedMessage1);
-    cy.get(':nth-child(8) > .grid-col-12 > :nth-child(3)').contains(expectedMessage2);
+    cy.contains(expectedMessage1);
+    cy.contains(expectedMessage2);
   });
 
   it('List saved resources and truncates long names', () => {
