@@ -29,6 +29,7 @@ const ResourceUpload = (props) => {
     handleSteps,
   } = props; // eslint-disable-line
   const resource = values.resource || {};
+  const resources = values.resources || [];
   const { url, name, description, mimetype, format } = resource;
 
   const [linkToDataIsActive, setLinkToDataActive] = useState(false);
@@ -68,6 +69,36 @@ const ResourceUpload = (props) => {
           dictionary.
         </p>
       </section>
+      {values.savedResources > 0 ? (
+        <div className="grid-row margin-top-3">
+          <div className="grid-col-12 text-mint">
+            <i>
+              Resource saved: [{values.lastSavedResource}] ({values.savedResources} resources saved
+              in total).
+            </i>
+            <br />
+            <i>You can edit any saved resource after clicking &quot;Finish and publish&quot;.</i>
+          </div>
+        </div>
+      ) : (
+        ''
+      )}
+      {resources.map((res) => {
+        return (
+          <div key={res.id} className="grid-row margin-top-2">
+            <div className="grid-col-12 bg-base-lightest padding-x-1">
+              <div className="resource-item-name">{res.name}</div>
+              <button type="button" className="usa-button--unstyled resource-action-button">
+                Edit
+              </button>
+              <button type="button" className="usa-button--unstyled resource-action-button">
+                Delete
+              </button>
+            </div>
+          </div>
+        );
+      })}
+
       <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           {/* eslint-disable-next-line */}
@@ -202,21 +233,6 @@ const ResourceUpload = (props) => {
         </div>
       </div>
 
-      {values.savedResources > 0 ? (
-        <div className="grid-row margin-top-3">
-          <div className="grid-col-12 text-mint">
-            <i>
-              Resource saved: [{values.lastSavedResource}] ({values.savedResources} resources saved
-              in total).
-            </i>
-            <br />
-            <i>You can edit any saved resource after clicking &quot;Finish and publish&quot;.</i>
-          </div>
-        </div>
-      ) : (
-        ''
-      )}
-
       {isSubmitting ? (
         <div className="usa-alert usa-alert--info usa-alert--slim usa-alert--no-icon">
           <div className="usa-alert__body">
@@ -292,6 +308,7 @@ ResourceUpload.propTypes = {
   draftSaved: PropTypes.string,
   errors: PropTypes.any, // eslint-disable-line
   values: PropTypes.shape({
+    resources: PropTypes.array, // eslint-disable-line
     resource: PropTypes.shape({
       url: PropTypes.string,
       upload: PropTypes.any, // eslint-disable-line

@@ -325,3 +325,20 @@ input[type='file'] {
   margin-top: 31px;
   height: 42px;
 }
+.resource-action-button{
+  float: right;
+  margin-right: 10px !important;
+  margin-left: 30px !important;
+  display: block;
+  font-weight: bold !important;
+  height: 100%;
+  cursor: pointer;
+  text-decoration: none !important;
+}
+.resource-item-name{
+  width: calc(100% - 200px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  float: left;
+}

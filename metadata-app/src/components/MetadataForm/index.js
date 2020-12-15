@@ -292,6 +292,7 @@ const MetadataForm = (props) => {
         <Formik
           initialValues={{
             resource: JSON.parse(JSON.stringify(ResourceObject)),
+            resources: formValues.resources,
             publish: true,
             savedResources: 0,
             lastSavedResource: null,
