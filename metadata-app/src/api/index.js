@@ -145,6 +145,10 @@ const serializeSupplementalValues = (opts) => {
     }
   }
 
+  if (opts.dataQuality) {
+    newOpts.data_quality = opts.dataQuality;
+  }
+
   if (opts.release_date) {
     newOpts.release_date = toISODate(newOpts.release_date);
   } else {
