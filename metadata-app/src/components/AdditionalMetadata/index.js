@@ -102,7 +102,7 @@ const AdditionalMetadata = (props) => {
         <div className="grid-col-12">
           <WrappedField
             label="Meets Agency Data Quality"
-            name="dataQualityUSG"
+            name="dataQuality"
             type="select"
             choices={['Yes', 'No']}
           />
@@ -331,7 +331,7 @@ AdditionalMetadata.propTypes = {
   apiKey: PropTypes.string,
   errors: PropTypes.any, // eslint-disable-line
   values: PropTypes.shape({
-    dataQualityUSG: PropTypes.string,
+    dataQuality: PropTypes.string,
     theme: PropTypes.string,
     describedBy: PropTypes.string,
     describedByType: PropTypes.string,

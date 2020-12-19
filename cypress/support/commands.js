@@ -59,7 +59,7 @@ Cypress.Commands.add('requiredMetadata', (title) => {
 });
 
 Cypress.Commands.add('additionalMetadata', () => {
-  cy.get('select[name=dataQualityUSG]').select('Yes');
+  cy.get('select[name=dataQuality]').select('Yes');
   cy.get('input[name=category]').type(chance.name());
   cy.get('input[name=data_dictionary]').clear().type(chance.url());
   cy.get('select[name=describedByType]').type(chance.name());
