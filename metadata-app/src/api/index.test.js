@@ -2,10 +2,7 @@ import moxios from 'moxios';
 import Api from '.';
 import mocks from '../mocks/apiMocks';
 
-// eslint-disable-next-line
-console.log('------------ Run API Tests ------------');
-const { deserializeExtras } = Api.helpers;
-
+const { helpers } = Api;
 const { fetchDataset, createDataset, updateDataset, createResource } = Api;
 const {
   datasetOne,
@@ -19,17 +16,11 @@ describe('Test helpers', () => {
   describe('Deserialize extras', () => {
     it('should correctly parse extras array', () => {
       const opts = {
-        extras: [
-          { key: 'accessLevel', value: 100 },
-          { key: 'publisher', value: 'Willie Wonka' },
-          { key: 'rights', value: 'MIT' },
-        ],
+        extras: [{ key: 'my_key', value: 100 }],
       };
 
-      const decoded = deserializeExtras(opts);
-      expect(true).toBe(true);
-      expect(decoded.publisher).toBe('Willie Wonka');
-      expect(decoded.accessLevel).toBe(100);
+      const decoded = helpers.deserializeExtras(opts);
+      expect(decoded.my_key).toBe(100);
     });
   });
 });

@@ -104,7 +104,7 @@ const MetadataForm = (props) => {
     Api.fetchDataset(curDatasetId, apiUrl, apiKey)
       .then((result) => {
         const apiRes = Object.assign({}, result);
-        apiRes.description = result.notes;
+        apiRes.description = result.notes; // TODO: move this to api helpers
         setFormValues(Object.assign({}, formValues, apiRes));
         setCurDatasetId(apiRes.id);
       })

@@ -74,9 +74,21 @@ const encodeValues = (obj) => {
 const serializeSupplementalValues = (opts) => {
   const newOpts = clone(opts);
   newOpts.modified = new Date();
+  newOpts.extras = newOpts.extras || [];
+
+  if (opts.title) {
+    const indexOfTitle = newOpts.extras.findIndex((x) => x.key === 'title');
+    if (indexOfTitle > -1) {
+      newOpts.extras[indexOfTitle].value = opts.title;
+    }
+  }
 
   if (opts.description) {
     newOpts.notes = opts.description;
+    const indexOfNotes = newOpts.extras.findIndex((x) => x.key === 'notes');
+    if (indexOfNotes > -1) {
+      newOpts.extras[indexOfNotes].value = opts.description;
+    }
   }
 
   if (opts.tags && opts.tags.length > 0) {
@@ -108,13 +120,16 @@ const serializeSupplementalValues = (opts) => {
 
   if (opts.spatial === 'false') {
     delete newOpts.spatial;
-  }
-  if (opts.spatial_location_desc) {
+    const indexOfSpatial = newOpts.extras.findIndex((x) => x.key === 'spatial');
+    if (indexOfSpatial > -1) {
+      newOpts.extras.splice(indexOfSpatial, 1);
+    }
+  } else if (opts.spatial_location_desc) {
     newOpts.spatial = opts.spatial_location_desc;
     delete newOpts.spatial_location_desc;
   }
 
-  if (opts.temporal_start_date) {
+  if (opts.temporal === 'true') {
     const start = toISODate(opts.temporal_start_date);
     const end = toISODate(opts.temporal_end_date);
     newOpts.temporal = `${start}/${end}`;
@@ -122,6 +137,12 @@ const serializeSupplementalValues = (opts) => {
     delete newOpts.temporal_end_date;
   } else {
     delete newOpts.temporal;
+    delete newOpts.temporal_start_date;
+    delete newOpts.temporal_end_date;
+    const indexOfTemporal = newOpts.extras.findIndex((x) => x.key === 'temporal');
+    if (indexOfTemporal > -1) {
+      newOpts.extras.splice(indexOfTemporal, 1);
+    }
   }
 
   if (opts.release_date) {
@@ -354,6 +375,9 @@ const updateDataset = (id, opts, apiUrl, apiKey) => {
   const body = serializeSupplementalValues(opts);
   body.id = id;
 
+  body.name = opts.url ? opts.url.split('/').pop() : body.name;
+  delete body.url;
+
   // TODO where do we get these?
   body.bureauCode = '015:11';
   body.programCode = '015:001';
@@ -460,6 +484,8 @@ export default {
   fetchParentDatasets,
   createResource,
   helpers: {
+    serializeSupplementalValues,
+    deserializeSupplementalValues,
     deserializeExtras,
     clone,
   },
