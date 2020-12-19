@@ -61,4 +61,11 @@ class MetadataController(CorePackageController):
         except NotAuthorized:
             abort(401, _('User %r not authorized to edit %s') % (c.user, id))
 
-        return render('new-metadata.html', extra_vars={'id': c.pkg_dict.name})
+        return render(
+            'new-metadata.html',
+            extra_vars={
+                'id': c.pkg_dict.get(
+                    'name',
+                    None) or c.pkg_dict.get(
+                    'id',
+                    None)})
