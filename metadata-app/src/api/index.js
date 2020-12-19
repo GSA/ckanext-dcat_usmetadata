@@ -261,6 +261,10 @@ const deserializeSupplementalValues = (opts) => {
     newOpts.temporal = 'true';
   }
 
+  if (opts.data_quality) {
+    newOpts.dataQuality = opts.data_quality;
+  }
+
   if (opts.language) {
     [newOpts.languageSubTag, newOpts.languageRegSubTag] = opts.language.split('-');
   }
