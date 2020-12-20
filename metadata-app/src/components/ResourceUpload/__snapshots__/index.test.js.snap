@@ -523,6 +523,7 @@ exports[`Renders Resource Upload component 1`] = `
         </div>
       </div>
       
+      
       <div
         class="margin-top-6 clearfix"
       >
