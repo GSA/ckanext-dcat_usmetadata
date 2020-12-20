@@ -115,7 +115,8 @@ const RequiredMetadata = (props) => {
     ),
     select: (
       <HelpText>
-        If you do not see the Publisher for your dataset listed, please contact{' '}
+        Start typing to see list of publishers. If you do not see the Publisher for your dataset
+        listed, please contact{' '}
         <Link target="_blank" href="mailto:inventory-help@gsa.gov">
           inventory-help@gsa.gov
         </Link>{' '}
