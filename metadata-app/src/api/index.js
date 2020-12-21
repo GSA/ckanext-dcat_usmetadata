@@ -298,6 +298,7 @@ const createDataset = (opts, apiUrl, apiKey) => {
   delete body.url;
   body.bureau_code = '015:11';
   body.program_code = '015:001';
+  body.private = true;
   return axios
     .post(`${apiUrl}package_create`, encodeValues(body), {
       headers: {
