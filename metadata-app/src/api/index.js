@@ -421,7 +421,7 @@ const fetchOrganizationsForUser = async (apiUrl, apiKey) => {
 const fetchParentDatasets = async (query, apiUrl, apiKey) => {
   try {
     // the space belongs here q= solr query string including indexed extras
-    const url = `${apiUrl}package_search?q=${query} extras_is_parent=true`;
+    const url = `${apiUrl}package_search?q=${query} extras_is_parent=true include_private=true`;
     const res = await axios.get(url, {
       headers: {
         'X-CKAN-API-Key': apiKey,
