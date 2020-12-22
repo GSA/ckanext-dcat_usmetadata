@@ -100,14 +100,44 @@ const serializeSupplementalValues = (opts) => {
     }, '');
   }
 
+  const indexOfContactName = newOpts.extras.findIndex((x) => x.key === 'contact_name');
+  if (indexOfContactName > -1) {
+    newOpts.extras[indexOfContactName].value = newOpts.contact_name;
+  }
+
+  const indexOfContactEmail = newOpts.extras.findIndex((x) => x.key === 'contact_email');
+  if (indexOfContactEmail > -1) {
+    newOpts.extras[indexOfContactEmail].value = newOpts.contact_email;
+  }
+
+  const indexOfUniqueId = newOpts.extras.findIndex((x) => x.key === 'unique_id');
+  if (indexOfUniqueId > -1) {
+    newOpts.extras[indexOfUniqueId].value = newOpts.unique_id;
+  }
+
+  const indexOfPublicAccessLevel = newOpts.extras.findIndex((x) => x.key === 'public_access_level');
+  if (indexOfPublicAccessLevel > -1) {
+    newOpts.extras[indexOfPublicAccessLevel].value = newOpts.public_access_level;
+  }
+
+  const indexOfLicense = newOpts.extras.findIndex((x) => x.key === 'license_new');
   if (opts.license === 'n/a') {
     // if the license is selected "no license"
     delete newOpts.license_new;
     delete newOpts.license_others;
+    delete newOpts.licenseOther;
+    // Delete 'license_new' from extras if exists so we can add a new value
+    if (indexOfLicense > -1) {
+      newOpts.extras.splice(indexOfLicense, 1);
+    }
   } else if (opts.license) {
     if (opts.license === 'other') newOpts.license_new = opts.licenseOther;
     else newOpts.license_new = opts.license;
     delete newOpts.license_others;
+    delete newOpts.licenseOther;
+    if (indexOfLicense > -1) {
+      newOpts.extras[indexOfLicense].value = newOpts.license_new;
+    }
   }
 
   // if access_level_comment is false use provided description
@@ -116,6 +146,10 @@ const serializeSupplementalValues = (opts) => {
     delete newOpts.rights_desc;
   } else {
     newOpts.access_level_comment = 'true';
+  }
+  const indexOfAccessLevel = newOpts.extras.findIndex((x) => x.key === 'access_level_comment');
+  if (indexOfAccessLevel > -1) {
+    newOpts.extras[indexOfAccessLevel].value = newOpts.access_level_comment;
   }
 
   if (opts.spatial === 'false') {
