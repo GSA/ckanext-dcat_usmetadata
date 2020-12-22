@@ -50,11 +50,12 @@ describe('Editing an existing dataset', () => {
     cy.get('input[name=licenseOther]')
       .invoke('val')
       .should('match', /^(http|https):\/\//);
-    cy.get('#rights_option_1').should('have.attr', 'checked');
-    cy.get('#spatial_option_2').should('have.value', 'true');
+    cy.get('input[name=rights_desc]').should('be.disabled');
+    cy.get('input[name=spatial_location_desc]').should('not.be.disabled');
     cy.get('input[name=spatial_location_desc]').invoke('val').should('not.be.empty');
-    cy.get('#temporal_option_2').should('have.value', 'true');
+    cy.get('input[name=temporal_start_date]').should('not.be.disabled');
     cy.get('input[name=temporal_start_date]').invoke('val').should('eq', '2010-11-11');
+    cy.get('input[name=temporal_end_date]').should('not.be.disabled');
     cy.get('input[name=temporal_end_date]').invoke('val').should('eq', '2020-11-11');
   });
 
@@ -129,10 +130,11 @@ describe('Editing an existing dataset', () => {
       .invoke('val')
       .should('eq', newMetadata.publicAccessLevel);
     cy.get('select[name=license]').invoke('val').should('eq', newMetadata.license);
-    cy.get('#rights_option_2').should('have.attr', 'checked');
+    cy.get('input[name=rights_desc]').should('not.be.disabled');
     cy.get('input[name=rights_desc]').invoke('val').should('eq', newMetadata.rightsDesc);
-    cy.get('#spatial_option_1').should('have.value', 'true');
-    cy.get('#temporal_option_1').should('have.value', 'true');
+    cy.get('input[name=spatial_location_desc]').should('be.disabled');
+    cy.get('input[name=temporal_start_date]').should('be.disabled');
+    cy.get('input[name=temporal_end_date]').should('be.disabled');
   });
 
   it('Edits and saves additional metadata', () => {
