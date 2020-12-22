@@ -1,7 +1,6 @@
 export default {
-  dataQualityUSG: '',
+  dataQuality: '',
   themes: '',
-  describedBy: '',
   describedByType: '',
   accrualPeriodicity: '',
   landingPage: '',

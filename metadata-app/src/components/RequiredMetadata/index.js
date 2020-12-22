@@ -165,7 +165,7 @@ const RequiredMetadata = (props) => {
               errors={errors}
             />
             <span className="dataset_url" style={{ display: urlDisabled ? 'inline' : 'none' }}>
-              {values.url || genUrlFromTitle(values.title)}
+              {values.url || values.name || genUrlFromTitle(values.title)}
             </span>
 
             <button
@@ -299,6 +299,7 @@ const RequiredMetadata = (props) => {
               label: 'Non-Public - this dataset is not available to members of the public',
             },
           ]}
+          value={values.public_access_level}
           className="error-msg"
           errors={errors}
           required
@@ -310,6 +311,7 @@ const RequiredMetadata = (props) => {
           name="license"
           type="select"
           choices={licenses}
+          value={values.license}
           className="error-msg"
           errors={errors}
           required
@@ -320,6 +322,7 @@ const RequiredMetadata = (props) => {
           helptext={helpTextify(
             `If you selected “Other”, please specify the name of your License in URL format. Please include "https://" at the beginning of your URL.*`
           )}
+          value={values.licenseOther}
           disabled={values.license !== 'other'}
           errors={errors}
           required

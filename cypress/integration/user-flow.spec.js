@@ -11,6 +11,15 @@ describe('Access to the new metadata app', () => {
     cy.createOrg();
     cy.visit('/organization/test-123');
     cy.get('.page_primary_action > .btn-primary').first().click();
+    cy.location('pathname', { timeout: 10000 }).should('include', '/dataset/new-metadata');
+    cy.get('.navsec').contains('Required Metadata');
+  });
+
+  it('Has "Edit" button and it goes to new metadata app when clicked', () => {
+    cy.login();
+    cy.visit('/dataset/test-dataset-1');
+    cy.get('.content_action > .btn-primary').contains('Edit').click();
+    cy.location('pathname', { timeout: 10000 }).should('include', '/dataset/edit-new/');
     cy.get('.navsec').contains('Required Metadata');
   });
 
@@ -27,6 +36,33 @@ describe('Access to the new metadata app', () => {
     cy.get('.navsec').should('not.exist');
     cy.url().should('include', '/user/login');
     cy.url().should('include', 'came_from=%2Fdataset%2Fnew-metadata');
+    // Same for edit dataset page
+    cy.visit('/dataset/edit-new/dataset-id', { failOnStatusCode: false });
+    cy.get('.navsec').should('not.exist');
+    cy.url().should('include', '/user/login');
+    cy.url().should('include', 'came_from=%2Fdataset%2Fedit-new%2Fdataset-id');
+  });
+
+  it('Returns 404 when trying to edit non-existing dataset', () => {
+    cy.login();
+    cy.visit('/dataset/edit-new/dataset-id', { failOnStatusCode: false });
+    cy.url().should('include', '/dataset/edit-new/dataset-id');
+    cy.contains('404 Not Found');
+  });
+});
+
+describe('Deleting a dataset', () => {
+  it('Has "Delete" button', () => {
+    cy.login();
+    cy.visit('/dataset/test-dataset-1');
+    cy.get('.btn-danger').should('exist').contains('Delete');
+  });
+
+  it('Displays confirmation page when clicked', () => {
+    cy.login();
+    cy.visit('/dataset/test-dataset-1');
+    cy.get('.btn-danger').click();
+    cy.contains('Are you sure you want to delete this dataset?');
   });
 });
 

@@ -5,7 +5,7 @@ import * as yup from 'yup';
 const durationRegex = /^P(?:(\d+(?:[\.,]\d+)?)Y)?(?:(\d+(?:[\.,]\d+)?)M)?(?:(\d+(?:[\.,]\d+)?)D)?(?:T(?:(\d+(?:[\.,]\d+)?)H)?(?:(\d+(?:[\.,]\d+)?)M)?(?:(\d+(?:[\.,]\d+)?)S)?)?$/;
 
 export default yup.object().shape({
-  dataQualityUSG: yup.string(),
+  dataQuality: yup.string(),
   category: yup.string(),
   data_dictionary: yup.string().url(),
   data_dictionary_type: yup.string(),

@@ -18,7 +18,12 @@ class Dcat_UsmetadataPlugin(plugins.SingletonPlugin):
 
         map.connect('/dataset/new-metadata',
                     controller=controller,
-                    action='load_metadata_form')
+                    action='new_metadata')
+
+        map.connect('/dataset/edit-new/{id}',
+                    controller=controller,
+                    action='edit_metadata')
+
         return map
 
     def after_map(self, map):

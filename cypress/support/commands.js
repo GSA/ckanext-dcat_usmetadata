@@ -59,19 +59,19 @@ Cypress.Commands.add('requiredMetadata', (title) => {
 });
 
 Cypress.Commands.add('additionalMetadata', () => {
-  cy.get('select[name=dataQualityUSG]').select('Yes');
+  cy.get('select[name=dataQuality]').select('Yes');
   cy.get('input[name=category]').type(chance.name());
   cy.get('input[name=data_dictionary]').clear().type(chance.url());
-  cy.get('select[name=describedByType]').type(chance.name());
-  cy.get('select[name=accrualPeriodicity]').select('Weekly');
+  cy.get('select[name=describedByType]').select('text/csv');
+  cy.get('select[name=accrualPeriodicity]').select('R/P7D');
   cy.get('input[name=homepage_url]').clear().type(chance.url());
-  cy.get('select[name=languageSubTag]').type('English');
-  cy.get('select[name=languageRegSubTag]').type('United States');
+  cy.get('select[name=languageSubTag]').select('en');
+  cy.get('select[name=languageRegSubTag]').select('US');
   cy.get('input[name=primary_it_investment_uii]').type('123-123456789');
   cy.get('input[name=related_documents]').type(chance.name());
   cy.get('input[name=release_date]').type('2020-08-08');
   cy.get('input[name=system_of_records]').type(chance.url());
-  cy.get('select[name=isParent]').type('Yes');
+  cy.get('select[name=isParent]').select('No');
 });
 
 Cypress.Commands.add('resourceUploadWithUrlAndPublish', (url) => {
