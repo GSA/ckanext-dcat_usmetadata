@@ -337,8 +337,11 @@ const serializeSupplementalValues = (opts) => {
     // First delete all publishers initially came from backend
     if (newOpts.extras)
       newOpts.extras = newOpts.extras.filter(({ key }) => {
-        delete newOpts[key];
-        return !publisherProps.includes(key);
+        if (publisherProps.includes(key)) {
+          delete newOpts[key];
+          return false;
+        }
+        return true;
       });
 
     // eslint-disable-next-line no-restricted-syntax
