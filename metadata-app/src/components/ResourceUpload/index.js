@@ -29,6 +29,7 @@ const ResourceUpload = (props) => {
     handleSteps,
   } = props; // eslint-disable-line
   const resource = values.resource || {};
+  const resources = values.resources || [];
   const { url, name, description, mimetype, format } = resource;
 
   const [linkToDataIsActive, setLinkToDataActive] = useState(false);
@@ -52,6 +53,8 @@ const ResourceUpload = (props) => {
     setFieldValue('resource.upload', event.currentTarget.files[0]);
   };
 
+  const totalSavedResource = values.savedResources + resources.length;
+
   return (
     <div className="usa-form-custom">
       <section id="section-basic-mega-menu" className="site-component-section">
@@ -68,6 +71,33 @@ const ResourceUpload = (props) => {
           dictionary.
         </p>
       </section>
+      {!totalSavedResource ? (
+        ''
+      ) : (
+        <div className="margin-top-10 padding-bottom-8 border-gray-10 border-bottom-2px">
+          <div className="grid-row margin-top-3">
+            <div className="grid-col-12 text-mint">
+              <i>Resource saved: ({totalSavedResource} resources saved in total)</i>
+            </div>
+          </div>
+          {resources.map((res) => {
+            return (
+              <div key={res.id} className="grid-row margin-top-2">
+                <div className="grid-col-12 bg-base-lightest padding-x-1">
+                  <div className="resource-item-name">{res.name}</div>
+                  <button type="button" className="usa-button--unstyled resource-action-button">
+                    Delete
+                  </button>
+                  <button type="button" className="usa-button--unstyled resource-action-button">
+                    Edit
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
       <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           {/* eslint-disable-next-line */}
@@ -201,7 +231,6 @@ const ResourceUpload = (props) => {
           </button>
         </div>
       </div>
-
       {values.savedResources > 0 ? (
         <div className="grid-row margin-top-3">
           <div className="grid-col-12 text-mint">
@@ -216,7 +245,6 @@ const ResourceUpload = (props) => {
       ) : (
         ''
       )}
-
       {isSubmitting ? (
         <div className="usa-alert usa-alert--info usa-alert--slim usa-alert--no-icon">
           <div className="usa-alert__body">
@@ -292,6 +320,7 @@ ResourceUpload.propTypes = {
   draftSaved: PropTypes.string,
   errors: PropTypes.any, // eslint-disable-line
   values: PropTypes.shape({
+    resources: PropTypes.array, // eslint-disable-line
     resource: PropTypes.shape({
       url: PropTypes.string,
       upload: PropTypes.any, // eslint-disable-line
