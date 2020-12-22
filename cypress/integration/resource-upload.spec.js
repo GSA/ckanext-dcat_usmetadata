@@ -112,11 +112,13 @@ describe('Resource Upload page', () => {
     cy.requiredMetadata(title);
     cy.additionalMetadata();
     cy.get('button[type=button]').contains('Save and Continue').click();
+    cy.intercept('/api/3/action/resource_create').as('resourceCreate');
     cy.resourceUploadWithUrlAndSave(exampleUrl, shortResourceName);
-    cy.wait(3000);
+    cy.wait('@resourceCreate');
     cy.resourceUploadWithUrlAndSave(exampleUrl, longResourceName);
+    cy.wait('@resourceCreate');
 
-    cy.visit(`/dataset/new-metadata?datasetId=${title}`);
+    cy.visit(`/dataset/edit-new/${title}`);
     cy.contains('Resource Upload').click();
 
     cy.contains(shortResourceName);
