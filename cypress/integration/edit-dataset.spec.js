@@ -18,6 +18,10 @@ before(() => {
 beforeEach(() => {
   cy.logout();
   cy.login();
+  // Wait for list of organizations to be fetched:
+  cy.intercept('/api/3/action/organization_list_for_user').as('listOfOrgs');
+  cy.visit('/dataset/edit-new/' + name);
+  cy.wait('@listOfOrgs');
 });
 
 after(() => {
@@ -26,10 +30,6 @@ after(() => {
 
 describe('Editing an existing dataset', () => {
   it('Loads required metadata values into the form', () => {
-    // Wait for list of organizations to be fetched:
-    cy.intercept('/api/3/action/organization_list_for_user').as('listOfOrgs');
-    cy.visit('/dataset/edit-new/' + name);
-    cy.wait('@listOfOrgs');
     cy.contains('Required Metadata');
     cy.get('input[name=title]').invoke('val').should('eq', name);
     cy.get('.dataset_url').contains(name);
@@ -59,10 +59,6 @@ describe('Editing an existing dataset', () => {
   });
 
   it('Loads additional metadata values into the form', () => {
-    // Wait for list of organizations to be fetched:
-    cy.intercept('/api/3/action/organization_list_for_user').as('listOfOrgs');
-    cy.visit('/dataset/edit-new/' + name);
-    cy.wait('@listOfOrgs');
     cy.get('[role="link"]').contains('Additional Metadata').click();
     cy.get('select[name=dataQuality]').invoke('val').should('eq', 'Yes');
     cy.get('input[name=category]').invoke('val').should('not.be.empty');
