@@ -5,6 +5,19 @@ before(() => {
   cy.createOrg();
   cy.visit('/dataset/new-metadata');
   cy.requiredMetadata(name);
+  cy.additionalMetadata();
+  // Set 'isParent' to "Yes" to confirm if values are saved correctly as by default
+  // it is set to "No".
+  cy.get('select[name=isParent]').select('Yes');
+  cy.get('button[type=button]').contains('Save and Continue').click();
+  cy.intercept('/api/3/action/package_patch').as('packagePatch');
+  cy.resourceUploadWithUrlAndPublish();
+  cy.wait('@packagePatch');
+});
+
+beforeEach(() => {
+  cy.logout();
+  cy.login();
 });
 
 after(() => {
@@ -43,5 +56,32 @@ describe('Editing an existing dataset', () => {
     cy.get('#temporal_option_2').should('have.value', 'true');
     cy.get('input[name=temporal_start_date]').invoke('val').should('eq', '2010-11-11');
     cy.get('input[name=temporal_end_date]').invoke('val').should('eq', '2020-11-11');
+  });
+
+  it('Loads additional metadata values into the form', () => {
+    // Wait for list of organizations to be fetched:
+    cy.intercept('/api/3/action/organization_list_for_user').as('listOfOrgs');
+    cy.visit('/dataset/edit-new/' + name);
+    cy.wait('@listOfOrgs');
+    cy.get('[role="link"]').contains('Additional Metadata').click();
+    cy.get('select[name=dataQuality]').invoke('val').should('eq', 'Yes');
+    cy.get('input[name=category]').invoke('val').should('not.be.empty');
+    cy.get('input[name=data_dictionary]')
+      .invoke('val')
+      .should('match', /^(http|https):\/\//);
+    cy.get('select[name=describedByType]').invoke('val').should('eq', 'text/csv');
+    cy.get('select[name=accrualPeriodicity]').invoke('val').should('eq', 'R/P7D');
+    cy.get('input[name=homepage_url]')
+      .invoke('val')
+      .should('match', /^(http|https):\/\//);
+    cy.get('select[name=languageSubTag]').invoke('val').should('eq', 'en');
+    cy.get('select[name=languageRegSubTag]').invoke('val').should('eq', 'US');
+    cy.get('input[name=primary_it_investment_uii]').invoke('val').should('not.be.empty');
+    cy.get('input[name=related_documents]').invoke('val').should('not.be.empty');
+    cy.get('input[name=release_date]').invoke('val').should('eq', '2020-08-08');
+    cy.get('input[name=system_of_records]')
+      .invoke('val')
+      .should('match', /^(http|https):\/\//);
+    cy.get('select[name=isParent]').invoke('val').should('eq', 'Yes');
   });
 });
