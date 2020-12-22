@@ -82,7 +82,7 @@ describe('Editing an existing dataset', () => {
     cy.get('select[name=isParent]').invoke('val').should('eq', 'Yes');
   });
 
-  it('Edits and saves required metadata', () => {
+  it('Edits and saves all metadata', () => {
     const newMetadata = {
       title: 'Updated title',
       description: 'Updated description',
@@ -94,6 +94,19 @@ describe('Editing an existing dataset', () => {
       publicAccessLevel: 'non-public',
       license: 'https://opensource.org/licenses/MIT-0',
       rightsDesc: 'Updated rights',
+      dataQuality: 'No',
+      category: 'Test',
+      dataDictionary: 'https://www.dictionary.com',
+      describedByType: 'text/tab-separated-values',
+      accrualPeriodicity: 'irregular',
+      homepageUrl: 'https://www.landingpage.com',
+      languageSubTag: 'da',
+      languageRegSubTag: 'DK',
+      primaryItInvestmentUii: '111-111111111',
+      relatedDocuments: 'test string',
+      releaseDate: '2020-01-01',
+      systemOfRecords: 'https://system_of_records.com',
+      isParent: 'No',
     };
     cy.get('input[name=title]').clear().type(newMetadata.title);
     // Make sure URL hasn't been updated here:
@@ -112,6 +125,24 @@ describe('Editing an existing dataset', () => {
     cy.get('#spatial_option_1').parent('.form-group').click();
     cy.get('#temporal_option_1').parent('.form-group').click();
     cy.get('button[type=button]').contains('Save and Continue').click();
+
+    cy.get('select[name=dataQuality]').select(newMetadata.dataQuality);
+    cy.get('input[name=category]').clear().type(newMetadata.category);
+    cy.get('input[name=data_dictionary]').clear().type(newMetadata.dataDictionary);
+    cy.get('select[name=describedByType]').select(newMetadata.describedByType);
+    cy.get('select[name=accrualPeriodicity]').select(newMetadata.accrualPeriodicity);
+    cy.get('input[name=homepage_url]').clear().type(newMetadata.homepageUrl);
+    cy.get('select[name=languageSubTag]').select(newMetadata.languageSubTag);
+    cy.get('select[name=languageRegSubTag]').select(newMetadata.languageRegSubTag);
+    cy.get('input[name=primary_it_investment_uii]')
+      .clear()
+      .type(newMetadata.primaryItInvestmentUii);
+    cy.get('input[name=related_documents]').clear().type(newMetadata.relatedDocuments);
+    cy.get('input[name=release_date]').clear().type(newMetadata.releaseDate);
+    cy.get('input[name=system_of_records]').clear().type(newMetadata.systemOfRecords);
+    cy.get('select[name=isParent]').select(newMetadata.isParent);
+    cy.get('button[type=button]').contains('Save and Continue').click();
+
     // Reload the page and wait for list of organizations to be fetched:
     cy.intercept('/api/3/action/organization_list_for_user').as('listOfOrgs');
     cy.visit('/dataset/edit-new/' + name);
@@ -135,46 +166,7 @@ describe('Editing an existing dataset', () => {
     cy.get('input[name=spatial_location_desc]').should('be.disabled');
     cy.get('input[name=temporal_start_date]').should('be.disabled');
     cy.get('input[name=temporal_end_date]').should('be.disabled');
-  });
 
-  it('Edits and saves additional metadata', () => {
-    const newMetadata = {
-      dataQuality: 'No',
-      category: 'Test',
-      dataDictionary: 'https://www.dictionary.com',
-      describedByType: 'text/tab-separated-values',
-      accrualPeriodicity: 'irregular',
-      homepageUrl: 'https://www.landingpage.com',
-      languageSubTag: 'da',
-      languageRegSubTag: 'DK',
-      primaryItInvestmentUii: '111-111111111',
-      relatedDocuments: 'test string',
-      releaseDate: '2020-01-01',
-      systemOfRecords: 'https://system_of_records.com',
-      isParent: 'No',
-    };
-    cy.get('[role="link"]').contains('Additional Metadata').click();
-    cy.get('select[name=dataQuality]').select(newMetadata.dataQuality);
-    cy.get('input[name=category]').clear().type(newMetadata.category);
-    cy.get('input[name=data_dictionary]').clear().type(newMetadata.dataDictionary);
-    cy.get('select[name=describedByType]').select(newMetadata.describedByType);
-    cy.get('select[name=accrualPeriodicity]').select(newMetadata.accrualPeriodicity);
-    cy.get('input[name=homepage_url]').clear().type(newMetadata.homepageUrl);
-    cy.get('select[name=languageSubTag]').select(newMetadata.languageSubTag);
-    cy.get('select[name=languageRegSubTag]').select(newMetadata.languageRegSubTag);
-    cy.get('input[name=primary_it_investment_uii]')
-      .clear()
-      .type(newMetadata.primaryItInvestmentUii);
-    cy.get('input[name=related_documents]').clear().type(newMetadata.relatedDocuments);
-    cy.get('input[name=release_date]').clear().type(newMetadata.releaseDate);
-    cy.get('input[name=system_of_records]').clear().type(newMetadata.systemOfRecords);
-    cy.get('select[name=isParent]').select(newMetadata.isParent);
-    cy.get('button[type=button]').contains('Save and Continue').click();
-    // Reload the page and wait for list of organizations to be fetched:
-    cy.intercept('/api/3/action/organization_list_for_user').as('listOfOrgs');
-    cy.visit('/dataset/edit-new/' + name);
-    cy.wait('@listOfOrgs');
-    // Now check updated values:
     cy.get('[role="link"]').contains('Additional Metadata').click();
     cy.get('select[name=dataQuality]').invoke('val').should('eq', newMetadata.dataQuality);
     cy.get('input[name=category]').invoke('val').should('eq', newMetadata.category);
