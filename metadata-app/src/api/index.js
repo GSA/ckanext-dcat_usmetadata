@@ -54,10 +54,16 @@ const toISODate = (dateStr) => {
 /**
  * Deserialize extras from CKAN 2.8.2 Groups format
  */
+const ckanExtrasToDcat = {
+  data_quality: 'dataQuality',
+  accrual_periodicity: 'accrualPeriodicity',
+  data_dictionary_type: 'describedByType',
+};
 const deserializeExtras = (opts) => {
   const newOpts = clone(opts);
   newOpts.extras.forEach((cur) => {
-    newOpts[cur.key] = cur.value;
+    const newKey = ckanExtrasToDcat[cur.key] || cur.key;
+    newOpts[newKey] = cur.value;
   });
   return newOpts;
 };
@@ -181,28 +187,34 @@ const serializeSupplementalValues = (opts) => {
 
   if (opts.dataQuality) {
     newOpts.data_quality = opts.dataQuality;
+    const indexOfDataQuality = newOpts.extras.findIndex((x) => x.key === 'data_quality');
+    if (indexOfDataQuality > -1) {
+      newOpts.extras[indexOfDataQuality].value = newOpts.data_quality;
+    }
   }
 
-  if (opts.release_date) {
-    newOpts.release_date = toISODate(newOpts.release_date);
-  } else {
-    delete newOpts.release_date;
-    // remove release date from extras if any
-    if (newOpts.extras)
-      newOpts.extras = newOpts.extras.filter(({ key }) => {
-        return key !== 'release_date';
-      });
+  const indexOfCategory = newOpts.extras.findIndex((x) => x.key === 'category');
+  if (opts.category) {
+    if (indexOfCategory > -1) {
+      newOpts.extras[indexOfCategory].value = opts.category;
+    }
+  } else if (indexOfCategory > -1) {
+    newOpts.extras.splice(indexOfCategory, 1);
   }
-  // Language field should be constructed from language subtag and language
-  // regional subtag:
-  if (opts.languageSubTag) {
-    newOpts.language =
-      opts.languageSubTag + (opts.languageRegSubTag && `-${opts.languageRegSubTag}`);
+
+  const indexOfDataDictionary = newOpts.extras.findIndex((x) => x.key === 'data_dictionary');
+  if (opts.data_dictionary) {
+    if (indexOfDataDictionary > -1) {
+      newOpts.extras[indexOfDataDictionary].value = opts.data_dictionary;
+    }
+  } else if (indexOfDataDictionary > -1) {
+    newOpts.extras.splice(indexOfDataDictionary, 1);
   }
-  delete newOpts.languageSubTag;
-  delete newOpts.languageRegSubTag;
 
   // Data Dictionary Type
+  const indexOfDataDictionaryType = newOpts.extras.findIndex(
+    (x) => x.key === 'data_dictionary_type'
+  );
   if (opts.describedByType) {
     // If it's specified other
     if (opts.describedByType === 'other') {
@@ -210,25 +222,17 @@ const serializeSupplementalValues = (opts) => {
       delete newOpts.otherDataDictionaryType;
     } else newOpts.data_dictionary_type = opts.describedByType;
     delete newOpts.describedByType;
-  }
 
-  if (opts.isParent === 'Yes') {
-    newOpts.is_parent = 'true';
-    delete newOpts.parent_dataset;
-    newOpts.extras = newOpts.extras.filter((extra) => extra.key !== 'parent_dataset');
-  } else if (opts.isParent === 'No') {
-    newOpts.is_parent = 'false';
-    if (opts.parentDataset) {
-      newOpts.parent_dataset = opts.parentDataset;
-    } else {
-      delete newOpts.parent_dataset;
-      newOpts.extras = newOpts.extras.filter((extra) => extra.key !== 'parent_dataset');
+    if (indexOfDataDictionaryType > -1) {
+      newOpts.extras[indexOfDataDictionaryType].value = newOpts.data_dictionary_type;
     }
-  } else {
-    delete newOpts.is_parent;
-    delete newOpts.parent_dataset;
+  } else if (indexOfDataDictionaryType > -1) {
+    newOpts.extras.splice(indexOfDataDictionaryType, 1);
   }
 
+  const indexOfAccrualPeriodicity = newOpts.extras.findIndex(
+    (x) => x.key === 'accrual_periodicity'
+  );
   if (opts.accrualPeriodicity) {
     newOpts.accrual_periodicity = opts.accrualPeriodicity;
     if (opts.accrualPeriodicity === 'other') {
@@ -239,6 +243,93 @@ const serializeSupplementalValues = (opts) => {
     }
     delete newOpts.accrualPeriodicityOther;
     delete newOpts.accrualPeriodicity;
+
+    if (indexOfAccrualPeriodicity > -1) {
+      newOpts.extras[indexOfAccrualPeriodicity].value = newOpts.accrual_periodicity;
+    }
+  } else if (indexOfAccrualPeriodicity > -1) {
+    newOpts.extras.splice(indexOfAccrualPeriodicity, 1);
+  }
+
+  const indexOfHomePageUrl = newOpts.extras.findIndex((x) => x.key === 'homepage_url');
+  if (opts.homepage_url && indexOfHomePageUrl > -1) {
+    newOpts.extras[indexOfHomePageUrl].value = opts.homepage_url;
+  } else if (indexOfHomePageUrl > -1) {
+    newOpts.extras.splice(indexOfHomePageUrl, 1);
+  }
+
+  // Language field should be constructed from language subtag and language
+  // regional subtag:
+  if (opts.languageSubTag) {
+    newOpts.language =
+      opts.languageSubTag + (opts.languageRegSubTag && `-${opts.languageRegSubTag}`);
+  }
+  delete newOpts.languageSubTag;
+  delete newOpts.languageRegSubTag;
+  const indexOfLanguage = newOpts.extras.findIndex((x) => x.key === 'language');
+  if (indexOfLanguage > -1) {
+    newOpts.extras[indexOfLanguage].value = newOpts.language;
+  }
+
+  const indexOfPrimaryITInvestmentUIIUSG = newOpts.extras.findIndex(
+    (x) => x.key === 'primary_it_investment_uii'
+  );
+  if (opts.primary_it_investment_uii && indexOfPrimaryITInvestmentUIIUSG > -1) {
+    newOpts.extras[indexOfPrimaryITInvestmentUIIUSG].value = opts.primary_it_investment_uii;
+  } else if (indexOfPrimaryITInvestmentUIIUSG > -1) {
+    newOpts.extras.splice(indexOfPrimaryITInvestmentUIIUSG, 1);
+  }
+
+  const indexOfRelatedDocuments = newOpts.extras.findIndex((x) => x.key === 'related_documents');
+  if (opts.related_documents && indexOfRelatedDocuments > -1) {
+    newOpts.extras[indexOfRelatedDocuments].value = opts.related_documents;
+  } else if (indexOfRelatedDocuments > -1) {
+    newOpts.extras.splice(indexOfRelatedDocuments, 1);
+  }
+
+  const indexOfReleaseDate = newOpts.extras.findIndex((x) => x.key === 'release_date');
+  if (opts.release_date) {
+    newOpts.release_date = toISODate(newOpts.release_date);
+    if (indexOfReleaseDate > -1) {
+      newOpts.extras[indexOfReleaseDate].value = newOpts.release_date;
+    }
+  } else {
+    delete newOpts.release_date;
+    // remove release date from extras if any
+    if (indexOfReleaseDate > -1) {
+      newOpts.extras.splice(indexOfReleaseDate, 1);
+    }
+  }
+
+  const indexOfSystemOfRecrods = newOpts.extras.findIndex((x) => x.key === 'system_of_records');
+  if (opts.system_of_records && indexOfSystemOfRecrods > -1) {
+    newOpts.extras[indexOfSystemOfRecrods].value = opts.system_of_records;
+  } else if (indexOfSystemOfRecrods > -1) {
+    newOpts.extras.splice(indexOfSystemOfRecrods, 1);
+  }
+
+  const indexOfIsParent = newOpts.extras.findIndex((x) => x.key === 'is_parent');
+  if (opts.isParent === 'Yes') {
+    newOpts.is_parent = 'true';
+    delete newOpts.parent_dataset;
+    newOpts.extras = newOpts.extras.filter((extra) => extra.key !== 'parent_dataset');
+    if (indexOfIsParent > -1) {
+      newOpts.extras[indexOfIsParent].value = newOpts.is_parent;
+    }
+  } else if (opts.isParent === 'No') {
+    newOpts.is_parent = 'false';
+    if (indexOfIsParent > -1) {
+      newOpts.extras[indexOfIsParent].value = newOpts.is_parent;
+    }
+    if (opts.parentDataset) {
+      newOpts.parent_dataset = opts.parentDataset;
+    } else {
+      delete newOpts.parent_dataset;
+      newOpts.extras = newOpts.extras.filter((extra) => extra.key !== 'parent_dataset');
+    }
+  } else {
+    delete newOpts.is_parent;
+    delete newOpts.parent_dataset;
   }
 
   const { selectedPublisher } = newOpts;

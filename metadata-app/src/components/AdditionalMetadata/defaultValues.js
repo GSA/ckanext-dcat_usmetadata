@@ -1,7 +1,6 @@
 export default {
   dataQuality: '',
   themes: '',
-  describedBy: '',
   describedByType: '',
   accrualPeriodicity: '',
   landingPage: '',
