@@ -62,8 +62,7 @@ describe('Deleting a dataset', () => {
     cy.login();
     cy.visit('/dataset/test-dataset-1');
     cy.get('.btn-danger').click();
-    cy.contains('Are you sure you want to delete dataset - test-dataset-1?');
-    cy.get('.btn-primary').contains('Confirm Delete');
+    cy.contains('Are you sure you want to delete this dataset?');
   });
 });
 
