@@ -3,7 +3,7 @@ import Api from '.';
 import mocks from '../mocks/apiMocks';
 
 const { helpers } = Api;
-const { fetchDataset, createDataset, updateDataset, createResource } = Api;
+const { fetchDataset, createDataset, updateDataset, createResource, updateResource } = Api;
 const {
   datasetOne,
   requiredMetadata,
@@ -233,7 +233,7 @@ describe('Test API', () => {
     });
   });
 
-  describe('Create resource', () => {
+  describe('Resource', () => {
     it('should encode the field names and values when creating resource', async () => {
       const fieldNameWithSpecialChars = 'a&l#@!ls1';
       const fieldNameEncoded = 'a%26l%23%40!ls1';
@@ -253,6 +253,26 @@ describe('Test API', () => {
       });
 
       await createResource('123', { [fieldNameWithSpecialChars]: 'Foo' }, 'APIURL', 'APIKEY');
+    });
+    it('should encode the field names and values when editing resource', async () => {
+      const fieldNameWithSpecialChars = 'a&l#@!ls1';
+      const fieldNameEncoded = 'a%26l%23%40!ls1';
+
+      moxios.wait(() => {
+        const request = moxios.requests.mostRecent();
+        const payloadStr = request.config.data;
+        const payload = JSON.parse(decodeURIComponent(payloadStr));
+
+        expect(request.config.method).toBe('post');
+        expect(payload[fieldNameWithSpecialChars]).toBe('Foo');
+        expect(payloadStr).toEqual(expect.stringContaining(fieldNameEncoded));
+        request.respondWith({
+          status: 200,
+          response: updateDatasetResponse,
+        });
+      });
+
+      await updateResource({ [fieldNameWithSpecialChars]: 'Foo' }, 'APIURL', 'APIKEY');
     });
   });
 });
