@@ -28,6 +28,7 @@ const ResourceUpload = (props) => {
     isSubmitting,
     handleSteps,
   } = props; // eslint-disable-line
+  const { resourceAction } = values;
   const resource = values.resource || {};
   const resources = values.resources || [];
   const { url, name, description, mimetype, format } = resource;
@@ -53,7 +54,20 @@ const ResourceUpload = (props) => {
     setFieldValue('resource.upload', event.currentTarget.files[0]);
   };
 
-  const totalSavedResource = values.savedResources + resources.length;
+  const editResource = (res) => {
+    setFieldValue('resourceAction', 'edit');
+    setFieldValue('resource', res);
+  };
+
+  const deleteResource = (res) => {
+    setFieldValue('resource', { id: res.id });
+    setFieldValue('resourceAction', 'delete');
+    setFieldValue('publish', false);
+    setFieldValue('saveDraft', false);
+    setLinkToDataActive(false);
+    setUploadDataFileActive(false);
+    submitForm();
+  };
 
   return (
     <div className="usa-form-custom">
@@ -71,13 +85,13 @@ const ResourceUpload = (props) => {
           dictionary.
         </p>
       </section>
-      {!totalSavedResource ? (
+      {!resources.length ? (
         ''
       ) : (
         <div className="margin-top-10 padding-bottom-8 border-gray-10 border-bottom-2px">
           <div className="grid-row margin-top-3">
             <div className="grid-col-12 text-mint">
-              <i>Resource saved: ({totalSavedResource} resources saved in total)</i>
+              <i>Resource saved: ({resources.length} resources saved in total)</i>
             </div>
           </div>
           {resources.map((res) => {
@@ -85,10 +99,22 @@ const ResourceUpload = (props) => {
               <div key={res.id} className="grid-row margin-top-2">
                 <div className="grid-col-12 bg-base-lightest padding-x-1">
                   <div className="resource-item-name">{res.name}</div>
-                  <button type="button" className="usa-button--unstyled resource-action-button">
+                  <button
+                    onClick={() => {
+                      deleteResource(res);
+                    }}
+                    type="button"
+                    className="usa-button--unstyled resource-action-button"
+                  >
                     Delete
                   </button>
-                  <button type="button" className="usa-button--unstyled resource-action-button">
+                  <button
+                    onClick={() => {
+                      editResource(res);
+                    }}
+                    type="button"
+                    className="usa-button--unstyled resource-action-button"
+                  >
                     Edit
                   </button>
                 </div>
@@ -97,74 +123,82 @@ const ResourceUpload = (props) => {
           })}
         </div>
       )}
-
-      <div className="grid-row margin-top-3">
-        <div className="grid-col-12">
-          {/* eslint-disable-next-line */}
-          <label className="usa-label">Data</label>
-          {/* eslint-disable-next-line */}
-          {linkToDataIsActive || url ? (
-            <div>
-              <p className="usa-helptext">
-                {`If you are linking to a dataset, please include "https://" at the beginning
-                of your URL.`}
-              </p>
-              <WrappedField
-                hidden={!linkToDataIsActive}
-                id="url"
-                name="resource.url"
-                type="url"
-                value={url}
-                onClick={() => {
-                  setFieldValue('resource.url', '');
-                  setLinkToDataActive(false);
-                }}
-                errors={errors}
-              />
-            </div>
-          ) : uploadDataFileIsActive ? (
-            <WrappedField
-              disabled
-              name="resource.fileName"
-              type="label"
-              value={resource.fileName}
-              onClick={() => {
-                setFieldValue('resource.upload', null);
-                setFieldValue('resource.fileName', '');
-                setFieldValue('resource.name', '');
-                setFieldValue('resource.description', '');
-                setFieldValue('resource.format', '');
-                setFieldValue('resource.mimetype', '');
-                setUploadDataFileActive(false);
-              }}
-            />
-          ) : (
-            <>
-              <br />
+      {
+        // if it's not edit mode then show the data upload field
+        resourceAction !== 'edit' && (
+          <div className="grid-row margin-top-3">
+            <div className="grid-col-12">
               {/* eslint-disable-next-line */}
-              <label tabIndex="0" htmlFor="upload" className="usa-button usa-button--base">
-                <i className="fa fa-cloud-upload" aria-hidden="true" /> Upload data
-              </label>
-              <input id="upload" name="resource.upload" type="file" onChange={handleFileChange} />
-              {/* eslint-disable */}
-              <label
-                tabIndex="0"
-                htmlFor="url"
-                className="usa-button usa-button--base"
-                onClick={() => {
-                  setLinkToDataActive(!linkToDataIsActive);
-                }}
-              >
-                <i className="fa fa-link" aria-hidden="true" /> Link to data
-              </label>
-              {/* eslint-enable */}
-              <p className="usa-helptext">
-                Formats accepted include the following: TXT, HTML, TSV, CSV, ODT, XML, Perl.
-              </p>
-            </>
-          )}
-        </div>
-      </div>
+              <label className="usa-label">Data</label>
+              {/* eslint-disable-next-line */}
+              {linkToDataIsActive || url ? (
+                <div>
+                  <p className="usa-helptext">
+                    {`If you are linking to a dataset, please include "https://" at the beginning
+                of your URL.`}
+                  </p>
+                  <WrappedField
+                    hidden={!linkToDataIsActive}
+                    id="url"
+                    name="resource.url"
+                    type="url"
+                    value={url}
+                    onClick={() => {
+                      setFieldValue('resource.url', '');
+                      setLinkToDataActive(false);
+                    }}
+                    errors={errors}
+                  />
+                </div>
+              ) : uploadDataFileIsActive ? (
+                <WrappedField
+                  name="resource.fileName"
+                  type="label"
+                  value={resource.fileName}
+                  onClick={() => {
+                    setFieldValue('resource.upload', null);
+                    setFieldValue('resource.fileName', '');
+                    setFieldValue('resource.name', '');
+                    setFieldValue('resource.description', '');
+                    setFieldValue('resource.format', '');
+                    setFieldValue('resource.mimetype', '');
+                    setUploadDataFileActive(false);
+                  }}
+                />
+              ) : (
+                <>
+                  <br />
+                  {/* eslint-disable-next-line */}
+                  <label tabIndex="0" htmlFor="upload" className="usa-button usa-button--base">
+                    <i className="fa fa-cloud-upload" aria-hidden="true" /> Upload data
+                  </label>
+                  <input
+                    id="upload"
+                    name="resource.upload"
+                    type="file"
+                    onChange={handleFileChange}
+                  />
+                  {/* eslint-disable */}
+                  <label
+                    tabIndex="0"
+                    htmlFor="url"
+                    className="usa-button usa-button--base"
+                    onClick={() => {
+                      setLinkToDataActive(!linkToDataIsActive);
+                    }}
+                  >
+                    <i className="fa fa-link" aria-hidden="true" /> Link to data
+                  </label>
+                  {/* eslint-enable */}
+                  <p className="usa-helptext">
+                    Formats accepted include the following: TXT, HTML, TSV, CSV, ODT, XML, Perl.
+                  </p>
+                </>
+              )}
+            </div>
+          </div>
+        )
+      }
       <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <WrappedField
@@ -227,7 +261,7 @@ const ResourceUpload = (props) => {
             }}
             disabled={isSubmitting}
           >
-            Save and add another resource
+            {resourceAction === 'edit' ? 'Save Changes' : 'Save and add another resource'}
           </button>
         </div>
       </div>
@@ -329,6 +363,7 @@ ResourceUpload.propTypes = {
       mimetype: PropTypes.string,
       format: PropTypes.string,
     }),
+    resourceAction: PropTypes.string,
     publish: PropTypes.bool,
     savedResources: PropTypes.number,
     lastSavedResource: PropTypes.string,
