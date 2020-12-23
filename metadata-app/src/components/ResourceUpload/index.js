@@ -258,18 +258,21 @@ const ResourceUpload = (props) => {
       )}
 
       <div className="margin-top-6 clearfix">
-        <button
-          className="usa-button usa-button--outline"
-          type="button"
-          onClick={() => {
-            setFieldValue('publish', false);
-            setFieldValue('saveDraft', true);
-            submitForm();
-          }}
-          disabled={isSubmitting}
-        >
-          Save draft
-        </button>
+        {values.publishing_status === 'Published' ? (
+          ''
+        ) : (
+          <button
+            className="usa-button usa-button--outline"
+            type="button"
+            onClick={async () => {
+              await setFieldValue('publish', false);
+              await setFieldValue('saveDraft', true);
+              submitForm();
+            }}
+          >
+            Save draft
+          </button>
+        )}
         <div className="float-right">
           <button
             className="usa-button usa-button--outline"
@@ -331,6 +334,7 @@ ResourceUpload.propTypes = {
     publish: PropTypes.bool,
     savedResources: PropTypes.number,
     lastSavedResource: PropTypes.string,
+    publishing_status: PropTypes.string,
   }),
 };
 

@@ -298,6 +298,7 @@ const MetadataForm = (props) => {
             savedResources: 0,
             lastSavedResource: null,
             saveDraft: false,
+            publishing_status: formValues.publishing_status,
           }}
           enableReinitialize="true"
           validateOnChange={false}

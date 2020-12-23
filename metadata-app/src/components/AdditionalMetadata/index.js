@@ -272,16 +272,20 @@ const AdditionalMetadata = (props) => {
         </div>
       )}
       <div className="margin-top-6 clearfix">
-        <button
-          className="usa-button usa-button--outline float-left"
-          type="button"
-          onClick={async () => {
-            await setFieldValue('saveDraft', true);
-            submitForm();
-          }}
-        >
-          Save draft
-        </button>
+        {values.publishing_status === 'Published' ? (
+          ''
+        ) : (
+          <button
+            className="usa-button usa-button--outline"
+            type="button"
+            onClick={async () => {
+              await setFieldValue('saveDraft', true);
+              submitForm();
+            }}
+          >
+            Save draft
+          </button>
+        )}
         <div className="float-right">
           <button
             className="usa-button usa-button--outline"
@@ -346,6 +350,7 @@ AdditionalMetadata.propTypes = {
     isPartOf: PropTypes.string,
     isParent: PropTypes.string,
     parentDataset: PropTypes.string,
+    publishing_status: PropTypes.string,
   }),
 };
 
