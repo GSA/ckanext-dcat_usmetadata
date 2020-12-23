@@ -1,10 +1,16 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+import db_utils as utils
+from ckan.common import c
+from logging import getLogger
 
+
+log = getLogger(__name__)
 
 class Dcat_UsmetadataPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IRoutes)
+    plugins.implements(plugins.IActions)
 
     # IConfigurer
     def update_config(self, config_):
@@ -28,3 +34,11 @@ class Dcat_UsmetadataPlugin(plugins.SingletonPlugin):
 
     def after_map(self, map):
         return map
+
+    # IActions
+    def get_actions(self):
+        def parent_dataset_options(context, data_dict):
+            return utils.get_parent_organizations(c)
+        return {
+            'parent_dataset_options': parent_dataset_options,
+        }
