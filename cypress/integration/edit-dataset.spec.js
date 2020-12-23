@@ -1,5 +1,8 @@
 const name = 'test-editing';
 
+const resourceToBeEdited = 'resource-to-be-edited';
+const resourceToBeDeleted = 'resource-to-be-deleted';
+
 before(() => {
   cy.login();
   cy.createOrg();
@@ -11,7 +14,10 @@ before(() => {
   cy.get('select[name=isParent]').select('Yes');
   cy.get('button[type=button]').contains('Save and Continue').click();
   cy.intercept('/api/3/action/package_patch').as('packagePatch');
-  cy.resourceUploadWithUrlAndPublish();
+  cy.intercept('/api/3/action/resource_create').as('resourceSaved');
+  cy.resourceUploadWithUrlAndSave(null, resourceToBeDeleted);
+  cy.wait('@resourceSaved');
+  cy.resourceUploadWithUrlAndPublish(null, resourceToBeEdited);
   cy.wait('@packagePatch');
 });
 
@@ -189,5 +195,38 @@ describe('Editing an existing dataset', () => {
     cy.get('input[name=release_date]').invoke('val').should('eq', newMetadata.releaseDate);
     cy.get('input[name=system_of_records]').invoke('val').should('eq', newMetadata.systemOfRecords);
     cy.get('select[name=isParent]').invoke('val').should('eq', newMetadata.isParent);
+  });
+
+  it('Able to edit resource', () => {
+    cy.contains('Resource Upload').click();
+    cy.contains(resourceToBeEdited);
+    cy.get(`#edit-${resourceToBeEdited}`).click();
+    cy.contains('Save Changes');
+    cy.get('input[name=resource\\.name]').type(`-updated`);
+    cy.contains('Save Changes').click();
+    cy.get('input[name=resource\\.name]').should('have.value', '');
+    cy.get('button[type=button]').contains('Finish and publish').click();
+    cy.contains(`${resourceToBeEdited}-updated`);
+  });
+
+  it('Able to delete resource', () => {
+    cy.contains('Resource Upload').click();
+    cy.intercept('/api/3/action/resource_delete').as('resourceDelete');
+    cy.contains(resourceToBeDeleted);
+    cy.contains('2 resources saved in total');
+    cy.get(`#delete-${resourceToBeDeleted}`).click();
+    cy.wait('@resourceDelete');
+    cy.contains(resourceToBeDeleted).should('not.exist');
+    cy.contains('1 resources saved in total');
+    cy.contains('Finish and publish').click();
+    cy.contains(resourceToBeDeleted).should('not.exist');
+  });
+
+  it('Able to add another one', () => {
+    cy.contains('Resource Upload').click();
+    cy.resourceUploadWithUrlAndSave(null, 'new-resource');
+    cy.contains('new-resource');
+    cy.contains('Finish and publish').click();
+    cy.contains('new-resource');
   });
 });
