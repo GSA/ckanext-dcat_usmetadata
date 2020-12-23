@@ -100,6 +100,7 @@ const ResourceUpload = (props) => {
                 <div className="grid-col-12 bg-base-lightest padding-x-1">
                   <div className="resource-item-name">{res.name}</div>
                   <button
+                    id={`delete-${res.name}`}
                     onClick={() => {
                       deleteResource(res);
                     }}
@@ -109,6 +110,7 @@ const ResourceUpload = (props) => {
                     Delete
                   </button>
                   <button
+                    id={`edit-${res.name}`}
                     onClick={() => {
                       editResource(res);
                     }}
