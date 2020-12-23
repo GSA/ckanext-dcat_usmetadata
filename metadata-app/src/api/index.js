@@ -583,16 +583,20 @@ const fetchOrganizationsForUser = async (apiUrl, apiKey) => {
 const fetchParentDatasets = async (query, apiUrl, apiKey) => {
   try {
     // the space belongs here q= solr query string including indexed extras
-    const url = `${apiUrl}package_search?q=${query} extras_is_parent=true`;
-    const res = await axios.get(url, {
-      headers: {
-        'X-CKAN-API-Key': apiKey,
-      },
-    });
-    return (res.data.result.results || []).map(({ id, title }) => {
+    const url = `${apiUrl}parent_dataset_options`;
+    const res = await axios.post(
+      url,
+      {},
+      {
+        headers: {
+          'X-CKAN-API-Key': apiKey,
+        },
+      }
+    );
+    return Object.keys(res.data.result).map((id) => {
       return {
         id,
-        name: title,
+        name: res.data.result[id],
       };
     });
   } catch (e) {
