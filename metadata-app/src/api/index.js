@@ -94,6 +94,8 @@ const serializeSupplementalValues = (opts) => {
     const indexOfNotes = newOpts.extras.findIndex((x) => x.key === 'notes');
     if (indexOfNotes > -1) {
       newOpts.extras[indexOfNotes].value = opts.description;
+    } else {
+      newOpts.extras.push({ key: 'notes', value: newOpts.notes });
     }
   }
 
@@ -452,6 +454,7 @@ const createDataset = (opts, apiUrl, apiKey) => {
   body.name = opts.url
     ? opts.url.split('/').pop()
     : slugify(opts.title, { lower: true, remove: /[*+~.()'"!:@]/g });
+  body.notes = body.notes || '';
   delete body.url;
   body.bureau_code = '015:11';
   body.program_code = '015:001';
