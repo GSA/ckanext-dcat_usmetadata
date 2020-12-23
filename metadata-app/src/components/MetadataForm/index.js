@@ -63,7 +63,8 @@ const MetadataForm = (props) => {
   const [formValues, setFormValues] = useState({
     ...defaultRequiredValues,
     ...defaultAdditionalValues,
-    state: 'draft',
+    publishing_status: 'Draft',
+    private: true,
     saveDraft: false,
   });
 
@@ -315,15 +316,18 @@ const MetadataForm = (props) => {
                   .then((res) => {
                     if (res.status === 200) {
                       if (values.publish) {
-                        // Update dataset state: 'draft' => 'active'
-                        Api.patchDataset(curDatasetId, { state: 'active' }, apiUrl, apiKey).then(
-                          (response) => {
-                            if (response.status === 200) {
-                              // Redirect to dataset page
-                              window.location.replace(datasetPageUrl);
-                            }
+                        // Update dataset state: 'publishing_status' => 'published'
+                        Api.patchDataset(
+                          curDatasetId,
+                          { publishing_status: 'Published' },
+                          apiUrl,
+                          apiKey
+                        ).then((response) => {
+                          if (response.status === 200) {
+                            // Redirect to dataset page
+                            window.location.replace(datasetPageUrl);
                           }
-                        );
+                        });
                       } else if (values.saveDraft) {
                         setDraftSaved(new Date());
                         setSubmitting(false);
@@ -344,8 +348,8 @@ const MetadataForm = (props) => {
                     setSubmitting(false);
                   });
               } else if (values.publish) {
-                // Update dataset state: 'draft' => 'active'
-                Api.patchDataset(curDatasetId, { state: 'active' }, apiUrl, apiKey)
+                // Update dataset state: 'publishing_status' => 'published'
+                Api.patchDataset(curDatasetId, { publishing_status: 'Published' }, apiUrl, apiKey)
                   .then((res) => {
                     if (res.status === 200) {
                       // Redirect to dataset page

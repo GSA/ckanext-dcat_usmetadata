@@ -259,7 +259,6 @@ const ResourceUpload = (props) => {
 
       <div className="margin-top-6 clearfix">
         <button
-          style={{ display: 'none' }}
           className="usa-button usa-button--outline"
           type="button"
           onClick={() => {

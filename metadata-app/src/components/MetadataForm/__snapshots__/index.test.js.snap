@@ -878,7 +878,6 @@ exports[`renders MetadataForm component 1`] = `
             >
               <button
                 class="usa-button usa-button--outline"
-                style="display: none;"
                 type="button"
               >
                 Save draft
