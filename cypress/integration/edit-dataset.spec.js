@@ -190,4 +190,8 @@ describe('Editing an existing dataset', () => {
     cy.get('input[name=system_of_records]').invoke('val').should('eq', newMetadata.systemOfRecords);
     cy.get('select[name=isParent]').invoke('val').should('eq', newMetadata.isParent);
   });
+
+  it('Hides "Save draft" button when in edit mode', () => {
+    cy.contains('Save draft').should('not.exist');
+  });
 });
