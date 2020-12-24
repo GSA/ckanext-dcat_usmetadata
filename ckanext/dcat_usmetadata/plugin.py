@@ -7,6 +7,7 @@ from logging import getLogger
 
 log = getLogger(__name__)
 
+
 class Dcat_UsmetadataPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IRoutes)
