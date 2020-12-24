@@ -62,6 +62,7 @@ describe('Parent Dataset', () => {
 
     cy.requiredMetadata(title);
     cy.additionalMetadata();
+    cy.get('select[name=isParent]').select('Yes');
     cy.get('button[type=button]').contains('Save and Continue').click();
     cy.resourceUploadWithUrlAndPublish();
 
@@ -69,7 +70,6 @@ describe('Parent Dataset', () => {
     cy.requiredMetadata();
     cy.get('.react-autosuggest__container input').type(title);
     cy.get('.react-autosuggest__suggestion--first').click();
-    cy.additionalMetadata();
     cy.get('.react-autosuggest__container input').should('have.value', title);
   });
 });
