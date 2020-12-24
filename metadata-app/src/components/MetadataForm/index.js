@@ -361,6 +361,9 @@ const MetadataForm = (props) => {
                     handleError(error);
                     setSubmitting(false);
                   });
+              } else if (values.saveDraft) {
+                setDraftSaved(new Date());
+                setSubmitting(false);
               }
             } else {
               setAlert(
