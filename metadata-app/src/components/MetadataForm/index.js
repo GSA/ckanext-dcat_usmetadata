@@ -314,8 +314,14 @@ const MetadataForm = (props) => {
               const datasetPageUrl = `${apiUrlObject.origin}/dataset/${curDatasetId}`;
               if (resourceMetadataChanged) {
                 Api.createResource(curDatasetId, values.resource, apiUrl, apiKey)
-                  .then((res) => {
+                  .then(async (res) => {
                     if (res.status === 200) {
+                      // Make a dataset non private if user uploaded a file into
+                      // filestore so that it can be accessed without restriction
+                      if (values.resource.upload) {
+                        await Api.patchDataset(curDatasetId, { private: false }, apiUrl, apiKey);
+                      }
+
                       if (values.publish) {
                         // Update dataset state: 'publishing_status' => 'published'
                         Api.patchDataset(
