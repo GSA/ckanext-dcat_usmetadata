@@ -27,11 +27,11 @@ const RequiredMetadata = (props) => {
       // if it comes from organization page then pre-select that specific organization
       const urlParams = new URLSearchParams(window.location.search);
       const orgId = urlParams.get('group');
-      if (orgId) values.owner_org = orgId;
+      if (orgId) setFieldValue('owner_org', orgId);
 
       // check if there is only one organization in the list then pre-select that only one
       if (data.length === 1) {
-        values.owner_org = data[0].id;
+        setFieldValue('owner_org', data[0].id);
       }
       setOrganizations(data);
     });
