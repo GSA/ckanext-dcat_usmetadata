@@ -145,3 +145,23 @@ describe('Resource Upload page', () => {
     );
   });
 });
+
+describe('Save draft functionality on Resource Upload page', () => {
+  it('Saves draft', () => {
+    cy.requiredMetadata();
+    cy.intercept('/api/3/action/package_update').as('packageUpdate');
+    cy.get('button[type=button]').contains('Save and Continue').click();
+    cy.wait('@packageUpdate');
+    cy.contains('Save and add another resource');
+    cy.get('.usa-button--outline').contains('Save draft').click();
+    cy.contains('Draft saved');
+
+    cy.intercept('/api/3/action/resource_create').as('resourceCreate');
+    cy.get('label[for=url]').click();
+    cy.get('input[name=resource\\.url]').type(chance.url());
+    cy.get('input[name=resource\\.name]').type(chance.word());
+    cy.get('.usa-button--outline').contains('Save draft').click();
+    cy.wait('@resourceCreate');
+    cy.contains('Draft saved');
+  });
+});
