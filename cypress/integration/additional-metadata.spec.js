@@ -73,3 +73,15 @@ describe('Parent Dataset', () => {
     cy.get('.react-autosuggest__container input').should('have.value', title);
   });
 });
+
+describe('Save draft functionality on Additional Metadata page', () => {
+  it('Saves dataset using "Save draft" button', () => {
+    cy.requiredMetadata();
+    cy.get('.usa-button--outline').contains('Save draft').click();
+    cy.contains('Draft saved');
+
+    cy.get('select[name=dataQuality]').select('Yes');
+    cy.get('.usa-button--outline').contains('Save draft').click();
+    cy.contains('Draft saved');
+  });
+});
