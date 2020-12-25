@@ -20,9 +20,9 @@ def get_parent_organizations(c):
         for id in userGroupsIds:
             ids.append(id.encode('ascii', 'ignore'))
 
-        # Ugly hack - If user has access to only one organization then SQL query
-        # blows up because IN statement ends up with dangling comma at the end.
-        # Adding dumy id should fix that.
+        # Ugly hack - If user has access to only one organization then SQL
+        # query blows up because IN statement ends up with dangling comma at
+        # the end. Adding dumy id should fix that.
         if(len(ids) == 0):
             ids.append("null")
             ids.append("dummy-id")
