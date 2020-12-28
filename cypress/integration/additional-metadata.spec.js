@@ -45,6 +45,17 @@ describe('Additional Metadata Page', () => {
     cy.contains('Data Publishing Frequency should be formatted as a proper ISO 8601 timestamp');
   });
 
+  it('Radio field geospatial dataset works', () => {
+    cy.requiredMetadata();
+    cy.get('#category-option-yes').parent('.form-group').click();
+    cy.intercept('/api/3/action/package_update').as('packageUpdate');
+    cy.get('button[type=button]').contains('Save and Continue').click();
+    cy.wait('@packageUpdate');
+    cy.get('button[type=button]').contains('Finish and publish').click();
+    cy.contains('Theme (Category)');
+    cy.contains('geospatial');
+  });
+
   it('Goes back to previous page', () => {
     cy.requiredMetadata();
     cy.get('button[type=button]')
@@ -59,12 +70,10 @@ describe('Additional Metadata Page', () => {
 describe('Parent Dataset', () => {
   it('Able to select', () => {
     const title = chance.word({ length: 5 });
-
     cy.requiredMetadata(title);
     cy.additionalMetadata();
     cy.get('button[type=button]').contains('Save and Continue').click();
     cy.resourceUploadWithUrlAndPublish();
-
     cy.visit('/dataset/new-metadata');
     cy.requiredMetadata();
     cy.get('.react-autosuggest__container input').type(title);
