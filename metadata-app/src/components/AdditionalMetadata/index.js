@@ -5,6 +5,8 @@ import WrappedField from '../WrappedField';
 import HelpText from '../HelpText';
 import Autocomplete from '../Autocomplete';
 import Link from '../Link';
+import Radio from '../Radio';
+
 import api from '../../api';
 
 const languages = require('./languages.json');
@@ -110,13 +112,9 @@ const AdditionalMetadata = (props) => {
       </div>
       <div className="grid-row margin-top-3">
         <div className="grid-col-12">
-          <WrappedField
-            label="Themes"
-            name="category"
-            type="string"
-            helptext="Main thematic category of the dataset.  If this dataset should be included in geoplatform.gov, please enter “geospatial” as the theme.  Start typing to add themes."
-            infoText={helpTexts.theme}
-          />
+          <span className="usa-label">My dataset is a geospatial dataset</span>
+          <Radio label="Yes" name="category" value="geospatial" id="category-option-yes" />
+          <Radio label="No" name="category" value="" id="category-option-no" />
         </div>
       </div>
       <div className="grid-row margin-top-3">

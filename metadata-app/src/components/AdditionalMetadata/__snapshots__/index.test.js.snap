@@ -75,38 +75,44 @@ exports[`Renders RequiredMetadata component 1`] = `
         <div
           class="grid-col-12"
         >
-          <div
-            class="wrapper"
+          <span
+            class="usa-label"
           >
-            <label
-              class="usa-label"
-            >
-              Themes
-              <div
-                class="tooltip"
-              >
-                <svg
-                  height="20px"
-                  style="margin-left: .5em;"
-                  tabindex="0"
-                  width="20px"
-                >
-                  info.svg
-                </svg>
-              </div>
-            </label>
-            <div
-              class="usa-helptext "
-            >
-              Main thematic category of the dataset.  If this dataset should be included in geoplatform.gov, please enter “geospatial” as the theme.  Start typing to add themes.
-            </div>
-            
+            My dataset is a geospatial dataset
+          </span>
+          <div
+            class="form-group "
+          >
             <input
-              class="usa-input  undefined undefined"
+              class="usa-radio__input"
+              id="category-option-yes"
               name="category"
-              type="string"
+              type="radio"
+              value="geospatial"
+            />
+            <label
+              class="usa-radio__label"
+              for="category-option-yes"
+            >
+              Yes
+            </label>
+          </div>
+          <div
+            class="form-group "
+          >
+            <input
+              class="usa-radio__input"
+              id="category-option-no"
+              name="category"
+              type="radio"
               value=""
             />
+            <label
+              class="usa-radio__label"
+              for="category-option-no"
+            >
+              No
+            </label>
           </div>
         </div>
       </div>
