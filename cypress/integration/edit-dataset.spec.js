@@ -201,9 +201,9 @@ describe('Editing an existing dataset', () => {
     cy.contains('Resource Upload').click();
     cy.contains(resourceToBeEdited);
     cy.get(`#edit-${resourceToBeEdited}`).click();
-    cy.contains('Save Changes');
+    cy.contains('Save');
     cy.get('input[name=resource\\.name]').type(`-updated`);
-    cy.contains('Save Changes').click();
+    cy.contains('Save').click();
     cy.get('input[name=resource\\.name]').should('have.value', '');
     cy.get('button[type=button]').contains('Finish and publish').click();
     cy.contains(`${resourceToBeEdited}-updated`);
