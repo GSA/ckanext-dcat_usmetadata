@@ -20,7 +20,6 @@ const dataDictTypes = require('./data-dictionary-types').sort((a, b) => {
 const publishingFrequencyOptions = require('./publishingFrequencyList');
 
 const helpTexts = {
-  theme: <HelpText>Examples include: vegetables, non_starchy, green.</HelpText>,
   describedBy: (
     <HelpText>
       Provide a link to data dictionary or other reference that helps users understand the dataset.
@@ -113,8 +112,25 @@ const AdditionalMetadata = (props) => {
       <div className="grid-row margin-top-3">
         <div className="grid-col-12">
           <span className="usa-label">Geospatial</span>
-          <Radio label="My dataset is a geospatial dataset" name="category" value="geospatial" id="category-option-yes" />
-          <Radio label="My dataset is not a geospatial dataset" name="category" value="" id="category-option-no" />
+          <div className="usa-helptext">
+            Geospatial datasets are included in{' '}
+            <Link target="_blank" href="https://www.geoplatform.gov/">
+              geoplatform.gov
+            </Link>
+            .
+          </div>
+          <Radio
+            label="My dataset is a geospatial dataset"
+            name="category"
+            value="geospatial"
+            id="category-option-yes"
+          />
+          <Radio
+            label="My dataset is not a geospatial dataset"
+            name="category"
+            value=""
+            id="category-option-no"
+          />
         </div>
       </div>
       <div className="grid-row margin-top-3">
