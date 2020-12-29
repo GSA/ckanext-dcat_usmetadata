@@ -112,7 +112,7 @@ const AdditionalMetadata = (props) => {
       </div>
       <div className="grid-row margin-top-3">
         <div className="grid-col-12">
-          <span className="usa-label">My dataset is a geospatial dataset</span>
+          <span className="usa-label">Geospatial</span>
           <Radio label="Yes" name="category" value="geospatial" id="category-option-yes" />
           <Radio label="No" name="category" value="" id="category-option-no" />
         </div>
