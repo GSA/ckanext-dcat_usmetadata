@@ -90,7 +90,7 @@ const ResourceUpload = (props) => {
       ) : (
         <div className="margin-top-10 padding-bottom-8 border-gray-10 border-bottom-2px">
           <div className="grid-row margin-top-3">
-            <div className="grid-col-12 text-mint">
+            <div className="grid-col-12 text-green">
               <i>Resource saved: ({resources.length} resources saved in total)</i>
             </div>
           </div>
@@ -269,13 +269,21 @@ const ResourceUpload = (props) => {
       </div>
       {values.savedResources > 0 ? (
         <div className="grid-row margin-top-3">
-          <div className="grid-col-12 text-mint">
-            <i>
-              Resource saved: [{values.lastSavedResource}] ({values.savedResources} resources saved
-              in total).
-            </i>
-            <br />
-            <i>You can edit any saved resource after clicking &quot;Finish and publish&quot;.</i>
+          <div className="grid-col-12">
+            <div className="usa-alert usa-alert--info usa-alert--slim usa-alert--no-icon">
+              <div className="usa-alert__body">
+                <p className="usa-alert__text">
+                  <i>
+                    Resource saved: [{values.lastSavedResource}] ({values.savedResources} resources
+                    saved in total).
+                  </i>
+                  <br />
+                  <i>
+                    You can edit any saved resource after clicking &quot;Finish and publish&quot;.
+                  </i>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       ) : (
@@ -336,7 +344,7 @@ const ResourceUpload = (props) => {
 
       {draftSaved && (
         <div style={{ marginTop: '1rem' }}>
-          <div className="grid-col-12 text-mint">
+          <div className="grid-col-12 text-green">
             <i>
               Draft saved:
               <br />[{draftSaved}]
