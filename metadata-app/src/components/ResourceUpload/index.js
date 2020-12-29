@@ -263,7 +263,7 @@ const ResourceUpload = (props) => {
             }}
             disabled={isSubmitting}
           >
-            {resourceAction === 'edit' ? 'Save Changes' : 'Save and add another resource'}
+            {resourceAction === 'edit' ? 'Save' : 'Save and add another resource'}
           </button>
         </div>
       </div>
