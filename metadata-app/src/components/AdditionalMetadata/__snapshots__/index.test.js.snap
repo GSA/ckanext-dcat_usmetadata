@@ -75,38 +75,59 @@ exports[`Renders RequiredMetadata component 1`] = `
         <div
           class="grid-col-12"
         >
-          <div
-            class="wrapper"
+          <span
+            class="usa-label"
           >
-            <label
-              class="usa-label"
+            Geospatial
+          </span>
+          <div
+            class="usa-helptext"
+          >
+            Geospatial datasets are included in
+             
+            <a
+              class="usa-link usa-link--external"
+              href="https://www.geoplatform.gov/"
+              rel="noopener noreferrer"
+              target="_blank"
             >
-              Themes
-              <div
-                class="tooltip"
-              >
-                <svg
-                  height="20px"
-                  style="margin-left: .5em;"
-                  tabindex="0"
-                  width="20px"
-                >
-                  info.svg
-                </svg>
-              </div>
-            </label>
-            <div
-              class="usa-helptext "
-            >
-              Main thematic category of the dataset.  If this dataset should be included in geoplatform.gov, please enter “geospatial” as the theme.  Start typing to add themes.
-            </div>
-            
+              geoplatform.gov
+            </a>
+            .
+          </div>
+          <div
+            class="form-group "
+          >
             <input
-              class="usa-input  undefined undefined"
+              class="usa-radio__input"
+              id="category-option-yes"
               name="category"
-              type="string"
+              type="radio"
+              value="geospatial"
+            />
+            <label
+              class="usa-radio__label"
+              for="category-option-yes"
+            >
+              My dataset is a geospatial dataset
+            </label>
+          </div>
+          <div
+            class="form-group "
+          >
+            <input
+              class="usa-radio__input"
+              id="category-option-no"
+              name="category"
+              type="radio"
               value=""
             />
+            <label
+              class="usa-radio__label"
+              for="category-option-no"
+            >
+              My dataset is not a geospatial dataset
+            </label>
           </div>
         </div>
       </div>
