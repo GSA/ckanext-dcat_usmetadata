@@ -370,6 +370,11 @@ const MetadataForm = (props) => {
               } else if (values.saveDraft) {
                 setDraftSaved(new Date());
                 setSubmitting(false);
+              } else {
+                // This happens when non of resource metadata is provided and
+                // user clicks "Save and add another" button. Should we display
+                // an error message here?
+                setSubmitting(false);
               }
             } else {
               setAlert(
