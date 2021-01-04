@@ -14,8 +14,19 @@ beforeEach(() => {
 });
 
 describe('Resource Upload page', () => {
+  const titleAndName = 'link-to-data';
+
+  afterEach(() => {
+    cy.request({
+      method: 'POST',
+      url: '/api/3/action/dataset_purge',
+      body: { id: titleAndName },
+      failOnStatusCode: false,
+    });
+  });
+
   it('Links to Data and redirects to dataset page on CKAN', () => {
-    cy.requiredMetadata().then(() => {
+    cy.requiredMetadata(titleAndName).then(() => {
       cy.additionalMetadata();
       cy.get('button[type=button]')
         .contains('Save and Continue')
@@ -23,13 +34,18 @@ describe('Resource Upload page', () => {
         .then(() => {
           cy.resourceUploadWithUrlAndPublish().then(() => {
             cy.get('.resource-list').find('.resource-item').should('have.length', 1);
+            // Test that the dataset is private by default
+            cy.request('/api/3/action/package_show?id=' + titleAndName).then((response) => {
+              expect(response.status).to.eq(200);
+              expect(response.body.result.private).to.equal(true);
+            });
           });
         });
     });
   });
 
   it('Links to Data and has special character in metadata', () => {
-    cy.requiredMetadata().then(() => {
+    cy.requiredMetadata(titleAndName).then(() => {
       cy.additionalMetadata();
       cy.get('button[type=button]')
         .contains('Save and Continue')
@@ -49,7 +65,7 @@ describe('Resource Upload page', () => {
   });
 
   it('Uploads data file and redirects to dataset page on CKAN', () => {
-    cy.requiredMetadata().then(() => {
+    cy.requiredMetadata(titleAndName).then(() => {
       cy.additionalMetadata();
       cy.get('button[type=button]')
         .contains('Save and Continue')
@@ -63,13 +79,18 @@ describe('Resource Upload page', () => {
             .click()
             .then(() => {
               cy.get('.resource-list').find('.resource-item').should('have.length', 1);
+              // Test that the dataset is non-private when uploading a file
+              cy.request('/api/3/action/package_show?id=' + titleAndName).then((response) => {
+                expect(response.status).to.eq(200);
+                expect(response.body.result.private).to.equal(false);
+              });
             });
         });
     });
   });
 
   it('Uploads data file and has special character in metadata', () => {
-    cy.requiredMetadata().then(() => {
+    cy.requiredMetadata(titleAndName).then(() => {
       cy.additionalMetadata();
       cy.get('button[type=button]')
         .contains('Save and Continue')
@@ -93,14 +114,16 @@ describe('Resource Upload page', () => {
     const exampleUrl = 'https://example.com/data.csv';
     const expectedMessage1 = `Resource saved: [${exampleUrl}] (1 resources saved in total).`;
     const expectedMessage2 = 'You can edit any saved resource after clicking "Finish and publish"';
-    cy.requiredMetadata();
+    cy.requiredMetadata(titleAndName);
     cy.additionalMetadata();
-    cy.get('button[type=button]').contains('Save and Continue').click();
-    cy.wait(15000);
-    cy.resourceUploadWithUrlAndSave(exampleUrl);
-    cy.wait(5000);
-    cy.contains(expectedMessage1);
-    cy.contains(expectedMessage2);
+    cy.get('button[type=button]')
+      .contains('Save and Continue')
+      .click()
+      .then(() => {
+        cy.resourceUploadWithUrlAndSave(exampleUrl);
+        cy.contains(expectedMessage1);
+        cy.contains(expectedMessage2);
+      });
   });
 
   it('List saved resources and truncates long names', () => {
@@ -133,16 +156,18 @@ describe('Resource Upload page', () => {
 
   it('Fails to save resource if URL is invalid', () => {
     const invalidUrl = 'example.com/data.csv';
-    cy.requiredMetadata();
+    cy.requiredMetadata(titleAndName);
     cy.additionalMetadata();
-    cy.get('button[type=button]').contains('Save and Continue').click();
-    cy.wait(5000);
-    cy.resourceUploadWithUrlAndSave(invalidUrl);
-    cy.wait(5000);
-    cy.get('h3.usa-alert__heading').contains('This form contains invalid entries');
-    cy.get('.usa-alert__text').contains(
-      'If you are linking to a dataset, please include "https://" at the beginning of your URL.'
-    );
+    cy.get('button[type=button]')
+      .contains('Save and Continue')
+      .click()
+      .then(() => {
+        cy.resourceUploadWithUrlAndSave(invalidUrl);
+        cy.get('h3.usa-alert__heading').contains('This form contains invalid entries');
+        cy.get('.usa-alert__text').contains(
+          'If you are linking to a dataset, please include "https://" at the beginning of your URL.'
+        );
+      });
   });
 });
 
