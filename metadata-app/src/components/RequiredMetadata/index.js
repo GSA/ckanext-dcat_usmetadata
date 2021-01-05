@@ -451,17 +451,20 @@ const RequiredMetadata = (props) => {
       </div>
 
       <div className="margin-top-6 clearfix">
-        <button
-          style={{ display: 'none' }}
-          className="usa-button usa-button--outline"
-          type="button"
-          onClick={async () => {
-            await setFieldValue('saveDraft', true);
-            submitForm();
-          }}
-        >
-          Save draft
-        </button>
+        {values.publishing_status === 'Published' ? (
+          ''
+        ) : (
+          <button
+            className="usa-button usa-button--outline"
+            type="button"
+            onClick={async () => {
+              await setFieldValue('saveDraft', true);
+              submitForm();
+            }}
+          >
+            Save draft
+          </button>
+        )}
         <button
           className="usa-button float-right margin-right-0"
           type="button"

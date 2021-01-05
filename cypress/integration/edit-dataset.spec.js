@@ -101,7 +101,6 @@ describe('Editing an existing dataset', () => {
       license: 'https://opensource.org/licenses/MIT-0',
       rightsDesc: 'Updated rights',
       dataQuality: 'No',
-      category: 'Test',
       dataDictionary: 'https://www.dictionary.com',
       describedByType: 'text/tab-separated-values',
       accrualPeriodicity: 'irregular',
@@ -133,7 +132,7 @@ describe('Editing an existing dataset', () => {
     cy.get('button[type=button]').contains('Save and Continue').click();
 
     cy.get('select[name=dataQuality]').select(newMetadata.dataQuality);
-    cy.get('input[name=category]').clear().type(newMetadata.category);
+    cy.get('#category-option-yes').parent('.form-group').click();
     cy.get('input[name=data_dictionary]').clear().type(newMetadata.dataDictionary);
     cy.get('select[name=describedByType]').select(newMetadata.describedByType);
     cy.get('select[name=accrualPeriodicity]').select(newMetadata.accrualPeriodicity);
@@ -175,7 +174,7 @@ describe('Editing an existing dataset', () => {
 
     cy.get('[role="link"]').contains('Additional Metadata').click();
     cy.get('select[name=dataQuality]').invoke('val').should('eq', newMetadata.dataQuality);
-    cy.get('input[name=category]').invoke('val').should('eq', newMetadata.category);
+    cy.get('input[name=category]').invoke('val').should('eq', 'geospatial');
     cy.get('input[name=data_dictionary]').invoke('val').should('eq', newMetadata.dataDictionary);
     cy.get('select[name=describedByType]').invoke('val').should('eq', newMetadata.describedByType);
     cy.get('select[name=accrualPeriodicity]')
@@ -228,5 +227,9 @@ describe('Editing an existing dataset', () => {
     cy.contains('new-resource');
     cy.contains('Finish and publish').click();
     cy.contains('new-resource');
+  });
+
+  it('Hides "Save draft" button when in edit mode', () => {
+    cy.contains('Save draft').should('not.exist');
   });
 });

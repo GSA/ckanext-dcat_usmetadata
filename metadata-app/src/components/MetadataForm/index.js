@@ -63,7 +63,8 @@ const MetadataForm = (props) => {
   const [formValues, setFormValues] = useState({
     ...defaultRequiredValues,
     ...defaultAdditionalValues,
-    state: 'draft',
+    publishing_status: 'Draft',
+    private: true,
     saveDraft: false,
   });
   const [updatedResources, setUpdatedResources] = useState(null);
@@ -303,6 +304,7 @@ const MetadataForm = (props) => {
             savedResources: 0,
             lastSavedResource: null,
             saveDraft: false,
+            publishing_status: formValues.publishing_status,
           }}
           enableReinitialize="true"
           validateOnChange={false}
@@ -333,18 +335,27 @@ const MetadataForm = (props) => {
               // If there is any action (e.g. edit, delete or create) to do with resource
               if (action) {
                 action
-                  .then((res) => {
+                  .then(async (res) => {
                     if (res.status === 200) {
+                      // Make a dataset non private if user uploaded a file into
+                      // filestore so that it can be accessed without restriction
+                      if (values.resource.upload) {
+                        await Api.patchDataset(curDatasetId, { private: false }, apiUrl, apiKey);
+                      }
+
                       if (values.publish) {
-                        // Update dataset state: 'draft' => 'active'
-                        Api.patchDataset(curDatasetId, { state: 'active' }, apiUrl, apiKey).then(
-                          (response) => {
-                            if (response.status === 200) {
-                              // Redirect to dataset page
-                              window.location.replace(datasetPageUrl);
-                            }
+                        // Update dataset state: 'publishing_status' => 'published'
+                        Api.patchDataset(
+                          curDatasetId,
+                          { publishing_status: 'Published' },
+                          apiUrl,
+                          apiKey
+                        ).then((response) => {
+                          if (response.status === 200) {
+                            // Redirect to dataset page
+                            window.location.replace(datasetPageUrl);
                           }
-                        );
+                        });
                       } else if (values.saveDraft) {
                         setDraftSaved(new Date());
                         setSubmitting(false);
@@ -382,8 +393,8 @@ const MetadataForm = (props) => {
                     setSubmitting(false);
                   });
               } else if (values.publish) {
-                // Update dataset state: 'draft' => 'active'
-                Api.patchDataset(curDatasetId, { state: 'active' }, apiUrl, apiKey)
+                // Update dataset state: 'publishing_status' => 'published'
+                Api.patchDataset(curDatasetId, { publishing_status: 'Published' }, apiUrl, apiKey)
                   .then((res) => {
                     if (res.status === 200) {
                       // Redirect to dataset page
@@ -394,6 +405,14 @@ const MetadataForm = (props) => {
                     handleError(error);
                     setSubmitting(false);
                   });
+              } else if (values.saveDraft) {
+                setDraftSaved(new Date());
+                setSubmitting(false);
+              } else {
+                // This happens when non of resource metadata is provided and
+                // user clicks "Save and add another" button. Should we display
+                // an error message here?
+                setSubmitting(false);
               }
             } else {
               setAlert(
