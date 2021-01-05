@@ -74,11 +74,11 @@ Cypress.Commands.add('additionalMetadata', () => {
   cy.get('select[name=isParent]').select('No');
 });
 
-Cypress.Commands.add('resourceUploadWithUrlAndPublish', (url) => {
+Cypress.Commands.add('resourceUploadWithUrlAndPublish', (url, name) => {
   const resourceUrl = url || chance.url();
   cy.get('label[for=url]').click();
   cy.get('input[name=resource\\.url]').type(resourceUrl);
-  cy.get('input[name=resource\\.name]').type(chance.word());
+  cy.get('input[name=resource\\.name]').type(name || chance.word());
   cy.get('textarea[name=resource\\.description]').type(chance.sentence({ words: 10 }));
   cy.get('select[name=resource\\.mimetype]').select('DOC -- Word Document');
   cy.get('input[name=resource\\.format]').type(chance.word());

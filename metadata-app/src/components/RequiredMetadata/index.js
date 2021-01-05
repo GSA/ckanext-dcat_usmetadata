@@ -27,11 +27,13 @@ const RequiredMetadata = (props) => {
       // if it comes from organization page then pre-select that specific organization
       const urlParams = new URLSearchParams(window.location.search);
       const orgId = urlParams.get('group');
-      if (orgId) values.owner_org = orgId;
+      if (orgId) {
+        setFieldValue('owner_org', orgId);
+      }
 
       // check if there is only one organization in the list then pre-select that only one
       if (data.length === 1) {
-        values.owner_org = data[0].id;
+        setFieldValue('owner_org', data[0].id);
       }
       setOrganizations(data);
     });
@@ -60,7 +62,9 @@ const RequiredMetadata = (props) => {
       if (url) {
         values.url = `${baseUrl}${slugify(url.substring(baseUrl.length, url.length))}`;
       }
-    } else if (!values.url) values.url = genUrlFromTitle(values.title);
+    } else if (!values.url) {
+      values.url = genUrlFromTitle(values.title);
+    }
     setUrlDisabled(!urlDisabled);
   };
 
@@ -75,7 +79,9 @@ const RequiredMetadata = (props) => {
 
   useEffect(() => {
     const publisherId = values.publisher;
-    if (!publisherId) return;
+    if (!publisherId) {
+      return;
+    }
     // Find which publisher has been selected and attach it to the
     const selectedPublisher = publishers.find((publisher) => publisher.id === publisherId);
     setFieldValue('selectedPublisher', selectedPublisher);
@@ -86,7 +92,9 @@ const RequiredMetadata = (props) => {
     // If it's not selected from the autocomplete yet
     if (!selectedPublisher) {
       // If the publisher value is not the id, just the name
-      if (typeof values.publisher === 'string') return values.publisher;
+      if (typeof values.publisher === 'string') {
+        return values.publisher;
+      }
       return '';
     }
     // If it's already selected from autocomplete then return the name

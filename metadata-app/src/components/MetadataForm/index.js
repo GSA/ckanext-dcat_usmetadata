@@ -67,11 +67,17 @@ const MetadataForm = (props) => {
     private: true,
     saveDraft: false,
   });
+  const [updatedResources, setUpdatedResources] = useState(null);
 
   const [currentStep, setCurrentStep] = useState(0);
   const [alert, setAlert] = useState();
   const [draftSaved, setDraftSaved] = useState();
   const [dashboardUrl, setDashboardUrl] = useState('/dataset');
+
+  // Whenever the step changes update the resources array if there has been any changes
+  useEffect(() => {
+    setFormValues({ ...formValues, resources: updatedResources || formValues.resources });
+  }, [currentStep]);
 
   const handleError = (err) => {
     let message = [];
@@ -312,8 +318,23 @@ const MetadataForm = (props) => {
             if (curDatasetId) {
               const apiUrlObject = new URL(apiUrl);
               const datasetPageUrl = `${apiUrlObject.origin}/dataset/${curDatasetId}`;
-              if (resourceMetadataChanged) {
-                Api.createResource(curDatasetId, values.resource, apiUrl, apiKey)
+
+              let action;
+              switch (values.resourceAction) {
+                case 'edit':
+                  action = Api.updateResource(values.resource, apiUrl, apiKey);
+                  break;
+                case 'delete':
+                  action = Api.deleteResource(values.resource.id, apiUrl, apiKey);
+                  break;
+                default:
+                  if (resourceMetadataChanged)
+                    action = Api.createResource(curDatasetId, values.resource, apiUrl, apiKey);
+              }
+
+              // If there is any action (e.g. edit, delete or create) to do with resource
+              if (action) {
+                action
                   .then(async (res) => {
                     if (res.status === 200) {
                       // Make a dataset non private if user uploaded a file into
@@ -340,15 +361,32 @@ const MetadataForm = (props) => {
                         setSubmitting(false);
                       } else {
                         setDraftSaved(new Date());
-                        setFieldValue('savedResources', values.savedResources + 1);
-                        setFieldValue(
-                          'lastSavedResource',
-                          values.resource.url || values.resource.name
-                        );
+
+                        // Update resources array
+                        const newResources = values.resources.filter((r) => {
+                          return r.id !== values.resource.id;
+                        });
+                        if (values.resourceAction !== 'delete') {
+                          newResources.push(res.data.result);
+                          // if it was save operation then increment the # of saved resources
+                          // and save keep track of last saved resource
+                          if (values.resourceAction !== 'edit') {
+                            setFieldValue('savedResources', values.savedResources + 1);
+                            setFieldValue(
+                              'lastSavedResource',
+                              values.resource.url || values.resource.name
+                            );
+                          }
+                        }
+
+                        setFieldValue('resources', newResources);
+                        setUpdatedResources(newResources);
                         setFieldValue('resource', JSON.parse(JSON.stringify(ResourceObject)));
                         setSubmitting(false);
                       }
                     }
+                    // Reset resourceAction
+                    setFieldValue('resourceAction', undefined);
                   })
                   .catch((error) => {
                     handleError(error);

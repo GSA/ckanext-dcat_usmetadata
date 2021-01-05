@@ -495,6 +495,28 @@ const createResource = (packageId, opts, apiUrl, apiKey) => {
   });
 };
 
+const updateResource = (resource, apiUrl, apiKey) => {
+  const body = encodeValues(clone(resource));
+
+  return axios.post(`${apiUrl}resource_update`, body, {
+    headers: {
+      'X-CKAN-API-Key': apiKey,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+  });
+};
+
+const deleteResource = (id, apiUrl, apiKey) => {
+  const body = encodeValues({ id });
+
+  return axios.post(`${apiUrl}resource_delete`, body, {
+    headers: {
+      'X-CKAN-API-Key': apiKey,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+  });
+};
+
 const fetchDataset = async (id, apiUrl, apiKey) => {
   return axios
     .get(`${apiUrl}package_show?id=${id}`, {
@@ -626,6 +648,8 @@ export default {
   fetchOrganizationsForUser,
   fetchParentDatasets,
   createResource,
+  updateResource,
+  deleteResource,
   helpers: {
     serializeSupplementalValues,
     deserializeSupplementalValues,
