@@ -270,7 +270,7 @@ const ResourceUpload = (props) => {
       {values.savedResources > 0 ? (
         <div className="grid-row margin-top-3">
           <div className="grid-col-12">
-            <div className="usa-alert usa-alert--info usa-alert--slim usa-alert--no-icon">
+            <div className="usa-alert usa-alert--success usa-alert--slim usa-alert--no-icon">
               <div className="usa-alert__body">
                 <p className="usa-alert__text">
                   <i>
