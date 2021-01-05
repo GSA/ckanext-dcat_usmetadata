@@ -274,8 +274,7 @@ const AdditionalMetadata = (props) => {
               name="parentDataset"
               type="string"
               value={values.parentDataset}
-              // TODO - inputValue should be replaced with parent dataset name
-              inputValue={values.parentDataset}
+              inputValue={values.parentDatasetTitle}
               placeholder="Select parent dataset"
               helptext="Start typing to see list of matching datasets by title"
               fetchOpts={api.fetchParentDatasets}
@@ -364,6 +363,7 @@ AdditionalMetadata.propTypes = {
     isPartOf: PropTypes.string,
     isParent: PropTypes.string,
     parentDataset: PropTypes.string,
+    parentDatasetTitle: PropTypes.string,
     publishing_status: PropTypes.string,
   }),
 };
