@@ -94,6 +94,8 @@ const serializeSupplementalValues = (opts) => {
     const indexOfNotes = newOpts.extras.findIndex((x) => x.key === 'notes');
     if (indexOfNotes > -1) {
       newOpts.extras[indexOfNotes].value = opts.description;
+    } else {
+      newOpts.extras.push({ key: 'notes', value: newOpts.notes });
     }
   }
 
@@ -452,6 +454,7 @@ const createDataset = (opts, apiUrl, apiKey) => {
   body.name = opts.url
     ? opts.url.split('/').pop()
     : slugify(opts.title, { lower: true, remove: /[*+~.()'"!:@]/g });
+  body.notes = body.notes || '';
   delete body.url;
   body.bureau_code = '015:11';
   body.program_code = '015:001';
@@ -580,16 +583,20 @@ const fetchOrganizationsForUser = async (apiUrl, apiKey) => {
 const fetchParentDatasets = async (query, apiUrl, apiKey) => {
   try {
     // the space belongs here q= solr query string including indexed extras
-    const url = `${apiUrl}package_search?q=${query} extras_is_parent=true`;
-    const res = await axios.get(url, {
-      headers: {
-        'X-CKAN-API-Key': apiKey,
-      },
-    });
-    return (res.data.result.results || []).map(({ id, title }) => {
+    const url = `${apiUrl}parent_dataset_options`;
+    const res = await axios.post(
+      url,
+      {},
+      {
+        headers: {
+          'X-CKAN-API-Key': apiKey,
+        },
+      }
+    );
+    return Object.keys(res.data.result).map((id) => {
       return {
         id,
-        name: title,
+        name: res.data.result[id],
       };
     });
   } catch (e) {

@@ -163,3 +163,54 @@ describe('Required Metadata Page errors', () => {
     cy.request('POST', '/api/3/action/dataset_purge', { id: 'this-dataset-should-already-exist' });
   });
 });
+
+describe('Save draft functionality on Required Metadata page', () => {
+  const title = 'my-test-draft';
+
+  after(() => {
+    cy.request('POST', '/api/3/action/dataset_purge', { id: title });
+  });
+
+  it('Saves dataset as draft and skips validation', () => {
+    // Wait for list of organizations to be fetched:
+    cy.intercept('/api/3/action/organization_list_for_user').as('listOfOrgs');
+    cy.visit('/dataset/new-metadata');
+    cy.wait('@listOfOrgs');
+
+    // Title and owner org properties are required to save a dataset in CKAN
+    cy.get('.usa-button--outline').contains('Save draft').click();
+    cy.contains('Title is required');
+    cy.contains('Organization is required');
+
+    // Add the title and try to save draft
+    cy.get('input[name=title]').type(title);
+    cy.get('select[name=owner_org]').select('test-123');
+    cy.get('.usa-button--outline').contains('Save draft').click();
+    cy.contains('Draft saved');
+    cy.request('/api/3/action/package_show?id=' + title).then((response) => {
+      expect(response.status).to.eq(200);
+      const publishingStatusExtra = response.body.result.extras.find(
+        (x) => x.key === 'publishing_status'
+      );
+      expect(publishingStatusExtra).to.not.equal(undefined);
+      expect(publishingStatusExtra.value).to.equal('Draft');
+    });
+
+    // Continue adding more properties
+    cy.get('textarea[name=description]').type(chance.sentence({ words: 4 }));
+    cy.get('.react-tags input').type('1234{enter}');
+    cy.get('.usa-button--outline').contains('Save draft').click();
+    cy.contains('Draft saved');
+
+    // Add all required metadata and continue to next page
+    cy.get('input[placeholder="Select publisher"]').type('Data.gov');
+    cy.get('input[placeholder="Select publisher"]').type('{downarrow}{enter}');
+    cy.get('input[name=contact_name]').type(chance.name());
+    cy.get('input[name=contact_email]').type(chance.email());
+    cy.get('input[name=unique_id]').type(chance.string({ length: 10 }));
+    cy.get('select[name=public_access_level]').select('public');
+    cy.get('select[name=license]').select('MIT');
+    cy.get('button[type=button]').contains('Save and Continue').click();
+    cy.contains('Dataset saved successfully');
+  });
+});
