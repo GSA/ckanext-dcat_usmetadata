@@ -68,18 +68,58 @@ describe('Additional Metadata Page', () => {
 });
 
 describe('Parent Dataset', () => {
-  it('Able to select', () => {
-    const title = chance.word({ length: 5 });
-    cy.requiredMetadata(title);
+  const parentTitle = chance.word({ length: 5 });
+  const childTitle = chance.word({ length: 5 });
+
+  before(() => {
+    cy.logout();
+    cy.login();
+    cy.visit('/dataset/new-metadata');
+    cy.requiredMetadata(parentTitle);
     cy.additionalMetadata();
     cy.get('select[name=isParent]').select('Yes');
+    cy.intercept('/api/3/action/package_update').as('packageUpdate');
     cy.get('button[type=button]').contains('Save and Continue').click();
+    cy.wait('@packageUpdate');
     cy.resourceUploadWithUrlAndPublish();
+  });
+
+  after(() => {
+    cy.request({
+      method: 'POST',
+      url: '/api/3/action/dataset_purge',
+      body: {
+        id: childTitle,
+      },
+      failOnStatusCode: false,
+    });
+
+    cy.request({
+      method: 'POST',
+      url: '/api/3/action/dataset_purge',
+      body: {
+        id: parentTitle,
+      },
+      failOnStatusCode: false,
+    });
+  });
+
+  it('Able to select', () => {
     cy.visit('/dataset/new-metadata');
-    cy.requiredMetadata();
-    cy.get('.react-autosuggest__container input').type(title);
+    cy.requiredMetadata(childTitle);
+    cy.get('.react-autosuggest__container input').type(parentTitle);
     cy.get('.react-autosuggest__suggestion--first').click();
-    cy.get('.react-autosuggest__container input').should('have.value', title);
+    cy.get('.react-autosuggest__container input').should('have.value', parentTitle);
+    cy.intercept('/api/3/action/package_update').as('packageUpdate');
+    cy.get('button[type=button]').contains('Save and Continue').click();
+    cy.wait('@packageUpdate');
+    cy.resourceUploadWithUrlAndPublish();
+  });
+
+  it('Displays parent dataset with a human-readable title', () => {
+    cy.visit('/dataset/edit-new/' + childTitle);
+    cy.get('[role="link"]').contains('Additional Metadata').click();
+    cy.get('.react-autosuggest__container input').should('have.value', parentTitle);
   });
 });
 
