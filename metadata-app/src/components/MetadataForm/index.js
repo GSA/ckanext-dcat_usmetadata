@@ -350,10 +350,7 @@ const MetadataForm = (props) => {
                         setSubmitting(false);
                       } else {
                         setDraftSaved(new Date());
-                        setFieldValue(
-                          'lastSavedResource',
-                          values.resource.url || values.resource.name
-                        );
+
                         // Update resources array
                         const newResources = values.resources.filter((r) => {
                           return r.id !== values.resource.id;
@@ -361,8 +358,13 @@ const MetadataForm = (props) => {
                         if (values.resourceAction !== 'delete') {
                           newResources.push(res.data.result);
                           // if it was save operation then increment the # of saved resources
+                          // and save keep track of last saved resource
                           if (values.resourceAction !== 'edit') {
                             setFieldValue('savedResources', values.savedResources + 1);
+                            setFieldValue(
+                              'lastSavedResource',
+                              values.resource.url || values.resource.name
+                            );
                           }
                         }
 
