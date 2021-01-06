@@ -263,20 +263,17 @@ const ResourceUpload = (props) => {
           </button>
         </div>
       </div>
-      {values.savedResources > 0 ? (
+      {values.lastSavedResource && resources.length ? (
         <div className="grid-row margin-top-3">
           <div className="grid-col-12">
             <div className="usa-alert usa-alert--success usa-alert--slim usa-alert--no-icon">
               <div className="usa-alert__body">
                 <p className="usa-alert__text">
                   <i>
-                    Resource saved: [{values.lastSavedResource}] ({values.savedResources} resources
-                    saved in total).
+                    Resource saved: [{values.lastSavedResource}] ({resources.length} resources saved
+                    in total).
                   </i>
                   <br />
-                  <i>
-                    You can edit any saved resource after clicking &quot;Finish and publish&quot;.
-                  </i>
                 </p>
               </div>
             </div>
