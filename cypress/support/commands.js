@@ -16,7 +16,7 @@ Cypress.Commands.add('logout', () => {
 Cypress.Commands.add('createOrg', () => {
   cy.visit('/organization/new');
   cy.get('input[name=title]').type('test-123');
-  cy.get('.form-actions .btn-primary').click();
+  cy.get('.form-actions .btn-primary').click({ failOnStatusCode: false });
 });
 
 Cypress.Commands.add('createUser', (username) => {
