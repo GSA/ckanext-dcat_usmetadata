@@ -112,19 +112,20 @@ const MetadataForm = (props) => {
       .then((result) => {
         const apiRes = Object.assign({}, result);
         apiRes.description = result.notes; // TODO: move this to api helpers
-        setFormValues(Object.assign({}, formValues, apiRes));
         setCurDatasetId(apiRes.id);
         // Fetch parent dataset's human-readable title:
         if (apiRes.parentDataset) {
           Api.fetchDataset(apiRes.parentDataset, apiUrl, apiKey)
             .then((parent) => {
               setFormValues(
-                Object.assign({}, formValues, {
+                Object.assign({}, formValues, apiRes, {
                   parentDatasetTitle: parent.title,
                 })
               );
             })
             .catch(handleError);
+        } else {
+          setFormValues(Object.assign({}, formValues, apiRes));
         }
       })
       .catch(handleError);
