@@ -104,7 +104,7 @@ describe('Parent Dataset', () => {
     });
   });
 
-  it('Able to select', () => {
+  it('Able to select and displays parent dataset with a human-readable title', () => {
     cy.visit('/dataset/new-metadata');
     cy.requiredMetadata(childTitle);
     cy.get('.react-autosuggest__container input').type(parentTitle);
@@ -114,9 +114,7 @@ describe('Parent Dataset', () => {
     cy.get('button[type=button]').contains('Save and Continue').click();
     cy.wait('@packageUpdate');
     cy.resourceUploadWithUrlAndPublish();
-  });
-
-  it('Displays parent dataset with a human-readable title', () => {
+    // Go to edit mode and check if parent dataset title is displayed
     cy.visit('/dataset/edit-new/' + childTitle);
     cy.get('[role="link"]').contains('Additional Metadata').click();
     cy.get('.react-autosuggest__container input').should('have.value', parentTitle);
