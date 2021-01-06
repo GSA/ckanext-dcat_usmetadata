@@ -496,7 +496,15 @@ const createResource = (packageId, opts, apiUrl, apiKey) => {
 };
 
 const updateResource = (resource, apiUrl, apiKey) => {
-  const body = encodeValues(clone(resource));
+  let body;
+  if (resource.upload) {
+    body = new FormData();
+    Object.keys(resource).forEach((item) => {
+      body.append(item, resource[item]);
+    });
+  } else {
+    body = encodeValues(clone(resource));
+  }
 
   return axios.post(`${apiUrl}resource_update`, body, {
     headers: {
