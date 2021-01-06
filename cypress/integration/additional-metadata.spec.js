@@ -113,10 +113,15 @@ describe('Parent Dataset', () => {
     cy.intercept('/api/3/action/package_update').as('packageUpdate');
     cy.get('button[type=button]').contains('Save and Continue').click();
     cy.wait('@packageUpdate');
+    cy.intercept('/api/3/action/package_patch').as('packagePatch');
     cy.resourceUploadWithUrlAndPublish();
+    cy.wait('@packagePatch');
     // Go to edit mode and check if parent dataset title is displayed
+    cy.intercept('/api/3/action/package_show').as('packageShow');
     cy.visit('/dataset/edit-new/' + childTitle);
+    cy.wait('@packageShow');
     cy.get('[role="link"]').contains('Additional Metadata').click();
+    cy.wait('@packageShow');
     cy.get('.react-autosuggest__container input').should('have.value', parentTitle);
   });
 });
