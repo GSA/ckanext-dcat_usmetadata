@@ -381,15 +381,11 @@ const MetadataForm = (props) => {
                         });
                         if (values.resourceAction !== 'delete') {
                           newResources.push(res.data.result);
-                          // if it was save operation then increment the # of saved resources
-                          // and save keep track of last saved resource
-                          if (values.resourceAction !== 'edit') {
-                            setFieldValue('savedResources', values.savedResources + 1);
-                            setFieldValue(
-                              'lastSavedResource',
-                              values.resource.url || values.resource.name
-                            );
-                          }
+                          setFieldValue('savedResources', values.savedResources + 1);
+                          setFieldValue(
+                            'lastSavedResource',
+                            values.resource.name || values.resource.url
+                          );
                         }
 
                         setFieldValue('resources', newResources);

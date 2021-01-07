@@ -202,6 +202,7 @@ describe('Editing an existing dataset', () => {
     cy.get(`#edit-${resourceToBeEdited}`).click();
     cy.contains('Save');
     cy.get('input[name=resource\\.name]').type(`-updated`);
+    cy.get('input[name=resource\\.url]').type(`-updated`);
     cy.contains('Save').click();
     cy.get('input[name=resource\\.name]').should('have.value', '');
     cy.get('button[type=button]').contains('Finish and publish').click();
@@ -212,7 +213,6 @@ describe('Editing an existing dataset', () => {
     cy.contains('Resource Upload').click();
     cy.intercept('/api/3/action/resource_delete').as('resourceDelete');
     cy.contains(resourceToBeDeleted);
-    cy.contains('2 resources saved in total');
     cy.get(`#delete-${resourceToBeDeleted}`).click();
     cy.wait('@resourceDelete');
     cy.contains(resourceToBeDeleted).should('not.exist');

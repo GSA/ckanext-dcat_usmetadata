@@ -112,17 +112,16 @@ describe('Resource Upload page', () => {
 
   it('Saves resource and displays expected message', () => {
     const exampleUrl = 'https://example.com/data.csv';
-    const expectedMessage1 = `Resource saved: [${exampleUrl}] (1 resources saved in total).`;
-    const expectedMessage2 = 'You can edit any saved resource after clicking "Finish and publish"';
+    const resourceName = chance.word();
+    const expectedMessage1 = `Resource saved: [${resourceName}] (1 resources saved in total).`;
     cy.requiredMetadata(titleAndName);
     cy.additionalMetadata();
     cy.get('button[type=button]')
       .contains('Save and Continue')
       .click()
       .then(() => {
-        cy.resourceUploadWithUrlAndSave(exampleUrl);
+        cy.resourceUploadWithUrlAndSave(exampleUrl, resourceName);
         cy.contains(expectedMessage1);
-        cy.contains(expectedMessage2);
       });
   });
 
