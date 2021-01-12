@@ -12,6 +12,15 @@ before(() => {
   // Set 'isParent' to "Yes" to confirm if values are saved correctly as by default
   // it is set to "No".
   cy.get('select[name=isParent]').select('Yes');
+
+  // Use custom value for "Data Publishing Frequency" field
+  cy.get('select[name=accrualPeriodicity]').select('other');
+  cy.get('input[name=accrualPeriodicityOther]').type('P1Y30DT15M39S');
+
+  // Use custom value for "Data Dictionary Type" field
+  cy.get('select[name=describedByType]').select('other');
+  cy.get('input[name=otherDataDictionaryType]').type('something/else');
+
   cy.get('button[type=button]').contains('Save and Continue').click();
   cy.intercept('/api/3/action/package_patch').as('packagePatch');
   cy.intercept('/api/3/action/resource_create').as('resourceSaved');
@@ -72,8 +81,12 @@ describe('Editing an existing dataset', () => {
     cy.get('input[name=data_dictionary]')
       .invoke('val')
       .should('match', /^(http|https):\/\//);
-    cy.get('select[name=describedByType]').invoke('val').should('eq', 'text/csv');
-    cy.get('select[name=accrualPeriodicity]').invoke('val').should('eq', 'R/P7D');
+
+    cy.get('select[name=describedByType]').invoke('val').should('eq', 'other');
+    cy.get('select[name=accrualPeriodicity]').invoke('val').should('eq', 'other');
+    cy.get('input[name=accrualPeriodicityOther]').invoke('val').should('eq', 'R/P1Y30DT15M39S');
+    cy.get('input[name=otherDataDictionaryType]').invoke('val').should('eq', 'something/else');
+
     cy.get('input[name=homepage_url]')
       .invoke('val')
       .should('match', /^(http|https):\/\//);
@@ -207,6 +220,18 @@ describe('Editing an existing dataset', () => {
     cy.get('input[name=resource\\.name]').should('have.value', '');
     cy.get('button[type=button]').contains('Finish and publish').click();
     cy.contains(`${resourceToBeEdited}-updated`);
+  });
+
+  it('Pre-select n/a license if it absent', () => {
+    cy.get('select[name=license]').select('n/a');
+    cy.get('button[type=button]').contains('Save and Continue').click();
+
+    // Reload the page and wait for list of organizations to be fetched:
+    cy.intercept('/api/3/action/organization_list_for_user').as('listOfOrgs');
+    cy.visit('/dataset/edit-new/' + name);
+    cy.wait('@listOfOrgs');
+
+    cy.get('select[name=license]').invoke('val').should('eq', 'n/a');
   });
 
   it('Able to delete resource', () => {
