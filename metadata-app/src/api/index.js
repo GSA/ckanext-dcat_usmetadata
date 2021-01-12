@@ -374,6 +374,8 @@ const deserializeSupplementalValues = (opts) => {
       newOpts.licenseOther = opts.license_new;
       newOpts.license = 'other';
     }
+  } else {
+    newOpts.license = 'n/a';
   }
 
   if (opts.access_level_comment !== 'true') {
