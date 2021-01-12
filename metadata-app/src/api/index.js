@@ -401,17 +401,17 @@ const deserializeSupplementalValues = (opts) => {
     [newOpts.languageSubTag, newOpts.languageRegSubTag] = opts.language.split('-');
   }
 
-  if (opts.data_dictionary_type) {
+  if (opts.describedByType) {
     // Check if the data dictionary type is out of list,
     // then specify the other input field
     const selectedDataDictType = dataDictTypes.find((dataDictType) => {
-      return dataDictType.value === opts.data_dictionary_type;
+      return dataDictType.value === opts.describedByType;
     });
     // If it is from the list then the type should be other
     if (!selectedDataDictType) {
-      newOpts.otherDataDictionaryType = opts.data_dictionary_type;
+      newOpts.otherDataDictionaryType = opts.describedByType;
       newOpts.describedByType = 'other';
-    } else newOpts.describedByType = opts.data_dictionary_type;
+    } else newOpts.describedByType = opts.describedByType;
   }
 
   if (opts.is_parent === 'true') {
@@ -424,15 +424,15 @@ const deserializeSupplementalValues = (opts) => {
     newOpts.parentDataset = opts.parent_dataset;
   }
 
-  if (opts.accrual_periodicity) {
+  if (opts.accrualPeriodicity) {
     // Check if it defined in the list
-    if (publishingFrequencyList.find((item) => item.value === opts.accrual_periodicity)) {
-      newOpts.accrualPeriodicity = opts.accrual_periodicity;
+    if (publishingFrequencyList.find((item) => item.value === opts.accrualPeriodicity)) {
+      newOpts.accrualPeriodicity = opts.accrualPeriodicity;
     }
     // Check if it is custom if not fallback to ad needed
-    else if (opts.accrual_periodicity.indexOf('R/P') !== -1) {
+    else if (opts.accrualPeriodicity.indexOf('R/P') !== -1) {
       newOpts.accrualPeriodicity = 'other';
-      newOpts.accrualPeriodicityOther = opts.accrual_periodicity;
+      newOpts.accrualPeriodicityOther = opts.accrualPeriodicity;
     }
   }
   const publisher = {};
