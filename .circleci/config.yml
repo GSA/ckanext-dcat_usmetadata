@@ -1,11 +1,6 @@
 version: 2
 
 jobs:
-  build_gsa_ckan_inventory:
-    working_directory: ~
-    machine: true
-    steps:
-      - run: echo "Github requires this job for CI"
   build_metadata_app:
     docker:
       - image: circleci/node:12
@@ -133,7 +128,6 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - build_gsa_ckan_inventory
       - build_metadata_app:
           filters:
             tags:
