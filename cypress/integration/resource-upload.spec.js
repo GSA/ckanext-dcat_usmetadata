@@ -51,7 +51,7 @@ describe('Resource Upload page', () => {
         .contains('Save and Continue')
         .click()
         .then(() => {
-          cy.get('label[for=url]').click();
+          cy.get('#resource-option-link-to-file').parent('.form-group').click();
           cy.get('input[name=resource\\.url]').type('https://example.com/data.csv');
           cy.get('input[name=resource\\.name]').type('With special & character');
           cy.get('button[type=button]')
@@ -71,6 +71,7 @@ describe('Resource Upload page', () => {
         .contains('Save and Continue')
         .click()
         .then(() => {
+          cy.get('#resource-option-upload-file').parent('.form-group').click();
           cy.get('label[for=upload]').click();
           const yourFixturePath = '../fixtures/example.json';
           cy.get('input#upload').attachFile(yourFixturePath);
@@ -96,6 +97,7 @@ describe('Resource Upload page', () => {
         .contains('Save and Continue')
         .click()
         .then(() => {
+          cy.get('#resource-option-upload-file').parent('.form-group').click();
           cy.get('label[for=upload]').click();
           const yourFixturePath = '../fixtures/example.json';
           cy.get('input#upload').attachFile(yourFixturePath);
@@ -181,7 +183,7 @@ describe('Save draft functionality on Resource Upload page', () => {
     cy.contains('Draft saved');
 
     cy.intercept('/api/3/action/resource_create').as('resourceCreate');
-    cy.get('label[for=url]').click();
+    cy.get('#resource-option-link-to-file').parent('.form-group').click();
     cy.get('input[name=resource\\.url]').type(chance.url());
     cy.get('input[name=resource\\.name]').type(chance.word());
     cy.get('.usa-button--outline').contains('Save draft').click();

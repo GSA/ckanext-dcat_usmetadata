@@ -76,7 +76,7 @@ Cypress.Commands.add('additionalMetadata', () => {
 
 Cypress.Commands.add('resourceUploadWithUrlAndPublish', (url, name) => {
   const resourceUrl = url || chance.url();
-  cy.get('label[for=url]').click();
+  cy.get('#resource-option-link-to-file').parent('.form-group').click();
   cy.get('input[name=resource\\.url]').type(resourceUrl);
   cy.get('input[name=resource\\.name]').type(name || chance.word());
   cy.get('textarea[name=resource\\.description]').type(chance.sentence({ words: 10 }));
@@ -87,7 +87,7 @@ Cypress.Commands.add('resourceUploadWithUrlAndPublish', (url, name) => {
 
 Cypress.Commands.add('resourceUploadWithUrlAndSave', (url, name) => {
   const resourceUrl = url || chance.url();
-  cy.get('label[for=url]').click();
+  cy.get('#resource-option-link-to-file').parent('.form-group').click();
   cy.get('input[name=resource\\.url]').type(resourceUrl);
   cy.get('input[name=resource\\.name]').type(name || chance.word());
   cy.get('textarea[name=resource\\.description]').type(chance.sentence({ words: 10 }));
