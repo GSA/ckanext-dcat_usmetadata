@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Link from '../Link';
+import Radio from '../Radio';
 import WrappedField from '../WrappedField';
 import resourceFormats from './resource_formats.json';
 
@@ -33,7 +34,6 @@ const ResourceUpload = (props) => {
   const resources = values.resources || [];
   const { url, name, description, mimetype, format } = resource;
 
-  const [linkToDataIsActive, setLinkToDataActive] = useState(false);
   const [uploadDataFileIsActive, setUploadDataFileActive] = useState(false);
 
   const handleFileChange = (event) => {
@@ -68,7 +68,6 @@ const ResourceUpload = (props) => {
     setFieldValue('resourceAction', 'delete');
     setFieldValue('publish', false);
     setFieldValue('saveDraft', false);
-    setLinkToDataActive(false);
     setUploadDataFileActive(false);
     submitForm();
   };
@@ -132,29 +131,56 @@ const ResourceUpload = (props) => {
       {
         <div className="grid-row margin-top-3">
           <div className="grid-col-12">
+            <span className="usa-label">Resource</span>
+            <Radio
+              label={
+                // eslint-disable-next-line react/jsx-wrap-multilines
+                <>
+                  <b>Link to a file:</b> Provide a direct download link to a file
+                </>
+              }
+              name="resource.url_type"
+              value="url"
+              id="resource-option-link-to-file"
+            />
+            <Radio
+              label={
+                // eslint-disable-next-line react/jsx-wrap-multilines
+                <>
+                  <b>Upload a file:</b> Upload a file from your computer
+                </>
+              }
+              name="resource.url_type"
+              value="upload"
+              id="resource-option-upload-file"
+            />
+          </div>
+          <div className="grid-col-12">
+            {resource.url_type && (
+              // eslint-disable-next-line jsx-a11y/label-has-associated-control
+              <label className="usa-label">{resource.url_type === 'upload' ? 'File' : 'URL'}</label>
+            )}
+            {/* Do not show URL field unless it's url type or url already exists (edit mode) */}
             {/* eslint-disable-next-line */}
-            <label className="usa-label">Data</label>
-            {/* eslint-disable-next-line */}
-            {linkToDataIsActive || url ? (
+            {(resource.url_type && resource.url_type !== 'upload') || url ? (
               <div>
                 <p className="usa-helptext">
                   {`If you are linking to a dataset, please include "https://" at the beginning
                 of your URL.`}
                 </p>
                 <WrappedField
-                  hidden={!linkToDataIsActive}
                   id="url"
                   name="resource.url"
                   type="url"
                   value={url}
                   onClick={() => {
                     setFieldValue('resource.url', '');
-                    setLinkToDataActive(false);
                   }}
                   errors={errors}
                 />
               </div>
             ) : uploadDataFileIsActive ? (
+              // If the file is uploaded
               <WrappedField
                 name="resource.fileName"
                 type="label"
@@ -170,29 +196,26 @@ const ResourceUpload = (props) => {
                 }}
               />
             ) : (
-              <>
-                <br />
-                {/* eslint-disable-next-line */}
-                <label tabIndex="0" htmlFor="upload" className="usa-button usa-button--base">
-                  <i className="fa fa-cloud-upload" aria-hidden="true" /> Upload data
-                </label>
-                <input id="upload" name="resource.upload" type="file" onChange={handleFileChange} />
-                {/* eslint-disable */}
-                <label
-                  tabIndex="0"
-                  htmlFor="url"
-                  className="usa-button usa-button--base"
-                  onClick={() => {
-                    setLinkToDataActive(!linkToDataIsActive);
-                  }}
-                >
-                  <i className="fa fa-link" aria-hidden="true" /> Link to data
-                </label>
-                {/* eslint-enable */}
-                <p className="usa-helptext">
-                  Formats accepted include the following: TXT, HTML, TSV, CSV, ODT, XML, Perl.
-                </p>
-              </>
+              // If the file is not uploaded and the radio button is chosen local file
+              resource.url_type === 'upload' && (
+                <>
+                  <br />
+                  {/* eslint-disable-next-line */}
+                  <label tabIndex="0" htmlFor="upload" className="usa-button usa-button--base">
+                    <i className="fa fa-cloud-upload" aria-hidden="true" /> Upload data
+                  </label>
+                  <input
+                    id="upload"
+                    name="resource.upload"
+                    type="file"
+                    onChange={handleFileChange}
+                  />
+
+                  <p className="usa-helptext">
+                    Formats accepted include the following: TXT, HTML, TSV, CSV, ODT, XML, Perl.
+                  </p>
+                </>
+              )
             )}
           </div>
         </div>
@@ -253,7 +276,6 @@ const ResourceUpload = (props) => {
             onClick={() => {
               setFieldValue('publish', false);
               setFieldValue('saveDraft', false);
-              setLinkToDataActive(false);
               setUploadDataFileActive(false);
               submitForm();
             }}

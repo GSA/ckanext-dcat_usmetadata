@@ -17,7 +17,7 @@ const Radio = ({ label, value, styleClass, id, name }) => {
 Radio.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   styleClass: PropTypes.string,
   value: PropTypes.string,
 };
