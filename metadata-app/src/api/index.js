@@ -409,6 +409,11 @@ const serializeSupplementalValues = (opts) => {
 // deserialize values from form values to match USMetadata format
 const deserializeSupplementalValues = (opts) => {
   const newOpts = clone(opts);
+  // deserialize resources
+  newOpts.resources = (newOpts.resources || []).map((resource) => {
+    return deserializeResource(resource);
+  });
+
   if (opts.tag_string) {
     newOpts.tags = opts.tag_string.split(',').map((n, i) => ({ id: i, name: n }));
   } else if (opts.tags) {
@@ -597,10 +602,6 @@ const fetchDataset = async (id, apiUrl, apiKey) => {
     .then((res) => {
       // note that we don't return the axios response, we return the result
       const result = deserializeSupplementalValues(deserializeExtras(res.data.result));
-      // deserialize resources
-      result.resources = result.resources.map((resource) => {
-        return deserializeResource(resource);
-      });
       result.description = result.notes;
       return result;
     });
