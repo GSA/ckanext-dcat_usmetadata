@@ -256,5 +256,58 @@ describe('Editing resources', () => {
       .should('match', /\/download\/example2.json$/);
   });
 
-  // it('Works when editing a resource in "edit" mode', () => {});
+  it('Works when editing a resource in "edit" mode', () => {
+    cy.requiredMetadata(name);
+    cy.intercept('/api/3/action/package_update').as('packageUpdate');
+    cy.get('button[type=button]').contains('Save and Continue').click();
+    cy.wait('@packageUpdate');
+
+    // Create 2 resources: 1 with link and 1 upload:
+    cy.intercept('/api/3/action/resource_create').as('resourceCreate');
+    const resourceName = 'linked';
+    const resourceUrl = 'https://www.example.com';
+    cy.resourceUploadWithUrlAndSave(resourceUrl, resourceName);
+    cy.wait('@resourceCreate');
+    const filePath = '../fixtures/example.json';
+    const resourceFileName = 'example';
+    cy.resourceUploadWithFileAndSave(filePath, resourceFileName);
+    cy.wait('@resourceCreate');
+    cy.get('button[type=button]').contains('Finish and publish').click();
+
+    // Go to edit mode and edit resources:
+    cy.visit('/dataset/edit-new/' + name);
+    cy.get('#app_navigation > :nth-child(3)').contains('Resource Upload').click();
+
+    cy.intercept('/api/3/action/resource_update').as('resourceUpdate');
+    // Test editing linked resource url:
+    cy.get('#edit-' + resourceName)
+      .trigger('mouseover')
+      .click();
+    cy.get('input[name=resource\\.url]').type('-updated');
+    cy.get('button[type=button]').contains('Save').click();
+    cy.wait('@resourceUpdate');
+    cy.get('#edit-' + resourceName)
+      .trigger('mouseover')
+      .click();
+    cy.get('input[name=resource\\.url]')
+      .invoke('val')
+      .should('eq', resourceUrl + '-updated');
+
+    // Test re-uploading a file:
+    cy.get('#edit-' + resourceFileName)
+      .trigger('mouseover')
+      .click();
+    cy.get('.clear-button').click();
+    cy.get('#resource-option-upload-file').parent('.form-group').click();
+    cy.get('label[for=upload]').click();
+    cy.get('input#upload').attachFile('../fixtures/example2.json');
+    cy.get('button[type=button]').contains('Save').click();
+    cy.wait('@resourceUpdate');
+    cy.get('#edit-' + resourceFileName)
+      .trigger('mouseover')
+      .click();
+    cy.get('input[name=resource\\.url]')
+      .invoke('val')
+      .should('match', /\/download\/example2.json$/);
+  });
 });
