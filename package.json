@@ -25,7 +25,7 @@
     "start:dev": "yarn dockerize && yarn && cd metadata-app && yarn start"
   },
   "dependencies": {
-    "@babel/core": "7.9.0",
+    "@babel/core": "7.12.10",
     "@svgr/webpack": "4.3.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -49,18 +49,18 @@
     "eslint-plugin-flowtype": "4.6.0",
     "eslint-plugin-import": "2.20.1",
     "eslint-plugin-jsx-a11y": "6.2.3",
-    "eslint-plugin-react": "7.19.0",
+    "eslint-plugin-react": "7.21.5",
     "eslint-plugin-react-hooks": "^1.6.1",
     "file-loader": "4.3.0",
     "formik": "^2.1.5",
     "fs-extra": "^8.1.0",
-    "html-webpack-plugin": "4.0.0-beta.11",
+    "html-webpack-plugin": "4.5.0",
     "identity-obj-proxy": "3.0.0",
     "jest": "24.9.0",
     "jest-environment-jsdom-fourteen": "1.0.1",
     "jest-resolve": "24.9.0",
     "jest-watch-typeahead": "0.4.2",
-    "mini-css-extract-plugin": "0.9.0",
+    "mini-css-extract-plugin": "0.12.0",
     "moxios": "^0.4.0",
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "pnp-webpack-plugin": "1.6.4",
@@ -77,7 +77,7 @@
     "react-dev-utils": "^10.2.1",
     "react-dom": "^16.13.1",
     "react-tag-autocomplete": "^6.1.0",
-    "resolve": "1.15.0",
+    "resolve": "1.19.0",
     "resolve-url-loader": "3.1.1",
     "sass-loader": "8.0.2",
     "semver": "6.3.0",
@@ -91,7 +91,7 @@
     "webpack-dev-server": "3.10.3",
     "webpack-manifest-plugin": "2.2.0",
     "workbox-webpack-plugin": "4.3.1",
-    "yup": "^0.29.3"
+    "yup": "^0.32.8"
   },
   "resolutions": {
     "**/object-path": "0.11.5",
@@ -133,7 +133,7 @@
     "eslint-plugin-cypress": "^2.11.1",
     "eslint-plugin-jest": "^23.19.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react": "^7.21.5",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5"
