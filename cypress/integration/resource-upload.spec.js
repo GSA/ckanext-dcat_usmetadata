@@ -15,12 +15,22 @@ beforeEach(() => {
 
 describe('Resource Upload page', () => {
   const titleAndName = 'link-to-data';
+  const longNameResourceDataset = 'resource-list-edit-test';
 
   afterEach(() => {
     cy.request({
       method: 'POST',
       url: '/api/3/action/dataset_purge',
       body: { id: titleAndName },
+      failOnStatusCode: false,
+    });
+  });
+
+  after(() => {
+    cy.request({
+      method: 'POST',
+      url: '/api/3/action/dataset_purge',
+      body: { id: longNameResourceDataset },
       failOnStatusCode: false,
     });
   });
@@ -128,12 +138,11 @@ describe('Resource Upload page', () => {
   });
 
   it('List saved resources and truncates long names', () => {
-    const title = 'resource-list-edit-test';
     const exampleUrl = 'https://example.com/data.csv';
     const shortResourceName = 'First resource';
     const longResourceName =
       'Very oooooooooooooooooooooooooooooooooooooooooooooooooooooooo naaaame';
-    cy.requiredMetadata(title);
+    cy.requiredMetadata(longNameResourceDataset);
     cy.additionalMetadata();
     cy.get('button[type=button]').contains('Save and Continue').click();
     cy.intercept('/api/3/action/resource_create').as('resourceCreate1');
@@ -143,7 +152,7 @@ describe('Resource Upload page', () => {
     cy.resourceUploadWithUrlAndSave(exampleUrl, longResourceName);
     cy.wait('@resourceCreate2');
 
-    cy.visit(`/dataset/edit-new/${title}`);
+    cy.visit(`/dataset/edit-new/${longNameResourceDataset}`);
     cy.contains('Resource Upload').click();
 
     cy.contains(shortResourceName);
@@ -153,7 +162,6 @@ describe('Resource Upload page', () => {
     cy.contains('Edit');
     // Truncated the text, three dots
     cy.contains(/.../);
-    cy.request('POST', '/api/3/action/dataset_purge', { id: title });
   });
 
   it('Fails to save resource if URL is invalid', () => {
@@ -317,14 +325,16 @@ describe('Editing resources', () => {
       .should('match', /\/download\/example2.json$/);
   });
 
-  it('Submit an API or indirect download resource works', () => {
+  it('Resource radio buttons work', () => {
     cy.requiredMetadata(name);
     cy.intercept('/api/3/action/package_update').as('packageUpdate1');
     cy.get('button[type=button]').contains('Save and Continue').click();
     cy.wait('@packageUpdate1');
 
-    const resourceWithLinkToApi = 'Link-to-an-API-Resource',
-      resourceWithAccessUrl = 'Access-URL-Resource';
+    const resourceWithLinkToApi = 'Link-to-an-API-Resource';
+    const resourceWithAccessUrl = 'Access-URL-Resource';
+    const resourceWithFile = 'File-Resource';
+    const resourceWithLinkToFIle = 'Link-to-file-Resource';
 
     // Create a resource with  Link to an API
     cy.intercept('/api/3/action/resource_create').as('resourceCreate1');
@@ -344,22 +354,49 @@ describe('Editing resources', () => {
     cy.get('button[type=button]').contains('Save and add another resource').click();
     cy.wait('@resourceCreate2');
 
+    // Create a resource with file
+    cy.intercept('/api/3/action/package_patch').as('resourceCreate3');
+    cy.resourceUploadWithFileAndSave('../fixtures/example.json', resourceWithFile);
+    cy.wait('@resourceCreate3');
+
+    // Create a resource with link to file
+    cy.intercept('/api/3/action/resource_create').as('resourceCreate4');
+    cy.resourceUploadWithUrlAndSave('https://www.example.com', resourceWithLinkToFIle);
+    cy.wait('@resourceCreate4');
+
     // Go to resource page
     cy.visit(`/dataset/edit-new/${name}`);
     cy.get('#app_navigation > :nth-child(3)').contains('Resource Upload').click();
 
+    // Testing Link To an API
     cy.get('#edit-' + resourceWithLinkToApi)
       .trigger('mouseover')
       .click();
-
     cy.get('#resource-option-link-to-api').should('be.checked');
     cy.get('input[name=resource\\.format]').invoke('val').should('eq', 'API');
+    cy.get('input[name=resource\\.name]').invoke('val').should('eq', resourceWithLinkToApi);
 
+    // Testing Access URL
     cy.get('#edit-' + resourceWithAccessUrl)
       .trigger('mouseover')
       .click();
-
     cy.get('#resource-option-access-url').should('be.checked');
     cy.get('input[name=resource\\.format]').invoke('val').should('not.eq', 'API');
+    cy.get('input[name=resource\\.name]').invoke('val').should('eq', resourceWithAccessUrl);
+
+    // Testing Upload a File
+    cy.get('#edit-' + resourceWithFile)
+      .trigger('mouseover')
+      .click();
+    cy.get('#resource-option-upload-file').should('be.checked');
+    cy.get('input[name=resource\\.format]').invoke('val').should('eq', 'JSON');
+    cy.get('input[name=resource\\.name]').invoke('val').should('eq', resourceWithFile);
+
+    // Testing Link to a File
+    cy.get('#edit-' + resourceWithLinkToFIle)
+      .trigger('mouseover')
+      .click();
+    cy.get('#resource-option-link-to-file').should('be.checked');
+    cy.get('input[name=resource\\.name]').invoke('val').should('eq', resourceWithLinkToFIle);
   });
 });
