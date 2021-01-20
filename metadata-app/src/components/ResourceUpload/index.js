@@ -150,7 +150,7 @@ const ResourceUpload = (props) => {
                 </>
               }
               name="resource.urlType"
-              value={RESOURCE_URL_TYPES.URL}
+              value={RESOURCE_URL_TYPES.LINK_TO_FILE}
               id="resource-option-link-to-file"
             />
             <Radio

@@ -7,7 +7,7 @@ const publishingFrequencyList = require('../components/AdditionalMetadata/publis
 const publishersDictionary = require('../components/RequiredMetadata/publishers.json');
 
 export const RESOURCE_URL_TYPES = {
-  URL: 'url',
+  LINK_TO_FILE: 'url',
   UPLOAD_FILE: 'upload',
   LINK_TO_API: 'linkToApi',
   ACCESS_URL: 'accessUrl',
@@ -93,14 +93,17 @@ const serializeResource = (resource) => {
 
   delete serializedResource.resource_type;
 
-  switch (serializedResource.urlType) {
-    case RESOURCE_URL_TYPES.LINK_TO_API:
-    case RESOURCE_URL_TYPES.ACCESS_URL:
+  if (serializedResource.urlType) {
+    if (
+      serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_API ||
+      serializedResource.urlType === RESOURCE_URL_TYPES.ACCESS_URL
+    ) {
       serializedResource.resource_type = 'accessurl';
       serializedResource.url_type = 'url';
-      break;
-    default:
-      break;
+    }
+    if (serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_FILE) {
+      serializedResource.url_type = 'url';
+    }
   }
 
   delete serializedResource.urlType;
@@ -120,7 +123,6 @@ const deserializeResource = (resource) => {
       deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_API;
     }
   }
-
   return deserializedResource;
 };
 
