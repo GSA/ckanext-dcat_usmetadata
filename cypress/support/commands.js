@@ -1,4 +1,5 @@
 import 'chance';
+import 'cypress-file-upload';
 
 Cypress.Commands.add('login', (username = 'admin', password = 'admin') => {
   cy.clearCookies();
@@ -93,5 +94,16 @@ Cypress.Commands.add('resourceUploadWithUrlAndSave', (url, name) => {
   cy.get('textarea[name=resource\\.description]').type(chance.sentence({ words: 10 }));
   cy.get('select[name=resource\\.mimetype]').select('DOC -- Word Document');
   cy.get('input[name=resource\\.format]').type(chance.word());
+  cy.get('button[type=button]').contains('Save and add another resource').click();
+});
+
+Cypress.Commands.add('resourceUploadWithFileAndSave', (path, name) => {
+  cy.get('#resource-option-upload-file').parent('.form-group').click();
+  cy.get('label[for=upload]').click();
+  cy.get('input#upload').attachFile(path || '../fixtures/example.json');
+  cy.get('input[name=resource\\.name]')
+    .clear()
+    .type(name || chance.word());
+  cy.get('textarea[name=resource\\.description]').type(chance.sentence({ words: 10 }));
   cy.get('button[type=button]').contains('Save and add another resource').click();
 });
