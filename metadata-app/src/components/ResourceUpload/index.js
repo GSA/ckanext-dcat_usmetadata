@@ -103,7 +103,7 @@ const ResourceUpload = (props) => {
       ) : (
         <div className="margin-top-10 padding-bottom-8 border-gray-10 border-bottom-2px">
           <div className="grid-row margin-top-3">
-            <div className="grid-col-12 text-green">
+            <div className="grid-col-12 text-custom-green">
               <i>Resource saved: ({resources.length} resources saved in total)</i>
             </div>
           </div>
@@ -396,7 +396,7 @@ const ResourceUpload = (props) => {
 
       {draftSaved && (
         <div style={{ marginTop: '1rem' }}>
-          <div className="grid-col-12 text-green">
+          <div className="grid-col-12 text-custom-green">
             <i>
               Draft saved:
               <br />[{draftSaved}]
