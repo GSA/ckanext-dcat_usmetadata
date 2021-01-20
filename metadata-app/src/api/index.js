@@ -188,7 +188,7 @@ const serializeSupplementalValues = (opts) => {
   }
 
   if (opts.dataQuality) {
-    newOpts.data_quality = opts.dataQuality;
+    newOpts.data_quality = opts.dataQuality === 'Yes';
     const indexOfDataQuality = newOpts.extras.findIndex((x) => x.key === 'data_quality');
     if (indexOfDataQuality > -1) {
       newOpts.extras[indexOfDataQuality].value = newOpts.data_quality;
@@ -394,7 +394,7 @@ const deserializeSupplementalValues = (opts) => {
   }
 
   if (opts.data_quality) {
-    newOpts.dataQuality = opts.data_quality;
+    newOpts.dataQuality = opts.data_quality ? 'Yes' : 'No';
   }
 
   if (opts.language) {

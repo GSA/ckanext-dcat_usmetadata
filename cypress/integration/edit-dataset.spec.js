@@ -113,7 +113,7 @@ describe('Editing an existing dataset', () => {
       publicAccessLevel: 'non-public',
       license: 'https://opensource.org/licenses/MIT-0',
       rightsDesc: 'Updated rights',
-      dataQuality: 'No',
+      dataQuality: false,
       dataDictionary: 'https://www.dictionary.com',
       describedByType: 'text/tab-separated-values',
       accrualPeriodicity: 'irregular',
