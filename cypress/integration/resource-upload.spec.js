@@ -136,11 +136,12 @@ describe('Resource Upload page', () => {
     cy.requiredMetadata(title);
     cy.additionalMetadata();
     cy.get('button[type=button]').contains('Save and Continue').click();
-    cy.intercept('/api/3/action/resource_create').as('resourceCreate');
+    cy.intercept('/api/3/action/resource_create').as('resourceCreate1');
     cy.resourceUploadWithUrlAndSave(exampleUrl, shortResourceName);
-    cy.wait('@resourceCreate');
+    cy.wait('@resourceCreate1');
+    cy.intercept('/api/3/action/resource_create').as('resourceCreate2');
     cy.resourceUploadWithUrlAndSave(exampleUrl, longResourceName);
-    cy.wait('@resourceCreate');
+    cy.wait('@resourceCreate2');
 
     cy.visit(`/dataset/edit-new/${title}`);
     cy.contains('Resource Upload').click();
@@ -213,24 +214,26 @@ describe('Editing resources', () => {
     cy.wait('@packageUpdate');
 
     // Create 2 resources: 1 with link and 1 upload:
-    cy.intercept('/api/3/action/resource_create').as('resourceCreate');
+    cy.intercept('/api/3/action/resource_create').as('resourceCreate1');
     const resourceName = 'linked';
     const resourceUrl = 'https://www.example.com';
     cy.resourceUploadWithUrlAndSave(resourceUrl, resourceName);
-    cy.wait('@resourceCreate');
+    cy.wait('@resourceCreate1');
+
+    cy.intercept('/api/3/action/package_patch').as('resourceCreate2');
     const filePath = '../fixtures/example.json';
     const resourceFileName = 'example';
     cy.resourceUploadWithFileAndSave(filePath, resourceFileName);
-    cy.wait('@resourceCreate');
+    cy.wait('@resourceCreate2');
 
-    cy.intercept('/api/3/action/resource_update').as('resourceUpdate');
     // Test editing linked resource url:
+    cy.intercept('/api/3/action/resource_update').as('resourceUpdate1');
     cy.get('#edit-' + resourceName)
       .trigger('mouseover')
       .click();
     cy.get('input[name=resource\\.url]').type('-updated');
     cy.get('button[type=button]').contains('Save').click();
-    cy.wait('@resourceUpdate');
+    cy.wait('@resourceUpdate1');
     cy.get('#edit-' + resourceName)
       .trigger('mouseover')
       .click();
@@ -239,6 +242,7 @@ describe('Editing resources', () => {
       .should('eq', resourceUrl + '-updated');
 
     // Test re-uploading a file:
+    cy.intercept('/api/3/action/package_patch').as('resourceUpdate2');
     cy.get('#edit-' + resourceFileName)
       .trigger('mouseover')
       .click();
@@ -247,7 +251,7 @@ describe('Editing resources', () => {
     cy.get('label[for=upload]').click();
     cy.get('input#upload').attachFile('../fixtures/example2.json');
     cy.get('button[type=button]').contains('Save').click();
-    cy.wait('@resourceUpdate');
+    cy.wait('@resourceUpdate2');
     cy.get('#edit-' + resourceFileName)
       .trigger('mouseover')
       .click();
@@ -278,14 +282,14 @@ describe('Editing resources', () => {
     cy.visit('/dataset/edit-new/' + name);
     cy.get('#app_navigation > :nth-child(3)').contains('Resource Upload').click();
 
-    cy.intercept('/api/3/action/resource_update').as('resourceUpdate');
     // Test editing linked resource url:
+    cy.intercept('/api/3/action/resource_update').as('resourceUpdate1');
     cy.get('#edit-' + resourceName)
       .trigger('mouseover')
       .click();
     cy.get('input[name=resource\\.url]').type('-updated');
     cy.get('button[type=button]').contains('Save').click();
-    cy.wait('@resourceUpdate');
+    cy.wait('@resourceUpdate1');
     cy.get('#edit-' + resourceName)
       .trigger('mouseover')
       .click();
@@ -294,6 +298,8 @@ describe('Editing resources', () => {
       .should('eq', resourceUrl + '-updated');
 
     // Test re-uploading a file:
+    cy.intercept('/api/3/action/package_patch').as('resourceUpdate2');
+
     cy.get('#edit-' + resourceFileName)
       .trigger('mouseover')
       .click();
@@ -302,12 +308,58 @@ describe('Editing resources', () => {
     cy.get('label[for=upload]').click();
     cy.get('input#upload').attachFile('../fixtures/example2.json');
     cy.get('button[type=button]').contains('Save').click();
-    cy.wait('@resourceUpdate');
+    cy.wait('@resourceUpdate2');
     cy.get('#edit-' + resourceFileName)
       .trigger('mouseover')
       .click();
     cy.get('input[name=resource\\.url]')
       .invoke('val')
       .should('match', /\/download\/example2.json$/);
+  });
+
+  it('Submit an API or indirect download resource works', () => {
+    cy.requiredMetadata(name);
+    cy.intercept('/api/3/action/package_update').as('packageUpdate1');
+    cy.get('button[type=button]').contains('Save and Continue').click();
+    cy.wait('@packageUpdate1');
+
+    const resourceWithLinkToApi = 'Link-to-an-API-Resource',
+      resourceWithAccessUrl = 'Access-URL-Resource';
+
+    // Create a resource with  Link to an API
+    cy.intercept('/api/3/action/resource_create').as('resourceCreate1');
+    cy.get('#resource-option-link-to-api').parent('.form-group').click();
+    cy.get('input[name=resource\\.url]').type('https://www.example.com');
+    cy.get('input[name=resource\\.name]').type(resourceWithLinkToApi);
+    cy.get('textarea[name=resource\\.description]').type(chance.sentence({ words: 10 }));
+    cy.get('button[type=button]').contains('Save and add another resource').click();
+    cy.wait('@resourceCreate1');
+
+    // Create a resource with Access URL
+    cy.intercept('/api/3/action/resource_create').as('resourceCreate2');
+    cy.get('#resource-option-access-url').parent('.form-group').click();
+    cy.get('input[name=resource\\.url]').type('https://www.example.com');
+    cy.get('input[name=resource\\.name]').type(resourceWithAccessUrl);
+    cy.get('textarea[name=resource\\.description]').type(chance.sentence({ words: 10 }));
+    cy.get('button[type=button]').contains('Save and add another resource').click();
+    cy.wait('@resourceCreate2');
+
+    // Go to resource page
+    cy.visit(`/dataset/edit-new/${name}`);
+    cy.get('#app_navigation > :nth-child(3)').contains('Resource Upload').click();
+
+    cy.get('#edit-' + resourceWithLinkToApi)
+      .trigger('mouseover')
+      .click();
+
+    cy.get('#resource-option-link-to-api').should('be.checked');
+    cy.get('input[name=resource\\.format]').invoke('val').should('eq', 'API');
+
+    cy.get('#edit-' + resourceWithAccessUrl)
+      .trigger('mouseover')
+      .click();
+
+    cy.get('#resource-option-access-url').should('be.checked');
+    cy.get('input[name=resource\\.format]').invoke('val').should('not.eq', 'API');
   });
 });
