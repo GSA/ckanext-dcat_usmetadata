@@ -563,7 +563,9 @@ const updateResource = (resource, apiUrl, apiKey) => {
   if (resource.upload) {
     body = new FormData();
     Object.keys(serializeResource(resource)).forEach((item) => {
-      body.append(item, resource[item]);
+      if (resource[item] !== null) {
+        body.append(item, resource[item]);
+      }
     });
   } else {
     body = encodeValues(serializeResource(resource));
