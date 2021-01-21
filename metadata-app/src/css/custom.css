@@ -342,3 +342,6 @@ input[type='file'] {
   text-overflow: ellipsis;
   float: left;
 }
+.text-custom-green{
+  color: #3F6100;
+}
