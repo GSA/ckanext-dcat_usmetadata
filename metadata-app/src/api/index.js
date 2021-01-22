@@ -55,7 +55,6 @@ const toISODate = (dateStr) => {
  * Deserialize extras from CKAN 2.8.2 Groups format
  */
 const ckanExtrasToDcat = {
-  data_quality: 'dataQuality',
   accrual_periodicity: 'accrualPeriodicity',
   data_dictionary_type: 'describedByType',
 };
