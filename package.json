@@ -94,10 +94,12 @@
     "yup": "^0.32.8"
   },
   "resolutions": {
+    "**/immer": "^8.0.1",
     "**/object-path": "0.11.5",
     "**/node-forge": "0.10.0",
     "**/node-notifier": "^8.0.1",
-    "**/serialize-javascript": "3.1.0"
+    "**/serialize-javascript": "3.1.0",
+    "**/socket.io": "^2.4.0"
   },
   "husky": {
     "hooks": {
