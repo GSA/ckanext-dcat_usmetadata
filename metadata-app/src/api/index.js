@@ -392,8 +392,10 @@ const deserializeSupplementalValues = (opts) => {
     newOpts.temporal = 'true';
   }
 
-  if (opts.data_quality) {
-    newOpts.dataQuality = opts.data_quality ? 'Yes' : 'No';
+  if (opts.data_quality === 'true') {
+    newOpts.dataQuality = 'Yes';
+  } else if (opts.data_quality === 'false') {
+    newOpts.dataQuality = 'No';
   }
 
   if (opts.language) {
