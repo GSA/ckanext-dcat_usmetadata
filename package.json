@@ -10,7 +10,7 @@
     "test": "yarn dockerize && docker-compose run --rm app nosetests --ckan --with-pylons=docker_test.ini ./ckanext/dcat_usmetadata/tests/*",
     "up": "docker-compose up",
     "up-with-data": "docker-compose -f docker-compose.yml -f docker-compose.seed.yml build && docker-compose -f docker-compose.yml -f docker-compose.seed.yml up",
-    "lint:python": "docker-compose up -d && docker-compose run --rm app bash -c \"cd /usr/lib/ckan && pip install --upgrade pip  && pip install flake8 && flake8 ./ckanext/dcat-usmetadata/ckanext/ --count --show-source --statistics\"",
+    "lint:python": "docker-compose up -d && docker-compose run --rm app bash -c \"cd /usr/lib/ckan && pip install pip==20.3.3  && pip install flake8 && flake8 ./ckanext/dcat-usmetadata/ckanext/ --count --show-source --statistics\"",
     "dockerize": "docker-compose -f docker-compose.yml -f docker-compose.seed.yml up -d",
     "start:metadata-app": "node react-scripts/start.js",
     "build:metadata-app": "node react-scripts/build.js",
