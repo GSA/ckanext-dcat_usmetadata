@@ -73,7 +73,7 @@
     "react": "^16.13.1",
     "react-app-polyfill": "^1.0.6",
     "react-autosuggest": "^10.0.2",
-    "react-cosmos": "^5.4.0",
+    "react-cosmos": "^5.5.3",
     "react-dev-utils": "^10.2.1",
     "react-dom": "^16.13.1",
     "react-tag-autocomplete": "^6.1.0",
