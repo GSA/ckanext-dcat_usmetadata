@@ -62,7 +62,6 @@ const toISODate = (dateStr) => {
  * Deserialize extras from CKAN 2.8.2 Groups format
  */
 const ckanExtrasToDcat = {
-  data_quality: 'dataQuality',
   accrual_periodicity: 'accrualPeriodicity',
   data_dictionary_type: 'describedByType',
 };
@@ -238,7 +237,7 @@ const serializeSupplementalValues = (opts) => {
   }
 
   if (opts.dataQuality) {
-    newOpts.data_quality = opts.dataQuality;
+    newOpts.data_quality = opts.dataQuality === 'Yes';
     const indexOfDataQuality = newOpts.extras.findIndex((x) => x.key === 'data_quality');
     if (indexOfDataQuality > -1) {
       newOpts.extras[indexOfDataQuality].value = newOpts.data_quality;
@@ -448,8 +447,10 @@ const deserializeSupplementalValues = (opts) => {
     newOpts.temporal = 'true';
   }
 
-  if (opts.data_quality) {
-    newOpts.dataQuality = opts.data_quality;
+  if (opts.data_quality === 'true') {
+    newOpts.dataQuality = 'Yes';
+  } else if (opts.data_quality === 'false') {
+    newOpts.dataQuality = 'No';
   }
 
   if (opts.language) {

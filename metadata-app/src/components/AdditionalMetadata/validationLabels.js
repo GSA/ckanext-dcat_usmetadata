@@ -6,7 +6,7 @@ export default {
   description: 'Description',
   publisher: 'Publisher',
   accessLevel: 'Public Access Level',
-  dataQuality: 'Access Level',
+  dataQuality: 'Data Quality',
   rights: 'Rights',
   spatial: 'Spatial',
   license: 'License',
