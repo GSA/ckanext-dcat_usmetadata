@@ -17,7 +17,7 @@ ls -la
 git clone --branch inventory https://github.com/GSA/ckan.git
 cd ckan
 
-pip install --upgrade pip
+pip install pip==20.3.3
 pip install setuptools -U
 
 python setup.py develop

@@ -50,7 +50,7 @@ exports[`Renders Resource Upload component 1`] = `
             <input
               class="usa-radio__input"
               id="resource-option-link-to-file"
-              name="resource.url_type"
+              name="resource.urlType"
               type="radio"
               value="url"
             />
@@ -70,7 +70,7 @@ exports[`Renders Resource Upload component 1`] = `
             <input
               class="usa-radio__input"
               id="resource-option-upload-file"
-              name="resource.url_type"
+              name="resource.urlType"
               type="radio"
               value="upload"
             />
@@ -82,6 +82,46 @@ exports[`Renders Resource Upload component 1`] = `
                 Upload a file:
               </b>
                Upload a file from your computer
+            </label>
+          </div>
+          <div
+            class="form-group "
+          >
+            <input
+              class="usa-radio__input"
+              id="resource-option-link-to-api"
+              name="resource.urlType"
+              type="radio"
+              value="linkToApi"
+            />
+            <label
+              class="usa-radio__label"
+              for="resource-option-link-to-api"
+            >
+              <b>
+                Link to an API:
+              </b>
+               Provide a link to access a dataset via API
+            </label>
+          </div>
+          <div
+            class="form-group "
+          >
+            <input
+              class="usa-radio__input"
+              id="resource-option-access-url"
+              name="resource.urlType"
+              type="radio"
+              value="accessUrl"
+            />
+            <label
+              class="usa-radio__label"
+              for="resource-option-access-url"
+            >
+              <b>
+                Access URL:
+              </b>
+               Provide a link to a resource that is not directly downloadable, like an html website
             </label>
           </div>
         </div>

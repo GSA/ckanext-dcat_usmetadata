@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Link from '../Link';
 import Radio from '../Radio';
 import WrappedField from '../WrappedField';
 import resourceFormats from './resource_formats.json';
+import { RESOURCE_URL_TYPES } from '../../api';
 
 const sortedResourceFormats = resourceFormats.sort((a, b) => {
   const labelA = a.label.toUpperCase();
@@ -35,6 +36,15 @@ const ResourceUpload = (props) => {
   const { url, name, description, mimetype, format } = resource;
 
   const [uploadDataFileIsActive, setUploadDataFileActive] = useState(false);
+
+  // Detect when url type changes
+  useEffect(() => {
+    // If it's selected Link to an API radio option then
+    // set format value to API
+    if (!resource.format && resource.urlType === RESOURCE_URL_TYPES.LINK_TO_API) {
+      setFieldValue('resource.format', 'API');
+    }
+  }, [resource.urlType]);
 
   const handleFileChange = (event) => {
     setUploadDataFileActive(!uploadDataFileIsActive);
@@ -93,7 +103,7 @@ const ResourceUpload = (props) => {
       ) : (
         <div className="margin-top-10 padding-bottom-8 border-gray-10 border-bottom-2px">
           <div className="grid-row margin-top-3">
-            <div className="grid-col-12 text-green">
+            <div className="grid-col-12 text-custom-green">
               <i>Resource saved: ({resources.length} resources saved in total)</i>
             </div>
           </div>
@@ -139,8 +149,8 @@ const ResourceUpload = (props) => {
                   <b>Link to a file:</b> Provide a direct download link to a file
                 </>
               }
-              name="resource.url_type"
-              value="url"
+              name="resource.urlType"
+              value={RESOURCE_URL_TYPES.LINK_TO_FILE}
               id="resource-option-link-to-file"
             />
             <Radio
@@ -150,19 +160,44 @@ const ResourceUpload = (props) => {
                   <b>Upload a file:</b> Upload a file from your computer
                 </>
               }
-              name="resource.url_type"
-              value="upload"
+              name="resource.urlType"
+              value={RESOURCE_URL_TYPES.UPLOAD_FILE}
               id="resource-option-upload-file"
+            />
+            <Radio
+              label={
+                // eslint-disable-next-line react/jsx-wrap-multilines
+                <>
+                  <b>Link to an API:</b> Provide a link to access a dataset via API
+                </>
+              }
+              name="resource.urlType"
+              value={RESOURCE_URL_TYPES.LINK_TO_API}
+              id="resource-option-link-to-api"
+            />
+            <Radio
+              label={
+                // eslint-disable-next-line react/jsx-wrap-multilines
+                <>
+                  <b>Access URL:</b> Provide a link to a resource that is not directly downloadable,
+                  like an html website
+                </>
+              }
+              name="resource.urlType"
+              value={RESOURCE_URL_TYPES.ACCESS_URL}
+              id="resource-option-access-url"
             />
           </div>
           <div className="grid-col-12">
-            {resource.url_type && (
+            {resource.urlType && (
               // eslint-disable-next-line jsx-a11y/label-has-associated-control
-              <label className="usa-label">{resource.url_type === 'upload' ? 'File' : 'URL'}</label>
+              <label className="usa-label">
+                {resource.urlType === RESOURCE_URL_TYPES.UPLOAD_FILE ? 'File' : 'URL'}
+              </label>
             )}
             {/* Do not show URL field unless it's url type or url already exists (edit mode) */}
             {/* eslint-disable-next-line */}
-            {(resource.url_type && resource.url_type !== 'upload') || url ? (
+            {(resource.urlType && resource.urlType !== RESOURCE_URL_TYPES.UPLOAD_FILE) || url ? (
               <div>
                 <p className="usa-helptext">
                   {`If you are linking to a dataset, please include "https://" at the beginning
@@ -197,7 +232,7 @@ const ResourceUpload = (props) => {
               />
             ) : (
               // If the file is not uploaded and the radio button is chosen local file
-              resource.url_type === 'upload' && (
+              resource.urlType === RESOURCE_URL_TYPES.UPLOAD_FILE && (
                 <>
                   <br />
                   {/* eslint-disable-next-line */}
@@ -361,7 +396,7 @@ const ResourceUpload = (props) => {
 
       {draftSaved && (
         <div style={{ marginTop: '1rem' }}>
-          <div className="grid-col-12 text-green">
+          <div className="grid-col-12 text-custom-green">
             <i>
               Draft saved:
               <br />[{draftSaved}]

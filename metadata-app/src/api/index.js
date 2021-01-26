@@ -6,6 +6,13 @@ const licenses = require('../components/RequiredMetadata/licenses.json');
 const publishingFrequencyList = require('../components/AdditionalMetadata/publishingFrequencyList');
 const publishersDictionary = require('../components/RequiredMetadata/publishers.json');
 
+export const RESOURCE_URL_TYPES = {
+  LINK_TO_FILE: 'url',
+  UPLOAD_FILE: 'upload',
+  LINK_TO_API: 'linkToApi',
+  ACCESS_URL: 'accessUrl',
+};
+
 // There are 5 possible publishers/subpublishers
 const publisherProps = [
   'publisher',
@@ -55,10 +62,10 @@ const toISODate = (dateStr) => {
  * Deserialize extras from CKAN 2.8.2 Groups format
  */
 const ckanExtrasToDcat = {
-  data_quality: 'dataQuality',
   accrual_periodicity: 'accrualPeriodicity',
   data_dictionary_type: 'describedByType',
 };
+
 const deserializeExtras = (opts) => {
   const newOpts = clone(opts);
   newOpts.extras.forEach((cur) => {
@@ -74,6 +81,48 @@ const deserializeExtras = (opts) => {
  */
 const encodeValues = (obj) => {
   return encodeURIComponent(JSON.stringify(obj));
+};
+
+/**
+ * Makes the necessary serialization for resource metadata
+ * @param {Object} resource
+ */
+const serializeResource = (resource) => {
+  const serializedResource = clone(resource);
+
+  delete serializedResource.resource_type;
+
+  if (serializedResource.urlType) {
+    if (
+      serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_API ||
+      serializedResource.urlType === RESOURCE_URL_TYPES.ACCESS_URL
+    ) {
+      serializedResource.resource_type = 'accessurl';
+      serializedResource.url_type = 'url';
+    }
+    if (serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_FILE) {
+      serializedResource.url_type = 'url';
+    }
+  }
+
+  delete serializedResource.urlType;
+  return serializedResource;
+};
+
+/**
+ * Makes the necessary de-serialization for resource metadata
+ * @param {Object} resource
+ */
+const deserializeResource = (resource) => {
+  const deserializedResource = clone(resource);
+  deserializedResource.urlType = resource.url_type;
+  if (deserializedResource.resource_type === 'accessurl') {
+    deserializedResource.urlType = RESOURCE_URL_TYPES.ACCESS_URL;
+    if (deserializedResource.format === 'API') {
+      deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_API;
+    }
+  }
+  return deserializedResource;
 };
 
 // serialize values from USMetadata format to match form values
@@ -188,7 +237,7 @@ const serializeSupplementalValues = (opts) => {
   }
 
   if (opts.dataQuality) {
-    newOpts.data_quality = opts.dataQuality;
+    newOpts.data_quality = opts.dataQuality === 'Yes';
     const indexOfDataQuality = newOpts.extras.findIndex((x) => x.key === 'data_quality');
     if (indexOfDataQuality > -1) {
       newOpts.extras[indexOfDataQuality].value = newOpts.data_quality;
@@ -361,6 +410,11 @@ const serializeSupplementalValues = (opts) => {
 // deserialize values from form values to match USMetadata format
 const deserializeSupplementalValues = (opts) => {
   const newOpts = clone(opts);
+  // deserialize resources
+  newOpts.resources = (newOpts.resources || []).map((resource) => {
+    return deserializeResource(resource);
+  });
+
   if (opts.tag_string) {
     newOpts.tags = opts.tag_string.split(',').map((n, i) => ({ id: i, name: n }));
   } else if (opts.tags) {
@@ -393,8 +447,10 @@ const deserializeSupplementalValues = (opts) => {
     newOpts.temporal = 'true';
   }
 
-  if (opts.data_quality) {
-    newOpts.dataQuality = opts.data_quality;
+  if (opts.data_quality === 'true') {
+    newOpts.dataQuality = 'Yes';
+  } else if (opts.data_quality === 'false') {
+    newOpts.dataQuality = 'No';
   }
 
   if (opts.language) {
@@ -480,40 +536,54 @@ const createResource = (packageId, opts, apiUrl, apiKey) => {
   if (opts.upload) {
     body = new FormData();
     body.append('package_id', packageId);
-    Object.keys(opts).forEach((item) => {
+    Object.keys(serializeResource(opts)).forEach((item) => {
       body.append(item, opts[item]);
     });
   } else {
-    body = clone(opts);
+    body = serializeResource(opts);
     body.package_id = packageId;
     body = encodeValues(body);
   }
 
-  return axios.post(`${apiUrl}resource_create`, body, {
-    headers: {
-      'X-CKAN-API-Key': apiKey,
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-  });
+  return axios
+    .post(`${apiUrl}resource_create`, body, {
+      headers: {
+        'X-CKAN-API-Key': apiKey,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    })
+    .then((res) => {
+      // eslint-disable-next-line no-return-assign
+      if (res.data) res.data.result = deserializeResource(res.data.result);
+      return res;
+    });
 };
 
 const updateResource = (resource, apiUrl, apiKey) => {
   let body;
   if (resource.upload) {
     body = new FormData();
-    Object.keys(resource).forEach((item) => {
-      body.append(item, resource[item]);
+    Object.keys(serializeResource(resource)).forEach((item) => {
+      if (resource[item] !== null) {
+        body.append(item, resource[item]);
+      }
     });
   } else {
-    body = encodeValues(clone(resource));
+    body = encodeValues(serializeResource(resource));
   }
 
-  return axios.post(`${apiUrl}resource_update`, body, {
-    headers: {
-      'X-CKAN-API-Key': apiKey,
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-  });
+  return axios
+    .post(`${apiUrl}resource_update`, body, {
+      headers: {
+        'X-CKAN-API-Key': apiKey,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    })
+    .then((res) => {
+      // eslint-disable-next-line no-return-assign
+      if (res.data) res.data.result = deserializeResource(res.data.result);
+      return res;
+    });
 };
 
 const deleteResource = (id, apiUrl, apiKey) => {
