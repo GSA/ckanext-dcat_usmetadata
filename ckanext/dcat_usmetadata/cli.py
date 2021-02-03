@@ -10,17 +10,24 @@ class DCATUSMetadataCommand(cli.CkanCommand):
     Usage:
 
         publishers-import <path_to_file> - imports publishers from the CSV file.
+
+        Headers of expected CSV data (ordered):
+        1. organization
+        2. publisher
+        3. publisher_1
+        4. publisher_2
+        5. publisher_3
+        6. publisher_4
+        7. publisher_5
     '''
 
     summary = __doc__.split('\n')[0]
     usage = __doc__
 
     def command(self):
-        if self.args and self.args[0] == 'publishers-import':
-            print 'hey!!!'
-            if len(self.args) != 2:
-                print "This command requires an argument\n"
-                print self.usage
-                sys.exit(1)
+        if len(self.args) == 1:
+            path_to_file = self.args[0]
         else:
+            print "This command requires an argument\n"
             print self.usage
+            sys.exit(1)

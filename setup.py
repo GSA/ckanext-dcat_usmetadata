@@ -87,6 +87,9 @@ setup(
 
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan
+
+        [paste.paster_command]
+        publishers-import = ckanext.dcat_usmetadata.cli:DCATUSMetadataCommand
     ''',
 
     # If you are changing from the default layout of your extension, you may
