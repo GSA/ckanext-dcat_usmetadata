@@ -1,4 +1,6 @@
 import sys
+import csv
+import json
 
 import ckan.lib.cli as cli
 import ckan.plugins as p
@@ -24,10 +26,59 @@ class DCATUSMetadataCommand(cli.CkanCommand):
     summary = __doc__.split('\n')[0]
     usage = __doc__
 
+    def __init__(self, name):
+        super(DCATUSMetadataCommand, self).__init__(name)
+
     def command(self):
-        if len(self.args) == 1:
-            path_to_file = self.args[0]
-        else:
-            print "This command requires an argument\n"
+        self._load_config()
+
+        if len(self.args) != 1:
+            print 'This command requires a single argument\n'
             print self.usage
             sys.exit(1)
+
+        self.import_publishers(self.args[0])
+
+    def import_publishers(self, path_to_file):
+        with open(path_to_file, 'rb') as csvfile:
+            reader = csv.reader(csvfile)
+            first_row = next(reader, None)  # skip the headers
+            data = list(reader)
+            # Generate publishers extra for each CKAN org:
+            for org in self.get_orgs_to_process(data):
+                publishers_tree = []
+                for row in data:
+                    if row[0] == org:
+                        # Append the row but remove empty strings
+                        publishers_tree.append([i for i in row if i])
+
+                self.update_orgs_with_publishers(org, publishers_tree)
+
+    def get_orgs_to_process(self, rows):
+        list_of_available_orgs = []
+        for row in rows:
+            list_of_available_orgs.append(row[0])
+        unique_set_of_orgs = set(list_of_available_orgs)
+        return list(unique_set_of_orgs)
+
+    def update_orgs_with_publishers(self, org, publishers_tree):
+        # Update org metadata with the publishers data:
+        try:
+            org_metadata = p.toolkit.get_action(
+                'organization_show')({}, {'id': org})
+            org_extras = org_metadata.get('result', {}).get('extras', [])
+            index_of_publisher_extra = next(
+                (i for i, item in enumerate(org_extras) if item['key'] == 'publisher'), None)
+            if index_of_publisher_extra:
+                org_extras[index_of_publisher_extra]['value'] = json.dumps(
+                    publishers_tree)
+            else:
+                org_extras.append(
+                    {'key': 'publisher', 'value': json.dumps(publishers_tree)})
+
+            p.toolkit.get_action('organization_patch')(
+                {}, {'id': org, 'extras': org_extras})
+            print "Updated publishers for '{}'".format(org)
+        except Exception as e:
+            print e
+            print "Organization '{}' was not found".format(org)
