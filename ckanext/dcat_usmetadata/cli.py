@@ -11,7 +11,8 @@ class DCATUSMetadataCommand(cli.CkanCommand):
 
     Usage:
 
-        publishers-import <path_to_file> - imports publishers from the CSV file.
+        publishers-import <path_to_file> - imports publishers from the \
+        CSV file.
 
         Headers of expected CSV data (ordered):
         1. organization
