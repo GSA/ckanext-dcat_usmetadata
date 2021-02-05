@@ -1,0 +1,7 @@
+organization,publisher,publisher_1,publisher_2,publisher_3,publisher_4,publisher_5
+test-organization,top level publisher,,,,,
+test-organization,top level publisher,first level publisher,,,,
+test-organization,top level publisher,first level publisher,second level publisher,,,
+test-organization,top level publisher,first level publisher,second level publisher,third level publisher,,
+test-organization,top level publisher,first level publisher,second level publisher,third level publisher,fourth level publisher,
+test-organization,top level publisher,first level publisher,second level publisher,third level publisher,fourth level publisher,fifth level publisher
