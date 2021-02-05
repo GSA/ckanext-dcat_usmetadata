@@ -42,7 +42,7 @@ class DCATUSMetadataCommand(cli.CkanCommand):
     def import_publishers(self, path_to_file):
         with open(path_to_file, 'rb') as csvfile:
             reader = csv.reader(csvfile)
-            first_row = next(reader, None)  # skip the headers
+            next(reader, None)  # skip the headers
             data = list(reader)
             # Generate publishers extra for each CKAN org:
             for org in self.get_orgs_to_process(data):
@@ -68,7 +68,8 @@ class DCATUSMetadataCommand(cli.CkanCommand):
                 'organization_show')({}, {'id': org})
             org_extras = org_metadata.get('result', {}).get('extras', [])
             index_of_publisher_extra = next(
-                (i for i, item in enumerate(org_extras) if item['key'] == 'publisher'), None)
+                (i for i, item in enumerate(org_extras)
+                    if item['key'] == 'publisher'), None)
             if index_of_publisher_extra:
                 org_extras[index_of_publisher_extra]['value'] = json.dumps(
                     publishers_tree)
