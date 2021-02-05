@@ -47,6 +47,9 @@ curl -X POST \
 
 echo ''
 
+# Import publishers to 'test-organization'
+/usr/lib/ckan/bin/paster --plugin=ckanext-dcat_usmetadata publishers-import /usr/lib/ckan/ckanext/dcat-usmetadata/ckanext/dcat_usmetadata/publishers.test.csv -c /etc/ckan/production.ini
+
 # Adding dataset(s) via API
 curl -X POST \
   http://localhost:5000/api/3/action/package_create \
