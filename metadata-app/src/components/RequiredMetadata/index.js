@@ -69,8 +69,7 @@ const RequiredMetadata = (props) => {
   };
 
   const getPublishers = async () => {
-    // eslint-disable-next-line no-undef
-    const fetchedPublishers = await api.fetchPublishers(...arguments);
+    const fetchedPublishers = await api.fetchPublishers(values.owner_org);
 
     setPublishers(fetchedPublishers);
 

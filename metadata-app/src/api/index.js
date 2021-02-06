@@ -706,9 +706,11 @@ const fetchParentDatasets = async (query, apiUrl, apiKey) => {
   }
 };
 
-// TODO depending on the changes in the backend this might be moved to API
-const fetchPublishers = async () => {
-  // TODO Currently the list is static, but later this is going to be provided dynamically
+// Fetch list of available publishers for given organization id
+const fetchPublishers = async (orgId) => {
+  if (!orgId) {
+    return [];
+  }
   return publishersDictionary
     .map((publisher, index) => {
       // TODO here we choose index as an id, but we later we suppose it will be given by the backend
