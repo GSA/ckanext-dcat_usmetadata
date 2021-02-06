@@ -69,7 +69,7 @@ const RequiredMetadata = (props) => {
   };
 
   const getPublishers = async () => {
-    const fetchedPublishers = await api.fetchPublishers(values.owner_org);
+    const fetchedPublishers = await api.fetchPublishers(values.owner_org, apiUrl, apiKey);
 
     setPublishers(fetchedPublishers);
 
