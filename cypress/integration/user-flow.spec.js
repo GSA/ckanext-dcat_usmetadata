@@ -9,7 +9,7 @@ describe('Access to the new metadata app', () => {
     cy.get('.navsec').contains('Required Metadata');
     // From organization page:
     cy.createOrg();
-    cy.visit('/organization/test-123');
+    cy.visit('/organization/test-organization');
     cy.get('.page_primary_action > .btn-primary').first().click();
     cy.location('pathname', { timeout: 10000 }).should('include', '/dataset/new-metadata');
     cy.get('.navsec').contains('Required Metadata');
@@ -70,7 +70,7 @@ describe('List of organizations on new metadata form', () => {
   before(() => {
     cy.createUser('editor');
     cy.login();
-    cy.visit('/organization/member_new/test-123');
+    cy.visit('/organization/member_new/test-organization');
     cy.get('input[name=username]').type('editor', { force: true });
     cy.get('select[name=role]').select('Editor', { force: true });
     cy.get('button[name=submit]').click({ force: true });
@@ -87,7 +87,9 @@ describe('List of organizations on new metadata form', () => {
     cy.visit('/dataset');
     cy.get('.page_primary_action > .btn').click();
     cy.get('.navsec').contains('Required Metadata');
-    cy.get('select[name=owner_org]').select('test-123').should('contain.text', 'test-123');
+    cy.get('select[name=owner_org]')
+      .select('Test Organization')
+      .should('contain.text', 'Test Organization');
   });
 });
 
@@ -110,7 +112,7 @@ describe('Go back to dashboard page', () => {
   });
 
   it('Goes to /organization/<organization-name> page on "Back to dashboard" clicked', () => {
-    cy.visit('/organization/test-123');
+    cy.visit('/organization/test-organization');
     cy.get('.page_primary_action > .btn.btn-primary').first().click();
 
     cy.contains('Back to dashboard').click();

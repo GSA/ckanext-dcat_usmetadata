@@ -54,8 +54,8 @@ describe('Required Metadata Page', () => {
     cy.get('input[name=title]').type('A title for publisher hierarchy test');
     cy.get('textarea[name=description]').type('description');
     cy.get('.react-tags input').type('tag');
-    cy.get('select[name=owner_org]').select('test-123');
-    cy.get('input[placeholder="Select publisher"]').type('Data.gov');
+    cy.get('select[name=owner_org]').select('Test Organization');
+    cy.get('input[placeholder="Select publisher"]').type('second level publisher');
     cy.get('input[placeholder="Select publisher"]').type('{downarrow}{enter}');
     cy.get('input[name=contact_name]').type('Person');
     cy.get('input[name=contact_email]').type('person@mail.com');
@@ -67,9 +67,9 @@ describe('Required Metadata Page', () => {
     cy.additionalMetadata();
     cy.get('button[type=button]').contains('Save and Continue').click();
     cy.resourceUploadWithUrlAndPublish();
-    cy.contains('General Services Administration');
-    cy.contains('Technology Transformation Service');
-    cy.contains('Data.gov');
+    cy.contains('top level publisher');
+    cy.contains('first level publisher');
+    cy.contains('second level publisher');
   });
 
   it('Able to add new tag without hiting Enter or Tab', () => {
@@ -78,8 +78,8 @@ describe('Required Metadata Page', () => {
     cy.get('input[name=title]').type('A title for tag tab test1');
     cy.get('textarea[name=description]').type('description');
     cy.get('.react-tags input').type(tagName);
-    cy.get('select[name=owner_org]').select('test-123');
-    cy.get('input[placeholder="Select publisher"]').type('Data.gov');
+    cy.get('select[name=owner_org]').select('Test Organization');
+    cy.get('input[placeholder="Select publisher"]').type('top level publisher');
     cy.get('input[placeholder="Select publisher"]').type('{downarrow}{enter}');
     cy.get('input[name=contact_name]').type('Person');
     cy.get('input[name=contact_email]').type('person@mail.com');
@@ -104,8 +104,8 @@ describe('Required Metadata Page', () => {
     cy.get('input[name=url]').type('-edited');
     cy.get('textarea[name=description]').type('description');
     cy.get('.react-tags input').type('1234{enter}');
-    cy.get('select[name=owner_org]').select('test-123');
-    cy.get('input[placeholder="Select publisher"]').type('Data.gov');
+    cy.get('select[name=owner_org]').select('Test Organization');
+    cy.get('input[placeholder="Select publisher"]').type('top level publisher');
     cy.get('input[placeholder="Select publisher"]').type('{downarrow}{enter}');
     cy.get('input[name=contact_name]').type('Person');
     cy.get('input[name=contact_email]').type('person@mail.com');
@@ -124,18 +124,18 @@ describe('Required Metadata Page', () => {
   });
 
   it('Organization is pre-selected in the dropdown if the form is loaded from organization page', () => {
-    cy.visit('/organization/test-123');
+    cy.visit('/organization/test-organization');
     cy.get('.page_primary_action > .btn.btn-primary').first().click();
     // wait until the organization list will be loaded
     cy.wait(3000);
-    cy.get('select[name=owner_org]').find(':selected').contains('test-123');
+    cy.get('select[name=owner_org]').find(':selected').contains('Test Organization');
   });
 
   it('Organization is pre-selected in the dropdown if it that organization is the only one', () => {
     const username = 'editor-only-in-one-organization';
     cy.createUser(username);
     cy.login();
-    cy.visit('/organization/member_new/test-123');
+    cy.visit('/organization/member_new/test-organization');
     cy.get('input[name=username]').type(username, { force: true });
     cy.get('select[name=role]').select('Editor', { force: true });
     cy.get('button[name=submit]').click({ force: true });
@@ -147,7 +147,7 @@ describe('Required Metadata Page', () => {
     cy.visit('/dataset');
     cy.get('.page_primary_action > .btn').click();
     cy.wait(3000);
-    cy.get('select[name=owner_org]').find(':selected').contains('test-123');
+    cy.get('select[name=owner_org]').find(':selected').contains('Test Organization');
   });
 });
 
@@ -178,13 +178,15 @@ describe('Save draft functionality on Required Metadata page', () => {
     cy.wait('@listOfOrgs');
 
     // Title and owner org properties are required to save a dataset in CKAN
+    // Unset org as it is automatically selected when user has only 1 org:
+    cy.get('select[name=owner_org]').select('-Select-');
     cy.get('.usa-button--outline').contains('Save draft').click();
     cy.contains('Title is required');
     cy.contains('Organization is required');
 
     // Add the title and try to save draft
     cy.get('input[name=title]').type(title);
-    cy.get('select[name=owner_org]').select('test-123');
+    cy.get('select[name=owner_org]').select('Test Organization');
     cy.get('.usa-button--outline').contains('Save draft').click();
     cy.contains('Draft saved');
     cy.request('/api/3/action/package_show?id=' + title).then((response) => {
@@ -203,7 +205,7 @@ describe('Save draft functionality on Required Metadata page', () => {
     cy.contains('Draft saved');
 
     // Add all required metadata and continue to next page
-    cy.get('input[placeholder="Select publisher"]').type('Data.gov');
+    cy.get('input[placeholder="Select publisher"]').type('top level publisher');
     cy.get('input[placeholder="Select publisher"]').type('{downarrow}{enter}');
     cy.get('input[name=contact_name]').type(chance.name());
     cy.get('input[name=contact_email]').type(chance.email());

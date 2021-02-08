@@ -4,7 +4,6 @@ import slugify from 'slugify';
 const dataDictTypes = require('../components/AdditionalMetadata/data-dictionary-types');
 const licenses = require('../components/RequiredMetadata/licenses.json');
 const publishingFrequencyList = require('../components/AdditionalMetadata/publishingFrequencyList');
-const publishersDictionary = require('../components/RequiredMetadata/publishers.json');
 
 export const RESOURCE_URL_TYPES = {
   LINK_TO_FILE: 'url',
@@ -706,9 +705,36 @@ const fetchParentDatasets = async (query, apiUrl, apiKey) => {
   }
 };
 
-// TODO depending on the changes in the backend this might be moved to API
-const fetchPublishers = async () => {
-  // TODO Currently the list is static, but later this is going to be provided dynamically
+// Fetch list of available publishers for given organization id
+const fetchPublishers = async (orgId, apiUrl, apiKey) => {
+  if (!orgId) {
+    // User hasn't selected org yet
+    return [];
+  }
+  const url = `${apiUrl}organization_show?id=${orgId}`;
+  const res = await axios.get(url, {
+    headers: {
+      'X-CKAN-API-Key': apiKey,
+    },
+  });
+  const publisherExtra = res.data.result.extras.find((extra) => {
+    return extra.key === 'publisher';
+  });
+  if (!publisherExtra) {
+    // The org has no publishers - admin hasn't imported yet
+    return [];
+  }
+  const publishersDictionary = JSON.parse(publisherExtra.value).map((row) => {
+    // Note that row[0] is org name
+    return {
+      publisher: row[1],
+      publisher_1: row[2] || null,
+      publisher_2: row[3] || null,
+      publisher_3: row[4] || null,
+      publisher_4: row[5] || null,
+      publisher_5: row[6] || null,
+    };
+  });
   return publishersDictionary
     .map((publisher, index) => {
       // TODO here we choose index as an id, but we later we suppose it will be given by the backend

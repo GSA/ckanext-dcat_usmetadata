@@ -69,8 +69,7 @@ const RequiredMetadata = (props) => {
   };
 
   const getPublishers = async () => {
-    // eslint-disable-next-line no-undef
-    const fetchedPublishers = await api.fetchPublishers(...arguments);
+    const fetchedPublishers = await api.fetchPublishers(values.owner_org, apiUrl, apiKey);
 
     setPublishers(fetchedPublishers);
 
@@ -79,7 +78,7 @@ const RequiredMetadata = (props) => {
 
   useEffect(() => {
     const publisherId = values.publisher;
-    if (!publisherId) {
+    if (!publisherId && publisherId !== 0) {
       return;
     }
     // Find which publisher has been selected and attach it to the

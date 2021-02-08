@@ -50,8 +50,11 @@ describe('Editing an existing dataset', () => {
     cy.get('.dataset_url').contains(name);
     cy.get('textarea[name=description]').should('not.be.empty');
     cy.get('.react-tags').contains('1234');
-    cy.get('select[name=owner_org]').find(':selected').invoke('text').should('eq', 'test-123');
-    cy.get('input[placeholder="Select publisher"]').should('have.value', 'Data.gov');
+    cy.get('select[name=owner_org]')
+      .find(':selected')
+      .invoke('text')
+      .should('eq', 'Test Organization');
+    cy.get('input[placeholder="Select publisher"]').should('have.value', 'top level publisher');
     cy.get('input[name=contact_name]').invoke('val').should('not.be.empty');
     cy.get('input[name=contact_email]')
       .invoke('val')
@@ -106,7 +109,7 @@ describe('Editing an existing dataset', () => {
       title: 'Updated title',
       description: 'Updated description',
       tags: 'updated',
-      publisher: 'General Services Administration',
+      publisher: 'top level publisher',
       contactName: 'Updated name',
       contactEmail: 'updated@mail.com',
       uniqueId: 'updated unique id',
@@ -170,7 +173,10 @@ describe('Editing an existing dataset', () => {
     cy.get('.dataset_url').contains(name);
     cy.get('textarea[name=description]').invoke('val').should('eq', newMetadata.description);
     cy.get('.react-tags').contains(newMetadata.tags);
-    cy.get('select[name=owner_org]').find(':selected').invoke('text').should('eq', 'test-123');
+    cy.get('select[name=owner_org]')
+      .find(':selected')
+      .invoke('text')
+      .should('eq', 'Test Organization');
     cy.get('input[placeholder="Select publisher"]').should('have.value', newMetadata.publisher);
     cy.get('input[name=contact_name]').invoke('val').should('eq', newMetadata.contactName);
     cy.get('input[name=contact_email]').invoke('val').should('eq', newMetadata.contactEmail);
