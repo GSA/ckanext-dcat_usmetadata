@@ -78,7 +78,7 @@ const RequiredMetadata = (props) => {
 
   useEffect(() => {
     const publisherId = values.publisher;
-    if (!publisherId) {
+    if (!publisherId && publisherId !== 0) {
       return;
     }
     // Find which publisher has been selected and attach it to the
