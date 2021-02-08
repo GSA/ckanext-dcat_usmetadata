@@ -178,6 +178,8 @@ describe('Save draft functionality on Required Metadata page', () => {
     cy.wait('@listOfOrgs');
 
     // Title and owner org properties are required to save a dataset in CKAN
+    // Unset org as it is automatically selected when user has only 1 org:
+    cy.get('select[name=owner_org]').select('-Select-');
     cy.get('.usa-button--outline').contains('Save draft').click();
     cy.contains('Title is required');
     cy.contains('Organization is required');
