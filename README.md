@@ -23,6 +23,37 @@ In your CKAN .ini file add `dcat_usmetadata` to your enabled plugins:
 
 `ckan.plugins = [YOUR PLUGINS HERE...] dcat_usmetadata`
 
+### CLI command
+
+This extension adds a new CLI command for importing publishers linked to CKAN organizations. The list of publishers should be provided in a CSV data and it should have the following structure (note the headers):
+
+```
+organization,publisher,publisher_1,publisher_2,publisher_3,publisher_4,publisher_5
+agricultural-marketing-service-department-of-agriculture,Department of Agriculture,Agricultural Marketing Service,,,,
+ars-usda-gov,Department of Agriculture,Agricultural Research Service,,,,
+aphis-usda-gov,Department of Agriculture,Animal and Plant Health Inspection Service,,,,
+risk-management-agency-department-of-agriculture,Department of Agriculture,Departmental Management,,,,
+usda-gov,Department of Agriculture,Office of Chief Information Officer,,,,
+usda-gov,Department of Agriculture,Economic Research Service,,,,
+usda-gov,Department of Agriculture,Farm Service Agency,,,,
+usda-gov,Department of Agriculture,Food and Nutrition Service,,,,
+usda-gov,Department of Agriculture,Food Safety and Inspection Service,,,,
+usda-gov,Department of Agriculture,Foreign Agricultural Service,,,,
+usda-gov,Department of Agriculture,National Agricultural Statistics Service,,,,
+usda-gov,Department of Agriculture,National Institute of Food and Agriculture,,,,
+usda-gov,Department of Agriculture,Natural Resources Conservation Service,Colorado State University,,,
+usda-gov,Department of Agriculture,Rural Development,,,,
+usda-gov,Department of Agriculture,GIPSA,Federal Grain Inspection Service,,,
+usda-gov,Department of Agriculture,Natural Resources Conservation Service,,,,
+usda-gov,Department of Agriculture,US Forest Service,,,,
+```
+
+Example of running the command:
+
+```bash
+paster --plugin=ckanext-dcat_usmetadata publishers-import publishers.csv -c /etc/ckan/production.ini
+```
+
 ## Development
 
 ### Prerequisites
