@@ -16,7 +16,7 @@ Cypress.Commands.add('logout', () => {
 
 Cypress.Commands.add('createOrg', () => {
   cy.visit('/organization/new');
-  cy.get('input[name=title]').type('test-123');
+  cy.get('input[name=title]').type('Test Organization');
   cy.get('.form-actions .btn-primary').click({ failOnStatusCode: false });
 });
 
@@ -40,8 +40,8 @@ Cypress.Commands.add('requiredMetadata', (title) => {
   cy.get('input[name=title]').type(datasetTitle);
   cy.get('textarea[name=description]').type(chance.sentence({ words: 4 }));
   cy.get('.react-tags input').type('1234{enter}');
-  cy.get('select[name=owner_org]').select('test-123');
-  cy.get('input[placeholder="Select publisher"]').type('Data.gov');
+  cy.get('select[name=owner_org]').select('Test Organization');
+  cy.get('input[placeholder="Select publisher"]').type('top level publisher');
   cy.get('input[placeholder="Select publisher"]').type('{downarrow}{enter}');
   cy.get('input[name=contact_name]').type(chance.name());
   cy.get('input[name=contact_email]').type(chance.email());
