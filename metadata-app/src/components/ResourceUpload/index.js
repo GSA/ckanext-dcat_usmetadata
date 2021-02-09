@@ -72,8 +72,8 @@ const ResourceUpload = (props) => {
     setShowModal(false);
   };
 
-  const showModal = () => {
-    setShowModal(true);
+  const showModal = (resourceName) => {
+    setShowModal(resourceName);
   };
 
   const editResource = (res) => {
@@ -126,13 +126,13 @@ const ResourceUpload = (props) => {
                   <div className="resource-item-name">{res.name}</div>
                   <button
                     id={`delete-${res.name}`}
-                    onClick={() => showModal()}
+                    onClick={() => showModal(res.name)}
                     type="button"
                     className="usa-button--unstyled resource-action-button"
                   >
                     Delete
                   </button>
-                  {shouldShowModal && (
+                  {shouldShowModal === res.name && (
                     <Dialog
                       onExit={() => hideModal()}
                       getApplicationNode={() => document.getElementById('resource-upload')}
