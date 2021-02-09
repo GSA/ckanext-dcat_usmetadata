@@ -245,6 +245,7 @@ describe('Editing an existing dataset', () => {
     cy.intercept('/api/3/action/resource_delete').as('resourceDelete');
     cy.contains(resourceToBeDeleted);
     cy.get(`#delete-${resourceToBeDeleted}`).click();
+    cy.get('.ds-c-button--primary').click();
     cy.wait('@resourceDelete');
     cy.contains(resourceToBeDeleted).should('not.exist');
     cy.contains('1 resources saved in total');
