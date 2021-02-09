@@ -5,6 +5,7 @@ exports[`Renders Resource Upload component 1`] = `
   <form>
     <div
       class="usa-form-custom"
+      id="resource-upload"
     >
       <section
         class="site-component-section"
