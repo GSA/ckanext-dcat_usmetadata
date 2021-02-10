@@ -264,4 +264,9 @@ describe('Editing an existing dataset', () => {
   it('Hides "Save draft" button when in edit mode', () => {
     cy.contains('Save draft').should('not.exist');
   });
+
+  it('Unsets publisher when owner org has changed', () => {
+    cy.get('select[name=owner_org]').select('-Select-');
+    cy.get('input[placeholder="Select publisher"]').should('have.value', '');
+  });
 });

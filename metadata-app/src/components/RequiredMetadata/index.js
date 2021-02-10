@@ -16,7 +16,16 @@ const licenses = require('./licenses.json');
 // from while the user is filling it out. It can be very frustrating to lose
 // work when clicking on a link for help.
 const RequiredMetadata = (props) => {
-  const { values, errors, apiUrl, apiKey, draftSaved, setFieldValue, submitForm } = props;
+  const {
+    values,
+    errors,
+    apiUrl,
+    apiKey,
+    draftSaved,
+    setFieldValue,
+    submitForm,
+    handleChange,
+  } = props;
 
   const [organizations, setOrganizations] = useState([]);
   // Depending on the given organization the publishers list might be different
@@ -223,6 +232,11 @@ const RequiredMetadata = (props) => {
           type="select"
           value={values.owner_org}
           choices={organizations}
+          onChange={(e) => {
+            handleChange(e);
+            setFieldValue('publisher', '');
+            setFieldValue('selectedPublisher', null);
+          }}
           required
           className="error-msg"
           errors={errors}
@@ -241,7 +255,6 @@ const RequiredMetadata = (props) => {
             name="publisher"
             type="string"
             value={values.publisher}
-            // TODO - inputValue should be replaced with parent dataset name
             inputValue={getSelectedPublisherName()}
             placeholder="Select publisher"
             helptext={helpTexts.select}
@@ -490,6 +503,7 @@ const RequiredMetadata = (props) => {
 };
 
 RequiredMetadata.propTypes = {
+  handleChange: PropTypes.func,
   setFieldValue: PropTypes.func,
   submitForm: PropTypes.func,
   draftSaved: PropTypes.string,

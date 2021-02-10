@@ -149,7 +149,7 @@ const MetadataForm = (props) => {
       {currentStep === 0 && (
         <Formik
           initialValues={formValues}
-          enableReinitialize="true"
+          enableReinitialize
           validateOnChange={false}
           validateOnBlur={false}
           validateOnMount={false}
@@ -195,7 +195,7 @@ const MetadataForm = (props) => {
           }}
           validationSchema={RequiredMetadataSchema}
         >
-          {({ values, handleSubmit, errors, setFieldValue, submitForm }) => {
+          {({ values, handleSubmit, errors, setFieldValue, submitForm, handleChange }) => {
             return (
               <div>
                 {errors && Object.keys(errors).length > 0 && (
@@ -220,6 +220,7 @@ const MetadataForm = (props) => {
                       draftSaved={draftSaved ? formatDate(draftSaved) : undefined}
                       setFieldValue={setFieldValue}
                       submitForm={submitForm}
+                      handleChange={handleChange}
                     />
                   </div>
                 </Form>
@@ -233,7 +234,7 @@ const MetadataForm = (props) => {
       {currentStep === 1 && (
         <Formik
           initialValues={formValues}
-          enableReinitialize="true"
+          enableReinitialize
           validateOnChange={false}
           validateOnBlur={false}
           onSubmit={(values) => {
@@ -319,7 +320,7 @@ const MetadataForm = (props) => {
             saveDraft: false,
             publishing_status: formValues.publishing_status,
           }}
-          enableReinitialize="true"
+          enableReinitialize
           validateOnChange={false}
           validateOnBlur={false}
           onSubmit={(values, { setFieldValue, setSubmitting }) => {
