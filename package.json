@@ -85,7 +85,7 @@
     "slugify": "^1.4.5",
     "style-loader": "0.23.1",
     "terser-webpack-plugin": "2.3.8",
-    "ts-pnp": "1.1.6",
+    "ts-pnp": "1.2.0",
     "url-loader": "2.3.0",
     "uswds": "^2.10.0",
     "webpack": "4.44.2",
