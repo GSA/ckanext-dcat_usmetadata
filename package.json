@@ -25,7 +25,7 @@
     "start:dev": "yarn dockerize && yarn && cd metadata-app && yarn start"
   },
   "dependencies": {
-    "@babel/core": "7.12.10",
+    "@babel/core": "7.12.13",
     "@cmsgov/design-system": "^2.3.0",
     "@svgr/webpack": "4.3.3",
     "@testing-library/jest-dom": "^4.2.4",
