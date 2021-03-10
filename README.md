@@ -23,9 +23,15 @@ In your CKAN .ini file add `dcat_usmetadata` to your enabled plugins:
 
 `ckan.plugins = [YOUR PLUGINS HERE...] dcat_usmetadata`
 
-### CLI command
+### Commands
 
-This extension adds a new CLI command for importing publishers linked to CKAN organizations. The list of publishers should be provided in a CSV data and it should have the following structure (note the headers):
+### publishers-import
+
+This extension adds a new CLI command for importing publishers linked to CKAN
+organizations. The [list of
+publishers](https://docs.google.com/spreadsheets/d/1BWpXWswnnMRaNazMCYrzl4W5JMWpGuyW0Wo2YaNH9jY/edit?usp=sharing)
+should be exported in a CSV data and it should have the following structure
+(note the headers):
 
 ```
 organization,publisher,publisher_1,publisher_2,publisher_3,publisher_4,publisher_5
@@ -48,11 +54,12 @@ usda-gov,Department of Agriculture,Natural Resources Conservation Service,,,,
 usda-gov,Department of Agriculture,US Forest Service,,,,
 ```
 
+Each CKAN organization must have its own list of publishers.
+
 Example of running the command:
 
-```bash
-paster --plugin=ckanext-dcat_usmetadata publishers-import publishers.csv -c /etc/ckan/production.ini
-```
+    $ paster --plugin=ckanext-dcat_usmetadata publishers-import publishers.csv -c /etc/ckan/production.ini
+
 
 ## Development
 
