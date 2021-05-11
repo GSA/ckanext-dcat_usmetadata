@@ -559,7 +559,7 @@ exports[`Renders RequiredMetadata component 1`] = `
             />
             
             <select
-              choices="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+              choices="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
               class="usa-select  "
               name="accrualPeriodicity"
               type="select"
@@ -593,6 +593,11 @@ exports[`Renders RequiredMetadata component 1`] = `
                 value="R/P1M"
               >
                 Monthly
+              </option>
+              <option
+                value="R/P3M"
+              >
+                Quarterly
               </option>
               <option
                 value="R/P1Y"
