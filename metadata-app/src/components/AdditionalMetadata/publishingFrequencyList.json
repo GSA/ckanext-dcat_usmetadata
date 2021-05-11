@@ -20,6 +20,10 @@
     "label": "Monthly"
   },
   {
+    "value": "R/P3M",
+    "label": "Quarterly"
+  },
+  {
     "value": "R/P1Y",
     "label": "Yearly"
   },
