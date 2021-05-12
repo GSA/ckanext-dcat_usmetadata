@@ -23,7 +23,7 @@ Pairtree==0.7.1-T
 Paste==1.7.5.1
 PasteDeploy==1.5.0
 PasteScript==1.7.5
-Pygments==2.5.2
+Pygments==2.7.4
 
 Routes==1.13
 SQLAlchemy==0.9.6
