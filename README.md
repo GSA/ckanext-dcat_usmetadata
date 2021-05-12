@@ -68,7 +68,7 @@ Example of running the command:
 These tools are required for development.
 
 - [Node.js](https://nodejs.org/) 12.x
-  - [Yarn](https://yarnpkg.com/) 1.22.x
+- [Yarn](https://yarnpkg.com/) 1.22.x
 
 ### Setup
 
@@ -148,7 +148,7 @@ edit a component, you'll usually have to update the snapshot and inspect the
 diff to make sure all changes are as intended.
 
 ```bash
-yarn test --updateSnapshot
+yarn test:metadata-app --updateSnapshot
 ```
 
 ## Local development and end-to-end testing
