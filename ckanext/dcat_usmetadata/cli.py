@@ -67,7 +67,7 @@ class DCATUSMetadataCommand(cli.CkanCommand):
         try:
             org_metadata = p.toolkit.get_action(
                 'organization_show')({}, {'id': org})
-            org_extras = org_metadata.get('result', {}).get('extras', [])
+            org_extras = org_metadata.get('extras', [])
             index_of_publisher_extra = next(
                 (i for i, item in enumerate(org_extras)
                     if item['key'] == 'publisher'), None)
