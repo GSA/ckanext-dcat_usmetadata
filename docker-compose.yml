@@ -1,33 +1,51 @@
-version: "3"
+version: "3.7"
 services:
   app:
-    build: .
-    command: /opt/inventory-app/start.sh
+    image: datagov/ckanext-dcat_usmetadata:${CKAN_VERSION}
+    build:
+      context: .
+      args:
+        CKAN_VERSION: ${CKAN_VERSION}
+    # command: /opt/inventory-app/start.sh
+    env_file:
+      - .env
     environment:
-      DB_CKAN_HOST: db
-      DB_CKAN_USER: ckan
-      DB_CKAN_PASSWORD: pass
-      DB_CKAN_DB: ckan
+      CKAN_SOLR_URL: http://solr:8983/solr/ckan
+      CKAN_REDIS_URL: redis://redis:6379/1
+      CKAN_DATAPUSHER_URL: http://localhost:8080/  # datapusher is not really enabled
+      CKAN__PLUGINS:
+    working_dir: /app
     depends_on:
       - db
       - solr
+      - redis
     ports:
       - "5000:5000"
     volumes:
-      - ckan:/usr/lib/ckan
+      - ckan:/var/lib/ckan
       - ./config:/etc/ckan
       - .:/opt/inventory-app
       
   db:
-    image: datagov/catalog-db:latest
-    environment:
-      POSTGRES_USER: postgres
-      DB_CKAN_USER: ckan
-      DB_CKAN_PASSWORD: pass
-      DB_CKAN_DB: ckan
-
+    image: datagov/catalog.data.gov.db:latest
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "pg_isready -u postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+  redis:
+    image: redis:alpine
   solr:
-    image: datagov/catalog-solr:inventory
+    image: datagov/catalog.data.gov.solr:latest
+    ports:
+      - "8983:8983"
 
 volumes:
   ckan:
+  pg_data:

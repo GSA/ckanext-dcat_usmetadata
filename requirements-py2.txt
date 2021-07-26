@@ -6,8 +6,9 @@
 -e git+https://github.com/GSA/webob.git@ckan-patch#egg=webob
 
 
-repoze.lru==0.7
-repoze.who==2.4
+repoze.lru==0.6
+repoze.who==2.0.0
+repoze.who-friendlyform==1.0.8
 
 # ckanext-saml2 dependencies
 M2Crypto==0.36.0
@@ -28,6 +29,4 @@ ckantoolkit==0.0.3
 
 # not directly required, pinned by Snyk to avoid a vulnerability
 # or dev-requirements
-python-memcached==1.58
 pip==20.3.3
-flake8
