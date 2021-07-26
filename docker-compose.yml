@@ -24,7 +24,7 @@ services:
     volumes:
       - ckan:/var/lib/ckan
       - ./config:/etc/ckan
-      - .:/opt/inventory-app
+      - .:/srv/app/src_extensions
       
   db:
     image: datagov/catalog.data.gov.db:latest
