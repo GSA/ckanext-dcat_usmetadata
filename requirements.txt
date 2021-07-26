@@ -2,8 +2,8 @@
 -e git+https://github.com/GSA/ckanext-datajson.git@a3dfe6bc183022572092ee572e557270701950a4#egg=ckanext-datajson
 -e git+https://github.com/GSA/USMetadata.git@master#egg=ckanext_usmetadata
 -e git+https://github.com/GSA/ckanext-googleanalyticsbasic.git@47cedeb771f29a812e878cf05aea6c4faf838f55#egg=ckanext-googleanalyticsbasic
--e git+https://github.com/GSA/ckanext-saml2.git@max#egg=ckanext-saml2
--e git+https://github.com/GSA/webob.git@ckan-patch#egg=webob
+-e git+https://github.com/keitaroinc/ckanext-saml2auth@main#egg=ckanext-saml2auth
+-e git+https://github.com/Pylons/webob#egg=webob
 
 
 repoze.lru==0.7
@@ -11,7 +11,8 @@ repoze.who==2.4
 
 # ckanext-saml2 dependencies
 M2Crypto==0.36.0
--e git+https://github.com/GSA/pysaml2.git@max#egg=pysaml2
+#-e git+https://github.com/IdentityPython/pysaml2.git#egg=pysaml2
+pysaml2
 
 # ckanext-datajson dependencies
 pyyaml==5.4
