@@ -11,7 +11,7 @@
     "test-legacy": "yarn dockerize && docker-compose run --rm app ./test.legacy.sh",
     "up": "docker-compose up",
     "up-with-data": "docker-compose -f docker-compose.yml build && docker-compose -f docker-compose.yml up",
-    "lint:python3": "docker-compose up -d && docker-compose -f docker-compose.yml run --rm app flake8 . --count --show-source --statistics --exclude ckan,nose",
+    "lint:python3": "docker-compose -f docker-compose.yml up -d && docker-compose -f docker-compose.yml run --rm app flake8 . --count --show-source --statistics --exclude ckan,nose",
     "lint:python": "docker-compose -f docker-compose.circleci.yml up -d && docker-compose -f docker-compose.circleci.yml run --rm app bash -c \"cd /srv/app/src_extensions && flake8 ./ckanext/dcat_usmetadata/ --count --show-source --statistics\"",
     "dockerize": "docker-compose -f docker-compose.yml up -d",
     "start:metadata-app": "node react-scripts/start.js",

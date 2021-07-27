@@ -62,7 +62,7 @@ setup(
       #
       # http://docs.ckan.org/en/latest/extensions/best-practices.html#add-third-party-libraries-to-requirements-txt
     ],
-    
+
     setup_requires=['wheel'],
 
     # If there are data files included in your packages that need to be
