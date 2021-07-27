@@ -75,7 +75,7 @@ jobs:
       - run:
           name: Start CKAN
           command: |
-            docker-compose -f docker-compose.yml up -d
+            docker-compose -f docker-compose.circleci.yml up -d
       - run:
           name: install dockerize
           command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
@@ -87,7 +87,7 @@ jobs:
       - run:
           name: Run extension tests
           command: |
-            docker-compose run --rm app nosetests --ckan --with-pylons=docker_test.ini ./ckanext/dcat_usmetadata/tests/*
+            docker-compose -f docker-compose.circle.yml run --rm app nosetests --ckan --with-pylons=docker_test.ini ./ckanext/dcat_usmetadata/tests/*
       - run:
           name: Run e2e tests using cypress
           command: |
