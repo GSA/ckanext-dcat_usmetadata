@@ -1,3 +1,7 @@
 wheel
 twine
 flake8
+pycodestyle
+pytest
+pytest-ckan
+pytest-cov
