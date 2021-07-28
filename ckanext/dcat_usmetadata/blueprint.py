@@ -35,6 +35,7 @@ def new_metadata():
         abort(403, _('Unauthorized to create a package'))
     return render('new-metadata.html')
 
+
 def edit_metadata(id):
     if not c.user:
         err = _('Unauthorized to edit a package')

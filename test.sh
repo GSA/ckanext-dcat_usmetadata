@@ -31,4 +31,4 @@ while ! ckan_wrapper --plugin=ckan db init; do
   sleep 5
 done
 
-pytest --ckan-ini=test.ini --cov=ckanext.ckanext-dcat_usmetadata --disable-warnings ckanext/dcat_usmetadata/tests/
+pytest --ckan-ini=test.ini --cov=ckanext.ckanext-dcat_usmetadata --disable-warnings src_extensions/ckanext/dcat_usmetadata/tests/
