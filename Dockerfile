@@ -3,7 +3,8 @@ FROM openknowledge/ckan-dev:${CKAN_VERSION}
 ARG CKAN_VERSION
 
 COPY . /app
-WORKDIR /app
+COPY . /srv/app/src_extensions
+WORKDIR /srv/app/src_extensions
 
 RUN apk add swig
 
@@ -11,3 +12,5 @@ RUN apk add swig
 RUN if [[ "${CKAN_VERSION}" = "2.8" ]] ; then \
         pip install -r requirements-py2.txt -r dev-requirements.txt -e . ; else \
         pip install -r requirements.txt -r dev-requirements.txt -e . ; fi
+
+WORKDIR /srv/app

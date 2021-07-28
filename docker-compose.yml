@@ -6,15 +6,18 @@ services:
       context: .
       args:
         CKAN_VERSION: ${CKAN_VERSION}
-    # command: /opt/inventory-app/start.sh
     env_file:
       - .env
     environment:
+      CKAN_SQLALCHEMY_URL: postgresql://ckan_default:pass@db/ckan_test
+      CKAN_DATASTORE_WRITE_URL: postgresql://datastore_write:pass@db/datastore_test
+      CKAN_DATASTORE_READ_URL: postgresql://datastore_read:pass@db/datastore_test
       CKAN_SOLR_URL: http://solr:8983/solr/ckan
       CKAN_REDIS_URL: redis://redis:6379/1
       CKAN_DATAPUSHER_URL: http://localhost:8080/  # datapusher is not really enabled
       CKAN__PLUGINS:
-    working_dir: /app
+    working_dir: /srv/app
+    command: /bin/bash -c "while ! nc -zv db 5432; do echo \"CKAN** Waiting for DB\"; sleep 3; done; /srv/app/start_ckan_development.sh"
     depends_on:
       - db
       - solr
@@ -23,28 +26,44 @@ services:
       - "5000:5000"
     volumes:
       - ckan:/var/lib/ckan
-      - ./config:/etc/ckan
+      #- ./config:/etc/ckan
       - .:/srv/app/src_extensions
+      - .:/opt/inventory-app
       
   db:
-    image: datagov/catalog.data.gov.db:latest
-    env_file:
-      - .env
+    # image: datagov/catalog-db:latest
+    image: ckan/ckan-postgres-dev:${CKAN_VERSION}
+    environment:
+      POSTGRES_USER: postgres
+      #DB_CKAN_USER: ckan
+      #DB_CKAN_PASSWORD: pass
+      #DB_CKAN_DB: ckan
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
     healthcheck:
-      test: ["CMD", "pg_isready -u postgres"]
+      test: ["CMD", "pg_isready -u ckan"]
       interval: 10s
       timeout: 5s
       retries: 5
     ports:
       - "5432:5432"
-    volumes:
-      - pg_data:/var/lib/postgresql/data
   redis:
     image: redis:alpine
   solr:
     image: datagov/catalog.data.gov.solr:latest
     ports:
       - "8983:8983"
+  cypress:
+    image: cypress/included:6.0.0
+    environment:
+      NODE_ENV: test
+    entrypoint: []
+    command: /bin/bash -c 'npx wait-on http://app:5000 && cypress run'
+    working_dir: /e2e
+    depends_on:
+      - app
+    volumes:
+      - .:/e2e
 
 volumes:
   ckan:
