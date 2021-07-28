@@ -1,7 +1,7 @@
 import 'chance';
 import 'cypress-file-upload';
 
-Cypress.Commands.add('login', (username = 'admin', password = 'admin') => {
+Cypress.Commands.add('login', (username = 'admin', password = 'password') => {
   cy.clearCookies();
   cy.visit('/user/login');
   cy.get('input[name=login]').type(username);
