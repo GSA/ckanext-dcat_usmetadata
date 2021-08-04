@@ -15,7 +15,7 @@ services:
       CKAN_SOLR_URL: http://solr:8983/solr/ckan
       CKAN_REDIS_URL: redis://redis:6379/1
       CKAN_DATAPUSHER_URL: http://localhost:8080/  # datapusher is not really enabled
-      CKAN__PLUGINS:
+      CKAN__PLUGINS: dcat_usmetadata
     # command: /bin/bash -c "while ! nc -zv db 5432; do echo \"CKAN** Waiting for DB\"; sleep 3; done; /srv/app/start_ckan_development.sh"
     depends_on:
       - db
@@ -26,8 +26,9 @@ services:
     volumes:
       - ckan:/var/lib/ckan
       - ./config:/etc/ckan
-      - .:/srv/app/src_extensions
-      # - .:/srv/app/
+      - .:/srv/app/src_extensions/dcat_usmetadata
+      - ./requirements-py2.txt:/srv/app/src_extensions/dcat_usmetadata_py2/requirements.txt
+      #- ./test.ini:/srv/app/test.ini
       
   db:
     image: ckan/ckan-postgres-dev:${CKAN_VERSION}
@@ -52,8 +53,8 @@ services:
     image: cypress/included:6.0.0
     environment:
       NODE_ENV: test
-    entrypoint: []
-    command: /bin/bash -c 'npx wait-on http://app:5000 && cypress run'
+    # entrypoint: []
+    # command: /bin/bash -c 'npx wait-on http://app:5000 && cypress run'
     working_dir: /e2e
     depends_on:
       - app
