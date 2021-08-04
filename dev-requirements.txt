@@ -1,5 +1,6 @@
 wheel
 twine
+future
 flake8
 pytest
 pytest-ckan
