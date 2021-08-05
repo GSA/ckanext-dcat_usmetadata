@@ -83,11 +83,11 @@ jobs:
             DOCKERIZE_VERSION: v0.3.0
       - run:
           name: Wait for db
-          command: dockerize -wait http://localhost:5000/dataset -timeout 120s
+          command: dockerize -wait http://localhost:5000/dataset -timeout 600s
       - run:
           name: Run extension tests
           command: |
-            CKAN_VERSION=2.8 docker-compose -f docker-compose.circle.yml run --rm app nosetests --ckan --with-pylons=docker_test.ini ./ckanext/dcat_usmetadata/tests/*
+            CKAN_VERSION=2.8 docker-compose -f docker-compose.circleci.yml run --rm app nosetests --ckan --with-pylons=/srv/app/src_extensions/dcat_usmetadata/docker_test.ini ./ckanext/dcat_usmetadata/tests/nose/*
       - run:
           name: Run e2e tests using cypress
           command: |

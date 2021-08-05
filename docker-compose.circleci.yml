@@ -13,7 +13,7 @@ services:
       CKAN_SOLR_URL: http://solr:8983/solr/ckan
       CKAN_REDIS_URL: redis://redis:6379/1
       CKAN_DATAPUSHER_URL: http://localhost:8080/  # datapusher is not really enabled
-      CKAN__PLUGINS:
+      CKAN__PLUGINS: dcat_usmetadata usmetadata
     working_dir: /app
     depends_on:
       - db
@@ -24,7 +24,7 @@ services:
     volumes:
       - ckan:/var/lib/ckan
       - ./config:/etc/ckan
-      - .:/srv/app/src_extensions
+      - .:/srv/app/src_extensions/dcat_usmetadata
       
   db:
     image: datagov/catalog.data.gov.db:latest

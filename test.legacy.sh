@@ -8,6 +8,8 @@
 set -o errexit
 set -o pipefail
 
+TEST_CONFIG=/srv/app/src_extensions/dcat_usmetadata/docker_test.ini
+
 # Wrapper for paster/ckan.
 # CKAN 2.9 replaces paster with ckan CLI. This wrapper abstracts which comand
 # is called.
@@ -19,9 +21,9 @@ set -o pipefail
 function ckan_wrapper () {
   if command -v ckan > /dev/null; then
     shift  # drop the --plugin= argument
-    ckan -c test.ini "$@"
+    ckan -c $TEST_CONFIG "$@"
   else
-    paster "$@" -c test.ini
+    paster "$@" -c $TEST_CONFIG
   fi
 }
 
@@ -31,4 +33,4 @@ while ! ckan_wrapper --plugin=ckan db init; do
   sleep 5
 done
 
-nosetests --ckan --with-pylons=docker_test.ini ./ckanext/dcat_usmetadata/tests/*
+nosetests --ckan --with-pylons=$TEST_CONFIG ./ckanext/dcat_usmetadata/tests/*
