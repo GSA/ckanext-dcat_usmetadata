@@ -1,6 +1,5 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
-import db_utils as utils
 from ckan.common import c
 from logging import getLogger
 
@@ -12,13 +11,13 @@ else:
     from ckanext.dcat_usmetadata.plugin.flask_plugin import MixinPlugin
 
 from .. import blueprint
+from .. import db_utils as utils
 
 log = getLogger(__name__)
 
 
 class Dcat_UsmetadataPlugin(MixinPlugin, plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
-    plugins.implements(plugins.IRoutes)
     plugins.implements(plugins.IActions)
     plugins.implements(plugins.IBlueprint)
 
