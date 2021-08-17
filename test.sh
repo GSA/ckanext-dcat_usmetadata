@@ -8,6 +8,8 @@
 set -o errexit
 set -o pipefail
 
+TEST_CONFIG=/app/test.ini
+
 # Wrapper for paster/ckan.
 # CKAN 2.9 replaces paster with ckan CLI. This wrapper abstracts which comand
 # is called.
@@ -19,9 +21,9 @@ set -o pipefail
 function ckan_wrapper () {
   if command -v ckan > /dev/null; then
     shift  # drop the --plugin= argument
-    ckan -c test.ini "$@"
+    ckan -c $TEST_CONFIG "$@"
   else
-    paster "$@" -c test.ini
+    paster "$@" -c $TEST_CONFIG
   fi
 }
 
@@ -31,4 +33,5 @@ while ! ckan_wrapper --plugin=ckan db init; do
   sleep 5
 done
 
-pytest --ckan-ini=test.ini --cov=ckanext.ckanext-dcat_usmetadata --disable-warnings src_extensions/ckanext/dcat_usmetadata/tests/
+# start_ckan_development.sh &
+pytest -s --ckan-ini=$TEST_CONFIG --cov=ckanext.dcat_usmetadata --disable-warnings /app/ckanext/dcat_usmetadata/tests/

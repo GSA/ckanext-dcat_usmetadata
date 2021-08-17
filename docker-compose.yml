@@ -26,9 +26,7 @@ services:
     volumes:
       - ckan:/var/lib/ckan
       - ./config:/etc/ckan
-      - .:/srv/app/src_extensions/dcat_usmetadata
-      - ./requirements-py2.txt:/srv/app/src_extensions/dcat_usmetadata_py2/requirements.txt
-      #- ./test.ini:/srv/app/test.ini
+      - .:/app
       
   db:
     image: ckan/ckan-postgres-dev:${CKAN_VERSION}
@@ -49,17 +47,17 @@ services:
     image: datagov/catalog.data.gov.solr:latest
     ports:
       - "8983:8983"
-  cypress:
-    image: cypress/included:6.0.0
-    environment:
-      NODE_ENV: test
-    # entrypoint: []
-    # command: /bin/bash -c 'npx wait-on http://app:5000 && cypress run'
-    working_dir: /e2e
-    depends_on:
-      - app
-    volumes:
-      - .:/e2e
+  # cypress:
+  #   image: cypress/included:6.0.0
+  #   environment:
+  #     NODE_ENV: test
+  #   # entrypoint: []
+  #   # command: /bin/bash -c 'npx wait-on http://app:5000 && cypress run'
+  #   working_dir: /e2e
+  #   depends_on:
+  #     - app
+  #   volumes:
+  #     - .:/e2e
 
 volumes:
   ckan:
