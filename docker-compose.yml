@@ -24,8 +24,6 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ckan:/var/lib/ckan
-      - ./config:/etc/ckan
       - .:/app
       
   db:
@@ -47,18 +45,6 @@ services:
     image: datagov/catalog.data.gov.solr:latest
     ports:
       - "8983:8983"
-  # cypress:
-  #   image: cypress/included:6.0.0
-  #   environment:
-  #     NODE_ENV: test
-  #   # entrypoint: []
-  #   # command: /bin/bash -c 'npx wait-on http://app:5000 && cypress run'
-  #   working_dir: /e2e
-  #   depends_on:
-  #     - app
-  #   volumes:
-  #     - .:/e2e
 
 volumes:
-  ckan:
   pg_data:

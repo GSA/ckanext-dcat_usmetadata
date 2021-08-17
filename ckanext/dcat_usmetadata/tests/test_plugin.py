@@ -9,7 +9,7 @@ try:
     from ckan.tests import factories
     from ckan.tests.helpers import FunctionalTestBase, reset_db
 except ImportError:
-    from ckan.new_tests import factories, helpers
+    from ckan.new_tests import factories
     from ckan.new_tests.helpers import FunctionalTestBase, reset_db
 
 
@@ -77,7 +77,6 @@ class TestReactMetadataPlugin(FunctionalTestBase):
         self.create_datasets()
         self.app = self._get_test_app()
 
-        env = {'REMOTE_USER': self.user['name'].encode('ascii')}
         response = self.app.get(url='/dataset/new',
                                 extra_environ=self.extra_environ)
 
