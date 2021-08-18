@@ -1,11 +1,11 @@
 version: "3.7"
 services:
   cypress:
-    image: cypress/included:6.0.0
+    image: cypress/included:7.3.0
     environment:
       NODE_ENV: test
-    # entrypoint: []
-    # command: /bin/bash -c 'npx wait-on http://app:5000 && cypress run'
+    entrypoint: []
+    command: /bin/bash -c 'npx wait-on http://app:5000 && cypress run'
     working_dir: /e2e
     depends_on:
       - app

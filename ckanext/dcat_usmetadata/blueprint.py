@@ -2,6 +2,7 @@ from ckan.lib import base
 import ckan.lib.helpers as h
 import ckan.logic as logic
 import ckan.model as model
+from ckan.plugins.toolkit import render
 from ckan.common import request, c, _
 
 from flask import Blueprint
@@ -10,9 +11,7 @@ check_access = logic.check_access
 NotAuthorized = logic.NotAuthorized
 NotFound = logic.NotFound
 abort = base.abort
-render = base.render
 
-controller = 'ckanext.dcat_usmetadata.controller:MetadataController'
 dcat_usmetadata = Blueprint('dcat_usmetadata', __name__)
 
 
@@ -21,7 +20,7 @@ def new_metadata():
         err = _('Unauthorized to create a package')
         h.flash_error(err)
         came_from = h.url_for(
-            controller=controller,
+            '/dataset',
             action='new_metadata')
         h.redirect_to(controller='user',
                       action='login', came_from=came_from)
@@ -33,6 +32,7 @@ def new_metadata():
         check_access('package_create', context)
     except NotAuthorized:
         abort(403, _('Unauthorized to create a package'))
+    print('asdf')
     return render('new-metadata.html')
 
 
@@ -41,7 +41,7 @@ def edit_metadata(id):
         err = _('Unauthorized to edit a package')
         h.flash_error(err)
         came_from = h.url_for(
-            controller=controller,
+            '/dataset/edit-new/',
             action='edit_metadata',
             id=id)
         h.redirect_to(controller='user',
