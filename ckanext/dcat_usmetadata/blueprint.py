@@ -13,7 +13,7 @@ abort = base.abort
 render = base.render
 
 controller = 'ckanext.dcat_usmetadata.controller:MetadataController'
-datapusher = Blueprint('dcat_usmetadata', __name__)
+dcat_usmetadata = Blueprint('dcat_usmetadata', __name__)
 
 
 def new_metadata():
@@ -73,7 +73,7 @@ def edit_metadata(id):
                 None)})
 
 
-datapusher.add_url_rule('/dataset/new-metadata',
+dcat_usmetadata.add_url_rule('/dataset/new-metadata',
                         view_func=new_metadata)
-datapusher.add_url_rule('/dataset/edit-new/{id}',
+dcat_usmetadata.add_url_rule('/dataset/edit-new/{id}',
                         view_func=edit_metadata)

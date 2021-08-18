@@ -30,4 +30,4 @@ class Dcat_UsmetadataPlugin(MixinPlugin, plugins.SingletonPlugin):
         }
 
     def get_blueprint(self):
-        return blueprint.datapusher
+        return blueprint.dcat_usmetadata
