@@ -32,11 +32,11 @@ def new_metadata():
         check_access('package_create', context)
     except NotAuthorized:
         abort(403, _('Unauthorized to create a package'))
-    print('asdf')
     return render('new-metadata.html')
 
 
-def edit_metadata(id):
+def edit_metadata_dcat_us(id):
+    print(id)
     if not c.user:
         err = _('Unauthorized to edit a package')
         h.flash_error(err)
@@ -52,6 +52,7 @@ def edit_metadata(id):
                'save': 'save' in request.params}
 
     try:
+        print(id)
         c.pkg_dict = logic.get_action('package_show')(context, {'id': id})
     except NotAuthorized:
         abort(401, _('Unauthorized to read package %s') % '')
@@ -66,14 +67,10 @@ def edit_metadata(id):
     return render(
         'new-metadata.html',
         extra_vars={
-            'id': c.pkg_dict.get(
-                'name',
-                None) or c.pkg_dict.get(
-                'id',
-                None)})
+            'id': c.pkg_dict.get('name', None) or c.pkg_dict.get('id', None)})
 
 
 dcat_usmetadata.add_url_rule('/dataset/new-metadata',
-                        view_func=new_metadata)
+                             view_func=new_metadata)
 dcat_usmetadata.add_url_rule('/dataset/edit-new/{id}',
-                        view_func=edit_metadata)
+                             view_func=edit_metadata_dcat_us)
