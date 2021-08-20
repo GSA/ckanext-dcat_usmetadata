@@ -5,7 +5,9 @@ const resourceToBeDeleted = 'resource-to-be-deleted';
 
 before(() => {
   cy.login();
-  cy.createOrg();
+  cy.deleteDataset(name);
+  cy.deleteOrg('test-organization');
+  cy.createOrg('test-organization');
   cy.visit('/dataset/new-metadata');
   cy.requiredMetadata(name);
   cy.additionalMetadata();

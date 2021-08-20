@@ -117,7 +117,7 @@ Cypress.Commands.add('requiredMetadata', (title) => {
   cy.wait('@packageCreate');
 });
 
-Cypress.Commands.add('additionalMetadata', () => {
+Cypress.Commands.add('additionalMetadata', (isparent) => {
   cy.get('select[name=dataQuality]').select('Yes');
   cy.get('#category-option-yes').parent('.form-group').click();
   cy.get('input[name=data_dictionary]').clear().type(chance.url());
@@ -130,7 +130,11 @@ Cypress.Commands.add('additionalMetadata', () => {
   cy.get('input[name=related_documents]').type(chance.name());
   cy.get('input[name=release_date]').type('2020-08-08');
   cy.get('input[name=system_of_records]').type(chance.url());
-  cy.get('select[name=isParent]').select('No');
+  if (isparent) {
+    cy.get('select[name=isParent]').select('Yes');
+  } else {
+    cy.get('select[name=isParent]').select('No');
+  }
 });
 
 Cypress.Commands.add('resourceUploadWithUrlAndPublish', (url, name) => {
