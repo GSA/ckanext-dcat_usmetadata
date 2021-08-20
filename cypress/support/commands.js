@@ -14,10 +14,68 @@ Cypress.Commands.add('logout', () => {
   cy.clearCookies();
 });
 
-Cypress.Commands.add('createOrg', () => {
-  cy.visit('/organization/new');
-  cy.get('input[name=title]').type('Test Organization');
-  cy.get('.form-actions .btn-primary').click({ failOnStatusCode: false });
+Cypress.Commands.add('createOrg', (orgName, orgDesc) => {
+  /**
+   *  * Method to create organization via CKAN API
+   *   * :PARAM orgName String: Name of the organization being created
+   *   * :PARAM orgDesc String: Description of the organization being created
+   *   * :PARAM orgTest Boolean: Control value to determine if to use UI to create organization
+   *   *  for testing or to visit the organization creation page
+   *   * :RETURN null:
+   *   */
+
+  cy.request({
+    url: '/api/action/organization_create',
+    method: 'POST',
+    body: {
+      description: orgDesc,
+      title: orgName,
+      approval_status: 'approved',
+      state: 'active',
+      name: orgName,
+      extras: [
+        { key: 'publisher', value: `[["${orgName}", "${orgName}", "top level publisher"]]` },
+      ],
+    },
+  });
+});
+
+Cypress.Commands.add('deleteOrg', (orgName) => {
+  /**
+   * Method to purge an organization from the current state
+   * :PARAM orgName String: Name of the organization to purge from the current state
+   * :RETURN null:
+   */
+  cy.request({
+    url: '/api/action/organization_delete',
+    method: 'POST',
+    failOnStatusCode: false,
+    body: {
+      id: orgName,
+    },
+  });
+  cy.request({
+    url: '/api/action/organization_purge',
+    method: 'POST',
+    failOnStatusCode: false,
+    body: {
+      id: orgName,
+    },
+  });
+});
+
+Cypress.Commands.add('deleteDataset', (datasetName) => {
+  /**
+   ** Method to purge a dataset from the current state
+   ** :PARAM datasetName String: Name of the dataset to purge from the current state
+   ** :RETURN null:
+   **/
+  cy.request({
+    url: '/api/action/dataset_purge',
+    method: 'POST',
+    failOnStatusCode: false,
+    body: { id: datasetName },
+  });
 });
 
 Cypress.Commands.add('createUser', (username) => {
@@ -40,7 +98,7 @@ Cypress.Commands.add('requiredMetadata', (title) => {
   cy.get('input[name=title]').type(datasetTitle);
   cy.get('textarea[name=description]').type(chance.sentence({ words: 4 }));
   cy.get('.react-tags input').type('1234{enter}');
-  cy.get('select[name=owner_org]').select('Test Organization');
+  cy.get('select[name=owner_org]').select('test-organization');
   cy.get('input[placeholder="Select publisher"]').type('top level publisher');
   cy.get('input[placeholder="Select publisher"]').type('{downarrow}{enter}');
   cy.get('input[name=contact_name]').type(chance.name());

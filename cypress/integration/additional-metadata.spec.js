@@ -3,7 +3,15 @@ const chance = new Chance();
 
 before(() => {
   cy.login();
-  cy.createOrg();
+  cy.deleteDataset('nunec');
+  cy.deleteDataset('aaaaa');
+  cy.deleteDataset('bbbbb');
+  cy.deleteDataset('ccccc');
+  cy.deleteDataset('ddddd');
+  cy.deleteDataset('eeeee');
+  cy.deleteDataset('eeeef');
+  cy.deleteOrg('test-organization');
+  cy.createOrg('test-organization', 'sample organization');
 });
 
 beforeEach(() => {
@@ -12,9 +20,13 @@ beforeEach(() => {
   cy.visit('/dataset/new-metadata');
 });
 
+after(() => {
+  cy.deleteOrg('test-organization');
+});
+
 describe('Additional Metadata Page', () => {
   it('Validates and submits Additional Metadata succesfully', () => {
-    cy.requiredMetadata();
+    cy.requiredMetadata('aaaaa');
     cy.get('input[name=data_dictionary]').type('www.invalid.url');
     cy.get('input[name=homepage_url]').type('www.invalid.url');
     cy.get('button[type=button]').contains('Save and Continue').click();
@@ -33,7 +45,7 @@ describe('Additional Metadata Page', () => {
   });
 
   it('Accrual Periodicity validation works ISO 8601 value', () => {
-    cy.requiredMetadata();
+    cy.requiredMetadata('bbbbb');
     cy.get('select[name=accrualPeriodicity]').select('Other');
     cy.get('input[name=accrualPeriodicityOther]').should('be.enabled');
     cy.get('select[name=accrualPeriodicity]').select('Daily');
@@ -46,7 +58,7 @@ describe('Additional Metadata Page', () => {
   });
 
   it('Radio field geospatial dataset works', () => {
-    cy.requiredMetadata();
+    cy.requiredMetadata('ccccc');
     cy.get('#category-option-yes').parent('.form-group').click();
     cy.intercept('/api/3/action/package_update').as('packageUpdate');
     cy.get('button[type=button]').contains('Save and Continue').click();
@@ -57,7 +69,7 @@ describe('Additional Metadata Page', () => {
   });
 
   it('Goes back to previous page', () => {
-    cy.requiredMetadata();
+    cy.requiredMetadata('ddddd');
     cy.get('button[type=button]')
       .contains('Back to previous page')
       .click()
@@ -68,8 +80,8 @@ describe('Additional Metadata Page', () => {
 });
 
 describe('Parent Dataset', () => {
-  const parentTitle = chance.word({ length: 5 });
-  const childTitle = chance.word({ length: 5 });
+  const parentTitle = 'eeeee';
+  const childTitle = 'eeeef';
 
   before(() => {
     cy.logout();

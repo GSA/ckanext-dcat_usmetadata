@@ -51,6 +51,7 @@ docs/_build/
 
 cypress/screenshots/
 cypress/videos/
+yarn-error.log
 
 # MacOS specific
 .DS_Store

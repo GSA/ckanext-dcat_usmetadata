@@ -5,9 +5,12 @@ services:
     environment:
       NODE_ENV: test
     entrypoint: []
-    command: /bin/bash -c 'npx wait-on http://app:5000 && cypress run'
+    # command: /bin/bash -c 'npx wait-on http://app:5000 && cypress run'
+    # To run specific test, use the following syntax:
+    command: /bin/bash -c "npx wait-on http://app:5000 && cypress run --spec cypress/integration/additional-metadata.spec.js"
+    # command: /bin/bash -c "npx wait-on http://app:5000 && cypress open --browser firefox:stable"
     working_dir: /e2e
     depends_on:
-      - app
+      - ckan
     volumes:
       - .:/e2e

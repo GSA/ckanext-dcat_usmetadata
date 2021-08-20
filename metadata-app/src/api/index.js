@@ -139,12 +139,12 @@ const serializeSupplementalValues = (opts) => {
 
   if (opts.description) {
     newOpts.notes = opts.description;
-    const indexOfNotes = newOpts.extras.findIndex((x) => x.key === 'notes');
-    if (indexOfNotes > -1) {
-      newOpts.extras[indexOfNotes].value = opts.description;
-    } else {
-      newOpts.extras.push({ key: 'notes', value: newOpts.notes });
-    }
+    // const indexOfNotes = newOpts.extras.findIndex((x) => x.key === 'notes');
+    // if (indexOfNotes > -1) {
+    //   newOpts.extras[indexOfNotes].value = opts.description;
+    // } else {
+    //   newOpts.extras.push({ key: 'notes', value: newOpts.notes });
+    // }
   }
 
   if (opts.tags && opts.tags.length > 0) {
