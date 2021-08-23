@@ -22,6 +22,10 @@ class TestDcatUsmetadataPlugin(helpers.FunctionalTestBase):
     def setup(cls):
         helpers.reset_db()
 
+    @classmethod
+    def setup_class(cls):
+        super(TestDcatUsmetadataPlugin, cls).setup_class()
+
     def create_user(self):
         self.sysadmin = factories.Sysadmin(name='admin')
         self.organization = factories.Organization()
@@ -86,4 +90,11 @@ class TestDcatUsmetadataPlugin(helpers.FunctionalTestBase):
         self.app = self._get_test_app()
         res = self.app.get('/dataset/edit-new/%s' % (self.dataset1['name']),
                            extra_environ=self.extra_environ)
-        print(res)
+        if six.PY2:
+            assert '/assets/js/main.chunk.js' in res.unicode_body
+            res = self.app.get('/assets/js/main.chunk.js', extra_environ=self.extra_environ)
+            assert 'Required Metadata' in res.body
+        else:
+            assert '/assets/js/main.chunk.js' in res.body
+            res = self.app.get('/assets/js/main.chunk.js', extra_environ=self.extra_environ)
+            assert 'Required Metadata' in res.body

@@ -6,6 +6,7 @@ from ckan.plugins.toolkit import render
 from ckan.common import request, c, _
 
 from flask import Blueprint
+from logging import getLogger
 
 check_access = logic.check_access
 NotAuthorized = logic.NotAuthorized
@@ -13,6 +14,7 @@ NotFound = logic.NotFound
 abort = base.abort
 
 dcat_usmetadata = Blueprint('dcat_usmetadata', __name__)
+log = getLogger(__name__)
 
 
 def new_metadata():
@@ -35,8 +37,7 @@ def new_metadata():
     return render('new-metadata.html')
 
 
-def edit_metadata_dcat_us(id):
-    print(id)
+def edit_metadata(id):
     if not c.user:
         err = _('Unauthorized to edit a package')
         h.flash_error(err)
@@ -52,7 +53,6 @@ def edit_metadata_dcat_us(id):
                'save': 'save' in request.params}
 
     try:
-        print(id)
         c.pkg_dict = logic.get_action('package_show')(context, {'id': id})
     except NotAuthorized:
         abort(401, _('Unauthorized to read package %s') % '')
@@ -64,13 +64,11 @@ def edit_metadata_dcat_us(id):
     except NotAuthorized:
         abort(401, _('User %r not authorized to edit %s') % (c.user, id))
 
-    return render(
-        'new-metadata.html',
-        extra_vars={
-            'id': c.pkg_dict.get('name', None) or c.pkg_dict.get('id', None)})
+    return render('new-metadata.html',
+                  extra_vars={'id': c.pkg_dict.get('name', None) or c.pkg_dict.get('id', None)})
 
 
+dcat_usmetadata.add_url_rule('/dataset/edit-new/<id>',
+                             view_func=edit_metadata)
 dcat_usmetadata.add_url_rule('/dataset/new-metadata',
                              view_func=new_metadata)
-dcat_usmetadata.add_url_rule('/dataset/edit-new/{id}',
-                             view_func=edit_metadata_dcat_us)

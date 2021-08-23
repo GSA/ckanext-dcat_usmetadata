@@ -1,0 +1,4 @@
+styles:
+  output: dcat_usmetadata/custom.css
+  contents: # list of files that are included into asset
+    - custom.css
