@@ -1,5 +1,7 @@
 import ckan.model as model
 
+import six
+
 
 def get_parent_organizations(c):
     items = {}
