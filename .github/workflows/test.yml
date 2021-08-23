@@ -32,7 +32,7 @@ jobs:
       solr:
         image: datagov/catalog.data.gov.solr:latest
       db:
-        image: ckan/ckan-postgres-dev:${CKAN_VERSION}
+        image: ckan/ckan-postgres-dev:${{ matrix.ckan-version }}
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
