@@ -52,8 +52,9 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install dependency (common)
       run: |
-        apk add swig
+        apk add swig npm
         pip install -r dev-requirements.txt
+        npm install --global yarn
     - name: Install requirements and Setup (py3)
       if: ${{ matrix.ckan-version == '2.9' }}
       run: |
