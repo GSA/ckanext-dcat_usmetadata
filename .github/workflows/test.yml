@@ -54,26 +54,22 @@ jobs:
       run: |
         apk add swig
         pip install -r dev-requirements.txt
-    - name: Install requirements (py3)
+    - name: Install requirements and Setup (py3)
       if: ${{ matrix.ckan-version == '2.9' }}
       run: |
         pip install -r requirements.txt
         pip install -e .
-    - name: Install requirements (py2)
+        source $ENV_FILE
+        ckan -c test.ini db init
+    - name: Install requirements and Setup (py2)
       if: ${{ matrix.ckan-version == '2.8' }}
       run: |
         pip install -r requirements-py2.txt
         pip install -e .
-    - name: Setup extension (CKAN >= 2.9)
-      if: ${{ matrix.ckan-version != '2.7' && matrix.ckan-version != '2.8' }}
-      run: |
-        source $ENV_FILE
-        ckan -c test.ini db init
-    - name: Setup extension (CKAN < 2.9)
-      if: ${{ matrix.ckan-version == '2.8' }}
-      run: |
         source $ENV_FILE
         paster --plugin=ckan db init -c test.ini
     - name: Run tests
-      run: pytest --ckan-ini=test.ini --cov=ckanext.dcat_usmetadata --cov-fail-under=${CODE_COVERAGE_THRESHOLD_REQUIRED} --disable-warnings ckanext/dcat_usmetadata/tests
+      run: |
+        yarn build:metadata-app
+        pytest --ckan-ini=test.ini --cov=ckanext.dcat_usmetadata --cov-fail-under=${CODE_COVERAGE_THRESHOLD_REQUIRED} --disable-warnings ckanext/dcat_usmetadata/tests
 
