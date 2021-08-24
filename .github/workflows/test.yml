@@ -55,7 +55,8 @@ jobs:
         apk add swig npm
         pip install -r dev-requirements.txt
         npm install --global yarn
-        npm install --save-dev react-dev-utils fs-extra webpack resolve
+        yarn install
+        # npm install --save-dev react-dev-utils fs-extra webpack resolve
     - name: Install requirements and Setup (py3)
       if: ${{ matrix.ckan-version == '2.9' }}
       run: |
