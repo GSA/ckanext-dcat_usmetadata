@@ -71,9 +71,8 @@ describe('Additional Metadata Page', () => {
     cy.get('button[type=button]').contains('Save and Continue').click();
     cy.wait('@packageUpdate');
     cy.get('button[type=button]').contains('Finish and publish').click();
-    // TODO: Fix contains check
-    // cy.contains('Theme (Category)');
-    // cy.contains('geospatial');
+    cy.contains('category');
+    cy.contains('geospatial');
   });
 
   it('Goes back to previous page', () => {
@@ -103,25 +102,25 @@ describe('Parent Dataset', () => {
     cy.resourceUploadWithUrlAndPublish();
   });
 
-  // after(() => {
-  //   cy.request({
-  //     method: 'POST',
-  //     url: '/api/3/action/dataset_purge',
-  //     body: {
-  //       id: childTitle,
-  //     },
-  //     failOnStatusCode: false,
-  //   });
+  after(() => {
+    cy.request({
+      method: 'POST',
+      url: '/api/3/action/dataset_purge',
+      body: {
+        id: childTitle,
+      },
+      failOnStatusCode: false,
+    });
 
-  //   cy.request({
-  //     method: 'POST',
-  //     url: '/api/3/action/dataset_purge',
-  //     body: {
-  //       id: parentTitle,
-  //     },
-  //     failOnStatusCode: false,
-  //   });
-  // });
+    cy.request({
+      method: 'POST',
+      url: '/api/3/action/dataset_purge',
+      body: {
+        id: parentTitle,
+      },
+      failOnStatusCode: false,
+    });
+  });
 
   it('Able to select and displays parent dataset with a human-readable title', () => {
     cy.visit('/dataset/new-metadata');
