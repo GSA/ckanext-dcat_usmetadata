@@ -4,7 +4,7 @@ import MetadataForm from './components/MetadataForm';
 
 const App = (props) => {
   const { apiUrl, apiKey, ownerOrg, datasetId } = props;
-  console.log({ apiUrl, apiKey, ownerOrg }); // eslint-disable-line
+  // console.log({ apiUrl, apiKey, ownerOrg }); // eslint-disable-line
   return (
     <div className="App">
       <MetadataForm apiUrl={apiUrl} apiKey={apiKey} ownerOrg={ownerOrg} datasetId={datasetId} />
