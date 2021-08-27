@@ -71,7 +71,7 @@ describe('Additional Metadata Page', () => {
     cy.get('button[type=button]').contains('Save and Continue').click();
     cy.wait('@packageUpdate');
     cy.get('button[type=button]').contains('Finish and publish').click();
-    cy.contains('category');
+    cy.contains('Theme (Category)');
     cy.contains('geospatial');
   });
 

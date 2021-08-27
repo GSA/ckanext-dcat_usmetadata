@@ -10,10 +10,7 @@ before(() => {
   cy.createOrg('test-organization');
   cy.visit('/dataset/new-metadata');
   cy.requiredMetadata(name);
-  cy.additionalMetadata();
-  // Set 'isParent' to "Yes" to confirm if values are saved correctly as by default
-  // it is set to "No".
-  cy.get('select[name=isParent]').select('Yes');
+  cy.additionalMetadata(true);
 
   // Use custom value for "Data Publishing Frequency" field
   cy.get('select[name=accrualPeriodicity]').select('other');
@@ -55,7 +52,7 @@ describe('Editing an existing dataset', () => {
     cy.get('select[name=owner_org]')
       .find(':selected')
       .invoke('text')
-      .should('eq', 'Test Organization');
+      .should('eq', 'test-organization');
     cy.get('input[placeholder="Select publisher"]').should('have.value', 'top level publisher');
     cy.get('input[name=contact_name]').invoke('val').should('not.be.empty');
     cy.get('input[name=contact_email]')
@@ -178,7 +175,7 @@ describe('Editing an existing dataset', () => {
     cy.get('select[name=owner_org]')
       .find(':selected')
       .invoke('text')
-      .should('eq', 'Test Organization');
+      .should('eq', 'test-organization');
     cy.get('input[placeholder="Select publisher"]').should('have.value', newMetadata.publisher);
     cy.get('input[name=contact_name]').invoke('val').should('eq', newMetadata.contactName);
     cy.get('input[name=contact_email]').invoke('val').should('eq', newMetadata.contactEmail);
