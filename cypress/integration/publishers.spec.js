@@ -7,9 +7,9 @@ describe('Publishers linked to CKAN org', () => {
       assert.isObject(publisherExtra, 'extra is found');
       assert.isString(publisherExtra.value, 'its value is string');
       const publishers = JSON.parse(publisherExtra.value);
-      expect(publishers.length).to.eq(6);
-      expect(publishers[0].length).to.eq(2);
-      expect(publishers[5].length).to.eq(7);
+      expect(publishers.length).to.eq(1);
+      expect(publishers[0].length).to.eq(3);
+      expect(publishers[0][2].length).to.eq(19);
     });
   });
 });
