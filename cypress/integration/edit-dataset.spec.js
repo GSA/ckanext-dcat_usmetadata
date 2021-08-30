@@ -3,46 +3,46 @@ const name = 'test-editing';
 const resourceToBeEdited = 'resource-to-be-edited';
 const resourceToBeDeleted = 'resource-to-be-deleted';
 
-before(() => {
-  cy.login();
-  cy.deleteDataset(name);
-  cy.deleteOrg('test-organization');
-  cy.createOrg('test-organization');
-  cy.visit('/dataset/new-metadata');
-  cy.requiredMetadata(name);
-  cy.additionalMetadata(true);
-
-  // Use custom value for "Data Publishing Frequency" field
-  cy.get('select[name=accrualPeriodicity]').select('other');
-  cy.get('input[name=accrualPeriodicityOther]').type('P1Y30DT15M39S');
-
-  // Use custom value for "Data Dictionary Type" field
-  cy.get('select[name=describedByType]').select('other');
-  cy.get('input[name=otherDataDictionaryType]').type('something/else');
-
-  cy.get('button[type=button]').contains('Save and Continue').click();
-  cy.intercept('/api/3/action/package_patch').as('packagePatch');
-  cy.intercept('/api/3/action/resource_create').as('resourceSaved');
-  cy.resourceUploadWithUrlAndSave(null, resourceToBeDeleted);
-  cy.wait('@resourceSaved');
-  cy.resourceUploadWithUrlAndPublish(null, resourceToBeEdited);
-  cy.wait('@packagePatch');
-});
-
-beforeEach(() => {
-  cy.logout();
-  cy.login();
-  // Wait for list of organizations to be fetched:
-  cy.intercept('/api/3/action/organization_list_for_user').as('listOfOrgs');
-  cy.visit('/dataset/edit-new/' + name);
-  cy.wait('@listOfOrgs');
-});
-
-after(() => {
-  cy.request('POST', '/api/3/action/dataset_purge', { id: name });
-});
-
 describe('Editing an existing dataset', () => {
+  before(() => {
+    cy.login();
+    cy.deleteDataset(name);
+    cy.deleteOrg('test-organization');
+    cy.createOrg('test-organization');
+    cy.visit('/dataset/new-metadata');
+    cy.requiredMetadata(name);
+    cy.additionalMetadata(true);
+
+    // Use custom value for "Data Publishing Frequency" field
+    cy.get('select[name=accrualPeriodicity]').select('other');
+    cy.get('input[name=accrualPeriodicityOther]').type('P1Y30DT15M39S');
+
+    // Use custom value for "Data Dictionary Type" field
+    cy.get('select[name=describedByType]').select('other');
+    cy.get('input[name=otherDataDictionaryType]').type('something/else');
+
+    cy.get('button[type=button]').contains('Save and Continue').click();
+    cy.intercept('/api/3/action/package_patch').as('packagePatch');
+    cy.intercept('/api/3/action/resource_create').as('resourceSaved');
+    cy.resourceUploadWithUrlAndSave(null, resourceToBeDeleted);
+    cy.wait('@resourceSaved');
+    cy.resourceUploadWithUrlAndPublish(null, resourceToBeEdited);
+    cy.wait('@packagePatch');
+  });
+
+  beforeEach(() => {
+    cy.logout();
+    cy.login();
+    // Wait for list of organizations to be fetched:
+    cy.intercept('/api/3/action/organization_list_for_user').as('listOfOrgs');
+    cy.visit('/dataset/edit-new/' + name);
+    cy.wait('@listOfOrgs');
+  });
+
+  after(() => {
+    cy.request('POST', '/api/3/action/dataset_purge', { id: name });
+  });
+
   it('Loads required metadata values into the form', () => {
     cy.contains('Required Metadata');
     cy.get('input[name=title]').invoke('val').should('eq', name);

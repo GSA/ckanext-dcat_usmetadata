@@ -34,7 +34,10 @@ Cypress.Commands.add('createOrg', (orgName, orgDesc) => {
       state: 'active',
       name: orgName,
       extras: [
-        { key: 'publisher', value: `[["${orgName}", "${orgName}", "top level publisher"]]` },
+        {
+          key: 'publisher',
+          value: `[["${orgName}", "${orgName}", "top level publisher"], ["${orgName}", "${orgName}", "top level publisher", "first level publisher", "second level publisher"]]`,
+        },
       ],
     },
   });

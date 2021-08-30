@@ -2,17 +2,6 @@ import 'cypress-file-upload';
 import Chance from 'chance';
 const chance = new Chance();
 
-before(() => {
-  cy.login();
-  cy.createOrg();
-});
-
-beforeEach(() => {
-  cy.login();
-  Cypress.Cookies.preserveOnce('ckan');
-  cy.visit('/dataset/new-metadata');
-});
-
 describe('Resource Upload page', () => {
   const titleAndName = 'link-to-data';
   const longNameResourceDataset = 'resource-list-edit-test';
@@ -63,7 +52,7 @@ describe('Resource Upload page', () => {
         .then(() => {
           cy.get('#resource-option-link-to-file').parent('.form-group').click();
           cy.get('input[name=resource\\.url]').type('https://example.com/data.csv');
-          cy.get('input[name=resource\\.name]').type('With special & character');
+          cy.get('input[name=resource\\.name]').type('With special $ character');
           cy.get('button[type=button]')
             .contains('Finish and publish')
             .click()
@@ -182,8 +171,25 @@ describe('Resource Upload page', () => {
 });
 
 describe('Save draft functionality on Resource Upload page', () => {
+  before(() => {
+    cy.login();
+    cy.deleteDataset('eeeee');
+    cy.deleteOrg('test-organization');
+    cy.createOrg('test-organization', 'sample organization');
+  });
+
+  beforeEach(() => {
+    cy.login();
+    Cypress.Cookies.preserveOnce('ckan');
+    cy.visit('/dataset/new-metadata');
+  });
+
+  after(() => {
+    cy.deleteDataset('eeeee');
+  });
+
   it('Saves draft', () => {
-    cy.requiredMetadata();
+    cy.requiredMetadata('eeeee');
     cy.intercept('/api/3/action/package_update').as('packageUpdate');
     cy.get('button[type=button]').contains('Save and Continue').click();
     cy.wait('@packageUpdate');
@@ -204,15 +210,21 @@ describe('Save draft functionality on Resource Upload page', () => {
 describe('Editing resources', () => {
   const name = 'test-for-editing-resource';
 
+  before(() => {
+    cy.login();
+    cy.deleteDataset(name);
+    cy.deleteOrg('test-organization');
+    cy.createOrg('test-organization', 'sample organization');
+  });
+
+  beforeEach(() => {
+    cy.login();
+    Cypress.Cookies.preserveOnce('ckan');
+    cy.visit('/dataset/new-metadata');
+  });
+
   afterEach(() => {
-    cy.request({
-      method: 'POST',
-      url: '/api/3/action/dataset_purge',
-      body: {
-        id: name,
-      },
-      failOnStatusCode: false,
-    });
+    cy.deleteDataset(name);
   });
 
   it('Works when editing a resource during dataset creation', () => {

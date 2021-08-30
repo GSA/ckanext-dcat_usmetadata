@@ -1,37 +1,31 @@
 import Chance from 'chance';
 const chance = new Chance();
 
-before(() => {
-  cy.login();
-  cy.deleteDataset('aaaaa');
-  cy.deleteDataset('bbbbb');
-  cy.deleteDataset('ccccc');
-  cy.deleteDataset('ddddd');
-  cy.deleteDataset('eeeee');
-  cy.deleteDataset('eeeef');
-  cy.deleteDataset('fffff');
-  cy.deleteOrg('test-organization');
-  cy.createOrg('test-organization', 'sample organization');
-});
-
-beforeEach(() => {
-  cy.logout();
-  cy.login();
-  cy.visit('/dataset/new-metadata');
-});
-
-after(() => {
-  cy.deleteDataset('aaaaa');
-  cy.deleteDataset('bbbbb');
-  cy.deleteDataset('ccccc');
-  cy.deleteDataset('ddddd');
-  cy.deleteDataset('eeeee');
-  cy.deleteDataset('eeeef');
-  cy.deleteDataset('fffff');
-  cy.deleteOrg('test-organization');
-});
-
 describe('Additional Metadata Page', () => {
+  before(() => {
+    cy.login();
+    cy.deleteDataset('aaaaa');
+    cy.deleteDataset('bbbbb');
+    cy.deleteDataset('ccccc');
+    cy.deleteDataset('ddddd');
+    cy.deleteOrg('test-organization');
+    cy.createOrg('test-organization', 'sample organization');
+  });
+
+  beforeEach(() => {
+    cy.logout();
+    cy.login();
+    cy.visit('/dataset/new-metadata');
+  });
+
+  after(() => {
+    cy.deleteDataset('aaaaa');
+    cy.deleteDataset('bbbbb');
+    cy.deleteDataset('ccccc');
+    cy.deleteDataset('ddddd');
+    cy.deleteOrg('test-organization');
+  });
+
   it('Validates and submits Additional Metadata succesfully', () => {
     cy.requiredMetadata('aaaaa');
     cy.get('input[name=data_dictionary]').type('www.invalid.url');
@@ -93,6 +87,10 @@ describe('Parent Dataset', () => {
   before(() => {
     cy.logout();
     cy.login();
+    cy.deleteDataset(parentTitle);
+    cy.deleteDataset(childTitle);
+    cy.deleteOrg('test-organization');
+    cy.createOrg('test-organization', 'sample organization');
     cy.visit('/dataset/new-metadata');
     cy.requiredMetadata(parentTitle);
     cy.additionalMetadata(true);
@@ -102,24 +100,16 @@ describe('Parent Dataset', () => {
     cy.resourceUploadWithUrlAndPublish();
   });
 
-  after(() => {
-    cy.request({
-      method: 'POST',
-      url: '/api/3/action/dataset_purge',
-      body: {
-        id: childTitle,
-      },
-      failOnStatusCode: false,
-    });
+  beforeEach(() => {
+    cy.logout();
+    cy.login();
+    cy.visit('/dataset/new-metadata');
+  });
 
-    cy.request({
-      method: 'POST',
-      url: '/api/3/action/dataset_purge',
-      body: {
-        id: parentTitle,
-      },
-      failOnStatusCode: false,
-    });
+  after(() => {
+    cy.deleteDataset(parentTitle);
+    cy.deleteDataset(childTitle);
+    cy.deleteOrg('test-organization');
   });
 
   it('Able to select and displays parent dataset with a human-readable title', () => {
@@ -145,6 +135,24 @@ describe('Parent Dataset', () => {
 });
 
 describe('Save draft functionality on Additional Metadata page', () => {
+  before(() => {
+    cy.login();
+    cy.deleteDataset('fffff');
+    cy.deleteOrg('test-organization');
+    cy.createOrg('test-organization', 'sample organization');
+  });
+
+  beforeEach(() => {
+    cy.logout();
+    cy.login();
+    cy.visit('/dataset/new-metadata');
+  });
+
+  after(() => {
+    cy.deleteDataset('fffff');
+    cy.deleteOrg('test-organization');
+  });
+
   it('Saves dataset using "Save draft" button', () => {
     cy.requiredMetadata('fffff');
     cy.get('.usa-button--outline').contains('Save draft').click();

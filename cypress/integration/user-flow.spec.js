@@ -2,13 +2,20 @@ import Chance from 'chance';
 const chance = new Chance();
 
 describe('Access to the new metadata app', () => {
+  after(() => {
+    cy.deleteDataset('test-dataset-1');
+    cy.logout();
+  });
+
   it('Goes to new metadata app when I click on "Add Dataset"', () => {
     cy.login();
     cy.visit('/dataset');
     cy.get('.page_primary_action > .btn').click();
     cy.get('.navsec').contains('Required Metadata');
     // From organization page:
-    cy.createOrg();
+    cy.deleteDataset('test-dataset-1');
+    cy.deleteOrg('test-organization');
+    cy.createOrg('test-organization', 'sample organization');
     cy.visit('/organization/test-organization');
     cy.get('.page_primary_action > .btn-primary').first().click();
     cy.location('pathname', { timeout: 10000 }).should('include', '/dataset/new-metadata');
@@ -17,6 +24,8 @@ describe('Access to the new metadata app', () => {
 
   it('Has "Edit" button and it goes to new metadata app when clicked', () => {
     cy.login();
+    cy.visit('/dataset/new-metadata');
+    cy.requiredMetadata('test-dataset-1');
     cy.visit('/dataset/test-dataset-1');
     cy.get('.content_action > .btn-primary').contains('Edit').click();
     cy.location('pathname', { timeout: 10000 }).should('include', '/dataset/edit-new/');
@@ -34,24 +43,27 @@ describe('Access to the new metadata app', () => {
     cy.logout();
     cy.visit('/dataset/new-metadata', { failOnStatusCode: false });
     cy.get('.navsec').should('not.exist');
-    cy.url().should('include', '/user/login');
-    cy.url().should('include', 'came_from=%2Fdataset%2Fnew-metadata');
+    cy.contains('Unauthorized to create a package');
     // Same for edit dataset page
     cy.visit('/dataset/edit-new/dataset-id', { failOnStatusCode: false });
     cy.get('.navsec').should('not.exist');
-    cy.url().should('include', '/user/login');
-    cy.url().should('include', 'came_from=%2Fdataset%2Fedit-new%2Fdataset-id');
+    cy.contains('Dataset not found');
   });
 
   it('Returns 404 when trying to edit non-existing dataset', () => {
     cy.login();
     cy.visit('/dataset/edit-new/dataset-id', { failOnStatusCode: false });
     cy.url().should('include', '/dataset/edit-new/dataset-id');
-    cy.contains('404 Not Found');
+    cy.contains('Dataset not found');
   });
 });
 
 describe('Deleting a dataset', () => {
+  after(() => {
+    cy.deleteDataset('test-dataset-1');
+    cy.logout();
+  });
+
   it('Has "Delete" button', () => {
     cy.login();
     cy.visit('/dataset/test-dataset-1');
@@ -62,11 +74,16 @@ describe('Deleting a dataset', () => {
     cy.login();
     cy.visit('/dataset/test-dataset-1');
     cy.get('.btn-danger').click();
-    cy.contains('Are you sure you want to delete this dataset?');
+    cy.contains('Are you sure you want to delete dataset -');
   });
 });
 
 describe('List of organizations on new metadata form', () => {
+  after(() => {
+    cy.deleteDataset('test-dataset-1');
+    cy.logout();
+  });
+
   before(() => {
     cy.createUser('editor');
     cy.login();
@@ -88,8 +105,8 @@ describe('List of organizations on new metadata form', () => {
     cy.get('.page_primary_action > .btn').click();
     cy.get('.navsec').contains('Required Metadata');
     cy.get('select[name=owner_org]')
-      .select('Test Organization')
-      .should('contain.text', 'Test Organization');
+      .select('test-organization')
+      .should('contain.text', 'test-organization');
   });
 });
 
@@ -102,6 +119,12 @@ describe('Go back to dashboard page', () => {
   beforeEach(() => {
     cy.logout();
     cy.login();
+  });
+
+  after(() => {
+    cy.deleteDataset('fffff');
+    cy.deleteDataset('test-dataset-1');
+    cy.logout();
   });
 
   it('Goes to /dataset page on "Back to dashboard" clicked', () => {
@@ -124,14 +147,10 @@ describe('Go back to dashboard page', () => {
     cy.visit('/dataset/new-metadata');
     cy.contains('Back to dashboard');
 
-    cy.requiredMetadata();
+    cy.requiredMetadata('fffff');
     cy.contains('Back to dashboard');
 
     cy.additionalMetadata();
     cy.contains('Back to dashboard');
-  });
-
-  after(() => {
-    cy.logout();
   });
 });

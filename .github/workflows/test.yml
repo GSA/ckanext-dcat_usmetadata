@@ -56,7 +56,6 @@ jobs:
         pip install -r dev-requirements.txt
         npm install --global yarn
         yarn install
-        # npm install --save-dev react-dev-utils fs-extra webpack resolve
     - name: Install requirements and Setup (py3)
       if: ${{ matrix.ckan-version == '2.9' }}
       run: |
@@ -75,4 +74,5 @@ jobs:
       run: |
         yarn build:metadata-app
         pytest --ckan-ini=test.ini --cov=ckanext.dcat_usmetadata --cov-fail-under=${CODE_COVERAGE_THRESHOLD_REQUIRED} --disable-warnings ckanext/dcat_usmetadata/tests
+        yarn e2e
 
