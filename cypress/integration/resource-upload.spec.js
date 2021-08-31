@@ -6,6 +6,18 @@ describe('Resource Upload page', () => {
   const titleAndName = 'link-to-data';
   const longNameResourceDataset = 'resource-list-edit-test';
 
+  before(() => {
+    cy.login();
+    cy.deleteDataset('eeeee');
+    cy.deleteOrg('test-organization');
+    cy.createOrg('test-organization', 'sample organization');
+  });
+
+  beforeEach(() => {
+    cy.login();
+    Cypress.Cookies.preserveOnce('ckan');
+    cy.visit('/dataset/new-metadata');
+  });
   afterEach(() => {
     cy.request({
       method: 'POST',

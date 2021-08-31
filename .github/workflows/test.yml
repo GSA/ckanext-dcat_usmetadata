@@ -74,5 +74,4 @@ jobs:
       run: |
         yarn build:metadata-app
         pytest --ckan-ini=test.ini --cov=ckanext.dcat_usmetadata --cov-fail-under=${CODE_COVERAGE_THRESHOLD_REQUIRED} --disable-warnings ckanext/dcat_usmetadata/tests
-        yarn e2e
-
+        yarn && NODE_ENV=test npx cypress run

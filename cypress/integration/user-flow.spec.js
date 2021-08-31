@@ -59,19 +59,28 @@ describe('Access to the new metadata app', () => {
 });
 
 describe('Deleting a dataset', () => {
-  after(() => {
+  before(() => {
+    cy.login();
     cy.deleteDataset('test-dataset-1');
-    cy.logout();
+    cy.deleteOrg('test-organization');
+    cy.createOrg('test-organization', 'sample organization');
+  });
+
+  afterEach(() => {
+    cy.deleteDataset('test-dataset-1');
   });
 
   it('Has "Delete" button', () => {
-    cy.login();
+    cy.visit('/dataset/new-metadata');
+    cy.requiredMetadata('test-dataset-1');
     cy.visit('/dataset/test-dataset-1');
     cy.get('.btn-danger').should('exist').contains('Delete');
   });
 
   it('Displays confirmation page when clicked', () => {
     cy.login();
+    cy.visit('/dataset/new-metadata');
+    cy.requiredMetadata('test-dataset-1');
     cy.visit('/dataset/test-dataset-1');
     cy.get('.btn-danger').click();
     cy.contains('Are you sure you want to delete dataset -');
@@ -79,11 +88,6 @@ describe('Deleting a dataset', () => {
 });
 
 describe('List of organizations on new metadata form', () => {
-  after(() => {
-    cy.deleteDataset('test-dataset-1');
-    cy.logout();
-  });
-
   before(() => {
     cy.createUser('editor');
     cy.login();
@@ -92,6 +96,11 @@ describe('List of organizations on new metadata form', () => {
     cy.get('select[name=role]').select('Editor', { force: true });
     cy.get('button[name=submit]').click({ force: true });
     cy.wait(2000);
+  });
+
+  after(() => {
+    cy.deleteDataset('test-dataset-1');
+    cy.logout();
   });
 
   it('Displays expected organizations for the editor role', () => {
@@ -113,7 +122,8 @@ describe('List of organizations on new metadata form', () => {
 describe('Go back to dashboard page', () => {
   before(() => {
     cy.login();
-    cy.createOrg();
+    cy.deleteOrg('test-organization');
+    cy.createOrg('test-organization', 'sample organization');
   });
 
   beforeEach(() => {
