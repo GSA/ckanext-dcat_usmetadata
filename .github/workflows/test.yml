@@ -24,7 +24,7 @@ jobs:
         ckan-version: [2.9, 2.8]
       fail-fast: false
 
-    name: CKAN ${{ matrix.ckan-version }}
+    name: Pytests for CKAN ${{ matrix.ckan-version }}
     runs-on: ubuntu-latest
     container:
       image: openknowledge/ckan-dev:${{ matrix.ckan-version }}
@@ -76,7 +76,7 @@ jobs:
         pytest --ckan-ini=test.ini --cov=ckanext.dcat_usmetadata --cov-fail-under=${CODE_COVERAGE_THRESHOLD_REQUIRED} --disable-warnings ckanext/dcat_usmetadata/tests
 
   cypress:
-    name: test
+    name: Cypress Tests for CKAN ${{ matrix.ckan-version }}
     strategy:
       matrix:
         ckan-version: [2.9, 2.8]
@@ -85,5 +85,5 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-      - name: test
+      - name: cypress
         run: CKAN_VERSION=${{ matrix.ckan-version }} docker-compose -f docker-compose.yml -f docker-compose.cypress.yml up --abort-on-container-exit cypress
