@@ -1,3 +1,4 @@
+[![Github Actions](https://github.com/GSA/ckanext-dcat_usmetadata/actions/workflows/test.yml/badge.svg)](https://github.com/GSA/ckanext-dcat_usmetadata/actions)
 [![CircleCI](https://circleci.com/gh/GSA/ckanext-dcat_usmetadata.svg?style=svg)](https://circleci.com/gh/GSA/ckanext-dcat_usmetadata)
 
 # ckanext-dcat_usmetadata
@@ -10,6 +11,14 @@ This extension provides a new dataset form for [inventory.data.gov](https://inve
 
 This module currently depends on the [USMetadata app](https://github.com/GSA/USMetadata) for server-side validation and rendering.
 Make sure it is enabled in CKAN's plugins.
+
+This extension is compatible with these versions of CKAN.
+
+CKAN version | Compatibility
+------------ | -------------
+<=2.7        | no
+2.8          | yes
+2.9          | [complete](https://github.com/GSA/datagov-ckan-multi/issues/572)
 
 ### Installation
 
@@ -69,6 +78,7 @@ These tools are required for development.
 
 - [Node.js](https://nodejs.org/) 12.x
 - [Yarn](https://yarnpkg.com/) 1.22.x
+- [Cypress](https://www.cypress.io/) 6.0.0+
 
 ### Setup
 
@@ -88,7 +98,7 @@ Build and start the docker containers.
 
 ```bash
 yarn build:docker
-yarn up-with-data
+yarn up
 ```
 
 ## Testing
@@ -106,7 +116,7 @@ There are several levels of testing:
 Lint the python code.
 
 ```bash
-yarn lint:python
+yarn lint:python3
 ```
 
 Lint the JavaScript code.
