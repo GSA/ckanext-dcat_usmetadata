@@ -86,4 +86,4 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
       - name: test
-        run: CKAN_VERSION=${{ matrix.ckan-version }} docker-compose -f docker-compose.yml -f docker-compose.test.yml up --abort-on-container-exit cypress
+        run: CKAN_VERSION=${{ matrix.ckan-version }} docker-compose -f docker-compose.yml -f docker-compose.cypress.yml up --abort-on-container-exit cypress
