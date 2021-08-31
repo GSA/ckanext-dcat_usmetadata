@@ -52,7 +52,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install dependency (common)
       run: |
-        apk add swig npm xvfb
+        apk add swig npm
         pip install -r dev-requirements.txt
         npm install --global yarn
         yarn install
@@ -74,4 +74,16 @@ jobs:
       run: |
         yarn build:metadata-app
         pytest --ckan-ini=test.ini --cov=ckanext.dcat_usmetadata --cov-fail-under=${CODE_COVERAGE_THRESHOLD_REQUIRED} --disable-warnings ckanext/dcat_usmetadata/tests
-        yarn && NODE_ENV=test npx cypress run
+
+  cypress:
+    name: test
+    strategy:
+      matrix:
+        ckan-version: [2.9, 2.8]
+      fail-fast: false
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: test
+        run: CKAN_VERSION=${{ matrix.ckan-version }} docker-compose -f docker-compose.yml -f docker-compose.test.yml up --abort-on-container-exit cypress
