@@ -52,7 +52,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install dependency (common)
       run: |
-        apk add swig npm
+        apk add swig npm xvfb
         pip install -r dev-requirements.txt
         npm install --global yarn
         yarn install
