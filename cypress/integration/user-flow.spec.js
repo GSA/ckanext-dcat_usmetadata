@@ -27,7 +27,7 @@ describe('Access to the new metadata app', () => {
     cy.visit('/dataset/new-metadata');
     cy.requiredMetadata('test-dataset-1');
     cy.visit('/dataset/test-dataset-1');
-    cy.get('.content_action > .btn-primary').contains('Edit').click();
+    cy.get('.content_action > .btn-primary').contains('Edit').click({ force: true });
     cy.location('pathname', { timeout: 10000 }).should('include', '/dataset/edit-new/');
     cy.get('.navsec').contains('Required Metadata');
   });
@@ -82,7 +82,7 @@ describe('Deleting a dataset', () => {
     cy.visit('/dataset/new-metadata');
     cy.requiredMetadata('test-dataset-1');
     cy.visit('/dataset/test-dataset-1');
-    cy.get('.btn-danger').click();
+    cy.get('.btn-danger').click({ force: true });
     cy.contains('Are you sure you want to delete dataset -');
   });
 });

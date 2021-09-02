@@ -1,4 +1,15 @@
 describe('Publishers linked to CKAN org', () => {
+  before(() => {
+    cy.login();
+    cy.deleteDataset(name);
+    cy.deleteOrg('test-organization');
+    cy.createOrg('test-organization');
+  });
+
+  after(() => {
+    cy.deleteOrg('test-organization');
+  });
+
   it('Has publishers extra in CKAN org metadata', () => {
     cy.login();
     cy.request('GET', '/api/3/action/organization_show?id=test-organization').then((response) => {
