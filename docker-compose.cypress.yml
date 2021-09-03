@@ -16,7 +16,7 @@ services:
     environment:
       NODE_ENV: test
     entrypoint: []
-    command: /bin/bash -c 'npx wait-on http://localhost:5000/api/action/status_show && npx cypress install && npx cypress run --spec cypress/integration/additional-metadata.spec.js'
+    command: /bin/bash -c 'npx wait-on http://0.0.0.0:5000/api/action/status_show && npx cypress install && npx cypress run --spec cypress/integration/additional-metadata.spec.js'
     working_dir: /e2e
     depends_on:
       - ckan
@@ -27,7 +27,7 @@ services:
     environment:
       NODE_ENV: test
     entrypoint: []
-    command: /bin/bash -c 'npx wait-on http://localhost:5000/api/action/status_show && npx cypress install && npx cypress run --spec cypress/integration/edit-dataset.spec.js'
+    command: /bin/bash -c 'npx wait-on http://0.0.0.0:5000/api/action/status_show && npx cypress install && npx cypress run --spec cypress/integration/edit-dataset.spec.js'
     working_dir: /e2e
     depends_on:
       - ckan
@@ -38,7 +38,7 @@ services:
     environment:
       NODE_ENV: test
     entrypoint: []
-    command: /bin/bash -c 'npx wait-on http://localhost:5000/api/action/status_show && npx cypress install && npx cypress run --spec cypress/integration/publishers.spec.js'
+    command: /bin/bash -c 'npx wait-on http://0.0.0.0:5000/api/action/status_show && npx cypress install && npx cypress run --spec cypress/integration/publishers.spec.js'
     working_dir: /e2e
     depends_on:
       - ckan
@@ -49,7 +49,7 @@ services:
     environment:
       NODE_ENV: test
     entrypoint: []
-    command: /bin/bash -c 'npx wait-on http://localhost:5000/api/action/status_show && npx cypress install && npx cypress run --spec cypress/integration/required-metadata.spec.js'
+    command: /bin/bash -c 'npx wait-on http://0.0.0.0:5000/api/action/status_show && npx cypress install && npx cypress run --spec cypress/integration/required-metadata.spec.js'
     working_dir: /e2e
     depends_on:
       - ckan
@@ -60,7 +60,7 @@ services:
     environment:
       NODE_ENV: test
     entrypoint: []
-    command: /bin/bash -c 'npx wait-on http://localhost:5000/api/action/status_show && cypress run --spec cypress/integration/resource-upload.spec.js'
+    command: /bin/bash -c 'npx wait-on http://0.0.0.0:5000/api/action/status_show && cypress run --spec cypress/integration/resource-upload.spec.js'
     working_dir: /e2e
     depends_on:
       - ckan
@@ -71,7 +71,7 @@ services:
     environment:
       NODE_ENV: test
     entrypoint: []
-    command: /bin/bash -c 'npx wait-on http://localhost:5000/api/action/status_show && npx cypress install && npx cypress run --spec cypress/integration/user-flow.spec.js'
+    command: /bin/bash -c 'npx wait-on http://0.0.0.0:5000/api/action/status_show && npx cypress install && npx cypress run --spec cypress/integration/user-flow.spec.js'
     working_dir: /e2e
     depends_on:
       - ckan
