@@ -86,4 +86,4 @@ jobs:
         uses: actions/checkout@v2
       - name: cypress
         run: |
-          CKAN_VERSION=${{ matrix.ckan-version }} make cypress
+          CKAN_VERSION=${{ matrix.ckan-version }} make cypress-containers
