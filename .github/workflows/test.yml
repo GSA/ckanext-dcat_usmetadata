@@ -80,7 +80,6 @@ jobs:
     strategy:
       matrix:
         ckan-version: [2.9, 2.8]
-      fail-fast: false
     runs-on: ubuntu-latest
     steps:
       - name: checkout

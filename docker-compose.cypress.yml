@@ -1,8 +1,5 @@
 version: "3.7"
 services:
-  ckan:
-    environment:
-      - CKAN_SITE_URL=http://ckan:5000
   cypress:
     image: cypress/included:7.3.0
     environment:
