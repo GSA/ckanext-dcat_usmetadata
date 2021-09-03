@@ -505,112 +505,41 @@ const deserializeSupplementalValues = (opts) => {
 const moveToExtras = (opts) => {
   const newOpts = clone(opts);
   const extras = [];
-  if ('publisher' in opts) {
-    extras.push({ key: 'publisher', value: opts.publisher });
-    delete newOpts.publisher;
-  }
-  if ('contact_name' in opts) {
-    extras.push({ key: 'contact_name', value: opts.contact_name });
-    delete newOpts.contact_name;
-  }
-  if ('contact_email' in opts) {
-    extras.push({ key: 'contact_email', value: opts.contact_email });
-    delete newOpts.contact_email;
-  }
-  if ('unique_id' in opts) {
-    extras.push({ key: 'unique_id', value: opts.unique_id });
-    delete newOpts.unique_id;
-  }
-  if ('modified' in opts) {
-    extras.push({ key: 'modified', value: opts.modified });
-    delete newOpts.modified;
-  }
-  if ('public_access_level' in opts) {
-    extras.push({ key: 'public_access_level', value: opts.public_access_level });
-    delete newOpts.public_access_level;
-  }
-  if ('bureau_code' in opts) {
-    extras.push({ key: 'bureau_code', value: opts.bureau_code });
-    delete newOpts.bureau_code;
-  }
-  if ('program_code' in opts) {
-    extras.push({ key: 'program_code', value: opts.program_code });
-    delete newOpts.program_code;
-  }
-  if ('release_date' in opts) {
-    extras.push({ key: 'release_date', value: opts.release_date });
-    delete newOpts.release_date;
-  }
-  if ('accrual_periodicity' in opts) {
-    extras.push({ key: 'accrual_periodicity', value: opts.accrual_periodicity });
-    delete newOpts.accrual_periodicity;
-  }
-  if ('language' in opts) {
-    extras.push({ key: 'language', value: opts.language });
-    delete newOpts.language;
-  }
-  if ('data_quality' in opts) {
-    extras.push({ key: 'data_quality', value: opts.data_quality });
-    delete newOpts.data_quality;
-  }
-  if ('publishing_status' in opts) {
-    extras.push({ key: 'publishing_status', value: opts.publishing_status });
-    delete newOpts.publishing_status;
-  }
-  if ('is_parent' in opts) {
-    extras.push({ key: 'is_parent', value: opts.is_parent });
-    delete newOpts.is_parent;
-  }
-  if ('parent_dataset' in opts) {
-    extras.push({ key: 'parent_dataset', value: opts.parent_dataset });
-    delete newOpts.parent_dataset;
-  }
-  if ('category' in opts) {
-    extras.push({ key: 'category', value: opts.category });
-    delete newOpts.category;
-  }
-  if ('related_documents' in opts) {
-    extras.push({ key: 'related_documents', value: opts.related_documents });
-    delete newOpts.relate_documents;
-  }
-  if ('conforms_to' in opts) {
-    extras.push({ key: 'conforms_to', value: opts.conforms_to });
-    delete newOpts.conforms_to;
-  }
-  if ('homepage_url' in opts) {
-    extras.push({ key: 'homepage_url', value: opts.homepage_url });
-    delete newOpts.homepage_url;
-  }
-  if ('system_of_records' in opts) {
-    extras.push({ key: 'system_of_records', value: opts.system_of_records });
-    delete newOpts.system_of_records;
-  }
-  if ('primary_it_investment_uii' in opts) {
-    extras.push({
-      key: 'primary_it_investment_uii',
-      value: opts.primary_it_investment_uii,
-    });
-    delete newOpts.primary_it_investment_uii;
-  }
-  if ('publisher_1' in opts) {
-    extras.push({ key: 'publisher_1', value: opts.publisher_1 });
-    delete newOpts.publisher_1;
-  }
-  if ('publisher_2' in opts) {
-    extras.push({ key: 'publisher_2', value: opts.publisher_2 });
-    delete newOpts.publisher_2;
-  }
-  if ('publisher_3' in opts) {
-    extras.push({ key: 'publisher_3', value: opts.publisher_3 });
-    delete newOpts.publisher_3;
-  }
-  if ('publisher_4' in opts) {
-    extras.push({ key: 'publisher_4', value: opts.publisher_4 });
-    delete newOpts.publisher_4;
-  }
-  if ('publisher_5' in opts) {
-    extras.push({ key: 'publisher_5', value: opts.publisher_5 });
-    delete newOpts.publisher_5;
+
+  const keysToCheck = [
+    'publisher',
+    'contact_name',
+    'contact_email',
+    'unique_id',
+    'modified',
+    'public_access_level',
+    'bureau_code',
+    'program_code',
+    'release_date',
+    'accrual_periodicity',
+    'language',
+    'data_quality',
+    'publishing_status',
+    'is_parent',
+    'parent_dataset',
+    'category',
+    'related_documents',
+    'conforms_to',
+    'homepage_url',
+    'system_of_records',
+    'primary_it_investment_uii',
+    'publisher_1',
+    'publisher_2',
+    'publisher_3',
+    'publisher_4',
+    'publisher_5',
+  ];
+
+  for (let i = 0; i < keysToCheck.length; i += 1) {
+    if (keysToCheck[i] in opts) {
+      extras.push({ key: keysToCheck[i], value: opts[keysToCheck[i]] });
+      delete newOpts[keysToCheck[i]];
+    }
   }
 
   const commonCore = {};
