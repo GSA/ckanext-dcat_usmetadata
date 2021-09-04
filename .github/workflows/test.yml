@@ -110,6 +110,7 @@ jobs:
 
   cypress:
     name: Cypress Tests for CKAN ${{ matrix.ckan-version }}
+    needs: test
     strategy:
       matrix:
         ckan-version: [2.9, 2.8]
