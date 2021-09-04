@@ -128,5 +128,5 @@ jobs:
         run: |
           source $ENV_FILE
           CKAN_VERSION=${{ matrix.ckan-version }} yarn dockerize
-          docker-compose -f docker-compose.yml run ckan /bin/bash -c "cd /app && yarn build:metadata-app"
+          CKAN_VERSION=${{ matrix.ckan-version }} docker-compose -f docker-compose.yml run ckan /bin/bash -c "cd /app && yarn build:metadata-app"
           CKAN_VERSION=${{ matrix.ckan-version }} make cypress-containers
