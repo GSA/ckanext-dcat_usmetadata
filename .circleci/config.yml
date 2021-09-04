@@ -28,7 +28,7 @@ jobs:
   lint_python_code:
     working_directory: ~/ckanext-dcat_usmetadata
     machine:
-          image: circleci/classic:latest
+      image: ubuntu-2004:202107-02
     steps:
       - attach_workspace:
           at: ~/
