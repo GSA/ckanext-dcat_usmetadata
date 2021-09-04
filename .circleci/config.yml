@@ -46,7 +46,7 @@ jobs:
             npm i -g yarn
       - run:
           name: Lint
-          command: CKAN_VERSION=2.8 yarn lint:python
+          command: CKAN_VERSION=2.9 yarn lint:python3
 
   test_local_docker:
     working_directory: ~/ckanext-dcat_usmetadata
