@@ -12,7 +12,7 @@ services:
     volumes:
       - .:/e2e
   cypress-additional-metadata:
-    image: cypress/included:6.0.0
+    image: cypress/included:7.3.0
     environment:
       NODE_ENV: test
     entrypoint: []
