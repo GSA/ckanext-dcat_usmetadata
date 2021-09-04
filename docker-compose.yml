@@ -26,6 +26,7 @@ services:
       - "5000:5000"
     volumes:
       - .:/app
+      - .:/srv/app/src/ckanext-dcat_usmetadata
       
   db:
     image: ckan/ckan-postgres-dev:${CKAN_VERSION}

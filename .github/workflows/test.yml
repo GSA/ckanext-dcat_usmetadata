@@ -26,6 +26,10 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: '3.6'
+      - name: Install dependencies
+        run: |
+          yarn
+          CI=false yarn build
       - name: Run eslint
         run: yarn lint:js
 
@@ -38,6 +42,10 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: '3.6'
+      - name: Install dependencies
+        run: |
+          yarn
+          CI=false yarn build
       - name: Run node tests
         run: yarn test:metadata-app
 
@@ -95,12 +103,12 @@ jobs:
         pip install -e .
         source $ENV_FILE
         paster --plugin=ckan db init -c test.ini
-    # - name: Run tests
-    #   run: |
-    #     yarn build:metadata-app
-    #     pytest --ckan-ini=test.ini --cov=ckanext.dcat_usmetadata --cov-fail-under=${CODE_COVERAGE_THRESHOLD_REQUIRED} --disable-warnings ckanext/dcat_usmetadata/tests
-    - name: Run e2e
-      run: CKAN_VERSION=${{ matrix.ckan-version }} make cypress-containers
+    - name: Run tests
+      run: |
+        yarn build:metadata-app
+        pytest --ckan-ini=test.ini --cov=ckanext.dcat_usmetadata --cov-fail-under=${CODE_COVERAGE_THRESHOLD_REQUIRED} --disable-warnings ckanext/dcat_usmetadata/tests
+    # - name: Run e2e
+    #   run: CKAN_VERSION=${{ matrix.ckan-version }} make cypress-containers
 
   cypress:
     name: Cypress Tests for CKAN ${{ matrix.ckan-version }}
