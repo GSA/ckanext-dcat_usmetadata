@@ -79,7 +79,7 @@ const deserializeExtras = (opts) => {
  * @param {Object} obj
  */
 const encodeValues = (obj) => {
-  return JSON.stringify(obj);
+  return encodeURIComponent(JSON.stringify(obj));
 };
 
 /**
@@ -567,7 +567,7 @@ const createDataset = (opts, apiUrl, apiKey) => {
   body.program_code = '015:001';
 
   return axios
-    .post(`${apiUrl}package_create`, moveToExtras(body), {
+    .post(`${apiUrl}package_create`, encodeValues(moveToExtras(body)), {
       headers: {
         'X-CKAN-API-Key': apiKey,
       },
@@ -673,7 +673,7 @@ const updateDataset = (id, opts, apiUrl, apiKey) => {
   body.program_code = '015:001';
 
   return axios
-    .post(`${apiUrl}package_update`, moveToExtras(body), {
+    .post(`${apiUrl}package_update`, encodeValues(moveToExtras(body)), {
       headers: {
         'X-CKAN-API-Key': apiKey,
       },
