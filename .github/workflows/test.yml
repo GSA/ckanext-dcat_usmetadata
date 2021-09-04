@@ -116,9 +116,18 @@ jobs:
       matrix:
         ckan-version: [2.9, 2.8]
     runs-on: ubuntu-latest
+    env:
+      ENV_FILE: .env
+      CKAN_SQLALCHEMY_URL: postgresql://ckan_default:pass@db/ckan_test
+      CKAN_DATASTORE_WRITE_URL: postgresql://datastore_write:pass@db/datastore_test
+      CKAN_DATASTORE_READ_URL: postgresql://datastore_read:pass@db/datastore_test
+      CKAN_SOLR_URL: http://solr:8983/solr/ckan
+      CKAN_REDIS_URL: redis://redis:6379/1
     steps:
       - name: checkout
         uses: actions/checkout@v2
       - name: cypress
         # run: CKAN_VERSION=${{ matrix.ckan-version }} make cypress-containers
-        run: CKAN_VERSION=${{ matrix.ckan-version }} docker-compose -f docker-compose.yml up
+        run: |
+          source $ENV_FILE
+          CKAN_VERSION=${{ matrix.ckan-version }} docker-compose -f docker-compose.yml up
