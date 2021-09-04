@@ -40,7 +40,7 @@ describe('Editing an existing dataset', () => {
   });
 
   after(() => {
-    cy.request('POST', '/api/3/action/dataset_purge', { id: name });
+    cy.deleteDataset(name);
   });
 
   it('Loads required metadata values into the form', () => {

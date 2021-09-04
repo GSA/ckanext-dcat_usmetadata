@@ -75,15 +75,14 @@ jobs:
         yarn build:metadata-app
         pytest --ckan-ini=test.ini --cov=ckanext.dcat_usmetadata --cov-fail-under=${CODE_COVERAGE_THRESHOLD_REQUIRED} --disable-warnings ckanext/dcat_usmetadata/tests
 
-  cypress:
-    name: Cypress Tests for CKAN ${{ matrix.ckan-version }}
-    strategy:
-      matrix:
-        ckan-version: [2.9, 2.8]
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v2
-      - name: cypress
-        run: |
-          CKAN_VERSION=${{ matrix.ckan-version }} make cypress-containers
+    # cypress:
+    #   name: Cypress Tests for CKAN ${{ matrix.ckan-version }}
+    #   strategy:
+    #     matrix:
+    #       ckan-version: [2.9, 2.8]
+    #   runs-on: ubuntu-latest
+    #   steps:
+    #     - name: checkout
+    #       uses: actions/checkout@v2
+    #     - name: cypress
+    #       run: CKAN_VERSION=${{ matrix.ckan-version }} make cypress-containers
