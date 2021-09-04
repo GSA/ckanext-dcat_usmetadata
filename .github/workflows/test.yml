@@ -85,4 +85,5 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
       - name: cypress
-        run: CKAN_VERSION=${{ matrix.ckan-version }} make cypress-containers
+        # run: CKAN_VERSION=${{ matrix.ckan-version }} make cypress-containers
+        run: CKAN_VERSION=${{ matrix.ckan-version }} docker-compose -f docker-compose.yml up
