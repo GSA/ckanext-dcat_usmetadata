@@ -3,7 +3,8 @@ on: [pull_request]
 env:
   CODE_COVERAGE_THRESHOLD_REQUIRED: 33
 jobs:
-  lint:
+  lint-python:
+    name: Python Lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,8 +18,32 @@ jobs:
       - name: Run flake8
         run: flake8 . --count --max-line-length=127 --statistics --exclude ckan,nose
 
+  lint-js:
+    name: JS Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.6'
+      - name: Run eslint
+        run: yarn lint:js
+
+  test-js:
+    needs: lint-js
+    name: Node Tests for Metadata-app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.6'
+      - name: Run node tests
+        run: yarn test:metadata-app
+
+
   test:
-    needs: lint
+    needs: lint-python
     strategy:
       matrix:
         ckan-version: [2.9, 2.8]
@@ -75,8 +100,7 @@ jobs:
     #     yarn build:metadata-app
     #     pytest --ckan-ini=test.ini --cov=ckanext.dcat_usmetadata --cov-fail-under=${CODE_COVERAGE_THRESHOLD_REQUIRED} --disable-warnings ckanext/dcat_usmetadata/tests
     - name: Run e2e
-      run: |
-        run: CKAN_VERSION=${{ matrix.ckan-version }} make cypress-containers
+      run: CKAN_VERSION=${{ matrix.ckan-version }} make cypress-containers
 
   cypress:
     name: Cypress Tests for CKAN ${{ matrix.ckan-version }}
