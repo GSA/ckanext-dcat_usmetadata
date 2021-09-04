@@ -13,6 +13,7 @@ services:
       - .:/e2e
   cypress-additional-metadata:
     image: cypress/included:7.3.0
+    ipc: host
     environment:
       NODE_ENV: test
     entrypoint: []
@@ -24,6 +25,7 @@ services:
       - .:/e2e
   cypress-edit-dataset:
     image: cypress/included:6.0.0
+    ipc: host
     environment:
       NODE_ENV: test
     entrypoint: []
@@ -35,6 +37,7 @@ services:
       - .:/e2e
   cypress-publishers:
     image: cypress/included:7.3.0
+    ipc: host
     environment:
       NODE_ENV: test
     entrypoint: []
@@ -46,6 +49,7 @@ services:
       - .:/e2e
   cypress-required-metadata:
     image: cypress/included:7.3.0
+    ipc: host
     environment:
       NODE_ENV: test
     entrypoint: []
@@ -57,6 +61,7 @@ services:
       - .:/e2e
   cypress-resource-upload:
     image: cypress/included:7.3.0
+    ipc: host
     environment:
       NODE_ENV: test
     entrypoint: []
@@ -68,6 +73,7 @@ services:
       - .:/e2e
   cypress-user-flow:
     image: cypress/included:7.3.0
+    ipc: host
     environment:
       NODE_ENV: test
     entrypoint: []
