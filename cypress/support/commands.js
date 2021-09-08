@@ -1,7 +1,7 @@
 import 'chance';
 import 'cypress-file-upload';
 
-Cypress.Commands.add('login', (username = 'admin', password = 'admin') => {
+Cypress.Commands.add('login', (username = 'admin', password = 'password') => {
   cy.clearCookies();
   cy.visit('/user/login');
   cy.get('input[name=login]').type(username);
@@ -14,10 +14,71 @@ Cypress.Commands.add('logout', () => {
   cy.clearCookies();
 });
 
-Cypress.Commands.add('createOrg', () => {
-  cy.visit('/organization/new');
-  cy.get('input[name=title]').type('Test Organization');
-  cy.get('.form-actions .btn-primary').click({ failOnStatusCode: false });
+Cypress.Commands.add('createOrg', (orgName, orgDesc) => {
+  /**
+   *  * Method to create organization via CKAN API
+   *   * :PARAM orgName String: Name of the organization being created
+   *   * :PARAM orgDesc String: Description of the organization being created
+   *   * :PARAM orgTest Boolean: Control value to determine if to use UI to create organization
+   *   *  for testing or to visit the organization creation page
+   *   * :RETURN null:
+   *   */
+
+  cy.request({
+    url: '/api/action/organization_create',
+    method: 'POST',
+    body: {
+      description: orgDesc,
+      title: orgName,
+      approval_status: 'approved',
+      state: 'active',
+      name: orgName,
+      extras: [
+        {
+          key: 'publisher',
+          value: `[["${orgName}", "${orgName}", "top level publisher"], ["${orgName}", "${orgName}", "top level publisher", "first level publisher", "second level publisher"]]`,
+        },
+      ],
+    },
+  });
+});
+
+Cypress.Commands.add('deleteOrg', (orgName) => {
+  /**
+   * Method to purge an organization from the current state
+   * :PARAM orgName String: Name of the organization to purge from the current state
+   * :RETURN null:
+   */
+  cy.request({
+    url: '/api/action/organization_delete',
+    method: 'POST',
+    failOnStatusCode: false,
+    body: {
+      id: orgName,
+    },
+  });
+  cy.request({
+    url: '/api/action/organization_purge',
+    method: 'POST',
+    failOnStatusCode: false,
+    body: {
+      id: orgName,
+    },
+  });
+});
+
+Cypress.Commands.add('deleteDataset', (datasetName) => {
+  /**
+   ** Method to purge a dataset from the current state
+   ** :PARAM datasetName String: Name of the dataset to purge from the current state
+   ** :RETURN null:
+   **/
+  cy.request({
+    url: '/api/action/dataset_purge',
+    method: 'POST',
+    failOnStatusCode: false,
+    body: { id: datasetName },
+  });
 });
 
 Cypress.Commands.add('createUser', (username) => {
@@ -40,7 +101,7 @@ Cypress.Commands.add('requiredMetadata', (title) => {
   cy.get('input[name=title]').type(datasetTitle);
   cy.get('textarea[name=description]').type(chance.sentence({ words: 4 }));
   cy.get('.react-tags input').type('1234{enter}');
-  cy.get('select[name=owner_org]').select('Test Organization');
+  cy.get('select[name=owner_org]').select('test-organization');
   cy.get('input[placeholder="Select publisher"]').type('top level publisher');
   cy.get('input[placeholder="Select publisher"]').type('{downarrow}{enter}');
   cy.get('input[name=contact_name]').type(chance.name());
@@ -59,7 +120,7 @@ Cypress.Commands.add('requiredMetadata', (title) => {
   cy.wait('@packageCreate');
 });
 
-Cypress.Commands.add('additionalMetadata', () => {
+Cypress.Commands.add('additionalMetadata', (isparent) => {
   cy.get('select[name=dataQuality]').select('Yes');
   cy.get('#category-option-yes').parent('.form-group').click();
   cy.get('input[name=data_dictionary]').clear().type(chance.url());
@@ -72,7 +133,11 @@ Cypress.Commands.add('additionalMetadata', () => {
   cy.get('input[name=related_documents]').type(chance.name());
   cy.get('input[name=release_date]').type('2020-08-08');
   cy.get('input[name=system_of_records]').type(chance.url());
-  cy.get('select[name=isParent]').select('No');
+  if (isparent) {
+    cy.get('select[name=isParent]').select('Yes');
+  } else {
+    cy.get('select[name=isParent]').select('No');
+  }
 });
 
 Cypress.Commands.add('resourceUploadWithUrlAndPublish', (url, name) => {

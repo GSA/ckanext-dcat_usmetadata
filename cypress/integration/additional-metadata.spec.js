@@ -1,20 +1,33 @@
 import Chance from 'chance';
 const chance = new Chance();
 
-before(() => {
-  cy.login();
-  cy.createOrg();
-});
-
-beforeEach(() => {
-  cy.logout();
-  cy.login();
-  cy.visit('/dataset/new-metadata');
-});
-
 describe('Additional Metadata Page', () => {
+  before(() => {
+    cy.login();
+    cy.deleteDataset('aaaaa');
+    cy.deleteDataset('bbbbb');
+    cy.deleteDataset('ccccc');
+    cy.deleteDataset('ddddd');
+    cy.deleteOrg('test-organization');
+    cy.createOrg('test-organization', 'sample organization');
+  });
+
+  beforeEach(() => {
+    cy.logout();
+    cy.login();
+    cy.visit('/dataset/new-metadata');
+  });
+
+  after(() => {
+    cy.deleteDataset('aaaaa');
+    cy.deleteDataset('bbbbb');
+    cy.deleteDataset('ccccc');
+    cy.deleteDataset('ddddd');
+    cy.deleteOrg('test-organization');
+  });
+
   it('Validates and submits Additional Metadata succesfully', () => {
-    cy.requiredMetadata();
+    cy.requiredMetadata('aaaaa');
     cy.get('input[name=data_dictionary]').type('www.invalid.url');
     cy.get('input[name=homepage_url]').type('www.invalid.url');
     cy.get('button[type=button]').contains('Save and Continue').click();
@@ -33,7 +46,7 @@ describe('Additional Metadata Page', () => {
   });
 
   it('Accrual Periodicity validation works ISO 8601 value', () => {
-    cy.requiredMetadata();
+    cy.requiredMetadata('bbbbb');
     cy.get('select[name=accrualPeriodicity]').select('Other');
     cy.get('input[name=accrualPeriodicityOther]').should('be.enabled');
     cy.get('select[name=accrualPeriodicity]').select('Daily');
@@ -46,7 +59,7 @@ describe('Additional Metadata Page', () => {
   });
 
   it('Radio field geospatial dataset works', () => {
-    cy.requiredMetadata();
+    cy.requiredMetadata('ccccc');
     cy.get('#category-option-yes').parent('.form-group').click();
     cy.intercept('/api/3/action/package_update').as('packageUpdate');
     cy.get('button[type=button]').contains('Save and Continue').click();
@@ -57,7 +70,7 @@ describe('Additional Metadata Page', () => {
   });
 
   it('Goes back to previous page', () => {
-    cy.requiredMetadata();
+    cy.requiredMetadata('ddddd');
     cy.get('button[type=button]')
       .contains('Back to previous page')
       .click()
@@ -68,40 +81,35 @@ describe('Additional Metadata Page', () => {
 });
 
 describe('Parent Dataset', () => {
-  const parentTitle = chance.word({ length: 5 });
-  const childTitle = chance.word({ length: 5 });
+  const parentTitle = 'eeeee';
+  const childTitle = 'eeeef';
 
   before(() => {
     cy.logout();
     cy.login();
+    cy.deleteDataset(parentTitle);
+    cy.deleteDataset(childTitle);
+    cy.deleteOrg('test-organization');
+    cy.createOrg('test-organization', 'sample organization');
     cy.visit('/dataset/new-metadata');
     cy.requiredMetadata(parentTitle);
-    cy.additionalMetadata();
-    cy.get('select[name=isParent]').select('Yes');
+    cy.additionalMetadata(true);
     cy.intercept('/api/3/action/package_update').as('packageUpdate');
     cy.get('button[type=button]').contains('Save and Continue').click();
     cy.wait('@packageUpdate');
     cy.resourceUploadWithUrlAndPublish();
   });
 
-  after(() => {
-    cy.request({
-      method: 'POST',
-      url: '/api/3/action/dataset_purge',
-      body: {
-        id: childTitle,
-      },
-      failOnStatusCode: false,
-    });
+  beforeEach(() => {
+    cy.logout();
+    cy.login();
+    cy.visit('/dataset/new-metadata');
+  });
 
-    cy.request({
-      method: 'POST',
-      url: '/api/3/action/dataset_purge',
-      body: {
-        id: parentTitle,
-      },
-      failOnStatusCode: false,
-    });
+  after(() => {
+    cy.deleteDataset(parentTitle);
+    cy.deleteDataset(childTitle);
+    cy.deleteOrg('test-organization');
   });
 
   it('Able to select and displays parent dataset with a human-readable title', () => {
@@ -127,8 +135,26 @@ describe('Parent Dataset', () => {
 });
 
 describe('Save draft functionality on Additional Metadata page', () => {
+  before(() => {
+    cy.login();
+    cy.deleteDataset('fffff');
+    cy.deleteOrg('test-organization');
+    cy.createOrg('test-organization', 'sample organization');
+  });
+
+  beforeEach(() => {
+    cy.logout();
+    cy.login();
+    cy.visit('/dataset/new-metadata');
+  });
+
+  after(() => {
+    cy.deleteDataset('fffff');
+    cy.deleteOrg('test-organization');
+  });
+
   it('Saves dataset using "Save draft" button', () => {
-    cy.requiredMetadata();
+    cy.requiredMetadata('fffff');
     cy.get('.usa-button--outline').contains('Save draft').click();
     cy.contains('Draft saved');
 

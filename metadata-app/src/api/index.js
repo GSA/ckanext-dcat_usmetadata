@@ -139,12 +139,12 @@ const serializeSupplementalValues = (opts) => {
 
   if (opts.description) {
     newOpts.notes = opts.description;
-    const indexOfNotes = newOpts.extras.findIndex((x) => x.key === 'notes');
-    if (indexOfNotes > -1) {
-      newOpts.extras[indexOfNotes].value = opts.description;
-    } else {
-      newOpts.extras.push({ key: 'notes', value: newOpts.notes });
-    }
+    // const indexOfNotes = newOpts.extras.findIndex((x) => x.key === 'notes');
+    // if (indexOfNotes > -1) {
+    //   newOpts.extras[indexOfNotes].value = opts.description;
+    // } else {
+    //   newOpts.extras.push({ key: 'notes', value: newOpts.notes });
+    // }
   }
 
   if (opts.tags && opts.tags.length > 0) {
@@ -502,6 +502,56 @@ const deserializeSupplementalValues = (opts) => {
   return newOpts;
 };
 
+const moveToExtras = (opts) => {
+  const newOpts = clone(opts);
+  const extras = [];
+
+  const keysToCheck = [
+    'publisher',
+    'contact_name',
+    'contact_email',
+    'unique_id',
+    'modified',
+    'public_access_level',
+    'bureau_code',
+    'program_code',
+    'release_date',
+    'accrual_periodicity',
+    'language',
+    'data_quality',
+    'publishing_status',
+    'is_parent',
+    'parent_dataset',
+    'category',
+    'related_documents',
+    'conforms_to',
+    'homepage_url',
+    'system_of_records',
+    'primary_it_investment_uii',
+    'publisher_1',
+    'publisher_2',
+    'publisher_3',
+    'publisher_4',
+    'publisher_5',
+  ];
+
+  for (let i = 0; i < keysToCheck.length; i += 1) {
+    if (keysToCheck[i] in opts) {
+      extras.push({ key: keysToCheck[i], value: opts[keysToCheck[i]] });
+      delete newOpts[keysToCheck[i]];
+    }
+  }
+
+  const commonCore = {};
+  for (let i = 0; i < extras.length; i += 1) {
+    commonCore[extras[i].key] = extras[i].value;
+  }
+
+  newOpts.common_core = commonCore;
+  newOpts.extras = extras;
+  return newOpts;
+};
+
 /**
  * API CALLS
  */
@@ -515,11 +565,11 @@ const createDataset = (opts, apiUrl, apiKey) => {
   delete body.url;
   body.bureau_code = '015:11';
   body.program_code = '015:001';
+
   return axios
-    .post(`${apiUrl}package_create`, encodeValues(body), {
+    .post(`${apiUrl}package_create`, encodeValues(moveToExtras(body)), {
       headers: {
         'X-CKAN-API-Key': apiKey,
-        'Content-Type': 'application/x-www-form-urlencoded',
       },
     })
     .then((res) => {
@@ -619,14 +669,13 @@ const updateDataset = (id, opts, apiUrl, apiKey) => {
   delete body.url;
 
   // TODO where do we get these?
-  body.bureauCode = '015:11';
-  body.programCode = '015:001';
+  body.bureau_code = '015:11';
+  body.program_code = '015:001';
 
   return axios
-    .post(`${apiUrl}package_update`, encodeValues(body), {
+    .post(`${apiUrl}package_update`, encodeValues(moveToExtras(body)), {
       headers: {
         'X-CKAN-API-Key': apiKey,
-        'Content-Type': 'application/x-www-form-urlencoded',
       },
     })
     .then((res) => {

@@ -1,4 +1,15 @@
 describe('Publishers linked to CKAN org', () => {
+  before(() => {
+    cy.login();
+    cy.deleteDataset(name);
+    cy.deleteOrg('test-organization');
+    cy.createOrg('test-organization');
+  });
+
+  after(() => {
+    cy.deleteOrg('test-organization');
+  });
+
   it('Has publishers extra in CKAN org metadata', () => {
     cy.login();
     cy.request('GET', '/api/3/action/organization_show?id=test-organization').then((response) => {
@@ -7,9 +18,9 @@ describe('Publishers linked to CKAN org', () => {
       assert.isObject(publisherExtra, 'extra is found');
       assert.isString(publisherExtra.value, 'its value is string');
       const publishers = JSON.parse(publisherExtra.value);
-      expect(publishers.length).to.eq(6);
-      expect(publishers[0].length).to.eq(2);
-      expect(publishers[5].length).to.eq(7);
+      expect(publishers.length).to.eq(2);
+      expect(publishers[0].length).to.eq(3);
+      expect(publishers[0][2].length).to.eq(19);
     });
   });
 });

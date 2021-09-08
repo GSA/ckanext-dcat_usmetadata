@@ -103,7 +103,13 @@ describe('Test API', () => {
         const payloadStr = request.config.data;
         const payload = JSON.parse(decodeURIComponent(payloadStr));
 
-        expect(payload.release_date).toBe('2020-01-14');
+        let received = '';
+        for (let i = 0; i < payload.extras.length; i += 1) {
+          if (payload.extras[i].key === 'release_date') {
+            received = payload.extras[i].value;
+          }
+        }
+        expect(received).toBe('2020-01-14');
 
         request.respondWith({
           status: 200,
@@ -127,7 +133,13 @@ describe('Test API', () => {
         const payloadStr = request.config.data;
         const payload = JSON.parse(decodeURIComponent(payloadStr));
 
-        expect(payload.accrual_periodicity).toBe('R/P1Y30DT15M39S');
+        let received = '';
+        for (let i = 0; i < payload.extras.length; i += 1) {
+          if (payload.extras[i].key === 'accrual_periodicity') {
+            received = payload.extras[i].value;
+          }
+        }
+        expect(received).toBe('R/P1Y30DT15M39S');
 
         request.respondWith({
           status: 200,

@@ -3,47 +3,46 @@ const name = 'test-editing';
 const resourceToBeEdited = 'resource-to-be-edited';
 const resourceToBeDeleted = 'resource-to-be-deleted';
 
-before(() => {
-  cy.login();
-  cy.createOrg();
-  cy.visit('/dataset/new-metadata');
-  cy.requiredMetadata(name);
-  cy.additionalMetadata();
-  // Set 'isParent' to "Yes" to confirm if values are saved correctly as by default
-  // it is set to "No".
-  cy.get('select[name=isParent]').select('Yes');
-
-  // Use custom value for "Data Publishing Frequency" field
-  cy.get('select[name=accrualPeriodicity]').select('other');
-  cy.get('input[name=accrualPeriodicityOther]').type('P1Y30DT15M39S');
-
-  // Use custom value for "Data Dictionary Type" field
-  cy.get('select[name=describedByType]').select('other');
-  cy.get('input[name=otherDataDictionaryType]').type('something/else');
-
-  cy.get('button[type=button]').contains('Save and Continue').click();
-  cy.intercept('/api/3/action/package_patch').as('packagePatch');
-  cy.intercept('/api/3/action/resource_create').as('resourceSaved');
-  cy.resourceUploadWithUrlAndSave(null, resourceToBeDeleted);
-  cy.wait('@resourceSaved');
-  cy.resourceUploadWithUrlAndPublish(null, resourceToBeEdited);
-  cy.wait('@packagePatch');
-});
-
-beforeEach(() => {
-  cy.logout();
-  cy.login();
-  // Wait for list of organizations to be fetched:
-  cy.intercept('/api/3/action/organization_list_for_user').as('listOfOrgs');
-  cy.visit('/dataset/edit-new/' + name);
-  cy.wait('@listOfOrgs');
-});
-
-after(() => {
-  cy.request('POST', '/api/3/action/dataset_purge', { id: name });
-});
-
 describe('Editing an existing dataset', () => {
+  before(() => {
+    cy.login();
+    cy.deleteDataset(name);
+    cy.deleteOrg('test-organization');
+    cy.createOrg('test-organization');
+    cy.visit('/dataset/new-metadata');
+    cy.requiredMetadata(name);
+    cy.additionalMetadata(true);
+
+    // Use custom value for "Data Publishing Frequency" field
+    cy.get('select[name=accrualPeriodicity]').select('other');
+    cy.get('input[name=accrualPeriodicityOther]').type('P1Y30DT15M39S');
+
+    // Use custom value for "Data Dictionary Type" field
+    cy.get('select[name=describedByType]').select('other');
+    cy.get('input[name=otherDataDictionaryType]').type('something/else');
+
+    cy.get('button[type=button]').contains('Save and Continue').click();
+    cy.intercept('/api/3/action/package_patch').as('packagePatch');
+    cy.intercept('/api/3/action/resource_create').as('resourceSaved');
+    cy.resourceUploadWithUrlAndSave(null, resourceToBeDeleted);
+    cy.wait('@resourceSaved');
+    cy.resourceUploadWithUrlAndPublish(null, resourceToBeEdited);
+    cy.wait('@packagePatch');
+  });
+
+  beforeEach(() => {
+    cy.logout();
+    cy.login();
+    // Wait for list of organizations to be fetched:
+    cy.intercept('/api/3/action/organization_list_for_user').as('listOfOrgs');
+    cy.visit('/dataset/edit-new/' + name);
+    cy.wait('@listOfOrgs');
+  });
+
+  after(() => {
+    cy.deleteDataset(name);
+  });
+
   it('Loads required metadata values into the form', () => {
     cy.contains('Required Metadata');
     cy.get('input[name=title]').invoke('val').should('eq', name);
@@ -53,7 +52,7 @@ describe('Editing an existing dataset', () => {
     cy.get('select[name=owner_org]')
       .find(':selected')
       .invoke('text')
-      .should('eq', 'Test Organization');
+      .should('eq', 'test-organization');
     cy.get('input[placeholder="Select publisher"]').should('have.value', 'top level publisher');
     cy.get('input[name=contact_name]').invoke('val').should('not.be.empty');
     cy.get('input[name=contact_email]')
@@ -176,7 +175,7 @@ describe('Editing an existing dataset', () => {
     cy.get('select[name=owner_org]')
       .find(':selected')
       .invoke('text')
-      .should('eq', 'Test Organization');
+      .should('eq', 'test-organization');
     cy.get('input[placeholder="Select publisher"]').should('have.value', newMetadata.publisher);
     cy.get('input[name=contact_name]').invoke('val').should('eq', newMetadata.contactName);
     cy.get('input[name=contact_email]').invoke('val').should('eq', newMetadata.contactEmail);

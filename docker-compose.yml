@@ -1,33 +1,52 @@
-version: "3"
+version: "3.7"
 services:
-  app:
-    build: .
-    command: /opt/inventory-app/start.sh
+  ckan:
+    image: datagov/ckanext-dcat_usmetadata:${CKAN_VERSION}
+    build:
+      context: .
+      args:
+        CKAN_VERSION: ${CKAN_VERSION}
+    env_file:
+      - .env
     environment:
-      DB_CKAN_HOST: db
-      DB_CKAN_USER: ckan
-      DB_CKAN_PASSWORD: pass
-      DB_CKAN_DB: ckan
+      CKAN_SQLALCHEMY_URL: postgresql://ckan_default:pass@db/ckan_test
+      CKAN_DATASTORE_WRITE_URL: postgresql://datastore_write:pass@db/datastore_test
+      CKAN_DATASTORE_READ_URL: postgresql://datastore_read:pass@db/datastore_test
+      CKAN_SOLR_URL: http://solr:8983/solr/ckan
+      CKAN_REDIS_URL: redis://redis:6379/1
+      CKAN_DATAPUSHER_URL: http://localhost:8080/  # datapusher is not really enabled
+      CKAN__PLUGINS: dcat_usmetadata usmetadata
+      PYTHONDONTWRITEBYTECODE: 1
+    # command: /bin/bash -c "while ! nc -zv db 5432; do echo \"CKAN** Waiting for DB\"; sleep 3; done; /srv/app/start_ckan_development.sh"
     depends_on:
       - db
       - solr
+      - redis
     ports:
       - "5000:5000"
     volumes:
-      - ckan:/usr/lib/ckan
-      - ./config:/etc/ckan
-      - .:/opt/inventory-app
+      - .:/app
+      - .:/srv/app/src_extensions/ckanext-dcat_usmetadata
       
   db:
-    image: datagov/catalog-db:latest
+    image: ckan/ckan-postgres-dev:${CKAN_VERSION}
     environment:
       POSTGRES_USER: postgres
-      DB_CKAN_USER: ckan
-      DB_CKAN_PASSWORD: pass
-      DB_CKAN_DB: ckan
-
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    healthcheck:
+      test: ["CMD", "pg_isready -u ckan"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "5432:5432"
+  redis:
+    image: redis:alpine
   solr:
-    image: datagov/catalog-solr:inventory
+    image: datagov/catalog.data.gov.solr:latest
+    ports:
+      - "8983:8983"
 
 volumes:
-  ckan:
+  pg_data:

@@ -34,8 +34,8 @@ class DCATUSMetadataCommand(cli.CkanCommand):
         self._load_config()
 
         if len(self.args) != 1:
-            print 'This command requires a single argument\n'
-            print self.usage
+            print('This command requires a single argument\n')
+            print(self.usage)
             sys.exit(1)
 
         self.import_publishers(self.args[0])
@@ -80,7 +80,7 @@ class DCATUSMetadataCommand(cli.CkanCommand):
 
             p.toolkit.get_action('organization_patch')(
                 {}, {'id': org, 'extras': org_extras})
-            print "Updated publishers for '{}'".format(org)
+            print("Updated publishers for '{}'".format(org))
         except Exception as e:
-            print e
-            print "Organization '{}' was not found".format(org)
+            print(e)
+            print("Organization '{}' was not found".format(org))
