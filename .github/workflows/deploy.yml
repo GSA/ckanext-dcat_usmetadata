@@ -9,6 +9,7 @@ jobs:
     name: Publish to PyPI
     needs: [cypress, test-js]
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
     steps:
       - name: checkout
         uses: actions/checkout@v2
