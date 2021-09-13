@@ -26,13 +26,6 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: '3.6'
-      - name: Cache Metadata App
-        uses: actions/cache@v2
-        with:
-          path: |
-            - ~/ckanext-dcat_usmetadata
-            - ~/.cache
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Install dependencies
         run: |
           yarn
@@ -49,6 +42,10 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: '3.6'
+      - name: Install dependencies
+        run: |
+          yarn
+          CI=false yarn build
       - name: Run node tests
         run: yarn test:metadata-app
 
@@ -107,7 +104,7 @@ jobs:
         paster --plugin=ckan db init -c test.ini
     - name: Run tests
       run: |
-        yarn build:metadata-app
+        yarn build
         pytest --ckan-ini=test.ini --cov=ckanext.dcat_usmetadata --cov-fail-under=${CODE_COVERAGE_THRESHOLD_REQUIRED} --disable-warnings ckanext/dcat_usmetadata/tests
 
   cypress:
@@ -133,22 +130,5 @@ jobs:
           source $ENV_FILE
           CKAN_VERSION=${{ matrix.ckan-version }} yarn dockerize
           CKAN_VERSION=${{ matrix.ckan-version }} docker-compose -f docker-compose.yml run ckan /bin/bash -c \
-            "apk add swig npm && npm install --global yarn && cd /app && yarn install && yarn build:metadata-app"
+            "apk add swig npm && npm install --global yarn && cd /app && yarn install && yarn build"
           CKAN_VERSION=${{ matrix.ckan-version }} make cypress-containers
-
-  deploy:
-    name: Publish to PyPI
-    needs: [cypress, test-js]
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    steps:
-      - name: Create packages
-        run: |
-          pip install -r dev-requirements.txt
-          python setup.py sdist
-          python setup.py bdist_wheel
-      - name: pypi-publish
-        uses: pypa/gh-action-pypi-publish@v1.4.2
-        with:
-          user:
-          password: ${{ secrets.PYPI_API_TOKEN }}

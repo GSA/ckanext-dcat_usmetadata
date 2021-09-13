@@ -1,0 +1,27 @@
+name: Publish to PyPI
+on:
+  pull_request:
+    branches: [main]
+    types: [closed]
+
+  deploy:
+    name: Publish to PyPI
+    needs: [cypress, test-js]
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          yarn
+          CI=false yarn build
+      - name: Create packages
+        run: |
+          pip install -r dev-requirements.txt
+          python setup.py sdist
+          python setup.py bdist_wheel
+      - name: pypi-publish
+        uses: pypa/gh-action-pypi-publish@v1.4.2
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
