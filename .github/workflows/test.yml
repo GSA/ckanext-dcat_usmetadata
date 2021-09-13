@@ -1,5 +1,5 @@
 name: Tests
-on: [pull_request]
+on: [pull_request, workflow_dispatch]
 env:
   CODE_COVERAGE_THRESHOLD_REQUIRED: 33
 jobs:
@@ -19,7 +19,7 @@ jobs:
         run: flake8 . --count --max-line-length=127 --statistics --exclude ckan,nose
 
   lint-js:
-    name: JS Lint
+    name: JS Lint and Build Metadata App
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -48,7 +48,6 @@ jobs:
           CI=false yarn build
       - name: Run node tests
         run: yarn test:metadata-app
-
 
   test:
     needs: lint-python
@@ -105,16 +104,12 @@ jobs:
         paster --plugin=ckan db init -c test.ini
     - name: Run tests
       run: |
-        yarn build:metadata-app
+        yarn build
         pytest --ckan-ini=test.ini --cov=ckanext.dcat_usmetadata --cov-fail-under=${CODE_COVERAGE_THRESHOLD_REQUIRED} --disable-warnings ckanext/dcat_usmetadata/tests
 
-  cypress:
-    name: Cypress Tests for CKAN ${{ matrix.ckan-version }}
+  cypress_28:
+    name: Cypress Tests for CKAN 2.8
     needs: test
-    strategy:
-      matrix:
-        ckan-version: [2.9, 2.8]
-      fail-fast: false
     runs-on: ubuntu-latest
     env:
       ENV_FILE: .env
@@ -129,7 +124,29 @@ jobs:
       - name: cypress
         run: |
           source $ENV_FILE
-          CKAN_VERSION=${{ matrix.ckan-version }} yarn dockerize
-          CKAN_VERSION=${{ matrix.ckan-version }} docker-compose -f docker-compose.yml run ckan /bin/bash -c \
-            "apk add swig npm && npm install --global yarn && cd /app && yarn install && yarn build:metadata-app"
-          CKAN_VERSION=${{ matrix.ckan-version }} make cypress-containers
+          CKAN_VERSION=2.8 yarn dockerize
+          CKAN_VERSION=2.8 docker-compose -f docker-compose.yml run ckan /bin/bash -c \
+            "apk add swig npm && npm install --global yarn && cd /app && yarn install && yarn build"
+          CKAN_VERSION=2.8 make cypress-containers
+
+  cypress_29:
+    name: Cypress Tests for CKAN 2.9
+    needs: test
+    runs-on: ubuntu-latest
+    env:
+      ENV_FILE: .env
+      CKAN_SQLALCHEMY_URL: postgresql://ckan_default:pass@db/ckan_test
+      CKAN_DATASTORE_WRITE_URL: postgresql://datastore_write:pass@db/datastore_test
+      CKAN_DATASTORE_READ_URL: postgresql://datastore_read:pass@db/datastore_test
+      CKAN_SOLR_URL: http://solr:8983/solr/ckan
+      CKAN_REDIS_URL: redis://redis:6379/1
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: cypress
+        run: |
+          source $ENV_FILE
+          CKAN_VERSION=2.9 yarn dockerize
+          CKAN_VERSION=2.9 docker-compose -f docker-compose.yml run ckan /bin/bash -c \
+            "apk add swig npm && npm install --global yarn && cd /app && yarn install && yarn build"
+          CKAN_VERSION=2.9 make cypress-containers
