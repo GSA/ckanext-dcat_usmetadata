@@ -108,7 +108,7 @@ jobs:
         pytest --ckan-ini=test.ini --cov=ckanext.dcat_usmetadata --cov-fail-under=${CODE_COVERAGE_THRESHOLD_REQUIRED} --disable-warnings ckanext/dcat_usmetadata/tests
 
   cypress_28:
-    name: Cypress Tests for CKAN ${{ matrix.ckan-version }}
+    name: Cypress Tests for CKAN 2.8
     needs: test
     runs-on: ubuntu-latest
     env:
@@ -130,7 +130,7 @@ jobs:
           CKAN_VERSION=2.8 make cypress-containers
 
   cypress_29:
-    name: Cypress Tests for CKAN ${{ matrix.ckan-version }}
+    name: Cypress Tests for CKAN 2.9
     needs: test
     runs-on: ubuntu-latest
     env:
