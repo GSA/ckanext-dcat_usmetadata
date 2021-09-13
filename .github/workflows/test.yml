@@ -19,13 +19,20 @@ jobs:
         run: flake8 . --count --max-line-length=127 --statistics --exclude ckan,nose
 
   lint-js:
-    name: JS Lint
+    name: JS Lint and Build Metadata App
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
           python-version: '3.6'
+      - name: Cache Metadata App
+        uses: actions/cache@v2
+        with:
+          path: |
+            - ~/ckanext-dcat_usmetadata
+            - ~/.cache
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Install dependencies
         run: |
           yarn
@@ -42,13 +49,8 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: '3.6'
-      - name: Install dependencies
-        run: |
-          yarn
-          CI=false yarn build
       - name: Run node tests
         run: yarn test:metadata-app
-
 
   test:
     needs: lint-python
@@ -133,3 +135,19 @@ jobs:
           CKAN_VERSION=${{ matrix.ckan-version }} docker-compose -f docker-compose.yml run ckan /bin/bash -c \
             "apk add swig npm && npm install --global yarn && cd /app && yarn install && yarn build:metadata-app"
           CKAN_VERSION=${{ matrix.ckan-version }} make cypress-containers
+
+  deploy:
+    name: Publish to PyPI
+    needs: [cypress, test-js]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Create packages
+        run: |
+          pip install -r dev-requirements.txt
+          python setup.py sdist
+          python setup.py bdist_wheel
+      - name: pypi-publish
+        uses: pypa/gh-action-pypi-publish@v1.4.2
+        with:
+          user:
+          password: ${{ secrets.PYPI_API_TOKEN }}
