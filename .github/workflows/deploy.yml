@@ -13,7 +13,7 @@ jobs:
   deploy:
     name: Publish to PyPI
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -21,10 +21,13 @@ jobs:
         run: |
           yarn
           CI=false yarn build
+      - name: Update setup.py if manual release
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          sed -i "s/version='[0-9]\{1,2\}.[0-9]\{1,4\}.[0-9]\{1,4\}',/version='${{github.event.inputs.version_no}}',/g" setup.py
       - name: Create packages
         run: |
           pip install -r dev-requirements.txt
-          sed -i "s/version='[0-9]\{1,2\}.[0-9]\{1,4\}.[0-9]\{1,4\}',/version='${{github.event.inputs.version_no}}',/g" setup.py
           python setup.py sdist
           python setup.py bdist_wheel
       - name: pypi-publish
