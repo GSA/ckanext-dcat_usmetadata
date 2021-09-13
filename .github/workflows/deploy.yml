@@ -3,11 +3,11 @@ on:
   pull_request:
     branches: [main]
     types: [closed]
+  workflow_dispatch:
 
 jobs:
   deploy:
     name: Publish to PyPI
-    needs: [cypress, test-js]
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
     steps:
