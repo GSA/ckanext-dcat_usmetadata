@@ -139,6 +139,7 @@ jobs:
   deploy:
     name: Publish to PyPI
     needs: [cypress, test-js]
+    runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
       - name: Create packages
