@@ -585,7 +585,7 @@ exports[`Renders RequiredMetadata component 1`] = `
                 Daily
               </option>
               <option
-                value="R/P7D"
+                value="R/P1W"
               >
                 Weekly
               </option>
