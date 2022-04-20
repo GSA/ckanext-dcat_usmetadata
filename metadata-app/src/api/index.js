@@ -89,7 +89,7 @@ const encodeValues = (obj) => {
 const serializeResource = (resource) => {
   const serializedResource = clone(resource);
 
-  delete serializedResource.resource_type;
+  // delete serializedResource.resource_type;
 
   if (serializedResource.urlType) {
     if (
@@ -582,6 +582,7 @@ const createDataset = (opts, apiUrl, apiKey) => {
 
 const createResource = (packageId, opts, apiUrl, apiKey) => {
   let body;
+  console.log(opts);
   if (opts.upload) {
     body = new FormData();
     body.append('package_id', packageId);
