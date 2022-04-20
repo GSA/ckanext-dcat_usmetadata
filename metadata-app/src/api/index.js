@@ -582,7 +582,6 @@ const createDataset = (opts, apiUrl, apiKey) => {
 
 const createResource = (packageId, opts, apiUrl, apiKey) => {
   let body;
-  console.log(opts);
   if (opts.upload) {
     body = new FormData();
     body.append('package_id', packageId);
