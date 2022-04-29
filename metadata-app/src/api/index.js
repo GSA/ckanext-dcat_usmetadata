@@ -89,7 +89,7 @@ const encodeValues = (obj) => {
 const serializeResource = (resource) => {
   const serializedResource = clone(resource);
 
-  delete serializedResource.resource_type;
+  // delete serializedResource.resource_type;
 
   if (serializedResource.urlType) {
     if (
