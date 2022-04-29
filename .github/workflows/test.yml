@@ -107,28 +107,6 @@ jobs:
         yarn build
         pytest --ckan-ini=test.ini --cov=ckanext.dcat_usmetadata --cov-fail-under=${CODE_COVERAGE_THRESHOLD_REQUIRED} --disable-warnings ckanext/dcat_usmetadata/tests
 
-  cypress_28:
-    name: Cypress Tests for CKAN 2.8
-    needs: test
-    runs-on: ubuntu-latest
-    env:
-      ENV_FILE: .env
-      CKAN_SQLALCHEMY_URL: postgresql://ckan_default:pass@db/ckan_test
-      CKAN_DATASTORE_WRITE_URL: postgresql://datastore_write:pass@db/datastore_test
-      CKAN_DATASTORE_READ_URL: postgresql://datastore_read:pass@db/datastore_test
-      CKAN_SOLR_URL: http://solr:8983/solr/ckan
-      CKAN_REDIS_URL: redis://redis:6379/1
-    steps:
-      - name: checkout
-        uses: actions/checkout@v2
-      - name: cypress
-        run: |
-          source $ENV_FILE
-          CKAN_VERSION=2.8 yarn dockerize
-          CKAN_VERSION=2.8 docker-compose -f docker-compose.yml run ckan /bin/bash -c \
-            "apk add swig npm && npm install --global yarn && cd /app && yarn install && yarn build"
-          CKAN_VERSION=2.8 make cypress-containers
-
   cypress_29:
     name: Cypress Tests for CKAN 2.9
     needs: test
@@ -150,3 +128,11 @@ jobs:
           CKAN_VERSION=2.9 docker-compose -f docker-compose.yml run ckan /bin/bash -c \
             "apk add swig npm && npm install --global yarn && cd /app && yarn install && yarn build"
           CKAN_VERSION=2.9 make cypress-containers
+      - name: cypress-artifacs
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-artifacts
+          path: |
+            ./cypress/screenshots/
+            ./cypress/videos/

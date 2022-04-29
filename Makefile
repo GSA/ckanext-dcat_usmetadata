@@ -18,6 +18,7 @@ cypress: ## Run all of the cypress tests invdividually
 cypress-containers: ## Run all of the cypress tests in separate containers
 	CKAN_VERSION=${CKAN_VERSION} docker-compose -f docker-compose.yml -f docker-compose.cypress.yml up --abort-on-container-exit cypress-additional-metadata
 	CKAN_VERSION=${CKAN_VERSION} docker-compose -f docker-compose.yml -f docker-compose.cypress.yml up --abort-on-container-exit cypress-edit-dataset
+	CKAN_VERSION=${CKAN_VERSION} docker-compose -f docker-compose.yml -f docker-compose.cypress.yml up --abort-on-container-exit cypress-organization
 	CKAN_VERSION=${CKAN_VERSION} docker-compose -f docker-compose.yml -f docker-compose.cypress.yml up --abort-on-container-exit cypress-publishers
 	CKAN_VERSION=${CKAN_VERSION} docker-compose -f docker-compose.yml -f docker-compose.cypress.yml up --abort-on-container-exit cypress-required-metadata
 	CKAN_VERSION=${CKAN_VERSION} docker-compose -f docker-compose.yml -f docker-compose.cypress.yml up --abort-on-container-exit cypress-resource-upload
