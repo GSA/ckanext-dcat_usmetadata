@@ -60,7 +60,7 @@ def update_orgs_with_publishers(org, publishers_tree):
         else:
             org_extras.append(
                 {'key': 'publisher', 'value': json.dumps(publishers_tree)})
-        
+
         p.toolkit.get_action('organization_patch')(
             {"user": user['name'], "ignore_auth": True}, {'id': org, 'extras': org_extras})
         print("Updated publishers for '{}'".format(org))
