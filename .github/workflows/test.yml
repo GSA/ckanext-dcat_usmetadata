@@ -60,6 +60,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: openknowledge/ckan-dev:${{ matrix.ckan-version }}
+      volumes:
+        - .:/app
     services:
       solr:
         image: datagov/catalog.data.gov.solr:latest
