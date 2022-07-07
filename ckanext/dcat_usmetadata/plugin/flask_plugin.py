@@ -2,9 +2,16 @@
 Mixin for Flask-specific functionality. This aides the migration between Pylons and Flask.
 """
 import ckan.plugins as p
+import ckanext.dcat_usmetadata.cli as cli
 
 
-class MixinPlugin(object):
+class MixinPlugin(p.SingletonPlugin):
+
+    # IClick
+    p.implements(p.IClick)
+
+    def get_commands(self):
+        return cli.get_commands()
 
     # IConfigurer
     def update_config(self, config):

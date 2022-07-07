@@ -14,11 +14,11 @@ Make sure it is enabled in CKAN's plugins.
 
 This extension is compatible with these versions of CKAN.
 
-CKAN version | Compatibility
------------- | -------------
-<=2.7        | no
-2.8          | yes
-2.9          | [complete](https://github.com/GSA/datagov-ckan-multi/issues/572)
+| CKAN version | Compatibility                                                    |
+| ------------ | ---------------------------------------------------------------- |
+| <=2.7        | no                                                               |
+| 2.8          | yes                                                              |
+| 2.9          | [complete](https://github.com/GSA/datagov-ckan-multi/issues/572) |
 
 ### Installation
 
@@ -67,8 +67,7 @@ Each CKAN organization must have its own list of publishers.
 
 Example of running the command:
 
-    $ paster --plugin=ckanext-dcat_usmetadata publishers-import publishers.csv -c /etc/ckan/production.ini
-
+    $ ckan dcat-usmetadata import-publishers /path/to/publishers.csv
 
 ## Development
 

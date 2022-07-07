@@ -4,6 +4,8 @@ import ckan.plugins
 
 import ckan.tests.factories as factories
 from ckan.tests import helpers
+import ckanext.dcat_usmetadata.cli as cli
+from click.testing import CliRunner
 
 import json
 import pytest
@@ -28,7 +30,7 @@ class TestDcatUsmetadataPlugin(helpers.FunctionalTestBase):
 
     def create_user(self):
         self.sysadmin = factories.Sysadmin(name='admin')
-        self.organization = factories.Organization()
+        self.organization = factories.Organization(name='test-organization')
         if six.PY2:
             self.extra_environ = {'REMOTE_USER': self.sysadmin['name'].encode('ascii')}
         else:
@@ -98,3 +100,15 @@ class TestDcatUsmetadataPlugin(helpers.FunctionalTestBase):
             assert '/js/main.chunk.js' in res.body
             res = self.app.get('/js/main.chunk.js', extra_environ=self.extra_environ)
             assert 'Required Metadata' in res.body
+
+    def test_publisher_load(self):
+        self.create_user()
+        runner = CliRunner()
+        result = runner.invoke(cli.import_publishers, ["/app/ckanext/dcat_usmetadata/publishers.test.csv"])
+        self.app = self._get_test_app()
+        org = self.app.get('/api/action/organization_show?id=%s' % (self.organization['id']),
+                           extra_environ=self.extra_environ)
+        assert json.loads(org.body)['result']['name'] == 'test-organization'
+
+        assert result.exit_code == 0
+        assert "Updated publishers" in result.output
