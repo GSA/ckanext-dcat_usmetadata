@@ -109,6 +109,6 @@ class TestDcatUsmetadataPlugin(helpers.FunctionalTestBase):
         org = self.app.get('/api/action/organization_show?id=%s' % (self.organization['id']),
                            extra_environ=self.extra_environ)
         assert json.loads(org.body)['result']['name'] == 'test-organization'
-        
+
         assert result.exit_code == 0
         assert "Updated publishers" in result.output

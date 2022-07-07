@@ -1,4 +1,3 @@
-import sys
 import csv
 import json
 
@@ -7,9 +6,10 @@ from ckan import model
 
 import click
 
-    
+
 def get_commands():
     return [dcat_usmetadata]
+
 
 @click.group(u"dcat-usmetadata")
 def dcat_usmetadata():
@@ -35,12 +35,14 @@ def import_publishers(path_to_file):
 
             update_orgs_with_publishers(org, publishers_tree)
 
+
 def get_orgs_to_process(rows):
     list_of_available_orgs = []
     for row in rows:
         list_of_available_orgs.append(row[0])
     unique_set_of_orgs = set(list_of_available_orgs)
     return list(unique_set_of_orgs)
+
 
 def update_orgs_with_publishers(org, publishers_tree):
     # Update org metadata with the publishers data:
