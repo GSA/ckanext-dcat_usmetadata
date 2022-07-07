@@ -47,8 +47,9 @@ def get_orgs_to_process(rows):
 def update_orgs_with_publishers(org, publishers_tree):
     # Update org metadata with the publishers data:
     try:
+        user = p.toolkit.get_action('get_site_user')({'model': model, 'ignore_auth': True}, {})
         org_metadata = p.toolkit.get_action(
-            'organization_show')({}, {'id': org})
+            'organization_show')({"user": user['name'], "ignore_auth": True}, {'id': org})
         org_extras = org_metadata.get('extras', [])
         index_of_publisher_extra = next(
             (i for i, item in enumerate(org_extras)
@@ -59,7 +60,7 @@ def update_orgs_with_publishers(org, publishers_tree):
         else:
             org_extras.append(
                 {'key': 'publisher', 'value': json.dumps(publishers_tree)})
-        user = p.toolkit.get_action('get_site_user')({'model': model, 'ignore_auth': True}, {})
+
         p.toolkit.get_action('organization_patch')(
             {"user": user['name'], "ignore_auth": True}, {'id': org, 'extras': org_extras})
         print("Updated publishers for '{}'".format(org))
