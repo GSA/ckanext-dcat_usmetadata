@@ -27,7 +27,7 @@ jobs:
           sed -i "s/version='[0-9]\{1,2\}.[0-9]\{1,4\}.[0-9]\{1,4\}',/version='${{github.event.inputs.version_no}}',/g" setup.py
       - name: Create packages
         run: |
-          pip install -r dev-requirements.txt
+          # pip install -r dev-requirements.txt
           python setup.py sdist
           python setup.py bdist_wheel
       - name: pypi-publish

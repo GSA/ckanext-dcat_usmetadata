@@ -14,11 +14,10 @@ Make sure it is enabled in CKAN's plugins.
 
 This extension is compatible with these versions of CKAN.
 
-| CKAN version | Compatibility                                                    |
-| ------------ | ---------------------------------------------------------------- |
-| <=2.7        | no                                                               |
-| 2.8          | yes                                                              |
-| 2.9          | [complete](https://github.com/GSA/datagov-ckan-multi/issues/572) |
+| CKAN version | Compatibility                                               |
+| ------------ | ----------------------------------------------------------- |
+| <=2.8        | no                                                          |
+| 2.9          | [yes](https://github.com/GSA/datagov-ckan-multi/issues/572) |
 
 ### Installation
 
