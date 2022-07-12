@@ -1,5 +1,5 @@
 [![Github Actions](https://github.com/GSA/ckanext-dcat_usmetadata/actions/workflows/test.yml/badge.svg)](https://github.com/GSA/ckanext-dcat_usmetadata/actions)
-[![CircleCI](https://circleci.com/gh/GSA/ckanext-dcat_usmetadata.svg?style=svg)](https://circleci.com/gh/GSA/ckanext-dcat_usmetadata)
+[![PyPI version](https://badge.fury.io/py/ckanext-dcat_usmetadata.svg)](https://badge.fury.io/py/ckanext-dcat_usmetadata)
 
 # ckanext-dcat_usmetadata
 
