@@ -1,9 +1,9 @@
--e git+https://github.com/GSA/ckanext-harvest.git@ckan-master#egg=ckanext-harvest
--e git+https://github.com/GSA/ckanext-datajson.git@main#egg=ckanext-datajson
--e git+https://github.com/GSA/ckanext-usmetadata.git@main#egg=ckanext-usmetadata
--e git+https://github.com/GSA/ckanext-googleanalyticsbasic.git@main#egg=ckanext-googleanalyticsbasic
--e git+https://github.com/keitaroinc/ckanext-saml2auth@main#egg=ckanext-saml2auth
+-e git+https://github.com/ckan/ckanext-harvest.git@master#egg=ckanext_harvest
+git+https://github.com/keitaroinc/ckanext-saml2auth@main#egg=ckanext-saml2auth
 
+ckanext-datajson
+ckanext-googleanalyticsbasic
+ckanext-usmetadata
 
 repoze.lru==0.7
 repoze.who==2.4
@@ -14,18 +14,13 @@ M2Crypto==0.36.0
 #-e git+https://github.com/IdentityPython/pysaml2.git#egg=pysaml2
 pysaml2
 
-# ckanext-datajson dependencies
-pyyaml==5.4
-lepl
-jsonschema~=2.4.0
-rfc3987
-
 # ckanext-harvest dependencies
-pika
-redis
-requests
-pyOpenSSL
-ckantoolkit==0.0.3
+ckantoolkit>=0.0.7
+pika>=1.1.0
+pyOpenSSL==20.0.1
+# redis==2.10.6 # included in ckan core
+# requests>=2.11.1 # included in ckan core
+six>=1.12.0
 
 # not directly required, pinned by Snyk to avoid a vulnerability
 # or dev-requirements
