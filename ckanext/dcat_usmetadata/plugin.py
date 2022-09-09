@@ -4,8 +4,8 @@ import ckan.plugins.toolkit as toolkit
 import ckanext.dcat_usmetadata.cli as cli
 from logging import getLogger
 
-import blueprint
-import db_utils as utils
+from . import blueprint
+from . import db_utils as utils
 
 toolkit.requires_ckan_version("2.9")
 
