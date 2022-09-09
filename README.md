@@ -114,7 +114,7 @@ There are several levels of testing:
 Lint the python code.
 
 ```bash
-yarn lint:python3
+yarn lint:python
 ```
 
 Lint the JavaScript code.
