@@ -44,7 +44,7 @@ setup(
 
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
     ],
 
 
@@ -87,9 +87,6 @@ setup(
 
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan
-
-        [paste.paster_command]
-        publishers-import = ckanext.dcat_usmetadata.cli:DCATUSMetadataCommand
     ''',
 
     # If you are changing from the default layout of your extension, you may
