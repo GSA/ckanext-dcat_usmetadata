@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   cypress:
-    image: cypress/included:7.3.0
+    image: cypress/included:7.7.0
     environment:
       NODE_ENV: test
     entrypoint: []
