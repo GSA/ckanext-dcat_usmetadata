@@ -114,7 +114,10 @@ jobs:
       - name: cypress
         run: |
           source $ENV_FILE
-          CKAN_VERSION=2.9 yarn front-end
+          CKAN_VERSION=2.9 yarn install
+          CKAN_VERSION=2.9 yarn build
+          CKAN_VERSION=2.9 yarn dockerize
+          CKAN_VERSION=2.9 yarn e2e
       - name: cypress-artifacs
         uses: actions/upload-artifact@v2
         if: failure()
