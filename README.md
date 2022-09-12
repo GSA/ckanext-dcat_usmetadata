@@ -14,10 +14,10 @@ Make sure it is enabled in CKAN's plugins.
 
 This extension is compatible with these versions of CKAN.
 
-| CKAN version | Compatibility                                               |
-| ------------ | ----------------------------------------------------------- |
-| <=2.8        | no                                                          |
-| 2.9          | [yes](https://github.com/GSA/datagov-ckan-multi/issues/572) |
+| CKAN version | Compatibility |
+| ------------ | ------------- |
+| <=2.8        | no            |
+| 2.9          | yes           |
 
 ### Installation
 
@@ -108,6 +108,7 @@ There are several levels of testing:
 | Unit tests for the JS app | Tests for the React app.            | `yarn test:metadata-app` |
 | CKAN extension tests      | Python tests using Nosetests        | `yarn test`              |
 | End to end tests          | Cypress tests against inventory app | `yarn e2e`               |
+| End to end tests (local)  | Cypress tests against inventory app | `yarn front-end`         |
 
 ## Linting
 
