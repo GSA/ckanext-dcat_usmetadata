@@ -114,7 +114,7 @@ describe('Parent Dataset', () => {
 
   it(
     'Able to select and displays parent dataset with a human-readable title',
-    { defaultCommandTimeout: 20000 },
+    { requestTimeout: 20000 },
     () => {
       cy.visit('/dataset/new-metadata');
       cy.requiredMetadata(childTitle);
