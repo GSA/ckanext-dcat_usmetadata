@@ -9,7 +9,6 @@ from click.testing import CliRunner
 
 import json
 import pytest
-import six
 
 
 @pytest.mark.usefixtures('with_request_context')
@@ -31,10 +30,7 @@ class TestDcatUsmetadataPlugin(helpers.FunctionalTestBase):
     def create_user(self):
         self.sysadmin = factories.Sysadmin(name='admin')
         self.organization = factories.Organization(name='test-organization')
-        if six.PY2:
-            self.extra_environ = {'REMOTE_USER': self.sysadmin['name'].encode('ascii')}
-        else:
-            self.extra_environ = {'REMOTE_USER': self.sysadmin['name']}
+        self.extra_environ = {'REMOTE_USER': self.sysadmin['name']}
 
         self.dataset1 = {
             'name': 'my_package_000',
@@ -66,14 +62,9 @@ class TestDcatUsmetadataPlugin(helpers.FunctionalTestBase):
         self.create_user()
         self.app = self._get_test_app()
         res = self.app.get('/dataset/new-metadata', extra_environ=self.extra_environ)
-        if six.PY2:
-            assert '/js/main.chunk.js' in res.unicode_body
-            res = self.app.get('/js/main.chunk.js', extra_environ=self.extra_environ)
-            assert 'Required Metadata' in res.body
-        else:
-            assert '/js/main.chunk.js' in res.body
-            res = self.app.get('/js/main.chunk.js', extra_environ=self.extra_environ)
-            assert 'Required Metadata' in res.body
+        assert '/js/main.chunk.js' in res.body
+        res = self.app.get('/js/main.chunk.js', extra_environ=self.extra_environ)
+        assert 'Required Metadata' in res.body
 
     def test_package_creation(self):
         '''
@@ -92,14 +83,9 @@ class TestDcatUsmetadataPlugin(helpers.FunctionalTestBase):
         self.app = self._get_test_app()
         res = self.app.get('/dataset/edit-new/%s' % (self.dataset1['name']),
                            extra_environ=self.extra_environ)
-        if six.PY2:
-            assert '/js/main.chunk.js' in res.unicode_body
-            res = self.app.get('/js/main.chunk.js', extra_environ=self.extra_environ)
-            assert 'Required Metadata' in res.body
-        else:
-            assert '/js/main.chunk.js' in res.body
-            res = self.app.get('/js/main.chunk.js', extra_environ=self.extra_environ)
-            assert 'Required Metadata' in res.body
+        assert '/js/main.chunk.js' in res.body
+        res = self.app.get('/js/main.chunk.js', extra_environ=self.extra_environ)
+        assert 'Required Metadata' in res.body
 
     def test_publisher_load(self):
         self.create_user()

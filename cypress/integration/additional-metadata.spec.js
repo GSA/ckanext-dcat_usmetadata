@@ -112,26 +112,27 @@ describe('Parent Dataset', () => {
     cy.deleteOrg('test-organization');
   });
 
-  it('Able to select and displays parent dataset with a human-readable title', () => {
-    cy.visit('/dataset/new-metadata');
-    cy.requiredMetadata(childTitle);
-    cy.get('.react-autosuggest__container input').type(parentTitle);
-    cy.get('.react-autosuggest__suggestion--first').click();
-    cy.get('.react-autosuggest__container input').should('have.value', parentTitle);
-    cy.intercept('/api/3/action/package_update').as('packageUpdate');
-    cy.get('button[type=button]').contains('Save and Continue').click();
-    cy.wait('@packageUpdate');
-    cy.intercept('/api/3/action/package_patch').as('packagePatch');
-    cy.resourceUploadWithUrlAndPublish();
-    cy.wait('@packagePatch');
-    // Go to edit mode and check if parent dataset title is displayed
-    cy.intercept('/api/3/action/package_show').as('packageShow');
-    cy.visit('/dataset/edit-new/' + childTitle);
-    cy.wait('@packageShow');
-    cy.get('[role="link"]').contains('Additional Metadata').click();
-    cy.wait('@packageShow');
-    cy.get('.react-autosuggest__container input').should('have.value', parentTitle);
-  });
+  it(
+    'Able to select and displays parent dataset with a human-readable title',
+    { requestTimeout: 20000 },
+    () => {
+      cy.visit('/dataset/new-metadata');
+      cy.requiredMetadata(childTitle);
+      cy.get('.react-autosuggest__container input').type(parentTitle);
+      cy.get('.react-autosuggest__suggestion--first').click();
+      cy.get('.react-autosuggest__container input').should('have.value', parentTitle);
+      cy.intercept('/api/3/action/package_update').as('packageUpdate');
+      cy.get('button[type=button]').contains('Save and Continue').click();
+      cy.wait('@packageUpdate');
+      cy.intercept('/api/3/action/package_patch').as('packagePatch');
+      cy.resourceUploadWithUrlAndPublish();
+      cy.wait('@packagePatch');
+      // Go to edit mode and check if parent dataset title is displayed
+      cy.visit('/dataset/edit-new/' + childTitle);
+      cy.get('[role="link"]').contains('Additional Metadata').click();
+      cy.get('.react-autosuggest__container input').should('have.value', parentTitle);
+    }
+  );
 });
 
 describe('Save draft functionality on Additional Metadata page', () => {
