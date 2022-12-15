@@ -75,8 +75,7 @@ class TestDcatUsmetadataPlugin(helpers.FunctionalTestBase):
         self.create_user()
         runner = CliRunner()
         dir_path = os.path.dirname(os.path.realpath(__file__))
-        print(dir_path)
-        result = runner.invoke(cli.import_publishers, [dir_path + "../publishers.test.csv"])
+        result = runner.invoke(cli.import_publishers, [dir_path + "/../publishers.test.csv"])
         self.app = self._get_test_app()
         org = self.app.get('/api/action/organization_show?id=%s' % (self.organization['id']),
                            extra_environ=self.extra_environ)
