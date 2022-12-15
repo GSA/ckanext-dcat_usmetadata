@@ -43,7 +43,6 @@ jobs:
 
   cypress_29:
     name: Cypress Tests
-    needs: test
     runs-on: ubuntu-latest
     strategy:
       matrix:
