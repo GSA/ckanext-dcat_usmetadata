@@ -4,20 +4,11 @@ on: [push, workflow_dispatch]
 jobs:
   lint-test:
     name: Lint + Test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Build Front-end
-        run: |
-          sudo apt-get install npm
-          npm install --global yarn
-          yarn install
-          yarn build
-      - name: Run tests
-        uses: gsa/data.gov/.github/workflows/ckan-test.yml@ckan-reusable-workflow
-        with:
-          ext_name: datajson
-          plugins: datajson harvest datajson_validator datajson_harvest
-        secrets: inherit
+    uses: gsa/data.gov/.github/workflows/ckan-test.yml@ckan-reusable-workflow
+    with:
+      ext_name: dcat_usmetadata
+      plugins: dcat_usmetadata usmetadata
+    secrets: inherit
 
   lint-js:
     name: JS Lint and Build Metadata App
