@@ -1,20 +1,22 @@
 name: Tests
-on: [pull_request, workflow_dispatch]
-env:
-  CODE_COVERAGE_THRESHOLD_REQUIRED: 33
+on: [push, workflow_dispatch]
+
 jobs:
-  lint-python:
-    name: Python Lint
-    runs-on: ubuntu-latest
+  lint-test:
+    name: Lint + Test
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.8'
-      - name: Install requirements
-        run: pip install flake8 pycodestyle pytest pytest-ckan pytest-cov
-      - name: Run flake8
-        run: flake8 . --count --max-line-length=127 --statistics --exclude ckan
+      - name: Build Front-end
+        run: |
+          sudo apt-get install npm
+          npm install --global yarn
+          yarn install
+          yarn build
+    - name: Run tests
+      uses: gsa/data.gov/.github/workflows/ckan-test.yml@ckan-reusable-workflow
+      with:
+        ext_name: datajson
+        plugins: datajson harvest datajson_validator datajson_harvest
+      secrets: inherit
 
   lint-js:
     name: JS Lint and Build Metadata App
@@ -46,65 +48,6 @@ jobs:
           CI=false yarn build
       - name: Run node tests
         run: yarn test:metadata-app
-
-  test:
-    needs: lint-python
-    strategy:
-      matrix:
-        ckan-version: [2.9.5, 2.9, 2.9.7, '2.10']
-        include:
-        - ckan-version: 2.9.5
-          services-version: 2.9
-        - ckan-version: 2.9
-          services-version: 2.9
-        - ckan-version: 2.9.7
-          services-version: 2.9
-        - ckan-version: '2.10'
-          services-version: '2.10'
-      fail-fast: false
-
-    name: Pytests for CKAN ${{ matrix.ckan-version }}
-    runs-on: ubuntu-latest
-    container:
-      image: openknowledge/ckan-dev:${{ matrix.ckan-version }}
-      volumes:
-        - ${{ github.workspace }}:/app
-    services:
-      solr:
-        image: datagov/catalog.data.gov.solr:latest
-      db:
-        image: ckan/ckan-postgres-dev:${{ matrix.services-version }}
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 10
-      redis:
-          image: redis:alpine
-    env:
-      ENV_FILE: .env
-      CKAN_SQLALCHEMY_URL: postgresql://ckan_default:pass@db/ckan_test
-      CKAN_DATASTORE_WRITE_URL: postgresql://datastore_write:pass@db/datastore_test
-      CKAN_DATASTORE_READ_URL: postgresql://datastore_read:pass@db/datastore_test
-      CKAN_SOLR_URL: http://solr:8983/solr/ckan
-      CKAN_REDIS_URL: redis://redis:6379/1
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Install dependencies
-      run: |
-        apk add swig npm
-        pip install -r dev-requirements.txt
-        pip install -r requirements.txt
-        pip install -e .
-        npm install --global yarn
-        yarn install
-    - name: Run tests
-      run: |
-        source $ENV_FILE
-        ckan -c test.ini db init
-        yarn build
-        pytest --ckan-ini=test.ini --cov=ckanext.dcat_usmetadata --cov-fail-under=${CODE_COVERAGE_THRESHOLD_REQUIRED} --disable-warnings ckanext/dcat_usmetadata/tests
 
   cypress_29:
     name: Cypress Tests
