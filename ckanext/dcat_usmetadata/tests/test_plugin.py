@@ -8,6 +8,7 @@ import ckanext.dcat_usmetadata.cli as cli
 from click.testing import CliRunner
 
 import json
+import os
 import pytest
 
 
@@ -58,14 +59,6 @@ class TestDcatUsmetadataPlugin(helpers.FunctionalTestBase):
     def test_plugin_loaded(self):
         assert ckan.plugins.plugin_loaded('dcat_usmetadata')
 
-    def test_new_metadata_route(self):
-        self.create_user()
-        self.app = self._get_test_app()
-        res = self.app.get('/dataset/new-metadata', extra_environ=self.extra_environ)
-        assert '/js/main.chunk.js' in res.body
-        res = self.app.get('/js/main.chunk.js', extra_environ=self.extra_environ)
-        assert 'Required Metadata' in res.body
-
     def test_package_creation(self):
         '''
         test if dataset is getting created successfully
@@ -78,19 +71,11 @@ class TestDcatUsmetadataPlugin(helpers.FunctionalTestBase):
         result = json.loads(package_dict.body)['result']
         assert result['name'] == 'my_package_000'
 
-    def test_edit_metadata_route(self):
-        self.create_user()
-        self.app = self._get_test_app()
-        res = self.app.get('/dataset/edit-new/%s' % (self.dataset1['name']),
-                           extra_environ=self.extra_environ)
-        assert '/js/main.chunk.js' in res.body
-        res = self.app.get('/js/main.chunk.js', extra_environ=self.extra_environ)
-        assert 'Required Metadata' in res.body
-
     def test_publisher_load(self):
         self.create_user()
         runner = CliRunner()
-        result = runner.invoke(cli.import_publishers, ["/app/ckanext/dcat_usmetadata/publishers.test.csv"])
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        result = runner.invoke(cli.import_publishers, [dir_path + "/../publishers.test.csv"])
         self.app = self._get_test_app()
         org = self.app.get('/api/action/organization_show?id=%s' % (self.organization['id']),
                            extra_environ=self.extra_environ)
