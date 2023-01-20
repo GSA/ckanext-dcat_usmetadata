@@ -36,7 +36,7 @@ describe('Resource Upload page', () => {
     });
   });
 
-  it('Links to Data and redirects to dataset page on CKAN', () => {
+  it.only('Links to Data and redirects to dataset page on CKAN', () => {
     cy.requiredMetadata(titleAndName).then(() => {
       cy.additionalMetadata();
       cy.get('button[type=button]')

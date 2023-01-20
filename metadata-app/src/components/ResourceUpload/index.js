@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Dialog } from '@cmsgov/design-system';
 import Link from '../Link';
 import Radio from '../Radio';
+import HelpText from '../HelpText';
 import WrappedField from '../WrappedField';
 import resourceFormats from './resource_formats.json';
 import { RESOURCE_URL_TYPES } from '../../api';
@@ -23,6 +24,20 @@ const sortedResourceFormats = resourceFormats.sort((a, b) => {
   return 0;
 });
 
+const helpTexts = {
+  conformsTo: (
+    <HelpText>
+      Refer to documentation here for{' '}
+      <Link
+        target="_blank"
+        href="https://github.com/GSA/ckanext-datajson/tree/main/ckanext/datajson/tests/datajson-samples#datajson-examples"
+      >
+        geospatial datasets
+      </Link>{' '}
+    </HelpText>
+  ),
+};
+
 const ResourceUpload = (props) => {
   const {
     values,
@@ -36,7 +51,7 @@ const ResourceUpload = (props) => {
   const { resourceAction } = values;
   const resource = values.resource || {};
   const resources = values.resources || [];
-  const { url, name, description, mimetype, format } = resource;
+  const { url, name, description, mimetype, conformsTo, format } = resource;
 
   const [uploadDataFileIsActive, setUploadDataFileActive] = useState(false);
   const [shouldShowModal, setShowModal] = useState(false);
@@ -266,8 +281,9 @@ const ResourceUpload = (props) => {
                   setFieldValue('resource.fileName', '');
                   setFieldValue('resource.name', '');
                   setFieldValue('resource.description', '');
-                  setFieldValue('resource.format', '');
                   setFieldValue('resource.mimetype', '');
+                  setFieldValue('resource.conformsTo', '');
+                  setFieldValue('resource.format', '');
                   setUploadDataFileActive(false);
                 }}
               />
@@ -329,6 +345,18 @@ const ResourceUpload = (props) => {
             type="select"
             choices={sortedResourceFormats}
             value={mimetype}
+          />
+        </div>
+      </div>
+      <div className="grid-row margin-top-3">
+        <div className="grid-col-12">
+          <WrappedField
+            label="Conforms To"
+            name="resource.conformsTo"
+            type="string"
+            helptext="Please ensure this is a resolvable URL."
+            infoText={helpTexts.conformsTo}
+            value={conformsTo}
           />
         </div>
       </div>
@@ -464,6 +492,7 @@ ResourceUpload.propTypes = {
       name: PropTypes.string,
       description: PropTypes.string,
       mimetype: PropTypes.string,
+      conformsTo: PropTypes.string,
       format: PropTypes.string,
     }),
     resourceAction: PropTypes.string,

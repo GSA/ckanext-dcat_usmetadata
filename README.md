@@ -103,11 +103,11 @@ yarn up
 
 There are several levels of testing:
 
-| Suite                     | Description                         | Command                  |
-| ------------------------- | ----------------------------------- | ------------------------ |
-| Unit tests for the JS app | Tests for the React app.            | `yarn test:metadata-app` |
-| CKAN extension tests      | Python tests using Nosetests        | `yarn test`              |
-| End to end tests          | Cypress tests against inventory app | `yarn e2e`               |
+| Suite                     | Description                  | Command                  |
+| ------------------------- | ---------------------------- | ------------------------ |
+| Unit tests for the JS app | Tests for the React app.     | `yarn test:metadata-app` |
+| CKAN extension tests      | Python tests using Nosetests | `yarn test`              |
+| End to end tests          | Cypress tests                | `yarn e2e`               |
 
 ## Linting
 
@@ -161,8 +161,6 @@ yarn test:metadata-app --updateSnapshot
 
 ## Local development and end-to-end testing
 
-We use the [inventory app](https://github.com/GSA/inventory-app) locally for development and end-to-end (e2e) testing.
-
 To build the latest JS code and update assets in the CKAN extension, you can run the following command from the root directory of this project:
 
 ```
@@ -175,7 +173,7 @@ For convenience, we have prepared a single script that you can run to perform en
 yarn e2e
 ```
 
-Note, it may be necessary to remove cached images when rebuilding the inventory app docker container, in order to ensure that the new usmetadata-app template is included in the build. If you want to make sure that you aren't using cached builds, you can try:
+Note, it may be necessary to remove cached images when rebuilding the docker container, in order to ensure that the new usmetadata-app template is included in the build. If you want to make sure that you aren't using cached builds, you can try:
 
 ```bash
 docker-compose build --no-cache --pull ckanext-dcat_usmetadata_app
