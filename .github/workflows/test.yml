@@ -7,8 +7,8 @@ jobs:
     name: Python Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.6'
       - name: Install requirements
@@ -22,8 +22,8 @@ jobs:
     name: JS Lint and Build Metadata App
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.6'
       - name: Install dependencies
@@ -38,8 +38,8 @@ jobs:
     name: Node Tests for Metadata-app
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.6'
       - name: Install dependencies
@@ -83,7 +83,7 @@ jobs:
       CKAN_REDIS_URL: redis://redis:6379/1
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Install dependency (common)
       run: |
         apk add swig npm
@@ -115,7 +115,7 @@ jobs:
       CKAN_REDIS_URL: redis://redis:6379/1
     steps:
       - name: checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: cypress
         run: |
           source $ENV_FILE
