@@ -5,12 +5,7 @@ ARG CKAN_VERSION
 RUN apk add swig
 RUN pip install --upgrade pip
 
-COPY . /app
-WORKDIR /app
+COPY . ${APP_DIR}/
 
-# python cryptography takes a while to build
-RUN if [[ "${CKAN_VERSION}" = "2.8" ]] ; then \
-        pip install -r requirements-py2.txt -r dev-requirements.txt -e . ; else \
-        pip install -r requirements.txt -r dev-requirements.txt -e . ; fi
-
-WORKDIR ${APP_DIR}
+RUN pip install -r ${APP_DIR}/requirements.txt \
+  -r ${APP_DIR}/dev-requirements.txt -e ${APP_DIR}/.

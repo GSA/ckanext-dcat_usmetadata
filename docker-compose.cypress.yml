@@ -1,97 +1,25 @@
 version: "3.7"
 services:
   cypress:
-    image: cypress/included:7.3.0
+    image: cypress/included:7.7.0
     environment:
       NODE_ENV: test
     entrypoint: []
     command: /bin/bash -c 'npx wait-on http://ckan:5000/api/action/status_show && npx cypress install && npx cypress run'
-    working_dir: /e2e
-    depends_on:
-      - ckan
-    volumes:
-      - .:/e2e
-  cypress-additional-metadata:
-    image: cypress/included:7.3.0
+    # Run a specific test
+    # command: /bin/bash -c 'npx wait-on http://ckan:5000/api/action/status_show && npx cypress install && npx cypress run --spec cypress/integration/additional-metadata.spec.js'
     ipc: host
-    environment:
-      NODE_ENV: test
-    entrypoint: []
-    command: /bin/bash -c 'npx wait-on http://ckan:5000/api/action/status_show && npx cypress install && yarn && npx cypress run --spec cypress/integration/additional-metadata.spec.js'
     working_dir: /e2e
     depends_on:
       - ckan
     volumes:
       - .:/e2e
-  cypress-edit-dataset:
-    image: cypress/included:7.3.0
+
+  ckan:
     ipc: host
-    environment:
-      NODE_ENV: test
-    entrypoint: []
-    command: /bin/bash -c 'npx wait-on http://ckan:5000/api/action/status_show && npx cypress install && yarn && npx cypress run --spec cypress/integration/edit-dataset.spec.js'
-    working_dir: /e2e
-    depends_on:
-      - ckan
-    volumes:
-      - .:/e2e
-  cypress-organization:
-    image: cypress/included:7.3.0
+  db:
     ipc: host
-    environment:
-      NODE_ENV: test
-    entrypoint: []
-    command: /bin/bash -c 'npx wait-on http://ckan:5000/api/action/status_show && npx cypress install && yarn && npx cypress run --spec cypress/integration/organization.spec.js'
-    working_dir: /e2e
-    depends_on:
-      - ckan
-    volumes:
-      - .:/e2e
-  cypress-publishers:
-    image: cypress/included:7.3.0
+  redis:
     ipc: host
-    environment:
-      NODE_ENV: test
-    entrypoint: []
-    command: /bin/bash -c 'npx wait-on http://ckan:5000/api/action/status_show && npx cypress install && yarn && npx cypress run --spec cypress/integration/publishers.spec.js'
-    working_dir: /e2e
-    depends_on:
-      - ckan
-    volumes:
-      - .:/e2e
-  cypress-required-metadata:
-    image: cypress/included:7.3.0
+  solr:
     ipc: host
-    environment:
-      NODE_ENV: test
-    entrypoint: []
-    command: /bin/bash -c 'npx wait-on http://ckan:5000/api/action/status_show && npx cypress install && yarn && npx cypress run --spec cypress/integration/required-metadata.spec.js'
-    working_dir: /e2e
-    depends_on:
-      - ckan
-    volumes:
-      - .:/e2e
-  cypress-resource-upload:
-    image: cypress/included:7.3.0
-    ipc: host
-    environment:
-      NODE_ENV: test
-    entrypoint: []
-    command: /bin/bash -c 'npx wait-on http://ckan:5000/api/action/status_show && yarn && cypress run --spec cypress/integration/resource-upload.spec.js'
-    working_dir: /e2e
-    depends_on:
-      - ckan
-    volumes:
-      - .:/e2e
-  cypress-user-flow:
-    image: cypress/included:7.3.0
-    ipc: host
-    environment:
-      NODE_ENV: test
-    entrypoint: []
-    command: /bin/bash -c 'npx wait-on http://ckan:5000/api/action/status_show && npx cypress install && yarn && npx cypress run --spec cypress/integration/user-flow.spec.js'
-    working_dir: /e2e
-    depends_on:
-      - ckan
-    volumes:
-      - .:/e2e

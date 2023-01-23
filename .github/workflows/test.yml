@@ -1,22 +1,14 @@
 name: Tests
-on: [pull_request, workflow_dispatch]
-env:
-  CODE_COVERAGE_THRESHOLD_REQUIRED: 33
+on: [push, workflow_dispatch]
+
 jobs:
-  lint-python:
-    name: Python Lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.6'
-      - name: Install requirements
-        run: pip install flake8 pycodestyle pytest pytest-ckan pytest-cov
-      - name: Check syntax
-        run: flake8 . --count --select=E901,E999,F821,F822,F823 --show-source --statistics --exclude ckan,nose
-      - name: Run flake8
-        run: flake8 . --count --max-line-length=127 --statistics --exclude ckan,nose
+  lint-test:
+    name: Lint + Test
+    uses: gsa/data.gov/.github/workflows/ckan-test.yml@main
+    with:
+      ext_name: dcat_usmetadata
+      plugins: dcat_usmetadata usmetadata
+    secrets: inherit
 
   lint-js:
     name: JS Lint and Build Metadata App
@@ -25,7 +17,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.6'
+          python-version: '3.8'
       - name: Install dependencies
         run: |
           yarn
@@ -41,7 +33,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.6'
+          python-version: '3.8'
       - name: Install dependencies
         run: |
           yarn
@@ -49,63 +41,21 @@ jobs:
       - name: Run node tests
         run: yarn test:metadata-app
 
-  test:
-    needs: lint-python
+  cypress_29:
+    name: Cypress Tests
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        ckan-version: [2.9]
+        test-files: [
+          'additional-metadata.spec.js',
+          'organization.spec.js',
+          'required-metadata.spec.js',
+          'user-flow.spec.js',
+          'edit-dataset.spec.js',
+          'publishers.spec.js',
+          'resource-upload.spec.js'
+        ]
       fail-fast: false
-
-    name: Pytests for CKAN ${{ matrix.ckan-version }}
-    runs-on: ubuntu-latest
-    container:
-      image: openknowledge/ckan-dev:${{ matrix.ckan-version }}
-      volumes:
-        - ${{ github.workspace }}:/app
-    services:
-      solr:
-        image: datagov/catalog.data.gov.solr:latest
-      db:
-        image: ckan/ckan-postgres-dev:${{ matrix.ckan-version }}
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 10
-      redis:
-          image: redis:alpine
-    env:
-      ENV_FILE: .env
-      CKAN_SQLALCHEMY_URL: postgresql://ckan_default:pass@db/ckan_test
-      CKAN_DATASTORE_WRITE_URL: postgresql://datastore_write:pass@db/datastore_test
-      CKAN_DATASTORE_READ_URL: postgresql://datastore_read:pass@db/datastore_test
-      CKAN_SOLR_URL: http://solr:8983/solr/ckan
-      CKAN_REDIS_URL: redis://redis:6379/1
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Install dependency (common)
-      run: |
-        apk add swig npm
-        pip install -r dev-requirements.txt
-        npm install --global yarn
-        yarn install
-    - name: Install requirements and Setup (py3)
-      if: ${{ matrix.ckan-version == '2.9' }}
-      run: |
-        pip install -r requirements.txt
-        pip install -e .
-        source $ENV_FILE
-        ckan -c test.ini db init
-    - name: Run tests
-      run: |
-        yarn build
-        pytest --ckan-ini=test.ini --cov=ckanext.dcat_usmetadata --cov-fail-under=${CODE_COVERAGE_THRESHOLD_REQUIRED} --disable-warnings ckanext/dcat_usmetadata/tests
-
-  cypress_29:
-    name: Cypress Tests for CKAN 2.9
-    needs: test
-    runs-on: ubuntu-latest
     env:
       ENV_FILE: .env
       CKAN_SQLALCHEMY_URL: postgresql://ckan_default:pass@db/ckan_test
@@ -119,12 +69,12 @@ jobs:
       - name: cypress
         run: |
           source $ENV_FILE
+          CKAN_VERSION=2.9 yarn install
+          CKAN_VERSION=2.9 yarn build
           CKAN_VERSION=2.9 yarn dockerize
-          CKAN_VERSION=2.9 docker-compose -f docker-compose.yml run ckan /bin/bash -c \
-            "apk add swig npm && npm install --global yarn && cd /app && yarn install && yarn build"
-          CKAN_VERSION=2.9 make cypress-containers
+          CKAN_VERSION=2.9 docker-compose -f docker-compose.yml -f docker-compose.cypress.yml run cypress /bin/bash -c "npx wait-on http://ckan:5000/api/action/status_show && npx cypress install && yarn && NODE_ENV=test npx cypress run --spec cypress/integration/${{ matrix.test-files }}"
       - name: cypress-artifacs
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         if: failure()
         with:
           name: cypress-artifacts

@@ -14,10 +14,10 @@ Make sure it is enabled in CKAN's plugins.
 
 This extension is compatible with these versions of CKAN.
 
-| CKAN version | Compatibility                                               |
-| ------------ | ----------------------------------------------------------- |
-| <=2.8        | no                                                          |
-| 2.9          | [yes](https://github.com/GSA/datagov-ckan-multi/issues/572) |
+| CKAN version | Compatibility |
+| ------------ | ------------- |
+| <=2.8        | no            |
+| 2.9          | yes           |
 
 ### Installation
 
@@ -114,7 +114,7 @@ There are several levels of testing:
 Lint the python code.
 
 ```bash
-yarn lint:python3
+yarn lint:python
 ```
 
 Lint the JavaScript code.
