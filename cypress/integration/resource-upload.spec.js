@@ -49,7 +49,7 @@ describe('Resource Upload page', () => {
             cy.request('/api/3/action/package_show?id=' + titleAndName).then((response) => {
               expect(response.status).to.eq(200);
               expect(response.body.result.private).to.equal(true);
-              expect(response.body.result.conformsTo).to.exist;
+              expect(response.body.result.resources[0].conformsTo).to.exist;
             });
           });
         });
