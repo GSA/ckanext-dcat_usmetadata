@@ -542,6 +542,47 @@ exports[`Renders Resource Upload component 1`] = `
             <label
               class="usa-label"
             >
+              Conforms To
+              <div
+                class="tooltip"
+              >
+                <svg
+                  height="20px"
+                  style="margin-left: .5em;"
+                  tabindex="0"
+                  width="20px"
+                >
+                  info.svg
+                </svg>
+              </div>
+            </label>
+            <div
+              class="usa-helptext "
+            >
+              Please ensure this is a resolvable URL.
+            </div>
+            
+            <input
+              class="usa-input  undefined undefined"
+              name="resource.conformsTo"
+              type="string"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="grid-row margin-top-3"
+      >
+        <div
+          class="grid-col-12"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              class="usa-label"
+            >
               Format
             </label>
             <div

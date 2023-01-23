@@ -148,6 +148,7 @@ Cypress.Commands.add('resourceUploadWithUrlAndPublish', (url, name) => {
   cy.get('textarea[name=resource\\.description]').type(chance.sentence({ words: 10 }));
   cy.get('select[name=resource\\.mimetype]').select('DOC -- Word Document');
   cy.get('input[name=resource\\.format]').type(chance.word());
+  cy.get('input[name=resource\\.conformsTo]').type(chance.url());
   cy.get('button[type=button]').contains('Finish and publish').click();
 });
 
@@ -159,6 +160,7 @@ Cypress.Commands.add('resourceUploadWithUrlAndSave', (url, name) => {
   cy.get('textarea[name=resource\\.description]').type(chance.sentence({ words: 10 }));
   cy.get('select[name=resource\\.mimetype]').select('DOC -- Word Document');
   cy.get('input[name=resource\\.format]').type(chance.word());
+  cy.get('input[name=resource\\.conformsTo]').type(chance.url());
   cy.get('button[type=button]').contains('Save and add another resource').click();
 });
 
