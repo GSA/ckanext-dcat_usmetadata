@@ -4,5 +4,6 @@ export default {
   url: '',
   format: '',
   mimetype: '',
+  conformsTo: '',
   upload: null,
 };
