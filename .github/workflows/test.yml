@@ -18,9 +18,11 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.8'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: Install dependencies
         run: |
-          ./pin-to-node16.sh
           yarn
           CI=false yarn build
       - name: Run eslint
@@ -35,9 +37,11 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.8'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: Install dependencies
         run: |
-          ./pin-to-node16.sh
           yarn
           CI=false yarn build
       - name: Run node tests
@@ -68,10 +72,12 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: cypress
         run: |
           source $ENV_FILE
-          ./pin-to-node16.sh
           CKAN_VERSION=2.9 yarn install
           CKAN_VERSION=2.9 yarn build
           CKAN_VERSION=2.9 yarn dockerize
