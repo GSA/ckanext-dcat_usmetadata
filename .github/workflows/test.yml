@@ -20,6 +20,7 @@ jobs:
           python-version: '3.8'
       - name: Install dependencies
         run: |
+          ./pin-to-node16.sh
           yarn
           CI=false yarn build
       - name: Run eslint
@@ -36,6 +37,7 @@ jobs:
           python-version: '3.8'
       - name: Install dependencies
         run: |
+          ./pin-to-node16.sh
           yarn
           CI=false yarn build
       - name: Run node tests
@@ -69,6 +71,7 @@ jobs:
       - name: cypress
         run: |
           source $ENV_FILE
+          ./pin-to-node16.sh
           CKAN_VERSION=2.9 yarn install
           CKAN_VERSION=2.9 yarn build
           CKAN_VERSION=2.9 yarn dockerize
