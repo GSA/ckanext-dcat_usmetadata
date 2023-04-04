@@ -1,5 +1,5 @@
-sudo apt update
-sudo apt upgrade
+apt update
+apt upgrade
 
 curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-sudo apt install -y nodejs
+apt install -y nodejs
