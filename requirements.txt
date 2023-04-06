@@ -12,7 +12,7 @@ webob
 # ckanext-saml2 dependencies
 M2Crypto==0.36.0
 #-e git+https://github.com/IdentityPython/pysaml2.git#egg=pysaml2
-pysaml2
+pysaml2==7.0.1
 
 # ckanext-harvest dependencies
 ckantoolkit>=0.0.7
