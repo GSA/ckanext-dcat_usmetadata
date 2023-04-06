@@ -1,4 +1,4 @@
--e git+https://github.com/ckan/ckanext-harvest.git@89a98d7ff5aa3445d8158921669b8d0b04fa41c3#egg=ckanext_harvest
+-e git+https://github.com/ckan/ckanext-harvest.git@master#egg=ckanext_harvest
 git+https://github.com/keitaroinc/ckanext-saml2auth@main#egg=ckanext-saml2auth
 
 ckanext-datajson
