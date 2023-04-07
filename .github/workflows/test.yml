@@ -18,6 +18,9 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.8'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: Install dependencies
         run: |
           yarn
@@ -34,6 +37,9 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.8'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: Install dependencies
         run: |
           yarn
@@ -66,6 +72,9 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: cypress
         run: |
           source $ENV_FILE
