@@ -8,13 +8,13 @@
 set -o errexit
 set -o pipefail
 
-TEST_CONFIG=/app/test.ini
+TEST_CONFIG=/srv/app/test.ini
 
 # Database is listening, but still unavailable. Just keep trying...
-while ! ckan -c $TEST_CONFIG db init; do 
-  echo Retrying in 5 seconds...
-  sleep 5
+while ! ckan -c $TEST_CONFIG db init; do
+    echo Retrying in 5 seconds...
+    sleep 5
 done
 
 # start_ckan_development.sh &
-pytest -s --ckan-ini=$TEST_CONFIG --cov=ckanext.dcat_usmetadata --disable-warnings /app/ckanext/dcat_usmetadata/tests/
+pytest -s --ckan-ini=$TEST_CONFIG --cov=ckanext.dcat_usmetadata --disable-warnings /srv/app/ckanext/dcat_usmetadata/tests/
