@@ -191,7 +191,6 @@ describe('Save draft functionality on Resource Upload page', () => {
   });
 
   beforeEach(() => {
-    cy.login();
     Cypress.Cookies.preserveOnce('ckan');
     cy.visit('/dataset/new-metadata');
   });
@@ -230,7 +229,6 @@ describe('Editing resources', () => {
   });
 
   beforeEach(() => {
-    cy.login();
     Cypress.Cookies.preserveOnce('ckan');
     cy.visit('/dataset/new-metadata');
   });
