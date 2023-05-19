@@ -7,7 +7,7 @@ from logging import getLogger
 from . import blueprint
 from . import db_utils as utils
 
-toolkit.requires_ckan_version("2.10")
+toolkit.requires_ckan_version("2.9")
 
 log = getLogger(__name__)
 
