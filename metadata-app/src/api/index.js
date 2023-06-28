@@ -552,6 +552,15 @@ const moveToExtras = (opts) => {
   return newOpts;
 };
 
+const makeHeaders = (apiKey, includeContentType = false) => {
+  const token = window.document.querySelector('meta[name="_csrf_token"]');
+  const headers = {
+    'X-CKAN-API-Key': apiKey,
+    'X-CSRFToken': token.content,
+  };
+  const formHeader = { 'Content-Type': 'application/x-www-form-urlencoded' };
+  return includeContentType ? Object.assign(headers, formHeader) : headers;
+};
 /**
  * API CALLS
  */
@@ -565,12 +574,9 @@ const createDataset = (opts, apiUrl, apiKey) => {
   delete body.url;
   body.bureau_code = '015:11';
   body.program_code = '015:001';
-
   return axios
     .post(`${apiUrl}package_create`, encodeValues(moveToExtras(body)), {
-      headers: {
-        'X-CKAN-API-Key': apiKey,
-      },
+      headers: makeHeaders(apiKey),
     })
     .then((res) => {
       // note that we don't return the axios response, we return the result
@@ -596,10 +602,7 @@ const createResource = (packageId, opts, apiUrl, apiKey) => {
 
   return axios
     .post(`${apiUrl}resource_create`, body, {
-      headers: {
-        'X-CKAN-API-Key': apiKey,
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
+      headers: makeHeaders(apiKey, true),
     })
     .then((res) => {
       // eslint-disable-next-line no-return-assign
@@ -623,10 +626,7 @@ const updateResource = (resource, apiUrl, apiKey) => {
 
   return axios
     .post(`${apiUrl}resource_update`, body, {
-      headers: {
-        'X-CKAN-API-Key': apiKey,
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
+      headers: makeHeaders(apiKey, true),
     })
     .then((res) => {
       // eslint-disable-next-line no-return-assign
@@ -639,19 +639,14 @@ const deleteResource = (id, apiUrl, apiKey) => {
   const body = encodeValues({ id });
 
   return axios.post(`${apiUrl}resource_delete`, body, {
-    headers: {
-      'X-CKAN-API-Key': apiKey,
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
+    headers: makeHeaders(apiKey, true),
   });
 };
 
 const fetchDataset = async (id, apiUrl, apiKey) => {
   return axios
     .get(`${apiUrl}package_show?id=${id}`, {
-      headers: {
-        'X-CKAN-API-Key': apiKey,
-      },
+      headers: makeHeaders(apiKey),
     })
     .then((res) => {
       // note that we don't return the axios response, we return the result
@@ -674,9 +669,7 @@ const updateDataset = (id, opts, apiUrl, apiKey) => {
 
   return axios
     .post(`${apiUrl}package_update`, encodeValues(moveToExtras(body)), {
-      headers: {
-        'X-CKAN-API-Key': apiKey,
-      },
+      headers: makeHeaders(apiKey),
     })
     .then((res) => {
       // note that we don't return the axios response, we return the result
@@ -689,10 +682,7 @@ const updateDataset = (id, opts, apiUrl, apiKey) => {
 const patchDataset = (id, opts, apiUrl, apiKey) => {
   const body = Object.assign(opts, { id });
   return axios.post(`${apiUrl}package_patch`, encodeValues(body), {
-    headers: {
-      'X-CKAN-API-Key': apiKey,
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
+    headers: makeHeaders(apiKey, true),
   });
 };
 
@@ -700,9 +690,7 @@ const fetchTags = async (str, apiUrl, apiKey) => {
   try {
     const url = `${apiUrl}tag_list?query=${str}`;
     const res = await axios.get(url, {
-      headers: {
-        'X-CKAN-API-Key': apiKey,
-      },
+      headers: makeHeaders(apiKey),
     });
     return res.data.result.map((row, i) => ({ id: i, name: row }));
   } catch (e) {
@@ -720,9 +708,7 @@ const fetchOrganizationsForUser = async (apiUrl, apiKey) => {
       permission: 'create_dataset',
     };
     const res = await axios.post(url, body, {
-      headers: {
-        'X-CKAN-API-Key': apiKey,
-      },
+      headers: makeHeaders(apiKey),
     });
     return res.data.result;
   } catch (e) {
@@ -738,9 +724,7 @@ const fetchParentDatasets = async (query, apiUrl, apiKey) => {
       url,
       {},
       {
-        headers: {
-          'X-CKAN-API-Key': apiKey,
-        },
+        headers: makeHeaders(apiKey),
       }
     );
     return Object.keys(res.data.result).map((id) => {
@@ -762,9 +746,7 @@ const fetchPublishers = async (orgId, apiUrl, apiKey) => {
   }
   const url = `${apiUrl}organization_show?id=${orgId}`;
   const res = await axios.get(url, {
-    headers: {
-      'X-CKAN-API-Key': apiKey,
-    },
+    headers: makeHeaders(apiKey),
   });
   const publisherExtra = res.data.result.extras.find((extra) => {
     return extra.key === 'publisher';

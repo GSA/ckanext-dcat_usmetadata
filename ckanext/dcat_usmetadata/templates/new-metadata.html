@@ -4,6 +4,7 @@
   data-ownerOrg="{{request.args.get('group')}}"
   data-datasetId="{{id or ''}}"
 ></div>
+<meta name="{{ g.csrf_field_name }}" content="{{ csrf_token() }}" />
 <link rel="stylesheet" href="/css/main.chunk.css" type"text/css"> <link rel="stylesheet"
 href="/css/2.chunk.css" type"text/css">
 <script src="/js/2.chunk.js"></script>

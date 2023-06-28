@@ -21,7 +21,7 @@
     "build": "yarn build:metadata-app && yarn rename:builds",
     "lint:js": "npx eslint metadata-app/src && npx prettier --check metadata-app/src",
     "rename:builds": "cd ckanext/dcat_usmetadata/public/ && mv assets/css . && mv assets/js .",
-    "start:dev": "yarn dockerize && yarn && cd metadata-app && yarn start"
+    "start:dev": "yarn dockerize && yarn && cd metadata-app && yarn start:metadata-app"
   },
   "dependencies": {
     "@babel/core": "7.12.10",
@@ -56,7 +56,7 @@
     "fs-extra": "^8.1.0",
     "html-webpack-plugin": "4.5.1",
     "identity-obj-proxy": "3.0.0",
-    "jest": "24.9.0",
+    "jest": "26.0.0",
     "jest-environment-jsdom-fourteen": "1.0.1",
     "jest-resolve": "24.9.0",
     "jest-watch-typeahead": "0.6.1",
