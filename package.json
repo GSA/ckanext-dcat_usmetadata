@@ -6,7 +6,7 @@
   "scripts": {
     "build:docker": "docker-compose build",
     "package": "python setup.py sdist && python setup.py bdist_wheel",
-    "clean": "docker-compose down -v --remove-orphan",
+    "clean": "docker-compose down -v --remove-orphans",
     "test": "yarn dockerize && docker-compose run --rm ckan /srv/app/test.sh",
     "up": "docker-compose -f docker-compose.yml up",
     "lint:python": "docker-compose -f docker-compose.yml run --rm ckan flake8 /srv/app --count --show-source --statistics --exclude ckan --max-line-length 127",
