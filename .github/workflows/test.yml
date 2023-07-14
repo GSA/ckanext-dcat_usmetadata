@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           yarn
-          CI=false yarn build
+          CI=false yarn build:vite
       - name: Run eslint
         run: yarn lint:js
 
@@ -43,7 +43,7 @@ jobs:
       - name: Install dependencies
         run: |
           yarn
-          CI=false yarn build
+          CI=false yarn build:vite
       - name: Run node tests
         run: yarn test:metadata-app
 
@@ -52,15 +52,16 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        test-files: [
-          'additional-metadata.spec.js',
-          'organization.spec.js',
-          'required-metadata.spec.js',
-          'user-flow.spec.js',
-          'edit-dataset.spec.js',
-          'publishers.spec.js',
-          'resource-upload.spec.js'
-        ]
+        test-files:
+          [
+            'additional-metadata.spec.js',
+            'organization.spec.js',
+            'required-metadata.spec.js',
+            'user-flow.spec.js',
+            'edit-dataset.spec.js',
+            'publishers.spec.js',
+            'resource-upload.spec.js',
+          ]
       fail-fast: false
     env:
       ENV_FILE: .env
