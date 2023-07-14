@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-// import { ReactComponent as Info } from 'uswds/dist/img/alerts/info.svg';
+import { ReactComponent as Info } from 'uswds/dist/img/alerts/info.svg';
 
 import PropTypes from 'prop-types';
 
@@ -35,7 +35,7 @@ const ToolTip = (props) => {
 
   return (
     <div className="tooltip">
-      {/* <Info
+      <Info
         height="20px"
         width="20px"
         ref={iconRef}
@@ -47,7 +47,7 @@ const ToolTip = (props) => {
             toggleToolTip();
           }
         }}
-      /> */}
+      />
       {toolTipShown && (
         <div ref={tooltipRef}>
           <span className="tooltiptext">
