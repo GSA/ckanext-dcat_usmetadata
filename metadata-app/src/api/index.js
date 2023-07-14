@@ -1,9 +1,9 @@
 import axios from 'axios';
 import slugify from 'slugify';
 
-const dataDictTypes = require('../components/AdditionalMetadata/data-dictionary-types');
-const licenses = require('../components/RequiredMetadata/licenses.json');
-const publishingFrequencyList = require('../components/AdditionalMetadata/publishingFrequencyList');
+import dataDictTypes from '../components/AdditionalMetadata/data-dictionary-types.json';
+import licenses from '../components/RequiredMetadata/licenses.json';
+import publishingFrequencyList from '../components/AdditionalMetadata/publishingFrequencyList.json';
 
 export const RESOURCE_URL_TYPES = {
   LINK_TO_FILE: 'url',
@@ -556,7 +556,7 @@ const makeHeaders = (apiKey, includeContentType = false) => {
   const token = window.document.querySelector('meta[name="_csrf_token"]');
   const headers = {
     'X-CKAN-API-Key': apiKey,
-    'X-CSRFToken': token.content,
+    'X-CSRFToken': token ? token.content : '',
   };
   const formHeader = { 'Content-Type': 'application/x-www-form-urlencoded' };
   return includeContentType ? Object.assign(headers, formHeader) : headers;

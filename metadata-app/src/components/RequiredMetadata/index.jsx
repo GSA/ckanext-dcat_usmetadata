@@ -10,7 +10,7 @@ import Radio from '../Radio';
 import Link from '../Link';
 import ToolTip from '../ToolTip';
 
-const licenses = require('./licenses.json');
+import licenses from './licenses.json';
 
 // Links within the form use target="_blank" to avoid navigating away from the
 // from while the user is filling it out. It can be very frustrating to lose

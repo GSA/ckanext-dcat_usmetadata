@@ -1,0 +1,801 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders RequiredMetadata component 1`] = `
+<div>
+  <form>
+    <div
+      class="usa-form-custom"
+    >
+      <section
+        class="site-component-section"
+        id="section-basic-mega-menu"
+      >
+        <p
+          class="site-text-intro"
+        >
+          The following fields are required metadata for each dataset in an agency’s inventory (
+          <a
+            class="usa-link usa-link--external"
+            href="https://www.congress.gov/115/plaws/publ435/PLAW-115publ435.pdf"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            per Section 202 of the OPEN Government Data Act
+          </a>
+          ). For more information about the form fields, consult the
+           
+          <a
+            class="usa-link usa-link--external"
+            href="https://resources.data.gov/resources/dcat-us/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            DCAT-US Schema
+          </a>
+          .
+        </p>
+      </section>
+      <div
+        class="grid-row margin-top-3"
+      >
+        <div
+          class="grid-col-12"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              class="usa-label"
+            >
+              Title
+            </label>
+            <div
+              class="usa-helptext "
+            >
+              <span
+                class="usa-helptext"
+              >
+                Use
+                 
+                <a
+                  class="usa-link usa-link--external"
+                  href="https://plainlanguage.gov/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  everyday language
+                </a>
+                 
+                to make the dataset easy to find and understand.
+              </span>
+            </div>
+            
+            <input
+              class="usa-input  undefined undefined"
+              name="title"
+              placeholder=""
+              type="string"
+              value=""
+            />
+          </div>
+          <div
+            class=""
+          >
+            <div
+              class="wrapper"
+            >
+              <label
+                class="usa-label"
+              />
+              <div
+                class="usa-helptext "
+              />
+              
+              <input
+                class="usa-input  undefined undefined"
+                name="url"
+                style="display: none;"
+                type="url"
+                value=""
+              />
+            </div>
+            <span
+              class="dataset_url"
+              style="display: inline;"
+            >
+              http://localhost/dataset/
+            </span>
+            <button
+              class="usa-button dataset_url_edit"
+              type="button"
+            >
+              Edit
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="grid-row margin-top-3"
+      >
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+          >
+            Description
+          </label>
+          <div
+            class="usa-helptext "
+          >
+            <span
+              class="usa-helptext"
+            >
+              Write a description (like an abstract) with enough detail to help a user quickly decide if the asset is of interest. You can use
+               
+              <a
+                class="usa-link usa-link--external"
+                href="https://www.markdownguide.org/basic-syntax/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Markdown Formatting
+              </a>
+               
+              here.
+            </span>
+          </div>
+          
+          <textarea
+            class="usa-input  undefined undefined"
+            name="description"
+            rows="6"
+            type="string"
+          />
+        </div>
+      </div>
+      <div
+        class="grid-row margin-top-3"
+      >
+        <span
+          class="usa-label"
+        >
+          Tags
+        </span>
+        <div
+          class="react-tags-input grid-col-12 undefined"
+        >
+          <span
+            class="usa-helptext"
+          >
+            Use both technical and non-technical terms to help users find your dataset. Press tab or enter to add each new tag.
+          </span>
+          <div
+            class="react-tags"
+          >
+            <div
+              aria-live="polite"
+              aria-relevant="additions removals"
+              class="react-tags__selected"
+            />
+            <div
+              class="react-tags__search"
+            >
+              <div
+                class="react-tags__search-wrapper"
+              >
+                <input
+                  aria-autocomplete="list"
+                  aria-expanded="false"
+                  aria-label="Start typing to search"
+                  aria-owns="ReactTags"
+                  class="react-tags__search-input"
+                  placeholder="Start typing to search"
+                  role="combobox"
+                  style="width: 2px;"
+                  value=""
+                />
+                <div
+                  style="position: absolute; width: 0px; height: 0px; visibility: hidden; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+                >
+                  Start typing to search
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="grid-row margin-top-3"
+      >
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+          >
+            Organization
+          </label>
+          <div
+            class="usa-helptext "
+          />
+          
+          <select
+            choices=""
+            class="usa-select  "
+            name="owner_org"
+            type="select"
+          >
+            <option
+              value=""
+            >
+              -Select-
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        class="grid-row margin-top-3"
+      >
+        <div
+          class="grid-col-12"
+        >
+          <span
+            class="usa-label"
+          >
+            Select Publisher
+            <div
+              class="tooltip"
+            />
+          </span>
+          <div
+            class="react-tags-input grid-col-12 undefined"
+          >
+            <div
+              class="usa-helptext"
+            >
+              <span
+                class="usa-helptext"
+              >
+                Start typing to see list of publishers. If you do not see the Publisher for your dataset listed, please contact
+                 
+                <a
+                  class="usa-link usa-link--external"
+                  href="mailto:inventory-help@gsa.gov"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  inventory-help@gsa.gov
+                </a>
+                 
+                for further assistance.
+              </span>
+            </div>
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-owns="react-autowhatever-1"
+              class="react-autosuggest__container"
+              role="combobox"
+            >
+              <input
+                aria-autocomplete="list"
+                aria-controls="react-autowhatever-1"
+                autocomplete="off"
+                class="usa-input"
+                placeholder="Select publisher"
+                type="text"
+                value=""
+              />
+              <div
+                class="react-autosuggest__suggestions-container"
+                id="react-autowhatever-1"
+                role="listbox"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="grid-row margin-top-3"
+      >
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+          >
+            Contact Name
+            <div
+              class="tooltip"
+            />
+          </label>
+          <div
+            class="usa-helptext "
+          />
+          
+          <input
+            class="usa-input  undefined undefined"
+            name="contact_name"
+            type="string"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="grid-row margin-top-3"
+      >
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+          >
+            Contact Email
+          </label>
+          <div
+            class="usa-helptext "
+          />
+          
+          <input
+            class="usa-input  undefined undefined"
+            name="contact_email"
+            type="string"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="grid-row margin-top-3"
+      >
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+          >
+            Unique ID
+            <div
+              class="tooltip"
+            />
+          </label>
+          <div
+            class="usa-helptext "
+          >
+            <span
+              class="usa-helptext"
+            >
+              Every dataset must have a ID number that is unique within the agency.
+            </span>
+          </div>
+          
+          <input
+            class="usa-input  undefined undefined"
+            name="unique_id"
+            type="string"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="grid-row margin-top-3"
+      >
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+          >
+            Public Access level
+          </label>
+          <div
+            class="usa-helptext "
+          />
+          
+          <select
+            choices="[object Object],[object Object],[object Object]"
+            class="usa-select  "
+            name="public_access_level"
+            type="select"
+          >
+            <option
+              value=""
+            >
+              -Select-
+            </option>
+            <option
+              value="public"
+            >
+              Public - this dataset can be made publicly available to all without restrictions
+            </option>
+            <option
+              value="restricted public"
+            >
+              Restricted Public - this dataset is available under certain use restrictions
+            </option>
+            <option
+              value="non-public"
+            >
+              Non-Public - this dataset is not available to members of the public
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        class="grid-row margin-top-3"
+      >
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+          >
+            License
+          </label>
+          <div
+            class="usa-helptext "
+          />
+          
+          <select
+            choices="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+            class="usa-select  "
+            name="license"
+            type="select"
+          >
+            <option
+              value=""
+            >
+              -Select-
+            </option>
+            <option
+              value="n/a"
+            >
+              N/A - My dataset doesn’t have a license
+            </option>
+            <option
+              value="https://opensource.org/licenses/MIT-0"
+            >
+              MIT
+            </option>
+            <option
+              value="https://www.usa.gov/publicdomain/label/1.0/"
+            >
+              U.S. Government Works
+            </option>
+            <option
+              value="https://creativecommons.org/publicdomain/zero/1.0/"
+            >
+              Creative Commons Zero Public Domain Dedication (CC0)
+            </option>
+            <option
+              value="https://opendatacommons.org/licenses/pddl/1.0/"
+            >
+              Open Data Commons Public Domain Dedication and Licence (PDDL)
+            </option>
+            <option
+              value="https://opendatacommons.org/licenses/by/1.0/"
+            >
+              Open Data Commons Attribution License (ODC-By)
+            </option>
+            <option
+              value="https://opendatacommons.org/licenses/odbl/1.0/"
+            >
+              Open Data Commons Open Database License (ODbL)
+            </option>
+            <option
+              value="https://creativecommons.org/licenses/by/4.0/"
+            >
+              Creative Commons Attribution (CC BY)
+            </option>
+            <option
+              value="https://creativecommons.org/licenses/by-sa/4.0/"
+            >
+              Creative Commons Attribution-ShareAlike (CC BY-SA)
+            </option>
+            <option
+              value="https://www.gnu.org/licenses/fdl-1.3.en.html"
+            >
+              GNU Free Documentation License
+            </option>
+            <option
+              value="other"
+            >
+              Other
+            </option>
+          </select>
+        </div>
+        <div
+          class="wrapper"
+        >
+          <label
+            class="usa-label"
+          />
+          <div
+            class="usa-helptext disabled"
+          >
+            <span
+              class="usa-helptext"
+            >
+              If you selected “Other”, please specify the name of your License in URL format. Please include "https://" at the beginning of your URL.*
+            </span>
+          </div>
+          
+          <input
+            class="usa-input disabled undefined undefined"
+            disabled=""
+            name="licenseOther"
+            type="string"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="grid-row margin-top-3"
+      >
+        <div
+          class="grid-col-12"
+        >
+          <span
+            class="usa-label"
+          >
+            Rights
+          </span>
+           
+          <br />
+          <div
+            class="form-group "
+          >
+            <input
+              class="usa-radio__input"
+              id="rights_option_1"
+              name="access_level_comment"
+              type="radio"
+              value="true"
+            />
+            <label
+              class="usa-radio__label"
+              for="rights_option_1"
+            >
+              My dataset is public
+            </label>
+          </div>
+          <div
+            class="form-group "
+          >
+            <input
+              class="usa-radio__input"
+              id="rights_option_2"
+              name="access_level_comment"
+              type="radio"
+              value="false"
+            />
+            <label
+              class="usa-radio__label"
+              for="rights_option_2"
+            >
+              My dataset is not public
+            </label>
+          </div>
+          <div
+            class="wrapper"
+          >
+            <label
+              class="usa-label"
+            />
+            <div
+              class="usa-helptext "
+            >
+              <span
+                class="usa-helptext"
+              >
+                If your dataset is not public, please add an explanation of rights and feel free to include any instructions on restrictions, or how to access a restricted file (max 255 characters)*
+              </span>
+            </div>
+            
+            <input
+              class="usa-input  undefined undefined"
+              name="rights_desc"
+              type="string"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="grid-row margin-top-3"
+      >
+        <div
+          class="grid-col-12"
+        >
+          <span
+            class="usa-label"
+          >
+            Relevant Location
+          </span>
+           
+          <br />
+          <div
+            class="form-group "
+          >
+            <input
+              class="usa-radio__input"
+              id="spatial_option_1"
+              name="spatial"
+              type="radio"
+              value="false"
+            />
+            <label
+              class="usa-radio__label"
+              for="spatial_option_1"
+            >
+              My dataset does not have a spatial component
+            </label>
+          </div>
+          <div
+            class="form-group "
+          >
+            <input
+              class="usa-radio__input"
+              id="spatial_option_2"
+              name="spatial"
+              type="radio"
+              value="true"
+            />
+            <label
+              class="usa-radio__label"
+              for="spatial_option_2"
+            >
+              My dataset does have a spatial component
+            </label>
+          </div>
+          <div
+            class="wrapper"
+          >
+            <label
+              class="usa-label"
+            />
+            <div
+              class="usa-helptext "
+            >
+              <span
+                class="usa-helptext"
+              >
+                If your dataset has a spatial component, please provide location such as place name or latitude/longitude pairs above*
+              </span>
+            </div>
+            
+            <input
+              class="usa-input  undefined undefined"
+              name="spatial_location_desc"
+              type="string"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="grid-row margin-top-3"
+      >
+        <div
+          class="grid-col-12"
+        >
+          <span
+            class="usa-label"
+          >
+            Temporal
+            <div
+              class="tooltip"
+            />
+          </span>
+           
+          <br />
+          <div
+            class="form-group "
+          >
+            <input
+              class="usa-radio__input"
+              id="temporal_option_1"
+              name="temporal"
+              type="radio"
+              value="false"
+            />
+            <label
+              class="usa-radio__label"
+              for="temporal_option_1"
+            >
+              My dataset does not have a start and end date for the applicability of data
+            </label>
+          </div>
+          <div
+            class="form-group "
+          >
+            <input
+              class="usa-radio__input"
+              id="temporal_option_2"
+              name="temporal"
+              type="radio"
+              value="true"
+            />
+            <label
+              class="usa-radio__label"
+              for="temporal_option_2"
+            >
+              My dataset has a start and end date for the applicability of data
+            </label>
+          </div>
+          <div
+            class="wrapper"
+          >
+            <label
+              class="usa-label"
+              for="temporal_start_date"
+            />
+            <div
+              class="usa-helptext "
+            >
+              <span
+                class="usa-helptext"
+              >
+                If your dataset has a temporal component, please provide start date for applicability of data above (MM/DD/YYYY)*
+              </span>
+            </div>
+            
+            <div>
+              <input
+                class="usa-input "
+                id="temporal_start_date"
+                name="temporal_start_date"
+                type="date"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            class="wrapper"
+          >
+            <label
+              class="usa-label"
+              for="temporal_end_date"
+            />
+            <div
+              class="usa-helptext "
+            >
+              <span
+                class="usa-helptext"
+              >
+                If your dataset has a temporal component, please provide end date for applicability of data above (MM/DD/YYYY)*
+              </span>
+            </div>
+            
+            <div>
+              <input
+                class="usa-input "
+                id="temporal_end_date"
+                name="temporal_end_date"
+                type="date"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="margin-top-6 clearfix"
+      >
+        <button
+          class="usa-button usa-button--outline"
+          type="button"
+        >
+          Save draft
+        </button>
+        <button
+          class="usa-button float-right margin-right-0"
+          type="button"
+        >
+          Save and Continue
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+`;
