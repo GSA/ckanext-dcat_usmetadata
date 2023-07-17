@@ -1,8 +1,10 @@
-from ckan.common import c
+from logging import getLogger
+
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+from ckan.common import c
+
 import ckanext.dcat_usmetadata.cli as cli
-from logging import getLogger
 
 from . import blueprint
 from . import db_utils as utils
@@ -25,16 +27,17 @@ class Dcat_UsmetadataPlugin(plugins.SingletonPlugin):
 
     # IConfigurer
     def update_config(self, config):
-        plugins.toolkit.add_template_directory(config, 'templates')
-        plugins.toolkit.add_resource('fanstatic', 'dcat_usmetadata')
-        plugins.toolkit.add_public_directory(config, 'public')
+        plugins.toolkit.add_template_directory(config, "templates")
+        plugins.toolkit.add_resource("fanstatic", "dcat_usmetadata")
+        plugins.toolkit.add_public_directory(config, "public")
 
     # IActions
     def get_actions(self):
         def parent_dataset_options(context, data_dict):
             return utils.get_parent_organizations(c)
+
         return {
-            'parent_dataset_options': parent_dataset_options,
+            "parent_dataset_options": parent_dataset_options,
         }
 
     def get_blueprint(self):
