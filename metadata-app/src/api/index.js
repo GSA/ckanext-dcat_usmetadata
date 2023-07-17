@@ -556,7 +556,7 @@ const makeHeaders = (apiKey, includeContentType = false) => {
   const token = window.document.querySelector('meta[name="_csrf_token"]');
   const headers = {
     'X-CKAN-API-Key': apiKey,
-    'X-CSRFToken': token.content,
+    'X-CSRFToken': token ? token.content : null,
   };
   const formHeader = { 'Content-Type': 'application/x-www-form-urlencoded' };
   return includeContentType ? Object.assign(headers, formHeader) : headers;
