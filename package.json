@@ -11,19 +11,16 @@
     "up": "docker-compose -f docker-compose.yml up",
     "lint:python": "docker-compose -f docker-compose.yml run --rm ckan flake8 /srv/app --count --show-source --statistics --exclude ckan --max-line-length 127",
     "dockerize": "docker-compose -f docker-compose.yml up -d",
-    "start:metadata-app": "node react-scripts/start.js",
-    "build:metadata-app": "node react-scripts/build.js",
     "test:metadata-app": "node react-scripts/test.js --watchAll=false",
     "test:metadata-app:watch": "node react-scripts/test.js --watchAll=true",
     "pre-commit": "echo 'formatting your changes...' && eslint metadata-app/src/ && prettier --write",
     "e2e": "docker-compose -f docker-compose.yml -f docker-compose.cypress.yml run cypress /bin/bash -c \"npx wait-on http://ckan:5000/api/action/status_show && npx cypress install && yarn && NODE_ENV=test npx cypress run\"",
     "e2e:interactive": "docker-compose -f docker-compose.yml up -d && yarn && NODE_ENV=test npx cypress open",
-    "build": "yarn build:metadata-app && yarn rename:builds",
     "lint:js": "npx eslint metadata-app/src && npx prettier --check metadata-app/src",
     "rename:builds": "cd ckanext/dcat_usmetadata/public/ && mv assets/css . && mv assets/js .",
     "start:dev": "yarn dockerize && yarn && cd metadata-app && yarn start:metadata-app",
-    "start:vite": "vite",
-    "build:vite": "vite build",
+    "start": "vite",
+    "build": "vite build",
     "serve": "vite preview"
   },
   "dependencies": {
@@ -93,10 +90,6 @@
     "uswds": "^2.10.0",
     "vite": "^4.4.3",
     "vite-plugin-svgr": "^3.2.0",
-    "webpack": "4.44.2",
-    "webpack-dev-server": "3.11.1",
-    "webpack-manifest-plugin": "2.2.0",
-    "workbox-webpack-plugin": "4.3.1",
     "yup": "^0.32.8"
   },
   "resolutions": {
