@@ -11,6 +11,12 @@ export default defineConfig(() => {
     root: 'metadata-app',
     build: {
       outDir: path.resolve(appDirectory, 'ckanext/dcat_usmetadata/public'),
+      rollupOptions: {
+        output: {
+          assetFileNames: 'assets/[name][extname]',
+          entryFileNames: 'assets/[name].js',
+        },
+      },
     },
     plugins: [react(), svgr()],
   };
