@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           yarn
-          CI=false yarn build:vite
+          CI=false yarn build
       - name: Run eslint
         run: yarn lint:js
 
@@ -43,7 +43,7 @@ jobs:
       - name: Install dependencies
         run: |
           yarn
-          CI=false yarn build:vite
+          CI=false yarn build
       - name: Run node tests
         run: yarn test:metadata-app
 
