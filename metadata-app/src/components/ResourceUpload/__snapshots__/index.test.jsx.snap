@@ -545,7 +545,16 @@ exports[`Renders Resource Upload component 1`] = `
               Conforms To
               <div
                 class="tooltip"
-              />
+              >
+                <svg
+                  height="20px"
+                  style="margin-left: .5em;"
+                  tabindex="0"
+                  width="20px"
+                >
+                  info.svg
+                </svg>
+              </div>
             </label>
             <div
               class="usa-helptext "

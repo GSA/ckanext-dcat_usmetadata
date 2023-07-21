@@ -297,7 +297,16 @@ exports[`renders MetadataForm component 1`] = `
                   Select Publisher
                   <div
                     class="tooltip"
-                  />
+                  >
+                    <svg
+                      height="20px"
+                      style="margin-left: .5em;"
+                      tabindex="0"
+                      width="20px"
+                    >
+                      info.svg
+                    </svg>
+                  </div>
                 </span>
                 <div
                   class="react-tags-input grid-col-12 undefined"
@@ -359,7 +368,16 @@ exports[`renders MetadataForm component 1`] = `
                   Contact Name
                   <div
                     class="tooltip"
-                  />
+                  >
+                    <svg
+                      height="20px"
+                      style="margin-left: .5em;"
+                      tabindex="0"
+                      width="20px"
+                    >
+                      info.svg
+                    </svg>
+                  </div>
                 </label>
                 <div
                   class="usa-helptext "
@@ -408,7 +426,16 @@ exports[`renders MetadataForm component 1`] = `
                   Unique ID
                   <div
                     class="tooltip"
-                  />
+                  >
+                    <svg
+                      height="20px"
+                      style="margin-left: .5em;"
+                      tabindex="0"
+                      width="20px"
+                    >
+                      info.svg
+                    </svg>
+                  </div>
                 </label>
                 <div
                   class="usa-helptext "
@@ -740,7 +767,16 @@ exports[`renders MetadataForm component 1`] = `
                   Temporal
                   <div
                     class="tooltip"
-                  />
+                  >
+                    <svg
+                      height="20px"
+                      style="margin-left: .5em;"
+                      tabindex="0"
+                      width="20px"
+                    >
+                      info.svg
+                    </svg>
+                  </div>
                 </span>
                  
                 <br />

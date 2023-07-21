@@ -146,7 +146,16 @@ exports[`Renders RequiredMetadata component 1`] = `
               Data Dictionary URL
               <div
                 class="tooltip"
-              />
+              >
+                <svg
+                  height="20px"
+                  style="margin-left: .5em;"
+                  tabindex="0"
+                  width="20px"
+                >
+                  info.svg
+                </svg>
+              </div>
             </label>
             <div
               class="usa-helptext "
@@ -654,7 +663,16 @@ exports[`Renders RequiredMetadata component 1`] = `
               Dataset Landing Page URL
               <div
                 class="tooltip"
-              />
+              >
+                <svg
+                  height="20px"
+                  style="margin-left: .5em;"
+                  tabindex="0"
+                  width="20px"
+                >
+                  info.svg
+                </svg>
+              </div>
             </label>
             <div
               class="usa-helptext "
@@ -1087,7 +1105,16 @@ exports[`Renders RequiredMetadata component 1`] = `
               Dataset's IT Unique Investment Identifier
               <div
                 class="tooltip"
-              />
+              >
+                <svg
+                  height="20px"
+                  style="margin-left: .5em;"
+                  tabindex="0"
+                  width="20px"
+                >
+                  info.svg
+                </svg>
+              </div>
             </label>
             <div
               class="usa-helptext "
@@ -1117,7 +1144,16 @@ exports[`Renders RequiredMetadata component 1`] = `
               Related Documents
               <div
                 class="tooltip"
-              />
+              >
+                <svg
+                  height="20px"
+                  style="margin-left: .5em;"
+                  tabindex="0"
+                  width="20px"
+                >
+                  info.svg
+                </svg>
+              </div>
             </label>
             <div
               class="usa-helptext "
@@ -1178,7 +1214,16 @@ exports[`Renders RequiredMetadata component 1`] = `
               System of Records Notice URL
               <div
                 class="tooltip"
-              />
+              >
+                <svg
+                  height="20px"
+                  style="margin-left: .5em;"
+                  tabindex="0"
+                  width="20px"
+                >
+                  info.svg
+                </svg>
+              </div>
             </label>
             <div
               class="usa-helptext "
@@ -1266,3 +1311,4 @@ exports[`Renders RequiredMetadata component 1`] = `
   </form>
 </div>
 `;
+
