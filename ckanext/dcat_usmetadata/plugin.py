@@ -27,6 +27,7 @@ class Dcat_UsmetadataPlugin(plugins.SingletonPlugin):
     def update_config(self, config):
         plugins.toolkit.add_template_directory(config, "templates")
         plugins.toolkit.add_resource("public/assets", "dcat_usmetadata")
+        plugins.toolkit.add_resource("fanstatic", "dcat_usmetadata_styles")
         plugins.toolkit.add_public_directory(config, "public")
 
     # IActions
