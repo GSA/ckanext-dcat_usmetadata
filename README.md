@@ -16,16 +16,12 @@ This extension is compatible with these versions of CKAN.
 
 | CKAN version | Compatibility |
 | ------------ | ------------- |
-| <=2.8        | no            |
-| 2.9          | yes           |
+| >=2.9        | yes           |
+| >=3.0        | no            |
 
 ### Installation
 
-To install this package, activate CKAN virtualenv (e.g. "source /path/to/virtenv/bin/activate"), then run
-
-```
-(virtualenv) pip install ckanext-dcat-usmetadata
-```
+Add `ckanext-dcat-usmetadata` to your requirements.txt, and then pip install
 
 In your CKAN .ini file add `dcat_usmetadata` to your enabled plugins:
 
@@ -33,7 +29,7 @@ In your CKAN .ini file add `dcat_usmetadata` to your enabled plugins:
 
 ### Commands
 
-### publishers-import
+#### publishers-import
 
 This extension adds a new CLI command for importing publishers linked to CKAN
 organizations. The [list of
@@ -186,6 +182,10 @@ To run e2e tests interactively use:
 ```bash
 yarn e2e:interactive
 ```
+
+### Locally installing this extention
+
+You can install this extension locally (to [inventory app](https://github.com/GSA/inventory-app), for example), but you must `yarn install` and then `yarn build` the JS/CSS prior to launching the app locally.
 
 ## Publishing a new version of the extension
 
