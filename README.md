@@ -88,6 +88,8 @@ yarn install
 
 Build the JS application. The new build files can be found in `ckanext/dcat_usmetadata/public` folder.
 
+- Pass the `--emptyOutDir` flag to replace an existing build.
+
 ```bash
 yarn build
 ```
@@ -125,9 +127,9 @@ yarn lint:js
 
 ## Metadata app
 
-The Metadata app is a [Create React App](https://create-react-app.dev/)-bootstrapped project.
+The Metadata app was a [Create React App](https://create-react-app.dev/)-bootstrapped project converted to use [Vite](https://vitejs.dev/) as the build tool.
 
-To run the app use `yarn && yarn start:metadata-app` command.
+To run the app use `yarn && yarn start` command.
 
 _TODO briefly describe how the metadata application relates to the CKAN
 extension._
