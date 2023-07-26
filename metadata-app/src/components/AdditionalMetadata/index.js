@@ -55,7 +55,7 @@ const helpTexts = {
   systemOfRecordsUSG: (
     <HelpText>
       If the dataset is a designated System of Records under the Privacy Act of 1974, provide the
-      URL for the System of Records Notice
+      URL for the System of Records Notice (SORN).
     </HelpText>
   ),
   accrualPeriodicity: (
@@ -158,7 +158,7 @@ const AdditionalMetadata = (props) => {
             name="otherDataDictionaryType"
             value={values.otherDataDictionaryType}
             type="string"
-            helptext="If you selected “Other”, please specify your Data Dictionary Type"
+            helptext="If you selected “Other”, please specify your Data Dictionary Type."
           />
         </div>
       </div>
