@@ -84,7 +84,8 @@ describe('Deleting a dataset', () => {
     cy.visit('/dataset/test-dataset-1');
     cy.get('.btn-danger').click({ force: true });
     cy.wait(2000);
-    cy.contains('Are you sure you want to delete dataset -');
+    // cy.contains('Are you sure you want to delete dataset -');
+    cy.contains('Are you sure you want to delete this dataset?');
   });
 });
 
