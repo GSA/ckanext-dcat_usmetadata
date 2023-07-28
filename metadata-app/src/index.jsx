@@ -3,6 +3,7 @@ import 'react-app-polyfill/stable';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './init'; // vite doesn't define a 'global' field in 'window'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 

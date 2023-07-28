@@ -9,15 +9,17 @@ import Radio from '../Radio';
 
 import api from '../../api';
 
-const languages = require('./languages.json');
-const dataDictTypes = require('./data-dictionary-types').sort((a, b) => {
+import publishingFrequencyOptions from './publishingFrequencyList.json';
+import languages from './languages.json';
+import dataDictTypesOrig from './data-dictionary-types.json';
+
+const dataDictTypes = dataDictTypesOrig.sort((a, b) => {
   const label1 = (a.label || '').toLowerCase();
   const label2 = (b.label || '').toLowerCase();
   if (label1 < label2) return -1;
   if (label1 > label2) return 1;
   return 0;
 });
-const publishingFrequencyOptions = require('./publishingFrequencyList');
 
 const helpTexts = {
   describedBy: (
