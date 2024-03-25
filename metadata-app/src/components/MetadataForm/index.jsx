@@ -16,7 +16,7 @@ import AlertBox from '../AlertBox';
 import Api from '../../api';
 
 import '../../css/custom.css';
-import 'uswds/dist/css/uswds.css';
+import '@uswds/uswds/dist/css/uswds.css';
 
 const formatErrors = (errors) =>
   Object.keys(errors).map((name) => {
