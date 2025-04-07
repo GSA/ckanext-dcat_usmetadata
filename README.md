@@ -174,7 +174,7 @@ yarn e2e
 Note, it may be necessary to remove cached images when rebuilding the docker container, in order to ensure that the new usmetadata-app template is included in the build. If you want to make sure that you aren't using cached builds, you can try:
 
 ```bash
-docker-compose build --no-cache --pull ckanext-dcat_usmetadata_app
+docker compose build --no-cache --pull ckanext-dcat_usmetadata_app
 ```
 
 To run e2e tests interactively use:
