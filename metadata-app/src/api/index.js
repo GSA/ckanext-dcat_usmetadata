@@ -664,8 +664,8 @@ const updateDataset = (id, opts, apiUrl, apiKey) => {
   delete body.url;
 
   // TODO where do we get these?
-  body.bureau_code = '015:11';
-  body.program_code = '015:001';
+  body.bureau_code = '000:00';
+  body.program_code = '000:000';
 
   return axios
     .post(`${apiUrl}package_update`, encodeValues(moveToExtras(body)), {
