@@ -572,8 +572,8 @@ const createDataset = (opts, apiUrl, apiKey) => {
     : slugify(opts.title, { lower: true, remove: /[*+~.()'"!:@]/g });
   body.notes = body.notes || '';
   delete body.url;
-  body.bureau_code = '015:11';
-  body.program_code = '015:001';
+  body.bureau_code = '000:00';
+  body.program_code = '000:000';
   return axios
     .post(`${apiUrl}package_create`, encodeValues(moveToExtras(body)), {
       headers: makeHeaders(apiKey),
