@@ -1,4 +1,3 @@
-version: "3.7"
 services:
   ckan:
     image: datagov/ckanext-dcat_usmetadata:${CKAN_VERSION}
@@ -14,7 +13,7 @@ services:
       CKAN_DATASTORE_READ_URL: postgresql://datastore_read:pass@db/datastore_test
       CKAN_SOLR_URL: http://solr:8983/solr/ckan
       CKAN_REDIS_URL: redis://redis:6379/1
-      CKAN_DATAPUSHER_URL: http://localhost:8080/  # datapusher is not really enabled
+      CKAN_DATAPUSHER_URL: http://localhost:8080/ # datapusher is not really enabled
       CKAN__PLUGINS: dcat_usmetadata usmetadata
       PYTHONDONTWRITEBYTECODE: 1
     # command: /bin/bash -c "while ! nc -zv db 5432; do echo \"CKAN** Waiting for DB\"; sleep 3; done; /srv/app/start_ckan_development.sh"
@@ -30,7 +29,7 @@ services:
       - ./test.ini:/srv/app/test.ini
       - ./setup.py:/srv/app/setup.py
       - /etc/timezone:/etc/timezone:ro
-      
+
   db:
     image: ckan/ckan-postgres-dev:${CKAN_VERSION}
     environment:
@@ -38,7 +37,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
     healthcheck:
-      test: ["CMD", "pg_isready -u ckan"]
+      test: [ "CMD", "pg_isready -u ckan" ]
       interval: 10s
       timeout: 5s
       retries: 5

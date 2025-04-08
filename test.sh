@@ -17,4 +17,4 @@ while ! ckan -c $TEST_CONFIG db init; do
 done
 
 # start_ckan_development.sh &
-pytest -s --ckan-ini=$TEST_CONFIG --cov=ckanext.dcat_usmetadata --disable-warnings /srv/app/ckanext/dcat_usmetadata/tests/
+pytest -s --ckan-ini=$TEST_CONFIG --cov=ckanext.dcat_usmetadata /srv/app/ckanext/dcat_usmetadata/tests/
