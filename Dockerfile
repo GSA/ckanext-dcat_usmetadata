@@ -7,5 +7,5 @@ RUN pip install --upgrade pip
 
 COPY . ${APP_DIR}/
 
-RUN pip install -r ${APP_DIR}/requirements.txt \
-  -r ${APP_DIR}/dev-requirements.txt -e ${APP_DIR}/.
+RUN pip install -r ${APP_DIR}/dev-requirements.txt \
+  -r ${APP_DIR}/requirements.txt -e ${APP_DIR}/.
