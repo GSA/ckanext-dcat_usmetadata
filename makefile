@@ -7,6 +7,8 @@ build:
 up:
 	SERVICES_VERSION=$(CKAN_VERSION:%.5=%) CKAN_VERSION=$(CKAN_VERSION) docker compose -f $(COMPOSE_FILE) up
 
+down:
+	docker compose down
 
 .DEFAULT_GOAL := help
 .PHONY: build up
