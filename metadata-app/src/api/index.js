@@ -663,7 +663,9 @@ const updateDataset = (id, opts, apiUrl, apiKey) => {
   body.name = opts.url ? opts.url.split('/').pop() : body.name;
   delete body.url;
 
-  // TODO where do we get these?
+  // These codes will serve as our default as they're not used in the actually
+  // used by OMB. For a complete list: 
+  // https://obamawhitehouse.archives.gov/sites/default/files/omb/assets/a11_current_year/app_c.pdf
   body.bureau_code = '000:00';
   body.program_code = '000:000';
 
