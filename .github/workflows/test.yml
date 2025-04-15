@@ -4,7 +4,7 @@ on: [push, workflow_dispatch]
 jobs:
   lint-test:
     name: Lint + Test
-    uses: gsa/data.gov/.github/workflows/ckan-test.yml@switch-testyml-image
+    uses: gsa/data.gov/.github/workflows/ckan-test.yml@main
     with:
       ext_name: dcat_usmetadata
       plugins: dcat_usmetadata usmetadata
