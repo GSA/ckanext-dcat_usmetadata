@@ -5,6 +5,7 @@ services:
       context: .
       args:
         CKAN_VERSION: ${CKAN_VERSION}
+    hostname: ckan
     env_file:
       - .env
     environment:
@@ -37,7 +38,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
     healthcheck:
-      test: [ "CMD", "pg_isready -u ckan" ]
+      test: ["CMD", "pg_isready -u ckan"]
       interval: 10s
       timeout: 5s
       retries: 5

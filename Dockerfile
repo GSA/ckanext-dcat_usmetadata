@@ -1,5 +1,5 @@
 ARG CKAN_VERSION=2.10
-FROM ckan/ckan-dev:${CKAN_VERSION}
+FROM openknowledge/ckan-dev:${CKAN_VERSION}
 ARG CKAN_VERSION
 
 RUN apk add swig 

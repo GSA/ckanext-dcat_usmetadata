@@ -1,11 +1,11 @@
 CKAN_VERSION ?= 2.10
 COMPOSE_FILE ?= docker-compose.yml
 
-build:
+build: 
 	CKAN_VERSION=$(CKAN_VERSION) docker compose -f $(COMPOSE_FILE) build
 
 up:
-	SERVICES_VERSION=$(CKAN_VERSION:%.5=%) CKAN_VERSION=$(CKAN_VERSION) docker compose -f $(COMPOSE_FILE) up
+	CKAN_VERSION=$(CKAN_VERSION) docker compose -f $(COMPOSE_FILE) up
 
 down:
 	docker compose down

@@ -82,7 +82,7 @@ jobs:
           CKAN_VERSION=2.10 yarn install
           CKAN_VERSION=2.10 yarn build
           CKAN_VERSION=2.10 yarn dockerize
-          CKAN_VERSION=2.10 docker compose -f docker-compose.yml -f docker-compose.cypress.yml run cypress /bin/bash -c "npx wait-on http://ckan:5000/api/action/status_show && npx cypress install && yarn && NODE_ENV=test npx cypress run --spec cypress/integration/${{ matrix.test-files }}"
+          CKAN_VERSION=2.10 docker compose -f docker-compose.yml -f docker-compose.cypress.yml run cypress /bin/bash -c "npx wait-on http://ckan:5000/api/action/status_show --timeout 120000 && npx cypress install && yarn && NODE_ENV=test npx cypress run --spec cypress/integration/${{ matrix.test-files }}"
       - name: cypress-artifacs
         uses: actions/upload-artifact@v4
         if: failure()
