@@ -4,18 +4,18 @@
   "description": "This extension provides a react Admin UI for managing custom fields related to [DCAT-US Schema](https://https://resources.data.gov/resources/dcat-us/).",
   "main": "index.js",
   "scripts": {
-    "build:docker": "docker-compose build",
+    "build:docker": "docker compose build",
     "package": "python setup.py sdist && python setup.py bdist_wheel",
-    "clean": "docker-compose down -v --remove-orphans",
-    "test": "yarn dockerize && docker-compose run --rm ckan /srv/app/test.sh",
-    "up": "docker-compose -f docker-compose.yml up",
-    "lint:python": "docker-compose -f docker-compose.yml run --rm ckan flake8 /srv/app --count --show-source --statistics --exclude ckan --max-line-length 127",
-    "dockerize": "docker-compose -f docker-compose.yml up -d",
+    "clean": "docker compose down -v --remove-orphans",
+    "test": "yarn dockerize && docker compose run --rm ckan /srv/app/test.sh",
+    "up": "docker compose -f docker-compose.yml up",
+    "lint:python": "docker compose -f docker-compose.yml run --rm ckan flake8 /srv/app --count --show-source --statistics --exclude ckan --max-line-length 127",
+    "dockerize": "docker compose -f docker-compose.yml up -d",
     "test:metadata-app": "node react-scripts/test.js --watchAll=false",
     "test:metadata-app:watch": "node react-scripts/test.js --watchAll=true",
     "pre-commit": "echo 'formatting your changes...' && eslint metadata-app/src/ && prettier --write",
-    "e2e": "docker-compose -f docker-compose.yml -f docker-compose.cypress.yml run cypress /bin/bash -c \"npx wait-on http://ckan:5000/api/action/status_show && npx cypress install && yarn && NODE_ENV=test npx cypress run\"",
-    "e2e:interactive": "docker-compose -f docker-compose.yml up -d && yarn && NODE_ENV=test npx cypress open",
+    "e2e": "docker compose -f docker-compose.yml -f docker-compose.cypress.yml run cypress /bin/bash -c \"npx wait-on http://ckan:5000/api/action/status_show --timeout 120000 && npx cypress install && yarn && NODE_ENV=test npx cypress run\"",
+    "e2e:interactive": "docker compose -f docker-compose.yml up -d && yarn && NODE_ENV=test npx cypress open",
     "lint:js": "npx eslint metadata-app/src && npx prettier --check metadata-app/src",
     "rename:builds": "cd ckanext/dcat_usmetadata/public/ && mv assets/css . && mv assets/js .",
     "start:dev": "yarn dockerize && yarn && cd metadata-app && yarn start:metadata-app",
@@ -140,7 +140,8 @@
     "eslint-plugin-react": "^7.22.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "wait-on": "8.0.3"
   },
   "jest": {
     "roots": [
@@ -205,5 +206,6 @@
     "url": "git@gitlab.com:datopian/clients/ckanext-dcat_usmetadata.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

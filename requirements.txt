@@ -11,7 +11,8 @@ repoze.who==2.4
 webob
 
 # ckanext-saml2 dependencies
-M2Crypto==0.36.0
+M2Crypto==0.44.0
+
 #-e git+https://github.com/IdentityPython/pysaml2.git#egg=pysaml2
 pysaml2
 
@@ -27,3 +28,4 @@ pyOpenSSL==20.0.1
 python-memcached==1.58
 pip==23.3.1
 flake8
+packaging==21.3

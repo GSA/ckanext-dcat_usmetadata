@@ -1,5 +1,6 @@
 {
   "baseUrl": "http://ckan:5000",
   "chromeWebSecurity": false,
-  "videoCompression": false
+  "videoCompression": false,
+  "requestTimeout": 15000
 }
