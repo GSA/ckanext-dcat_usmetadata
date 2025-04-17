@@ -572,8 +572,8 @@ const createDataset = (opts, apiUrl, apiKey) => {
     : slugify(opts.title, { lower: true, remove: /[*+~.()'"!:@]/g });
   body.notes = body.notes || '';
   delete body.url;
-  body.bureau_code = '015:11';
-  body.program_code = '015:001';
+  body.bureau_code = '000:00';
+  body.program_code = '000:000';
   return axios
     .post(`${apiUrl}package_create`, encodeValues(moveToExtras(body)), {
       headers: makeHeaders(apiKey),
@@ -663,9 +663,11 @@ const updateDataset = (id, opts, apiUrl, apiKey) => {
   body.name = opts.url ? opts.url.split('/').pop() : body.name;
   delete body.url;
 
-  // TODO where do we get these?
-  body.bureau_code = '015:11';
-  body.program_code = '015:001';
+  // These codes will serve as our default as they're not used in the actually
+  // used by OMB For a complete list:
+  // https://obamawhitehouse.archives.gov/sites/default/files/omb/assets/a11_current_year/app_c.pdf
+  body.bureau_code = '000:00';
+  body.program_code = '000:000';
 
   return axios
     .post(`${apiUrl}package_update`, encodeValues(moveToExtras(body)), {
