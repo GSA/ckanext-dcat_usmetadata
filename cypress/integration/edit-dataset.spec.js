@@ -6,6 +6,7 @@ const resourceToBeDeleted = 'resource-to-be-deleted';
 describe('Editing an existing dataset', () => {
   before(() => {
     cy.login();
+    cy.create_token();
     cy.deleteDataset(name);
     cy.deleteOrg('test-organization');
     cy.createOrg('test-organization');
@@ -41,6 +42,7 @@ describe('Editing an existing dataset', () => {
 
   after(() => {
     cy.deleteDataset(name);
+    cy.revoke_token();
   });
 
   it('Loads required metadata values into the form', () => {

@@ -8,6 +8,7 @@ describe('Resource Upload page', () => {
 
   before(() => {
     cy.login();
+    cy.create_token();
     cy.deleteDataset('eeeee');
     cy.deleteOrg('test-organization');
     cy.createOrg('test-organization', 'sample organization');
@@ -33,6 +34,7 @@ describe('Resource Upload page', () => {
       body: { id: longNameResourceDataset },
       failOnStatusCode: false,
     });
+    cy.revoke_token();
   });
 
   it('Links to Data and redirects to dataset page on CKAN', () => {
@@ -185,6 +187,7 @@ describe('Resource Upload page', () => {
 describe('Save draft functionality on Resource Upload page', () => {
   before(() => {
     cy.login();
+    cy.create_token();
     cy.deleteDataset('eeeee');
     cy.deleteOrg('test-organization');
     cy.createOrg('test-organization', 'sample organization');
@@ -197,6 +200,7 @@ describe('Save draft functionality on Resource Upload page', () => {
 
   after(() => {
     cy.deleteDataset('eeeee');
+    cy.revoke_token();
   });
 
   it('Saves draft', () => {
@@ -223,6 +227,7 @@ describe('Editing resources', () => {
 
   before(() => {
     cy.login();
+    cy.create_token();
     cy.deleteDataset(name);
     cy.deleteOrg('test-organization');
     cy.createOrg('test-organization', 'sample organization');
@@ -235,6 +240,10 @@ describe('Editing resources', () => {
 
   afterEach(() => {
     cy.deleteDataset(name);
+  });
+
+  after(() => {
+    cy.revoke_token();
   });
 
   it('Works when editing a resource during dataset creation', () => {

@@ -2,8 +2,14 @@ import Chance from 'chance';
 const chance = new Chance();
 
 describe('Access to the new metadata app', () => {
+  before(() => {
+    cy.login();
+    cy.create_token();
+  });
+
   after(() => {
     cy.deleteDataset('test-dataset-1');
+    cy.revoke_token();
     cy.logout();
   });
 
@@ -61,9 +67,14 @@ describe('Access to the new metadata app', () => {
 describe('Deleting a dataset', () => {
   before(() => {
     cy.login();
+    cy.create_token();
     cy.deleteDataset('test-dataset-1');
     cy.deleteOrg('test-organization');
     cy.createOrg('test-organization', 'sample organization');
+  });
+
+  after(() => {
+    cy.revoke_token();
   });
 
   afterEach(() => {
@@ -92,6 +103,7 @@ describe('List of organizations on new metadata form', () => {
   before(() => {
     cy.createUser('editor');
     cy.login();
+    // cy.create_token();
     cy.visit('/organization/member_new/test-organization');
     cy.get('input[name=username]').type('editor', { force: true });
     cy.get('select[name=role]').select('Editor', { force: true });
@@ -101,6 +113,7 @@ describe('List of organizations on new metadata form', () => {
 
   after(() => {
     cy.deleteDataset('test-dataset-1');
+    // cy.revoke_token();
     cy.logout();
   });
 
@@ -123,6 +136,7 @@ describe('List of organizations on new metadata form', () => {
 describe('Go back to dashboard page', () => {
   before(() => {
     cy.login();
+    cy.create_token();
     cy.deleteOrg('test-organization');
     cy.createOrg('test-organization', 'sample organization');
   });
@@ -135,6 +149,7 @@ describe('Go back to dashboard page', () => {
   after(() => {
     cy.deleteDataset('fffff');
     cy.deleteDataset('test-dataset-1');
+    cy.revoke_token();
     cy.logout();
   });
 

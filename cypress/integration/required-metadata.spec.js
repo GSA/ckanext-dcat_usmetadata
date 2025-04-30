@@ -15,6 +15,7 @@ describe('DCAT Metadata App', () => {
 describe('Required Metadata Page', () => {
   before(() => {
     cy.login();
+    cy.create_token();
     cy.deleteDataset('daaaa');
     cy.deleteDataset('dbbbb');
     cy.deleteDataset('dcccc');
@@ -24,6 +25,10 @@ describe('Required Metadata Page', () => {
     cy.deleteOrg('test-organization');
     cy.createOrg('test-organization', 'sample organization');
     cy.visit('/dataset/new-metadata');
+  });
+
+  after(() => {
+    cy.revoke_token();
   });
 
   beforeEach(() => {

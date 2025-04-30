@@ -15,7 +15,7 @@ services:
       CKAN_SOLR_URL: http://solr:8983/solr/ckan
       CKAN_REDIS_URL: redis://redis:6379/1
       CKAN_DATAPUSHER_URL: http://localhost:8080/ # datapusher is not really enabled
-      CKAN__PLUGINS: dcat_usmetadata usmetadata
+      CKAN__PLUGINS: dcat_usmetadata usmetadata tracking
       PYTHONDONTWRITEBYTECODE: 1
     # command: /bin/bash -c "while ! nc -zv db 5432; do echo \"CKAN** Waiting for DB\"; sleep 3; done; /srv/app/start_ckan_development.sh"
     depends_on:

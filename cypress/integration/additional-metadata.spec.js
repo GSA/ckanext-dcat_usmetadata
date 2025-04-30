@@ -4,6 +4,7 @@ const chance = new Chance();
 describe('Additional Metadata Page', () => {
   before(() => {
     cy.login();
+    cy.create_token();
     cy.deleteDataset('aaaaa');
     cy.deleteDataset('bbbbb');
     cy.deleteDataset('ccccc');
@@ -24,6 +25,7 @@ describe('Additional Metadata Page', () => {
     cy.deleteDataset('ccccc');
     cy.deleteDataset('ddddd');
     cy.deleteOrg('test-organization');
+    cy.revoke_token();
   });
 
   it('Validates and submits Additional Metadata succesfully', () => {
