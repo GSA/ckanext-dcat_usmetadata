@@ -60,7 +60,7 @@ def edit_metadata(id):
         abort(404, _('Dataset not found'))
 
     try:
-        check_access('package_update', context)
+        check_access('package_update', context, {'id': id})
     except NotAuthorized:
         abort(401, _('User %r not authorized to edit %s') % (c.user, id))
 
