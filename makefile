@@ -1,4 +1,4 @@
-CKAN_VERSION ?= 2.10
+CKAN_VERSION ?= 2.11
 COMPOSE_FILE ?= docker-compose.yml
 
 build: 
@@ -8,7 +8,15 @@ up:
 	CKAN_VERSION=$(CKAN_VERSION) docker compose -f $(COMPOSE_FILE) up
 
 down:
-	docker compose down
+	CKAN_VERSION=$(CKAN_VERSION) docker compose down
+
+test_e2e:
+	# CKAN_VERSION=$(CKAN_VERSION) docker compose -f docker-compose.yml -f docker-compose.cypress.yml run cypress /bin/bash -c "npx wait-on http://ckan:5000/api/action/status_show --timeout 120000 && npx cypress install && yarn && NODE_ENV=test npx cypress run --spec cypress/integration/required-metadata.spec.js"
+	CKAN_VERSION=$(CKAN_VERSION) docker compose -f docker-compose.yml -f docker-compose.cypress.yml run cypress /bin/bash -c "npx wait-on http://ckan:5000/api/action/status_show --timeout 120000 && npx cypress install && yarn && NODE_ENV=test npx cypress run"
+
+test_e2e_interactive:
+	CKAN_VERSION=$(CKAN_VERSION) docker compose -f docker-compose.yml up -d && yarn && NODE_ENV=test npx cypress open
+	
 
 .DEFAULT_GOAL := help
 .PHONY: build up

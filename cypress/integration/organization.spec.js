@@ -1,6 +1,7 @@
 describe('Organization Page', () => {
   before(() => {
     cy.login();
+    cy.create_token();
     cy.deleteDataset(name);
     cy.deleteOrg('test-organization');
     cy.createOrg('test-organization');
@@ -8,6 +9,7 @@ describe('Organization Page', () => {
 
   after(() => {
     cy.deleteOrg('test-organization');
+    cy.revoke_token();
   });
 
   it('Has only one Add Dataset Button', () => {

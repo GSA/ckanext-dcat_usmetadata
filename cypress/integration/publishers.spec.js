@@ -1,6 +1,7 @@
 describe('Publishers linked to CKAN org', () => {
   before(() => {
     cy.login();
+    cy.create_token();
     cy.deleteDataset(name);
     cy.deleteOrg('test-organization');
     cy.createOrg('test-organization');
@@ -8,6 +9,7 @@ describe('Publishers linked to CKAN org', () => {
 
   after(() => {
     cy.deleteOrg('test-organization');
+    cy.revoke_token();
   });
 
   it('Has publishers extra in CKAN org metadata', () => {

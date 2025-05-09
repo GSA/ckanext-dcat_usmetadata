@@ -2,46 +2,142 @@ import 'chance';
 import 'cypress-file-upload';
 
 Cypress.Commands.add('login', (username = 'admin', password = 'password') => {
-  cy.clearCookies();
+  /**
+   * Method to fill and submit the CKAN Login form
+   * :PARAM userName String: user name of that will be attempting to login
+   * :PARAM password String: password for the user logging in
+   * :RETURN null:
+   */
+  cy.logout();
   cy.visit('/user/login');
-  cy.get('input[name=login]').type(username);
-  cy.get('input[name=password]').type(password);
-  cy.get('.form-actions > .btn').click({ force: true });
-  cy.wait(2000);
+
+  // set the username and password for the defaults
+  Cypress.env('USER', username);
+  Cypress.env('USER_PASSWORD', password);
+
+  // Hide flask debug toolbar
+  cy.get('#flDebugHideToolBarButton').click();
+
+  cy.get('#field-login').type(username);
+  cy.get('#field-password').type(password);
+  cy.get('.btn-primary').click();
 });
 
 Cypress.Commands.add('logout', () => {
+  cy.log('Logging out - clearing cookies');
   cy.clearCookies();
 });
 
-Cypress.Commands.add('createOrg', (orgName, orgDesc) => {
-  /**
-   *  * Method to create organization via CKAN API
-   *   * :PARAM orgName String: Name of the organization being created
-   *   * :PARAM orgDesc String: Description of the organization being created
-   *   * :PARAM orgTest Boolean: Control value to determine if to use UI to create organization
-   *   *  for testing or to visit the organization creation page
-   *   * :RETURN null:
-   *   */
+Cypress.Commands.add('create_token', (tokenName) => {
+  // return if token already exists
+  const token_data = Cypress.env('token_data');
 
-  cy.request({
-    url: '/api/action/organization_create',
-    method: 'POST',
-    body: {
-      description: orgDesc,
-      title: orgName,
-      approval_status: 'approved',
-      state: 'active',
-      name: orgName,
-      extras: [
-        {
-          key: 'publisher',
-          value: `[["${orgName}", "${orgName}", "top level publisher"], ["${orgName}", "${orgName}", "top level publisher", "first level publisher", "second level publisher"]]`,
-        },
-      ],
-    },
+  if (token_data) {
+    cy.log('Token already exists. skipping token creation.');
+    cy.log(token_data);
+    return;
+  }
+
+  cy.login();
+
+  if (!tokenName) {
+    tokenName = 'cypress token';
+  }
+
+  const userName = Cypress.env('USER');
+  // create an API token named 'cypress token'
+  cy.visit('/user/' + userName + '/api-tokens');
+
+  cy.get('body').then(($body) => {
+    cy.get('#name').type('cypress token');
+    cy.get('button[value="create"]').click();
+    // find the token in <code> tag and save it for later use
+    // find the token id (jti) somewhere in the form
+    cy.get('div.alert-success code')
+      .invoke('text')
+      .then((text1) => {
+        cy.get('form[action^="/user/' + userName + '/api-tokens/"]')
+          .invoke('attr', 'action')
+          .then((text2) => {
+            const jti = text2.split('/')[4];
+            Cypress.env('token_data', { api_token: text1, jti: jti });
+          });
+      });
+    cy.log('cypress token created.');
   });
 });
+
+Cypress.Commands.add('revoke_token', (tokenName) => {
+  const token_data = Cypress.env('token_data');
+
+  if (!token_data) {
+    return;
+  }
+
+  if (!tokenName) {
+    tokenName = 'cypress token';
+  }
+  cy.log('Revoking cypress token.......');
+  cy.request({
+    url: '/api/3/action/api_token_revoke',
+    method: 'POST',
+    withCredentials: false,
+    headers: {
+      Authorization: token_data.api_token,
+      'Content-Type': 'application/json',
+    },
+    body: { token: token_data.api_token },
+  });
+});
+
+Cypress.Commands.add(
+  'createOrg',
+  (orgName = 'test-organization', orgDesc = 'sample organization') => {
+    /**
+     * Method to create organization via CKAN API
+     * :PARAM orgName String: Name of the organization being created
+     * :PARAM orgDesc String: Description of the organization being created
+     * :RETURN null:
+     */
+    const token_data = Cypress.env('token_data');
+
+    let request_obj = {
+      url: '/api/3/action/organization_create',
+      method: 'POST',
+      headers: {
+        Authorization: token_data.api_token,
+        'Content-Type': 'application/json',
+      },
+      // avoids sending cookie
+      withCredentials: false,
+      body: {
+        name: orgName,
+        title: orgName,
+        description: orgDesc,
+        approval_status: 'approved',
+        state: 'active',
+        extras: [
+          {
+            key: 'publisher',
+            value: JSON.stringify([
+              [orgName, orgName, 'top level publisher'],
+              [
+                orgName,
+                orgName,
+                'top level publisher',
+                'first level publisher',
+                'second level publisher',
+              ],
+            ]),
+          },
+        ],
+      },
+    };
+
+    cy.request(request_obj);
+    cy.wait(2000);
+  }
+);
 
 Cypress.Commands.add('deleteOrg', (orgName) => {
   /**
@@ -49,20 +145,33 @@ Cypress.Commands.add('deleteOrg', (orgName) => {
    * :PARAM orgName String: Name of the organization to purge from the current state
    * :RETURN null:
    */
+  const token_data = Cypress.env('token_data');
+
   cy.request({
     url: '/api/action/organization_delete',
     method: 'POST',
     failOnStatusCode: false,
+    headers: {
+      Authorization: token_data.api_token,
+      'Content-Type': 'application/json',
+    },
+    withCredentials: false,
     body: {
-      id: orgName,
+      id: orgName ? orgName : 'test-organization',
     },
   });
+
   cy.request({
     url: '/api/action/organization_purge',
     method: 'POST',
     failOnStatusCode: false,
+    headers: {
+      Authorization: token_data.api_token,
+      'Content-Type': 'application/json',
+    },
+    withCredentials: false,
     body: {
-      id: orgName,
+      id: orgName ? orgName : 'test-organization',
     },
   });
 });
@@ -73,16 +182,25 @@ Cypress.Commands.add('deleteDataset', (datasetName) => {
    ** :PARAM datasetName String: Name of the dataset to purge from the current state
    ** :RETURN null:
    **/
+
+  const token_data = Cypress.env('token_data');
   cy.request({
-    url: '/api/action/dataset_purge',
+    url: '/api/3/action/dataset_purge',
     method: 'POST',
     failOnStatusCode: false,
-    body: { id: datasetName },
+    withCredentials: false,
+    headers: {
+      Authorization: token_data.api_token,
+      'Content-Type': 'application/json',
+    },
+    body: {
+      id: datasetName,
+    },
   });
 });
 
 Cypress.Commands.add('createUser', (username) => {
-  cy.clearCookies();
+  // creates a user, must be called while logged in!
   cy.visit('/user/register');
   const name = username || chance.name({ length: 5 });
   cy.get('input[name=name]').type(name);

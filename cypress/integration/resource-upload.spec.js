@@ -8,6 +8,7 @@ describe('Resource Upload page', () => {
 
   before(() => {
     cy.login();
+    cy.create_token();
     cy.deleteDataset('eeeee');
     cy.deleteOrg('test-organization');
     cy.createOrg('test-organization', 'sample organization');
@@ -33,6 +34,7 @@ describe('Resource Upload page', () => {
       body: { id: longNameResourceDataset },
       failOnStatusCode: false,
     });
+    cy.revoke_token();
   });
 
   it('Links to Data and redirects to dataset page on CKAN', () => {
@@ -185,6 +187,7 @@ describe('Resource Upload page', () => {
 describe('Save draft functionality on Resource Upload page', () => {
   before(() => {
     cy.login();
+    cy.create_token();
     cy.deleteDataset('eeeee');
     cy.deleteOrg('test-organization');
     cy.createOrg('test-organization', 'sample organization');
@@ -197,6 +200,7 @@ describe('Save draft functionality on Resource Upload page', () => {
 
   after(() => {
     cy.deleteDataset('eeeee');
+    cy.revoke_token();
   });
 
   it('Saves draft', () => {
@@ -223,6 +227,7 @@ describe('Editing resources', () => {
 
   before(() => {
     cy.login();
+    cy.create_token();
     cy.deleteDataset(name);
     cy.deleteOrg('test-organization');
     cy.createOrg('test-organization', 'sample organization');
@@ -235,6 +240,10 @@ describe('Editing resources', () => {
 
   afterEach(() => {
     cy.deleteDataset(name);
+  });
+
+  after(() => {
+    cy.revoke_token();
   });
 
   it('Works when editing a resource during dataset creation', () => {
@@ -361,7 +370,8 @@ describe('Editing resources', () => {
     // Create a resource with  Link to an API
     cy.intercept('/api/3/action/resource_create').as('resourceCreate1');
     cy.get('#resource-option-link-to-api').parent('.form-group').click();
-    cy.get('input[name=resource\\.url]').type('https://www.example.com');
+    cy.wait(1000);
+    cy.get('input[name=resource\\.url]').type('https://example.com/data.csv');
     cy.get('input[name=resource\\.name]').type(resourceWithLinkToApi);
     cy.get('textarea[name=resource\\.description]').type(chance.sentence({ words: 10 }));
     cy.get('button[type=button]').contains('Save and add another resource').click();
