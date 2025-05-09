@@ -24,6 +24,7 @@ Cypress.Commands.add('login', (username = 'admin', password = 'password') => {
 });
 
 Cypress.Commands.add('logout', () => {
+  cy.log('Logging out - clearing cookies');
   cy.clearCookies();
 });
 
@@ -96,8 +97,6 @@ Cypress.Commands.add(
      * Method to create organization via CKAN API
      * :PARAM orgName String: Name of the organization being created
      * :PARAM orgDesc String: Description of the organization being created
-     * :PARAM orgTest Boolean: Control value to determine if to use UI to create organization
-     *      for testing or to visit the organization creation page
      * :RETURN null:
      */
     const token_data = Cypress.env('token_data');
@@ -120,13 +119,23 @@ Cypress.Commands.add(
         extras: [
           {
             key: 'publisher',
-            value: `[["${orgName}", "${orgName}", "top level publisher"], ["${orgName}", "${orgName}", "top level publisher", "first level publisher", "second level publisher"]]`,
+            value: JSON.stringify([
+              [orgName, orgName, 'top level publisher'],
+              [
+                orgName,
+                orgName,
+                'top level publisher',
+                'first level publisher',
+                'second level publisher',
+              ],
+            ]),
           },
         ],
       },
     };
 
     cy.request(request_obj);
+    cy.wait(2000);
   }
 );
 
@@ -176,7 +185,7 @@ Cypress.Commands.add('deleteDataset', (datasetName) => {
 
   const token_data = Cypress.env('token_data');
   cy.request({
-    url: '/api/action/dataset_purge',
+    url: '/api/3/action/dataset_purge',
     method: 'POST',
     failOnStatusCode: false,
     withCredentials: false,
@@ -191,7 +200,7 @@ Cypress.Commands.add('deleteDataset', (datasetName) => {
 });
 
 Cypress.Commands.add('createUser', (username) => {
-  cy.clearCookies();
+  // creates a user, must be called while logged in!
   cy.visit('/user/register');
   const name = username || chance.name({ length: 5 });
   cy.get('input[name=name]').type(name);

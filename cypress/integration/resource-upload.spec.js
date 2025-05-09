@@ -370,7 +370,8 @@ describe('Editing resources', () => {
     // Create a resource with  Link to an API
     cy.intercept('/api/3/action/resource_create').as('resourceCreate1');
     cy.get('#resource-option-link-to-api').parent('.form-group').click();
-    cy.get('input[name=resource\\.url]').type('https://www.example.com');
+    cy.wait(1000);
+    cy.get('input[name=resource\\.url]').type('https://example.com/data.csv');
     cy.get('input[name=resource\\.name]').type(resourceWithLinkToApi);
     cy.get('textarea[name=resource\\.description]').type(chance.sentence({ words: 10 }));
     cy.get('button[type=button]').contains('Save and add another resource').click();

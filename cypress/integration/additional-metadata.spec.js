@@ -89,6 +89,7 @@ describe('Parent Dataset', () => {
   before(() => {
     cy.logout();
     cy.login();
+    cy.create_token();
     cy.deleteDataset(parentTitle);
     cy.deleteDataset(childTitle);
     cy.deleteOrg('test-organization');

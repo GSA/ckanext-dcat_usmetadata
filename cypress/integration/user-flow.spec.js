@@ -95,30 +95,29 @@ describe('Deleting a dataset', () => {
     cy.visit('/dataset/test-dataset-1');
     cy.get('.btn-danger').click({ force: true });
     cy.wait(2000);
-    cy.contains('Are you sure you want to delete dataset -');
+    cy.contains('Are you sure you want to delete dataset');
   });
 });
 
 describe('List of organizations on new metadata form', () => {
   before(() => {
-    cy.createUser('editor');
     cy.login();
-    // cy.create_token();
+    cy.create_token();
+    cy.createUser('editor');
     cy.visit('/organization/member_new/test-organization');
     cy.get('input[name=username]').type('editor', { force: true });
     cy.get('select[name=role]').select('Editor', { force: true });
     cy.get('button[name=submit]').click({ force: true });
     cy.wait(2000);
+    cy.logout();
   });
 
   after(() => {
     cy.deleteDataset('test-dataset-1');
-    // cy.revoke_token();
     cy.logout();
   });
 
   it('Displays expected organizations for the editor role', () => {
-    cy.logout();
     cy.visit('/user/login');
     cy.get('input[name=login]').type('editor');
     cy.get('input[name=password]').type('test1234');

@@ -27,10 +27,6 @@ describe('Required Metadata Page', () => {
     cy.visit('/dataset/new-metadata');
   });
 
-  after(() => {
-    cy.revoke_token();
-  });
-
   beforeEach(() => {
     cy.logout();
     cy.login();
@@ -145,7 +141,6 @@ describe('Required Metadata Page', () => {
     cy.wait(3000);
     cy.get('select[name=owner_org]').find(':selected').contains('test-organization');
   });
-
   it('Organization is pre-selected in the dropdown if it that organization is the only one', () => {
     const username = 'editor-only-in-one-organization';
     cy.createUser(username);
@@ -155,7 +150,7 @@ describe('Required Metadata Page', () => {
     cy.get('select[name=role]').select('Editor', { force: true });
     cy.get('button[name=submit]').click({ force: true });
     cy.wait(2000);
-
+    cy.revoke_token();
     cy.logout();
     cy.login(username, 'test1234');
 
