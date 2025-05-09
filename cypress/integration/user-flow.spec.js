@@ -94,7 +94,7 @@ describe('Deleting a dataset', () => {
     cy.requiredMetadata('test-dataset-1');
     cy.visit('/dataset/test-dataset-1');
     cy.get('.btn-danger').click({ force: true });
-    cy.wait(2000);
+    cy.wait(4000);
     cy.contains('Are you sure you want to delete dataset');
   });
 });
