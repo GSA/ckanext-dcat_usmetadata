@@ -92,10 +92,11 @@ const serializeResource = (resource) => {
   // delete serializedResource.resource_type;
 
   if (serializedResource.urlType) {
-    if (
-      serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_API ||
-      serializedResource.urlType === RESOURCE_URL_TYPES.ACCESS_URL
-    ) {
+    if (serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_API) {
+      serializedResource.resource_type = 'api';
+      serializedResource.url_type = 'url';
+    }
+    if (serializedResource.urlType === RESOURCE_URL_TYPES.ACCESS_URL) {
       serializedResource.resource_type = 'accessurl';
       serializedResource.url_type = 'url';
     }
@@ -115,11 +116,11 @@ const serializeResource = (resource) => {
 const deserializeResource = (resource) => {
   const deserializedResource = clone(resource);
   deserializedResource.urlType = resource.url_type;
+  if (deserializedResource.resource_type === 'api') {
+    deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_API;
+  }
   if (deserializedResource.resource_type === 'accessurl') {
     deserializedResource.urlType = RESOURCE_URL_TYPES.ACCESS_URL;
-    if (deserializedResource.format === 'API') {
-      deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_API;
-    }
   }
   return deserializedResource;
 };
