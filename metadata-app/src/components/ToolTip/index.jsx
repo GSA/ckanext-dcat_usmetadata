@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ReactComponent as Info } from 'uswds/dist/img/alerts/info.svg';
+import { ReactComponent as Info } from '@uswds/uswds/dist/img/usa-icons/info.svg';
 
 import PropTypes from 'prop-types';
 

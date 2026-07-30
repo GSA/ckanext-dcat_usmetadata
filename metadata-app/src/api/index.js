@@ -92,10 +92,11 @@ const serializeResource = (resource) => {
   // delete serializedResource.resource_type;
 
   if (serializedResource.urlType) {
-    if (
-      serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_API ||
-      serializedResource.urlType === RESOURCE_URL_TYPES.ACCESS_URL
-    ) {
+    if (serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_API) {
+      serializedResource.resource_type = 'api';
+      serializedResource.url_type = 'url';
+    }
+    if (serializedResource.urlType === RESOURCE_URL_TYPES.ACCESS_URL) {
       serializedResource.resource_type = 'accessurl';
       serializedResource.url_type = 'url';
     }
@@ -115,11 +116,11 @@ const serializeResource = (resource) => {
 const deserializeResource = (resource) => {
   const deserializedResource = clone(resource);
   deserializedResource.urlType = resource.url_type;
+  if (deserializedResource.resource_type === 'api') {
+    deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_API;
+  }
   if (deserializedResource.resource_type === 'accessurl') {
     deserializedResource.urlType = RESOURCE_URL_TYPES.ACCESS_URL;
-    if (deserializedResource.format === 'API') {
-      deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_API;
-    }
   }
   return deserializedResource;
 };
@@ -572,8 +573,8 @@ const createDataset = (opts, apiUrl, apiKey) => {
     : slugify(opts.title, { lower: true, remove: /[*+~.()'"!:@]/g });
   body.notes = body.notes || '';
   delete body.url;
-  body.bureau_code = '015:11';
-  body.program_code = '015:001';
+  body.bureau_code = '000:00';
+  body.program_code = '000:000';
   return axios
     .post(`${apiUrl}package_create`, encodeValues(moveToExtras(body)), {
       headers: makeHeaders(apiKey),
@@ -663,9 +664,11 @@ const updateDataset = (id, opts, apiUrl, apiKey) => {
   body.name = opts.url ? opts.url.split('/').pop() : body.name;
   delete body.url;
 
-  // TODO where do we get these?
-  body.bureau_code = '015:11';
-  body.program_code = '015:001';
+  // These codes will serve as our default as they're not used in the actually
+  // used by OMB For a complete list:
+  // https://obamawhitehouse.archives.gov/sites/default/files/omb/assets/a11_current_year/app_c.pdf
+  body.bureau_code = '000:00';
+  body.program_code = '000:000';
 
   return axios
     .post(`${apiUrl}package_update`, encodeValues(moveToExtras(body)), {

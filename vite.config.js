@@ -18,6 +18,14 @@ export default defineConfig(() => {
         },
       },
     },
+    resolve: {
+      alias: [
+        {
+          find: '@uswds',
+          replacement: 'node_modules/@uswds',
+        },
+      ],
+    },
     plugins: [react(), svgr()],
   };
 });
