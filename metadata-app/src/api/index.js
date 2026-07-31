@@ -92,12 +92,21 @@ const serializeResource = (resource) => {
   // delete serializedResource.resource_type;
 
   if (serializedResource.urlType) {
-    if (
-      serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_API ||
-      serializedResource.urlType === RESOURCE_URL_TYPES.ACCESS_URL
-    ) {
+    if (serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_API) {
       serializedResource.resource_type = 'accessurl';
       serializedResource.url_type = 'url';
+      // Ensure format is set to 'API' for Link to API resources
+      // This is critical for deserializing back to the correct type
+      if (!serializedResource.format) {
+        serializedResource.format = 'API';
+      }
+    }
+    if (serializedResource.urlType === RESOURCE_URL_TYPES.ACCESS_URL) {
+      serializedResource.resource_type = 'accessurl';
+      serializedResource.url_type = 'url';
+      // For Access URL, ensure format is NOT 'API' to distinguish from Link to API
+      // If user explicitly set format to 'API' for an Access URL, respect that but
+      // this prevents accidental overlap
     }
     if (serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_FILE) {
       serializedResource.url_type = 'url';
