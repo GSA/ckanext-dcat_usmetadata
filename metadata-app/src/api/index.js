@@ -89,10 +89,14 @@ const encodeValues = (obj) => {
 const serializeResource = (resource) => {
   const serializedResource = clone(resource);
 
+  console.log('🔵 TEST VERIFICATION: serializeResource called with urlType:', serializedResource.urlType);
+  console.log('🔵 Full resource object:', serializedResource);
+
   // delete serializedResource.resource_type;
 
   if (serializedResource.urlType) {
     if (serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_API) {
+      console.log('🟢 LINK_TO_API detected - setting format to API');
       serializedResource.resource_type = 'accessurl';
       serializedResource.url_type = 'url';
       // Ensure format is set to 'API' for Link to API resources
@@ -102,6 +106,7 @@ const serializeResource = (resource) => {
       }
     }
     if (serializedResource.urlType === RESOURCE_URL_TYPES.ACCESS_URL) {
+      console.log('🟡 ACCESS_URL detected');
       serializedResource.resource_type = 'accessurl';
       serializedResource.url_type = 'url';
       // For Access URL, ensure format is NOT 'API' to distinguish from Link to API
@@ -123,13 +128,19 @@ const serializeResource = (resource) => {
  */
 const deserializeResource = (resource) => {
   const deserializedResource = clone(resource);
+  console.log('🔵 TEST VERIFICATION: deserializeResource called');
+  console.log('🔵 resource_type:', resource.resource_type, 'format:', resource.format);
+
   deserializedResource.urlType = resource.url_type;
   if (deserializedResource.resource_type === 'accessurl') {
     deserializedResource.urlType = RESOURCE_URL_TYPES.ACCESS_URL;
+    console.log('🟡 Default to ACCESS_URL');
     if (deserializedResource.format === 'API') {
+      console.log('🟢 Format is API - switching to LINK_TO_API');
       deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_API;
     }
   }
+  console.log('🔵 Final urlType:', deserializedResource.urlType);
   return deserializedResource;
 };
 
