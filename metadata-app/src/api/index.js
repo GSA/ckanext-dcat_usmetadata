@@ -89,15 +89,24 @@ const encodeValues = (obj) => {
 const serializeResource = (resource) => {
   const serializedResource = clone(resource);
 
-  // delete serializedResource.resource_type;
-
   if (serializedResource.urlType) {
-    if (
-      serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_API ||
-      serializedResource.urlType === RESOURCE_URL_TYPES.ACCESS_URL
-    ) {
+    if (serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_API) {
       serializedResource.resource_type = 'accessurl';
       serializedResource.url_type = 'url';
+      // Ensure format is set to 'API' for Link to API resources
+      // This is critical for deserializing back to the correct type
+      if (!serializedResource.format) {
+        serializedResource.format = 'API';
+      }
+    }
+    if (serializedResource.urlType === RESOURCE_URL_TYPES.ACCESS_URL) {
+      serializedResource.resource_type = 'accessurl';
+      serializedResource.url_type = 'url';
+      // For Access URL, clear the format if it's 'API' to distinguish from Link to API
+      // This ensures that when deserializing, it won't incorrectly switch back to LINK_TO_API
+      if (serializedResource.format === 'API') {
+        serializedResource.format = '';
+      }
     }
     if (serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_FILE) {
       serializedResource.url_type = 'url';
@@ -114,6 +123,7 @@ const serializeResource = (resource) => {
  */
 const deserializeResource = (resource) => {
   const deserializedResource = clone(resource);
+
   deserializedResource.urlType = resource.url_type;
   if (deserializedResource.resource_type === 'accessurl') {
     deserializedResource.urlType = RESOURCE_URL_TYPES.ACCESS_URL;
