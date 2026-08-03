@@ -109,9 +109,12 @@ const serializeResource = (resource) => {
       console.log('🟡 ACCESS_URL detected');
       serializedResource.resource_type = 'accessurl';
       serializedResource.url_type = 'url';
-      // For Access URL, ensure format is NOT 'API' to distinguish from Link to API
-      // If user explicitly set format to 'API' for an Access URL, respect that but
-      // this prevents accidental overlap
+      // For Access URL, clear the format if it's 'API' to distinguish from Link to API
+      // This ensures that when deserializing, it won't incorrectly switch back to LINK_TO_API
+      if (serializedResource.format === 'API') {
+        console.log('🟡 Clearing API format for ACCESS_URL');
+        serializedResource.format = '';
+      }
     }
     if (serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_FILE) {
       serializedResource.url_type = 'url';
