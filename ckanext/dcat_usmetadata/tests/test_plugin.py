@@ -29,8 +29,14 @@ class TestDcatUsmetadataPlugin(helpers.FunctionalTestBase):
         super(TestDcatUsmetadataPlugin, cls).setup_class()
 
     def create_user(self):
-        self.sysadmin = factories.Sysadmin(name='admin')
-        self.organization = factories.Organization(name='test-organization')
+        # Use unique names to avoid conflicts with existing users in test environment
+        import uuid
+        unique_id = str(uuid.uuid4())[:8]
+        self.sysadmin = factories.Sysadmin(name=f'test-admin-{unique_id}')
+        org_name = f'test-organization-{unique_id}'
+        self.organization = factories.Organization(name=org_name)
+        # Store the org name for assertions
+        self.org_name = org_name
         self.extra_environ = {'REMOTE_USER': self.sysadmin['name']}
 
         self.dataset1 = {
@@ -79,7 +85,7 @@ class TestDcatUsmetadataPlugin(helpers.FunctionalTestBase):
         self.app = self._get_test_app()
         org = self.app.get('/api/action/organization_show?id=%s' % (self.organization['id']),
                            extra_environ=self.extra_environ)
-        assert json.loads(org.body)['result']['name'] == 'test-organization'
+        assert json.loads(org.body)['result']['name'] == self.org_name
 
         assert result.exit_code == 0
         assert "Updated publishers" in result.output
