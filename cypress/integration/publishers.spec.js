@@ -14,7 +14,11 @@ describe('Publishers linked to CKAN org', () => {
 
   it('Has publishers extra in CKAN org metadata', () => {
     cy.login();
-    cy.request('GET', '/api/3/action/organization_show?id=test-organization').then((response) => {
+    cy.request({
+      method: 'GET',
+      url: '/api/3/action/organization_show?id=test-organization',
+      failOnStatusCode: false,
+    }).then((response) => {
       expect(response.status).to.eq(200);
       const publisherExtra = response.body.result.extras.find((x) => x.key === 'publisher');
       assert.isObject(publisherExtra, 'extra is found');

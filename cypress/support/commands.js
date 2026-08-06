@@ -81,6 +81,7 @@ Cypress.Commands.add('revoke_token', (tokenName) => {
   cy.request({
     url: '/api/3/action/api_token_revoke',
     method: 'POST',
+    failOnStatusCode: false,
     headers: {
       Authorization: token_data.api_token,
       'Content-Type': 'application/json',
@@ -104,6 +105,7 @@ Cypress.Commands.add(
     cy.request({
       url: '/api/3/action/organization_create',
       method: 'POST',
+      failOnStatusCode: false,
       headers: {
         Authorization: token_data.api_token,
         'Content-Type': 'application/json',

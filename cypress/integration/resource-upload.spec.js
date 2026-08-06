@@ -47,7 +47,10 @@ describe('Resource Upload page', () => {
           cy.resourceUploadWithUrlAndPublish().then(() => {
             cy.get('.resource-list').find('.resource-item').should('have.length', 1);
             // Test that the dataset is private by default
-            cy.request('/api/3/action/package_show?id=' + titleAndName).then((response) => {
+            cy.request({
+              url: '/api/3/action/package_show?id=' + titleAndName,
+              failOnStatusCode: false,
+            }).then((response) => {
               expect(response.status).to.eq(200);
               expect(response.body.result.private).to.equal(true);
               expect(response.body.result.resources[0].conformsTo).to.exist;
@@ -94,7 +97,10 @@ describe('Resource Upload page', () => {
             .then(() => {
               cy.get('.resource-list').find('.resource-item').should('have.length', 1);
               // Test that the dataset is non-private when uploading a file
-              cy.request('/api/3/action/package_show?id=' + titleAndName).then((response) => {
+              cy.request({
+                url: '/api/3/action/package_show?id=' + titleAndName,
+                failOnStatusCode: false,
+              }).then((response) => {
                 expect(response.status).to.eq(200);
                 expect(response.body.result.private).to.equal(false);
               });
