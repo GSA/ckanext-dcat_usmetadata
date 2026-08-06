@@ -146,15 +146,19 @@ const deserializeResource = (resource) => {
       console.log('🟡 is_api_resource=false - setting to ACCESS_URL');
       deserializedResource.urlType = RESOURCE_URL_TYPES.ACCESS_URL;
     } else {
-      // Fall back to checking format='API' for backwards compatibility with resources
-      // created before the is_api_resource marker was added
-      console.log('⚪ is_api_resource not set - falling back to format check');
-      if (deserializedResource.format === 'API') {
-        console.log('🟢 Format is API - switching to LINK_TO_API (backwards compat)');
+      // is_api_resource not set - this is an old resource from before the fix was added.
+      // Only apply backwards compatibility logic if format='API' AND we don't already have a urlType.
+      // This prevents overriding the user's current selection when they edit the format field.
+      console.log('⚪ is_api_resource not set (old resource or not yet saved)');
+      if (deserializedResource.format === 'API' && !deserializedResource.urlType) {
+        console.log('🟢 Format is API and no urlType - setting to LINK_TO_API (backwards compat)');
         deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_API;
-      } else {
-        console.log('🟡 Format is not API - defaulting to ACCESS_URL');
+      } else if (!deserializedResource.urlType) {
+        console.log('🟡 No urlType set - defaulting to ACCESS_URL for old resource');
         deserializedResource.urlType = RESOURCE_URL_TYPES.ACCESS_URL;
+      } else {
+        console.log('⚪ urlType already set to:', deserializedResource.urlType, '- preserving it');
+        // Keep the existing urlType - user is actively editing
       }
     }
   }

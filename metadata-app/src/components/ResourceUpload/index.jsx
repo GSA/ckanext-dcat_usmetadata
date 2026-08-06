@@ -113,7 +113,7 @@ const ResourceUpload = (props) => {
     <div className="usa-form-custom" id="resource-upload">
       <section id="section-basic-mega-menu" className="site-component-section">
         <h1 className="usite-page-title" id="basic-mega-menu">
-          Resource Upload 🟢 FIX TEST - is_api_resource field added
+          Resource Upload 🔵 FIX v2 - preserves urlType during format edits
         </h1>
         <p className="site-text-intro">
           You can add the URL of the dataset where it is available on the agency website. If you are
