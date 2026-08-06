@@ -79,7 +79,7 @@ Cypress.Commands.add('revoke_token', (tokenName) => {
   }
   cy.log('Revoking cypress token.......');
   cy.request({
-    url: '/api/3/action/api_token_revoke',
+    url: '/api/action/api_token_revoke',
     method: 'POST',
     withCredentials: false,
     headers: {
@@ -102,20 +102,33 @@ Cypress.Commands.add(
     const token_data = Cypress.env('token_data');
 
     let request_obj = {
-      url: '/api/3/action/organization_create',
+      url: '/api/action/organization_create',
       method: 'POST',
       headers: {
         Authorization: token_data.api_token,
         'Content-Type': 'application/json',
       },
-      // avoids sending cookie
-      withCredentials: false,
       body: {
         name: orgName,
         title: orgName,
         description: orgDesc,
         approval_status: 'approved',
         state: 'active',
+        extras: [
+          {
+            key: 'publisher',
+            value: JSON.stringify([
+              [orgName, orgName, 'top level publisher'],
+              [
+                orgName,
+                orgName,
+                'top level publisher',
+                'first level publisher',
+                'second level publisher',
+              ],
+            ]),
+          },
+        ],
       },
     };
 
@@ -170,7 +183,7 @@ Cypress.Commands.add('deleteDataset', (datasetName) => {
 
   const token_data = Cypress.env('token_data');
   cy.request({
-    url: '/api/3/action/dataset_purge',
+    url: '/api/action/dataset_purge',
     method: 'POST',
     failOnStatusCode: false,
     withCredentials: false,
@@ -199,7 +212,7 @@ Cypress.Commands.add('createUser', (username) => {
 });
 
 Cypress.Commands.add('requiredMetadata', (title) => {
-  cy.intercept('/api/3/action/package_create').as('packageCreate');
+  cy.intercept('/api/action/package_create').as('packageCreate');
   const datasetTitle = title || chance.word({ length: 5 });
   cy.get('input[name=title]').type(datasetTitle);
   cy.get('textarea[name=description]').type(chance.sentence({ words: 4 }));
