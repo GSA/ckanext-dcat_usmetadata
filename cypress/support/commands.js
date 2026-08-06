@@ -116,21 +116,6 @@ Cypress.Commands.add(
         description: orgDesc,
         approval_status: 'approved',
         state: 'active',
-        extras: [
-          {
-            key: 'publisher',
-            value: JSON.stringify([
-              [orgName, orgName, 'top level publisher'],
-              [
-                orgName,
-                orgName,
-                'top level publisher',
-                'first level publisher',
-                'second level publisher',
-              ],
-            ]),
-          },
-        ],
       },
     };
 
