@@ -79,12 +79,12 @@ Cypress.Commands.add('revoke_token', (tokenName) => {
   }
   cy.log('Revoking cypress token.......');
   cy.request({
-    url: '/api/action/api_token_revoke',
+    url: '/api/3/action/api_token_revoke',
     method: 'POST',
-    withCredentials: false,
     headers: {
       Authorization: token_data.api_token,
       'Content-Type': 'application/json',
+      Cookie: '',
     },
     body: { token: token_data.api_token },
   });
@@ -101,12 +101,13 @@ Cypress.Commands.add(
      */
     const token_data = Cypress.env('token_data');
 
-    let request_obj = {
-      url: '/api/action/organization_create',
+    cy.request({
+      url: '/api/3/action/organization_create',
       method: 'POST',
       headers: {
         Authorization: token_data.api_token,
         'Content-Type': 'application/json',
+        Cookie: '',
       },
       body: {
         name: orgName,
@@ -130,9 +131,7 @@ Cypress.Commands.add(
           },
         ],
       },
-    };
-
-    cy.request(request_obj);
+    });
     cy.wait(2000);
   }
 );
@@ -152,8 +151,8 @@ Cypress.Commands.add('deleteOrg', (orgName) => {
     headers: {
       Authorization: token_data.api_token,
       'Content-Type': 'application/json',
+      Cookie: '',
     },
-    withCredentials: false,
     body: {
       id: orgName ? orgName : 'test-organization',
     },
@@ -166,8 +165,8 @@ Cypress.Commands.add('deleteOrg', (orgName) => {
     headers: {
       Authorization: token_data.api_token,
       'Content-Type': 'application/json',
+      Cookie: '',
     },
-    withCredentials: false,
     body: {
       id: orgName ? orgName : 'test-organization',
     },
@@ -183,13 +182,13 @@ Cypress.Commands.add('deleteDataset', (datasetName) => {
 
   const token_data = Cypress.env('token_data');
   cy.request({
-    url: '/api/action/dataset_purge',
+    url: '/api/3/action/dataset_purge',
     method: 'POST',
     failOnStatusCode: false,
-    withCredentials: false,
     headers: {
       Authorization: token_data.api_token,
       'Content-Type': 'application/json',
+      Cookie: '',
     },
     body: {
       id: datasetName,
@@ -212,7 +211,7 @@ Cypress.Commands.add('createUser', (username) => {
 });
 
 Cypress.Commands.add('requiredMetadata', (title) => {
-  cy.intercept('/api/action/package_create').as('packageCreate');
+  cy.intercept('/api/3/action/package_create').as('packageCreate');
   const datasetTitle = title || chance.word({ length: 5 });
   cy.get('input[name=title]').type(datasetTitle);
   cy.get('textarea[name=description]').type(chance.sentence({ words: 4 }));
