@@ -29,11 +29,18 @@ class TestDcatUsmetadataPlugin(helpers.FunctionalTestBase):
         super(TestDcatUsmetadataPlugin, cls).setup_class()
 
     def create_user(self):
-        # Use unique names to avoid conflicts with existing users in test environment
+        # Use the pre-existing admin user from CKAN environment (CKAN_SYSADMIN_NAME=admin)
+        # instead of trying to create a new one which causes "That login name is not available" error
+        try:
+            self.sysadmin = helpers.call_action('user_show', id='admin')
+        except Exception:
+            # Fallback: create admin if it doesn't exist
+            self.sysadmin = factories.Sysadmin(name='admin', password='password',
+                                               email='admin@test.com')
+
+        # Use unique org name to avoid conflicts
         import uuid
-        unique_id = str(uuid.uuid4())[:8]
-        self.sysadmin = factories.Sysadmin(name=f'test-admin-{unique_id}')
-        org_name = f'test-organization-{unique_id}'
+        org_name = f'test-organization-{str(uuid.uuid4())[:8]}'
         self.organization = factories.Organization(name=org_name)
         # Store the org name for assertions
         self.org_name = org_name
