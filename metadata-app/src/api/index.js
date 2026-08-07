@@ -123,21 +123,17 @@ const deserializeResource = (resource) => {
   // First priority: use the stored ui_url_type if it exists
   if (deserializedResource.ui_url_type) {
     deserializedResource.urlType = deserializedResource.ui_url_type;
-  }
-  // Second priority: infer from resource_type and url_type
-  else if (resource.resource_type === 'accessurl') {
+  } else if (resource.resource_type === 'accessurl') {
+    // Second priority: infer from resource_type and url_type
     // For accessurl, default to ACCESS_URL unless format suggests API
     deserializedResource.urlType = RESOURCE_URL_TYPES.ACCESS_URL;
-  }
-  else if (resource.url_type === 'upload') {
+  } else if (resource.url_type === 'upload') {
     deserializedResource.urlType = RESOURCE_URL_TYPES.UPLOAD_FILE;
-  }
-  else if (resource.url_type === 'url') {
+  } else if (resource.url_type === 'url') {
     // Default to LINK_TO_FILE for plain URLs
     deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_FILE;
-  }
-  // If still no urlType, default to LINK_TO_FILE
-  else {
+  } else {
+    // If still no urlType, default to LINK_TO_FILE
     deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_FILE;
   }
 
