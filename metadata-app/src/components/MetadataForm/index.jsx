@@ -80,9 +80,16 @@ const MetadataForm = (props) => {
   }, [currentStep]);
 
   const handleError = (err) => {
+    console.error('METADATA FORM ERROR:', err);
+    console.error('Error response:', err.response);
+    console.error('Error request:', err.request);
+    console.error('Error message:', err.message);
+
     let message = [];
     if (err.response) {
       // client received an error response (5xx, 4xx)
+      console.error('Response data:', err.response.data);
+      console.error('Response status:', err.response.status);
       if (err.response.data && err.response.data.error) {
         message = Object.keys(err.response.data.error).map((item) => {
           if (typeof err.response.data.error[item] === 'object') {
@@ -95,10 +102,12 @@ const MetadataForm = (props) => {
       }
     } else if (err.request) {
       // client never received a response, or request never left. Likely it's a network issue.
+      console.error('Request was made but no response received');
       message =
         'Please, check your connection or try again later. If the issue persists, contact site administrator.';
     } else {
       // anything else - not a axios/network issue.
+      console.error('Other error type');
       message = 'Something has failed. Please, try again later or contact site administrator.';
     }
 

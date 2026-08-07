@@ -56,15 +56,6 @@ const ResourceUpload = (props) => {
   const [uploadDataFileIsActive, setUploadDataFileActive] = useState(false);
   const [shouldShowModal, setShowModal] = useState(false);
 
-  // Detect when url type changes
-  useEffect(() => {
-    // If it's selected Link to an API radio option then
-    // set format value to API
-    if (!resource.format && resource.urlType === RESOURCE_URL_TYPES.LINK_TO_API) {
-      setFieldValue('resource.format', 'API');
-    }
-  }, [resource.urlType]);
-
   const handleFileChange = (event) => {
     setUploadDataFileActive(!uploadDataFileIsActive);
     setFieldValue('resource.fileName', event.currentTarget.files[0].name);
@@ -113,7 +104,7 @@ const ResourceUpload = (props) => {
     <div className="usa-form-custom" id="resource-upload">
       <section id="section-basic-mega-menu" className="site-component-section">
         <h1 className="usite-page-title" id="basic-mega-menu">
-          Resource Upload 🔵 FIX v2 - preserves urlType during format edits
+          Resource Upload
         </h1>
         <p className="site-text-intro">
           You can add the URL of the dataset where it is available on the agency website. If you are

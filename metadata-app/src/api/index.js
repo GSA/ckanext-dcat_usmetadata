@@ -89,37 +89,25 @@ const encodeValues = (obj) => {
 const serializeResource = (resource) => {
   const serializedResource = clone(resource);
 
-  console.log('🔵 TEST VERIFICATION: serializeResource called with urlType:', serializedResource.urlType, 'format:', serializedResource.format);
-
+  // Map the UI urlType to backend fields
   if (serializedResource.urlType) {
     if (serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_API) {
-      console.log('🟢 LINK_TO_API detected - setting is_api_resource=true, format:', serializedResource.format);
       serializedResource.resource_type = 'accessurl';
       serializedResource.url_type = 'url';
-      // Mark this as an API resource so we can distinguish it from ACCESS_URL during deserialization
-      // This marker field is critical because both LINK_TO_API and ACCESS_URL serialize to the same
-      // resource_type='accessurl', and we can't rely on format alone (user may change it)
-      serializedResource.is_api_resource = true;
-      // Ensure format is set to 'API' for Link to API resources if not already set
-      if (!serializedResource.format) {
-        serializedResource.format = 'API';
-      }
-    }
-    if (serializedResource.urlType === RESOURCE_URL_TYPES.ACCESS_URL) {
-      console.log('🟡 ACCESS_URL detected - setting is_api_resource=false');
+    } else if (serializedResource.urlType === RESOURCE_URL_TYPES.ACCESS_URL) {
       serializedResource.resource_type = 'accessurl';
       serializedResource.url_type = 'url';
-      // Explicitly mark as NOT an API resource to distinguish from LINK_TO_API
-      serializedResource.is_api_resource = false;
-    }
-    if (serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_FILE) {
+    } else if (serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_FILE) {
       serializedResource.url_type = 'url';
-      // Not an API resource
-      serializedResource.is_api_resource = false;
+      // resource_type is left undefined for link to file
+    } else if (serializedResource.urlType === RESOURCE_URL_TYPES.UPLOAD_FILE) {
+      // upload type is handled by the presence of upload field
+      serializedResource.url_type = 'upload';
     }
   }
 
-  console.log('🔵 Serialized resource - is_api_resource:', serializedResource.is_api_resource, 'format:', serializedResource.format);
+  // Store the original urlType as a custom field for reliable retrieval
+  serializedResource.ui_url_type = serializedResource.urlType;
 
   delete serializedResource.urlType;
   return serializedResource;
@@ -132,37 +120,27 @@ const serializeResource = (resource) => {
 const deserializeResource = (resource) => {
   const deserializedResource = clone(resource);
 
-  console.log('🔵 TEST VERIFICATION: deserializeResource called');
-  console.log('🔵 resource_type:', resource.resource_type, 'is_api_resource:', resource.is_api_resource, 'format:', resource.format);
-
-  deserializedResource.urlType = resource.url_type;
-  if (deserializedResource.resource_type === 'accessurl') {
-    // Check the is_api_resource marker first to distinguish LINK_TO_API from ACCESS_URL
-    // This is more reliable than checking format, since users can change the format field
-    if (deserializedResource.is_api_resource === true) {
-      console.log('🟢 is_api_resource=true - setting to LINK_TO_API');
-      deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_API;
-    } else if (deserializedResource.is_api_resource === false) {
-      console.log('🟡 is_api_resource=false - setting to ACCESS_URL');
-      deserializedResource.urlType = RESOURCE_URL_TYPES.ACCESS_URL;
-    } else {
-      // is_api_resource not set - this is an old resource from before the fix was added.
-      // Only apply backwards compatibility logic if format='API' AND we don't already have a urlType.
-      // This prevents overriding the user's current selection when they edit the format field.
-      console.log('⚪ is_api_resource not set (old resource or not yet saved)');
-      if (deserializedResource.format === 'API' && !deserializedResource.urlType) {
-        console.log('🟢 Format is API and no urlType - setting to LINK_TO_API (backwards compat)');
-        deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_API;
-      } else if (!deserializedResource.urlType) {
-        console.log('🟡 No urlType set - defaulting to ACCESS_URL for old resource');
-        deserializedResource.urlType = RESOURCE_URL_TYPES.ACCESS_URL;
-      } else {
-        console.log('⚪ urlType already set to:', deserializedResource.urlType, '- preserving it');
-        // Keep the existing urlType - user is actively editing
-      }
-    }
+  // First priority: use the stored ui_url_type if it exists
+  if (deserializedResource.ui_url_type) {
+    deserializedResource.urlType = deserializedResource.ui_url_type;
   }
-  console.log('🔵 Final urlType:', deserializedResource.urlType);
+  // Second priority: infer from resource_type and url_type
+  else if (resource.resource_type === 'accessurl') {
+    // For accessurl, default to ACCESS_URL unless format suggests API
+    deserializedResource.urlType = RESOURCE_URL_TYPES.ACCESS_URL;
+  }
+  else if (resource.url_type === 'upload') {
+    deserializedResource.urlType = RESOURCE_URL_TYPES.UPLOAD_FILE;
+  }
+  else if (resource.url_type === 'url') {
+    // Default to LINK_TO_FILE for plain URLs
+    deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_FILE;
+  }
+  // If still no urlType, default to LINK_TO_FILE
+  else {
+    deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_FILE;
+  }
+
   return deserializedResource;
 };
 
