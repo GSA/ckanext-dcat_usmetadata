@@ -81,10 +81,11 @@ Cypress.Commands.add('revoke_token', (tokenName) => {
   cy.request({
     url: '/api/3/action/api_token_revoke',
     method: 'POST',
-    withCredentials: false,
+    failOnStatusCode: false,
     headers: {
       Authorization: token_data.api_token,
       'Content-Type': 'application/json',
+      Cookie: '',
     },
     body: { token: token_data.api_token },
   });
@@ -101,15 +102,15 @@ Cypress.Commands.add(
      */
     const token_data = Cypress.env('token_data');
 
-    let request_obj = {
+    cy.request({
       url: '/api/3/action/organization_create',
       method: 'POST',
+      failOnStatusCode: false,
       headers: {
         Authorization: token_data.api_token,
         'Content-Type': 'application/json',
+        Cookie: '',
       },
-      // avoids sending cookie
-      withCredentials: false,
       body: {
         name: orgName,
         title: orgName,
@@ -132,9 +133,7 @@ Cypress.Commands.add(
           },
         ],
       },
-    };
-
-    cy.request(request_obj);
+    });
     cy.wait(2000);
   }
 );
@@ -154,8 +153,8 @@ Cypress.Commands.add('deleteOrg', (orgName) => {
     headers: {
       Authorization: token_data.api_token,
       'Content-Type': 'application/json',
+      Cookie: '',
     },
-    withCredentials: false,
     body: {
       id: orgName ? orgName : 'test-organization',
     },
@@ -168,8 +167,8 @@ Cypress.Commands.add('deleteOrg', (orgName) => {
     headers: {
       Authorization: token_data.api_token,
       'Content-Type': 'application/json',
+      Cookie: '',
     },
-    withCredentials: false,
     body: {
       id: orgName ? orgName : 'test-organization',
     },
@@ -188,10 +187,10 @@ Cypress.Commands.add('deleteDataset', (datasetName) => {
     url: '/api/3/action/dataset_purge',
     method: 'POST',
     failOnStatusCode: false,
-    withCredentials: false,
     headers: {
       Authorization: token_data.api_token,
       'Content-Type': 'application/json',
+      Cookie: '',
     },
     body: {
       id: datasetName,

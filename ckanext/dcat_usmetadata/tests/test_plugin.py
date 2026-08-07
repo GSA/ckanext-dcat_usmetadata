@@ -29,8 +29,21 @@ class TestDcatUsmetadataPlugin(helpers.FunctionalTestBase):
         super(TestDcatUsmetadataPlugin, cls).setup_class()
 
     def create_user(self):
-        self.sysadmin = factories.Sysadmin(name='admin')
-        self.organization = factories.Organization(name='test-organization')
+        # Use the pre-existing admin user from CKAN environment (CKAN_SYSADMIN_NAME=admin)
+        # instead of trying to create a new one which causes "That login name is not available" error
+        try:
+            self.sysadmin = helpers.call_action('user_show', id='admin')
+        except Exception:
+            # Fallback: create admin if it doesn't exist
+            self.sysadmin = factories.Sysadmin(name='admin', password='password',
+                                               email='admin@test.com')
+
+        # Use unique org name to avoid conflicts
+        import uuid
+        org_name = f'test-organization-{str(uuid.uuid4())[:8]}'
+        self.organization = factories.Organization(name=org_name)
+        # Store the org name for assertions
+        self.org_name = org_name
         self.extra_environ = {'REMOTE_USER': self.sysadmin['name']}
 
         self.dataset1 = {
@@ -79,7 +92,7 @@ class TestDcatUsmetadataPlugin(helpers.FunctionalTestBase):
         self.app = self._get_test_app()
         org = self.app.get('/api/action/organization_show?id=%s' % (self.organization['id']),
                            extra_environ=self.extra_environ)
-        assert json.loads(org.body)['result']['name'] == 'test-organization'
+        assert json.loads(org.body)['result']['name'] == self.org_name
 
         assert result.exit_code == 0
         assert "Updated publishers" in result.output

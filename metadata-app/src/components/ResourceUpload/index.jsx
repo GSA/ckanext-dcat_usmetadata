@@ -56,15 +56,6 @@ const ResourceUpload = (props) => {
   const [uploadDataFileIsActive, setUploadDataFileActive] = useState(false);
   const [shouldShowModal, setShowModal] = useState(false);
 
-  // Detect when url type changes
-  useEffect(() => {
-    // If it's selected Link to an API radio option then
-    // set format value to API
-    if (!resource.format && resource.urlType === RESOURCE_URL_TYPES.LINK_TO_API) {
-      setFieldValue('resource.format', 'API');
-    }
-  }, [resource.urlType]);
-
   const handleFileChange = (event) => {
     setUploadDataFileActive(!uploadDataFileIsActive);
     setFieldValue('resource.fileName', event.currentTarget.files[0].name);
