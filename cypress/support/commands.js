@@ -1,6 +1,21 @@
 import 'chance';
 import 'cypress-file-upload';
 
+Cypress.Commands.add('csrfRequest', (requestOptions) => {
+  return cy
+    .get('meta[name="_csrf_token"]')
+    .invoke('attr', 'content')
+    .then((csrfToken) =>
+      cy.request({
+        ...requestOptions,
+        headers: {
+          ...requestOptions.headers,
+          'X-CSRFToken': csrfToken,
+        },
+      })
+    );
+});
+
 Cypress.Commands.add('login', (username = 'admin', password = 'password') => {
   /**
    * Method to fill and submit the CKAN Login form
@@ -78,7 +93,7 @@ Cypress.Commands.add('revoke_token', (tokenName) => {
     tokenName = 'cypress token';
   }
   cy.log('Revoking cypress token.......');
-  cy.request({
+  cy.csrfRequest({
     url: '/api/3/action/api_token_revoke',
     method: 'POST',
     withCredentials: false,
@@ -134,7 +149,7 @@ Cypress.Commands.add(
       },
     };
 
-    cy.request(request_obj);
+    cy.csrfRequest(request_obj);
     cy.wait(2000);
   }
 );
@@ -147,7 +162,7 @@ Cypress.Commands.add('deleteOrg', (orgName) => {
    */
   const token_data = Cypress.env('token_data');
 
-  cy.request({
+  cy.csrfRequest({
     url: '/api/action/organization_delete',
     method: 'POST',
     failOnStatusCode: false,
@@ -161,7 +176,7 @@ Cypress.Commands.add('deleteOrg', (orgName) => {
     },
   });
 
-  cy.request({
+  cy.csrfRequest({
     url: '/api/action/organization_purge',
     method: 'POST',
     failOnStatusCode: false,
@@ -184,7 +199,7 @@ Cypress.Commands.add('deleteDataset', (datasetName) => {
    **/
 
   const token_data = Cypress.env('token_data');
-  cy.request({
+  cy.csrfRequest({
     url: '/api/3/action/dataset_purge',
     method: 'POST',
     failOnStatusCode: false,

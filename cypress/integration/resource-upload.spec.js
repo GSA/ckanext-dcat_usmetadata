@@ -19,7 +19,7 @@ describe('Resource Upload page', () => {
     cy.visit('/dataset/new-metadata');
   });
   afterEach(() => {
-    cy.request({
+    cy.csrfRequest({
       method: 'POST',
       url: '/api/3/action/dataset_purge',
       body: { id: titleAndName },
@@ -28,7 +28,7 @@ describe('Resource Upload page', () => {
   });
 
   after(() => {
-    cy.request({
+    cy.csrfRequest({
       method: 'POST',
       url: '/api/3/action/dataset_purge',
       body: { id: longNameResourceDataset },
