@@ -67,8 +67,10 @@ describe('Additional Metadata Page', () => {
     cy.get('button[type=button]').contains('Save and Continue').click();
     cy.wait('@packageUpdate');
     cy.resourceUploadWithUrlAndPublish();
-    cy.contains('Theme (Category)');
-    cy.contains('geospatial');
+    cy.request('/api/3/action/package_show?id=ccccc').then((response) => {
+      expect(response.status).to.eq(200);
+      expect(response.body.result.extras).to.deep.include({ key: 'category', value: 'geospatial' });
+    });
   });
 
   it('Goes back to previous page', () => {
