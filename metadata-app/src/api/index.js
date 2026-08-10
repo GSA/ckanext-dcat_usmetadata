@@ -247,6 +247,8 @@ const serializeSupplementalValues = (opts) => {
   if (opts.category) {
     if (indexOfCategory > -1) {
       newOpts.extras[indexOfCategory].value = opts.category;
+    } else {
+      newOpts.extras.push({ key: 'category', value: opts.category });
     }
   } else if (indexOfCategory > -1) {
     newOpts.extras.splice(indexOfCategory, 1);

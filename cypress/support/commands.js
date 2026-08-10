@@ -251,6 +251,7 @@ Cypress.Commands.add('requiredMetadata', (title) => {
   cy.get('input[name=temporal_end_date]').type('2020-11-11');
   cy.get('button[type=button]').contains('Save and Continue').click();
   cy.wait('@packageCreate');
+  cy.get('h1').contains('Additional Metadata');
 });
 
 Cypress.Commands.add('additionalMetadata', (isparent) => {
