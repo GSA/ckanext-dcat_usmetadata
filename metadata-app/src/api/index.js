@@ -245,12 +245,16 @@ const serializeSupplementalValues = (opts) => {
 
   const indexOfCategory = newOpts.extras.findIndex((x) => x.key === 'category');
   if (opts.category) {
+    // moveToExtras builds the API payload from top-level fields, so retain the
+    // selected category here as well as in the form's extras collection.
+    newOpts.category = opts.category;
     if (indexOfCategory > -1) {
       newOpts.extras[indexOfCategory].value = opts.category;
     } else {
       newOpts.extras.push({ key: 'category', value: opts.category });
     }
   } else if (indexOfCategory > -1) {
+    delete newOpts.category;
     newOpts.extras.splice(indexOfCategory, 1);
   }
 
