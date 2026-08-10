@@ -228,7 +228,7 @@ Cypress.Commands.add('createUser', (username) => {
   cy.wait(2000);
 });
 
-Cypress.Commands.add('requiredMetadata', (title) => {
+Cypress.Commands.add('requiredMetadata', (title, waitForAdditionalMetadata = true) => {
   cy.intercept('/api/3/action/package_create').as('packageCreate');
   const datasetTitle = title || chance.word({ length: 5 });
   cy.get('input[name=title]').type(datasetTitle);
@@ -251,7 +251,9 @@ Cypress.Commands.add('requiredMetadata', (title) => {
   cy.get('input[name=temporal_end_date]').type('2020-11-11');
   cy.get('button[type=button]').contains('Save and Continue').click();
   cy.wait('@packageCreate');
-  cy.get('h1').contains('Additional Metadata');
+  if (waitForAdditionalMetadata) {
+    cy.get('h1').contains('Additional Metadata');
+  }
 });
 
 Cypress.Commands.add('additionalMetadata', (isparent) => {

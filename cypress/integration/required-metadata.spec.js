@@ -186,7 +186,7 @@ describe('Required Metadata Page errors', () => {
     cy.requiredMetadata(title);
     cy.contains('Dataset saved successfully');
     cy.visit('/dataset/new-metadata');
-    cy.requiredMetadata(title);
+    cy.requiredMetadata(title, false);
     cy.contains('That URL is already in use.');
   });
 });
