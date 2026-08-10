@@ -173,7 +173,7 @@ const MetadataForm = (props) => {
             } else {
               Api.createDataset(values, apiUrl, apiKey)
                 .then((res) => {
-                  setFormValues(Object.assign({}, values));
+                  setFormValues(Object.assign({}, values, { id: res.id }));
                   setCurDatasetId(res.id);
                   if (values.saveDraft) {
                     setDraftSaved(new Date());
