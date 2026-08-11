@@ -19,7 +19,7 @@ describe('Resource Upload page', () => {
     cy.visit('/dataset/new-metadata');
   });
   afterEach(() => {
-    cy.request({
+    cy.csrfRequest({
       method: 'POST',
       url: '/api/3/action/dataset_purge',
       body: { id: titleAndName },
@@ -28,7 +28,7 @@ describe('Resource Upload page', () => {
   });
 
   after(() => {
-    cy.request({
+    cy.csrfRequest({
       method: 'POST',
       url: '/api/3/action/dataset_purge',
       body: { id: longNameResourceDataset },
@@ -301,9 +301,8 @@ describe('Editing resources', () => {
 
   it('Works when editing a resource in "edit" mode', () => {
     cy.requiredMetadata(name);
-    cy.intercept('/api/3/action/package_update').as('packageUpdate');
     cy.get('button[type=button]').contains('Save and Continue').click();
-    cy.wait('@packageUpdate');
+    cy.contains('Save and add another resource');
 
     // Create 2 resources: 1 with link and 1 upload:
     cy.intercept('/api/3/action/resource_create').as('resourceCreate');
