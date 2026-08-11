@@ -243,6 +243,26 @@ describe('Test API', () => {
         'APIKEY'
       );
     });
+
+    it('includes a selected category in the dataset extras', async () => {
+      moxios.wait(() => {
+        const request = moxios.requests.mostRecent();
+        const payload = JSON.parse(decodeURIComponent(request.config.data));
+
+        expect(payload.extras).toContainEqual({ key: 'category', value: 'geospatial' });
+        request.respondWith({
+          status: 200,
+          response: updateDatasetResponse,
+        });
+      });
+
+      await updateDataset(
+        '123',
+        { ...additionalMetadata, category: 'geospatial' },
+        'APIURL',
+        'APIKEY'
+      );
+    });
   });
 
   describe('Resource', () => {

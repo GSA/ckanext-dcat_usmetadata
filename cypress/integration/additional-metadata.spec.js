@@ -66,9 +66,11 @@ describe('Additional Metadata Page', () => {
     cy.intercept('/api/3/action/package_update').as('packageUpdate');
     cy.get('button[type=button]').contains('Save and Continue').click();
     cy.wait('@packageUpdate');
-    cy.get('button[type=button]').contains('Finish and publish').click();
-    cy.contains('Theme (Category)');
-    cy.contains('geospatial');
+    cy.resourceUploadWithUrlAndPublish();
+    cy.request('/api/3/action/package_show?id=ccccc').then((response) => {
+      expect(response.status).to.eq(200);
+      expect(response.body.result.extras).to.deep.include({ key: 'category', value: 'geospatial' });
+    });
   });
 
   it('Goes back to previous page', () => {
@@ -77,7 +79,7 @@ describe('Additional Metadata Page', () => {
       .contains('Back to previous page')
       .click()
       .then(() => {
-        cy.contains('The following fields are required metadata');
+        cy.contains('Required Metadata');
       });
   });
 });
@@ -159,11 +161,14 @@ describe('Save draft functionality on Additional Metadata page', () => {
 
   it('Saves dataset using "Save draft" button', () => {
     cy.requiredMetadata('fffff');
+    cy.intercept('/api/3/action/package_update').as('packageUpdate');
     cy.get('.usa-button--outline').contains('Save draft').click();
+    cy.wait('@packageUpdate').its('response.statusCode').should('eq', 200);
     cy.contains('Draft saved');
 
     cy.get('select[name=dataQuality]').select('Yes');
     cy.get('.usa-button--outline').contains('Save draft').click();
+    cy.wait('@packageUpdate').its('response.statusCode').should('eq', 200);
     cy.contains('Draft saved');
   });
 });

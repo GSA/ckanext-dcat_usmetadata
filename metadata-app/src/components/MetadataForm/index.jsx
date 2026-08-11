@@ -173,7 +173,7 @@ const MetadataForm = (props) => {
             } else {
               Api.createDataset(values, apiUrl, apiKey)
                 .then((res) => {
-                  setFormValues(Object.assign({}, values));
+                  setFormValues(Object.assign({}, values, { id: res.id }));
                   setCurDatasetId(res.id);
                   if (values.saveDraft) {
                     setDraftSaved(new Date());
@@ -240,7 +240,10 @@ const MetadataForm = (props) => {
           onSubmit={(values) => {
             // Clear alert box:
             setAlert();
-            const id = formValues && formValues.id;
+            // The dataset id is assigned when step 1 is saved. During the
+            // transition to this step, Formik can briefly still have the
+            // previous initial values, so prefer the dedicated id state.
+            const id = curDatasetId || (formValues && formValues.id);
             setFormValues(Object.assign({}, formValues, values));
             if (id) {
               Api.updateDataset(id, values, apiUrl, apiKey)
