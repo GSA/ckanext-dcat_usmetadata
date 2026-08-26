@@ -89,20 +89,25 @@ const encodeValues = (obj) => {
 const serializeResource = (resource) => {
   const serializedResource = clone(resource);
 
-  // delete serializedResource.resource_type;
-
+  // Map the UI urlType to backend fields
   if (serializedResource.urlType) {
-    if (
-      serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_API ||
-      serializedResource.urlType === RESOURCE_URL_TYPES.ACCESS_URL
-    ) {
+    if (serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_API) {
       serializedResource.resource_type = 'accessurl';
       serializedResource.url_type = 'url';
-    }
-    if (serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_FILE) {
+    } else if (serializedResource.urlType === RESOURCE_URL_TYPES.ACCESS_URL) {
+      serializedResource.resource_type = 'accessurl';
       serializedResource.url_type = 'url';
+    } else if (serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_FILE) {
+      serializedResource.url_type = 'url';
+      // resource_type is left undefined for link to file
+    } else if (serializedResource.urlType === RESOURCE_URL_TYPES.UPLOAD_FILE) {
+      // upload type is handled by the presence of upload field
+      serializedResource.url_type = 'upload';
     }
   }
+
+  // Store the original urlType as a custom field for reliable retrieval
+  serializedResource.ui_url_type = serializedResource.urlType;
 
   delete serializedResource.urlType;
   return serializedResource;
@@ -114,13 +119,30 @@ const serializeResource = (resource) => {
  */
 const deserializeResource = (resource) => {
   const deserializedResource = clone(resource);
-  deserializedResource.urlType = resource.url_type;
-  if (deserializedResource.resource_type === 'accessurl') {
-    deserializedResource.urlType = RESOURCE_URL_TYPES.ACCESS_URL;
-    if (deserializedResource.format === 'API') {
-      deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_API;
-    }
+
+  // First priority: use the stored ui_url_type if it exists
+  if (deserializedResource.ui_url_type) {
+    deserializedResource.urlType = deserializedResource.ui_url_type;
   }
+  // Second priority: infer from resource_type and url_type
+  else if (resource.resource_type === 'accessurl') {
+    // For accessurl, check format to distinguish between API and ACCESS_URL
+    if (resource.format === 'API') {
+      deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_API;
+    } else {
+      deserializedResource.urlType = RESOURCE_URL_TYPES.ACCESS_URL;
+    }
+  } else if (resource.url_type === 'upload') {
+    deserializedResource.urlType = RESOURCE_URL_TYPES.UPLOAD_FILE;
+  } else if (resource.url_type === 'url') {
+    // Default to LINK_TO_FILE for plain URLs
+    deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_FILE;
+  }
+  // If still no urlType, default to LINK_TO_FILE
+  else {
+    deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_FILE;
+  }
+
   return deserializedResource;
 };
 
