@@ -132,11 +132,9 @@ const deserializeResource = (resource) => {
     } else {
       deserializedResource.urlType = RESOURCE_URL_TYPES.ACCESS_URL;
     }
-  }
-  else if (resource.url_type === 'upload') {
+  } else if (resource.url_type === 'upload') {
     deserializedResource.urlType = RESOURCE_URL_TYPES.UPLOAD_FILE;
-  }
-  else if (resource.url_type === 'url') {
+  } else if (resource.url_type === 'url') {
     // Default to LINK_TO_FILE for plain URLs
     deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_FILE;
   }
