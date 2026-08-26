@@ -56,6 +56,17 @@ const ResourceUpload = (props) => {
   const [uploadDataFileIsActive, setUploadDataFileActive] = useState(false);
   const [shouldShowModal, setShowModal] = useState(false);
 
+  // Automatically set format to 'API' when Link to an API is selected
+  // This ensures the format is correct both when selecting the radio button
+  // and when loading an existing API resource for editing
+  useEffect(() => {
+    if (resource.urlType === RESOURCE_URL_TYPES.LINK_TO_API) {
+      if (resource.format !== 'API') {
+        setFieldValue('resource.format', 'API');
+      }
+    }
+  }, [resource.urlType, setFieldValue]);
+
   const handleFileChange = (event) => {
     setUploadDataFileActive(!uploadDataFileIsActive);
     setFieldValue('resource.fileName', event.currentTarget.files[0].name);

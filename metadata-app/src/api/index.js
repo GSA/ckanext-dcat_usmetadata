@@ -126,8 +126,12 @@ const deserializeResource = (resource) => {
   }
   // Second priority: infer from resource_type and url_type
   else if (resource.resource_type === 'accessurl') {
-    // For accessurl, default to ACCESS_URL unless format suggests API
-    deserializedResource.urlType = RESOURCE_URL_TYPES.ACCESS_URL;
+    // For accessurl, check format to distinguish between API and ACCESS_URL
+    if (resource.format === 'API') {
+      deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_API;
+    } else {
+      deserializedResource.urlType = RESOURCE_URL_TYPES.ACCESS_URL;
+    }
   }
   else if (resource.url_type === 'upload') {
     deserializedResource.urlType = RESOURCE_URL_TYPES.UPLOAD_FILE;
