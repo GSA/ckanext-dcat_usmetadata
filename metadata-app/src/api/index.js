@@ -94,6 +94,8 @@ const serializeResource = (resource) => {
     if (serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_API) {
       serializedResource.resource_type = 'accessurl';
       serializedResource.url_type = 'url';
+      // Explicitly set format to 'API' to ensure it's always present
+      serializedResource.format = 'API';
     } else if (serializedResource.urlType === RESOURCE_URL_TYPES.ACCESS_URL) {
       serializedResource.resource_type = 'accessurl';
       serializedResource.url_type = 'url';
