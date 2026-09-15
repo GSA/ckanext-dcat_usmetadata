@@ -130,6 +130,10 @@ const deserializeResource = (resource) => {
   else if (resource.url_type === 'upload') {
     deserializedResource.urlType = RESOURCE_URL_TYPES.UPLOAD_FILE;
   }
+  // Check if URL indicates an uploaded file (contains /download/)
+  else if (resource.url && resource.url.includes('/download/')) {
+    deserializedResource.urlType = RESOURCE_URL_TYPES.UPLOAD_FILE;
+  }
   // Third priority: infer from resource_type for URL-based resources
   else if (resource.resource_type === 'accessurl') {
     // For accessurl, check format to distinguish between API and ACCESS_URL
