@@ -122,34 +122,22 @@ const serializeResource = (resource) => {
 const deserializeResource = (resource) => {
   const deserializedResource = clone(resource);
 
-  // First priority: use the stored ui_url_type if it exists
+  // First priority: use the stored ui_url_type if it exists (for resources saved with the fix)
   if (deserializedResource.ui_url_type) {
     deserializedResource.urlType = deserializedResource.ui_url_type;
   }
-  // Second priority: check url_type (upload vs url)
+  // Fallback: use main branch logic for legacy resources
   else if (resource.url_type === 'upload') {
     deserializedResource.urlType = RESOURCE_URL_TYPES.UPLOAD_FILE;
-  }
-  // Check if URL is a CKAN-uploaded file (internal path with /download/)
-  // Only match URLs that start with '/' (internal) and contain /download/
-  else if (resource.url && resource.url.startsWith('/') && resource.url.includes('/download/')) {
-    deserializedResource.urlType = RESOURCE_URL_TYPES.UPLOAD_FILE;
-  }
-  // Third priority: infer from resource_type for URL-based resources
-  else if (resource.resource_type === 'accessurl') {
-    // For accessurl, check format to distinguish between API and ACCESS_URL
-    if (resource.format === 'API') {
-      deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_API;
-    } else {
+  } else {
+    // Copy main branch deserializer logic for backward compatibility
+    deserializedResource.urlType = resource.url_type;
+    if (deserializedResource.resource_type === 'accessurl') {
       deserializedResource.urlType = RESOURCE_URL_TYPES.ACCESS_URL;
+      if (deserializedResource.format === 'API') {
+        deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_API;
+      }
     }
-  } else if (resource.url_type === 'url') {
-    // Default to LINK_TO_FILE for plain URLs
-    deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_FILE;
-  }
-  // If still no urlType, default to LINK_TO_FILE
-  else {
-    deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_FILE;
   }
 
   return deserializedResource;
