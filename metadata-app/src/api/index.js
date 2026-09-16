@@ -616,8 +616,11 @@ const createResource = (packageId, opts, apiUrl, apiKey) => {
   if (opts.upload) {
     body = new FormData();
     body.append('package_id', packageId);
-    Object.keys(serializeResource(opts)).forEach((item) => {
-      body.append(item, opts[item]);
+    const serialized = serializeResource(opts);
+    Object.keys(serialized).forEach((item) => {
+      if (serialized[item] !== null && serialized[item] !== undefined) {
+        body.append(item, serialized[item]);
+      }
     });
   } else {
     body = serializeResource(opts);
@@ -640,9 +643,10 @@ const updateResource = (resource, apiUrl, apiKey) => {
   let body;
   if (resource.upload) {
     body = new FormData();
-    Object.keys(serializeResource(resource)).forEach((item) => {
-      if (resource[item] !== null) {
-        body.append(item, resource[item]);
+    const serialized = serializeResource(resource);
+    Object.keys(serialized).forEach((item) => {
+      if (serialized[item] !== null && serialized[item] !== undefined) {
+        body.append(item, serialized[item]);
       }
     });
   } else {
