@@ -619,7 +619,9 @@ const createResource = (packageId, opts, apiUrl, apiKey) => {
     const serialized = serializeResource(opts);
     Object.keys(serialized).forEach((item) => {
       if (serialized[item] !== null && serialized[item] !== undefined) {
-        body.append(item, serialized[item]);
+        // For file upload field, use original File object from opts, not serialized
+        const value = item === 'upload' ? opts[item] : serialized[item];
+        body.append(item, value);
       }
     });
   } else {
@@ -646,7 +648,9 @@ const updateResource = (resource, apiUrl, apiKey) => {
     const serialized = serializeResource(resource);
     Object.keys(serialized).forEach((item) => {
       if (serialized[item] !== null && serialized[item] !== undefined) {
-        body.append(item, serialized[item]);
+        // For file upload field, use original File object from resource, not serialized
+        const value = item === 'upload' ? resource[item] : serialized[item];
+        body.append(item, value);
       }
     });
   } else {
