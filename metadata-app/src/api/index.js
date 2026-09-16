@@ -130,8 +130,8 @@ const deserializeResource = (resource) => {
   else if (resource.url_type === 'upload') {
     deserializedResource.urlType = RESOURCE_URL_TYPES.UPLOAD_FILE;
   }
-  // Check if URL indicates an uploaded file (contains /download/)
-  else if (resource.url && resource.url.includes('/download/')) {
+  // Check if URL is a CKAN-uploaded file (relative path starting with /dataset/)
+  else if (resource.url && resource.url.match(/^\/dataset\/.*\/resource\/.*\/download\//)) {
     deserializedResource.urlType = RESOURCE_URL_TYPES.UPLOAD_FILE;
   }
   // Third priority: infer from resource_type for URL-based resources
