@@ -6,4 +6,5 @@ export default {
   mimetype: '',
   conformsTo: '',
   upload: null,
+  urlType: '',
 };

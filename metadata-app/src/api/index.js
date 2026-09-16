@@ -89,20 +89,27 @@ const encodeValues = (obj) => {
 const serializeResource = (resource) => {
   const serializedResource = clone(resource);
 
-  // delete serializedResource.resource_type;
-
+  // Map the UI urlType to backend fields
   if (serializedResource.urlType) {
-    if (
-      serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_API ||
-      serializedResource.urlType === RESOURCE_URL_TYPES.ACCESS_URL
-    ) {
+    if (serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_API) {
       serializedResource.resource_type = 'accessurl';
       serializedResource.url_type = 'url';
-    }
-    if (serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_FILE) {
+      // Explicitly set format to 'API' to ensure it's always present
+      serializedResource.format = 'API';
+    } else if (serializedResource.urlType === RESOURCE_URL_TYPES.ACCESS_URL) {
+      serializedResource.resource_type = 'accessurl';
       serializedResource.url_type = 'url';
+    } else if (serializedResource.urlType === RESOURCE_URL_TYPES.LINK_TO_FILE) {
+      serializedResource.url_type = 'url';
+      // resource_type is left undefined for link to file
+    } else if (serializedResource.urlType === RESOURCE_URL_TYPES.UPLOAD_FILE) {
+      // upload type is handled by the presence of upload field
+      serializedResource.url_type = 'upload';
     }
   }
+
+  // Store the original urlType as a custom field for reliable retrieval
+  serializedResource.ui_url_type = serializedResource.urlType;
 
   delete serializedResource.urlType;
   return serializedResource;
@@ -114,13 +121,25 @@ const serializeResource = (resource) => {
  */
 const deserializeResource = (resource) => {
   const deserializedResource = clone(resource);
-  deserializedResource.urlType = resource.url_type;
-  if (deserializedResource.resource_type === 'accessurl') {
-    deserializedResource.urlType = RESOURCE_URL_TYPES.ACCESS_URL;
-    if (deserializedResource.format === 'API') {
-      deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_API;
+
+  // First priority: use the stored ui_url_type if it exists (for resources saved with the fix)
+  if (deserializedResource.ui_url_type) {
+    deserializedResource.urlType = deserializedResource.ui_url_type;
+  }
+  // Fallback: use main branch logic for legacy resources
+  else if (resource.url_type === 'upload') {
+    deserializedResource.urlType = RESOURCE_URL_TYPES.UPLOAD_FILE;
+  } else {
+    // Copy main branch deserializer logic for backward compatibility
+    deserializedResource.urlType = resource.url_type;
+    if (deserializedResource.resource_type === 'accessurl') {
+      deserializedResource.urlType = RESOURCE_URL_TYPES.ACCESS_URL;
+      if (deserializedResource.format === 'API') {
+        deserializedResource.urlType = RESOURCE_URL_TYPES.LINK_TO_API;
+      }
     }
   }
+
   return deserializedResource;
 };
 
@@ -597,8 +616,13 @@ const createResource = (packageId, opts, apiUrl, apiKey) => {
   if (opts.upload) {
     body = new FormData();
     body.append('package_id', packageId);
-    Object.keys(serializeResource(opts)).forEach((item) => {
-      body.append(item, opts[item]);
+    const serialized = serializeResource(opts);
+    Object.keys(serialized).forEach((item) => {
+      if (serialized[item] !== null && serialized[item] !== undefined) {
+        // For file upload field, use original File object from opts, not serialized
+        const value = item === 'upload' ? opts[item] : serialized[item];
+        body.append(item, value);
+      }
     });
   } else {
     body = serializeResource(opts);
@@ -621,9 +645,12 @@ const updateResource = (resource, apiUrl, apiKey) => {
   let body;
   if (resource.upload) {
     body = new FormData();
-    Object.keys(serializeResource(resource)).forEach((item) => {
-      if (resource[item] !== null) {
-        body.append(item, resource[item]);
+    const serialized = serializeResource(resource);
+    Object.keys(serialized).forEach((item) => {
+      if (serialized[item] !== null && serialized[item] !== undefined) {
+        // For file upload field, use original File object from resource, not serialized
+        const value = item === 'upload' ? resource[item] : serialized[item];
+        body.append(item, value);
       }
     });
   } else {
